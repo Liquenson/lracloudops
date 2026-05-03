@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro'
   titulo="Automatizamos tu infraestructura en la nube"
   descripcion="Soluciones de Cloud Operations para equipos que quieren moverse rápido sin romper nada."
 >
+  <!-- HERO -->
   <section class="max-w-5xl mx-auto px-6 py-24 text-center">
     <span class="inline-flex items-center gap-2 text-xs font-medium text-teal-700 bg-teal-50 px-3 py-1 rounded-full mb-6">
       <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
@@ -19,12 +20,63 @@ import Layout from '../layouts/Layout.astro'
       Soluciones de Cloud Operations para equipos que quieren moverse rápido sin romper nada.
     </p>
     <div class="flex gap-4 justify-center flex-wrap">
-      <a href="/servicios" class="bg-teal-600 text-white text-sm font-medium px-6 py-3 rounded-md hover:bg-teal-700 transition-colors">
-        Ver servicios
-      </a>
-      <a href="/blog" class="border border-gray-200 text-gray-700 text-sm px-6 py-3 rounded-md hover:bg-gray-50 transition-colors">
-        Leer el blog
-      </a>
+      <a href="/servicios" class="bg-teal-600 text-white text-sm font-medium px-6 py-3 rounded-md hover:bg-teal-700 transition-colors">Ver servicios</a>
+      <a href="/blog" class="border border-gray-200 text-gray-700 text-sm px-6 py-3 rounded-md hover:bg-gray-50 transition-colors">Leer el blog</a>
     </div>
   </section>
+
+  <!-- STATS -->
+  <section class="border-y border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 py-12 grid grid-cols-3 divide-x divide-gray-100 text-center">
+      <div class="px-8">
+        <div class="text-3xl font-medium text-teal-600">99.9%</div>
+        <div class="text-sm text-gray-400 mt-1">Uptime garantizado</div>
+      </div>
+      <div class="px-8">
+        <div class="text-3xl font-medium text-teal-600">+50</div>
+        <div class="text-sm text-gray-400 mt-1">Proyectos desplegados</div>
+      </div>
+      <div class="px-8">
+        <div class="text-3xl font-medium text-teal-600">3x</div>
+        <div class="text-sm text-gray-400 mt-1">Más velocidad de entrega</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="max-w-5xl mx-auto px-6 py-24">
+    <p class="text-xs font-medium text-teal-600 uppercase tracking-widest mb-3">Servicios</p>
+    <h2 class="text-3xl font-medium text-gray-900 mb-12">¿Qué hacemos?</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div class="border border-gray-100 rounded-xl p-6">
+        <div class="w-8 h-8 rounded-md bg-teal-50 flex items-center justify-center mb-4">
+          <svg class="w-4 h-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6" /></svg>
+        </div>
+        <h3 class="text-sm font-medium text-gray-900 mb-2">Cloud Infrastructure</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">AWS, GCP y Azure. Arquitecturas seguras y escalables desde el día uno.</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-6">
+        <div class="w-8 h-8 rounded-md bg-teal-50 flex items-center justify-center mb-4">
+          <svg class="w-4 h-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+        </div>
+        <h3 class="text-sm font-medium text-gray-900 mb-2">CI/CD & DevOps</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Pipelines automatizados con GitHub Actions, GitLab CI y ArgoCD.</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-6">
+        <div class="w-8 h-8 rounded-md bg-teal-50 flex items-center justify-center mb-4">
+          <svg class="w-4 h-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+        </div>
+        <h3 class="text-sm font-medium text-gray-900 mb-2">Infrastructure as Code</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Terraform y Ansible para infraestructura reproducible y versionada.</p>
+      </div>
+      <div class="border border-gray-100 rounded-xl p-6">
+        <div class="w-8 h-8 rounded-md bg-teal-50 flex items-center justify-center mb-4">
+          <svg class="w-4 h-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+        </div>
+        <h3 class="text-sm font-medium text-gray-900 mb-2">Observabilidad</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Monitoreo y alertas con Grafana, Prometheus y Datadog.</p>
+      </div>
+    </div>
+  </section>
+
 </Layout>
