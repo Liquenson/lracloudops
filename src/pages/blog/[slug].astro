@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+---
+<Layout titulo={post.data.titulo} descripcion={post.data.descripcion}>
+  <article class="max-w-2xl mx-auto px-6 py-24">
+    <div class="mb-8">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {post.data.tags.map(tag => (
+          <span class="text-xs bg-teal-50 text-teal-600 px-2 py-0.5 rounded">{tag}</span>
+        ))}
+      </div>
+      <h1 class="text-3xl font-medium text-gray-900 mb-4">{post.data.titulo}</h1>
+      <p class="text-gray-400 text-sm">
+        {post.data.fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+      </p>
+    </div>
+    <div class="prose prose-gray max-w-none
+      prose-headings:font-medium prose-headings:text-gray-900
+      prose-p:text-gray-500 prose-p:leading-relaxed
+      prose-a:text-teal-600 prose-a:no-underline
+      prose-code:text-teal-600 prose-code:bg-gray-50 prose-code:px-1 prose-code:rounded
+      prose-pre:bg-gray-950 prose-pre:text-gray-100
+      prose-li:text-gray-500">
+      <Content />
+    </div>
+    <div class="mt-16 pt-8 border-t border-gray-100">
+      <a href="/blog" class="text-sm text-gray-400 hover:text-gray-600 transition-colors">← Volver al blog</a>
+    </div>
+  </article>
+</Layout>
