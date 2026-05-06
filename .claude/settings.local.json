@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\lique\\\\workspace\\\\lracloudops\" -Force)",
-      "Bash(Select-Object Name, Mode)"
+      "Bash(Select-Object Name, Mode)",
+      "Bash(Get-ChildItem -Recurse -Path \"C:\\\\Users\\\\lique\\\\workspace\\\\lracloudops\\\\src\")",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(grep -E \"\\\\.\\(env|md\\)$|README\")",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\lique\\\\workspace\\\\lracloudops\\\\src\" -Recurse -File | ForEach-Object { $_.FullName -replace [regex]::Escape\\(\"C:\\\\Users\\\\lique\\\\workspace\\\\lracloudops\"\\), \".\" } | Sort-Object)"
     ]
   }
 }
