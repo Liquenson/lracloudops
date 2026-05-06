@@ -68,11 +68,25 @@ import Layout from '../layouts/Layout.astro'
     btn.disabled = true
     estado.classList.add('hidden')
 
+    const nombre = (form.querySelector('[name="nombre"]') as HTMLInputElement).value
+    const email = (form.querySelector('[name="email"]') as HTMLInputElement).value
+    const mensaje = (form.querySelector('[name="mensaje"]') as HTMLTextAreaElement).value
+
     try {
-      const res = await fetch('/api/contacto', {
+      const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
-        body: new FormData(form)
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.PUBLIC_RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: 'LRA Cloud Operations <hola@lracloudops.com>',
+          to: 'liquenson.cloud@gmail.com',
+          subject: `Nuevo mensaje de ${nombre}`,
+          html: `<p><strong>Nombre:</strong> ${nombre}</p><p><strong>Email:</strong> ${email}</p><p><strong>Mensaje:</strong> ${mensaje}</p>`
+        })
       })
+
       if (res.ok) {
         estado.textContent = '¡Mensaje enviado! Te respondo pronto.'
         estado.className = 'text-sm text-center py-3 rounded-lg bg-teal-50 text-teal-700'
