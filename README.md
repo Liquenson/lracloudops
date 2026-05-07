@@ -1,43 +1,61 @@
-# Astro Starter Kit: Minimal
+# lracloudops.com
 
-```sh
-npm create astro@latest -- --template minimal
+![Astro](https://img.shields.io/badge/Astro-6.2-orange?logo=astro)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.2-blue?logo=tailwindcss)
+![Cloudflare Pages](https://img.shields.io/badge/Cloudflare-Pages-orange?logo=cloudflare)
+
+Sitio web profesional de **LRA Cloud Operations** — plataforma de ingeniería cloud y DevOps con portfolio de proyectos reales, blog técnico y formulario de contacto.
+
+---
+
+## Stack
+
+| Herramienta | Propósito |
+|---|---|
+| Astro 6.2 | Framework estático con Content Collections |
+| Tailwind CSS 4 | Estilos con sistema de diseño azul (#0A2540 / #1E6FFF) |
+| Cloudflare Pages | Hosting edge con deploy automático desde GitHub |
+| Web3Forms | Formulario de contacto sin backend |
+| Node.js ≥ 22.12 | Entorno de desarrollo |
+
+---
+
+## Estructura
+src/
+├── content/
+│   ├── blog/          # Artículos técnicos en Markdown
+│   └── projects/      # Case studies de proyectos
+├── layouts/
+│   └── Layout.astro   # Navbar + Footer global
+├── pages/
+│   ├── index.astro    # Home con hero, métricas y portfolio
+│   ├── servicios.astro
+│   ├── proyectos.astro
+│   ├── contacto.astro
+│   ├── blog/
+│   └── projects/[slug].astro
+└── styles/
+└── global.css
+---
+
+## Inicio rápido
+
+```bash
+git clone https://github.com/Liquenson/lracloudops.git
+cd lracloudops
+npm install
+npm run dev        # http://localhost:4321
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## Deploy
 
-Inside of your Astro project, you'll see the following folders and files:
+Push a `main` → Cloudflare Pages despliega automáticamente en **lracloudops.com**
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+---
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Autor
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Liquenson Ruben** — Ingeniero DevOps
+[LinkedIn](https://www.linkedin.com/in/liquenson-ruben-490961269) · [GitHub](https://github.com/Liquenson) · [lracloudops.com](https://lracloudops.com)
