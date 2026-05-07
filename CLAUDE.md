@@ -24,6 +24,12 @@ No lint or test scripts are configured.
 
 **Layout pattern:** `src/layouts/Layout.astro` is the single base layout. It accepts two required props — `titulo` (page title) and `descripcion` (meta description) — and renders the sticky header, `<slot />`, and footer. Every page wraps its content in this layout.
 
-**Planned routes not yet implemented:** `/servicios`, `/blog`, `/contacto` are linked from the nav and hero but have no corresponding page files yet.
+**All routes implemented:** `/`, `/servicios`, `/proyectos`, `/blog`, `/contacto`, `/blog/[slug]`, `/projects/[slug]`.
 
-**Design system:** Minimal teal/gray palette. Service cards follow a consistent pattern: teal icon container, `h3` title, `p` description, flex-wrapped tag pills. Experience entries use a vertical accent bar (`w-1` div) + content column layout.
+**Design system:** Blue palette — `#0A2540` (primary dark), `#1E6FFF` (accent blue), `#EEF4FF` (soft background), `#64748b` (secondary text). Never use teal/emerald/cyan. Cards: `border-radius: 16px`, white bg, shadow. Hero sections use `#0A2540` dark with dot-grid pattern and radial glow. Inter font (Google Fonts) for headings, JetBrains Mono for code/terminal.
+
+**Content collections:** `src/content/blog/` for blog posts, `src/content/projects/` for project case studies. Both use `loader: glob(...)` from Astro Content Layer API.
+
+**Project case study pages:** Individual pages at `/projects/[slug]` generated from `src/content/projects/*.md`. Schema includes: titulo, descripcion, fecha, categoria, madurez, stack, cicd, github, featured, metricas, highlights, arquitectura.
+
+**Components pattern:** No `src/components/` directory — all reusable patterns are inline in pages. Section headers follow: small blue label → large h2 → gray subtitle.
