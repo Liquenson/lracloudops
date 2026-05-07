@@ -27,7 +27,7 @@ import Layout from '../layouts/Layout.astro'
           <a href="/servicios" class="text-sm font-semibold text-white px-6 py-3 rounded-lg transition-opacity hover:opacity-90" style="background-color: #0A2540;">
             Explorar servicios
           </a>
-          <a href="/blog" class="text-sm font-semibold text-gray-700 px-6 py-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
+          <a href="/proyectos" class="text-sm font-semibold text-gray-700 px-6 py-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
             Ver proyectos
           </a>
         </div>
@@ -201,6 +201,289 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS REALES -->
+  <section style="background-color: #f8fafc;" class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <p class="text-xs font-semibold uppercase tracking-widest text-center mb-3" style="color: #1E6FFF;">Portafolio</p>
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-3">Proyectos reales</h2>
+      <p class="text-center text-gray-500 mb-14 max-w-2xl mx-auto">
+        Infraestructura, automatización y plataformas cloud construidas desde cero
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- AWS Terraform DevOps -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">Producción</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">AWS Terraform DevOps</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Infraestructura AWS production-ready con EKS, autoscaling y RDS MySQL Multi-AZ gestionados con Terraform modular. Pipeline completo con SonarCloud, cobertura ≥80% y despliegue automático via Helm.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Terraform</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">AWS EKS</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">RDS</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Docker</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Helm</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>GH Actions + Jenkins
+            </span>
+            <a href="https://github.com/Liquenson/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold hover:opacity-70 transition-opacity" style="color:#0A2540;">
+              GitHub
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- TBF Cloud Infrastructure -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">Producción</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">TBF Cloud Infrastructure</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Plataforma SaaS completa con Spring Boot 4 + React y toda la infraestructura AWS en Terraform. CloudFront CDN, ECS Fargate, RDS Multi-AZ y secretos en AWS Secrets Manager.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Terraform</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">ECS Fargate</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">React</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Spring Boot</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">AWS</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>3 workflows GH Actions
+            </span>
+            <span class="inline-flex items-center gap-1 text-xs text-gray-300">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              Privado
+            </span>
+          </div>
+        </div>
+
+        <!-- Linux Fleet Manager -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">Producción</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Linux Fleet Manager</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Framework Bash v2.1.0 para gestionar flotas de servidores Linux a escala generando inventarios en CSV y JSON. Pipeline CI/CD con ShellCheck validado en Ubuntu, macOS y Windows.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Bash</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">ShellCheck</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">SSH</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">CSV/JSON</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>GH Actions multi-OS
+            </span>
+            <a href="https://github.com/Liquenson/linux-fleet-manager" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold hover:opacity-70 transition-opacity" style="color:#0A2540;">
+              GitHub
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Docker DevOps Platform -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#fffbeb; color:#b45309; border:1px solid #fde68a;">En Desarrollo</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Docker DevOps Platform</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Plataforma backend containerizada con FastAPI y PostgreSQL 15 en Docker Compose multi-servicio con build multi-stage y usuario no-root. Health checks automáticos, retry logic y preparación para NGINX.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">FastAPI</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">PostgreSQL</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Docker</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">NGINX</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>GitHub Actions
+            </span>
+            <a href="https://github.com/Liquenson/docker-devops-platform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold hover:opacity-70 transition-opacity" style="color:#0A2540;">
+              GitHub
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Medical Appointment System -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#fffbeb; color:#b45309; border:1px solid #fde68a;">En Desarrollo</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Medical Appointment System</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Plataforma web de citas médicas con Spring Boot 3.2 y autenticación por roles Admin, Doctor y Paciente. H2 en local o PostgreSQL 15 en producción via Docker Compose.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Java 17</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Spring Boot 3</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">PostgreSQL</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Docker</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>GitHub Actions
+            </span>
+            <a href="https://github.com/Liquenson/medical-appointment-system" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold hover:opacity-70 transition-opacity" style="color:#0A2540;">
+              GitHub
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Kubernetes DevOps Platform -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#f3f4f6; color:#4b5563; border:1px solid #e5e7eb;">Demo</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Kubernetes DevOps Platform</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Plataforma GitOps con ArgoCD como controlador declarativo y GitHub como única fuente de verdad. Cluster KinD con 3 nodos, sincronización automática, prune y selfHeal habilitados.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Kubernetes</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">ArgoCD</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">GitOps</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">KinD</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>ArgoCD CD
+            </span>
+            <a href="https://github.com/Liquenson/k8s-devops-platform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold hover:opacity-70 transition-opacity" style="color:#0A2540;">
+              GitHub
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- AWS DevOps Agent -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#f3f4f6; color:#4b5563; border:1px solid #e5e7eb;">Demo</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">AWS DevOps Agent</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Agente CLI con Claude Sonnet 4.6 que monitoriza y gestiona más de 25 servicios AWS mediante lenguaje natural. Auditoría con GuardDuty, análisis de costos y gestión de EC2, S3, RDS y Lambda.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Python</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Claude AI</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">boto3</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">AWS</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="text-xs text-gray-300">Sin CI/CD</span>
+            <span class="inline-flex items-center gap-1 text-xs text-gray-300">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              Privado
+            </span>
+          </div>
+        </div>
+
+        <!-- Python CI/CD Template -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;">Template</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Python CI/CD Template</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Template production-ready de API REST con Flask y DevOps integrado desde el inicio. Pipeline completo: flake8, pytest con cobertura y verificación del contenedor Docker en CI.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Python</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Flask</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">pytest</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Docker</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>GitHub Actions
+            </span>
+            <a href="https://github.com/Liquenson/python-cicd-template" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold hover:opacity-70 transition-opacity" style="color:#0A2540;">
+              GitHub
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Spring Boot REST Template -->
+        <div class="bg-white flex flex-col p-7" style="border-radius:16px; box-shadow:0 4px 24px rgba(0,0,0,0.08); border:1px solid #f1f5f9;">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color:#EEF4FF;">
+              <svg class="w-6 h-6" style="color:#1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;">Template</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Spring Boot REST Template</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4 flex-1">Template de API REST con Spring Boot preconfigurado con seguridad, JPA y Swagger automático. Genera imagen Docker sin Dockerfile usando el plugin Jib de Maven.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Java</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Spring Boot</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Swagger</span>
+            <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">Jib</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="text-xs text-gray-300">Sin CI/CD</span>
+            <a href="https://github.com/Liquenson/springboot-rest-template" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold hover:opacity-70 transition-opacity" style="color:#0A2540;">
+              GitHub
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/proyectos" class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-lg border transition-colors hover:bg-gray-50" style="color:#0A2540; border-color:#e2e8f0;">
+          Ver todos los proyectos
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+
     </div>
   </section>
 

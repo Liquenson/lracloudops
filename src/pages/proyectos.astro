@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const proyectos = [
+  {
+    nombre: "AWS Terraform DevOps",
+    descripcion: "Infraestructura AWS production-ready con cluster EKS, autoscaling horizontal y RDS MySQL Multi-AZ gestionados 100% con Terraform. Incluye pipeline completo con análisis SonarCloud, cobertura de tests ≥80% y despliegue automático via Helm.",
+    stack: ["Terraform", "AWS EKS", "RDS MySQL", "Docker", "GitHub Actions", "Jenkins", "Helm"],
+    madurez: "Producción",
+    cicd: true,
+    github: "https://github.com/Liquenson/aws-terraform-devops",
+    categoria: "Cloud & IaC",
+    iconPath: "M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6",
+  },
+  {
+    nombre: "TBF Cloud Infrastructure",
+    descripcion: "Plataforma SaaS completa con backend Spring Boot 4, frontend React/Vite y toda la infraestructura AWS en Terraform modular. HTTPS con ACM, CloudFront CDN, ECS Fargate, RDS Multi-AZ y secretos gestionados en AWS Secrets Manager.",
+    stack: ["Spring Boot 4", "React 18", "Terraform", "AWS ECS Fargate", "CloudFront", "PostgreSQL 15"],
+    madurez: "Producción",
+    cicd: true,
+    github: null,
+    categoria: "Full Stack + Cloud",
+    iconPath: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+  },
+  {
+    nombre: "Linux Fleet Manager",
+    descripcion: "Framework de automatización Bash (v2.1.0) para gestionar flotas de servidores Linux a escala, generando inventarios en CSV y JSON. Pipeline CI/CD multi-plataforma con ShellCheck validado en Ubuntu, macOS y Windows.",
+    stack: ["Bash 4.0+", "ShellCheck", "SSH", "CSV / JSON", "GitHub Actions"],
+    madurez: "Producción",
+    cicd: true,
+    github: "https://github.com/Liquenson/linux-fleet-manager",
+    categoria: "SRE & Automatización",
+    iconPath: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+  },
+  {
+    nombre: "Docker DevOps Platform",
+    descripcion: "Plataforma backend containerizada con FastAPI y PostgreSQL 15 en Docker Compose multi-servicio con build multi-stage y usuario no-root. Demuestra best practices de containerización: health checks, retry logic y preparación para NGINX reverse proxy.",
+    stack: ["Python 3.12", "FastAPI 0.115", "PostgreSQL 15", "Docker", "Docker Compose", "GitHub Actions"],
+    madurez: "En Desarrollo",
+    cicd: true,
+    github: "https://github.com/Liquenson/docker-devops-platform",
+    categoria: "Containerización",
+    iconPath: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10",
+  },
+  {
+    nombre: "Kubernetes DevOps Platform",
+    descripcion: "Plataforma GitOps sobre Kubernetes usando ArgoCD como controlador declarativo con GitHub como única fuente de verdad. Cluster local KinD con 3 nodos, sincronización automática, prune y selfHeal habilitados.",
+    stack: ["Kubernetes 1.29", "ArgoCD", "KinD", "Docker", "GitOps", "YAML"],
+    madurez: "Demo",
+    cicd: true,
+    github: "https://github.com/Liquenson/k8s-devops-platform",
+    categoria: "Kubernetes & GitOps",
+    iconPath: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
+  },
+  {
+    nombre: "Medical Appointment System",
+    descripcion: "Plataforma web de gestión de citas médicas con autenticación por roles (Admin, Doctor, Paciente) y verificación de email. Ejecuta con H2 en local o PostgreSQL 15 en producción via Docker Compose.",
+    stack: ["Java 17", "Spring Boot 3.2", "Spring Security", "Thymeleaf", "PostgreSQL 15", "Docker"],
+    madurez: "En Desarrollo",
+    cicd: true,
+    github: "https://github.com/Liquenson/medical-appointment-system",
+    categoria: "Backend & Web",
+    iconPath: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+  },
+  {
+    nombre: "AWS DevOps Agent",
+    descripcion: "Agente CLI inteligente impulsado por Claude Sonnet 4.6 que permite monitorear y gestionar más de 25 servicios AWS mediante lenguaje natural. Integra auditoría de seguridad con GuardDuty, análisis de costos y gestión de EC2, S3, RDS, Lambda y EKS.",
+    stack: ["Python", "Claude Sonnet 4.6", "boto3", "Anthropic SDK", "AWS"],
+    madurez: "Demo",
+    cicd: false,
+    github: null,
+    categoria: "AI + DevOps",
+    iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+  },
+  {
+    nombre: "Python CI/CD Template",
+    descripcion: "Template production-ready de API REST con Flask diseñado como punto de partida para microservicios Python con DevOps integrado desde el inicio. Pipeline completo: flake8, pytest con cobertura de código y verificación del contenedor Docker en CI.",
+    stack: ["Python 3.11", "Flask 3.0.3", "pytest", "flake8", "Docker", "GitHub Actions"],
+    madurez: "Template",
+    cicd: true,
+    github: "https://github.com/Liquenson/python-cicd-template",
+    categoria: "Templates",
+    iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+  },
+  {
+    nombre: "Spring Boot REST Template",
+    descripcion: "Template production-ready de API REST con Spring Boot preconfigurado con seguridad, persistencia JPA y documentación Swagger automática. Genera imagen Docker sin Dockerfile mediante el plugin Jib de Maven.",
+    stack: ["Java 8", "Spring Boot 2.7", "Spring Security", "Swagger", "MapStruct", "Jib", "JaCoCo"],
+    madurez: "Template",
+    cicd: false,
+    github: "https://github.com/Liquenson/springboot-rest-template",
+    categoria: "Templates",
+    iconPath: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4",
+  },
+  {
+    nombre: "LRA Cloud Operations",
+    descripcion: "Sitio web de portafolio y marketing para la marca LRA Cloud Operations con blog técnico sobre DevOps y cloud. Construido con Astro + Tailwind CSS y desplegado en el edge con Cloudflare Workers.",
+    stack: ["Astro 6.2", "React 18", "Tailwind CSS 4", "TypeScript", "Cloudflare Workers"],
+    madurez: "En Desarrollo",
+    cicd: false,
+    github: "https://github.com/Liquenson/lracloudops",
+    categoria: "Frontend & Web",
+    iconPath: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
+  },
+]
+
+function badgeStyle(madurez: string) {
+  const map: Record<string, string> = {
+    "Producción":   "background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;",
+    "En Desarrollo":"background:#fffbeb; color:#b45309; border:1px solid #fde68a;",
+    "Demo":         "background:#f3f4f6; color:#4b5563; border:1px solid #e5e7eb;",
+    "Template":     "background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;",
+  }
+  return map[madurez] ?? map["Demo"]
+}
+---
+
+<Layout
+  titulo="Proyectos"
+  descripcion="Portafolio de proyectos DevOps y cloud: infraestructura AWS con Terraform, pipelines CI/CD, Kubernetes, Docker, Spring Boot, FastAPI y más."
+>
+
+  <!-- HERO -->
+  <section style="background-color: #0A2540;">
+    <div class="max-w-7xl mx-auto px-6 py-20 text-center">
+      <span class="inline-flex items-center text-xs font-semibold px-4 py-1.5 rounded-full mb-6" style="color:#93b8ff; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);">
+        10 proyectos públicos
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-5">Proyectos</h1>
+      <p class="text-lg max-w-2xl mx-auto" style="color:#93b8ff;">
+        Infraestructura real, código en producción y laboratorios que demuestran cada pieza del stack DevOps moderno.
+      </p>
+    </div>
+  </section>
+
+  <!-- LEYENDA -->
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap gap-4 items-center justify-center sm:justify-start">
+      <span class="text-xs font-medium text-gray-400 uppercase tracking-wider mr-2">Estado:</span>
+      {[
+        { label: "Producción",    style: "background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;" },
+        { label: "En Desarrollo", style: "background:#fffbeb; color:#b45309; border:1px solid #fde68a;" },
+        { label: "Demo",          style: "background:#f3f4f6; color:#4b5563; border:1px solid #e5e7eb;" },
+        { label: "Template",      style: "background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;" },
+      ].map(b => (
+        <span class="text-xs font-medium px-3 py-1 rounded-full" style={b.style}>{b.label}</span>
+      ))}
+      <span class="hidden sm:block w-px h-4 bg-gray-200 mx-1"></span>
+      <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500">
+        <span class="w-2 h-2 rounded-full bg-green-400"></span>CI/CD activo
+      </span>
+    </div>
+  </section>
+
+  <!-- GRID DE PROYECTOS -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        {proyectos.map(p => (
+          <div class="bg-white rounded-2xl p-7 flex flex-col" style="box-shadow: 0 4px 24px rgba(0,0,0,0.08); border: 1px solid #f1f5f9;">
+
+            <!-- Icono + badges -->
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color: #EEF4FF;">
+                <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={p.iconPath} />
+                </svg>
+              </div>
+              <div class="flex flex-col items-end gap-1.5">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style={badgeStyle(p.madurez)}>
+                  {p.madurez}
+                </span>
+                {p.cicd && (
+                  <span class="inline-flex items-center gap-1 text-xs font-medium text-gray-500">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <!-- Categoría -->
+            <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">{p.categoria}</p>
+
+            <!-- Título -->
+            <h3 class="text-base font-bold text-gray-900 mb-2">{p.nombre}</h3>
+
+            <!-- Descripción -->
+            <p class="text-sm text-gray-400 leading-relaxed mb-5 flex-1">{p.descripcion}</p>
+
+            <!-- Stack tags -->
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              {p.stack.map(tag => (
+                <span class="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full">{tag}</span>
+              ))}
+            </div>
+
+            <!-- Link GitHub -->
+            <div class="mt-auto">
+              {p.github ? (
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-80"
+                  style="color: #0A2540;"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                  Ver en GitHub
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              ) : (
+                <span class="inline-flex items-center gap-1.5 text-xs text-gray-400">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  Repositorio privado
+                </span>
+              )}
+            </div>
+
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background-color: #0A2540;">
+    <div class="max-w-7xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">¿Tienes un proyecto en mente?</h2>
+      <p class="mb-8 max-w-xl mx-auto" style="color: #93b8ff;">
+        Puedo ayudarte a diseñar, implementar y automatizar la infraestructura cloud que tu negocio necesita.
+      </p>
+      <a href="/contacto" class="inline-block text-sm font-semibold px-8 py-3.5 rounded-lg transition-opacity hover:opacity-90" style="background-color: #1E6FFF; color: white;">
+        Hablemos
+      </a>
+    </div>
+  </section>
+
+</Layout>
