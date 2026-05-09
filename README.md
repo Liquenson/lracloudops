@@ -8,33 +8,32 @@
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC?logo=terraform)
 ![License](https://img.shields.io/badge/license-MIT-22C55E)
 
-> **Cloud & DevOps Engineering Platform** — Plataforma técnica de un equipo de 3 ingenieros DevOps especializados en AWS, Kubernetes y automatización de infraestructura cloud enterprise.
+> **Cloud & DevOps Engineering Platform** — Somos un equipo de ingenieros DevOps especializados en AWS, Kubernetes y Terraform. Resolvemos problemas reales de infraestructura: deploys manuales, entornos inconsistentes y plataformas que no escalan.
 
 🌐 **[lracloudops.com](https://lracloudops.com)** · 📧 **hola@lracloudops.com** · ✓ Disponibles para proyectos freelance
 
 ---
 
-## ¿Quiénes somos?
+## ¿Qué problemas resolvemos?
 
-Somos un equipo de **3 ingenieros DevOps freelance** especializados en infraestructura cloud, automatización y platform engineering. Diseñamos, desplegamos y mantenemos plataformas de producción reales usando las mismas herramientas que usan empresas como Airbnb, Netflix y Spotify.
+Infraestructura que falla, deploys manuales y entornos inconsistentes son problemas del pasado. Diseñamos plataformas cloud que se automatizan, escalan y monitorizan solas.
 
-**Lo que ofrecemos:**
-- ☁️ Arquitectura AWS multi-AZ con Terraform modular
-- 🔄 Pipelines CI/CD completos con GitHub Actions y ArgoCD
-- 🐳 Orquestación de contenedores con Kubernetes y Helm
-- 📊 Observabilidad con Prometheus, Grafana y CloudWatch
-- 🤖 Automatización de infraestructura con Ansible y Bash
-- 🔐 Seguridad cloud con IAM, Secrets Manager y GuardDuty
+- ☁️ **Infraestructura que no falla** — Arquitecturas AWS multi-AZ con failover automático. Si un servidor cae, otro toma el control en segundos.
+- 🔄 **Deploys sin miedo** — Pipelines CI/CD que validan, testean y despliegan automáticamente. Un push a main es suficiente.
+- 📊 **Visibilidad total** — Métricas en tiempo real, alertas proactivas y logs centralizados con Prometheus y Grafana.
+- 🐳 **Escalado sin downtime** — Kubernetes gestiona la carga automáticamente cuando el tráfico aumenta.
+- 🤖 **Automatización real** — Eliminamos tareas manuales repetitivas con Ansible, Bash y GitHub Actions.
+- 🔐 **Seguridad integrada** — IAM, Secrets Manager y GuardDuty desde el primer día, no como parche final.
 
 ---
 
 ## ¿Por qué elegirnos?
 
-**Experiencia real** — Cada proyecto en nuestro portfolio corre en producción real. No hacemos demos.
+**Infraestructura que no falla** — Diseñamos arquitecturas multi-AZ en AWS con failover automático. Si un servidor cae, otro toma el control en segundos — sin intervención manual.
 
-**Stack enterprise** — Trabajamos con las mismas herramientas que usan empresas de referencia: Terraform, ArgoCD, Prometheus y GitHub Actions.
+**Deploys sin miedo** — Nuestros pipelines CI/CD validan, testean y despliegan código automáticamente. Un push a main es suficiente para tener los cambios en producción.
 
-**Entrega rápida** — Nuestra infraestructura como código permite desplegar entornos completos en minutos, no semanas. Todo versionado, todo reproducible.
+**Visibilidad total** — Sabes exactamente qué pasa en tu infraestructura. Métricas en tiempo real, alertas proactivas y logs centralizados con Prometheus y Grafana.
 
 ---
 
@@ -70,26 +69,26 @@ src/
 ├── layouts/
 │   └── Layout.astro       # Navbar mobile/desktop + footer + SEO global
 ├── pages/
-│   ├── index.astro        # Home: hero, métricas, por qué elegirnos, portfolio
-│   ├── servicios.astro    # Servicios DevOps
-│   ├── proyectos.astro    # Grid de proyectos
+│   ├── index.astro        # Home: hero, métricas, soluciones, portfolio
+│   ├── servicios.astro    # Servicios orientados a problemas reales
+│   ├── proyectos.astro    # Grid completo de proyectos
 │   ├── contacto.astro     # Formulario de contacto
-│   ├── blog/              # Listado + artículos individuales
+│   ├── blog/              # Artículos técnicos
 │   └── projects/[slug]    # Case studies individuales
 └── styles/
-└── global.css         # Custom properties + Inter + JetBrains Mono
+└── global.css         # Custom properties + tipografía
 ---
 
 ## Páginas del sitio
 
 | Ruta | Descripción |
 |---|---|
-| `/` | Hero, métricas, por qué elegirnos, servicios, tecnologías, portfolio |
-| `/servicios` | Servicios DevOps detallados |
-| `/proyectos` | Grid completo de 10 proyectos con badges y stack |
-| `/projects/[slug]` | Case study individual con arquitectura y decisiones técnicas |
+| `/` | Hero, métricas, por qué elegirnos, servicios, portfolio |
+| `/servicios` | Servicios orientados a problemas que resolvemos |
+| `/proyectos` | Grid de 10 proyectos con badges, stack y estado |
+| `/projects/[slug]` | Case study con arquitectura y decisiones técnicas |
 | `/blog` | Artículos técnicos sobre DevOps y cloud |
-| `/contacto` | Formulario Web3Forms + info de contacto |
+| `/contacto` | Formulario + info de contacto |
 
 ---
 
@@ -100,16 +99,10 @@ git clone https://github.com/Liquenson/lracloudops.git
 cd lracloudops
 npm install
 npm run dev        # http://localhost:4321
-npm run build      # Build de producción — 10 páginas, 0 errores
+npm run build      # 10 páginas, 0 errores
 ```
 
 **Requisitos:** Node.js ≥ 22.12
-
----
-
-## Deploy
-
-Cada push a `main` despliega automáticamente en **lracloudops.com** vía Cloudflare Pages. Sin configuración adicional.
 
 ---
 
@@ -133,7 +126,7 @@ Case studies disponibles en [lracloudops.com/proyectos](https://lracloudops.com/
 
 ## Contacto
 
-Disponibles para proyectos freelance de infraestructura cloud, automatización DevOps y consultoría AWS. Respondemos en menos de 24h.
+¿Tienes un problema de infraestructura? Cuéntanoslo. Respondemos en menos de 24h.
 
 📧 [hola@lracloudops.com](mailto:hola@lracloudops.com)
 🌐 [lracloudops.com/contacto](https://lracloudops.com/contacto)
