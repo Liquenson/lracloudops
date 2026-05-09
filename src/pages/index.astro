@@ -44,7 +44,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3.5 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
             style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
           >
-            Hablemos de tu infraestructura
+            Solicitar evaluación técnica
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -54,7 +54,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3.5 rounded-xl border transition-all hover:bg-white/10"
             style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
           >
-            Ver nuestros proyectos
+            Ver casos de estudio
           </a>
         </div>
 
@@ -178,10 +178,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="max-w-7xl mx-auto px-6 py-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {[
-          { value: '10+', label: 'Proyectos Cloud', sub: 'En producción real' },
-          { value: '25+', label: 'Servicios AWS', sub: 'Gestionados con IaC' },
-          { value: '3', label: 'Ingenieros', sub: 'Especializados en DevOps' },
-          { value: '100%', label: 'IaC Puro', sub: 'Todo infraestructura como código' },
+          { value: '99.9%', label: 'SLA Garantizado', sub: 'Uptime en entornos de producción' },
+          { value: '<5min', label: 'MTTR Promedio', sub: 'Tiempo medio de recuperación' },
+          { value: '40%', label: 'Reducción de Costos', sub: 'Optimización AWS promedio' },
+          { value: '100%', label: 'IaC Puro', sub: 'Infraestructura versionada y auditable' },
         ].map(({ value, label, sub }) => (
           <div class="text-center">
             <div class="text-3xl sm:text-4xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.02em;">{value}</div>
@@ -756,6 +756,85 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </section>
 
+  <!-- ─── NUESTRO PROCESO ─────────────────────────────────────────────── -->
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-14">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+          Metodología
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Cómo trabajamos</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">
+          Un proceso de engagement estructurado que minimiza riesgo y maximiza el tiempo de entrega de valor.
+        </p>
+      </div>
+
+      <div class="relative">
+        <!-- Connector line (desktop) -->
+        <div class="hidden lg:block absolute top-10 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent 5%, #c3d9ff 20%, #c3d9ff 80%, transparent 95%); top: 2.5rem; margin: 0 calc(12.5% + 1.5rem);"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              step: '01',
+              title: 'Discovery & Assessment',
+              desc: 'Auditamos la infraestructura actual, identificamos riesgos, cuellos de botella y oportunidades de optimización de costos.',
+              icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',
+            },
+            {
+              step: '02',
+              title: 'Architecture Design',
+              desc: 'Diseñamos la arquitectura target en Terraform, definimos el roadmap técnico y estimamos el costo operativo en AWS.',
+              icon: 'M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2',
+            },
+            {
+              step: '03',
+              title: 'Implementation',
+              desc: 'Implementamos infraestructura como código, pipelines CI/CD y observabilidad en sprints iterativos con entregables verificables.',
+              icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+            },
+            {
+              step: '04',
+              title: 'Operación & Handover',
+              desc: 'Transferimos conocimiento al equipo, documentamos la arquitectura y ofrecemos soporte post-implementación con SLA definido.',
+              icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+            },
+          ].map(({ step, title, desc, icon }) => (
+            <div class="relative flex flex-col items-center text-center">
+              <div class="relative flex items-center justify-center w-20 h-20 rounded-2xl mb-6 z-10" style="background: #EEF4FF; border: 2px solid #c3d9ff;">
+                <svg class="w-7 h-7" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
+                </svg>
+                <div class="absolute -top-2.5 -right-2.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white" style="background: #1E6FFF;">{step}</div>
+              </div>
+              <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{title}</h3>
+              <p class="text-sm leading-relaxed" style="color: #64748b;">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-14 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
+        <div>
+          <h3 class="text-lg font-bold mb-1" style="color: #0A2540;">¿Listo para iniciar?</h3>
+          <p class="text-sm" style="color: #64748b;">La evaluación inicial es gratuita y sin compromiso. Respuesta garantizada en menos de 24 horas.</p>
+        </div>
+        <a
+          href="/contacto"
+          class="flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3.5 rounded-xl transition-all hover:scale-[1.02]"
+          style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 16px rgba(30,111,255,0.3);"
+        >
+          Agendar evaluación técnica
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ─── BLOG PREVIEW ──────────────────────────────────────────────────── -->
   {recentPosts.length > 0 && (
     <section class="bg-white py-20">
@@ -808,16 +887,16 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="relative max-w-4xl mx-auto px-6 py-24 text-center">
 
       <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-8" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
-        ¿Listo para escalar tu infraestructura?
+        Evaluación técnica sin compromiso
       </span>
 
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
-        Diseñemos tu plataforma<br />
-        <span style="color: #5B9BFF;">cloud juntos</span>
+        Infraestructura cloud de nivel<br />
+        <span style="color: #5B9BFF;">enterprise, desde el día uno</span>
       </h2>
 
       <p class="text-lg mb-10 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
-        Automatizamos deployments, reducimos costos AWS y construimos infraestructura que tu equipo puede operar con confianza.
+        Auditamos su arquitectura actual, identificamos riesgos y diseñamos el roadmap hacia una plataforma cloud escalable, segura y auditada.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -826,7 +905,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
           style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 24px rgba(30,111,255,0.4);"
         >
-          Hablemos de tu infraestructura
+          Solicitar evaluación técnica
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -836,11 +915,11 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
           style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
         >
-          Ver nuestros proyectos
+          Ver casos de estudio
         </a>
       </div>
 
-      <p class="text-xs mt-8" style="color: rgba(147,184,255,0.4);">Respondemos en menos de 24 horas · hola@lracloudops.com</p>
+      <p class="text-xs mt-8" style="color: rgba(147,184,255,0.4);">Respuesta garantizada en menos de 24 horas · Evaluación inicial sin costo · hola@lracloudops.com</p>
     </div>
   </section>
 
