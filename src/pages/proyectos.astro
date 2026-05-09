@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro'
 const proyectos = [
   {
     nombre: "AWS Terraform DevOps",
-    descripcion: "Infraestructura AWS production-ready con cluster EKS, autoscaling horizontal y RDS MySQL Multi-AZ gestionados 100% con Terraform. Pipeline completo con SonarCloud, cobertura ≥80% y despliegue automático via Helm.",
+    descripcion: "Infraestructura AWS production-ready con cluster EKS, autoscaling horizontal y RDS MySQL Multi-AZ gestionados 100% con Terraform modular. Pipeline completo con SonarCloud, cobertura ≥80% y despliegue automático via Helm. Incluye Jenkins + GitHub Actions en paralelo.",
     stack: ["Terraform", "AWS EKS", "RDS MySQL", "Docker", "GitHub Actions", "Jenkins", "Helm"],
     madurez: "Producción",
     cicd: true,
@@ -145,7 +145,7 @@ const templates = proyectos.filter(p => p.madurez === "Template")
         </span>
         <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">Proyectos</h1>
         <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
-          Infraestructura real, código en producción y laboratorios que demuestran cada pieza del stack DevOps moderno.
+          Infraestructura en producción, automatización CI/CD y plataformas cloud modernas que reflejan prácticas utilizadas en entornos enterprise reales.
         </p>
       </div>
     </div>

@@ -1,6 +1,6 @@
 ---
-titulo: "AWS Terraform DevOps Lab"
-descripcion: "Infraestructura AWS production-ready con EKS, autoscaling, RDS Multi-AZ y pipeline completo con SonarCloud, Jenkins y GitHub Actions."
+titulo: "AWS Terraform DevOps"
+descripcion: "Infraestructura AWS production-ready con cluster EKS, autoscaling horizontal y RDS MySQL Multi-AZ gestionados 100% con Terraform modular. Pipeline completo con SonarCloud, cobertura ≥80% y despliegue automático via Helm. Incluye Jenkins + GitHub Actions en paralelo."
 fecha: 2026-01-15
 categoria: "Cloud & IaC"
 madurez: "Producción"
@@ -33,7 +33,7 @@ arquitectura:
 
 ## Descripción del proyecto
 
-AWS Terraform DevOps Lab es un proyecto de infraestructura cloud production-ready que demuestra cómo construir y operar un stack AWS completo usando Infrastructure as Code, CI/CD y Kubernetes.
+AWS Terraform DevOps es un proyecto de infraestructura cloud production-ready que demuestra cómo construir y operar un stack AWS completo usando Infrastructure as Code, CI/CD y Kubernetes.
 
 El proyecto nació de la necesidad de tener un ejemplo real y funcional que combinara todas las piezas del stack DevOps moderno: infraestructura como código, containerización, orquestación, pipelines automatizados y análisis de calidad.
 
