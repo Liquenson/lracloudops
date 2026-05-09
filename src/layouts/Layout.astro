@@ -17,12 +17,18 @@ const navLinks = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{titulo} | LRA Cloud Operations</title>
+    <title>LRA Cloud Operations | {titulo}</title>
     <meta name="description" content={descripcion} />
-    <meta property="og:title" content={`${titulo} | LRA Cloud Operations`} />
+    <meta name="keywords" content="DevOps, AWS, Kubernetes, Terraform, CI/CD, Platform Engineering, Cloud Architecture, Infrastructure as Code, ingenieros DevOps freelance" />
+    <meta property="og:title" content={`LRA Cloud Operations | ${titulo}`} />
     <meta property="og:description" content={descripcion} />
     <meta property="og:url" content="https://lracloudops.com" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LRA Cloud Operations" />
+    <meta property="og:locale" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`LRA Cloud Operations | ${titulo}`} />
+    <meta name="twitter:description" content={descripcion} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -200,7 +206,7 @@ const navLinks = [
               <img src="/logo.svg" alt="LRA Cloud Operations" class="h-9 w-auto" style="filter: brightness(0) invert(1) opacity(0.9);" />
             </a>
             <p class="text-sm leading-relaxed mb-5" style="color: rgba(147,184,255,0.75);">
-              Cloud & DevOps Engineering Platform.<br />Infraestructura cloud de nivel enterprise.
+              Infraestructura cloud. Automatización real.<br />Resultados medibles.
             </p>
             <div class="flex gap-2.5">
               <a href="https://github.com/Liquenson" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:scale-110" style="background: rgba(255,255,255,0.08);">
@@ -258,12 +264,18 @@ const navLinks = [
             <h4 class="text-sm font-semibold text-white mb-5">Contacto</h4>
             <ul class="space-y-3">
               <li>
-                <a href="mailto:liquenson.cloud@gmail.com" class="flex items-start gap-2.5 text-sm transition-colors" style="color: rgba(147,184,255,0.7);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(147,184,255,0.7)'">
+                <a href="mailto:hola@lracloudops.com" class="flex items-start gap-2.5 text-sm transition-colors" style="color: rgba(147,184,255,0.7);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(147,184,255,0.7)'">
                   <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  liquenson.cloud@gmail.com
+                  hola@lracloudops.com
                 </a>
+              </li>
+              <li class="mt-2">
+                <span class="flex items-center gap-2 text-sm" style="color: rgba(63,185,80,0.9);">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"></span>
+                  Disponibles para proyectos freelance
+                </span>
               </li>
               <li class="mt-4">
                 <a

@@ -8,8 +8,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 ---
 
 <Layout
-  titulo="Cloud & DevOps Engineering Platform"
-  descripcion="Ingeniero DevOps especializado en AWS, Kubernetes y Terraform. Diseño infraestructuras cloud escalables y automatizadas de nivel enterprise."
+  titulo="Ingenieros DevOps AWS · Kubernetes · Terraform"
+  descripcion="Equipo de ingenieros DevOps especializados en AWS, Kubernetes y Terraform. Diseñamos infraestructura cloud escalable, automatizamos pipelines CI/CD y gestionamos plataformas de producción."
 >
 
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
@@ -26,25 +26,25 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <div>
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-semibold" style="background: rgba(30,111,255,0.15); border: 1px solid rgba(30,111,255,0.3); color: #93b8ff;">
           <span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"></span>
-          Platform Engineering · Cloud Architecture · DevOps
+          Equipo de 3 ingenieros · Disponibles para proyectos
         </div>
 
         <h1 class="text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-white leading-[1.1] mb-6" style="letter-spacing: -0.02em;">
-          Infraestructura cloud<br />
-          <span style="color: #5B9BFF;">moderna y automatizada</span>
+          Diseñamos, automatizamos<br />y escalamos
+          <span style="color: #5B9BFF;">infraestructura cloud enterprise</span>
         </h1>
 
         <p class="text-lg leading-relaxed mb-9 max-w-lg" style="color: rgba(147,184,255,0.8);">
-          Diseño, implemento y automatizo infraestructuras AWS de nivel enterprise con Terraform, Kubernetes y CI/CD end-to-end.
+          Nuestro equipo de ingenieros DevOps especialistas en AWS, Kubernetes y Terraform lleva tu infraestructura al siguiente nivel.
         </p>
 
         <div class="flex gap-3.5 flex-wrap mb-9">
           <a
-            href="/servicios"
+            href="/contacto"
             class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3.5 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
             style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
           >
-            Explorar servicios
+            Hablemos de tu infraestructura
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -54,7 +54,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3.5 rounded-xl border transition-all hover:bg-white/10"
             style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
           >
-            Ver proyectos
+            Ver nuestros proyectos
           </a>
         </div>
 
@@ -178,10 +178,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="max-w-7xl mx-auto px-6 py-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {[
-          { value: '4+', label: 'Años DevOps', sub: 'Cloud & Infrastructure' },
-          { value: '10+', label: 'Proyectos Cloud', sub: 'En producción y demo' },
+          { value: '10+', label: 'Proyectos Cloud', sub: 'En producción real' },
           { value: '25+', label: 'Servicios AWS', sub: 'Gestionados con IaC' },
-          { value: '3', label: 'En Producción', sub: 'Proyectos activos' },
+          { value: '3', label: 'Ingenieros', sub: 'Especializados en DevOps' },
+          { value: '100%', label: 'IaC Puro', sub: 'Todo infraestructura como código' },
         ].map(({ value, label, sub }) => (
           <div class="text-center">
             <div class="text-3xl sm:text-4xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.02em;">{value}</div>
@@ -189,6 +189,62 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             <div class="text-xs" style="color: #64748b;">{sub}</div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── POR QUÉ ELEGIRNOS ───────────────────────────────────────────── -->
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-14">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+          Por qué elegirnos
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Ingeniería que genera confianza</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">
+          Tres razones por las que los equipos eligen trabajar con nosotros.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
+          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
+            <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Experiencia real</h3>
+          <p class="text-sm leading-relaxed" style="color: #64748b;">
+            No hacemos demos. Cada proyecto en nuestro portfolio corre en producción real con AWS, Kubernetes y pipelines CI/CD automatizados.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
+          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
+            <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Stack enterprise</h3>
+          <p class="text-sm leading-relaxed" style="color: #64748b;">
+            Trabajamos con las mismas herramientas que usan empresas como Airbnb, Netflix y Spotify: Terraform, ArgoCD, Prometheus y GitHub Actions.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
+          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
+            <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Entrega rápida</h3>
+          <p class="text-sm leading-relaxed" style="color: #64748b;">
+            Nuestra infraestructura como código permite desplegar entornos completos en minutos, no semanas. Todo versionado, todo reproducible.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -202,7 +258,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
           Servicios
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">¿Qué puedo hacer por tu infraestructura?</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">¿Qué podemos hacer por tu infraestructura?</h2>
         <p class="max-w-2xl mx-auto text-base" style="color: rgba(147,184,255,0.75);">
           Soluciones cloud de nivel enterprise adaptadas a las necesidades reales de tu negocio.
         </p>
@@ -288,7 +344,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Stack Tecnológico
         </span>
-        <h2 class="text-3xl font-bold mb-3" style="color: #0A2540;">Herramientas que domino</h2>
+        <h2 class="text-3xl font-bold mb-3" style="color: #0A2540;">Herramientas que dominamos</h2>
         <p class="text-base max-w-xl mx-auto" style="color: #64748b;">El stack completo para construir plataformas cloud modernas, seguras y escalables.</p>
       </div>
 
@@ -613,16 +669,16 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <!-- Left: Profile -->
         <div>
           <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-5" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
-            Sobre mí
+            Nuestro Equipo
           </span>
           <h2 class="text-3xl sm:text-4xl font-bold mb-5" style="color: #0A2540; letter-spacing: -0.02em;">
-            Senior DevOps &<br />Platform Engineer
+            Ingenieros DevOps &<br />Platform Engineers
           </h2>
           <p class="text-base leading-relaxed mb-6" style="color: #64748b;">
-            Con más de 4 años diseñando y operando infraestructuras cloud en AWS, me especializo en transformar equipos que luchan con deployments manuales y entornos frágiles en organizaciones que despliegan con confianza múltiples veces al día.
+            Con más de 4 años diseñando y operando infraestructuras cloud en AWS, nuestro equipo se especializa en transformar organizaciones que luchan con deployments manuales en equipos que despliegan con confianza múltiples veces al día.
           </p>
           <p class="text-base leading-relaxed mb-8" style="color: #64748b;">
-            Mi enfoque combina <strong class="text-gray-800">Infrastructure as Code</strong>, <strong class="text-gray-800">GitOps</strong> y <strong class="text-gray-800">Observabilidad</strong> para construir plataformas que escalan con el negocio.
+            Nuestro enfoque combina <strong class="text-gray-800">Infrastructure as Code</strong>, <strong class="text-gray-800">GitOps</strong> y <strong class="text-gray-800">Observabilidad</strong> para construir plataformas que escalan con el negocio.
           </p>
 
           <!-- Philosophy points -->
@@ -761,7 +817,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </h2>
 
       <p class="text-lg mb-10 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
-        Automatiza deployments, reduce costos AWS y construye infraestructura que tu equipo puede operar con confianza.
+        Automatizamos deployments, reducimos costos AWS y construimos infraestructura que tu equipo puede operar con confianza.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -770,7 +826,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
           style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 24px rgba(30,111,255,0.4);"
         >
-          Agenda una consulta DevOps
+          Hablemos de tu infraestructura
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -780,11 +836,11 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
           style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
         >
-          Ver proyectos
+          Ver nuestros proyectos
         </a>
       </div>
 
-      <p class="text-xs mt-8" style="color: rgba(147,184,255,0.4);">Respondo en menos de 24 horas · liquenson.cloud@gmail.com</p>
+      <p class="text-xs mt-8" style="color: rgba(147,184,255,0.4);">Respondemos en menos de 24 horas · hola@lracloudops.com</p>
     </div>
   </section>
 
