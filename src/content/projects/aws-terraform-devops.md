@@ -1,6 +1,6 @@
 ---
 titulo: "AWS Terraform DevOps"
-descripcion: "Infraestructura AWS production-ready con EKS, autoscaling, RDS Multi-AZ y pipeline completo con SonarCloud, Jenkins y GitHub Actions."
+descripcion: "Infraestructura AWS production-ready con cluster EKS, autoscaling horizontal y RDS MySQL Multi-AZ gestionados 100% con Terraform modular. Pipeline completo con SonarCloud, cobertura ≥80% y despliegue automático via Helm. Incluye Jenkins + GitHub Actions en paralelo."
 fecha: 2026-01-15
 categoria: "Cloud & IaC"
 madurez: "Producción"
