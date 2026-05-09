@@ -26,7 +26,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <div>
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-semibold" style="background: rgba(30,111,255,0.15); border: 1px solid rgba(30,111,255,0.3); color: #93b8ff;">
           <span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"></span>
-          Equipo de 3 ingenieros · Disponibles para proyectos
+          Somos un equipo de ingenieros · Disponibles para proyectos
         </div>
 
         <h1 class="text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-white leading-[1.1] mb-6" style="letter-spacing: -0.02em;">
@@ -35,7 +35,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </h1>
 
         <p class="text-lg leading-relaxed mb-9 max-w-lg" style="color: rgba(147,184,255,0.8);">
-          Nuestro equipo de ingenieros DevOps especialistas en AWS, Kubernetes y Terraform lleva tu infraestructura al siguiente nivel.
+          Infraestructura que falla, deploys manuales y entornos inconsistentes son problemas del pasado. Diseñamos plataformas cloud que se automatizan, escalan y monitorizan solas.
         </p>
 
         <div class="flex gap-3.5 flex-wrap mb-9">
@@ -44,7 +44,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3.5 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
             style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
           >
-            Hablemos de tu infraestructura
+            Cuéntanos tu problema de infraestructura
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -54,7 +54,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3.5 rounded-xl border transition-all hover:bg-white/10"
             style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
           >
-            Ver nuestros proyectos
+            Ver cómo lo hemos resuelto
           </a>
         </div>
 
@@ -215,9 +215,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Experiencia real</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Infraestructura que no falla</h3>
           <p class="text-sm leading-relaxed" style="color: #64748b;">
-            No hacemos demos. Cada proyecto en nuestro portfolio corre en producción real con AWS, Kubernetes y pipelines CI/CD automatizados.
+            Diseñamos arquitecturas multi-AZ en AWS con failover automático. Si un servidor cae, otro toma el control en segundos — sin intervención manual.
           </p>
         </div>
 
@@ -227,9 +227,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Stack enterprise</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Deploys sin miedo</h3>
           <p class="text-sm leading-relaxed" style="color: #64748b;">
-            Trabajamos con las mismas herramientas que usan empresas como Airbnb, Netflix y Spotify: Terraform, ArgoCD, Prometheus y GitHub Actions.
+            Nuestros pipelines CI/CD validan, testean y despliegan código automáticamente. Un push a main es suficiente para tener los cambios en producción.
           </p>
         </div>
 
@@ -239,9 +239,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Entrega rápida</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Visibilidad total</h3>
           <p class="text-sm leading-relaxed" style="color: #64748b;">
-            Nuestra infraestructura como código permite desplegar entornos completos en minutos, no semanas. Todo versionado, todo reproducible.
+            Sabes exactamente qué pasa en tu infraestructura. Métricas en tiempo real, alertas proactivas y logs centralizados con Prometheus y Grafana.
           </p>
         </div>
 
@@ -270,37 +270,37 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           {
             icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
             title: 'Cloud Architecture',
-            desc: 'Diseño e implementación de arquitecturas AWS resilientes, escalables y de alta disponibilidad con VPC, EKS, RDS y CloudFront.',
+            desc: '¿Tu infraestructura crece más rápido de lo que puedes gestionar? Diseñamos arquitecturas AWS escalables con VPC, EKS, RDS y CloudFront que crecen contigo.',
             tags: ['AWS', 'VPC', 'EKS', 'RDS', 'CloudFront'],
           },
           {
             icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
             title: 'Infrastructure as Code',
-            desc: 'Terraform modular multi-entorno con state remoto, módulos reutilizables y Ansible para configuración de servidores.',
+            desc: 'Entornos inconsistentes y configuración manual son fuente de errores. Definimos toda tu infraestructura como código — reproducible, versionada y revisable.',
             tags: ['Terraform', 'Ansible', 'IaC', 'Módulos'],
           },
           {
             icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
             title: 'Kubernetes & GitOps',
-            desc: 'Orquestación de contenedores con EKS, ArgoCD como controlador GitOps, Helm charts y autoscaling horizontal.',
+            desc: 'Escalamos aplicaciones sin downtime. Kubernetes gestiona la carga automáticamente cuando el tráfico aumenta — con ArgoCD y Helm como base.',
             tags: ['Kubernetes', 'ArgoCD', 'Helm', 'EKS'],
           },
           {
             icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
             title: 'CI/CD Pipelines',
-            desc: 'Pipelines end-to-end con GitHub Actions, Jenkins y ArgoCD. Build, test, security scan y deploy automatizados.',
+            desc: 'Eliminamos deploys manuales. Nuestros pipelines detectan errores antes de que lleguen a producción — desde el commit hasta el deploy en minutos.',
             tags: ['GitHub Actions', 'Jenkins', 'Docker', 'OIDC'],
           },
           {
             icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
             title: 'Observabilidad & SRE',
-            desc: 'Stacks de monitoreo con Prometheus y Grafana, alertas proactivas con Alertmanager y dashboards en tiempo real.',
+            desc: 'Los problemas que no se ven no se pueden corregir. Implementamos Prometheus y Grafana para que tengas visibilidad completa de tu plataforma.',
             tags: ['Prometheus', 'Grafana', 'CloudWatch', 'SRE'],
           },
           {
             icon: 'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
             title: 'Linux & Automatización',
-            desc: 'Administración de flotas Linux, scripts Bash y Python para eliminar tareas manuales y reducir errores operativos.',
+            desc: 'Tareas repetitivas que consumen tiempo del equipo. Las automatizamos con Bash y Python para que el equipo se enfoque en lo que importa.',
             tags: ['Bash', 'Python', 'Linux', 'SSH', 'Scripts'],
           },
         ].map(({ icon, title, desc, tags }) => (
@@ -826,7 +826,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
           style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 24px rgba(30,111,255,0.4);"
         >
-          Hablemos de tu infraestructura
+          Cuéntanos tu problema de infraestructura
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -836,7 +836,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
           style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
         >
-          Ver nuestros proyectos
+          Ver cómo lo hemos resuelto
         </a>
       </div>
 
