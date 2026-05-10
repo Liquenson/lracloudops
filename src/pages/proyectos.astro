@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 
 const proyectos = [
+  // ── Producción ──────────────────────────────────────────────────────────
   {
     nombre: "AWS Terraform DevOps",
     descripcion: "Infraestructura AWS production-ready con cluster EKS, autoscaling horizontal y RDS MySQL Multi-AZ gestionados 100% con Terraform modular. Pipeline completo con SonarCloud, cobertura ≥80% y despliegue automático via Helm. Incluye Jenkins + GitHub Actions en paralelo.",
@@ -25,6 +26,17 @@ const proyectos = [
     slug: "tbf-cloud-infrastructure",
   },
   {
+    nombre: "NexoraTech",
+    descripcion: "Plataforma SaaS cloud-native enterprise con Spring Boot 4.0.3, React 18 y AWS ECS Fargate. Arquitectura full-stack production-ready con autenticación JWT + MFA (TOTP), Terraform modular en 10 módulos, pipelines CI/CD sin credenciales via OIDC y entrega global via CloudFront.",
+    stack: ["Spring Boot 4.0.3", "Java 17", "React 18", "Vite", "Zustand", "PostgreSQL 15", "Terraform", "AWS ECS Fargate", "CloudFront", "S3", "RDS", "Docker", "GitHub Actions", "AWS Secrets Manager", "Flyway", "MapStruct"],
+    madurez: "Producción",
+    cicd: true,
+    github: null,
+    categoria: "Full-Stack & Cloud",
+    iconPath: "M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z",
+    slug: "nexoratech",
+  },
+  {
     nombre: "Linux Fleet Manager",
     descripcion: "Framework de automatización Bash (v2.1.0) para gestionar flotas de servidores Linux a escala, generando inventarios en CSV y JSON. Pipeline CI/CD multi-plataforma con ShellCheck validado en Ubuntu, macOS y Windows.",
     stack: ["Bash 4.0+", "ShellCheck", "SSH", "CSV / JSON", "GitHub Actions"],
@@ -35,6 +47,18 @@ const proyectos = [
     iconPath: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
     slug: "linux-fleet-manager",
   },
+  {
+    nombre: "LRA Cloud Operations",
+    descripcion: "Sitio web de portafolio y marketing para la marca LRA Cloud Operations con blog técnico sobre DevOps y cloud. Construido con Astro 6 + Tailwind CSS 4 y desplegado globalmente en Cloudflare Pages con CI/CD automático.",
+    stack: ["Astro 6.2", "Tailwind CSS 4", "TypeScript", "Cloudflare Pages", "Content Collections"],
+    madurez: "Producción",
+    cicd: true,
+    github: "https://github.com/Liquenson/lracloudops",
+    categoria: "Frontend & Web",
+    iconPath: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
+    slug: "lracloudops",
+  },
+  // ── En Desarrollo ────────────────────────────────────────────────────────
   {
     nombre: "Docker DevOps Platform",
     descripcion: "Plataforma backend containerizada con FastAPI y PostgreSQL 15 en Docker Compose multi-servicio con build multi-stage y usuario no-root. Demuestra best practices de containerización: health checks, retry logic y preparación para NGINX reverse proxy.",
@@ -47,17 +71,6 @@ const proyectos = [
     slug: "docker-devops-platform",
   },
   {
-    nombre: "Kubernetes DevOps Platform",
-    descripcion: "Plataforma GitOps sobre Kubernetes usando ArgoCD como controlador declarativo con GitHub como única fuente de verdad. Cluster local KinD con 3 nodos, sincronización automática, prune y selfHeal habilitados.",
-    stack: ["Kubernetes 1.29", "ArgoCD", "KinD", "Docker", "Kustomize", "GitOps", "YAML"],
-    madurez: "Demo",
-    cicd: true,
-    github: "https://github.com/Liquenson/k8s-devops-platform",
-    categoria: "Kubernetes & GitOps",
-    iconPath: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
-    slug: "k8s-devops-platform",
-  },
-  {
     nombre: "Medical Appointment System",
     descripcion: "Plataforma web MVC de gestión de citas médicas con autenticación JDBC por roles (Admin, Doctor, Paciente) y verificación de email. Multi-perfil: H2 in-memory en local, PostgreSQL 15 en producción via Docker Compose.",
     stack: ["Java 17", "Spring Boot 3.2", "Spring Security 6", "Thymeleaf", "H2", "PostgreSQL 15", "Docker"],
@@ -67,6 +80,18 @@ const proyectos = [
     categoria: "Backend & Web",
     iconPath: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
     slug: "medical-appointment-system",
+  },
+  // ── Demo ─────────────────────────────────────────────────────────────────
+  {
+    nombre: "Kubernetes DevOps Platform",
+    descripcion: "Plataforma GitOps sobre Kubernetes usando ArgoCD como controlador declarativo con GitHub como única fuente de verdad. Cluster local KinD con 3 nodos, sincronización automática, prune y selfHeal habilitados.",
+    stack: ["Kubernetes 1.29", "ArgoCD", "KinD", "Docker", "Kustomize", "GitOps", "YAML"],
+    madurez: "Demo",
+    cicd: true,
+    github: "https://github.com/Liquenson/k8s-devops-platform",
+    categoria: "Kubernetes & GitOps",
+    iconPath: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
+    slug: "k8s-devops-platform",
   },
   {
     nombre: "AWS DevOps Agent",
@@ -79,6 +104,7 @@ const proyectos = [
     iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
     slug: "aws-devops-agent",
   },
+  // ── Template ─────────────────────────────────────────────────────────────
   {
     nombre: "Python CI/CD Template",
     descripcion: "Template production-ready de API REST con Flask diseñado como punto de partida para microservicios Python con DevOps integrado desde el inicio. Pipeline completo: flake8, pytest con cobertura de código y verificación del contenedor Docker en CI.",
@@ -100,17 +126,6 @@ const proyectos = [
     categoria: "Templates",
     iconPath: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4",
     slug: "springboot-rest-template",
-  },
-  {
-    nombre: "LRA Cloud Operations",
-    descripcion: "Sitio web de portafolio y marketing para la marca LRA Cloud Operations con blog técnico sobre DevOps y cloud. Construido con Astro 6 + Tailwind CSS 4 y desplegado globalmente en Cloudflare Pages con CI/CD automático.",
-    stack: ["Astro 6.2", "Tailwind CSS 4", "TypeScript", "Cloudflare Pages", "Content Collections"],
-    madurez: "Producción",
-    cicd: true,
-    github: "https://github.com/Liquenson/lracloudops",
-    categoria: "Frontend & Web",
-    iconPath: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
-    slug: "lracloudops",
   },
 ]
 
