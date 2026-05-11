@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content'
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
+
+const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD', 'AI+DevOps']
 ---
 
 <Layout
@@ -31,16 +33,32 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="bg-white py-16">
     <div class="max-w-4xl mx-auto px-6">
 
+      <!-- Filtros por categoría -->
+      <div class="flex flex-wrap gap-2 mb-10" id="filtros-blog">
+        {categorias.map(cat => (
+          <button
+            data-categoria={cat}
+            class={`filtro-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-150 ${cat === 'Todos' ? 'filtro-activo' : ''}`}
+            style={cat === 'Todos'
+              ? 'background: #0A2540; color: white; border-color: #0A2540;'
+              : 'background: white; color: #64748b; border-color: #e2e8f0;'}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       {posts.length === 0 ? (
         <div class="text-center py-20">
           <p class="text-gray-400">Próximamente nuevos artículos.</p>
         </div>
       ) : (
-        <div class="space-y-4">
+        <div class="space-y-4" id="lista-posts">
           {posts.map(post => (
             <a
               href={`/blog/${post.id}`}
-              class="group flex flex-col sm:flex-row sm:items-start justify-between gap-6 p-6 sm:p-7 rounded-2xl border border-gray-100 hover:border-gray-200 hover:-translate-y-0.5 transition-all duration-200 block"
+              data-tags={post.data.tags.join(',')}
+              class="post-card group flex flex-col sm:flex-row sm:items-start justify-between gap-6 p-6 sm:p-7 rounded-2xl border border-gray-100 hover:border-gray-200 hover:-translate-y-0.5 transition-all duration-200 block"
               style="background: #fafafa;"
             >
               <div class="flex-1">
@@ -68,6 +86,11 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         </div>
       )}
 
+      <!-- Mensaje sin resultados -->
+      <div id="sin-resultados" class="hidden text-center py-16">
+        <p class="text-sm" style="color: #64748b;">No hay artículos en esta categoría aún.</p>
+      </div>
+
       <!-- CTA: Contacto -->
       <div class="mt-16 pt-12 border-t border-gray-100 text-center">
         <p class="text-sm mb-4" style="color: #64748b;">¿Tienes un tema que te gustaría que cubriera?</p>
@@ -82,3 +105,56 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
 </Layout>
+
+<script>
+  const botones = document.querySelectorAll<HTMLButtonElement>('.filtro-btn')
+  const tarjetas = document.querySelectorAll<HTMLElement>('.post-card')
+  const sinResultados = document.getElementById('sin-resultados')
+
+  const categoriaATags: Record<string, string[]> = {
+    'AWS': ['AWS'],
+    'Kubernetes': ['Kubernetes'],
+    'Terraform': ['Terraform'],
+    'Docker': ['Docker'],
+    'CI/CD': ['CI/CD'],
+    'AI+DevOps': ['AI', 'Claude', 'Agentes'],
+  }
+
+  function filtrar(categoria: string) {
+    let visibles = 0
+
+    tarjetas.forEach(card => {
+      const tags = (card.dataset.tags || '').split(',')
+      let mostrar = false
+
+      if (categoria === 'Todos') {
+        mostrar = true
+      } else {
+        const tagsObjetivo = categoriaATags[categoria] || [categoria]
+        mostrar = tagsObjetivo.some(t => tags.includes(t))
+      }
+
+      card.style.display = mostrar ? '' : 'none'
+      if (mostrar) visibles++
+    })
+
+    if (sinResultados) {
+      sinResultados.classList.toggle('hidden', visibles > 0)
+    }
+  }
+
+  botones.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.categoria || 'Todos'
+
+      botones.forEach(b => {
+        const esActivo = b.dataset.categoria === cat
+        b.style.background = esActivo ? '#0A2540' : 'white'
+        b.style.color = esActivo ? 'white' : '#64748b'
+        b.style.borderColor = esActivo ? '#0A2540' : '#e2e8f0'
+      })
+
+      filtrar(cat)
+    })
+  })
+</script>

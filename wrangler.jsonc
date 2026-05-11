@@ -1,13 +1,8 @@
 {
-	"compatibility_date": "2026-05-06",
-	"compatibility_flags": ["global_fetch_strictly_public"],
-	"name": "lracloudops",
-	"main": "@astrojs/cloudflare/entrypoints/server",
-	"assets": {
-		"directory": "./dist",
-		"binding": "ASSETS"
-	},
-	"observability": {
-		"enabled": true
-	}
+  "compatibility_date": "2026-05-06",
+  "name": "lracloudops",
+  "pages_build_output_dir": "./dist",
+  "observability": {
+    "enabled": true
+  }
 }

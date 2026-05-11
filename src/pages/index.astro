@@ -178,13 +178,15 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="max-w-7xl mx-auto px-6 py-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {[
-          { value: '99.9%', label: 'SLA Garantizado', sub: 'Uptime en entornos de producción' },
-          { value: '<5min', label: 'MTTR Promedio', sub: 'Tiempo medio de recuperación' },
-          { value: '40%', label: 'Reducción de Costos', sub: 'Optimización AWS promedio' },
-          { value: '100%', label: 'IaC Puro', sub: 'Infraestructura versionada y auditable' },
-        ].map(({ value, label, sub }) => (
+          { count: 10, suffix: '+', label: 'Proyectos completados', sub: 'Infraestructura cloud en producción' },
+          { count: 25, suffix: '+', label: 'Tecnologías dominadas', sub: 'Stack DevOps enterprise completo' },
+          { count: 3,  suffix: '',  label: 'Años de experiencia AWS', sub: 'Arquitectura, IaC y automatización' },
+          { count: 100, suffix: '%', label: 'IaC Puro', sub: 'Infraestructura versionada y auditable' },
+        ].map(({ count, suffix, label, sub }) => (
           <div class="text-center">
-            <div class="text-3xl sm:text-4xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.02em;">{value}</div>
+            <div class="text-3xl sm:text-4xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.02em;">
+              <span class="counter-value" data-count={count} data-suffix={suffix}>0{suffix}</span>
+            </div>
             <div class="text-sm font-semibold text-gray-800 mb-0.5">{label}</div>
             <div class="text-xs" style="color: #64748b;">{sub}</div>
           </div>
@@ -924,3 +926,36 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
 </Layout>
+
+<script>
+  const counters = document.querySelectorAll<HTMLElement>('.counter-value')
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return
+      const el = entry.target as HTMLElement
+      const target = parseFloat(el.dataset.count || '0')
+      const suffix = el.dataset.suffix || ''
+      const decimals = target % 1 !== 0 ? 1 : 0
+      const duration = 2000
+      const startTime = performance.now()
+
+      function tick(now: number) {
+        const elapsed = now - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        const eased = 1 - Math.pow(1 - progress, 3)
+        el.textContent = (target * eased).toFixed(decimals) + suffix
+        if (progress < 1) {
+          requestAnimationFrame(tick)
+        } else {
+          el.textContent = target.toFixed(decimals) + suffix
+        }
+      }
+
+      requestAnimationFrame(tick)
+      observer.unobserve(el)
+    })
+  }, { threshold: 0.5 })
+
+  counters.forEach(el => observer.observe(el))
+</script>

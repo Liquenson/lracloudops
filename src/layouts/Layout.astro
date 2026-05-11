@@ -31,6 +31,18 @@ const navLinks = [
     <meta name="twitter:title" content={`LRA Cloud Operations | ${titulo}`} />
     <meta name="twitter:description" content={descripcion} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "LRA Cloud Operations",
+      "url": "https://lracloudops.com",
+      "email": "hola@lracloudops.com",
+      "description": "Equipo de ingenieros DevOps especializados en AWS, Kubernetes y Terraform",
+      "sameAs": [
+        "https://www.linkedin.com/in/liquenson-ruben-490961269/",
+        "https://github.com/Liquenson"
+      ]
+    })} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />

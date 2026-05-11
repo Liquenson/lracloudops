@@ -67,6 +67,80 @@ import Layout from '../layouts/Layout.astro'
             </div>
 
             <div>
+              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Tipo de proyecto</label>
+              <div class="relative">
+                <select
+                  name="tipo_proyecto"
+                  class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all appearance-none"
+                  style="color: #111827; background-color: white; cursor: pointer;"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
+                  onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="Cloud Architecture">Cloud Architecture</option>
+                  <option value="CI/CD Pipeline">CI/CD Pipeline</option>
+                  <option value="Kubernetes">Kubernetes</option>
+                  <option value="Terraform IaC">Terraform IaC</option>
+                  <option value="Consultoría DevOps">Consultoría DevOps</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Presupuesto aproximado</label>
+              <div class="relative">
+                <select
+                  name="presupuesto"
+                  class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all appearance-none"
+                  style="color: #111827; background-color: white; cursor: pointer;"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
+                  onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="Menos de 1.000€">Menos de 1.000€</option>
+                  <option value="1.000€ - 5.000€">1.000€ - 5.000€</option>
+                  <option value="5.000€ - 15.000€">5.000€ - 15.000€</option>
+                  <option value="Más de 15.000€">Más de 15.000€</option>
+                  <option value="Por definir">Por definir</option>
+                </select>
+                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Urgencia</label>
+              <div class="relative">
+                <select
+                  name="urgencia"
+                  class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all appearance-none"
+                  style="color: #111827; background-color: white; cursor: pointer;"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
+                  onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="Esta semana">Esta semana</option>
+                  <option value="Este mes">Este mes</option>
+                  <option value="Sin prisa">Sin prisa</option>
+                </select>
+                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
               <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Mensaje</label>
               <textarea
                 name="message"
