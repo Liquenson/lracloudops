@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro'
 >
 
   <!-- HERO -->
-  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+  <section class="relative overflow-hidden" style="background-color: var(--lra-section-dark);">
     <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
       <div class="max-w-3xl">
@@ -106,22 +106,22 @@ import Layout from '../layouts/Layout.astro'
       tags: ['Ubuntu','CentOS','Red Hat','Debian','Bash','Python','LVM','VMware'],
     },
   ].map((s, i) => (
-    <section class={`border-t border-gray-100 ${i % 2 === 1 ? 'bg-gray-50/50' : 'bg-white'}`}>
+    <section class={`border-t dark:border-[#1E3A5F] border-gray-100 ${i % 2 === 1 ? 'bg-gray-50/50 dark:bg-[#0A1628]' : 'bg-white dark:bg-[#0D1628]'}`}>
       <div class="max-w-7xl mx-auto px-6 py-16">
         <div class="grid lg:grid-cols-2 gap-12 items-start">
 
           <!-- Left: Info -->
           <div>
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: #EEF4FF;">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: var(--lra-bg-alt);">
               <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={s.icon} />
               </svg>
             </div>
-            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">{s.titulo}</h2>
-            <p class="leading-relaxed mb-7" style="color: #64748b;">{s.desc}</p>
+            <h2 class="text-2xl font-bold mb-4" style="color: var(--lra-text-h);">{s.titulo}</h2>
+            <p class="leading-relaxed mb-7" style="color: var(--lra-text-p);">{s.desc}</p>
             <ul class="space-y-2.5">
               {s.items.map(item => (
-                <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+                <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
                   <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #1E6FFF;"></span>
                   {item}
                 </li>
@@ -130,11 +130,11 @@ import Layout from '../layouts/Layout.astro'
           </div>
 
           <!-- Right: Tags -->
-          <div class="rounded-2xl p-7" style="background: #f8fafc; border: 1px solid #e2e8f0;">
-            <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: #94a3b8;">Stack tecnológico</p>
+          <div class="rounded-2xl p-7" style="background: var(--lra-bg-soft); border: 1px solid var(--lra-card-border);">
+            <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: var(--lra-text-muted);">Stack tecnológico</p>
             <div class="flex flex-wrap gap-2">
               {s.tags.map(t => (
-                <span class="text-xs font-medium px-3 py-1.5 rounded-full bg-white border border-gray-200" style="color: #374151;">{t}</span>
+                <span class="text-xs font-medium px-3 py-1.5 rounded-full dark:bg-[#0D1F35]" style="background-color: var(--lra-card); border: 1px solid var(--lra-card-border); color: var(--lra-text-h);">{t}</span>
               ))}
             </div>
           </div>
@@ -144,16 +144,16 @@ import Layout from '../layouts/Layout.astro'
   ))}
 
   <!-- PRECIOS -->
-  <section class="bg-white border-t border-gray-100">
+  <section class="bg-white dark:bg-[#0D1628] border-t dark:border-[#1E3A5F] border-gray-100">
     <div class="max-w-7xl mx-auto px-6 py-20">
 
       <!-- Header -->
       <div class="text-center mb-14">
-        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF;">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-4" style="background: var(--lra-bg-alt); color: #1E6FFF;">
           Precios
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540; letter-spacing: -0.02em;">Servicios a medida</h2>
-        <p class="max-w-xl mx-auto" style="color: #64748b;">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--lra-text-h); letter-spacing: -0.02em;">Servicios a medida</h2>
+        <p class="max-w-xl mx-auto" style="color: var(--lra-text-p);">
           Precios orientativos basados en el mercado DevOps español 2026. Cada proyecto es único — contáctanos para un presupuesto exacto.
         </p>
       </div>
@@ -162,35 +162,35 @@ import Layout from '../layouts/Layout.astro'
       <div class="grid md:grid-cols-3 gap-8 items-stretch">
 
         <!-- Paquete 1: Consultoría -->
-        <div class="rounded-2xl bg-white p-8 flex flex-col" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.06);">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: #EEF4FF;">
+        <div class="rounded-2xl bg-white dark:bg-[#112240] p-8 flex flex-col" style="border: 1px solid var(--lra-card-border); box-shadow: 0 4px 24px var(--lra-card-shadow);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: var(--lra-bg-alt);">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-1" style="color: #0A2540;">Consultoría</h3>
-          <p class="text-sm mb-5" style="color: #64748b;">Sesión única o paquete de horas</p>
+          <h3 class="text-lg font-bold mb-1" style="color: var(--lra-text-h);">Consultoría</h3>
+          <p class="text-sm mb-5" style="color: var(--lra-text-p);">Sesión única o paquete de horas</p>
           <div class="mb-7">
-            <span class="text-3xl font-extrabold" style="color: #0A2540;">Desde 400€</span>
+            <span class="text-3xl font-extrabold" style="color: var(--lra-text-h);">Desde 400€</span>
           </div>
           <ul class="space-y-3 flex-1 mb-8">
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Auditoría de infraestructura actual
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Detección de problemas y riesgos
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Plan de mejora detallado
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Informe técnico de recomendaciones
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               1-2 sesiones de trabajo en remoto
             </li>
@@ -201,42 +201,42 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <!-- Paquete 2: Proyecto completo (destacado) -->
-        <div class="rounded-2xl bg-white p-8 flex flex-col relative" style="border: 2px solid #1E6FFF; box-shadow: 0 8px 32px rgba(30,111,255,0.15);">
+        <div class="rounded-2xl bg-white dark:bg-[#112240] p-8 flex flex-col relative" style="border: 2px solid #1E6FFF; box-shadow: 0 8px 32px rgba(30,111,255,0.15);">
           <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
             <span class="text-xs font-bold text-white px-4 py-1.5 rounded-full whitespace-nowrap" style="background: #1E6FFF;">Más solicitado</span>
           </div>
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: #EEF4FF;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: var(--lra-bg-alt);">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-1" style="color: #0A2540;">Proyecto completo</h3>
-          <p class="text-sm mb-5" style="color: #64748b;">Implementación end-to-end</p>
+          <h3 class="text-lg font-bold mb-1" style="color: var(--lra-text-h);">Proyecto completo</h3>
+          <p class="text-sm mb-5" style="color: var(--lra-text-p);">Implementación end-to-end</p>
           <div class="mb-7">
-            <span class="text-3xl font-extrabold" style="color: #0A2540;">Desde 3.000€</span>
+            <span class="text-3xl font-extrabold" style="color: var(--lra-text-h);">Desde 3.000€</span>
           </div>
           <ul class="space-y-3 flex-1 mb-8">
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Infraestructura AWS con Terraform modular
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               CI/CD completo automatizado
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Kubernetes o ECS Fargate según necesidad
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Monitoreo con Prometheus y Grafana
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Documentación técnica completa
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               30 días de soporte post-entrega
             </li>
@@ -247,35 +247,35 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <!-- Paquete 3: Mantenimiento mensual -->
-        <div class="rounded-2xl bg-white p-8 flex flex-col" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.06);">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: #EEF4FF;">
+        <div class="rounded-2xl bg-white dark:bg-[#112240] p-8 flex flex-col" style="border: 1px solid var(--lra-card-border); box-shadow: 0 4px 24px var(--lra-card-shadow);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: var(--lra-bg-alt);">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-1" style="color: #0A2540;">Mantenimiento mensual</h3>
-          <p class="text-sm mb-5" style="color: #64748b;">Contrato mensual recurrente</p>
+          <h3 class="text-lg font-bold mb-1" style="color: var(--lra-text-h);">Mantenimiento mensual</h3>
+          <p class="text-sm mb-5" style="color: var(--lra-text-p);">Contrato mensual recurrente</p>
           <div class="mb-7">
-            <span class="text-3xl font-extrabold" style="color: #0A2540;">Desde 800€</span><span class="text-base font-medium ml-1" style="color: #64748b;">/mes</span>
+            <span class="text-3xl font-extrabold" style="color: var(--lra-text-h);">Desde 800€</span><span class="text-base font-medium ml-1" style="color: var(--lra-text-p);">/mes</span>
           </div>
           <ul class="space-y-3 flex-1 mb-8">
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Monitoreo 24/7 con alertas proactivas
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Actualizaciones de seguridad y parches
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Soporte técnico prioritario
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Optimización continua de costes AWS
             </li>
-            <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+            <li class="flex items-start gap-2.5 text-sm" style="color: var(--lra-text-p);">
               <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
               Informe mensual de infraestructura
             </li>
@@ -288,9 +288,9 @@ import Layout from '../layouts/Layout.astro'
       </div>
 
       <!-- Banner inferior -->
-      <div class="mt-14 rounded-2xl px-8 py-10 text-center" style="background: #EEF4FF;">
-        <h3 class="text-xl font-bold mb-2" style="color: #0A2540;">¿Tu proyecto no encaja en ningún paquete?</h3>
-        <p class="mb-6 text-sm" style="color: #64748b;">Tarifa hora: 50€ - 70€/h · Presupuestos a medida en menos de 24h</p>
+      <div class="mt-14 rounded-2xl px-8 py-10 text-center" style="background: var(--lra-bg-alt);">
+        <h3 class="text-xl font-bold mb-2" style="color: var(--lra-text-h);">¿Tu proyecto no encaja en ningún paquete?</h3>
+        <p class="mb-6 text-sm" style="color: var(--lra-text-p);">Tarifa hora: 50€ - 70€/h · Presupuestos a medida en menos de 24h</p>
         <a href="/contacto" class="inline-flex items-center justify-center text-sm font-semibold text-white px-8 py-3 rounded-xl transition-all hover:opacity-90" style="background: #0A2540; box-shadow: 0 4px 16px rgba(10,37,64,0.25);">
           Cuéntanos tu proyecto
         </a>
@@ -300,7 +300,7 @@ import Layout from '../layouts/Layout.astro'
   </section>
 
   <!-- CTA -->
-  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+  <section class="relative overflow-hidden" style="background-color: var(--lra-section-dark);">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
     <div class="relative max-w-4xl mx-auto px-6 py-20 text-center">
       <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" style="letter-spacing: -0.02em;">¿Tienes un proyecto en mente?</h2>
