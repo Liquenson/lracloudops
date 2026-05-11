@@ -496,26 +496,26 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           </div>
         </div>
 
-        <!-- AWS DevOps Agent -->
+        <!-- NexoraTech -->
         <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px rgba(10,37,64,0.1); border: 1px solid #e2e8f0;">
           <div class="flex items-start justify-between mb-5">
             <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
               </svg>
             </div>
             <div class="flex flex-col items-end gap-1.5">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">Demo</span>
-              <span class="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">✨ AI + Cloud</span>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Producción</span>
+              <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
             </div>
           </div>
-          <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">AI + DevOps</p>
-          <h3 class="text-lg font-bold mb-2.5" style="color: #0A2540;">AWS DevOps Agent</h3>
+          <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">Full-Stack & Cloud</p>
+          <h3 class="text-lg font-bold mb-2.5" style="color: #0A2540;">NexoraTech</h3>
           <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Agente CLI inteligente con Claude Sonnet 4.6 que monitorea y gestiona más de 25 servicios AWS mediante lenguaje natural. Auditoría GuardDuty, análisis de costos, gestión de EC2, S3, RDS, Lambda y EKS.
+            Plataforma SaaS cloud-native enterprise con Spring Boot 4.0.3, React 18 y AWS ECS Fargate. Arquitectura full-stack production-ready con autenticación JWT + MFA (TOTP), Terraform modular en 10 módulos y pipelines CI/CD sin credenciales via OIDC.
           </p>
           <div class="flex flex-wrap gap-1.5 mb-5">
-            {['Python', 'Claude Sonnet 4.6', 'boto3', 'Anthropic SDK', 'AWS'].map(tag => (
+            {['Spring Boot 4', 'Java 17', 'React 18', 'Terraform', 'AWS ECS Fargate', 'PostgreSQL 15'].map(tag => (
               <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
             ))}
           </div>
@@ -526,7 +526,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               </svg>
               Repositorio privado
             </span>
-            <a href="/projects/aws-devops-agent" class="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors" style="color: #1E6FFF;">
+            <a href="/projects/nexoratech" class="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors" style="color: #1E6FFF;">
               Case Study →
             </a>
           </div>
