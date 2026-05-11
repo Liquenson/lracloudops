@@ -20,10 +20,10 @@ import Layout from '../layouts/Layout.astro'
         Ingeniería orientada a producción
       </h1>
       <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-4" style="color: rgba(147,184,255,0.8);">
-        Somos un equipo de 4 ingenieros DevOps que desarrollamos plataformas cloud-native aplicando prácticas modernas de Platform Engineering, automatización de infraestructura, Kubernetes, observabilidad y despliegues continuos sobre AWS y Azure.
+        Somos un equipo de ingenieros DevOps que desarrollamos plataformas cloud-native aplicando prácticas modernas de Platform Engineering, automatización de infraestructura, Kubernetes, observabilidad y despliegues continuos sobre AWS y Azure.
       </p>
       <p class="text-sm font-medium" style="color: rgba(147,184,255,0.6);">
-        4 ingenieros · AWS · Azure · Kubernetes · Platform Engineering · DevOps · Cybersecurity
+        Equipo de ingenieros · AWS · Azure · Kubernetes · Platform Engineering · DevOps · Cybersecurity
       </p>
     </div>
   </section>
@@ -62,6 +62,7 @@ import Layout from '../layouts/Layout.astro'
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                 <div>
                   <h3 class="text-2xl font-bold mb-1" style="color: #0A2540;">Liquenson Ruben</h3>
+                  <p class="text-sm font-semibold mb-1" style="color: #1E6FFF;">DevOps Engineer | Platform Engineer | Cloud Engineer | AWS | Linux System Administrator</p>
                   <div class="flex items-center gap-1.5 text-sm" style="color: #64748b;">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -93,14 +94,19 @@ import Layout from '../layouts/Layout.astro'
                   </span>
                 ))}
               </div>
-              <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-                Ingeniero DevOps con más de 4 años especializado en el diseño, despliegue y mantenimiento de infraestructuras cloud escalables y altamente disponibles. Amplio conocimiento en prácticas DevOps, automatización de CI/CD y arquitecturas basadas en AWS y contenedores. Experiencia sólida en IaC con Terraform y Ansible, orquestación con Kubernetes y ECS Fargate, y pipelines CI/CD con Jenkins, GitHub Actions y ArgoCD. Dominio de servicios clave de AWS y automatización con Bash, Shell y Python.
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Ingeniero DevOps con más de 4 años, especializado en el diseño, despliegue y mantenimiento de infraestructuras cloud escalables y altamente disponibles. Experiencia sólida en IaC con Terraform y Ansible, contenerización con Docker, orquestación con Kubernetes y ECS Fargate, y pipelines CI/CD con Jenkins, GitHub Actions y ArgoCD. Dominio de servicios clave de AWS: EC2, S3, VPC, IAM, CloudWatch, Route 53, CloudFormation, Elastic Beanstalk, SNS y DynamoDB. Automatización con Bash, Shell y Python. GitOps con ArgoCD para despliegues declarativos en Kubernetes.
               </p>
+              <div class="flex flex-wrap gap-1.5 mb-5 pb-5 border-b border-gray-100">
+                {['Linux', 'Ansible', 'Git', 'Docker', 'Kubernetes', 'AWS', 'Terraform', 'Jenkins', 'GitHub Actions', 'ArgoCD', 'Helm', 'Prometheus', 'Grafana', 'Python', 'Bash', 'Maven', 'SonarQube'].map(tag => (
+                  <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                ))}
+              </div>
               <div class="flex items-center gap-2 text-xs font-medium px-4 py-2.5 rounded-xl inline-flex w-fit" style="background: #EEF4FF; color: #0A2540; border: 1px solid #c3d9ff;">
                 <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                Disponible · Presencial y Remoto · Las Palmas de Gran Canaria
+                Disponible · Presencial · Remoto · Híbrido · Las Palmas de Gran Canaria
               </div>
             </div>
           </div>
