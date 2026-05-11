@@ -328,10 +328,17 @@ import Layout from '../layouts/Layout.astro'
 
       <!-- Timeline -->
       <div class="relative">
-        <!-- Vertical line -->
         <div class="absolute left-6 sm:left-8 top-0 bottom-0 w-px" style="background: linear-gradient(180deg, #1E6FFF 0%, #c3d9ff 100%);"></div>
 
         <div class="space-y-10">
+
+          <!-- ══════════════════════════════════════ LIQUENSON RUBEN -->
+          <div class="relative flex gap-6 sm:gap-10 items-center">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center z-10">
+              <img src="/images/liquenson.jpg" alt="Liquenson Ruben" class="w-10 h-10 rounded-full object-cover" style="border: 2px solid #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);" />
+            </div>
+            <h3 class="text-base font-bold" style="color: #0A2540;">Liquenson Ruben</h3>
+          </div>
 
           <!-- iCareMedical -->
           <div class="relative flex gap-6 sm:gap-10">
@@ -340,7 +347,6 @@ import Layout from '../layouts/Layout.astro'
                 <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);"></div>
               </div>
             </div>
-
             <div class="flex-1 pb-2">
               <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
@@ -357,19 +363,22 @@ import Layout from '../layouts/Layout.astro'
                   </div>
                   <div class="flex flex-col items-start sm:items-end gap-1.5">
                     <div class="flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-                      <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">mayo 2022 – presente</span>
+                      <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0 animate-pulse"></span>
+                      <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Actualmente</span>
                     </div>
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">mayo 2022 – actualidad</span>
                     <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">4 años 1 mes</span>
                   </div>
                 </div>
                 <ul class="space-y-2.5">
                   {[
-                    'Diseñé e implementé pipelines CI/CD completos en AWS con Jenkins, Maven y SonarQube.',
-                    'Infraestructura multi-AZ con Terraform cubriendo VPC, EC2, S3, CloudFront, RDS, Route 53 y CloudWatch.',
-                    'Orquestación de contenedores con Kubernetes y Helm en producción.',
-                    'Automatización con Ansible para gestión de configuración y aprovisionamiento de servidores.',
-                    'Monitoreo y observabilidad con Prometheus y Grafana.',
+                    'Diseñé e implementé CI/CD completo en AWS con Jenkins, Maven y SonarQube.',
+                    'Infraestructura multi-AZ con Terraform: VPC, EC2, S3, CloudFront, EFS, RDS, Route 53, CloudWatch.',
+                    'Pipeline CI/CD automatizado con GitHub, Jenkins, Maven, Ansible y Kubernetes.',
+                    'Orquestación con Kubernetes y Helm Charts en producción.',
+                    'Automatización con Ansible para gestión de configuración.',
+                    'Monitoreo con Prometheus y Grafana.',
+                    'Gestión de IAM, Security Groups y ACLs en AWS.',
                   ].map(bullet => (
                     <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
                       <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #1E6FFF;"></span>
@@ -393,7 +402,6 @@ import Layout from '../layouts/Layout.astro'
                 <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
               </div>
             </div>
-
             <div class="flex-1 pb-2">
               <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
@@ -415,9 +423,10 @@ import Layout from '../layouts/Layout.astro'
                 </div>
                 <ul class="space-y-2.5">
                   {[
-                    'Administración de servidores RHEL, CentOS, Ubuntu y Debian en entornos VMware.',
-                    'Automatización de tareas operativas con scripts Bash.',
-                    'Gestión de LVM, usuarios, permisos y almacenamiento en producción.',
+                    'Administración de RHEL, CentOS, Ubuntu, Debian, Alpine en entornos VMware.',
+                    'Automatización con scripts Bash.',
+                    'Gestión de LVM, usuarios, permisos y almacenamiento.',
+                    'Diagnóstico y resolución de errores en servidores Unix/Linux.',
                   ].map(bullet => (
                     <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
                       <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
@@ -427,6 +436,585 @@ import Layout from '../layouts/Layout.astro'
                 </ul>
                 <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
                   {['RHEL', 'CentOS', 'Ubuntu', 'Debian', 'VMware', 'Bash', 'LVM'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════ DARWIN POCHET -->
+          <div class="relative flex gap-6 sm:gap-10 items-center pt-4">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center z-10">
+              <img src="/images/darwin.jpg" alt="Darwin Pochet" class="w-10 h-10 rounded-full object-cover" style="border: 2px solid #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);" />
+            </div>
+            <h3 class="text-base font-bold" style="color: #0A2540;">Darwin Pochet</h3>
+          </div>
+
+          <!-- Nibble Tech LLC -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">Nibble Tech LLC</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">Founder & CEO</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Bronx, Nueva York · Autónomo
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0 animate-pulse"></span>
+                      <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Actualmente</span>
+                    </div>
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">mar 2018 – actualidad</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">8 años 3 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'Consultoría IT integral para pequeñas y medianas empresas.',
+                    'Diseño e implementación de infraestructuras de red y seguridad.',
+                    'Especialización en soluciones Fortinet, Cisco y Linux.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #1E6FFF;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['Linux', 'Firewalls', 'Fortinet', 'Cisco', 'Windows Server'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HCLTech -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">HCLTech</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">IT Specialist</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Estados Unidos · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">may 2022 – ene 2024</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">1 año 9 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'Soporte técnico de primer nivel a clientes enterprise.',
+                    'Resolución de incidencias de hardware y software.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['Help Desk', 'Customer Service'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Help On The Way -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">Help On The Way, Inc.</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">Chief Information Officer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Bronx, Nueva York
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">sept 2018 – dic 2020</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">2 años 4 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'Gestión e implementación de tecnologías de la información.',
+                    'Integración de sistemas para mejorar procesos de negocio.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['IT Management', 'Network Installation', 'Computer Hardware'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════ KELVIN OSAIGBOVO -->
+          <div class="relative flex gap-6 sm:gap-10 items-center pt-4">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center z-10">
+              <img src="/images/kelvin.jpg" alt="Kelvin Osaigbovo" class="w-10 h-10 rounded-full object-cover" style="border: 2px solid #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);" />
+            </div>
+            <h3 class="text-base font-bold" style="color: #0A2540;">Kelvin Osaigbovo</h3>
+          </div>
+
+          <!-- UST Developer II -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">UST España & Latam</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">Developer II – DevOps Engineering</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0 animate-pulse"></span>
+                      <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Actualmente</span>
+                    </div>
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">jun 2025 – actualidad</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'Ingeniería DevOps de nivel senior en entornos enterprise.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #1E6FFF;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['AWS', 'Azure', 'Kubernetes', 'Docker'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- UST DevOps Engineer -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">UST España & Latam</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">DevOps Engineer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      España · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">jun 2024 – jun 2025</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">1 año</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'CI/CD, AWS, Azure y Kubernetes en producción.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['AWS', 'Azure', 'Kubernetes', 'CI/CD'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Intrum -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">Intrum</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">DevOps Engineer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      España · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">feb 2023 – jun 2024</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">1 año 5 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'Microsoft Azure, Tableau y herramientas DevOps enterprise.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['Azure', 'Tableau', 'DevOps'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Service Group DevOps -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">Data Service Group</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">DevOps Engineer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Estados Unidos · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">may 2019 – feb 2023</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">3 años 10 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'Construcción y mantenimiento de entornos cloud con AWS y Kubernetes.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['AWS', 'Kubernetes', 'Docker', 'Terraform'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Service Group Linux Admin -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">Data Service Group</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">Linux System Administrator</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Estados Unidos · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">feb 2018 – abr 2019</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">1 año 3 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'Administración de sistemas Linux en entornos productivos.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['Linux', 'Bash', 'Shell'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════ WESLEY OSAIGBOVO -->
+          <div class="relative flex gap-6 sm:gap-10 items-center pt-4">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center z-10">
+              <img src="/images/wesley.jpg" alt="Wesley Osaigbovo" class="w-10 h-10 rounded-full object-cover" style="border: 2px solid #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);" />
+            </div>
+            <h3 class="text-base font-bold" style="color: #0A2540;">Wesley Osaigbovo</h3>
+          </div>
+
+          <!-- NOLOGIN / BBVA -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">NOLOGIN (BBVA technology)</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">DevOps Engineer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Zaragoza · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0 animate-pulse"></span>
+                      <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Actualmente</span>
+                    </div>
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">ago 2024 – actualidad</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">1 año 10 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'DevOps Engineering en entorno bancario enterprise para BBVA.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #1E6FFF;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['AWS', 'Kubernetes', 'Terraform', 'CI/CD'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Savana -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">Savana</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">DevOps Engineer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Madrid · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">feb 2024 – jul 2024</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">6 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'Terraform, AWS y herramientas DevOps en sector salud digital.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['Terraform', 'AWS', 'Docker'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- hiberus -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">hiberus</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">DevOps Engineer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      España · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">jul 2023 – dic 2023</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">6 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'DevOps Engineering en consultora tecnológica.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['DevOps', 'CI/CD', 'Cloud'].map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- iCare Medical Tech -->
+          <div class="relative flex gap-6 sm:gap-10">
+            <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+              <div class="relative mt-1">
+                <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
+              </div>
+            </div>
+            <div class="flex-1 pb-2">
+              <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">iCare Medical Tech</h3>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">DevOps Engineer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Texas · En remoto
+                    </p>
+                  </div>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">abr 2021 – jul 2023</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">2 años 4 meses</span>
+                  </div>
+                </div>
+                <ul class="space-y-2.5">
+                  {[
+                    'CI/CD, AWS, Kubernetes y configuration management en producción.',
+                  ].map(bullet => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: #64748b;">
+                      <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #64748b;"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-gray-100">
+                  {['AWS', 'Kubernetes', 'Jenkins', 'Ansible', 'Docker'].map(tag => (
                     <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
                   ))}
                 </div>
