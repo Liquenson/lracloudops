@@ -1,7 +1,7 @@
 ---
 titulo: "Linux Fleet Manager"
 descripcion: "Framework de automatización Bash v2.1.0 para gestionar flotas de servidores Linux a escala. Genera inventarios en CSV y JSON con CI/CD multi-plataforma validado con ShellCheck en Ubuntu, macOS y Windows."
-fecha: 2026-01-20
+fecha: 2026-05-01
 categoria: "SRE & Automatización"
 madurez: "Producción"
 stack: ["Bash 4.0+", "ShellCheck", "SSH", "CSV / JSON", "GitHub Actions", "Ubuntu", "macOS"]

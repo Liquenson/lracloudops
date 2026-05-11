@@ -1,7 +1,7 @@
 ---
 titulo: "Kubernetes DevOps Platform"
 descripcion: "Plataforma GitOps sobre Kubernetes con ArgoCD. GitHub actúa como única fuente de verdad: cada cambio en el repositorio se sincroniza automáticamente al cluster con prune y selfHeal habilitados."
-fecha: 2026-02-15
+fecha: 2026-05-01
 categoria: "Kubernetes & GitOps"
 madurez: "Demo"
 stack: ["Kubernetes 1.29", "ArgoCD", "KinD", "Docker", "Kustomize", "GitOps", "YAML"]

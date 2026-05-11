@@ -17,7 +17,8 @@
       "Bash(Sort-Object)",
       "PowerShell(Get-ChildItem *)",
       "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\lique\\\\workspace\\\\lracloudops\" -Depth 1 -File | Where-Object {$_.Extension -in @\\('.json', '.mjs', '.ts', '.js', '.yml', '.yaml', '.toml'\\)} | Select-Object -ExpandProperty Name | Sort-Object)",
-      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\lique\\\\workspace\\\\lracloudops\\\\src\" -Recurse -Directory)"
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\lique\\\\workspace\\\\lracloudops\\\\src\" -Recurse -Directory)",
+      "Bash(xargs ls)"
     ]
   }
 }

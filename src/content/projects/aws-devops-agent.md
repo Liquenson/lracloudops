@@ -1,27 +1,27 @@
 ---
 titulo: "AWS DevOps Agent"
-descripcion: "Agente CLI con Claude Sonnet 4.6 que gestiona más de 25 servicios AWS mediante lenguaje natural. Auditoría GuardDuty, análisis de costos y operaciones en EC2, S3, RDS, Lambda y EKS."
-fecha: 2026-03-20
+descripcion: "Agente CLI con Claude Sonnet 4.6 y 31 herramientas boto3 para gestionar toda la infraestructura AWS en lenguaje natural. Auditoría de security groups, rotación de IAM keys, análisis de costos, logs CloudWatch y gestión de EC2, ECS, EKS, RDS, Lambda y 20+ servicios adicionales."
+fecha: 2026-05-01
 categoria: "AI + DevOps"
-madurez: "Demo"
-stack: ["Python 3.11", "Claude Sonnet 4.6", "Anthropic SDK", "boto3", "AWS", "GuardDuty", "Cost Explorer"]
+madurez: "En Desarrollo"
+stack: ["Python 3.11", "Claude Sonnet 4.6", "Anthropic SDK", "boto3", "python-dotenv", "AWS", "GuardDuty", "Cost Explorer", "CloudWatch"]
 cicd: false
 github: null
 featured: true
 iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
 draft: false
 metricas:
-  - { label: "Servicios AWS", value: "25+" }
-  - { label: "Herramientas Claude", value: "20+" }
+  - { label: "Servicios AWS", value: "31+" }
+  - { label: "Herramientas Claude", value: "31" }
   - { label: "Idioma", value: "Lenguaje natural" }
   - { label: "Modelo", value: "Claude Sonnet 4.6" }
 highlights:
-  - "Gestión de EC2, S3, RDS, Lambda, EKS y más mediante comandos en texto plano"
-  - "Auditoría de seguridad automática via AWS GuardDuty con resumen interpretable"
-  - "Análisis de costos con Cost Explorer y sugerencias de optimización"
-  - "Arquitectura de herramientas (tool use) con Claude Sonnet 4.6 para razonamiento"
-  - "Confirmación de acciones destructivas antes de ejecutar cambios"
-  - "Contexto de sesión: el agente recuerda operaciones previas en la conversación"
+  - "31 clientes boto3 activos: EC2, S3, RDS, EKS, ECS, Lambda, IAM, CloudWatch, ECR, DynamoDB, ElastiCache, SNS, SQS, CloudFormation, Route53, API Gateway, CodePipeline, CodeBuild, CloudFront, SSM, EventBridge, GuardDuty y más"
+  - "Auditoría de security groups: detecta puertos críticos abiertos al mundo (22, 3306, 5432, 27017, 6379, 3389) con clasificación de riesgo ALTO/MEDIO"
+  - "Rotación de IAM access keys: identifica keys con más de 90 días sin rotar con clasificación automática"
+  - "Análisis de costos con Cost Explorer ordenado por servicio: desglosa gasto mensual real en USD"
+  - "Logs CloudWatch en tiempo real: últimos N minutos de cualquier log group con timestamps"
+  - "Confirmación explícita antes de ejecutar operaciones destructivas (parar/terminar instancias)"
 arquitectura:
   - { nombre: "Claude Sonnet 4.6", descripcion: "Modelo de IA que interpreta comandos en lenguaje natural y decide qué herramientas usar" }
   - { nombre: "Tool Use (Function Calling)", descripcion: "20+ herramientas definidas que mapean a operaciones AWS reales via boto3" }

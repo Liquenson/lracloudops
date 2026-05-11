@@ -1,7 +1,7 @@
 ---
 titulo: "Docker DevOps Platform"
 descripcion: "Plataforma backend containerizada con FastAPI y PostgreSQL 15. Implementa best practices de containerización: multi-stage builds, usuario no-root, health checks y retry logic para conexión a base de datos."
-fecha: 2026-02-01
+fecha: 2026-05-01
 categoria: "Containerización"
 madurez: "En Desarrollo"
 stack: ["Python 3.12", "FastAPI 0.115", "Uvicorn", "PostgreSQL 15", "Docker", "Docker Compose", "GitHub Actions"]

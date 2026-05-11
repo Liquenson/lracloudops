@@ -1,7 +1,7 @@
 ---
 titulo: "NexoraTech"
 descripcion: "Plataforma SaaS cloud-native enterprise con Spring Boot 4.0.3, React 18 y AWS ECS Fargate. Arquitectura full-stack production-ready con autenticación JWT + MFA (TOTP), Terraform modular en 10 módulos, pipelines CI/CD sin credenciales via OIDC y entrega global via CloudFront."
-fecha: 2026-04-01
+fecha: 2026-05-08
 categoria: "Full-Stack & Cloud"
 madurez: "Producción"
 stack: ["Spring Boot 4.0.3", "Java 17", "React 18", "Vite", "Zustand", "PostgreSQL 15", "Terraform", "AWS ECS Fargate", "CloudFront", "S3", "RDS", "Docker", "GitHub Actions", "AWS Secrets Manager", "Flyway", "MapStruct"]
