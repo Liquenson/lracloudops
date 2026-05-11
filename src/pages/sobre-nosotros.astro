@@ -19,8 +19,11 @@ import Layout from '../layouts/Layout.astro'
       <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6" style="letter-spacing: -0.02em;">
         Ingeniería orientada a producción
       </h1>
-      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color: rgba(147,184,255,0.8);">
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-4" style="color: rgba(147,184,255,0.8);">
         Desarrollamos plataformas cloud-native aplicando prácticas modernas de Platform Engineering, automatización de infraestructura, Kubernetes, observabilidad y despliegues continuos sobre AWS.
+      </p>
+      <p class="text-sm font-medium" style="color: rgba(147,184,255,0.6);">
+        DevOps Engineer · Platform Engineer · Cloud Engineer · AWS · Linux System Administrator
       </p>
     </div>
   </section>
@@ -30,6 +33,15 @@ import Layout from '../layouts/Layout.astro'
     <div class="max-w-4xl mx-auto px-6">
 
       <div class="bg-white rounded-2xl p-8 sm:p-10" style="border: 1px solid #e2e8f0; box-shadow: 0 8px 40px rgba(10,37,64,0.10); border-radius: 16px;">
+
+        <!-- Badge disponibilidad — top -->
+        <div class="flex justify-center sm:justify-start mb-6">
+          <span class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">
+            <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0 animate-pulse"></span>
+            Disponible para proyectos
+          </span>
+        </div>
+
         <div class="flex flex-col sm:flex-row gap-8 items-start">
 
           <!-- Avatar -->
@@ -49,7 +61,7 @@ import Layout from '../layouts/Layout.astro'
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  Las Palmas de Gran Canaria, España
+                  Las Palmas de Gran Canaria, Canarias, España
                 </div>
               </div>
               <a
@@ -79,14 +91,15 @@ import Layout from '../layouts/Layout.astro'
             </div>
 
             <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-              Ingeniero DevOps con más de 4 años diseñando, desplegando y manteniendo infraestructuras cloud escalables y altamente disponibles en AWS. Especializado en IaC con Terraform, orquestación con Kubernetes, Platform Engineering y automatización de pipelines CI/CD.
+              Ingeniero DevOps con más de 4 años especializado en el diseño, despliegue y mantenimiento de infraestructuras cloud escalables y altamente disponibles. Amplio conocimiento en prácticas DevOps, automatización de CI/CD y arquitecturas basadas en AWS y contenedores. Experiencia sólida en IaC con Terraform y Ansible, orquestación con Kubernetes y ECS Fargate, y pipelines CI/CD con Jenkins, GitHub Actions y ArgoCD. Dominio de servicios clave de AWS y automatización con Bash, Shell y Python.
             </p>
 
-            <!-- Stack tags -->
-            <div class="flex flex-wrap gap-1.5">
-              {['AWS', 'Terraform', 'Kubernetes', 'Docker', 'Jenkins', 'GitHub Actions', 'Prometheus', 'Grafana', 'Ansible', 'Bash', 'Python'].map(tag => (
-                <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
-              ))}
+            <!-- Badge de disponibilidad -->
+            <div class="flex items-center gap-2 text-xs font-medium px-4 py-2.5 rounded-xl inline-flex w-fit" style="background: #EEF4FF; color: #0A2540; border: 1px solid #c3d9ff;">
+              <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Disponible · Presencial y Remoto · Las Palmas de Gran Canaria
             </div>
           </div>
         </div>
@@ -118,24 +131,32 @@ import Layout from '../layouts/Layout.astro'
 
           <!-- iCareMedical -->
           <div class="relative flex gap-6 sm:gap-10">
-            <!-- Dot -->
             <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
               <div class="relative mt-1">
                 <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);"></div>
               </div>
             </div>
 
-            <!-- Content -->
             <div class="flex-1 pb-2">
               <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                   <div>
                     <h3 class="text-lg font-bold" style="color: #0A2540;">iCareMedical</h3>
-                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">Ingeniero DevOps</p>
+                    <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">DevOps Engineer</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Pearland, Texas · En remoto
+                    </p>
                   </div>
-                  <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">mayo 2022 – presente</span>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
+                      <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">mayo 2022 – presente</span>
+                    </div>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">4 años 1 mes</span>
                   </div>
                 </div>
                 <ul class="space-y-2.5">
@@ -163,22 +184,30 @@ import Layout from '../layouts/Layout.astro'
 
           <!-- DR Financial Services -->
           <div class="relative flex gap-6 sm:gap-10">
-            <!-- Dot -->
             <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
               <div class="relative mt-1">
                 <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.2);"></div>
               </div>
             </div>
 
-            <!-- Content -->
             <div class="flex-1 pb-2">
               <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                   <div>
-                    <h3 class="text-lg font-bold" style="color: #0A2540;">DR Financial Services</h3>
+                    <h3 class="text-lg font-bold" style="color: #0A2540;">Dr Financial Services</h3>
                     <p class="text-sm font-semibold mt-0.5" style="color: #1E6FFF;">Administrador de Sistemas Linux</p>
+                    <p class="text-xs mt-0.5 flex items-center gap-1" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      Houston, Texas · En remoto
+                    </p>
                   </div>
-                  <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap self-start sm:self-auto" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">feb 2021 – abr 2022</span>
+                  <div class="flex flex-col items-start sm:items-end gap-1.5">
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">feb 2021 – abr 2022</span>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">1 año 3 meses</span>
+                  </div>
                 </div>
                 <ul class="space-y-2.5">
                   {[
@@ -206,12 +235,59 @@ import Layout from '../layouts/Layout.astro'
     </div>
   </section>
 
-  <!-- ─── STACK TÉCNICO ─────────────────────────────────────────────────── -->
+  <!-- ─── EDUCACIÓN ────────────────────────────────────────────────────── -->
   <section class="bg-white py-20">
-    <div class="max-w-5xl mx-auto px-6">
+    <div class="max-w-4xl mx-auto px-6">
 
       <div class="text-center mb-14">
         <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+          Formación académica
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Educación</h2>
+      </div>
+
+      <div class="relative">
+        <div class="absolute left-6 sm:left-8 top-0 bottom-0 w-px" style="background: linear-gradient(180deg, #1E6FFF 0%, #c3d9ff 100%);"></div>
+
+        <div class="relative flex gap-6 sm:gap-10">
+          <div class="flex-shrink-0 w-12 sm:w-16 flex justify-center">
+            <div class="relative mt-1">
+              <div class="w-4 h-4 rounded-full border-2 border-white z-10 relative" style="background: #1E6FFF; box-shadow: 0 0 0 3px rgba(30,111,255,0.2);"></div>
+            </div>
+          </div>
+
+          <div class="flex-1 pb-2">
+            <div class="bg-white rounded-2xl p-6 sm:p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07); border-radius: 16px;">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold text-white flex-shrink-0" style="background: linear-gradient(135deg, #1E6FFF 0%, #0A2540 100%);">
+                      IT
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-bold" style="color: #0A2540;">ITLA</h3>
+                      <p class="text-sm font-semibold" style="color: #1E6FFF;">Instituto Tecnológico de Las Américas</p>
+                    </div>
+                  </div>
+                  <p class="text-sm mt-2" style="color: #64748b;">
+                    Ciclo Formativo de Grado Superior · HP Information Technology
+                  </p>
+                </div>
+                <span class="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap self-start" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">ene 2017 – dic 2018</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STACK TÉCNICO ─────────────────────────────────────────────────── -->
+  <section style="background-color: #EEF4FF;" class="py-20">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="text-center mb-14">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: white; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Especialización técnica
         </span>
         <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Stack tecnológico</h2>
@@ -225,35 +301,40 @@ import Layout from '../layouts/Layout.astro'
         {[
           {
             icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
-            title: 'Cloud & AWS',
-            items: ['EC2 · EBS · EKS · ECS · ECR', 'RDS · S3 · CloudFront', 'Route 53 · CloudWatch', 'VPC · NAT Gateways · IAM'],
+            title: 'Cloud AWS',
+            skills: ['EC2', 'S3', 'VPC', 'IAM', 'CloudWatch', 'Route 53', 'CloudFormation', 'Elastic Beanstalk', 'SNS', 'DynamoDB', 'ECS Fargate', 'EKS', 'ECR', 'RDS'],
           },
           {
             icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
             title: 'IaC & Automatización',
-            items: ['Terraform modular multi-entorno', 'Ansible (playbooks & roles)', 'State remoto en S3', 'Bash · Python scripting'],
+            skills: ['Terraform', 'Ansible'],
           },
           {
             icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
             title: 'Contenedores & Orquestación',
-            items: ['Docker (multi-stage builds)', 'Kubernetes · Helm Charts', 'ArgoCD (GitOps)', 'Autoscaling HPA'],
+            skills: ['Docker', 'Kubernetes'],
           },
           {
             icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
             title: 'CI/CD & DevOps',
-            items: ['Jenkins · GitHub Actions', 'Maven · SonarQube · Nexus', 'ArgoCD · Docker pipelines', 'OIDC auth para AWS'],
-          },
-          {
-            icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-            title: 'Monitoreo & Observabilidad',
-            items: ['Prometheus · Grafana', 'Alertmanager', 'CloudWatch dashboards', 'Métricas · Logs · Alertas'],
+            skills: ['Jenkins', 'GitHub Actions', 'ArgoCD', 'Maven', 'SonarQube', 'Nexus'],
           },
           {
             icon: 'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
-            title: 'Sistemas & Scripting',
-            items: ['CentOS · Ubuntu · Red Hat', 'Gestión LVM · usuarios · permisos', 'Entornos VMware', 'TCP/IP · DNS · Redes'],
+            title: 'Scripting',
+            skills: ['Bash', 'Shell', 'Python'],
           },
-        ].map(({ icon, title, items }) => (
+          {
+            icon: 'M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z',
+            title: 'Control de versiones',
+            skills: ['Git', 'GitHub'],
+          },
+          {
+            icon: 'M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v10m0 0h10M9 13H5m4 0v6m0-6H5m4 6H5a2 2 0 01-2-2v-4',
+            title: 'Sistemas Operativos',
+            skills: ['CentOS', 'Ubuntu', 'Red Hat', 'Debian', 'Alpine', 'Linux'],
+          },
+        ].map(({ icon, title, skills }) => (
           <div class="bg-white rounded-2xl p-6 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(10,37,64,0.07);">
             <div class="flex items-center gap-3 mb-5">
               <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
@@ -263,14 +344,11 @@ import Layout from '../layouts/Layout.astro'
               </div>
               <h3 class="text-sm font-bold" style="color: #0A2540;">{title}</h3>
             </div>
-            <ul class="space-y-2">
-              {items.map(item => (
-                <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
-                  <span class="w-1 h-1 rounded-full flex-shrink-0 mt-2" style="background: #1E6FFF;"></span>
-                  {item}
-                </li>
+            <div class="flex flex-wrap gap-1.5">
+              {skills.map(skill => (
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{skill}</span>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
 
