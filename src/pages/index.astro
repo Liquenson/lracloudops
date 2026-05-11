@@ -180,7 +180,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         {[
           { count: 10, suffix: '+', label: 'Proyectos completados', sub: 'Infraestructura cloud en producción' },
           { count: 25, suffix: '+', label: 'Tecnologías dominadas', sub: 'Stack DevOps enterprise completo' },
-          { count: 3,  suffix: '',  label: 'Años de experiencia AWS', sub: 'Arquitectura, IaC y automatización' },
+          { count: 4,  suffix: '',  label: 'Años de experiencia AWS', sub: 'Arquitectura, IaC y automatización' },
           { count: 100, suffix: '%', label: 'IaC Puro', sub: 'Infraestructura versionada y auditable' },
         ].map(({ count, suffix, label, sub }) => (
           <div class="text-center">
