@@ -17,7 +17,7 @@ const { Content } = await render(post)
 <Layout titulo={post.data.titulo} descripcion={post.data.descripcion}>
 
   <!-- HEADER DEL ARTÍCULO -->
-  <section style="background-color: #0A2540;" class="relative overflow-hidden">
+  <section style="background-color: var(--lra-section-dark);" class="relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="relative max-w-4xl mx-auto px-6 py-16 sm:py-20">
       <a href="/blog" class="inline-flex items-center gap-2 text-xs font-medium mb-8 transition-colors" style="color: rgba(147,184,255,0.7);" onmouseover="this.style.color='rgba(147,184,255,1)'" onmouseout="this.style.color='rgba(147,184,255,0.7)'">
@@ -40,32 +40,34 @@ const { Content } = await render(post)
   </section>
 
   <!-- CONTENIDO -->
-  <section class="bg-white py-16">
+  <section class="bg-white dark:bg-[#0D1628] py-16">
     <div class="max-w-3xl mx-auto px-6">
-      <div class="prose prose-gray max-w-none
-        prose-headings:font-bold prose-headings:text-gray-900 prose-headings:tracking-tight
+      <div class="prose max-w-none
+        prose-headings:font-bold prose-headings:tracking-tight
         prose-h2:text-2xl prose-h3:text-xl
-        prose-p:text-gray-600 prose-p:leading-relaxed prose-p:text-base
         prose-a:text-[#1E6FFF] prose-a:no-underline hover:prose-a:underline
-        prose-code:text-[#1E6FFF] prose-code:bg-[#EEF4FF] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
+        prose-code:text-[#1E6FFF] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
         prose-pre:bg-gray-950 prose-pre:text-gray-100 prose-pre:rounded-xl prose-pre:shadow-lg
-        prose-li:text-gray-600
-        prose-strong:text-gray-800 prose-strong:font-semibold
-        prose-blockquote:border-[#1E6FFF] prose-blockquote:text-gray-600
-      ">
+        prose-strong:font-semibold
+        prose-blockquote:border-[#1E6FFF]
+        dark:prose-invert
+        dark:prose-code:bg-[#0D1F35]
+      "
+      style="color: var(--lra-text-p);"
+      >
         <Content />
       </div>
 
       <!-- Footer del artículo -->
-      <div class="mt-16 pt-8 border-t border-gray-100">
+      <div class="mt-16 pt-8 border-t border-gray-100 dark:border-[#1E3A5F]">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium transition-colors" style="color: #64748b;">
+          <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium transition-colors" style="color: var(--lra-text-p);">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Volver al blog
           </a>
-          <a href="/contacto" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+          <a href="/contacto" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: var(--lra-bg-alt); color: #1E6FFF; border: 1px solid var(--lra-alt-border);">
             ¿Tienes preguntas? Contáctame
           </a>
         </div>

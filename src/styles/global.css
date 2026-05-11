@@ -1,17 +1,71 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* ── Light mode design tokens ───────────────────────────── */
 :root {
   --color-primary: #0A2540;
   --color-accent: #1E6FFF;
-  --color-bg-soft: #EEF4FF;
-  --color-text-secondary: #64748b;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+
+  --lra-bg:             #ffffff;
+  --lra-bg-soft:        #f8fafc;
+  --lra-bg-alt:         #EEF4FF;
+  --lra-alt-border:     #c3d9ff;
+  --lra-card:           #ffffff;
+  --lra-card-border:    #e2e8f0;
+  --lra-card-shadow:    rgba(10,37,64,0.08);
+  --lra-text-h:         #0A2540;
+  --lra-text-p:         #64748b;
+  --lra-text-muted:     #94a3b8;
+  --lra-navbar-bg:      rgba(255,255,255,0.96);
+  --lra-navbar-border:  rgba(10,37,64,0.07);
+  --lra-drawer-bg:      #ffffff;
+  --lra-section-dark:   #0A2540;
+  --lra-tag-bg:         #f8fafc;
+  --lra-tag-text:       #64748b;
+  --lra-tag-border:     #e2e8f0;
+  --lra-input-bg:       #ffffff;
+  --lra-input-text:     #111827;
+  --lra-input-border:   #e5e7eb;
+  --lra-label-text:     #374151;
+  --lra-contact-card:   #fafafa;
+}
+
+/* ── Dark mode overrides ─────────────────────────────────── */
+.dark {
+  color-scheme: dark;
+  --lra-bg:             #0D1628;
+  --lra-bg-soft:        #0A1628;
+  --lra-bg-alt:         #0A1628;
+  --lra-alt-border:     #1E3A5F;
+  --lra-card:           #112240;
+  --lra-card-border:    #1E3A5F;
+  --lra-card-shadow:    rgba(0,0,0,0.35);
+  --lra-text-h:         #E2E8F0;
+  --lra-text-p:         #94A3B8;
+  --lra-text-muted:     #64748b;
+  --lra-navbar-bg:      rgba(13,31,53,0.96);
+  --lra-navbar-border:  rgba(30,111,255,0.1);
+  --lra-drawer-bg:      #0D1F35;
+  --lra-section-dark:   #060F1E;
+  --lra-tag-bg:         #0D1F35;
+  --lra-tag-text:       #94A3B8;
+  --lra-tag-border:     #1E3A5F;
+  --lra-input-bg:       #0D1F35;
+  --lra-input-text:     #E2E8F0;
+  --lra-input-border:   #1E3A5F;
+  --lra-label-text:     #94A3B8;
+  --lra-contact-card:   #0D1F35;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Smooth dark/light mode color transitions on all elements */
+*, *::before, *::after {
+  transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease;
 }
 
 body {
@@ -27,6 +81,9 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
@@ -52,4 +109,45 @@ body {
 
 .animate-fade-up {
   animation: fade-up 0.5s ease forwards;
+}
+
+/* ── Global dark-mode Tailwind overrides ─────────────────── */
+/* These handle elements using Tailwind gray text/border classes.
+   They do NOT override explicit dark:* variants since those have
+   the same specificity and appear earlier (Tailwind injects first). */
+
+.dark .text-gray-900 { color: #E2E8F0; }
+.dark .text-gray-800 { color: #E2E8F0; }
+.dark .text-gray-700 { color: #CBD5E1; }
+.dark .text-gray-600 { color: #94A3B8; }
+.dark .text-gray-500 { color: #64748b; }
+.dark .text-gray-400 { color: #475569; }
+
+.dark .border-gray-100 { border-color: #1E3A5F; }
+.dark .border-gray-200 { border-color: #1E3A5F; }
+.dark .border-t { border-top-color: #1E3A5F; }
+.dark .border-b { border-bottom-color: #1E3A5F; }
+
+.dark .bg-gray-50 { background-color: #0A1628; }
+.dark .bg-gray-100 { background-color: #0D1F35; }
+
+/* Form inputs in dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--lra-input-bg) !important;
+  color: var(--lra-input-text) !important;
+  border-color: var(--lra-input-border) !important;
+}
+
+/* Blog filter buttons */
+.dark .filtro-btn {
+  background-color: var(--lra-card) !important;
+  color: var(--lra-text-p) !important;
+  border-color: var(--lra-card-border) !important;
+}
+.dark .filtro-activo {
+  background-color: #E2E8F0 !important;
+  color: #0D1628 !important;
+  border-color: #E2E8F0 !important;
 }
