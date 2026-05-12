@@ -13,7 +13,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 >
 
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
-  <section class="relative overflow-hidden" style="background-color: var(--lra-section-dark);">
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
 
     <!-- Grid dot background -->
     <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.18) 1px, transparent 1px); background-size: 28px 28px;"></div>
@@ -146,25 +146,25 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           </div>
 
           <!-- Floating badge: Deploy -->
-          <div class="absolute -top-4 -right-2 sm:-right-6 bg-white dark:bg-[#112240] rounded-xl px-3.5 py-2.5 shadow-xl" style="border: 1px solid var(--lra-card-border);">
+          <div class="absolute -top-4 -right-2 sm:-right-6 bg-white rounded-xl px-3.5 py-2.5 shadow-xl" style="border: 1px solid rgba(10,37,64,0.08);">
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"></span>
-              <span class="text-xs font-semibold" style="color: var(--lra-text-h);">Deploy exitoso</span>
+              <span class="text-xs font-semibold text-gray-800">Deploy exitoso</span>
             </div>
-            <p class="text-xs mt-0.5" style="color: var(--lra-text-p);">aws-production · hace 2m</p>
+            <p class="text-xs mt-0.5" style="color: #64748b;">aws-production · hace 2m</p>
           </div>
 
           <!-- Floating badge: K8s -->
-          <div class="absolute -bottom-4 -left-2 sm:-left-6 bg-white dark:bg-[#112240] rounded-xl px-3.5 py-2.5 shadow-xl" style="border: 1px solid var(--lra-card-border);">
+          <div class="absolute -bottom-4 -left-2 sm:-left-6 bg-white rounded-xl px-3.5 py-2.5 shadow-xl" style="border: 1px solid rgba(10,37,64,0.08);">
             <div class="flex items-center gap-2 mb-1">
               <svg class="w-3.5 h-3.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
               </svg>
-              <span class="text-xs font-semibold" style="color: var(--lra-text-h);">K8s Cluster</span>
+              <span class="text-xs font-semibold text-gray-800">K8s Cluster</span>
             </div>
             <div class="flex items-center gap-1.5">
               <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
-              <span class="text-xs" style="color: var(--lra-text-p);">3/3 pods running</span>
+              <span class="text-xs" style="color: #64748b;">3/3 pods running</span>
             </div>
           </div>
 
@@ -174,7 +174,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── STATS STRIP ───────────────────────────────────────────────────── -->
-  <section class="bg-white dark:bg-[#0D1628] border-b border-gray-100 dark:border-[#1E3A5F]">
+  <section class="bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-6 py-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {[
@@ -184,11 +184,11 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           { count: 100, suffix: '%', label: 'IaC Puro', sub: 'Infraestructura versionada y auditable' },
         ].map(({ count, suffix, label, sub }) => (
           <div class="text-center">
-            <div class="text-3xl sm:text-4xl font-extrabold mb-1" style="color: var(--lra-text-h); letter-spacing: -0.02em;">
+            <div class="text-3xl sm:text-4xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.02em;">
               <span class="counter-value" data-count={count} data-suffix={suffix}>0{suffix}</span>
             </div>
             <div class="text-sm font-semibold text-gray-800 mb-0.5">{label}</div>
-            <div class="text-xs" style="color: var(--lra-text-p);">{sub}</div>
+            <div class="text-xs" style="color: #64748b;">{sub}</div>
           </div>
         ))}
       </div>
@@ -196,53 +196,53 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── POR QUÉ ELEGIRNOS ───────────────────────────────────────────── -->
-  <section class="bg-white dark:bg-[#0D1628] py-20">
+  <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="text-center mb-14">
-        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: var(--lra-bg-alt); color: #1E6FFF; border: 1px solid var(--lra-alt-border);">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Por qué elegirnos
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--lra-text-h);">Ingeniería que genera confianza</h2>
-        <p class="text-base max-w-2xl mx-auto" style="color: var(--lra-text-p);">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Ingeniería que genera confianza</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">
           Tres razones por las que los equipos eligen trabajar con nosotros.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <div class="bg-white dark:bg-[#112240] rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid var(--lra-card-border); box-shadow: 0 4px 24px var(--lra-card-shadow);">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: var(--lra-bg-alt);">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
+          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--lra-text-h);">Ingeniería orientada a producción</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--lra-text-p);">
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Ingeniería orientada a producción</h3>
+          <p class="text-sm leading-relaxed" style="color: #64748b;">
             Desarrollamos plataformas cloud-native aplicando prácticas modernas de Platform Engineering, automatización de infraestructura, Kubernetes, observabilidad y despliegues continuos sobre AWS.
           </p>
         </div>
 
-        <div class="bg-white dark:bg-[#112240] rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid var(--lra-card-border); box-shadow: 0 4px 24px var(--lra-card-shadow);">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: var(--lra-bg-alt);">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
+          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--lra-text-h);">Stack enterprise</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--lra-text-p);">
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Stack enterprise</h3>
+          <p class="text-sm leading-relaxed" style="color: #64748b;">
             Trabajamos con las mismas herramientas que usan empresas como Airbnb, Netflix y Spotify: Terraform, ArgoCD, Prometheus y GitHub Actions.
           </p>
         </div>
 
-        <div class="bg-white dark:bg-[#112240] rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid var(--lra-card-border); box-shadow: 0 4px 24px var(--lra-card-shadow);">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: var(--lra-bg-alt);">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
+          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--lra-text-h);">Entrega rápida</h3>
-          <p class="text-sm leading-relaxed" style="color: var(--lra-text-p);">
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Entrega rápida</h3>
+          <p class="text-sm leading-relaxed" style="color: #64748b;">
             Nuestra infraestructura como código permite desplegar entornos completos en minutos, no semanas. Todo versionado, todo reproducible.
           </p>
         </div>
@@ -252,7 +252,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── SERVICIOS ─────────────────────────────────────────────────────── -->
-  <section style="background-color: var(--lra-section-dark);" class="relative overflow-hidden">
+  <section style="background-color: #0A2540;" class="relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none opacity-30" style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 32px 32px;"></div>
     <div class="relative max-w-7xl mx-auto px-6 py-20">
 
@@ -307,19 +307,19 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           },
         ].map(({ icon, title, desc, tags }) => (
           <div
-            class="bg-white dark:bg-[#112240] flex flex-col p-7 group transition-all duration-200 hover:-translate-y-1"
-            style="border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.18); border: 1px solid var(--lra-card-border);"
+            class="bg-white flex flex-col p-7 group transition-all duration-200 hover:-translate-y-1"
+            style="border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);"
           >
-            <div class="w-11 h-11 flex items-center justify-center rounded-xl mb-5 transition-colors" style="background-color: var(--lra-bg-alt);">
+            <div class="w-11 h-11 flex items-center justify-center rounded-xl mb-5 transition-colors" style="background-color: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
               </svg>
             </div>
             <h3 class="text-base font-bold text-gray-900 mb-2.5">{title}</h3>
-            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: var(--lra-text-p);">{desc}</p>
+            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">{desc}</p>
             <div class="flex flex-wrap gap-1.5 mt-auto">
               {tags.map(tag => (
-                <span class="text-xs px-2.5 py-1 rounded-full" style="background: var(--lra-bg-soft); color: var(--lra-text-p); border: 1px solid var(--lra-card-border);">{tag}</span>
+                <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
               ))}
             </div>
           </div>
@@ -339,15 +339,15 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── TECNOLOGÍAS ────────────────────────────────────────────────────── -->
-  <section class="bg-white dark:bg-[#0D1628] py-20">
+  <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="text-center mb-12">
-        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: var(--lra-bg-alt); color: #1E6FFF; border: 1px solid var(--lra-alt-border);">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Stack Tecnológico
         </span>
-        <h2 class="text-3xl font-bold mb-3" style="color: var(--lra-text-h);">Herramientas que dominamos</h2>
-        <p class="text-base max-w-xl mx-auto" style="color: var(--lra-text-p);">El stack completo para construir plataformas cloud modernas, seguras y escalables.</p>
+        <h2 class="text-3xl font-bold mb-3" style="color: #0A2540;">Herramientas que dominamos</h2>
+        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">El stack completo para construir plataformas cloud modernas, seguras y escalables.</p>
       </div>
 
       <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -365,13 +365,13 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           { name: 'ArgoCD', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/argo.svg', category: 'GitOps' },
           { name: 'Jenkins', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg', category: 'CI/CD' },
         ].map(({ name, icon, category }) => (
-          <div class="flex flex-col items-center gap-3 p-4 rounded-2xl border group cursor-default transition-all duration-200 hover:-translate-y-1 hover:shadow-md" style="border-color: var(--lra-card-border); background: var(--lra-bg-soft);">
-            <div class="w-10 h-10 flex items-center justify-center rounded-xl transition-colors group-hover:bg-blue-50" style="background: var(--lra-card); border: 1px solid var(--lra-card-border);">
+          <div class="flex flex-col items-center gap-3 p-4 rounded-2xl border group cursor-default transition-all duration-200 hover:-translate-y-1 hover:shadow-md" style="border-color: #e2e8f0; background: #fafafa;">
+            <div class="w-10 h-10 flex items-center justify-center rounded-xl transition-colors group-hover:bg-blue-50" style="background: white; border: 1px solid #e2e8f0;">
               <img src={icon} alt={name} class="w-6 h-6" style="filter: brightness(0) opacity(0.55);" />
             </div>
             <div class="text-center">
               <div class="text-xs font-semibold text-gray-800">{name}</div>
-              <div class="text-[10px] mt-0.5" style="color: var(--lra-text-muted);">{category}</div>
+              <div class="text-[10px] mt-0.5" style="color: #94a3b8;">{category}</div>
             </div>
           </div>
         ))}
@@ -380,23 +380,23 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── PROYECTOS DESTACADOS ──────────────────────────────────────────── -->
-  <section style="background-color: var(--lra-bg-alt);" class="py-20">
+  <section style="background-color: #EEF4FF;" class="py-20">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="text-center mb-14">
-        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: white; color: #1E6FFF; border: 1px solid var(--lra-alt-border);">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: white; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Proyectos Destacados
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--lra-text-h);">Engineering Case Studies</h2>
-        <p class="text-base max-w-2xl mx-auto" style="color: var(--lra-text-p);">Los proyectos más complejos y representativos del stack cloud moderno.</p>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Engineering Case Studies</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Los proyectos más complejos y representativos del stack cloud moderno.</p>
       </div>
 
       <!-- Featured 1: AWS Terraform DevOps (wide card) -->
-      <div class="bg-white dark:bg-[#112240] rounded-2xl p-8 mb-6 group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px var(--lra-card-shadow); border: 1px solid var(--lra-card-border);">
+      <div class="bg-white rounded-2xl p-8 mb-6 group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px rgba(10,37,64,0.1); border: 1px solid #e2e8f0;">
         <div class="flex flex-col lg:flex-row gap-8">
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-5">
-              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: var(--lra-bg-alt);">
+              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
                 <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6" />
                 </svg>
@@ -404,22 +404,22 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               <div>
                 <div class="flex items-center gap-2 mb-1">
                   <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Producción</span>
-                  <span class="inline-flex items-center gap-1 text-xs" style="color: var(--lra-text-p);"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
+                  <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
                 </div>
                 <p class="text-xs font-semibold uppercase tracking-wider" style="color: #1E6FFF;">Cloud & IaC</p>
               </div>
             </div>
-            <h3 class="text-xl font-bold mb-3" style="color: var(--lra-text-h);">AWS Terraform DevOps</h3>
-            <p class="text-sm leading-relaxed mb-5" style="color: var(--lra-text-p);">
+            <h3 class="text-xl font-bold mb-3" style="color: #0A2540;">AWS Terraform DevOps</h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
               Infraestructura AWS production-ready con cluster EKS, autoscaling horizontal y RDS MySQL Multi-AZ gestionados 100% con Terraform modular. Pipeline completo con SonarCloud, cobertura ≥80% y despliegue automático via Helm. Incluye Jenkins + GitHub Actions en paralelo.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-6">
               {['Terraform', 'AWS EKS', 'RDS MySQL', 'Docker', 'GitHub Actions', 'Jenkins', 'Helm', 'SonarCloud'].map(tag => (
-                <span class="text-xs px-2.5 py-1 rounded-full" style="background: var(--lra-bg-soft); color: var(--lra-text-p); border: 1px solid var(--lra-card-border);">{tag}</span>
+                <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
               ))}
             </div>
             <div class="flex items-center gap-4">
-              <a href="https://github.com/Liquenson/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-70" style="color: var(--lra-text-h);">
+              <a href="https://github.com/Liquenson/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-70" style="color: #0A2540;">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                 </svg>
@@ -436,7 +436,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
           <!-- Architecture preview panel -->
           <div class="lg:w-64 flex-shrink-0">
-            <div class="rounded-xl p-5 h-full flex flex-col justify-between" style="background: var(--lra-section-dark); min-height: 200px;">
+            <div class="rounded-xl p-5 h-full flex flex-col justify-between" style="background: #0A2540; min-height: 200px;">
               <div class="text-xs font-semibold mb-4" style="color: rgba(147,184,255,0.7);">Arquitectura AWS</div>
               <div class="space-y-2.5">
                 {[
@@ -463,26 +463,26 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
         <!-- TBF Cloud Infrastructure -->
-        <div class="bg-white dark:bg-[#112240] rounded-2xl p-7 flex flex-col group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px var(--lra-card-shadow); border: 1px solid var(--lra-card-border);">
+        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px rgba(10,37,64,0.1); border: 1px solid #e2e8f0;">
           <div class="flex items-start justify-between mb-5">
-            <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: var(--lra-bg-alt);">
+            <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
             </div>
             <div class="flex flex-col items-end gap-1.5">
               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Producción</span>
-              <span class="inline-flex items-center gap-1 text-xs" style="color: var(--lra-text-p);"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
+              <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
             </div>
           </div>
           <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">Full Stack + Cloud</p>
-          <h3 class="text-lg font-bold mb-2.5" style="color: var(--lra-text-h);">TBF Cloud Infrastructure</h3>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: var(--lra-text-p);">
+          <h3 class="text-lg font-bold mb-2.5" style="color: #0A2540;">TBF Cloud Infrastructure</h3>
+          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
             Plataforma SaaS completa: Spring Boot 4 + React 18, toda la infraestructura AWS en Terraform. CloudFront CDN, ECS Fargate, RDS Multi-AZ, AWS Secrets Manager y 3 pipelines GitHub Actions.
           </p>
           <div class="flex flex-wrap gap-1.5 mb-5">
             {['ECS Fargate', 'React 18', 'Spring Boot 4', 'CloudFront', 'Terraform'].map(tag => (
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background: var(--lra-bg-soft); color: var(--lra-text-p); border: 1px solid var(--lra-card-border);">{tag}</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
             ))}
           </div>
           <div class="flex items-center justify-between pt-4 border-t border-gray-100">
@@ -499,26 +499,26 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </div>
 
         <!-- NexoraTech -->
-        <div class="bg-white dark:bg-[#112240] rounded-2xl p-7 flex flex-col group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px var(--lra-card-shadow); border: 1px solid var(--lra-card-border);">
+        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px rgba(10,37,64,0.1); border: 1px solid #e2e8f0;">
           <div class="flex items-start justify-between mb-5">
-            <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: var(--lra-bg-alt);">
+            <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
               </svg>
             </div>
             <div class="flex flex-col items-end gap-1.5">
               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Producción</span>
-              <span class="inline-flex items-center gap-1 text-xs" style="color: var(--lra-text-p);"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
+              <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
             </div>
           </div>
           <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">Full-Stack & Cloud</p>
-          <h3 class="text-lg font-bold mb-2.5" style="color: var(--lra-text-h);">NexoraTech</h3>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: var(--lra-text-p);">
+          <h3 class="text-lg font-bold mb-2.5" style="color: #0A2540;">NexoraTech</h3>
+          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
             Plataforma SaaS cloud-native enterprise con Spring Boot 4.0.3, React 18 y AWS ECS Fargate. Arquitectura full-stack production-ready con autenticación JWT + MFA (TOTP), Terraform modular en 10 módulos y pipelines CI/CD sin credenciales via OIDC.
           </p>
           <div class="flex flex-wrap gap-1.5 mb-5">
             {['Spring Boot 4', 'Java 17', 'React 18', 'Terraform', 'AWS ECS Fargate', 'PostgreSQL 15'].map(tag => (
-              <span class="text-xs px-2.5 py-1 rounded-full" style="background: var(--lra-bg-soft); color: var(--lra-text-p); border: 1px solid var(--lra-card-border);">{tag}</span>
+              <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
             ))}
           </div>
           <div class="flex items-center justify-between pt-4 border-t border-gray-100">
@@ -539,13 +539,13 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── TODOS LOS PROYECTOS ────────────────────────────────────────────── -->
-  <section class="bg-white dark:bg-[#0D1628] py-20">
+  <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="flex items-end justify-between mb-12">
         <div>
-          <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-3" style="background: var(--lra-bg-alt); color: #1E6FFF; border: 1px solid var(--lra-alt-border);">Portafolio</span>
-          <h2 class="text-3xl font-bold" style="color: var(--lra-text-h);">Todos los proyectos</h2>
+          <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-3" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">Portafolio</span>
+          <h2 class="text-3xl font-bold" style="color: #0A2540;">Todos los proyectos</h2>
         </div>
         <a href="/proyectos" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #1E6FFF;">
           Ver todos
@@ -596,7 +596,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           },
           {
             icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
-            badge: 'Template', badgeStyle: 'background:var(--lra-bg-alt); color:#1E6FFF; border:1px solid var(--lra-alt-border);',
+            badge: 'Template', badgeStyle: 'background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;',
             categoria: 'Templates',
             nombre: 'Python CI/CD Template',
             desc: 'Starter Flask REST API con DevOps integrado desde cero: flake8, pytest, cobertura y Docker build en CI.',
@@ -605,7 +605,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           },
           {
             icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4',
-            badge: 'Template', badgeStyle: 'background:var(--lra-bg-alt); color:#1E6FFF; border:1px solid var(--lra-alt-border);',
+            badge: 'Template', badgeStyle: 'background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;',
             categoria: 'Templates',
             nombre: 'Spring Boot REST Template',
             desc: 'API REST Spring Boot con seguridad, JPA, Swagger auto-generado y Docker vía plugin Jib de Maven.',
@@ -613,28 +613,28 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             cicd: false, github: 'https://github.com/Liquenson/springboot-rest-template',
           },
         ].map(({ icon, badge, badgeStyle, categoria, nombre, desc, stack, cicd, github }) => (
-          <div class="bg-white dark:bg-[#112240] flex flex-col p-6 group hover:-translate-y-0.5 transition-all duration-200" style="border-radius: 16px; box-shadow: 0 2px 16px var(--lra-card-shadow); border: 1px solid var(--lra-card-border);">
+          <div class="bg-white flex flex-col p-6 group hover:-translate-y-0.5 transition-all duration-200" style="border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;">
             <div class="flex items-start justify-between mb-4">
-              <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: var(--lra-bg-alt);">
+              <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
                 <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
                 </svg>
               </div>
               <div class="flex flex-col items-end gap-1">
                 <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style={badgeStyle}>{badge}</span>
-                {cicd && <span class="inline-flex items-center gap-1 text-xs" style="color: var(--lra-text-muted);"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD</span>}
+                {cicd && <span class="inline-flex items-center gap-1 text-xs" style="color: #94a3b8;"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD</span>}
               </div>
             </div>
             <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: #1E6FFF;">{categoria}</p>
-            <h3 class="text-sm font-bold mb-2" style="color: var(--lra-text-h);">{nombre}</h3>
-            <p class="text-xs leading-relaxed mb-4 flex-1" style="color: var(--lra-text-p);">{desc}</p>
+            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{nombre}</h3>
+            <p class="text-xs leading-relaxed mb-4 flex-1" style="color: #64748b;">{desc}</p>
             <div class="flex flex-wrap gap-1 mb-4">
               {stack.map(tag => (
-                <span class="text-xs px-2 py-0.5 rounded-full" style="background: var(--lra-bg-soft); color: var(--lra-text-p); border: 1px solid var(--lra-card-border);">{tag}</span>
+                <span class="text-xs px-2 py-0.5 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
               ))}
             </div>
             {github ? (
-              <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto transition-opacity hover:opacity-70" style="color: var(--lra-text-h);">
+              <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto transition-opacity hover:opacity-70" style="color: #0A2540;">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                 </svg>
@@ -652,7 +652,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
 
       <div class="text-center mt-10">
-        <a href="/proyectos" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50" style="color: var(--lra-text-h); border-color: #e2e8f0;">
+        <a href="/proyectos" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50" style="color: #0A2540; border-color: #e2e8f0;">
           Ver todos los proyectos (10)
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -663,23 +663,23 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── EXPERTISE ─────────────────────────────────────────────────────── -->
-  <section style="background-color: var(--lra-bg-soft);" class="py-20">
+  <section style="background-color: #f8fafc;" class="py-20">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
         <!-- Left: Profile -->
         <div>
-          <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-5" style="background: var(--lra-bg-alt); color: #1E6FFF; border: 1px solid var(--lra-alt-border);">
+          <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-5" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
             Nuestro Equipo
           </span>
-          <h2 class="text-3xl sm:text-4xl font-bold mb-5" style="color: var(--lra-text-h); letter-spacing: -0.02em;">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-5" style="color: #0A2540; letter-spacing: -0.02em;">
             Ingenieros DevOps &<br />Platform Engineers
           </h2>
-          <p class="text-base leading-relaxed mb-6" style="color: var(--lra-text-p);">
+          <p class="text-base leading-relaxed mb-6" style="color: #64748b;">
             Con más de 4 años diseñando y operando infraestructuras cloud en AWS, nuestro equipo se especializa en transformar organizaciones que luchan con deployments manuales en equipos que despliegan con confianza múltiples veces al día.
           </p>
-          <p class="text-base leading-relaxed mb-8" style="color: var(--lra-text-p);">
+          <p class="text-base leading-relaxed mb-8" style="color: #64748b;">
             Nuestro enfoque combina <strong class="text-gray-800">Infrastructure as Code</strong>, <strong class="text-gray-800">GitOps</strong> y <strong class="text-gray-800">Observabilidad</strong> para construir plataformas que escalan con el negocio.
           </p>
 
@@ -691,12 +691,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               { title: 'Observabilidad desde el día 1', desc: 'No puedes mejorar lo que no mides. Métricas, logs y trazas desde el inicio.' },
             ].map(({ title, desc }) => (
               <div class="flex gap-3">
-                <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: var(--lra-bg-alt);">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: #EEF4FF;">
                   <div class="w-1.5 h-1.5 rounded-full" style="background: #1E6FFF;"></div>
                 </div>
                 <div>
                   <div class="text-sm font-semibold text-gray-900 mb-0.5">{title}</div>
-                  <div class="text-sm" style="color: var(--lra-text-p);">{desc}</div>
+                  <div class="text-sm" style="color: #64748b;">{desc}</div>
                 </div>
               </div>
             ))}
@@ -737,18 +737,18 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               skills: ['CentOS · Ubuntu · RHEL', 'Bash 4.0+', 'Python · boto3', 'Fleet management'],
             },
           ].map(({ icon, title, skills }) => (
-            <div class="bg-white dark:bg-[#112240] rounded-2xl p-5 group hover:-translate-y-0.5 transition-all duration-200" style="border: 1px solid var(--lra-card-border); box-shadow: 0 2px 12px var(--lra-card-shadow);">
+            <div class="bg-white rounded-2xl p-5 group hover:-translate-y-0.5 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
               <div class="flex items-center gap-2.5 mb-3">
-                <div class="w-8 h-8 flex items-center justify-center rounded-lg flex-shrink-0" style="background: var(--lra-bg-alt);">
+                <div class="w-8 h-8 flex items-center justify-center rounded-lg flex-shrink-0" style="background: #EEF4FF;">
                   <svg class="w-4 h-4" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
                   </svg>
                 </div>
-                <h3 class="text-sm font-bold" style="color: var(--lra-text-h);">{title}</h3>
+                <h3 class="text-sm font-bold" style="color: #0A2540;">{title}</h3>
               </div>
               <ul class="space-y-1">
                 {skills.map(skill => (
-                  <li class="text-xs" style="color: var(--lra-text-p);">{skill}</li>
+                  <li class="text-xs" style="color: #64748b;">{skill}</li>
                 ))}
               </ul>
             </div>
@@ -759,15 +759,15 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── NUESTRO PROCESO ─────────────────────────────────────────────── -->
-  <section class="bg-white dark:bg-[#0D1628] py-20">
+  <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="text-center mb-14">
-        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: var(--lra-bg-alt); color: #1E6FFF; border: 1px solid var(--lra-alt-border);">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Metodología
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: var(--lra-text-h);">Cómo trabajamos</h2>
-        <p class="text-base max-w-2xl mx-auto" style="color: var(--lra-text-p);">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Cómo trabajamos</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">
           Un proceso de engagement estructurado que minimiza riesgo y maximiza el tiempo de entrega de valor.
         </p>
       </div>
@@ -804,23 +804,23 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             },
           ].map(({ step, title, desc, icon }) => (
             <div class="relative flex flex-col items-center text-center">
-              <div class="relative flex items-center justify-center w-20 h-20 rounded-2xl mb-6 z-10" style="background: var(--lra-bg-alt); border: 2px solid #c3d9ff;">
+              <div class="relative flex items-center justify-center w-20 h-20 rounded-2xl mb-6 z-10" style="background: #EEF4FF; border: 2px solid #c3d9ff;">
                 <svg class="w-7 h-7" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
                 </svg>
                 <div class="absolute -top-2.5 -right-2.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white" style="background: #1E6FFF;">{step}</div>
               </div>
-              <h3 class="text-base font-bold mb-2" style="color: var(--lra-text-h);">{title}</h3>
-              <p class="text-sm leading-relaxed" style="color: var(--lra-text-p);">{desc}</p>
+              <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{title}</h3>
+              <p class="text-sm leading-relaxed" style="color: #64748b;">{desc}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div class="mt-14 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6" style="background: var(--lra-bg-alt); border: 1px solid var(--lra-alt-border);">
+      <div class="mt-14 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
         <div>
-          <h3 class="text-lg font-bold mb-1" style="color: var(--lra-text-h);">¿Listo para iniciar?</h3>
-          <p class="text-sm" style="color: var(--lra-text-p);">La evaluación inicial es gratuita y sin compromiso. Respuesta garantizada en menos de 24 horas.</p>
+          <h3 class="text-lg font-bold mb-1" style="color: #0A2540;">¿Listo para iniciar?</h3>
+          <p class="text-sm" style="color: #64748b;">La evaluación inicial es gratuita y sin compromiso. Respuesta garantizada en menos de 24 horas.</p>
         </div>
         <a
           href="/contacto"
@@ -839,13 +839,13 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
   <!-- ─── BLOG PREVIEW ──────────────────────────────────────────────────── -->
   {recentPosts.length > 0 && (
-    <section class="bg-white dark:bg-[#0D1628] py-20">
+    <section class="bg-white py-20">
       <div class="max-w-7xl mx-auto px-6">
 
         <div class="flex items-end justify-between mb-12">
           <div>
-            <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-3" style="background: var(--lra-bg-alt); color: #1E6FFF; border: 1px solid var(--lra-alt-border);">Blog Técnico</span>
-            <h2 class="text-3xl font-bold" style="color: var(--lra-text-h);">Últimos artículos</h2>
+            <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-3" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">Blog Técnico</span>
+            <h2 class="text-3xl font-bold" style="color: #0A2540;">Últimos artículos</h2>
           </div>
           <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #1E6FFF;">
             Ver todos
@@ -857,16 +857,16 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {recentPosts.map(post => (
-            <a href={`/blog/${post.id}`} class="bg-white dark:bg-[#112240] rounded-2xl p-7 group hover:-translate-y-0.5 transition-all duration-200 block" style="border: 1px solid var(--lra-card-border); box-shadow: 0 2px 16px var(--lra-card-shadow);">
+            <a href={`/blog/${post.id}`} class="bg-white rounded-2xl p-7 group hover:-translate-y-0.5 transition-all duration-200 block" style="border: 1px solid #e2e8f0; box-shadow: 0 2px 16px rgba(0,0,0,0.05);">
               <div class="flex flex-wrap gap-2 mb-4">
                 {post.data.tags.slice(0, 3).map(tag => (
-                  <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: var(--lra-bg-alt); color: #1E6FFF; border: 1px solid var(--lra-alt-border);">{tag}</span>
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{tag}</span>
                 ))}
               </div>
-              <h3 class="text-lg font-bold mb-2.5 group-hover:text-[#1E6FFF] transition-colors" style="color: var(--lra-text-h);">{post.data.titulo}</h3>
-              <p class="text-sm leading-relaxed mb-5" style="color: var(--lra-text-p);">{post.data.descripcion}</p>
+              <h3 class="text-lg font-bold mb-2.5 group-hover:text-[#1E6FFF] transition-colors" style="color: #0A2540;">{post.data.titulo}</h3>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">{post.data.descripcion}</p>
               <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                <span class="text-xs" style="color: var(--lra-text-muted);">
+                <span class="text-xs" style="color: #94a3b8;">
                   {post.data.fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
                 </span>
                 <span class="inline-flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all" style="color: #1E6FFF;">
@@ -884,7 +884,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   )}
 
   <!-- ─── CTA FINAL ─────────────────────────────────────────────────────── -->
-  <section class="relative overflow-hidden" style="background-color: var(--lra-section-dark);">
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(30,111,255,0.15) 0%, transparent 65%);"></div>
     <div class="relative max-w-4xl mx-auto px-6 py-24 text-center">
 
