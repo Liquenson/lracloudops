@@ -1,10 +1,10 @@
 ---
 titulo: "LRA Cloud Operations"
 descripcion: "Sitio web de portafolio y marketing para la marca LRA Cloud Operations con blog técnico sobre DevOps y cloud. Construido con Astro 6 + Tailwind CSS 4, desplegado globalmente en Cloudflare Pages con CI/CD automático."
-fecha: 2026-04-01
+fecha: 2026-05-01
 categoria: "Frontend & Web"
 madurez: "Producción"
-stack: ["Astro 6.2", "Tailwind CSS 4", "TypeScript", "Cloudflare Pages", "Web3Forms", "Content Collections"]
+stack: ["Astro 6.2.1", "Tailwind CSS 4", "TypeScript", "Cloudflare Pages", "Web3Forms", "Content Collections"]
 cicd: true
 github: "https://github.com/Liquenson/lracloudops"
 featured: false

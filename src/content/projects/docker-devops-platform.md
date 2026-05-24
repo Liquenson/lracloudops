@@ -4,7 +4,7 @@ descripcion: "Plataforma backend containerizada con FastAPI y PostgreSQL 15. Imp
 fecha: 2026-05-01
 categoria: "Containerización"
 madurez: "En Desarrollo"
-stack: ["Python 3.12", "FastAPI 0.115", "Uvicorn", "PostgreSQL 15", "Docker", "Docker Compose", "GitHub Actions"]
+stack: ["Python 3.12", "FastAPI 0.115.0", "Uvicorn 0.30.0", "PostgreSQL 15-alpine", "psycopg2-binary 2.9.9", "Docker", "Docker Compose", "GitHub Actions"]
 cicd: true
 github: "https://github.com/Liquenson/docker-devops-platform"
 featured: false
@@ -16,11 +16,13 @@ metricas:
   - { label: "Build stages", value: "Multi-stage" }
   - { label: "Usuario container", value: "Non-root" }
 highlights:
-  - "Multi-stage Docker build: imagen final mínima sin herramientas de compilación ni pip"
-  - "Usuario no-root (appuser) en contenedor: seguridad desde el diseño inicial"
-  - "Retry logic para conexión a PostgreSQL: el servicio espera a que la DB esté lista"
+  - "Multistage Dockerfile: builder stage (pip install) → runtime slim sin pip ni setuptools — menor superficie CVE"
+  - "Base Alpine para PostgreSQL: imagen más liviana con menor huella de vulnerabilidades"
+  - "Usuario no-root (appuser) en FastAPI container: seguridad desde el diseño inicial"
+  - "Retry logic con backoff exponencial: 5 reintentos con 2s delay para conexión a PostgreSQL"
+  - "CMD en forma JSON (PID 1 correcto): señales del OS manejadas directamente por Uvicorn"
   - "Health checks declarados en Docker Compose con dependencias entre servicios"
-  - "FastAPI + Uvicorn ASGI: alta performance y documentación automática en /docs"
+  - "FastAPI + Uvicorn 0.30.0 ASGI: alta performance y documentación automática en /docs"
   - "CI verifica build + arranque + health endpoint en cada push antes de mergear"
 arquitectura:
   - { nombre: "FastAPI + Uvicorn", descripcion: "API ASGI de alta performance con documentación OpenAPI automática en /docs" }

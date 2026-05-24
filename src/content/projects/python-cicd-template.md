@@ -1,33 +1,34 @@
 ---
 titulo: "Python CI/CD Template"
 descripcion: "Template production-ready de API REST con Flask diseñado como punto de partida para microservicios Python con DevOps integrado desde el primer commit. Pipeline completo: flake8, pytest con cobertura y verificación del contenedor Docker en CI."
-fecha: 2025-12-15
+fecha: 2026-05-01
 categoria: "Templates"
 madurez: "Template"
-stack: ["Python 3.11", "Flask 3.0.3", "pytest 8.2", "pytest-cov", "flake8 7.1", "Docker", "GitHub Actions"]
+stack: ["Python 3.11", "Flask 3.0.3", "pytest 8.2.2", "pytest-cov 5.0.0", "flake8 7.1.0", "Docker", "GitHub Actions"]
 cicd: true
 github: "https://github.com/Liquenson/python-cicd-template"
 featured: false
 iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
 draft: false
 metricas:
-  - { label: "Endpoints", value: "3" }
-  - { label: "Etapas CI", value: "4" }
-  - { label: "Linting", value: "PEP8 flake8" }
-  - { label: "Cobertura", value: "pytest-cov" }
+  - { label: "Stages CI", value: "3" }
+  - { label: "Cobertura mínima", value: "80%" }
+  - { label: "Docker tag", value: "github.sha determinístico" }
+  - { label: "Complejidad máx.", value: "10 por función" }
 highlights:
-  - "Pipeline de 4 etapas secuenciales: lint → test → build → health check"
-  - "flake8 para estilo PEP8 obligatorio: el build no avanza si hay errores de lint"
-  - "pytest con pytest-cov para tests unitarios y reporte de cobertura de código"
-  - "Docker multi-stage: imagen final optimizada lista para despliegue en producción"
-  - "Health check en CI: el pipeline arranca el contenedor y verifica GET /health en main"
+  - "Pipeline 3 stages: Stage 1 (flake8 + pytest --cov 80%) → Stage 2 (Docker build github.sha + health check) → Stage 3 (Deploy configurable)"
+  - "flake8 con selectores explícitos E9/F63/F7/F82 y max-complexity=10: errores bloqueantes, no solo advertencias"
+  - "Cobertura mínima 80%: el pipeline falla si no se alcanza el umbral antes de construir la imagen"
+  - "Tag Docker determinístico con github.sha: trazabilidad exacta entre imagen y commit que la generó"
+  - "Docker build solo en main: el health check solo corre en pushes al branch de producción"
+  - "debug=False en producción: Flask no expone stack traces ni el debugger interactivo en prod"
   - "Tres endpoints de referencia listos para reemplazar con la lógica del microservicio"
 arquitectura:
   - { nombre: "Flask 3.0.3", descripcion: "Micro-framework web Python con routing declarativo y extensibilidad mínima" }
   - { nombre: "flake8 7.1", descripcion: "Linter PEP8 que detecta errores de estilo y problemas potenciales en el código" }
   - { nombre: "pytest + pytest-cov", descripcion: "Framework de tests con reporte de cobertura de código integrado" }
   - { nombre: "Docker multi-stage", descripcion: "Build en dos stages: dependencias en builder, solo runtime en imagen final" }
-  - { nombre: "GitHub Actions", descripcion: "Pipeline CI/CD con 4 jobs secuenciales ejecutados en push y PRs" }
+  - { nombre: "GitHub Actions", descripcion: "Pipeline CI/CD con 3 stages secuenciales: lint+test → build+healthcheck → deploy" }
 ---
 
 ## Descripción del proyecto

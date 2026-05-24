@@ -4,7 +4,7 @@ descripcion: "Framework de automatización Bash v2.1.0 para gestionar flotas de 
 fecha: 2026-05-01
 categoria: "SRE & Automatización"
 madurez: "Producción"
-stack: ["Bash 4.0+", "ShellCheck", "SSH", "CSV / JSON", "GitHub Actions", "Ubuntu", "macOS"]
+stack: ["Bash 4.0+", "ShellCheck", "SSH", "CSV / JSON", "GitHub Actions", "Ubuntu", "macOS", "Windows Git Bash"]
 cicd: true
 github: "https://github.com/Liquenson/linux-fleet-manager"
 featured: false
@@ -16,12 +16,14 @@ metricas:
   - { label: "Versión actual", value: "v2.1.0" }
   - { label: "Validación", value: "ShellCheck 0 errores" }
 highlights:
-  - "Inventario automático: hostname, IP, OS, kernel, CPU y timestamp en un solo script"
-  - "Exportación dual CSV/JSON lista para importar en CMDB, dashboards o hojas de cálculo"
+  - "set -euo pipefail en todos los scripts: fallo inmediato ante errores, variables no declaradas y pipes fallidos"
+  - "Guard anti re-sourcing en lib/common.sh: previene doble inicialización en pipelines complejos"
+  - "TTY detection automática: colores ANSI en terminal interactiva, salida limpia en pipe y logs"
+  - "Cross-platform: detección de CPU en Linux (/proc/cpuinfo), macOS (sysctl) y Windows (NUMBER_OF_PROCESSORS)"
+  - "SSH enterprise-level: BatchMode=yes y ConnectTimeout=10 para inventario de hosts remotos sin colgarse"
+  - "Argument parsing robusto: --format csv|json, --servers, --help con fallbacks a N/A en lugar de crash"
   - "CI/CD multi-plataforma: ShellCheck en Ubuntu, macOS y Windows Git Bash en paralelo"
-  - "Biblioteca reutilizable lib/common.sh con logging estructurado y colores en terminal"
-  - "Configuración via templates: config/servers.ini.example y variables.env.example"
-  - "Reportes con timestamp automático en reports/ para trazabilidad histórica de la flota"
+  - "Exportación dual CSV/JSON lista para importar en CMDB, dashboards o Google Sheets"
 arquitectura:
   - { nombre: "server-inventory.sh", descripcion: "Script principal que recopila datos del sistema local o via SSH en hosts remotos" }
   - { nombre: "lib/common.sh", descripcion: "Biblioteca de funciones: colores de terminal, logging, manejo de errores reutilizable" }

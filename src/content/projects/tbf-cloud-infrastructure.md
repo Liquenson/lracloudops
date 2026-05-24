@@ -1,10 +1,10 @@
 ---
 titulo: "TBF Cloud Infrastructure"
-descripcion: "Plataforma SaaS completa con Spring Boot 4, React 18, Terraform modular, ECS Fargate, CloudFront CDN y AWS Secrets Manager."
-fecha: 2026-02-10
+descripcion: "Plataforma SaaS completa con Spring Boot 4.0.3 y React 18.3.1 en AWS ECS Fargate. 11 módulos Terraform 1.9.8, OIDC puro sin credenciales estáticas, circuit breaker con rollback automático y CloudFront OAC con cache diferenciado."
+fecha: 2026-05-01
 categoria: "Full Stack + Cloud"
 madurez: "Producción"
-stack: ["Spring Boot 4", "React 18", "Vite", "Terraform", "AWS ECS Fargate", "CloudFront", "RDS PostgreSQL 15", "AWS Secrets Manager", "ALB", "S3", "GitHub Actions"]
+stack: ["Spring Boot 4.0.3", "Java 17", "React 18.3.1", "Vite 5.4.14", "Terraform 1.9.8", "AWS ECS Fargate", "CloudFront", "RDS PostgreSQL 15", "AWS Secrets Manager", "ALB", "S3", "GitHub Actions"]
 cicd: true
 github: null
 featured: true
@@ -16,12 +16,14 @@ metricas:
   - { label: "Servicios AWS", value: "15+" }
   - { label: "Ambientes", value: "Dev + Prod" }
 highlights:
-  - "ECS Fargate sin gestión de servidores: escalado automático en producción"
-  - "CloudFront con OAC: frontend React servido globalmente desde S3"
-  - "RDS PostgreSQL 15 Multi-AZ con deletion protection en producción"
-  - "AWS Secrets Manager para todos los secretos en runtime (sin .env en prod)"
-  - "AWS OIDC para CI/CD sin credenciales de larga duración en GitHub"
+  - "OIDC puro: tokens IAM efímeros de 15 minutos — cero AWS keys almacenadas en GitHub Secrets"
+  - "ECS circuit breaker con rollback automático en deploy fallido — sin intervención manual"
+  - "CloudFront OAC moderno (no OAI legacy) con cache diferenciado: assets 1 año immutable vs index.html no-cache"
+  - "RDS PostgreSQL 15 Multi-AZ con deletion protection, 7 días de backups y performance insights"
   - "11 módulos Terraform: vpc, ecr, ecs_backend, rds, alb, cloudfront, s3_frontend, s3_documents, secrets_manager, nat, security_group"
+  - "Separación dev/prod: dev sin NAT Gateway (reducción de costo), prod con subnets privadas y NAT"
+  - "AWS Secrets Manager: rotación de credenciales sin redeploy — solo reiniciar el task de ECS"
+  - "ECS Exec habilitado en dev para diagnóstico directo en contenedores sin SSH"
 arquitectura:
   - { nombre: "CloudFront + S3", descripcion: "CDN global serviendo el frontend React con OAC (Origin Access Control)" }
   - { nombre: "ALB → ECS Fargate", descripcion: "Load balancer redirige tráfico a contenedores Spring Boot en Fargate" }
