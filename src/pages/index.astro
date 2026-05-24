@@ -13,7 +13,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 >
 
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
-  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+  <section class="relative overflow-hidden hero-gradient">
 
     <!-- Grid dot background -->
     <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.18) 1px, transparent 1px); background-size: 28px 28px;"></div>
@@ -23,10 +23,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-20 sm:py-28 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
       <!-- Left: Text Content -->
-      <div>
+      <div class="animate-fade-left">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-semibold" style="background: rgba(30,111,255,0.15); border: 1px solid rgba(30,111,255,0.3); color: #93b8ff;">
-          <span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"></span>
-          Somos un equipo de ingenieros · Disponibles para proyectos
+          <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0"></span>
+          Ingeniería cloud enterprise · Disponibles para proyectos
         </div>
 
         <h1 class="text-5xl sm:text-6xl lg:text-[68px] font-extrabold text-white leading-[1.06] mb-6" style="letter-spacing: -0.03em;">
@@ -35,7 +35,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </h1>
 
         <p class="text-lg leading-relaxed mb-9 max-w-lg" style="color: rgba(147,184,255,0.8);">
-          Nuestro equipo de ingenieros DevOps especialistas en AWS, Kubernetes y Terraform lleva tu infraestructura al siguiente nivel.
+          Construimos plataformas cloud-native que se despliegan solas, escalan sin intervención y fallan con gracia. Infraestructura inmutable, entrega continua, observabilidad total.
         </p>
 
         <div class="flex gap-3.5 flex-wrap mb-9">
@@ -44,7 +44,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3.5 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
             style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
           >
-            Solicitar evaluación técnica
+            Diseñemos tu infraestructura cloud
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -54,7 +54,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3.5 rounded-xl border transition-all hover:bg-white/10"
             style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
           >
-            Ver casos de estudio
+            Ver proyectos en producción
           </a>
         </div>
 
@@ -178,12 +178,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="max-w-7xl mx-auto px-6 py-10">
       <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100">
         {[
-          { count: 11, suffix: '+', label: 'Proyectos cloud', sub: 'Infraestructura en producción' },
-          { count: 50, suffix: '+', label: 'Tecnologías dominadas', sub: 'Stack DevOps enterprise completo' },
-          { count: 4,  suffix: '',  label: 'Ingenieros especializados', sub: 'Arquitectura, IaC y automatización' },
-          { count: 100, suffix: '%', label: 'IaC Puro', sub: 'Infraestructura versionada y auditable' },
+          { count: 11, suffix: '+', label: 'Proyectos cloud', sub: 'En producción real. Sin demos.' },
+          { count: 50, suffix: '+', label: 'Tecnologías dominadas', sub: 'Gestionados con IaC.' },
+          { count: 4,  suffix: '',  label: 'Ingenieros especializados', sub: 'Senior. Especializados.' },
+          { count: 100, suffix: '%', label: 'IaC Puro', sub: 'Ningún cambio manual.' },
         ].map(({ count, suffix, label, sub }, i) => (
-          <div class={`text-center px-6 py-2 ${i < 2 ? 'border-b border-gray-100 lg:border-b-0' : ''}`}>
+          <div class={`text-center px-6 py-2 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]} ${i < 2 ? 'border-b border-gray-100 lg:border-b-0' : ''}`}>
             <div class="font-extrabold mb-1.5" style="color: #0A2540; letter-spacing: -0.03em; font-size: 2.5rem; line-height: 1;">
               <span class="counter-value" data-count={count} data-suffix={suffix}>0{suffix}</span>
             </div>
@@ -199,11 +199,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-6">
 
-      <div class="text-center mb-14">
+      <div class="text-center mb-14 animate-fade-up">
         <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Por qué elegirnos
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Ingeniería que genera confianza</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-3" style="color: #0A2540;">Ingeniería que genera confianza</h2>
+        <div class="line-draw mx-auto mt-3 mb-4" style="max-width: 48px;"></div>
         <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">
           Tres razones por las que los equipos eligen trabajar con nosotros.
         </p>
@@ -211,39 +212,39 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200 animate-fade-up delay-100" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
           <div class="w-13 h-13 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF; width: 52px; height: 52px;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Ingeniería orientada a producción</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Infraestructura que no falla</h3>
           <p class="text-sm leading-relaxed" style="color: #64748b;">
-            Desarrollamos plataformas cloud-native aplicando prácticas modernas de Platform Engineering, automatización de infraestructura, Kubernetes, observabilidad y despliegues continuos sobre AWS.
+            Multi-AZ. Failover automático. Cero intervención manual.
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200 animate-fade-up delay-200" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
           <div class="w-13 h-13 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF; width: 52px; height: 52px;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Stack enterprise</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Deploys sin miedo</h3>
           <p class="text-sm leading-relaxed" style="color: #64748b;">
-            Trabajamos con las mismas herramientas que usan empresas como Airbnb, Netflix y Spotify: Terraform, ArgoCD, Prometheus y GitHub Actions.
+            Un push a main. Tests, build, deploy. En minutos.
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200 animate-fade-up delay-300" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
           <div class="w-13 h-13 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF; width: 52px; height: 52px;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Entrega rápida</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: #0A2540;">Visibilidad total</h3>
           <p class="text-sm leading-relaxed" style="color: #64748b;">
-            Nuestra infraestructura como código permite desplegar entornos completos en minutos, no semanas. Todo versionado, todo reproducible.
+            Prometheus. Grafana. CloudWatch. Alertas antes que el cliente.
           </p>
         </div>
 
@@ -256,11 +257,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="absolute inset-0 pointer-events-none opacity-30" style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 32px 32px;"></div>
     <div class="relative max-w-7xl mx-auto px-6 py-20">
 
-      <div class="text-center mb-14">
+      <div class="text-center mb-14 animate-fade-up">
         <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
           Servicios
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">¿Qué podemos hacer por tu infraestructura?</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">¿Qué podemos hacer por tu infraestructura?</h2>
+        <div class="line-draw mx-auto mt-3 mb-4" style="max-width: 48px; background: linear-gradient(90deg, #5B9BFF, rgba(255,255,255,0.3));"></div>
         <p class="max-w-2xl mx-auto text-base" style="color: rgba(147,184,255,0.75);">
           Soluciones cloud de nivel enterprise adaptadas a las necesidades reales de tu negocio.
         </p>
@@ -305,9 +307,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             desc: 'Administración de flotas Linux, scripts Bash y Python para eliminar tareas manuales y reducir errores operativos.',
             tags: ['Bash', 'Python', 'Linux', 'SSH', 'Scripts'],
           },
-        ].map(({ icon, title, desc, tags }) => (
+        ].map(({ icon, title, desc, tags }, i) => (
           <div
-            class="bg-white flex flex-col p-7 group transition-all duration-200 hover:-translate-y-1"
+            class={`bg-white flex flex-col p-7 group transition-all duration-200 hover:-translate-y-1 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400','delay-500','delay-500'][i]}`}
             style="border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.12); transition: transform 200ms ease, box-shadow 200ms ease;"
             onmouseenter="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2), 0 16px 48px rgba(0,0,0,0.18)'"
             onmouseleave="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.12)'"
@@ -344,11 +346,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-6">
 
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-fade-up">
         <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Stack Tecnológico
         </span>
         <h2 class="text-3xl font-bold mb-3" style="color: #0A2540;">Herramientas que dominamos</h2>
+        <div class="line-draw mx-auto mt-3 mb-4" style="max-width: 48px;"></div>
         <p class="text-base max-w-xl mx-auto" style="color: #64748b;">El stack completo para construir plataformas cloud modernas, seguras y escalables.</p>
       </div>
 
@@ -366,8 +369,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           { name: 'Python', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg', category: 'Lenguaje' },
           { name: 'ArgoCD', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/argo.svg', category: 'GitOps' },
           { name: 'Jenkins', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg', category: 'CI/CD' },
-        ].map(({ name, icon, category }) => (
-          <div class="flex flex-col items-center gap-3 p-4 rounded-2xl border group cursor-default transition-all duration-200 hover:-translate-y-1 hover:shadow-md" style="border-color: #e2e8f0; background: #fafafa;">
+        ].map(({ name, icon, category }, i) => (
+          <div class={`flex flex-col items-center gap-3 p-4 rounded-2xl border group cursor-default transition-all duration-200 hover:-translate-y-1 hover:shadow-md animate-fade-up ${['delay-100','delay-200','delay-300','delay-400','delay-500','delay-500','delay-100','delay-200','delay-300','delay-400','delay-500','delay-500'][i]}`} style="border-color: #e2e8f0; background: #fafafa;">
             <div class="w-10 h-10 flex items-center justify-center rounded-xl transition-colors group-hover:bg-blue-50" style="background: white; border: 1px solid #e2e8f0;">
               <img src={icon} alt={name} class="w-6 h-6" style="filter: brightness(0) opacity(0.55);" />
             </div>
@@ -385,16 +388,17 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <section style="background-color: #EEF4FF;" class="py-20">
     <div class="max-w-7xl mx-auto px-6">
 
-      <div class="text-center mb-14">
+      <div class="text-center mb-14 animate-fade-up">
         <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: white; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Proyectos Destacados
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Engineering Case Studies</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-3" style="color: #0A2540;">Engineering Case Studies</h2>
+        <div class="line-draw mx-auto mt-3 mb-4" style="max-width: 48px;"></div>
         <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Los proyectos más complejos y representativos del stack cloud moderno.</p>
       </div>
 
       <!-- Featured 1: AWS Terraform DevOps (wide card) -->
-      <div class="bg-white rounded-2xl p-8 mb-5 group hover:-translate-y-1 transition-all duration-200" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08), 0 16px 48px rgba(10,37,64,0.04); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12), 0 24px 64px rgba(10,37,64,0.06)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08), 0 16px 48px rgba(10,37,64,0.04)'; this.style.borderColor='#e2e8f0';">
+      <div class="bg-white rounded-2xl p-8 mb-5 group hover:-translate-y-1 transition-all duration-200 animate-fade-up" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08), 0 16px 48px rgba(10,37,64,0.04); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12), 0 24px 64px rgba(10,37,64,0.06)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08), 0 16px 48px rgba(10,37,64,0.04)'; this.style.borderColor='#e2e8f0';">
         <div class="flex flex-col lg:flex-row gap-8">
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-5">
@@ -406,7 +410,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               <div>
                 <div class="flex items-center gap-2 mb-1">
                   <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Producción</span>
-                  <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
+                  <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>CI/CD Activo</span>
                 </div>
                 <p class="text-xs font-semibold uppercase tracking-wider" style="color: #1E6FFF;">Cloud & IaC</p>
               </div>
@@ -465,7 +469,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         <!-- TBF Cloud Infrastructure -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-1 transition-all duration-200" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08)'; this.style.borderColor='#e2e8f0';">
+        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-1 transition-all duration-200 animate-fade-up delay-100" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08)'; this.style.borderColor='#e2e8f0';">
           <div class="flex items-start justify-between mb-5">
             <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -474,7 +478,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             </div>
             <div class="flex flex-col items-end gap-1.5">
               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Producción</span>
-              <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
+              <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>CI/CD Activo</span>
             </div>
           </div>
           <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">Full Stack + Cloud</p>
@@ -501,7 +505,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </div>
 
         <!-- NexoraTech -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-1 transition-all duration-200" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08)'; this.style.borderColor='#e2e8f0';">
+        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-1 transition-all duration-200 animate-fade-up delay-200" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08)'; this.style.borderColor='#e2e8f0';">
           <div class="flex items-start justify-between mb-5">
             <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -510,7 +514,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             </div>
             <div class="flex flex-col items-end gap-1.5">
               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Producción</span>
-              <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD Activo</span>
+              <span class="inline-flex items-center gap-1 text-xs" style="color: #64748b;"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>CI/CD Activo</span>
             </div>
           </div>
           <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">Full-Stack & Cloud</p>
@@ -614,8 +618,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             stack: ['Java', 'Spring Boot', 'Swagger', 'Jib'],
             cicd: false, github: 'https://github.com/Liquenson/springboot-rest-template',
           },
-        ].map(({ icon, badge, badgeStyle, categoria, nombre, desc, stack, cicd, github }) => (
-          <div class="bg-white flex flex-col p-6 group hover:-translate-y-1 transition-all duration-200" style="border-radius: 16px; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06); border: 1px solid #e8eef4; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.15)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06)'; this.style.borderColor='#e8eef4';">
+        ].map(({ icon, badge, badgeStyle, categoria, nombre, desc, stack, cicd, github }, i) => (
+          <div class={`bg-white flex flex-col p-6 group hover:-translate-y-1 transition-all duration-200 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400','delay-500','delay-500'][i]}`} style="border-radius: 16px; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06); border: 1px solid #e8eef4; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.15)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06)'; this.style.borderColor='#e8eef4';">
             <div class="flex items-start justify-between mb-4">
               <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
                 <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -764,11 +768,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-6">
 
-      <div class="text-center mb-14">
+      <div class="text-center mb-14 animate-fade-up">
         <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
           Metodología
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Cómo trabajamos</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-3" style="color: #0A2540;">Cómo trabajamos</h2>
+        <div class="line-draw mx-auto mt-3 mb-4" style="max-width: 48px;"></div>
         <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">
           Un proceso de engagement estructurado que minimiza riesgo y maximiza el tiempo de entrega de valor.
         </p>
@@ -804,8 +809,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               desc: 'Transferimos conocimiento al equipo, documentamos la arquitectura y ofrecemos soporte post-implementación con SLA definido.',
               icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
             },
-          ].map(({ step, title, desc, icon }) => (
-            <div class="relative flex flex-col items-center text-center">
+          ].map(({ step, title, desc, icon }, i) => (
+            <div class={`relative flex flex-col items-center text-center animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}>
               <div class="relative flex items-center justify-center w-20 h-20 rounded-2xl mb-6 z-10" style="background: #EEF4FF; border: 2px solid #c3d9ff;">
                 <svg class="w-7 h-7" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
@@ -858,8 +863,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {recentPosts.map(post => (
-            <a href={`/blog/${post.id}`} class="bg-white rounded-2xl p-7 group hover:-translate-y-1 transition-all duration-200 block" style="border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06); transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.15)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06)'; this.style.borderColor='#e8eef4';">
+          {recentPosts.map((post, i) => (
+            <a href={`/blog/${post.id}`} class={`bg-white rounded-2xl p-7 group hover:-translate-y-1 transition-all duration-200 block animate-fade-up ${i === 0 ? 'delay-100' : 'delay-200'}`} style="border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06); transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.15)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06)'; this.style.borderColor='#e8eef4';">
               <div class="flex flex-wrap gap-2 mb-4">
                 {post.data.tags.slice(0, 3).map(tag => (
                   <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{tag}</span>
@@ -903,13 +908,13 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         Auditamos su arquitectura actual, identificamos riesgos y diseñamos el roadmap hacia una plataforma cloud escalable, segura y auditada.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-200">
         <a
           href="/contacto"
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
           style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 24px rgba(30,111,255,0.4);"
         >
-          Solicitar evaluación técnica
+          Diseñemos tu infraestructura cloud
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -919,11 +924,11 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
           style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
         >
-          Ver casos de estudio
+          Ver proyectos en producción
         </a>
       </div>
 
-      <p class="text-xs mt-8" style="color: rgba(147,184,255,0.4);">Respuesta garantizada en menos de 24 horas · Evaluación inicial sin costo · hola@lracloudops.com</p>
+      <p class="text-xs mt-8 animate-fade delay-400" style="color: rgba(147,184,255,0.4);">Respuesta garantizada en menos de 24 horas · Evaluación inicial sin costo · hola@lracloudops.com</p>
     </div>
   </section>
 
