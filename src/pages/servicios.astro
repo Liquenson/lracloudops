@@ -15,11 +15,11 @@ import Layout from '../layouts/Layout.astro'
         <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
           Servicios Cloud & DevOps
         </span>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
-          Soluciones cloud con<br />experiencia real en producción
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left" style="letter-spacing: -0.02em;">
+          Lo que construimos.<br />Cómo lo cobramos.
         </h1>
-        <p class="text-lg" style="color: rgba(147,184,255,0.8);">
-          Cada servicio está respaldado por proyectos reales — no demos, no tutoriales.
+        <p class="text-lg animate-fade-up delay-200" style="color: rgba(147,184,255,0.8);">
+          Sin sorpresas. Sin scope creep. Precio claro desde el primer día.
         </p>
       </div>
     </div>
@@ -111,7 +111,7 @@ import Layout from '../layouts/Layout.astro'
         <div class="grid lg:grid-cols-2 gap-12 items-start">
 
           <!-- Left: Info -->
-          <div>
+          <div class="animate-fade-left">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: #EEF4FF;">
               <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={s.icon} />
@@ -130,7 +130,7 @@ import Layout from '../layouts/Layout.astro'
           </div>
 
           <!-- Right: Tags -->
-          <div class="rounded-2xl p-7" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+          <div class="rounded-2xl p-7 animate-fade" style="background: #f8fafc; border: 1px solid #e2e8f0;">
             <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: #94a3b8;">Stack tecnológico</p>
             <div class="flex flex-wrap gap-2">
               {s.tags.map(t => (
@@ -148,11 +148,12 @@ import Layout from '../layouts/Layout.astro'
     <div class="max-w-7xl mx-auto px-6 py-20">
 
       <!-- Header -->
-      <div class="text-center mb-14">
+      <div class="text-center mb-14 animate-fade-up">
         <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF;">
           Precios
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540; letter-spacing: -0.02em;">Servicios a medida</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-3" style="color: #0A2540; letter-spacing: -0.02em;">Servicios a medida</h2>
+        <div class="line-draw mx-auto mt-3 mb-4" style="max-width: 48px;"></div>
         <p class="max-w-xl mx-auto" style="color: #64748b;">
           Precios orientativos basados en el mercado DevOps español 2026. Cada proyecto es único — contáctanos para un presupuesto exacto.
         </p>
@@ -162,7 +163,7 @@ import Layout from '../layouts/Layout.astro'
       <div class="grid md:grid-cols-3 gap-8 items-stretch">
 
         <!-- Paquete 1: Consultoría -->
-        <div class="rounded-2xl bg-white p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.06);">
+        <div class="rounded-2xl bg-white p-8 flex flex-col hover:-translate-y-1 transition-all duration-200 animate-fade-up delay-100" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.06);">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: #EEF4FF;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -202,7 +203,7 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <!-- Paquete 2: Proyecto completo (destacado) -->
-        <div class="rounded-2xl p-8 flex flex-col relative hover:-translate-y-1 transition-all duration-200" style="background: #0A2540; border: 2px solid #1E6FFF; box-shadow: 0 4px 16px rgba(30,111,255,0.2), 0 16px 48px rgba(10,37,64,0.25);">
+        <div class="rounded-2xl p-8 flex flex-col relative hover:-translate-y-1 transition-all duration-200 animate-fade-up delay-200" style="background: #0A2540; border: 2px solid #1E6FFF; box-shadow: 0 4px 16px rgba(30,111,255,0.2), 0 16px 48px rgba(10,37,64,0.25);">
           <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
             <span class="text-xs font-bold text-white px-4 py-1.5 rounded-full whitespace-nowrap" style="background: linear-gradient(135deg, #1E6FFF, #1452cc); box-shadow: 0 2px 8px rgba(30,111,255,0.4);">Más solicitado</span>
           </div>
@@ -249,7 +250,7 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <!-- Paquete 3: Mantenimiento mensual -->
-        <div class="rounded-2xl bg-white p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.06);">
+        <div class="rounded-2xl bg-white p-8 flex flex-col hover:-translate-y-1 transition-all duration-200 animate-fade-up delay-300" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.06);">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: #EEF4FF;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
