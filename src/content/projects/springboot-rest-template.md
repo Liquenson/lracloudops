@@ -1,10 +1,10 @@
 ---
 titulo: "Spring Boot REST Template"
 descripcion: "Template production-ready de API REST con Spring Boot preconfigurado con Spring Security, JPA, documentación Swagger automática y generación de imagen Docker via Jib sin necesitar Dockerfile."
-fecha: 2025-12-01
+fecha: 2026-05-01
 categoria: "Templates"
 madurez: "Template"
-stack: ["Java 8", "Spring Boot 2.7", "Spring Security", "Spring Data JPA", "H2", "Swagger", "MapStruct", "Jib", "JaCoCo", "Maven"]
+stack: ["Java 8", "Spring Boot 2.7.13", "Spring Security 5", "Spring Data JPA", "H2", "springdoc-openapi", "MapStruct", "Jib", "JaCoCo", "Maven"]
 cicd: false
 github: "https://github.com/Liquenson/springboot-rest-template"
 featured: false

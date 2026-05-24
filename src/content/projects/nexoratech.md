@@ -4,7 +4,7 @@ descripcion: "Plataforma SaaS cloud-native enterprise con Spring Boot 4.0.3, Rea
 fecha: 2026-05-08
 categoria: "Full-Stack & Cloud"
 madurez: "Producción"
-stack: ["Spring Boot 4.0.3", "Java 17", "React 18", "Vite", "Zustand", "PostgreSQL 15", "Terraform", "AWS ECS Fargate", "CloudFront", "S3", "RDS", "Docker", "GitHub Actions", "AWS Secrets Manager", "Flyway", "MapStruct"]
+stack: ["Spring Boot 4.0.3", "Java 17", "React 18.3.1", "Vite 5.4.14", "Zustand", "i18next", "JJWT 0.12.6", "Flyway", "Testcontainers", "MapStruct", "PostgreSQL 15", "Terraform 1.9.8", "AWS ECS Fargate", "CloudFront", "ALB", "S3", "RDS", "Docker", "GitHub Actions", "AWS Secrets Manager"]
 cicd: true
 github: null
 featured: false
@@ -16,14 +16,16 @@ metricas:
   - { label: "Pipelines CI/CD", value: "3 paralelos" }
   - { label: "Capas de seguridad", value: "JWT + MFA + OIDC" }
 highlights:
-  - "Spring Boot 4.0.3 + Java 17: autenticación stateless con JWT y MFA TOTP con bloqueo de cuenta por intentos fallidos"
-  - "Terraform 100% modular: 10 módulos independientes (VPC, ECS, RDS, ALB, CloudFront, S3, Secrets Manager, ECR, Security Groups)"
-  - "OIDC federation: GitHub Actions asume roles IAM sin credenciales de larga duración en ningún secreto del repositorio"
-  - "CloudFront + S3: entrega global del frontend React con estrategia de cache diferenciada (assets 1 año, index.html sin cache)"
-  - "Dev vs Prod: dev usa subnets públicas sin NAT para reducir costos; prod usa subnets privadas con NAT Gateway, RDS Multi-AZ y deletion protection"
-  - "AWS Secrets Manager: credenciales de DB, JWT y SMTP inyectadas en tiempo de ejecución en el task definition de ECS — nunca en código ni imágenes"
-  - "AI DevOps Agent (agent.py): agente conversacional con Claude + Boto3 que consulta y gestiona más de 30 servicios AWS en lenguaje natural"
-  - "Flyway + Testcontainers: migraciones de esquema versionadas y tests de integración contra PostgreSQL real, no mocks"
+  - "BCryptPasswordEncoder + JJWT 0.12.6 stateless (1h exp, 256+ bits) + MFA TOTP con contador de fallos y bloqueo de cuenta"
+  - "MapStruct DTOs: ninguna entidad JPA se expone directamente en la API — zero serialization leaks"
+  - "Flyway con validate-on-migrate=true: el arrange de migraciones falla en startup si el schema diverge del código"
+  - "Testcontainers: tests de integración contra PostgreSQL real, no H2 — los mismos dialectos y constraints que producción"
+  - "OIDC federation: tokens IAM efímeros de 15 min — cero AWS keys en GitHub Secrets en ningún pipeline"
+  - "Terraform 100% modular: 10 módulos independientes (VPC, ECS, RDS, ALB, CloudFront, S3, Secrets, ECR, Security Groups)"
+  - "CloudFront OAC moderno + cache diferenciado: assets hasheados 1 año immutable, index.html no-cache"
+  - "ECS circuit breaker con rollback automático en deploy fallido y ECS Exec habilitado en dev para diagnóstico"
+  - "Dev vs Prod: dev sin NAT Gateway (ahorro ~$35/mes), prod con subnets privadas, Multi-AZ y deletion protection"
+  - "AI DevOps Agent (agent.py): Claude API + Boto3, gestión de 30+ servicios AWS en lenguaje natural"
 arquitectura:
   - { nombre: "React 18 + CloudFront", descripcion: "SPA servida desde S3 privado via CloudFront OAC con cache agresivo para assets hasheados e invalidación automática en cada deploy" }
   - { nombre: "Spring Boot 4 en ECS Fargate", descripcion: "Backend serverless en contenedores sin EC2 que gestionar. Dev: 1 tarea pública; Prod: 2 tareas en subnets privadas con NAT" }

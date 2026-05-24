@@ -178,9 +178,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="max-w-7xl mx-auto px-6 py-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {[
-          { count: 10, suffix: '+', label: 'Proyectos completados', sub: 'Infraestructura cloud en producción' },
-          { count: 25, suffix: '+', label: 'Tecnologías dominadas', sub: 'Stack DevOps enterprise completo' },
-          { count: 4,  suffix: '',  label: 'Años de experiencia AWS', sub: 'Arquitectura, IaC y automatización' },
+          { count: 11, suffix: '+', label: 'Proyectos cloud', sub: 'Infraestructura cloud en producción' },
+          { count: 50, suffix: '+', label: 'Tecnologías dominadas', sub: 'Stack DevOps enterprise completo' },
+          { count: 4,  suffix: '',  label: 'Ingenieros especializados', sub: 'Arquitectura, IaC y automatización' },
           { count: 100, suffix: '%', label: 'IaC Puro', sub: 'Infraestructura versionada y auditable' },
         ].map(({ count, suffix, label, sub }) => (
           <div class="text-center">
@@ -411,10 +411,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             </div>
             <h3 class="text-xl font-bold mb-3" style="color: #0A2540;">AWS Terraform DevOps</h3>
             <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-              Infraestructura AWS production-ready con cluster EKS, autoscaling horizontal y RDS MySQL Multi-AZ gestionados 100% con Terraform modular. Pipeline completo con SonarCloud, cobertura ≥80% y despliegue automático via Helm. Incluye Jenkins + GitHub Actions en paralelo.
+              Infraestructura AWS con EKS 1.31, HPA (CPU 70%), RDS PostgreSQL 15 Multi-AZ y 6 módulos Terraform. State remoto S3 + DynamoDB locking, CloudWatch alarms proactivas y pipeline dual con SonarCloud (cobertura ≥80%).
             </p>
             <div class="flex flex-wrap gap-1.5 mb-6">
-              {['Terraform', 'AWS EKS', 'RDS MySQL', 'Docker', 'GitHub Actions', 'Jenkins', 'Helm', 'SonarCloud'].map(tag => (
+              {['Terraform 1.9.8', 'AWS EKS 1.31', 'RDS PostgreSQL 15', 'Flask 3.0.3', 'GitHub Actions', 'Jenkins', 'Helm', 'SonarCloud'].map(tag => (
                 <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
               ))}
             </div>
@@ -442,8 +442,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
                 {[
                   { icon: '☁️', label: 'CloudFront CDN', color: '#3fb950' },
                   { icon: '⚖️', label: 'ALB Load Balancer', color: '#3fb950' },
-                  { icon: '⎈', label: 'EKS Cluster', color: '#3fb950' },
-                  { icon: '🗄️', label: 'RDS Multi-AZ', color: '#3fb950' },
+                  { icon: '⎈', label: 'EKS 1.31 + HPA (CPU 70%)', color: '#3fb950' },
+                  { icon: '🗄️', label: 'RDS PostgreSQL 15 Multi-AZ', color: '#3fb950' },
                   { icon: '🪣', label: 'S3 + ECR', color: '#3fb950' },
                 ].map(({ icon, label, color }) => (
                   <div class="flex items-center gap-2.5">
@@ -453,7 +453,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
                   </div>
                 ))}
               </div>
-              <div class="mt-4 text-xs font-mono" style="color: rgba(147,184,255,0.5);">12 recursos · Terraform</div>
+              <div class="mt-4 text-xs font-mono" style="color: rgba(147,184,255,0.5);">6 módulos Terraform · 17 tests</div>
             </div>
           </div>
         </div>
@@ -478,10 +478,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">Full Stack + Cloud</p>
           <h3 class="text-lg font-bold mb-2.5" style="color: #0A2540;">TBF Cloud Infrastructure</h3>
           <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Plataforma SaaS completa: Spring Boot 4 + React 18, toda la infraestructura AWS en Terraform. CloudFront CDN, ECS Fargate, RDS Multi-AZ, AWS Secrets Manager y 3 pipelines GitHub Actions.
+            Plataforma SaaS completa con Spring Boot 4 y React 18 en AWS ECS Fargate. 11 módulos Terraform, OIDC puro sin credenciales estáticas, circuit breaker automático y CloudFront CDN con cache diferenciado para assets e index.html.
           </p>
           <div class="flex flex-wrap gap-1.5 mb-5">
-            {['ECS Fargate', 'React 18', 'Spring Boot 4', 'CloudFront', 'Terraform'].map(tag => (
+            {['Spring Boot 4.0.3', 'React 18.3.1', 'Terraform 1.9.8', 'ECS Fargate', 'CloudFront OAC'].map(tag => (
               <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
             ))}
           </div>
@@ -514,10 +514,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           <p class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: #1E6FFF;">Full-Stack & Cloud</p>
           <h3 class="text-lg font-bold mb-2.5" style="color: #0A2540;">NexoraTech</h3>
           <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Plataforma SaaS cloud-native enterprise con Spring Boot 4.0.3, React 18 y AWS ECS Fargate. Arquitectura full-stack production-ready con autenticación JWT + MFA (TOTP), Terraform modular en 10 módulos y pipelines CI/CD sin credenciales via OIDC.
+            Plataforma SaaS enterprise con autenticación JWT + MFA TOTP, 10 módulos Terraform, 3 pipelines CI/CD paralelos con OIDC y despliegue en AWS ECS Fargate con RDS Multi-AZ. BCrypt + JJWT 0.12.6 + Testcontainers + Flyway validate-on-migrate.
           </p>
           <div class="flex flex-wrap gap-1.5 mb-5">
-            {['Spring Boot 4', 'Java 17', 'React 18', 'Terraform', 'AWS ECS Fargate', 'PostgreSQL 15'].map(tag => (
+            {['Spring Boot 4.0.3', 'Java 17', 'React 18.3.1', 'Terraform 1.9.8', 'ECS Fargate', 'JJWT 0.12.6'].map(tag => (
               <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
             ))}
           </div>
@@ -563,8 +563,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             badge: 'Producción', badgeStyle: 'background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;',
             categoria: 'SRE & Automatización',
             nombre: 'Linux Fleet Manager',
-            desc: 'Framework Bash v2.1.0 para gestionar flotas de servidores Linux, generando inventarios CSV/JSON. CI/CD multi-OS con ShellCheck.',
-            stack: ['Bash', 'ShellCheck', 'SSH', 'CSV/JSON'],
+            desc: 'Framework Bash enterprise-level (set -euo pipefail, TTY detection, cross-platform Linux/macOS/Windows). Inventarios CSV/JSON con ShellCheck CI en 3 plataformas.',
+            stack: ['Bash 4.0+', 'ShellCheck', 'SSH', 'CSV/JSON', 'Windows Git Bash'],
             cicd: true, github: 'https://github.com/Liquenson/linux-fleet-manager',
           },
           {
@@ -572,8 +572,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             badge: 'En Desarrollo', badgeStyle: 'background:#fffbeb; color:#b45309; border:1px solid #fde68a;',
             categoria: 'Containerización',
             nombre: 'Docker DevOps Platform',
-            desc: 'FastAPI + PostgreSQL 15 en Docker Compose multi-stage. Health checks, retry logic y build no-root para producción.',
-            stack: ['FastAPI', 'PostgreSQL 15', 'Docker', 'NGINX'],
+            desc: 'FastAPI 0.115.0 + Uvicorn 0.30.0 + PostgreSQL 15-alpine. Multistage build, appuser non-root, retry backoff exponencial (5x/2s) y CMD JSON para PID 1.',
+            stack: ['FastAPI 0.115.0', 'Uvicorn 0.30.0', 'PostgreSQL 15-alpine', 'Docker'],
             cicd: true, github: 'https://github.com/Liquenson/docker-devops-platform',
           },
           {
@@ -581,8 +581,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             badge: 'Demo', badgeStyle: 'background:#f3f4f6; color:#4b5563; border:1px solid #e5e7eb;',
             categoria: 'Kubernetes & GitOps',
             nombre: 'Kubernetes DevOps Platform',
-            desc: 'Plataforma GitOps con ArgoCD y KinD (3 nodos). Sincronización automática, prune y selfHeal habilitados.',
-            stack: ['Kubernetes', 'ArgoCD', 'KinD', 'GitOps'],
+            desc: 'Cluster KinD 3 nodos con port mapping 80/443 listo para Ingress. ArgoCD GitOps instalado — Application CRD en configuración activa.',
+            stack: ['Kubernetes 1.29', 'ArgoCD', 'KinD', 'GitOps', 'YAML'],
             cicd: true, github: 'https://github.com/Liquenson/k8s-devops-platform',
           },
           {
@@ -599,8 +599,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             badge: 'Template', badgeStyle: 'background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;',
             categoria: 'Templates',
             nombre: 'Python CI/CD Template',
-            desc: 'Starter Flask REST API con DevOps integrado desde cero: flake8, pytest, cobertura y Docker build en CI.',
-            stack: ['Python', 'Flask', 'pytest', 'Docker'],
+            desc: 'Pipeline 3 stages: flake8 (E9/F63/F7/F82, max-complexity=10) + pytest --cov 80%, Docker build con tag github.sha + health check, deploy configurable.',
+            stack: ['Python 3.11', 'Flask 3.0.3', 'pytest 8.2.2', 'flake8 7.1.0', 'Docker'],
             cicd: true, github: 'https://github.com/Liquenson/python-cicd-template',
           },
           {
@@ -653,7 +653,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
       <div class="text-center mt-10">
         <a href="/proyectos" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50" style="color: #0A2540; border-color: #e2e8f0;">
-          Ver todos los proyectos (10)
+          Ver todos los proyectos (11)
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

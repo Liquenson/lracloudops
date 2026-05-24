@@ -1,10 +1,10 @@
 ---
 titulo: "Medical Appointment System"
 descripcion: "Plataforma web MVC de gestión de citas médicas con autenticación JDBC por roles (Admin, Doctor, Paciente), verificación de email y soporte multi-perfil: H2 in-memory en local, PostgreSQL 15 en producción."
-fecha: 2026-03-01
+fecha: 2026-05-01
 categoria: "Backend & Web"
 madurez: "En Desarrollo"
-stack: ["Java 17", "Spring Boot 3.2", "Spring Security 6", "Thymeleaf 3", "Spring Mail", "PostgreSQL 15", "H2", "Docker", "Maven"]
+stack: ["Java 17", "Spring Boot 3.2.5", "Spring Security 6", "Thymeleaf 3", "Spring Mail", "PostgreSQL 15", "H2", "Docker", "Maven"]
 cicd: true
 github: "https://github.com/Liquenson/medical-appointment-system"
 featured: false

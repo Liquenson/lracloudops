@@ -12,16 +12,16 @@ iconPath: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 
 draft: false
 metricas:
   - { label: "Nodos KinD", value: "3" }
-  - { label: "Retry ArgoCD", value: "5 intentos" }
-  - { label: "Sync policy", value: "Auto + Prune" }
-  - { label: "Fuente de verdad", value: "Git" }
+  - { label: "Control plane", value: "1 + 2 workers" }
+  - { label: "Port mapping", value: "80/443 Ingress-ready" }
+  - { label: "GitOps", value: "ArgoCD (en impl.)" }
 highlights:
-  - "ArgoCD como controlador declarativo: ningún cambio manual sobrevive al siguiente sync"
-  - "Auto-sync con prune: recursos eliminados en Git se eliminan del cluster automáticamente"
-  - "SelfHeal: modificaciones manuales al cluster son revertidas al estado de Git"
-  - "Retry policy de 5 intentos con backoff: tolerancia a fallos transitorios en sincronización"
-  - "Cluster local KinD con 3 nodos para desarrollo y testing sin costo de cloud"
-  - "Kustomize para overlays base/dev/prod en la app de ejemplo"
+  - "Cluster KinD 3 nodos: 1 control plane + 2 workers con labels workload/platform para scheduling selectivo"
+  - "Port mapping 80/443 preconfigurado: listo para Ingress Controller sin reconfigurar el cluster"
+  - "ArgoCD instalado — Application CRD en configuración activa: próximo paso auto-sync + prune + selfHeal"
+  - "Manifiestos Kubernetes funcionales como punto de partida declarativo versionado en Git"
+  - "Kustomize base/overlays planificado para separación dev/prod sin duplicar YAML"
+  - "Roadmap: auto-sync, prune y selfHeal en siguiente versión — fundamentos GitOps establecidos"
 arquitectura:
   - { nombre: "GitHub Repository", descripcion: "Fuente de verdad: todos los manifests YAML y overlays Kustomize viven aquí" }
   - { nombre: "ArgoCD", descripcion: "Controlador GitOps que detecta cambios en Git y sincroniza el estado al cluster" }
