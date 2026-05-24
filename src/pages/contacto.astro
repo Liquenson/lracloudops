@@ -26,12 +26,12 @@ import Layout from '../layouts/Layout.astro'
   <!-- FORMULARIO + INFO -->
   <section class="bg-white py-16">
     <div class="max-w-5xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
 
         <!-- Formulario -->
         <div>
-          <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">Envíame un mensaje</h2>
-          <p class="text-sm mb-8" style="color: #64748b;">Respondo en menos de 24 horas.</p>
+          <h2 class="text-2xl font-bold mb-2" style="color: #0A2540;">Envíame un mensaje</h2>
+          <p class="text-sm mb-8" style="color: #64748b;">Respondo en menos de 24 horas · Evaluación inicial gratuita.</p>
 
           <form id="form-contacto" class="space-y-5">
             <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
@@ -39,42 +39,42 @@ import Layout from '../layouts/Layout.astro'
             <input type="hidden" name="from_name" value="LRA Cloud Operations" />
 
             <div>
-              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Nombre</label>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Nombre</label>
               <input
                 type="text"
                 name="name"
                 required
                 placeholder="Tu nombre completo"
-                class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all"
-                style="color: #111827;"
-                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
-                onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200"
+                style="color: #111827; border-color: #e2e8f0; background: #fafbfc;"
+                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
               />
             </div>
 
             <div>
-              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Email</label>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Email</label>
               <input
                 type="email"
                 name="email"
                 required
                 placeholder="tu@empresa.com"
-                class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all"
-                style="color: #111827;"
-                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
-                onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200"
+                style="color: #111827; border-color: #e2e8f0; background: #fafbfc;"
+                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
               />
             </div>
 
             <div>
-              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Tipo de proyecto</label>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Tipo de proyecto</label>
               <div class="relative">
                 <select
                   name="tipo_proyecto"
-                  class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all appearance-none"
-                  style="color: #111827; background-color: white; cursor: pointer;"
-                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
-                  onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                  class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 appearance-none"
+                  style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                  onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
                 >
                   <option value="">Selecciona una opción</option>
                   <option value="Cloud Architecture">Cloud Architecture</option>
@@ -93,14 +93,14 @@ import Layout from '../layouts/Layout.astro'
             </div>
 
             <div>
-              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Presupuesto aproximado</label>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Presupuesto aproximado</label>
               <div class="relative">
                 <select
                   name="presupuesto"
-                  class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all appearance-none"
-                  style="color: #111827; background-color: white; cursor: pointer;"
-                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
-                  onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                  class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 appearance-none"
+                  style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                  onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
                 >
                   <option value="">Selecciona una opción</option>
                   <option value="Menos de 1.000€">Menos de 1.000€</option>
@@ -118,14 +118,14 @@ import Layout from '../layouts/Layout.astro'
             </div>
 
             <div>
-              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Urgencia</label>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Urgencia</label>
               <div class="relative">
                 <select
                   name="urgencia"
-                  class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all appearance-none"
-                  style="color: #111827; background-color: white; cursor: pointer;"
-                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
-                  onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                  class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 appearance-none"
+                  style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                  onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
                 >
                   <option value="">Selecciona una opción</option>
                   <option value="Esta semana">Esta semana</option>
@@ -141,24 +141,24 @@ import Layout from '../layouts/Layout.astro'
             </div>
 
             <div>
-              <label class="block text-sm font-medium mb-1.5" style="color: #374151;">Mensaje</label>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Mensaje</label>
               <textarea
                 name="message"
                 required
                 rows="5"
                 placeholder="Cuéntame sobre tu proyecto, infraestructura actual o qué necesitas automatizar..."
-                class="w-full px-4 py-3 text-sm rounded-xl border border-gray-200 outline-none transition-all resize-none"
-                style="color: #111827;"
-                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.12)';"
-                onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none';"
+                class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 resize-none"
+                style="color: #111827; border-color: #e2e8f0; background: #fafbfc;"
+                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
               ></textarea>
             </div>
 
             <button
               type="submit"
               id="btn-enviar"
-              class="w-full text-sm font-semibold text-white py-3.5 rounded-xl transition-all hover:scale-[1.01] hover:shadow-lg active:scale-[0.99]"
-              style="background: linear-gradient(135deg, #1E6FFF 0%, #0A2540 100%); box-shadow: 0 4px 16px rgba(30,111,255,0.3);"
+              class="w-full text-sm font-semibold text-white py-4 rounded-xl transition-all duration-200 hover:-translate-y-px active:scale-[0.99]"
+              style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 16px rgba(30,111,255,0.35), 0 1px 3px rgba(30,111,255,0.2);"
             >
               Enviar mensaje
             </button>
@@ -171,13 +171,15 @@ import Layout from '../layouts/Layout.astro'
         <div class="flex flex-col gap-8">
 
           <div>
-            <h2 class="text-xl font-bold mb-6" style="color: #0A2540;">Otras formas de contactar</h2>
+            <h2 class="text-2xl font-bold mb-6" style="color: #0A2540;">Otras formas de contactar</h2>
 
-            <div class="space-y-5">
+            <div class="space-y-4">
               <a
                 href="mailto:liquenson.cloud@gmail.com"
-                class="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 hover:border-gray-200 hover:-translate-y-0.5 transition-all group"
-                style="background: #fafafa;"
+                class="flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 group hover:-translate-y-1"
+                style="background: #fafbfc; border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+                onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 8px 24px rgba(10,37,64,0.08)'; this.style.borderColor='rgba(30,111,255,0.2)';"
+                onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04)'; this.style.borderColor='#e8eef4';"
               >
                 <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #EEF4FF;">
                   <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -194,8 +196,10 @@ import Layout from '../layouts/Layout.astro'
                 href="https://www.linkedin.com/in/liquenson-ruben-490961269/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 hover:border-gray-200 hover:-translate-y-0.5 transition-all group"
-                style="background: #fafafa;"
+                class="flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 group hover:-translate-y-1"
+                style="background: #fafbfc; border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+                onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 8px 24px rgba(10,37,64,0.08)'; this.style.borderColor='rgba(30,111,255,0.2)';"
+                onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04)'; this.style.borderColor='#e8eef4';"
               >
                 <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #EEF4FF;">
                   <svg class="w-5 h-5" style="color: #1E6FFF;" fill="currentColor" viewBox="0 0 24 24">
@@ -212,8 +216,10 @@ import Layout from '../layouts/Layout.astro'
                 href="https://github.com/Liquenson"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 hover:border-gray-200 hover:-translate-y-0.5 transition-all group"
-                style="background: #fafafa;"
+                class="flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 group hover:-translate-y-1"
+                style="background: #fafbfc; border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+                onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 8px 24px rgba(10,37,64,0.08)'; this.style.borderColor='rgba(30,111,255,0.2)';"
+                onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04)'; this.style.borderColor='#e8eef4';"
               >
                 <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #EEF4FF;">
                   <svg class="w-5 h-5" style="color: #1E6FFF;" fill="currentColor" viewBox="0 0 24 24">

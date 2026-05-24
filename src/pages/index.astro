@@ -29,9 +29,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           Somos un equipo de ingenieros · Disponibles para proyectos
         </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-white leading-[1.1] mb-6" style="letter-spacing: -0.02em;">
+        <h1 class="text-5xl sm:text-6xl lg:text-[68px] font-extrabold text-white leading-[1.06] mb-6" style="letter-spacing: -0.03em;">
           Diseñamos, automatizamos<br />y escalamos
-          <span style="color: #5B9BFF;">infraestructura cloud enterprise</span>
+          <span style="color: #5B9BFF; display: block;">infraestructura cloud</span>
         </h1>
 
         <p class="text-lg leading-relaxed mb-9 max-w-lg" style="color: rgba(147,184,255,0.8);">
@@ -61,7 +61,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <!-- Tech badges -->
         <div class="flex flex-wrap gap-2">
           {['AWS EKS', 'Terraform', 'Kubernetes', 'GitHub Actions', 'ArgoCD', 'Prometheus'].map(tag => (
-            <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(147,184,255,0.7);">
+            <span class="inline-flex items-center text-xs font-medium px-3.5 py-1.5 rounded-full transition-all duration-200 hover:border-blue-400/40" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(147,184,255,0.8);">
               {tag}
             </span>
           ))}
@@ -174,21 +174,21 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ─── STATS STRIP ───────────────────────────────────────────────────── -->
-  <section class="bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 py-8">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+  <section class="bg-white" style="border-bottom: 1px solid #f1f5f9;">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100">
         {[
-          { count: 11, suffix: '+', label: 'Proyectos cloud', sub: 'Infraestructura cloud en producción' },
+          { count: 11, suffix: '+', label: 'Proyectos cloud', sub: 'Infraestructura en producción' },
           { count: 50, suffix: '+', label: 'Tecnologías dominadas', sub: 'Stack DevOps enterprise completo' },
           { count: 4,  suffix: '',  label: 'Ingenieros especializados', sub: 'Arquitectura, IaC y automatización' },
           { count: 100, suffix: '%', label: 'IaC Puro', sub: 'Infraestructura versionada y auditable' },
-        ].map(({ count, suffix, label, sub }) => (
-          <div class="text-center">
-            <div class="text-3xl sm:text-4xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.02em;">
+        ].map(({ count, suffix, label, sub }, i) => (
+          <div class={`text-center px-6 py-2 ${i < 2 ? 'border-b border-gray-100 lg:border-b-0' : ''}`}>
+            <div class="font-extrabold mb-1.5" style="color: #0A2540; letter-spacing: -0.03em; font-size: 2.5rem; line-height: 1;">
               <span class="counter-value" data-count={count} data-suffix={suffix}>0{suffix}</span>
             </div>
             <div class="text-sm font-semibold text-gray-800 mb-0.5">{label}</div>
-            <div class="text-xs" style="color: #64748b;">{sub}</div>
+            <div class="text-xs" style="color: #94a3b8;">{sub}</div>
           </div>
         ))}
       </div>
@@ -209,10 +209,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
+          <div class="w-13 h-13 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF; width: 52px; height: 52px;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -223,8 +223,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
+          <div class="w-13 h-13 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF; width: 52px; height: 52px;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
@@ -235,8 +235,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF;">
+        <div class="bg-white rounded-2xl p-8 group hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
+          <div class="w-13 h-13 flex items-center justify-center rounded-xl mb-6" style="background: #EEF4FF; width: 52px; height: 52px;">
             <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
@@ -308,7 +308,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         ].map(({ icon, title, desc, tags }) => (
           <div
             class="bg-white flex flex-col p-7 group transition-all duration-200 hover:-translate-y-1"
-            style="border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);"
+            style="border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.12); transition: transform 200ms ease, box-shadow 200ms ease;"
+            onmouseenter="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2), 0 16px 48px rgba(0,0,0,0.18)'"
+            onmouseleave="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.12)'"
           >
             <div class="w-11 h-11 flex items-center justify-center rounded-xl mb-5 transition-colors" style="background-color: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -392,7 +394,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
 
       <!-- Featured 1: AWS Terraform DevOps (wide card) -->
-      <div class="bg-white rounded-2xl p-8 mb-6 group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px rgba(10,37,64,0.1); border: 1px solid #e2e8f0;">
+      <div class="bg-white rounded-2xl p-8 mb-5 group hover:-translate-y-1 transition-all duration-200" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08), 0 16px 48px rgba(10,37,64,0.04); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12), 0 24px 64px rgba(10,37,64,0.06)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08), 0 16px 48px rgba(10,37,64,0.04)'; this.style.borderColor='#e2e8f0';">
         <div class="flex flex-col lg:flex-row gap-8">
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-5">
@@ -460,10 +462,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
 
       <!-- Featured 2 & 3: Two columns -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         <!-- TBF Cloud Infrastructure -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px rgba(10,37,64,0.1); border: 1px solid #e2e8f0;">
+        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-1 transition-all duration-200" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08)'; this.style.borderColor='#e2e8f0';">
           <div class="flex items-start justify-between mb-5">
             <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -499,7 +501,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </div>
 
         <!-- NexoraTech -->
-        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-0.5 transition-all duration-200" style="box-shadow: 0 4px 32px rgba(10,37,64,0.1); border: 1px solid #e2e8f0;">
+        <div class="bg-white rounded-2xl p-7 flex flex-col group hover:-translate-y-1 transition-all duration-200" style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08); border: 1px solid #e2e8f0; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 12px 36px rgba(10,37,64,0.12)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 6px 24px rgba(10,37,64,0.08)'; this.style.borderColor='#e2e8f0';">
           <div class="flex items-start justify-between mb-5">
             <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
               <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -613,7 +615,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             cicd: false, github: 'https://github.com/Liquenson/springboot-rest-template',
           },
         ].map(({ icon, badge, badgeStyle, categoria, nombre, desc, stack, cicd, github }) => (
-          <div class="bg-white flex flex-col p-6 group hover:-translate-y-0.5 transition-all duration-200" style="border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;">
+          <div class="bg-white flex flex-col p-6 group hover:-translate-y-1 transition-all duration-200" style="border-radius: 16px; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06); border: 1px solid #e8eef4; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.15)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06)'; this.style.borderColor='#e8eef4';">
             <div class="flex items-start justify-between mb-4">
               <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
                 <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -628,9 +630,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: #1E6FFF;">{categoria}</p>
             <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{nombre}</h3>
             <p class="text-xs leading-relaxed mb-4 flex-1" style="color: #64748b;">{desc}</p>
-            <div class="flex flex-wrap gap-1 mb-4">
+            <div class="flex flex-wrap gap-1.5 mb-4">
               {stack.map(tag => (
-                <span class="text-xs px-2 py-0.5 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #f8fafc; color: #64748b; border: 1px solid #e8eef4;">{tag}</span>
               ))}
             </div>
             {github ? (
@@ -857,7 +859,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {recentPosts.map(post => (
-            <a href={`/blog/${post.id}`} class="bg-white rounded-2xl p-7 group hover:-translate-y-0.5 transition-all duration-200 block" style="border: 1px solid #e2e8f0; box-shadow: 0 2px 16px rgba(0,0,0,0.05);">
+            <a href={`/blog/${post.id}`} class="bg-white rounded-2xl p-7 group hover:-translate-y-1 transition-all duration-200 block" style="border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06); transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.15)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06)'; this.style.borderColor='#e8eef4';">
               <div class="flex flex-wrap gap-2 mb-4">
                 {post.data.tags.slice(0, 3).map(tag => (
                   <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{tag}</span>
