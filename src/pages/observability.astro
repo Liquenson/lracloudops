@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import SolutionLayout from '../components/SolutionLayout.astro'
 
-const serviceSchema = {
+const schema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   '@id': 'https://lracloudops.com/observability#service',
-  name: 'Observability & SRE',
-  serviceType: 'Observability Consulting',
+  name: 'Observability Engineering',
+  serviceType: 'Monitoring, Alerting & SRE',
   description: 'Structured logs, distributed traces and metrics that tell you what failed, where, and why — before your users report it. Alerting on symptoms, not thresholds.',
   url: 'https://lracloudops.com/observability',
   provider: { '@id': 'https://lracloudops.com/#organization' },
@@ -15,168 +15,53 @@ const serviceSchema = {
     '@type': 'OfferCatalog',
     name: 'Observability Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Structured Logging & CloudWatch' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Metrics & Grafana Dashboards' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Distributed Tracing with OpenTelemetry' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SLO Alerting & Runbook Integration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Prometheus & Grafana Setup' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CloudWatch Container Insights' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SLI/SLO Definition' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Alerting Design' } },
     ],
   },
 }
 ---
 
-<Layout
+<SolutionLayout
   titulo="Observability · Monitoring, Alerting & SRE"
   descripcion="Structured logs, distributed traces and metrics that tell you what failed, where, and why — before your users report it. Alerting on symptoms, not thresholds."
-  schema={serviceSchema}
->
-
-  <!-- HERO -->
-  <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(30,111,255,0.12) 0%, transparent 65%);"></div>
-    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28">
-      <div class="max-w-3xl">
-        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
-          04 · Observability
-        </span>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left" style="letter-spacing: -0.02em;">
-          Know what is broken<br />before your users do.
-        </h1>
-        <p class="text-lg max-w-2xl animate-fade-up delay-200" style="color: rgba(147,184,255,0.8);">
-          Monitoring dashboards are not observability. Observability is the ability to ask arbitrary questions about your system's behavior using the data it already emits. We instrument services to emit structured signals — logs, metrics and traces — then build the alerting and dashboards that turn those signals into actionable operational intelligence.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE PROBLEM -->
-  <section class="bg-white py-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="section-label mb-4">The challenge</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What operating blind costs you.</h2>
-        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Most production incidents are not caused by the absence of monitoring. They are caused by monitoring that watches the wrong things or alerts on conditions that do not predict real failure.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-6">
-        {[
-          { title: 'Users report incidents before systems do', desc: 'CPU and memory alerts fire after 90% threshold. The application started returning errors 20 minutes earlier. The first signal was a support ticket.' },
-          { title: 'Logs that cannot be queried', desc: 'Unstructured log output requires grep and pattern matching during an incident. Correlating a request across three services takes an hour of manual log archaeology.' },
-          { title: 'Dashboards with no runbooks', desc: 'A dashboard shows a spike. Nobody knows if the spike is normal, expected or the precursor to a failure. There is no documented response procedure.' },
-          { title: 'Alert fatigue', desc: 'Too many alerts firing on thresholds that do not predict user impact. On-call engineers learn to ignore alert noise — and miss the one alert that matters.' },
-        ].map(item => (
-          <div class="card p-6">
-            <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{item.title}</h3>
-            <p class="text-sm leading-relaxed" style="color: #64748b;">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- OBSERVABILITY STACK -->
-  <section class="py-20" style="background: #f8fafc;">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="section-label mb-4">Observability stack</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">The three pillars and how we implement them.</h2>
-        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Logs, metrics and traces are the raw material. Correlation, context and runbooks are what make them operationally useful.</p>
-      </div>
-      <div class="space-y-4">
-        {[
-          { layer: 'Structured Logging', tools: 'CloudWatch Logs · JSON structured · Log Insights · Retention policies', desc: 'Application logs emitted as structured JSON with consistent fields: request ID, user ID, service name, duration, status code. Log Insights queries that answer operational questions in seconds — not minutes of grep.' },
-          { layer: 'Metrics & Dashboards', tools: 'CloudWatch Metrics · Custom metrics · Grafana · Container Insights', desc: 'RED method metrics (Rate, Errors, Duration) for every service. Custom business metrics alongside infrastructure metrics. Dashboards organized by service, not by infrastructure component. Container Insights for Kubernetes and ECS workloads.' },
-          { layer: 'Distributed Tracing', tools: 'AWS X-Ray · OpenTelemetry · Service Map · Latency percentiles', desc: 'Request traces across service boundaries. X-Ray service maps showing dependency topology and per-service latency. P95 and P99 latency tracked — not just averages, which mask tail latency problems.' },
-          { layer: 'Alerting & SLOs', tools: 'CloudWatch Alarms · Composite alarms · SNS · PagerDuty / Slack', desc: 'Alerts on symptoms that predict user impact — not raw infrastructure thresholds. Composite alarms that reduce noise. SLO-based alerting: alert when error budget is burning, not when a threshold is crossed.' },
-          { layer: 'Cost Monitoring', tools: 'AWS Cost Explorer · Budgets · Cost Anomaly Detection · Rightsizing', desc: 'Cost anomaly alerts configured alongside operational alerts. Rightsizing recommendations generated from utilization data. Cost visibility by service, team and environment — not as a monthly surprise.' },
-          { layer: 'Runbook Integration', tools: 'Runbooks · Alert annotations · Escalation paths · Postmortem templates', desc: 'Every alert links to a runbook. Runbooks document: what the alert means, what to check first, what to escalate and what constitutes resolution. Postmortem templates established before the first incident.' },
-        ].map((item, i) => (
-          <div class="bg-white rounded-xl p-6 flex flex-col sm:flex-row gap-5 items-start" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
-            <div class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white" style="background: #1E6FFF;">
-              {String(i + 1).padStart(2, '0')}
-            </div>
-            <div class="flex-1">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                <h3 class="text-base font-bold" style="color: #0A2540;">{item.layer}</h3>
-                <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{item.tools}</span>
-              </div>
-              <p class="text-sm leading-relaxed" style="color: #64748b;">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- IMPLEMENTATION METHODOLOGY -->
-  <section class="bg-white py-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="section-label mb-4">Implementation methodology</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">How we implement it.</h2>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {[
-          { step: '01', title: 'Observability audit', desc: 'Review existing signals: what is logged, what is measured, what alerts exist and whether they have fired meaningfully in the last 90 days.' },
-          { step: '02', title: 'Instrumentation', desc: 'Add structured logging, custom metrics and X-Ray tracing to application code. Establish naming conventions applied consistently across all services.' },
-          { step: '03', title: 'Dashboards and alerting', desc: 'Build service dashboards using RED method metrics. Configure composite alarms. Define SLOs and error budget burn rate alerts.' },
-          { step: '04', title: 'Runbooks and handover', desc: 'Write runbooks for every alert. Establish on-call escalation paths. Deliver postmortem template and incident response documentation.' },
-        ].map(item => (
-          <div class="card p-6 text-center">
-            <div class="text-3xl font-extrabold mb-3" style="color: #c3d9ff;">{item.step}</div>
-            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{item.title}</h3>
-            <p class="text-xs leading-relaxed" style="color: #64748b;">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- OUTCOMES -->
-  <section class="py-20" style="background: #EEF4FF;">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="section-label mb-4" style="background: white;">Operational outcomes</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What changes when a system is observable.</h2>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-6">
-        {[
-          { metric: 'Incidents detected before user impact', detail: 'SLO burn rate alerts fire before error budget is exhausted', icon: '✓' },
-          { metric: 'Root cause in minutes, not hours', detail: 'structured logs and distributed traces reduce mean time to diagnosis', icon: '✓' },
-          { metric: 'On-call engineers know what to do', detail: 'every alert links to a runbook with documented response steps', icon: '✓' },
-          { metric: 'Meaningful alert signal-to-noise ratio', detail: 'composite alarms and symptom-based alerting reduce noise by design', icon: '✓' },
-          { metric: 'Cost anomalies caught immediately', detail: 'budget alerts and anomaly detection prevent month-end surprises', icon: '✓' },
-          { metric: 'Cross-service request correlation', detail: 'a single request ID traces through every service boundary', icon: '✓' },
-        ].map(item => (
-          <div class="bg-white rounded-xl p-5 flex items-start gap-4" style="border: 1px solid #c3d9ff;">
-            <span class="text-green-500 font-bold text-lg flex-shrink-0">{item.icon}</span>
-            <div>
-              <p class="text-sm font-bold" style="color: #0A2540;">{item.metric}</p>
-              <p class="text-xs" style="color: #64748b;">{item.detail}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
-    <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4" style="letter-spacing: -0.02em;">Start with an observability review.</h2>
-      <p class="mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
-        Bring your current monitoring setup. We audit what signals exist, what is missing and what alerts are firing on the wrong conditions — then build the observability layer your team can actually operate from.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto" class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);">
-          Book a technical review
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </a>
-        <a href="/servicios" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10" style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);">
-          All solutions
-        </a>
-      </div>
-    </div>
-  </section>
-
-</Layout>
+  badgeLabel="04 · Observability"
+  h1="Know what is broken before your users do."
+  heroSubtitle="Discovering problems through user reports is not an operating model. Dashboards built after the first incident detect the second. We instrument systems from day one — metrics, logs and alerts configured before the first user hits production."
+  schema={schema}
+  sectionNumber="04"
+  challenges={[
+    { title: 'Discovering failures through user reports', desc: 'The first indication of a problem is a support ticket. By the time the team investigates, the blast radius has already expanded.' },
+    { title: 'Dashboards built after incidents', desc: 'Monitoring that covers what broke last time misses what will break next time. Reactive observability is not observability.' },
+    { title: 'Alerting on the wrong signals', desc: 'CPU and memory thresholds alert on causes, not symptoms. Teams spend time investigating non-events while real failures go undetected.' },
+    { title: 'No SLIs or error budgets', desc: 'Without defined service level indicators, every incident is equally urgent. No error budget means no rational basis for prioritizing reliability work.' },
+  ]}
+  archTitle="The observability stack we deliver."
+  archSubtitle="Three pillars — metrics, logs and alerting — configured before the first workload reaches production."
+  layers={[
+    { layer: 'Metrics Collection', tools: 'Prometheus · ServiceMonitors · PodMonitors · kube-state-metrics', desc: 'Prometheus scrapes workload and cluster metrics from deployment day. Custom metrics exposed via standard /metrics endpoints. No vendor lock-in.' },
+    { layer: 'Visualization', tools: 'Grafana · Pre-built dashboards · Infrastructure + application panels', desc: 'Grafana dashboards covering Kubernetes cluster health, workload performance and application-level metrics in a single view.' },
+    { layer: 'Cloud Monitoring', tools: 'CloudWatch · Container Insights · Log Insights · Alarms', desc: 'CloudWatch Container Insights for EKS and ECS workloads. Alarms on latency, error rates and queue depth — not raw CPU.' },
+    { layer: 'Alerting', tools: 'Alertmanager · PagerDuty · Slack · Routing rules', desc: 'Alert routing by severity and team. On-call receives actionable alerts with runbook links, not raw metric dumps.' },
+    { layer: 'SLIs and SLOs', tools: 'Error budgets · Burn rate alerts · Multi-window alerting', desc: 'Service level indicators defined at design time. Error budget burn rate alerts before the budget is exhausted, not after.' },
+    { layer: 'Log Management', tools: 'Structured JSON logs · CloudWatch Logs · Log Insights queries', desc: 'Structured logging from application startup. Log Insights queries pre-built for the most common failure modes.' },
+  ]}
+  steps={[
+    { step: '01', title: 'Observability audit', desc: 'Review what is currently instrumented, what is missing and what alert fatigue exists before adding more noise.' },
+    { step: '02', title: 'SLI definition', desc: 'Define service level indicators for each workload — availability, latency, error rate — before writing a single alert rule.' },
+    { step: '03', title: 'Instrumentation rollout', desc: 'Deploy Prometheus, configure ServiceMonitors and validate metric collection in staging before production.' },
+    { step: '04', title: 'Alerting and runbooks', desc: 'Configure alert routing, build Grafana dashboards and write runbooks for the top failure modes before go-live.' },
+  ]}
+  outcomes={[
+    { metric: 'Failures detected before user reports', detail: 'alerting on symptoms, not thresholds' },
+    { metric: 'SLIs tracked from day one', detail: 'not added after the first SLA breach' },
+    { metric: 'Mean time to detect reduced', detail: 'from hours to minutes' },
+    { metric: 'On-call receives actionable alerts', detail: 'with runbook links, not raw metrics' },
+    { metric: 'Error budgets defined', detail: 'rational basis for reliability prioritization' },
+    { metric: 'Infrastructure and application in one view', detail: 'single Grafana instance, no context switching' },
+  ]}
+  ctaH2="Start with an observability review."
+  ctaSubtitle="Bring your current monitoring setup. We identify what is missing, what is generating noise and what would actually detect your next outage before your users do."
+/>

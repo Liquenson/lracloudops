@@ -1,0 +1,16 @@
+/*
+  # Prevent clickjacking
+  X-Frame-Options: SAMEORIGIN
+  # Prevent MIME sniffing
+  X-Content-Type-Options: nosniff
+  # Referrer policy — send origin only for cross-origin requests
+  Referrer-Policy: strict-origin-when-cross-origin
+  # Restrict browser APIs that are not needed
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()
+  # Content Security Policy — tuned for Astro SSG + Google Fonts + Web3Forms + Cloudflare Turnstile
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com; frame-src https://challenges.cloudflare.com; base-uri 'self'; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests
+  # HSTS — force HTTPS (Cloudflare enforces this but belt + suspenders)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  # Cross-origin isolation
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Cross-Origin-Resource-Policy: same-site

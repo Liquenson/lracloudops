@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Astro 6 + Tailwind CSS 4 portfolio/marketing site for **LRA Cloud Operations** — a DevOps/cloud consulting brand. All content is in Spanish. Target domain: `https://lracloudops.com`.
+Astro 6 + Tailwind CSS 4 enterprise platform site for **LRA Cloud Operations** — a cloud infrastructure and platform engineering consultancy. Primary language: English. Spanish version at `/es`. Target domain: `https://lracloudops.com`.
 
 ## Commands
 
@@ -14,22 +14,45 @@ npm run build     # Production build → ./dist/
 npm run preview   # Preview the production build locally
 ```
 
-No lint or test scripts are configured.
+No lint scripts. CI via `.github/workflows/build.yml` (npm ci + astro check + astro build).
 
 ## Architecture
 
-**Rendering model:** Astro static site generation. Every page in `src/pages/` maps to a URL. There is no SSR or API layer.
+**Rendering model:** Astro static site generation. Every page in `src/pages/` maps to a URL. No SSR or API layer.
 
-**Styling:** Tailwind CSS is loaded as a **Vite plugin** (`@tailwindcss/vite`) configured in `astro.config.mjs` — not the `@astrojs/tailwind` integration. Tailwind is imported once in `src/styles/global.css` and that file is imported at the top of the base layout.
+**i18n:** Native Astro i18n configured in `astro.config.mjs`. English is the default locale (no prefix). Spanish pages live under `src/pages/es/`. Translation strings in `src/i18n/ui.ts` (79 keys). Helper functions in `src/i18n/index.ts`.
 
-**Layout pattern:** `src/layouts/Layout.astro` is the single base layout. It accepts two required props — `titulo` (page title) and `descripcion` (meta description) — and renders the sticky header, `<slot />`, and footer. Every page wraps its content in this layout.
+**Styling:** Tailwind CSS loaded as a Vite plugin (`@tailwindcss/vite`). Tailwind is imported once in `src/styles/global.css` which is imported at the top of the base layout.
 
-**All routes implemented:** `/`, `/servicios`, `/proyectos`, `/blog`, `/contacto`, `/blog/[slug]`, `/projects/[slug]`.
+**Layout:** `src/layouts/Layout.astro` is the single base layout. Props: `titulo` (required), `descripcion` (required), `schema` (optional LD+JSON), `ogType` (optional, default `'website'`), `ogImage` (optional). Renders sticky header, language switcher (EN | ES), `<slot />`, and footer.
 
-**Design system:** Blue palette — `#0A2540` (primary dark), `#1E6FFF` (accent blue), `#EEF4FF` (soft background), `#64748b` (secondary text). Never use teal/emerald/cyan. Cards: `border-radius: 16px`, white bg, shadow. Hero sections use `#0A2540` dark with dot-grid pattern and radial glow. Inter font (Google Fonts) for headings, JetBrains Mono for code/terminal.
+**English routes (canonical):**
+- `/` — Home
+- `/services` — Solutions overview
+- `/projects` — Case studies & project grid
+- `/about` — Team
+- `/contact` — Contact form (English)
+- `/blog` — Blog listing
+- `/blog/[slug]` — Blog post
+- `/projects/[slug]` — Project detail
+- `/cloud-infrastructure`, `/platform-engineering`, `/devops-automation`, `/observability` — Solution detail pages
 
-**Content collections:** `src/content/blog/` for blog posts, `src/content/projects/` for project case studies. Both use `loader: glob(...)` from Astro Content Layer API.
+**Spanish routes (`/es/`):**
+- `/es` — Home ES
+- `/es/servicios` — Solutions ES
+- `/es/proyectos` — Projects ES
+- `/es/nosotros` — About ES
+- `/es/contacto` — Contact ES
+- `/es/blog` — Blog listing ES
 
-**Project case study pages:** Individual pages at `/projects/[slug]` generated from `src/content/projects/*.md`. Schema includes: titulo, descripcion, fecha, categoria, madurez, stack, cicd, github, featured, metricas, highlights, arquitectura.
+**Redirects:** `public/_redirects` handles old Spanish URL → new English URL redirects (e.g., `/servicios` → `/services`).
 
-**Components pattern:** No `src/components/` directory — all reusable patterns are inline in pages. Section headers follow: small blue label → large h2 → gray subtitle.
+**Components:** `src/components/SolutionLayout.astro` — parametrized template used by all 4 solution detail pages. Future components belong here.
+
+**Design system:** Blue palette — `#0A2540` (dark navy), `#1E6FFF` (accent), `#2563EB` (CSS variable primary), `#EEF4FF` (soft background), `#64748b` (secondary text). Never use teal/emerald/cyan. Cards: `border-radius: 16px`, white bg, shadow. Fonts: Inter (headings/body), JetBrains Mono (code/terminal) — Google Fonts.
+
+**Content collections:** `src/content/blog/` (blog posts), `src/content/projects/` (case studies). Both use `loader: glob(...)`.
+
+**Email:** All references use `info@lracloudops.com`. Never use the personal Gmail address.
+
+**Security:** `public/_headers` configures HTTP security headers (CSP, X-Frame-Options, HSTS, Permissions-Policy) for Cloudflare Pages.

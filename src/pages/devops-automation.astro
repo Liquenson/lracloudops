@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import SolutionLayout from '../components/SolutionLayout.astro'
 
-const serviceSchema = {
+const schema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   '@id': 'https://lracloudops.com/devops-automation#service',
-  name: 'DevOps Automation & CI/CD',
-  serviceType: 'DevOps Consulting',
+  name: 'DevOps Automation',
+  serviceType: 'CI/CD Pipeline Engineering',
   description: 'CI/CD pipelines that ship code to production reliably. Build, test, scan and deploy pipelines with quality gates, automated rollback and full audit trails.',
   url: 'https://lracloudops.com/devops-automation',
   provider: { '@id': 'https://lracloudops.com/#organization' },
@@ -15,168 +15,53 @@ const serviceSchema = {
     '@type': 'OfferCatalog',
     name: 'DevOps Automation Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'GitHub Actions Pipeline Design' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Security Scanning Integration (Trivy, Gitleaks)' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Container Build & Registry (ECR/GHCR)' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automated Deployment & Rollback' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CI/CD Pipeline Design' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'GitHub Actions Workflows' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Jenkins Pipeline Engineering' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Quality Gate Implementation' } },
     ],
   },
 }
 ---
 
-<Layout
+<SolutionLayout
   titulo="DevOps Automation · CI/CD Pipeline Engineering"
   descripcion="CI/CD pipelines that ship code to production reliably. Build, test, scan and deploy pipelines with quality gates, automated rollback and full audit trails."
-  schema={serviceSchema}
->
-
-  <!-- HERO -->
-  <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(30,111,255,0.12) 0%, transparent 65%);"></div>
-    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28">
-      <div class="max-w-3xl">
-        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
-          03 · DevOps Automation
-        </span>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left" style="letter-spacing: -0.02em;">
-          Code merged. Tests passed.<br />Production updated. Automatically.
-        </h1>
-        <p class="text-lg max-w-2xl animate-fade-up delay-200" style="color: rgba(147,184,255,0.8);">
-          Manual deployment steps introduce variance. Every time a human executes a deployment, the procedure is slightly different from the last. Automation removes that variance — the same pipeline runs the same steps in the same order on every merge, with the same quality gates, the same security scans and the same rollback behavior.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE PROBLEM -->
-  <section class="bg-white py-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="section-label mb-4">The challenge</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What manual deployments cost you.</h2>
-        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">The problem with manual deployment is not that it fails. It is that it creates the conditions under which failures are unpredictable and hard to diagnose.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-6">
-        {[
-          { title: 'Deployment variance', desc: 'No two manual deployments follow exactly the same steps. A step skipped in a Friday afternoon rush becomes a production incident on Monday morning.' },
-          { title: 'No rollback procedure', desc: 'Manual rollbacks require locating the previous artifact, remembering the last known-good configuration and hoping the state can be reconstructed reliably under pressure.' },
-          { title: 'Security scanning as a checkbox', desc: 'Dependency vulnerabilities, container image CVEs and secrets accidentally committed to source control are discovered after deployment — if they are discovered at all.' },
-          { title: 'Deployment fear slows the team', desc: 'When deployments are risky, teams batch changes to reduce deployment frequency. Larger batches mean harder-to-diagnose failures when something goes wrong.' },
-        ].map(item => (
-          <div class="card p-6">
-            <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{item.title}</h3>
-            <p class="text-sm leading-relaxed" style="color: #64748b;">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- PIPELINE ARCHITECTURE -->
-  <section class="py-20" style="background: #f8fafc;">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="section-label mb-4">Pipeline architecture</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">The pipeline layers we implement.</h2>
-        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Each stage is a quality gate. Nothing reaches production that has not passed every gate. Failed gates block the pipeline — they do not produce warnings that get ignored.</p>
-      </div>
-      <div class="space-y-4">
-        {[
-          { layer: 'Source & Trigger', tools: 'GitHub Actions · Branch protection · PR checks', desc: 'Pipeline triggered on pull request creation and merge. Branch protection rules prevent direct pushes to main. All deployments traceable to a specific commit and author.' },
-          { layer: 'Build & Test', tools: 'Maven / npm / pytest · Parallel test runners · Coverage gates', desc: 'Unit and integration tests run in parallel with coverage thresholds enforced. Build fails if coverage drops below configured threshold. No green status without passing tests.' },
-          { layer: 'Security Scanning', tools: 'Trivy · Dependabot · Gitleaks · SAST', desc: 'Container image scanning for CVEs before push. Dependency vulnerability scanning on every PR. Secret scanning to catch credentials committed to source control before they reach the registry.' },
-          { layer: 'Container Build & Push', tools: 'Docker · Multi-stage builds · ECR · Image signing', desc: 'Multi-stage Dockerfiles producing minimal production images. Images pushed to ECR with semantic tags. No latest tag in production — every deployment references a specific image digest.' },
-          { layer: 'Deployment & Promotion', tools: 'ArgoCD · Helm · Environment promotion · GitOps', desc: 'Deployment triggers an ArgoCD sync — not a kubectl command. Image tag updated in the GitOps repository. Promotion from staging to production requires an explicit, auditable step.' },
-          { layer: 'Verification & Rollback', tools: 'Health checks · Smoke tests · Automated rollback', desc: 'Post-deployment smoke tests verify the service is healthy. Failed health checks trigger automatic rollback to the previous deployment. No manual intervention required for a failed release.' },
-        ].map((item, i) => (
-          <div class="bg-white rounded-xl p-6 flex flex-col sm:flex-row gap-5 items-start" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
-            <div class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white" style="background: #1E6FFF;">
-              {String(i + 1).padStart(2, '0')}
-            </div>
-            <div class="flex-1">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                <h3 class="text-base font-bold" style="color: #0A2540;">{item.layer}</h3>
-                <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{item.tools}</span>
-              </div>
-              <p class="text-sm leading-relaxed" style="color: #64748b;">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- IMPLEMENTATION METHODOLOGY -->
-  <section class="bg-white py-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="section-label mb-4">Implementation methodology</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">How we implement it.</h2>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {[
-          { step: '01', title: 'Pipeline audit', desc: 'Document current deployment steps, identify manual interventions and map the quality gates that exist — and those that are missing.' },
-          { step: '02', title: 'Pipeline design', desc: 'Design the full pipeline graph: triggers, stages, gate conditions, artifact flow and promotion strategy between environments.' },
-          { step: '03', title: 'Incremental implementation', desc: 'Implement and validate each stage independently before connecting them. Automate the existing process first — then improve it.' },
-          { step: '04', title: 'Runbooks and handover', desc: 'Pipeline failure runbooks, on-call escalation paths and observability dashboards delivered with the implementation.' },
-        ].map(item => (
-          <div class="card p-6 text-center">
-            <div class="text-3xl font-extrabold mb-3" style="color: #c3d9ff;">{item.step}</div>
-            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{item.title}</h3>
-            <p class="text-xs leading-relaxed" style="color: #64748b;">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- OUTCOMES -->
-  <section class="py-20" style="background: #EEF4FF;">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="section-label mb-4" style="background: white;">Operational outcomes</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What changes when deployments are automated.</h2>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-6">
-        {[
-          { metric: 'Every deployment identical', detail: 'same steps, same gates, same order — no human variance', icon: '✓' },
-          { metric: 'Security scanning on every merge', detail: 'CVEs and secrets caught before they reach production', icon: '✓' },
-          { metric: 'Rollback in under two minutes', detail: 'automated rollback on failed health checks, no manual steps', icon: '✓' },
-          { metric: 'Full deployment audit trail', detail: 'every release traceable to a commit, author and pipeline run', icon: '✓' },
-          { metric: 'No static credentials in CI', detail: 'OIDC-based authentication — no long-lived AWS access keys', icon: '✓' },
-          { metric: 'Smaller, safer releases', detail: 'automated deployment removes the cost that discouraged frequent releases', icon: '✓' },
-        ].map(item => (
-          <div class="bg-white rounded-xl p-5 flex items-start gap-4" style="border: 1px solid #c3d9ff;">
-            <span class="text-green-500 font-bold text-lg flex-shrink-0">{item.icon}</span>
-            <div>
-              <p class="text-sm font-bold" style="color: #0A2540;">{item.metric}</p>
-              <p class="text-xs" style="color: #64748b;">{item.detail}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
-    <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4" style="letter-spacing: -0.02em;">Start with a pipeline audit.</h2>
-      <p class="mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
-        Bring your current deployment process. We document what exists, identify the gaps and design a concrete path from manual deployments to a fully automated pipeline.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto" class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);">
-          Book a technical review
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </a>
-        <a href="/servicios" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10" style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);">
-          All solutions
-        </a>
-      </div>
-    </div>
-  </section>
-
-</Layout>
+  badgeLabel="03 · DevOps Automation"
+  h1="Code merged. Tests passed. Production updated. Automatically."
+  heroSubtitle="Manual release processes introduce human error, compress deployment windows and make rollback difficult. We replace that with pipelines that enforce quality gates before any code reaches production — and rollback is a single command."
+  schema={schema}
+  sectionNumber="03"
+  challenges={[
+    { title: 'Manual release coordination', desc: 'Releases require coordination between developers, QA and operations. Each release is a risk event, not a routine operation.' },
+    { title: 'Inconsistent quality enforcement', desc: 'Code coverage thresholds and security scans are checked manually, or not at all. Standards depend on who reviews the pull request.' },
+    { title: 'Static credentials in CI', desc: 'Long-lived access keys stored in CI secrets are a credential exposure waiting to happen. Rotation is manual and infrequent.' },
+    { title: 'Rollback is a crisis', desc: 'Without tested rollback procedures, reverting a broken deployment requires manual steps that extend the outage window.' },
+  ]}
+  archTitle="The pipeline architecture we deliver."
+  archSubtitle="Every stage is automated. Every quality gate is enforced before production. Every release is traceable."
+  layers={[
+    { layer: 'Source Control', tools: 'GitHub · Branch protection · Required reviews · Status checks', desc: 'Protected branches require passing CI before merge. No code reaches production without a reviewer and a green pipeline.' },
+    { layer: 'Build Stage', tools: 'Maven · Gradle · pip · npm · Multi-stage Docker', desc: 'Reproducible builds with pinned dependencies. Multi-stage Docker builds that produce minimal production images with no build tooling included.' },
+    { layer: 'Quality Gates', tools: 'SonarCloud · JaCoCo · pytest-cov · Coverage thresholds', desc: 'Coverage gate enforced on every pull request. SonarCloud blocks merge on critical security issues. No manual exception process.' },
+    { layer: 'Container Registry', tools: 'ECR · Image scanning · Deterministic tags · Immutable images', desc: 'Images tagged with the commit SHA — no latest tag in production. ECR vulnerability scanning runs on every push.' },
+    { layer: 'Deployment', tools: 'ArgoCD · Helm · Rolling updates · maxUnavailable=0', desc: 'Zero-downtime rolling deployments via Kubernetes. ArgoCD syncs from Git — no kubectl apply in production.' },
+    { layer: 'Authentication', tools: 'OIDC · GitHub Actions · AWS · No static credentials', desc: 'GitHub Actions authenticates to AWS via OIDC. No access keys stored anywhere. Credentials are issued per-run and expire automatically.' },
+  ]}
+  steps={[
+    { step: '01', title: 'Pipeline audit', desc: 'Review the current release process, identify manual steps and measure deployment frequency and lead time.' },
+    { step: '02', title: 'Pipeline design', desc: 'Define the stage sequence, quality gates and deployment strategy before writing a single workflow file.' },
+    { step: '03', title: 'Incremental rollout', desc: 'Implement and validate one stage at a time. Quality gates are introduced as warnings before being enforced.' },
+    { step: '04', title: 'Runbook and handover', desc: 'Document the pipeline, failure modes and rollback procedures. Run a walkthrough with the team before handover.' },
+  ]}
+  outcomes={[
+    { metric: 'Deployments without manual steps', detail: 'commit to production is fully automated' },
+    { metric: 'Quality gates enforced on every PR', detail: 'not discovered in production' },
+    { metric: 'Zero static credentials in CI', detail: 'OIDC authentication throughout' },
+    { metric: 'Rollback in under 5 minutes', detail: 'git revert triggers the same pipeline' },
+    { metric: 'Full deployment audit trail', detail: 'every release tied to a commit and a timestamp' },
+    { metric: 'Deployment frequency increased', detail: 'releases become routine, not risk events' },
+  ]}
+  ctaH2="Start with a pipeline review."
+  ctaSubtitle="Bring your current release process. We identify manual steps, missing quality gates and credential exposure — and outline a path to automated delivery."
+/>

@@ -1,0 +1,188 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Contacto"
+  descripcion="Contacta con LRA Cloud Operations para hablar sobre tu proyecto cloud, platform engineering o infraestructura AWS. Evaluación inicial incluida."
+>
+
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Contacto
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">Hablemos.</h1>
+        <p class="text-lg" style="color: rgba(147,184,255,0.8);">
+          Describe lo que estás construyendo y diseñamos juntos la infraestructura que necesitas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+        <div>
+          <h2 class="text-2xl font-bold mb-2" style="color: #0A2540;">Envíanos un mensaje</h2>
+          <p class="text-sm mb-8" style="color: #64748b;">Respondemos en menos de 24 horas · Evaluación inicial sin cargo.</p>
+
+          <form id="es-contact-form" class="space-y-5">
+            <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+            <input type="hidden" name="subject" value="Nueva consulta desde lracloudops.com/es" />
+            <input type="hidden" name="from_name" value="LRA Cloud Operations" />
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Nombre completo</label>
+              <input type="text" name="name" required placeholder="Tu nombre completo"
+                class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200"
+                style="color: #111827; border-color: #e2e8f0; background: #fafbfc;"
+                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Email corporativo</label>
+              <input type="email" name="email" required placeholder="tu@empresa.com"
+                class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200"
+                style="color: #111827; border-color: #e2e8f0; background: #fafbfc;"
+                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Tipo de engagement</label>
+              <div class="relative">
+                <select name="engagement_type"
+                  class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none appearance-none"
+                  style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)';"
+                  onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
+                  <option value="">Selecciona una opción</option>
+                  <option value="Infraestructura Cloud">Infraestructura Cloud</option>
+                  <option value="Platform Engineering">Platform Engineering</option>
+                  <option value="Automatización DevOps">Automatización DevOps</option>
+                  <option value="Pipeline CI/CD">Pipeline CI/CD</option>
+                  <option value="Kubernetes / EKS">Kubernetes / EKS</option>
+                  <option value="Terraform IaC">Terraform IaC</option>
+                  <option value="Observabilidad">Observabilidad</option>
+                  <option value="Revisión de infraestructura">Revisión de infraestructura</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Mensaje</label>
+              <textarea name="message" required rows="5"
+                placeholder="Describe tu proyecto, infraestructura actual o qué necesitas automatizar..."
+                class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 resize-none"
+                style="color: #111827; border-color: #e2e8f0; background: #fafbfc;"
+                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"></textarea>
+            </div>
+
+            <button type="submit" id="es-btn-submit"
+              class="w-full text-sm font-semibold text-white py-4 rounded-xl transition-all duration-200 hover:-translate-y-px"
+              style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 16px rgba(30,111,255,0.35);">
+              Enviar mensaje
+            </button>
+
+            <div id="es-form-status" class="hidden text-sm text-center py-3 rounded-xl"></div>
+          </form>
+        </div>
+
+        <div class="flex flex-col gap-8">
+          <div>
+            <h2 class="text-2xl font-bold mb-6" style="color: #0A2540;">Otras formas de contactar</h2>
+            <div class="space-y-4">
+              <a href="mailto:info@lracloudops.com"
+                class="flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 group hover:-translate-y-1"
+                style="background: #fafbfc; border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+                onmouseenter="this.style.borderColor='rgba(30,111,255,0.2)';"
+                onmouseleave="this.style.borderColor='#e8eef4';">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #EEF4FF;">
+                  <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: #94a3b8;">Email</div>
+                  <div class="text-sm font-medium" style="color: #0A2540;">info@lracloudops.com</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl p-6" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
+            <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Qué podemos hacer por ti</h3>
+            <ul class="space-y-2.5">
+              {[
+                'Diseñar tu arquitectura cloud en AWS',
+                'Implementar infraestructura con Terraform',
+                'Configurar CI/CD end-to-end',
+                'Migrar a Kubernetes / ECS Fargate',
+                'Optimizar costos AWS',
+                'Configurar observabilidad con Prometheus + Grafana',
+              ].map(item => (
+                <li class="flex items-center gap-2.5 text-sm" style="color: #334155;">
+                  <svg class="w-4 h-4 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const form = document.getElementById('es-contact-form') as HTMLFormElement
+  const btn = document.getElementById('es-btn-submit') as HTMLButtonElement
+  const status = document.getElementById('es-form-status') as HTMLDivElement
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    btn.textContent = 'Enviando...'
+    btn.disabled = true
+    btn.style.opacity = '0.8'
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      })
+      const data = await res.json()
+      if (data.success) {
+        status.textContent = 'Mensaje enviado. Te respondemos en menos de 24 horas.'
+        status.style.cssText = 'display:block; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;'
+        form.reset()
+      } else {
+        status.textContent = 'Error al enviar. Por favor intenta de nuevo.'
+        status.style.cssText = 'display:block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;'
+      }
+    } catch {
+      status.textContent = 'Error de conexión. Por favor intenta de nuevo.'
+      status.style.cssText = 'display:block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;'
+    }
+
+    btn.textContent = 'Enviar mensaje'
+    btn.disabled = false
+    btn.style.opacity = '1'
+    status.classList.remove('hidden')
+  })
+</script>

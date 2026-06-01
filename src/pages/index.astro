@@ -49,7 +49,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </p>
 
         <div class="flex flex-wrap gap-4 mb-12">
-          <a href="/contacto"
+          <a href="/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.45);">
             Start an infrastructure review
@@ -57,7 +57,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-          <a href="/servicios"
+          <a href="/services"
             class="inline-flex items-center gap-2.5 text-sm font-semibold px-7 py-4 rounded-xl border transition-all hover:bg-white/10"
             style="color: rgba(148,163,184,0.9); border-color: rgba(148,163,184,0.25);">
             See how we work
@@ -281,7 +281,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             <div class="flex flex-wrap gap-1.5 mb-5">
               {tags.map(tag => <span class="stack-tag">{tag}</span>)}
             </div>
-            <a href="/servicios" class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto" style="color: #2563EB;">
+            <a href="/services" class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto" style="color: #2563EB;">
               Learn more
               <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -292,7 +292,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
 
       <div class="text-center mt-12 animate-fade-up">
-        <a href="/servicios"
+        <a href="/services"
           class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50"
           style="color: #0F172A; border-color: #E5E7EB;">
           View all solutions
@@ -425,7 +425,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             Production workloads.<br />Documented outcomes.
           </h2>
         </div>
-        <a href="/proyectos"
+        <a href="/projects"
           class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors animate-fade"
           style="color: #2563EB;">
           View all projects
@@ -672,7 +672,117 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 7. BLOG                                                              -->
+  <!-- 7. SELECTED ENGAGEMENTS                                              -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="engagements-heading">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Selected Engagements</span>
+        <h2 id="engagements-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          Production outcomes.
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Representative platform implementations across regulated industries. Metrics reflect production environments, not benchmarks.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          {
+            industry: 'Healthcare Platform',
+            type: 'Cloud Infrastructure + Platform Engineering',
+            description: 'Multi-region AWS environment with EKS, Terraform and end-to-end CI/CD. Infrastructure provisioned as code from day one. Compliance boundaries enforced at the IAM and network layer.',
+            metrics: [
+              { value: '6 modules', label: 'Terraform' },
+              { value: 'Multi-AZ', label: 'RDS PostgreSQL' },
+              { value: 'Zero', label: 'Manual changes in production' },
+              { value: '80%', label: 'Coverage gate enforced' },
+            ],
+            highlights: ['OIDC authentication throughout CI/CD', 'GitOps delivery via ArgoCD', 'Full observability stack from launch'],
+          },
+          {
+            industry: 'Financial Services Platform',
+            type: 'Platform Engineering + DevOps Automation',
+            description: 'SaaS platform on ECS Fargate with CloudFront OAC, Secrets Manager and three OIDC pipelines. JWT + MFA authentication. Testcontainers integration tests against a real database.',
+            metrics: [
+              { value: '11 modules', label: 'Terraform' },
+              { value: '3 pipelines', label: 'OIDC — no static credentials' },
+              { value: 'CloudFront', label: 'OAC with differentiated cache' },
+              { value: 'Real DB', label: 'Integration tests (Testcontainers)' },
+            ],
+            highlights: ['Spring Boot 4.0.3 + Java 17', 'Flyway validate-on-migrate', 'Automated circuit breaker with rollback'],
+          },
+          {
+            industry: 'Logistics Platform',
+            type: 'GitOps + Kubernetes + Observability',
+            description: 'Kubernetes cluster with GitOps delivery, full observability and zero-downtime deployments. Prometheus and Grafana configured at provisioning. SLIs defined before go-live.',
+            metrics: [
+              { value: 'HPA', label: 'Autoscaling active' },
+              { value: 'GitOps', label: 'Single deployment interface' },
+              { value: 'ArgoCD', label: 'Auto-sync + prune + selfHeal' },
+              { value: 'Grafana', label: 'Infra + app in one view' },
+            ],
+            highlights: ['KinD for local development mirrors production', 'Helm Charts per-environment values', 'Alertmanager routing by severity'],
+          },
+          {
+            industry: 'Cloud Native Platform',
+            type: 'DevOps Automation + Infrastructure Review',
+            description: 'Legacy infrastructure audit followed by full codification. Manual environment replaced with Terraform modules, automated pipelines and structured observability.',
+            metrics: [
+              { value: 'From 0', label: 'IaC coverage before' },
+              { value: '100%', label: 'IaC coverage after' },
+              { value: 'Weekly', label: 'Release cadence (was monthly)' },
+              { value: 'OIDC', label: 'No static credentials remaining' },
+            ],
+            highlights: ['ShellCheck CI across 3 platforms', 'Configuration drift eliminated', 'Rollback tested before production'],
+          },
+        ].map((eng, i) => (
+          <div class={`bg-white rounded-2xl p-8 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}
+            style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+            <div class="flex items-start justify-between mb-5">
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-widest mb-1 block" style="color: #94a3b8;">{eng.type}</span>
+                <h3 class="text-lg font-bold" style="color: #0A2540;">{eng.industry}</h3>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-3" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Production</span>
+            </div>
+            <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">{eng.description}</p>
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              {eng.metrics.map(m => (
+                <div class="rounded-xl p-3" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                  <div class="text-base font-bold mb-0.5" style="color: #0A2540;">{m.value}</div>
+                  <div class="text-xs" style="color: #64748b;">{m.label}</div>
+                </div>
+              ))}
+            </div>
+            <ul class="space-y-2">
+              {eng.highlights.map(h => (
+                <li class="flex items-center gap-2.5 text-xs" style="color: #64748b;">
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+          View all implementations
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 8. BLOG                                                              -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="py-24 bg-white" aria-labelledby="blog-heading">
     <div class="max-w-7xl mx-auto px-6">
@@ -774,7 +884,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           Bring your current architecture. We identify gaps in resilience, delivery automation and observability — and outline a concrete path forward.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
-          <a href="/contacto"
+          <a href="/contact"
             class="inline-flex items-center gap-2.5 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 hover:-translate-y-px active:scale-[0.98] shadow-xl"
             style="background: white; color: #1D4ED8;">
             Book a technical review
@@ -782,7 +892,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-          <a href="/proyectos"
+          <a href="/projects"
             class="inline-flex items-center gap-2 text-base font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
             style="color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.3);">
             View our work
@@ -805,3 +915,4 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
 </Layout>
+

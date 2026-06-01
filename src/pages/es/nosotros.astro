@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Nosotros · Infraestructura Cloud y Platform Engineering"
+  descripcion="El equipo de LRA Cloud Operations. Ingenieros de plataforma especializados en AWS, Kubernetes, Terraform y GitOps. Workloads de producción entregados como código."
+>
+
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.18) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
+      <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
+        Nosotros
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6" style="letter-spacing: -0.02em;">
+        Infraestructura construida para producción.
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-4" style="color: rgba(147,184,255,0.8);">
+        Ingenieros de plataforma enfocados en infraestructura cloud, automatización y fiabilidad operacional. Diseñamos y operamos entornos AWS, plataformas Kubernetes y pipelines de entrega — como código, desde el primer día.
+      </p>
+      <p class="text-sm font-medium" style="color: rgba(147,184,255,0.6);">
+        AWS · Kubernetes · Terraform · GitOps · Platform Engineering · Observabilidad
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+          Equipo
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">El equipo</h2>
+        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
+          Ingenieros de plataforma con experiencia en producción en AWS, Kubernetes, Terraform y GitOps.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {[
+          {
+            nombre: 'Ruben Alexis Liquenson',
+            titulo: 'DevOps Engineer · Cloud Engineer · AWS · Kubernetes · Terraform · GitOps',
+            ubicacion: 'Las Palmas de Gran Canaria, España',
+            foto: '/images/liquenson.jpg',
+            bio: 'Diseña y opera infraestructura AWS de producción. Especializado en EKS, Terraform, GitOps con ArgoCD y CI/CD end-to-end con Jenkins. Construye plataformas de entrega completas — infraestructura como código, despliegues automatizados, observabilidad integrada y seguridad aplicada en el diseño. Experiencia en producción en sectores regulados: sanidad y servicios financieros.',
+            skills: ['AWS', 'Kubernetes', 'EKS', 'Terraform', 'Docker', 'ArgoCD', 'Helm', 'Jenkins', 'Prometheus', 'Grafana', 'Python', 'Bash'],
+            linkedin: 'https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/',
+          },
+        ].map(m => (
+          <div class="bg-white rounded-2xl p-8 sm:p-10" style="border: 1px solid #e2e8f0; border-left: 3px solid #1E6FFF; box-shadow: 0 4px 20px rgba(10,37,64,0.07);">
+            <div class="flex flex-col sm:flex-row gap-8 items-start">
+              <div class="flex-shrink-0">
+                <img src={m.foto} alt={m.nombre} class="w-28 h-28 rounded-full object-cover" style="border: 3px solid #c3d9ff;" />
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                  <div>
+                    <h3 class="text-xl font-bold mb-1" style="color: #0A2540;">{m.nombre}</h3>
+                    <p class="text-sm font-semibold mb-2" style="color: #1E6FFF;">{m.titulo}</p>
+                    <p class="text-sm" style="color: #64748b;">{m.ubicacion}</p>
+                  </div>
+                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm font-semibold text-white px-4 py-2.5 rounded-xl flex-shrink-0"
+                    style="background: linear-gradient(135deg, #0A66C2 0%, #004182 100%);">
+                    LinkedIn
+                  </a>
+                </div>
+                <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">{m.bio}</p>
+                <div class="flex flex-wrap gap-1.5">
+                  {m.skills.map(tag => (
+                    <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
+    <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Trabajemos juntos.</h2>
+      <p class="mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Cada engagement comienza con la comprensión de tu estado actual. No proponemos soluciones antes de entender el problema.
+      </p>
+      <a href="/es/contacto"
+        class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]"
+        style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);">
+        Agendar consulta
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</Layout>
