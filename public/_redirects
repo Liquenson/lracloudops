@@ -1,0 +1,10 @@
+# Spanish URL → English URL redirects (301 permanent)
+/servicios          /services           301
+/proyectos          /projects           301
+/sobre-nosotros     /about              301
+/contacto           /contact            301
+/case-studies       /projects           301
+
+# Legacy blog/projects paths — keep for backward compat
+/blog/*             /blog/:splat        200
+/projects/*         /projects/:splat    200

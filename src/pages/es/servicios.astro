@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Soluciones · Infraestructura Cloud y Platform Engineering"
+  descripcion="Cuatro disciplinas de plataforma: Infraestructura Cloud, Platform Engineering, Automatización DevOps y Observabilidad. Cada una reduce el riesgo operacional y aumenta la velocidad de entrega."
+>
+
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Platform Engineering · Infraestructura Cloud · Automatización DevOps
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left" style="letter-spacing: -0.02em;">
+          Cuatro disciplinas de plataforma.<br />Un modelo operativo.
+        </h1>
+        <p class="text-lg animate-fade-up delay-200" style="color: rgba(147,184,255,0.8);">
+          Cada capa reduce la superficie operativa que tus equipos gestionan. Juntas forman una plataforma de entrega repetible — auditable, versionada y recuperable desde el primer día.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {[
+    {
+      label: '01 · Infraestructura Cloud',
+      titulo: 'Infraestructura Cloud',
+      challenge: 'Los entornos AWS aprovisionados manualmente producen configuration drift, estado no documentado e infraestructura que no puede reproducirse de forma fiable.',
+      approach: 'Entornos AWS codificados con networking definido, límites de seguridad y políticas de acceso. Módulos Terraform auditables, versionados y reproducibles en múltiples cuentas.',
+      outcomes: ['Entornos Multi-AZ reproducibles desde un único workspace Terraform','Estado remoto con backend S3 y locking DynamoDB','Políticas IAM de mínimo privilegio definidas como código','Grupos de seguridad y límites VPC aplicados en el aprovisionamiento','Alarmas CloudWatch configuradas antes del primer workload en producción'],
+      tags: ['VPC · Multi-AZ','EKS · ECS Fargate','RDS PostgreSQL','S3 · CloudFront','IAM · OIDC','CloudWatch','Terraform 1.9+'],
+      learnMore: '/cloud-infrastructure',
+    },
+    {
+      label: '02 · Platform Engineering',
+      titulo: 'Platform Engineering',
+      challenge: 'Los equipos de desarrollo abriendo tickets de infraestructura para desplegar software es un cuello de botella. Cada handoff manual es un retraso.',
+      approach: 'Clusters Kubernetes operados como plataformas internas. Entrega GitOps a través de ArgoCD. Los equipos despliegan sin abrir tickets de infraestructura.',
+      outcomes: ['Clusters EKS con HPA y límites de recursos','Entrega GitOps vía ArgoCD — Git es la única interfaz de despliegue','Helm Charts con valores por entorno','Los equipos despliegan haciendo merge de un PR, no abriendo un ticket','Configuración del cluster auditable, reproducible y recuperable'],
+      tags: ['Kubernetes · EKS 1.31+','ArgoCD · GitOps','Helm · Kustomize','HPA · Límites de recursos','RBAC · ServiceAccounts','KinD'],
+      learnMore: '/platform-engineering',
+    },
+    {
+      label: '03 · Automatización DevOps',
+      titulo: 'Automatización DevOps',
+      challenge: 'Los procesos de release manuales introducen errores humanos, comprimen las ventanas de despliegue y dificultan el rollback.',
+      approach: 'Pipelines end-to-end que aplican tests, escaneos de seguridad y quality gates antes de que el código llegue a un cluster. Cada release es trazable.',
+      outcomes: ['Build → test → quality gate → build de contenedor → deploy sin pasos manuales','Quality gates SonarCloud aplicados en cada PR','Autenticación OIDC en AWS — sin credenciales estáticas','Rolling updates con maxUnavailable=0','Trazabilidad completa de cada release'],
+      tags: ['Jenkins · GitHub Actions','ArgoCD · GitOps','SonarCloud','Docker · ECR','OIDC','Ansible','Maven · Python'],
+      learnMore: '/devops-automation',
+    },
+    {
+      label: '04 · Observabilidad',
+      titulo: 'Observabilidad',
+      challenge: 'Descubrir problemas a través de reportes de usuarios no es un modelo operativo. Los dashboards construidos después del primer incidente detectan el segundo.',
+      approach: 'Instrumentado desde el primer día. Métricas Prometheus, logs estructurados y umbrales de alerta configurados antes de que el primer usuario llegue a producción.',
+      outcomes: ['Prometheus recopilando métricas desde el primer día de despliegue','Dashboards Grafana cubriendo infraestructura y aplicación en una vista','CloudWatch Container Insights para workloads EKS','Umbrales de alerta definidos antes del go-live','SLIs y SLOs documentados junto a la arquitectura'],
+      tags: ['Prometheus · Métricas','Grafana · Dashboards','CloudWatch','Alertmanager','SLIs · SLOs','Logs estructurados'],
+      learnMore: '/observability',
+    },
+  ].map((s, i) => (
+    <section class={`border-t border-gray-100 ${i % 2 === 1 ? 'bg-gray-50/50' : 'bg-white'}`}>
+      <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div class="animate-fade-left">
+            <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full mb-5" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{s.label}</span>
+            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">{s.titulo}</h2>
+            <div class="mb-5">
+              <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: #94a3b8;">El problema</p>
+              <p class="text-sm leading-relaxed" style="color: #64748b;">{s.challenge}</p>
+            </div>
+            <div class="mb-7">
+              <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: #94a3b8;">Nuestro enfoque</p>
+              <p class="text-sm leading-relaxed" style="color: #64748b;">{s.approach}</p>
+            </div>
+            <div class="mb-7">
+              <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: #94a3b8;">Resultados operacionales</p>
+              <ul class="space-y-2.5">
+                {s.outcomes.map(item => (
+                  <li class="flex items-start gap-2.5 text-sm" style="color: #64748b;">
+                    <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background: #1E6FFF;"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <a href={s.learnMore} class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #1E6FFF;">
+              Detalle de arquitectura y metodología
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="rounded-2xl p-7 animate-fade" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+            <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: #94a3b8;">Stack tecnológico</p>
+            <div class="flex flex-wrap gap-2">
+              {s.tags.map(t => (
+                <span class="text-xs font-medium px-3 py-1.5 rounded-full bg-white border border-gray-200" style="color: #374151;">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
+    <div class="relative max-w-4xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" style="letter-spacing: -0.02em;">Comienza con una revisión de infraestructura.</h2>
+      <p class="mb-9 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Trae tu arquitectura actual. Identificamos brechas en resiliencia, automatización de entrega y observabilidad.
+      </p>
+      <a href="/es/contacto" class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);">
+        Agendar revisión técnica
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</Layout>

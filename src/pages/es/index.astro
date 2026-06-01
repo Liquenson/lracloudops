@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
+  .slice(0, 3)
+---
+
+<Layout
+  titulo="Infraestructura Cloud y Platform Engineering"
+  descripcion="Infraestructura cloud y platform engineering. Kubernetes, Terraform y AWS — diseñados para fiabilidad operacional y entrega automatizada."
+>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden hero-gradient" aria-labelledby="hero-heading">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.14) 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+      style="background: radial-gradient(ellipse 90% 60% at 50% 115%, rgba(37,99,235,0.22) 0%, transparent 65%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-24 sm:py-32 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
+      <div class="animate-fade-left">
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8 text-xs font-semibold"
+          style="background: rgba(37,99,235,0.15); border: 1px solid rgba(96,165,250,0.3); color: #93C5FD;">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0 animate-pulse-soft" aria-hidden="true"></span>
+          Infraestructura Cloud &middot; Platform Engineering
+        </div>
+
+        <h1 id="hero-heading"
+          class="text-[44px] sm:text-[58px] lg:text-[68px] font-extrabold text-white leading-[1.04] mb-7"
+          style="letter-spacing: -0.035em;">
+          Platform engineering<br />para infraestructura<br />
+          <span style="color: #60A5FA;">que tiene que funcionar.</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl leading-relaxed mb-10 max-w-[520px]" style="color: rgba(148,163,184,0.85);">
+          Infraestructura reproducible. Entrega automatizada. Resiliencia operacional desde el primer día. Sin aprovisionamiento manual, sin arquitectura improvisada, sin cambios no rastreados.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-12">
+          <a href="/es/contacto"
+            class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+            style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.45);">
+            Iniciar revisión de infraestructura
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/es/servicios"
+            class="inline-flex items-center gap-2.5 text-sm font-semibold px-7 py-4 rounded-xl border transition-all hover:bg-white/10"
+            style="color: rgba(148,163,184,0.9); border-color: rgba(148,163,184,0.25);">
+            Ver cómo trabajamos
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { value: '3+', label: 'Años en producción' },
+            { value: '20+', label: 'Herramientas como código' },
+            { value: '99.9%', label: 'Objetivo de uptime' },
+            { value: 'IaC', label: 'Sin aprovisionamiento manual' },
+          ].map(({ value, label }) => (
+            <div class="text-center px-3 py-4 rounded-xl"
+              style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+              <div class="text-xl sm:text-2xl font-extrabold text-white mb-1" style="letter-spacing: -0.03em;">{value}</div>
+              <div class="text-[10px] font-semibold uppercase tracking-wider" style="color: rgba(148,163,184,0.55);">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Terminal mockup -->
+      <div class="relative flex justify-center lg:justify-end animate-fade-up delay-200">
+        <div class="relative w-full max-w-[510px]">
+          <div class="absolute -inset-6 rounded-3xl pointer-events-none" aria-hidden="true"
+            style="background: radial-gradient(ellipse at center, rgba(37,99,235,0.25) 0%, transparent 70%); filter: blur(24px);"></div>
+          <div class="relative rounded-2xl overflow-hidden"
+            style="background: #0d1117; border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 40px 80px rgba(0,0,0,0.55);">
+            <div class="flex items-center gap-2 px-4 py-3.5"
+              style="background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.07);">
+              <div class="w-3 h-3 rounded-full" style="background: #FF5F57;" aria-hidden="true"></div>
+              <div class="w-3 h-3 rounded-full" style="background: #FEBC2E;" aria-hidden="true"></div>
+              <div class="w-3 h-3 rounded-full" style="background: #28C840;" aria-hidden="true"></div>
+              <span class="ml-auto text-xs font-mono" style="color: rgba(255,255,255,0.25);">terraform apply</span>
+            </div>
+            <div class="p-5 font-mono text-xs leading-relaxed" style="color: #e2e8f0;">
+              <div style="color: #7dd3fc;">$ terraform apply -auto-approve</div>
+              <div class="mt-2" style="color: rgba(255,255,255,0.4);">Plan: 23 to add, 0 to change, 0 to destroy.</div>
+              <div class="mt-3">
+                <span style="color: #86efac;">aws_vpc.main</span>
+                <span style="color: rgba(255,255,255,0.4);"> ...</span>
+                <span style="color: #4ade80;"> [creado]</span>
+              </div>
+              <div><span style="color: #86efac;">aws_eks_cluster.main</span><span style="color: rgba(255,255,255,0.4);"> ...</span><span style="color: #4ade80;"> [creado]</span></div>
+              <div><span style="color: #86efac;">aws_rds_cluster.main</span><span style="color: rgba(255,255,255,0.4);"> ...</span><span style="color: #4ade80;"> [creado]</span></div>
+              <div class="mt-3" style="color: #4ade80;">Apply complete! 23 resources added.</div>
+              <div class="mt-2" style="color: rgba(255,255,255,0.3);">Duración: 4m 32s</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section class="bg-white py-20 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14 animate-fade-up">
+        <span class="section-label mb-4">Disciplinas de plataforma</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540; letter-spacing: -0.02em;">Cuatro disciplinas. Un modelo operativo.</h2>
+        <p class="max-w-2xl mx-auto" style="color: #64748b;">Cada capa reduce la superficie operativa que tus equipos gestionan. Juntas forman una plataforma de entrega repetible.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { label: '01', title: 'Infraestructura Cloud', desc: 'Entornos AWS codificados. Terraform, VPC, EKS, RDS — cada recurso con propietario y cada cambio con commit.', href: '/cloud-infrastructure' },
+          { label: '02', title: 'Platform Engineering', desc: 'Plataformas Kubernetes como infraestructura self-service. Los equipos despliegan haciendo merge de un PR.', href: '/platform-engineering' },
+          { label: '03', title: 'Automatización DevOps', desc: 'Pipelines CI/CD con quality gates, rollback automatizado y trazabilidad completa de cada release.', href: '/devops-automation' },
+          { label: '04', title: 'Observabilidad', desc: 'Prometheus, Grafana y CloudWatch configurados desde el primer día — no después del primer incidente.', href: '/observability' },
+        ].map(s => (
+          <a href={s.href} class="card p-7 flex flex-col hover:-translate-y-1 transition-all duration-200 group">
+            <span class="text-xs font-bold mb-4" style="color: #c3d9ff;">{s.label}</span>
+            <h3 class="text-lg font-bold mb-3 group-hover:text-[#1E6FFF] transition-colors" style="color: #0A2540;">{s.title}</h3>
+            <p class="text-sm leading-relaxed flex-1" style="color: #64748b;">{s.desc}</p>
+            <div class="mt-5 flex items-center gap-1.5 text-xs font-semibold" style="color: #1E6FFF;">
+              Más detalle
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
+    <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6" style="letter-spacing: -0.02em;">Reserva una revisión técnica.</h2>
+      <p class="mb-9 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Trae tu arquitectura actual. Identificamos brechas en resiliencia, automatización de entrega y observabilidad — y trazamos un camino concreto.
+      </p>
+      <a href="/es/contacto"
+        class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]"
+        style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);">
+        Agendar consulta
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</Layout>

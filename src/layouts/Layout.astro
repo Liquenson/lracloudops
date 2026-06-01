@@ -1,29 +1,45 @@
 ---
 import '../styles/global.css'
+import { getLangFromUrl, getAlternateUrl } from '../i18n'
 
 interface Props {
   titulo: string
   descripcion: string
   schema?: Record<string, unknown> | null
+  ogType?: 'website' | 'article'
+  ogImage?: string
 }
 
-const { titulo, descripcion, schema = null } = Astro.props
+const { titulo, descripcion, schema = null, ogType = 'website', ogImage } = Astro.props
 const currentPath = Astro.url.pathname
+const lang = getLangFromUrl(Astro.url)
 const canonicalURL = new URL(currentPath, 'https://lracloudops.com')
+
+const finalOgImage = ogImage ?? 'https://lracloudops.com/og-image.png'
+
+// hreflang alternates
+const enUrl = 'https://lracloudops.com' + getAlternateUrl(currentPath, 'en')
+const esUrl = 'https://lracloudops.com' + getAlternateUrl(currentPath, 'es')
 
 // Auto-generate BreadcrumbList from the URL path
 const pathLabels: Record<string, string> = {
+  // English routes
+  services: 'Solutions',
+  projects: 'Case Studies',
+  about: 'About',
+  contact: 'Contact',
   blog: 'Blog',
-  projects: 'Projects',
-  proyectos: 'Case Studies',
-  servicios: 'Solutions',
-  'sobre-nosotros': 'About',
-  contacto: 'Contact',
   'case-studies': 'Case Studies',
   'cloud-infrastructure': 'Cloud Infrastructure',
   'platform-engineering': 'Platform Engineering',
   'devops-automation': 'DevOps Automation',
   observability: 'Observability',
+  // Spanish routes (under /es/)
+  es: 'ES',
+  servicios: 'Soluciones',
+  proyectos: 'Casos de uso',
+  nosotros: 'Nosotros',
+  contacto: 'Contacto',
 }
 const segments = currentPath.split('/').filter(Boolean)
 const breadcrumbItems = [
@@ -46,9 +62,9 @@ const organizationSchema = {
   name: 'LRA Cloud Ops',
   url: 'https://lracloudops.com',
   logo: 'https://lracloudops.com/logo.svg',
-  email: 'liquenson.cloud@gmail.com',
+  email: 'info@lracloudops.com',
   foundingDate: '2024',
-  description: 'Cloud infrastructure, Kubernetes platforms, DevOps automation and AWS consulting.',
+  description: 'Cloud infrastructure, Kubernetes platforms, DevOps automation and AWS platform engineering.',
   knowsAbout: ['Cloud Infrastructure', 'Platform Engineering', 'Kubernetes', 'Terraform', 'AWS', 'GitOps', 'DevOps', 'ArgoCD', 'CI/CD', 'SRE'],
   sameAs: [
     'https://www.linkedin.com/in/liquenson-ruben-490961269/',
@@ -64,45 +80,66 @@ const websiteSchema = {
   name: 'LRA Cloud Ops',
   description: 'Cloud infrastructure, Kubernetes platforms and DevOps automation.',
   publisher: { '@id': 'https://lracloudops.com/#organization' },
-  inLanguage: 'en-US',
+  inLanguage: lang === 'es' ? 'es-ES' : 'en-US',
 }
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/servicios', label: 'Solutions' },
-  { href: '/proyectos', label: 'Case Studies' },
-  { href: '/sobre-nosotros', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-]
+const navLinks = lang === 'es'
+  ? [
+      { href: '/es', label: 'Inicio' },
+      { href: '/es/servicios', label: 'Soluciones' },
+      { href: '/es/proyectos', label: 'Casos de uso' },
+      { href: '/es/nosotros', label: 'Nosotros' },
+      { href: '/es/blog', label: 'Blog' },
+    ]
+  : [
+      { href: '/', label: 'Home' },
+      { href: '/services', label: 'Solutions' },
+      { href: '/projects', label: 'Case Studies' },
+      { href: '/about', label: 'About' },
+      { href: '/blog', label: 'Blog' },
+    ]
+
+const contactHref = lang === 'es' ? '/es/contacto' : '/contact'
+const ctaLabel   = lang === 'es' ? 'Agendar consulta' : 'Schedule Consultation'
+const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main content'
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang === 'es' ? 'es' : 'en'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cloud Infrastructure & Platform Engineering | LRA Cloud Ops</title>
+    <title>{titulo} | LRA Cloud Ops</title>
     <meta name="description" content={descripcion} />
     <meta name="keywords" content="cloud infrastructure, platform engineering, DevOps consulting, AWS, Kubernetes, Terraform, GitOps, ArgoCD, Infrastructure as Code, SRE, CI/CD automation" />
     <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- hreflang internationalization -->
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={`${titulo} | LRA Cloud Ops`} />
     <meta property="og:description" content={descripcion} />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="LRA Cloud Ops" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="https://lracloudops.com/og-image.png" />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta property="og:image" content={finalOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {ogType === 'article' && <meta property="article:publisher" content="https://lracloudops.com" />}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${titulo} | LRA Cloud Ops`} />
     <meta name="twitter:description" content={descripcion} />
-    <meta name="twitter:image" content="https://lracloudops.com/og-image.png" />
+    <meta name="twitter:image" content={finalOgImage} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- Structured Data — Organization -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
@@ -113,17 +150,17 @@ const navLinks = [
     <!-- Structured Data — Per-page schema (Article, Service, ItemList, etc.) -->
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
-    <!-- Fonts: Inter + IBM Plex Sans (enterprise pairing) -->
+    <!-- Fonts: Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
 
   <body class="bg-white text-gray-900 antialiased">
 
     <!-- ── SKIP NAVIGATION (accessibility) ── -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:font-semibold">
-      Skip to main content
+      {skipLabel}
     </a>
 
     <!-- ── STICKY NAVBAR ─────────────────────────────────────────────── -->
@@ -138,14 +175,16 @@ const navLinks = [
       >
 
         <!-- Logo -->
-        <a href="/" class="flex-shrink-0 z-50 flex items-center gap-2.5" aria-label="LRA Cloud Ops — Home">
+        <a href={lang === 'es' ? '/es' : '/'} class="flex-shrink-0 z-50 flex items-center gap-2.5" aria-label="LRA Cloud Ops — Home">
           <img src="/logo.svg" alt="LRA Cloud Ops" class="h-[38px] w-auto" />
         </a>
 
         <!-- Desktop Nav -->
         <div class="hidden lg:flex items-center gap-0.5">
           {navLinks.map(({ href, label }) => {
-            const isActive = href === '/' ? currentPath === '/' : currentPath.startsWith(href)
+            const isActive = href === '/' || href === '/es'
+              ? currentPath === href
+              : currentPath.startsWith(href)
             return (
               <a
                 href={href}
@@ -165,8 +204,24 @@ const navLinks = [
           })}
         </div>
 
-        <!-- Desktop CTA -->
+        <!-- Desktop CTA + Language Switcher -->
         <div class="hidden lg:flex items-center gap-3 flex-shrink-0">
+
+          <!-- Language switcher -->
+          <div class="flex items-center gap-0 text-xs font-semibold rounded-lg overflow-hidden" style="border: 1px solid #e2e8f0;">
+            <a
+              href={enUrl}
+              class={`px-2.5 py-1.5 transition-colors ${lang !== 'es' ? 'bg-[#0A2540] text-white' : 'text-[#64748B] hover:bg-gray-50'}`}
+              aria-label="Switch to English"
+            >EN</a>
+            <span style="width:1px; background:#e2e8f0; align-self:stretch;"></span>
+            <a
+              href={esUrl}
+              class={`px-2.5 py-1.5 transition-colors ${lang === 'es' ? 'bg-[#0A2540] text-white' : 'text-[#64748B] hover:bg-gray-50'}`}
+              aria-label="Cambiar a español"
+            >ES</a>
+          </div>
+
           <a
             href="https://github.com/Liquenson"
             target="_blank"
@@ -179,11 +234,11 @@ const navLinks = [
             </svg>
           </a>
           <a
-            href="/contacto"
+            href={contactHref}
             class="text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-px active:scale-[0.98]"
             style="background: #2563EB; box-shadow: 0 2px 8px rgba(37,99,235,0.3);"
           >
-            Schedule Consultation
+            {ctaLabel}
           </a>
         </div>
 
@@ -221,14 +276,22 @@ const navLinks = [
       class="fixed top-0 right-0 bottom-0 z-40 w-72 lg:hidden flex flex-col"
       style="background: white; transform: translateX(100%); transition: transform 0.32s cubic-bezier(0.4,0,0.2,1); box-shadow: -12px 0 40px rgba(11,18,32,0.15);"
     >
-      <div class="h-[64px] flex-shrink-0 border-b border-gray-100 flex items-center px-5">
+      <div class="h-[64px] flex-shrink-0 border-b border-gray-100 flex items-center justify-between px-5">
         <span class="text-[10px] font-bold uppercase tracking-widest" style="color: #2563EB;">Navigation</span>
+        <!-- Mobile language switcher -->
+        <div class="flex items-center gap-0 text-xs font-semibold rounded-lg overflow-hidden" style="border: 1px solid #e2e8f0;">
+          <a href={enUrl} class={`px-2.5 py-1.5 transition-colors ${lang !== 'es' ? 'bg-[#0A2540] text-white' : 'text-[#64748B]'}`}>EN</a>
+          <span style="width:1px; background:#e2e8f0; align-self:stretch;"></span>
+          <a href={esUrl} class={`px-2.5 py-1.5 transition-colors ${lang === 'es' ? 'bg-[#0A2540] text-white' : 'text-[#64748B]'}`}>ES</a>
+        </div>
       </div>
 
       <nav class="flex-1 overflow-y-auto px-4 py-5">
         <div class="flex flex-col gap-0.5">
           {navLinks.map(({ href, label }) => {
-            const isActive = href === '/' ? currentPath === '/' : currentPath.startsWith(href)
+            const isActive = href === '/' || href === '/es'
+              ? currentPath === href
+              : currentPath.startsWith(href)
             return (
               <a
                 href={href}
@@ -252,11 +315,11 @@ const navLinks = [
 
       <div class="flex-shrink-0 px-4 pb-6 pt-4 border-t border-gray-100">
         <a
-          href="/contacto"
+          href={contactHref}
           class="flex items-center justify-center gap-2 w-full text-sm font-semibold text-white py-3.5 rounded-xl transition-all hover:opacity-90 mb-3"
           style="background: #2563EB; box-shadow: 0 4px 14px rgba(37,99,235,0.35);"
         >
-          Schedule Consultation
+          {ctaLabel}
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -304,7 +367,7 @@ const navLinks = [
 
           <!-- Brand col (spans 2 on lg) -->
           <div class="col-span-2 lg:col-span-2">
-            <a href="/" class="inline-block mb-5" aria-label="LRA Cloud Ops — Home">
+            <a href={lang === 'es' ? '/es' : '/'} class="inline-block mb-5" aria-label="LRA Cloud Ops — Home">
               <img
                 src="/logo.svg"
                 alt="LRA Cloud Ops"
@@ -341,9 +404,9 @@ const navLinks = [
                 </svg>
               </a>
             </div>
-            <div class="flex items-center gap-2 text-sm" style="color: rgba(16,185,129,0.9);">
+            <div class="flex items-center gap-2 text-sm" style="color: rgba(52,211,153,0.9);">
               <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" aria-hidden="true"></span>
-              <span>Available for new projects</span>
+              <span>Accepting new engagements</span>
             </div>
           </div>
 
@@ -374,7 +437,7 @@ const navLinks = [
             <ul class="space-y-3">
               {[
                 { label: 'Blog', href: '/blog' },
-                { label: 'Case Studies', href: '/case-studies' },
+                { label: 'Case Studies', href: '/projects' },
                 { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
               ].map(({ label, href, external }) => (
                 <li>
@@ -395,8 +458,8 @@ const navLinks = [
             <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">Company</h3>
             <ul class="space-y-3">
               {[
-                { label: 'About', href: '/sobre-nosotros' },
-                { label: 'Contact', href: '/contacto' },
+                { label: 'About', href: '/about' },
+                { label: 'Contact', href: '/contact' },
               ].map(({ label, href }) => (
                 <li>
                   <a
@@ -408,7 +471,7 @@ const navLinks = [
               ))}
               <li class="pt-2">
                 <a
-                  href="/contacto"
+                  href="/contact"
                   class="inline-flex items-center gap-1.5 text-xs font-semibold text-white px-3.5 py-2 rounded-lg transition-all hover:opacity-90"
                   style="background: rgba(37,99,235,0.25); border: 1px solid rgba(37,99,235,0.4);"
                 >
@@ -436,7 +499,7 @@ const navLinks = [
               Cloudflare Edge Network
             </div>
             <span style="color: rgba(255,255,255,0.05);" aria-hidden="true">|</span>
-            <span class="text-xs font-mono" style="color: rgba(148,163,184,0.25);">v3.0</span>
+            <span class="text-xs font-mono" style="color: rgba(148,163,184,0.25);">v4.0</span>
           </div>
         </div>
       </div>
