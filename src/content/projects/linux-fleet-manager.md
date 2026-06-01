@@ -1,9 +1,9 @@
 ---
 titulo: "Linux Fleet Manager"
-descripcion: "Framework de automatización Bash v2.1.0 para gestionar flotas de servidores Linux a escala. Genera inventarios en CSV y JSON con CI/CD multi-plataforma validado con ShellCheck en Ubuntu, macOS y Windows."
+descripcion: "Bash automation framework for Linux fleet inventory collection. Cross-platform with set -euo pipefail hardening, SSH BatchMode for remote hosts, TTY detection for terminal vs pipeline execution and structured CSV/JSON output."
 fecha: 2026-05-01
-categoria: "SRE & Automatización"
-madurez: "Producción"
+categoria: "SRE & Automation"
+madurez: "Production"
 stack: ["Bash 4.0+", "ShellCheck", "SSH", "CSV / JSON", "GitHub Actions", "Ubuntu", "macOS", "Windows Git Bash"]
 cicd: true
 github: "https://github.com/Liquenson/linux-fleet-manager"
@@ -11,75 +11,61 @@ featured: false
 iconPath: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
 draft: false
 metricas:
-  - { label: "Plataformas CI", value: "3" }
-  - { label: "Formatos salida", value: "CSV + JSON" }
-  - { label: "Versión actual", value: "v2.1.0" }
-  - { label: "Validación", value: "ShellCheck 0 errores" }
+  - { label: "CI Platforms", value: "3" }
+  - { label: "Output Formats", value: "CSV + JSON" }
+  - { label: "Version", value: "v2.1.0" }
+  - { label: "Validation", value: "ShellCheck 0 errors" }
 highlights:
-  - "set -euo pipefail en todos los scripts: fallo inmediato ante errores, variables no declaradas y pipes fallidos"
-  - "Guard anti re-sourcing en lib/common.sh: previene doble inicialización en pipelines complejos"
-  - "TTY detection automática: colores ANSI en terminal interactiva, salida limpia en pipe y logs"
-  - "Cross-platform: detección de CPU en Linux (/proc/cpuinfo), macOS (sysctl) y Windows (NUMBER_OF_PROCESSORS)"
-  - "SSH enterprise-level: BatchMode=yes y ConnectTimeout=10 para inventario de hosts remotos sin colgarse"
-  - "Argument parsing robusto: --format csv|json, --servers, --help con fallbacks a N/A en lugar de crash"
-  - "CI/CD multi-plataforma: ShellCheck en Ubuntu, macOS y Windows Git Bash en paralelo"
-  - "Exportación dual CSV/JSON lista para importar en CMDB, dashboards o Google Sheets"
+  - "set -euo pipefail across all scripts: immediate failure on errors, undeclared variables and failed pipes"
+  - "Anti-re-sourcing guard in lib/common.sh: prevents double initialization in complex pipelines"
+  - "Automatic TTY detection: ANSI colors in interactive terminal, clean output in pipes and log files"
+  - "Cross-platform CPU detection: Linux (/proc/cpuinfo), macOS (sysctl) and Windows (NUMBER_OF_PROCESSORS)"
+  - "Enterprise-grade SSH: BatchMode=yes and ConnectTimeout=10 for remote host inventory without hanging"
+  - "Robust argument parsing: --format csv|json, --servers, --help with N/A fallbacks instead of crash"
+  - "Multi-platform CI/CD: ShellCheck on Ubuntu, macOS and Windows Git Bash in parallel"
+  - "Dual CSV/JSON export ready for CMDB import, dashboards or programmatic processing"
 arquitectura:
-  - { nombre: "server-inventory.sh", descripcion: "Script principal que recopila datos del sistema local o via SSH en hosts remotos" }
-  - { nombre: "lib/common.sh", descripcion: "Biblioteca de funciones: colores de terminal, logging, manejo de errores reutilizable" }
-  - { nombre: "lib/logger.sh", descripcion: "Sistema de logging estructurado con niveles INFO, WARN y ERROR" }
-  - { nombre: "ShellCheck CI", descripcion: "Análisis estático de scripts Bash en tres sistemas operativos en paralelo en GitHub Actions" }
-  - { nombre: "reports/", descripcion: "Directorio de salida con inventarios timestamped: server-inventory_TIMESTAMP.(csv|json)" }
+  - { nombre: "server-inventory.sh", descripcion: "Main script: collects system data locally or via SSH on remote hosts" }
+  - { nombre: "lib/common.sh", descripcion: "Shared library: terminal colors, logging, reusable error handling functions" }
+  - { nombre: "lib/logger.sh", descripcion: "Structured logging with INFO, WARN and ERROR levels" }
+  - { nombre: "ShellCheck CI", descripcion: "Static analysis of all Bash scripts across three operating systems in parallel" }
+  - { nombre: "reports/", descripcion: "Timestamped output directory: server-inventory_TIMESTAMP.(csv|json)" }
 ---
 
-## Descripción del proyecto
+## Platform overview
 
-Linux Fleet Manager es un framework de automatización Bash diseñado para ingenieros de sistemas y SREs que necesitan mantener visibilidad sobre flotas de servidores Linux sin depender de herramientas SaaS externas ni de agentes instalados en cada host.
+A Bash automation framework for collecting infrastructure inventory from Linux fleets without external dependencies, SaaS tooling or agents installed on remote hosts. A single command generates a structured inventory of local or remote servers in CSV or JSON format, ready for import into CMDBs, dashboards or monitoring systems.
 
-El proyecto nació de una necesidad práctica: cuando gestionas docenas o cientos de servidores, necesitas saber rápidamente qué tienes, en qué estado está y cómo ha cambiado con el tiempo. Un script Bash bien construido puede hacer esto sin dependencias externas, sin costos de licencia y ejecutándose en cualquier entorno con acceso SSH.
+The framework follows the UNIX principle of doing one thing reliably. The main script orchestrates data collection and delegates all reusable logic — logging, error handling, output formatting — to shared libraries in `lib/`.
 
-## El problema que resuelve
+## Design decisions
 
-En entornos enterprise, los equipos de operaciones frecuentemente enfrentan preguntas como:
-- ¿Cuántos servidores tenemos exactamente en producción?
-- ¿Qué versión de kernel ejecuta cada host?
-- ¿Hay diferencias de configuración entre servidores del mismo rol?
+**`set -euo pipefail`** is applied to every script. This combination ensures: the script exits immediately on any command failure (`-e`), treats references to undeclared variables as errors (`-u`), and propagates pipe failures rather than masking them with the exit code of the last command (`-o pipefail`). Without these settings, a failed command in a complex pipeline can be silently ignored.
 
-Sin una herramienta de inventario, responder estas preguntas requiere acceso manual a cada servidor. Con Linux Fleet Manager, el inventario completo se genera con un solo comando.
+**SSH BatchMode** — remote host inventory uses `SSH BatchMode=yes ConnectTimeout=10`. BatchMode prevents SSH from prompting for interactive input (password, host key confirmation) in a non-interactive context, which would cause the script to hang indefinitely. ConnectTimeout bounds the wait for unreachable hosts.
 
-## Arquitectura técnica
+**TTY detection** — the library detects whether output is going to an interactive terminal or a pipe/file, and enables ANSI color codes only in the interactive case. Log files and downstream processes receive clean, parseable output.
 
-El diseño sigue el principio UNIX de hacer una cosa bien. El script principal (`server-inventory.sh`) orquesta la recolección de datos y delega toda la lógica reutilizable — logging, formateo, manejo de errores — a la biblioteca `lib/common.sh`.
+**Cross-platform CPU detection** — Linux, macOS and Windows Git Bash expose CPU count through different interfaces. The script detects the operating system and uses the appropriate source: `/proc/cpuinfo` on Linux, `sysctl -n hw.ncpu` on macOS, `$NUMBER_OF_PROCESSORS` on Windows.
 
-La salida puede ser CSV para importar en Excel o Google Sheets, o JSON para procesamiento programático, integración con APIs o ingesta en sistemas de monitoreo.
+**Anti-re-sourcing guard** — `lib/common.sh` checks whether it has already been sourced before executing initialization. In complex automation pipelines where multiple scripts source the same library, double initialization produces duplicate function definitions and unpredictable behavior.
+
+## Output
+
+Reports are written to `reports/` with timestamps in the filename:
 
 ```bash
-# Inventario local en CSV
+# Local inventory
 ./scripts/inventory/server-inventory.sh --format csv
-
-# Inventario local en JSON
 ./scripts/inventory/server-inventory.sh --format json
+
+# Output: reports/server-inventory_20260601_143022.csv
 ```
 
-Los reportes se escriben automáticamente en `reports/` con timestamp en el nombre del archivo, creando un historial trazable de cambios en la flota a lo largo del tiempo.
+Timestamped output creates a historical record of fleet state changes over time without overwriting previous reports.
 
-## Pipeline CI/CD multi-plataforma
+## CI validation
 
-El pipeline de GitHub Actions ejecuta ShellCheck en paralelo en tres sistemas operativos: Ubuntu, macOS y Windows Git Bash. Esto garantiza que los scripts funcionen en cualquier entorno donde pueda ejecutarse Bash 4.0+.
+GitHub Actions runs ShellCheck on Ubuntu, macOS and Windows Git Bash in parallel. The pipeline fails with zero tolerance for ShellCheck warnings. This CI configuration catches cross-platform compatibility issues that only surface on specific shell versions — Bash on macOS ships as version 3.2 (for licensing reasons) and has meaningful differences from Bash 4.0+ on Linux.
 
-ShellCheck analiza los scripts sin ejecutarlos, detectando errores comunes: variables sin quoting correcto, uso incorrecto de arrays, comandos que pueden fallar silenciosamente. El pipeline falla con cero tolerancia si ShellCheck encuentra cualquier warning.
-
-## Extensibilidad del framework
-
-La arquitectura modular permite añadir nuevas capacidades sin modificar el código existente. El roadmap incluye:
-
-- **Health checks en paralelo:** Verificar conectividad SSH, espacio en disco y carga de CPU en toda la flota simultáneamente
-- **Gestión de usuarios:** Crear/eliminar usuarios y gestionar claves SSH de forma masiva
-- **Parches de seguridad:** Aplicar actualizaciones en grupos de servidores con control de rollout
-- **Verificación de backups:** Confirmar que los backups recientes existen y son válidos en todos los hosts
-
-## Lessons learned
-
-La mayor lección fue sobre compatibilidad cross-platform. Bash en macOS usa Bash 3.2 por razones de licencia, que tiene diferencias significativas con Bash 4.0+ de Linux. Testar en CI con tres sistemas operativos detectó problemas de compatibilidad antes de que llegaran a producción.
-
-La segunda lección: el logging estructurado desde el inicio ahorra tiempo de diagnóstico. Cuando un script falla en un servidor remoto a las 3am, tener logs con timestamp, nivel y contexto hace la diferencia entre un diagnóstico de 5 minutos y uno de 30.
+ShellCheck catches common shell scripting errors: unquoted variable expansions, incorrect array handling, commands that can fail silently, and portability issues between shell versions. Running it across three platforms on every push ensures the scripts work in any environment with Bash 4.0+.

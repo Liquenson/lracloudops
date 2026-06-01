@@ -19,7 +19,7 @@ const projects = defineCollection({
     descripcion: z.string(),
     fecha: z.coerce.date(),
     categoria: z.string(),
-    madurez: z.enum(['Producción', 'En Desarrollo', 'Demo', 'Template']),
+    madurez: z.enum(['Production', 'In Development', 'Reference', 'Starter']),
     stack: z.array(z.string()),
     cicd: z.boolean().default(false),
     github: z.string().nullable().optional(),

@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "generate-og": "node scripts/generate-og.mjs",
     "generate-types": "wrangler types"
   },
   "dependencies": {

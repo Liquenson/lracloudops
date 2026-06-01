@@ -1,27 +1,40 @@
 ---
-titulo: "Docker en producción: multi-stage builds, usuarios no-root y health checks reales"
-descripcion: "Best practices reales de containerización basadas en docker-devops-platform: por qué los multi-stage builds no son solo para reducir tamaño, cómo el usuario no-root cambia el modelo de seguridad, y por qué depends_on no es suficiente."
+titulo: "Production Container Design: Multi-Stage Builds, Non-Root Users and Health Checks"
+descripcion: "The design decisions that separate a container image that runs from one that is production-ready. Multi-stage builds, non-root execution, database connection retry logic and meaningful health check endpoints."
 fecha: 2026-04-28
 tags: ["Docker", "Containerización", "FastAPI", "PostgreSQL", "DevOps", "Seguridad", "CI/CD"]
 draft: false
 ---
 
-## El error de confundir "funciona en Docker" con "está bien containerizado"
+## Problem
 
-Ejecutar `docker build` y `docker run` no es containerización — es solo empaquetar código en un contenedor. La diferencia entre una imagen que "funciona" y una imagen production-ready es el conjunto de decisiones de diseño que tomamos antes de escribir la primera línea del Dockerfile.
+Running `docker build` and `docker run` is not containerization — it is packaging code into a container. The difference between an image that works and an image that is production-ready is a set of design decisions made before writing the first line of the Dockerfile.
 
-El proyecto **docker-devops-platform** nació exactamente de esa necesidad: documentar con código real qué significa containerizar correctamente una aplicación Python con base de datos. No como ejercicio académico, sino como referencia concreta de las decisiones que marcamos como estándar en nuestros proyectos.
+The decisions are not about which base image to choose. They are about attack surface, process isolation, startup behavior and the operational signals the container emits when something is wrong.
 
-Este artículo explica cada decisión, por qué la tomamos y qué problema resuelve.
+## Context
 
-## El Dockerfile completo y por qué está así
+The `docker-devops-platform` project implements a FastAPI backend with a PostgreSQL dependency as a reference for production containerization decisions. Every line of the Dockerfile has a documented reason. This article explains those decisions and the problems each one prevents.
+
+## Architecture
+
+The target architecture: FastAPI running under Uvicorn, PostgreSQL in a companion container, Docker Compose for local orchestration, GitHub Actions for integration testing in CI.
+
+```
+Internet → NGINX (port 80/443) → Uvicorn (port 8000) → PostgreSQL
+```
+
+The container design decisions operate at the Uvicorn layer and below.
+
+## Implementation
+
+### The Dockerfile
 
 ```dockerfile
 # Stage 1: Builder
 FROM python:3.12-slim AS builder
 
 WORKDIR /app
-
 COPY requirements.txt .
 RUN pip install --no-cache-dir --user -r requirements.txt
 
@@ -44,37 +57,31 @@ EXPOSE 8000
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-Son 19 líneas. Cada una tiene una razón de ser.
+19 lines. Each one deliberate.
 
-## Multi-stage build: el beneficio real no es el tamaño
+### Multi-stage builds: the real benefit is attack surface, not image size
 
-El beneficio más citado de los multi-stage builds es la reducción del tamaño de imagen. Es real: eliminar pip, setuptools y las herramientas de compilación reduce la imagen final significativamente. Pero no es el beneficio más importante.
+The most commonly cited benefit of multi-stage builds is image size reduction. Removing pip, setuptools and compilation tools from the runtime image shrinks the layer count. That is real but secondary.
 
-**El beneficio principal es de superficie de ataque.**
+The primary benefit is reduced attack surface. An image with pip installed can install arbitrary packages if the container is compromised. An image without pip cannot. An image with gcc installed can compile native code. An image without it cannot. The runtime stage of a multi-stage build is harder to use as an attack platform.
 
-Una imagen con pip instalado puede instalar paquetes arbitrarios si el contenedor es comprometido. Una imagen sin pip no puede. Una imagen con compiladores instalados puede compilar código nativo. Una imagen sin ellos no puede. La imagen de runtime del multi-stage build es más difícil de usar como plataforma para un atacante.
-
-La mecánica del multi-stage es simple:
+The `--user` flag on pip installs dependencies into `~/.local` rather than the system Python directory. This makes the cross-stage copy explicit:
 
 ```dockerfile
-# Stage 1: instalar dependencias (incluye pip, gcc si hay paquetes nativos)
-FROM python:3.12-slim AS builder
+# Stage 1: install with --user
 RUN pip install --no-cache-dir --user -r requirements.txt
 
-# Stage 2: solo runtime
-FROM python:3.12-slim
+# Stage 2: copy exactly that directory
 COPY --from=builder /root/.local /home/appuser/.local
 ```
 
-El `--user` flag en pip instala las dependencias en `~/.local` en lugar de en el sistema. Esto hace más sencilla la copia entre stages: solo necesitamos copiar ese directorio, no toda la instalación de Python del sistema.
+Only the application dependencies are copied. No build tooling, no cache, no intermediate files.
 
-## Usuario no-root: por qué importa y cómo se implementa
+### Non-root execution
 
-Los contenedores corren como root por defecto. Esto no es solo un problema teórico — si hay una vulnerabilidad en FastAPI, en uvicorn o en cualquier dependencia, y un atacante logra ejecutar código arbitrario dentro del contenedor, tiene privilegios de root.
+Containers run as root by default. This is not an abstract risk: if there is a vulnerability in FastAPI, Uvicorn or any dependency and an attacker achieves arbitrary code execution inside the container, they have root privileges.
 
-Root dentro del contenedor no es lo mismo que root en el host (gracias a los namespaces de Linux), pero sigue siendo problemático: puede leer cualquier archivo del sistema de archivos del contenedor, puede escribir en el filesystem del host si hay un volumen montado sin restricciones, y puede intentar explotar vulnerabilidades del kernel.
-
-La solución:
+Root inside a container is not the same as root on the host — Linux namespaces provide isolation — but it remains problematic. A root process can read any file in the container filesystem, can write to host volumes mounted without explicit restrictions and can attempt kernel exploit paths.
 
 ```dockerfile
 RUN useradd -m appuser
@@ -82,13 +89,13 @@ RUN useradd -m appuser
 USER appuser
 ```
 
-Creamos un usuario sin privilegios antes de cambiar al mismo. El flag `-m` crea el directorio home — necesario porque pip instala en `~/.local` y necesitamos que ese directorio exista para el usuario correcto.
+The `-m` flag creates the home directory. This is required because pip installs into `~/.local`, and that directory must exist for the correct user before the process runs.
 
-Un detalle importante: si el proceso del contenedor necesita escribir en algún directorio, ese directorio debe tener permisos para el usuario `appuser`. Las imágenes que corren como root evitan este problema pero al precio de la seguridad.
+A non-root container requires that any directory the process writes to has permissions for `appuser`. This is a design constraint that surfaces file permission issues early — in development, not in production.
 
-## La aplicación FastAPI y los endpoints
+### Health check endpoints
 
-La aplicación es un backend FastAPI + Uvicorn con dos endpoints:
+The application exposes two endpoints with distinct semantics:
 
 ```python
 @app.get("/")
@@ -105,146 +112,99 @@ def health():
         return {"status": "error", "db": str(e)}
 ```
 
-El endpoint `/` es solo información. El endpoint `/health` activamente verifica la conectividad con PostgreSQL. Esta diferencia es fundamental para Kubernetes: los liveness probes y readiness probes deben distinguir entre "el proceso Python está vivo" y "la aplicación puede servir tráfico correctamente".
+The `/` endpoint confirms the process is alive. The `/health` endpoint confirms the application can serve traffic — which requires a functioning database connection.
 
-Un health check que solo verifica que el proceso está vivo da falsos positivos. Un health check que verifica la conectividad con la base de datos detecta el problema real que causaría errores a los usuarios.
+For Kubernetes liveness and readiness probes, this distinction is critical. A liveness probe that only verifies the process is running will pass even when the database connection pool is exhausted. A readiness probe that checks `/health` will remove the pod from load balancer rotation when the database is unreachable, preventing requests from being routed to a pod that cannot serve them.
 
-## Retry logic: por qué depends_on no es suficiente
+### Connection retry logic
 
-El `depends_on` de Docker Compose tiene una limitación fundamental que no está bien documentada: verifica que el **contenedor** esté en estado `running`, no que la **aplicación dentro del contenedor** esté lista para recibir conexiones.
+Docker Compose `depends_on` has a documented limitation: it verifies that the container is in `running` state, not that the application inside the container is ready to accept connections.
 
-PostgreSQL tarda 2-4 segundos en inicializar su cluster de datos después de que el contenedor arranca. Durante esos segundos, el proceso está vivo pero el puerto 5432 no acepta conexiones. Sin retry logic, la aplicación falla inmediatamente al intentar conectarse y el contenedor se reinicia en loop.
-
-La implementación de retry logic:
+PostgreSQL takes 2-4 seconds after container startup to initialize its data cluster. During that window, the port is not accepting connections. Without retry logic, the application fails immediately on startup and enters a crash loop.
 
 ```python
 def get_db_connection(retries=5, delay=2):
     for _ in range(retries):
         try:
             return psycopg2.connect(
-                host=os.getenv("DB_HOST") or "db",
-                port=int(os.getenv("DB_PORT") or 5432),
-                dbname=os.getenv("DB_NAME") or "app_db",
-                user=os.getenv("DB_USER") or "app_user",
-                password=os.getenv("DB_PASSWORD") or "secure_password",
+                host=os.getenv("DB_HOST", "db"),
+                port=int(os.getenv("DB_PORT", 5432)),
+                dbname=os.getenv("DB_NAME", "app_db"),
+                user=os.getenv("DB_USER", "app_user"),
+                password=os.getenv("DB_PASSWORD"),
             )
         except Exception:
             time.sleep(delay)
-    raise Exception("Database connection failed")
+    raise Exception("Database connection failed after retries")
 ```
 
-5 intentos con 2 segundos de espera entre cada uno: hasta 10 segundos de gracia para que la base de datos esté lista. Si después de eso sigue sin conectar, falla con un error claro (no un stack trace de psycopg2).
+5 attempts with 2-second intervals: up to 10 seconds of grace before failing with a clear error message rather than a psycopg2 stack trace. The error message matters during incidents — a clear failure reason reduces time to diagnosis.
 
-## Docker Compose: orquestar sin Kubernetes
+### CMD array syntax
 
-El Docker Compose de desarrollo declara los dos servicios y sus dependencias:
+```dockerfile
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+The JSON array form of CMD runs the executable directly as PID 1. The shell form — `CMD uvicorn ...` — runs the command under `/bin/sh -c`, making the shell PID 1 and Uvicorn a child process. Signals sent by Docker (SIGTERM on `docker stop`) are received by the shell, which may or may not propagate them to the child. The array form ensures signals reach the application process directly.
+
+## Operational Considerations
+
+**Docker Compose for local development**
 
 ```yaml
 services:
   app:
     build:
       context: ../app
-    container_name: docker-devops-app
     ports:
       - "8000:8000"
     environment:
-      APP_ENV: development
       DB_HOST: db
       DB_PORT: 5432
       DB_NAME: app_db
       DB_USER: app_user
-      DB_PASSWORD: secure_password
+      DB_PASSWORD: ${DB_PASSWORD}
     depends_on:
       - db
     restart: always
 
   db:
     image: postgres:15-alpine
-    container_name: postgres-db
     environment:
       POSTGRES_DB: app_db
       POSTGRES_USER: app_user
-      POSTGRES_PASSWORD: secure_password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    restart: always
 
 volumes:
   postgres_data:
 ```
 
-El volumen `postgres_data` persiste los datos de PostgreSQL entre reinicios de contenedores. Sin el volumen, cada `docker compose down` borra todos los datos. Para desarrollo está bien — para producción, los datos de la base de datos no deberían estar en un volumen local sino en un servicio gestionado (RDS, Cloud SQL, etc.).
+The `postgres_data` named volume persists database state across container restarts. Without it, every `docker compose down` destroys the database. In production, the database should be a managed service (RDS, Cloud SQL) — not a container volume.
 
-La imagen `postgres:15-alpine` es preferible a `postgres:15`: la variante alpine es más pequeña y tiene menos paquetes instalados, reduciendo también la superficie de ataque del contenedor de base de datos.
+The `postgres:15-alpine` variant is smaller and has fewer installed packages than `postgres:15`, reducing attack surface in the database container as well.
 
-## El pipeline CI/CD: integración real, no tests unitarios
+**Credentials in development vs production** — the Docker Compose file uses environment variables for credentials. In development these come from a `.env` file. In production, credentials must come from a secrets management system: AWS Secrets Manager, Kubernetes Secrets or equivalent. The rule: if the value changes between environments, it is a variable. If the value is sensitive, it never appears in a Dockerfile, Compose file or source control.
 
-El pipeline de GitHub Actions es deliberadamente simple porque su objetivo es específico: verificar que los servicios realmente arrancan y se comunican entre sí, no solo que el código compila.
+**CI integration testing** — the GitHub Actions pipeline verifies not just that the image builds, but that the full stack starts and the health endpoint responds:
 
 ```yaml
-jobs:
-  integration-test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Build image
-        run: docker build -t docker-devops-app ./app
-        
-      - name: Start services
-        run: docker compose -f docker/docker-compose.dev.yml up -d
-        
-      - name: Wait for services
-        run: sleep 10
-        
-      - name: Verify health
-        run: |
-          curl -f http://localhost:8000/health
-          
-      - name: Cleanup
-        run: docker compose -f docker/docker-compose.dev.yml down
+- name: Start services
+  run: docker compose -f docker/docker-compose.dev.yml up -d
+- name: Wait for startup
+  run: sleep 10
+- name: Verify health
+  run: curl -f http://localhost:8000/health
+- name: Cleanup
+  run: docker compose -f docker/docker-compose.dev.yml down
 ```
 
-Este tipo de test de integración detecta problemas que los tests unitarios no pueden detectar:
-- ¿El Dockerfile compila correctamente en un ambiente limpio?
-- ¿La aplicación puede conectarse a PostgreSQL con las credenciales configuradas?
-- ¿El endpoint `/health` devuelve 200 cuando todo está bien?
+This integration test catches problems that unit tests cannot: a Dockerfile that builds but fails at runtime, missing environment variables, a database connection that fails under real network conditions.
 
-Los tests unitarios pueden pasar perfectamente aunque el Dockerfile esté roto o las variables de entorno estén mal configuradas.
+## Outcome
 
-## NGINX como reverse proxy (próximo paso)
+The design decisions documented here address specific failure modes. Multi-stage builds reduce the tools available to an attacker inside a compromised container. Non-root execution limits the blast radius of a container escape. Connection retry logic eliminates the startup ordering problem that causes crash loops in orchestrated environments. The JSON CMD form ensures signals propagate correctly during graceful shutdown.
 
-La plataforma tiene un Dockerfile de NGINX preparado (`nginx/Dockerfile`) para el siguiente paso: poner un reverse proxy delante de uvicorn.
-
-Un reverse proxy resuelve varios problemas que uvicorn no maneja bien por sí solo:
-
-- **Rate limiting:** uvicorn no implementa limitación de requests por IP
-- **Headers de seguridad:** `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`
-- **Terminación SSL:** uvicorn puede hacer SSL pero es más complejo de configurar que NGINX
-- **Buffering:** NGINX bufferiza requests lentos y los pasa a uvicorn cuando están completos, protegiendo de ataques slowloris
-
-La arquitectura completa con NGINX:
-
-```
-Internet → NGINX (puerto 80/443) → uvicorn (puerto 8000) → PostgreSQL
-```
-
-## Variables de entorno: lo que nunca debe estar en la imagen
-
-Las credenciales de base de datos en el Docker Compose de desarrollo están en texto plano. Esto está bien para desarrollo local donde no hay datos sensibles. Para producción, las credenciales deben venir de un sistema de secretos:
-
-- **AWS:** Secrets Manager (que es exactamente lo que usamos en NexoraTech)
-- **Kubernetes:** Secrets de Kubernetes (cifrados en etcd)
-- **Docker Swarm:** Docker Secrets
-
-La regla es simple: si el valor cambia entre ambientes, va en una variable de entorno. Si el valor es sensible, va en un sistema de secretos. Nunca en el Dockerfile, nunca en el Compose, nunca en Git.
-
-## Lecciones aprendidas
-
-**La primera lección fue sobre el `--user` flag de pip.** Al instalar con `pip install --user` en el builder stage, las dependencias van a `/root/.local`. Pero cuando creamos `appuser` en el runtime stage y cambiamos `USER appuser`, el PATH de las dependencias ya no apunta al directorio correcto. La solución es copiar explícitamente el directorio de dependencias al home del nuevo usuario: `COPY --from=builder /root/.local /home/appuser/.local` y ajustar el PATH.
-
-**La segunda lección fue sobre la diferencia entre `healthcheck` en Compose y retry logic en la aplicación.** Son complementarios, no alternativos. El healthcheck de Compose determina cuándo el contenedor está "healthy" para que `depends_on: condition: service_healthy` funcione. La retry logic en la aplicación es el fallback cuando el healthcheck no es suficientemente granular o cuando la aplicación arranca antes de que la condición de healthcheck esté satisfecha.
-
-**La tercera lección fue sobre los logs de contenedores.** Un contenedor que corre como `appuser` puede tener problemas para escribir en algunos directorios del filesystem. Configurar el logging para que salga por stdout/stderr (no a archivos) resuelve esto y es además la práctica correcta en contenedores: Docker captura stdout/stderr y los hace disponibles via `docker logs`.
-
-Si estás containerizando aplicaciones Python para producción y quieres una segunda opinión sobre tu Dockerfile o tu estrategia de imágenes, [escríbenos](/contacto).
+A container built with these properties starts reliably, fails clearly when dependencies are unavailable, handles shutdown gracefully and presents minimal attack surface. These are not optimizations for high-traffic workloads — they are baseline requirements for any container running in a production environment.

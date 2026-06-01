@@ -1,9 +1,9 @@
 ---
-titulo: "NexoraTech"
-descripcion: "Plataforma SaaS cloud-native enterprise con Spring Boot 4.0.3, React 18 y AWS ECS Fargate. Arquitectura full-stack production-ready con autenticación JWT + MFA (TOTP), Terraform modular en 10 módulos, pipelines CI/CD sin credenciales via OIDC y entrega global via CloudFront."
+titulo: "NexoraTech SaaS Platform"
+descripcion: "Enterprise SaaS platform with Spring Boot 4.0.3, React 18 and AWS ECS Fargate. JWT + MFA TOTP authentication, Testcontainers integration testing against real PostgreSQL, 10 Terraform modules and three OIDC CI/CD pipelines."
 fecha: 2026-05-08
-categoria: "Full-Stack & Cloud"
-madurez: "Producción"
+categoria: "Platform Engineering"
+madurez: "Production"
 stack: ["Spring Boot 4.0.3", "Java 17", "React 18.3.1", "Vite 5.4.14", "Zustand", "i18next", "JJWT 0.12.6", "Flyway", "Testcontainers", "MapStruct", "PostgreSQL 15", "Terraform 1.9.8", "AWS ECS Fargate", "CloudFront", "ALB", "S3", "RDS", "Docker", "GitHub Actions", "AWS Secrets Manager"]
 cicd: true
 github: null
@@ -11,174 +11,62 @@ featured: false
 iconPath: "M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"
 draft: false
 metricas:
-  - { label: "Módulos Terraform", value: "10" }
-  - { label: "Ambientes", value: "Dev / Staging / Prod" }
-  - { label: "Pipelines CI/CD", value: "3 paralelos" }
-  - { label: "Capas de seguridad", value: "JWT + MFA + OIDC" }
+  - { label: "Terraform Modules", value: "10" }
+  - { label: "Environments", value: "Dev / Staging / Prod" }
+  - { label: "CI/CD Pipelines", value: "3 parallel" }
+  - { label: "Security Layers", value: "JWT + MFA + OIDC" }
 highlights:
-  - "BCryptPasswordEncoder + JJWT 0.12.6 stateless (1h exp, 256+ bits) + MFA TOTP con contador de fallos y bloqueo de cuenta"
-  - "MapStruct DTOs: ninguna entidad JPA se expone directamente en la API — zero serialization leaks"
-  - "Flyway con validate-on-migrate=true: el arrange de migraciones falla en startup si el schema diverge del código"
-  - "Testcontainers: tests de integración contra PostgreSQL real, no H2 — los mismos dialectos y constraints que producción"
-  - "OIDC federation: tokens IAM efímeros de 15 min — cero AWS keys en GitHub Secrets en ningún pipeline"
-  - "Terraform 100% modular: 10 módulos independientes (VPC, ECS, RDS, ALB, CloudFront, S3, Secrets, ECR, Security Groups)"
-  - "CloudFront OAC moderno + cache diferenciado: assets hasheados 1 año immutable, index.html no-cache"
-  - "ECS circuit breaker con rollback automático en deploy fallido y ECS Exec habilitado en dev para diagnóstico"
-  - "Dev vs Prod: dev sin NAT Gateway (ahorro ~$35/mes), prod con subnets privadas, Multi-AZ y deletion protection"
-  - "AI DevOps Agent (agent.py): Claude API + Boto3, gestión de 30+ servicios AWS en lenguaje natural"
+  - "BCryptPasswordEncoder + JJWT 0.12.6 stateless (1h expiry, 256+ bits) + MFA TOTP with failure counter and account lockout"
+  - "MapStruct DTOs: no JPA entity is exposed directly in the API — zero serialization leaks"
+  - "Flyway with validate-on-migrate=true: migration mismatch fails at startup before the application serves requests"
+  - "Testcontainers: integration tests run against real PostgreSQL — same dialects and constraints as production"
+  - "OIDC federation: 15-minute ephemeral IAM tokens — zero AWS keys in GitHub Secrets across all pipelines"
+  - "Terraform 100% modular: 10 independent modules (VPC, ECS, RDS, ALB, CloudFront, S3, Secrets, ECR, Security Groups)"
+  - "CloudFront OAC + differentiated cache: hashed assets 1 year immutable, index.html no-cache"
+  - "ECS deployment circuit breaker with automatic rollback on failed health checks"
+  - "Dev vs prod: dev without NAT Gateway (saves ~$35/month), prod with private subnets, Multi-AZ and deletion protection"
 arquitectura:
-  - { nombre: "React 18 + CloudFront", descripcion: "SPA servida desde S3 privado via CloudFront OAC con cache agresivo para assets hasheados e invalidación automática en cada deploy" }
-  - { nombre: "Spring Boot 4 en ECS Fargate", descripcion: "Backend serverless en contenedores sin EC2 que gestionar. Dev: 1 tarea pública; Prod: 2 tareas en subnets privadas con NAT" }
-  - { nombre: "RDS PostgreSQL 15", descripcion: "Base de datos gestionada con cifrado en reposo, backups automáticos (7 días en prod), Multi-AZ con failover automático y performance insights" }
-  - { nombre: "AWS Secrets Manager", descripcion: "Secretos de DB, JWT y SMTP almacenados y rotados en Secrets Manager. Inyectados como variables de entorno en el task definition de ECS" }
-  - { nombre: "Terraform Modular (10 módulos)", descripcion: "VPC, Security Groups, ECR, RDS, Secrets, ALB, ECS, S3 Frontend, S3 Documents y CloudFront. Cada módulo es independiente y reutilizable" }
-  - { nombre: "GitHub Actions + OIDC", descripcion: "Tres pipelines: backend (Maven → ECR → ECS), frontend (Vite → S3 → CloudFront) e infraestructura (Terraform plan/apply). Sin credenciales hardcodeadas" }
-  - { nombre: "JWT + MFA TOTP", descripcion: "Autenticación stateless con JJWT 0.12.6. MFA opcional con TOTP, QR code de setup y bloqueo de cuenta por intentos fallidos consecutivos" }
-  - { nombre: "AI DevOps Agent", descripcion: "Agente Python con Claude API y Boto3 que consulta EC2, ECS, RDS, CloudFront, IAM, Cost Explorer y más de 30 servicios AWS mediante lenguaje natural en español" }
+  - { nombre: "React 18 + CloudFront", descripcion: "SPA served from private S3 via CloudFront OAC with aggressive caching for hashed assets and automatic invalidation on each deploy" }
+  - { nombre: "Spring Boot 4 on ECS Fargate", descripcion: "Serverless containers with no EC2 management. Dev: 1 public task; Prod: 2 tasks in private subnets with NAT" }
+  - { nombre: "RDS PostgreSQL 15", descripcion: "Managed database with encryption at rest, 7-day automated backups in production, Multi-AZ failover and Performance Insights" }
+  - { nombre: "AWS Secrets Manager", descripcion: "DB, JWT and SMTP credentials stored in Secrets Manager. Injected as environment variables into ECS task definitions at runtime" }
+  - { nombre: "Terraform Modular (10 modules)", descripcion: "VPC, Security Groups, ECR, RDS, Secrets, ALB, ECS, S3 Frontend, S3 Documents, CloudFront — each independently deployable" }
+  - { nombre: "GitHub Actions + OIDC", descripcion: "Three pipelines: backend (Maven → ECR → ECS), frontend (Vite → S3 → CloudFront), infrastructure (Terraform plan/apply). No hardcoded credentials" }
+  - { nombre: "JWT + MFA TOTP", descripcion: "Stateless authentication with JJWT 0.12.6. Optional MFA with TOTP, QR code setup flow and account lockout on consecutive failures" }
 ---
 
-## Descripción del proyecto
+## Platform overview
 
-NexoraTech es una plataforma SaaS cloud-native enterprise que demuestra cómo construir, desplegar y operar un sistema full-stack production-ready sobre AWS desde cero.
+An enterprise SaaS platform covering all layers of the production stack: stateless JWT + MFA TOTP authentication, a React SPA delivered through CloudFront, Spring Boot 4 API on ECS Fargate, RDS PostgreSQL 15 with Flyway-managed schema, and 10 Terraform modules provisioning the full AWS environment. Three separate CI/CD pipelines operate independently with OIDC authentication throughout.
 
-El proyecto cubre todas las capas del stack moderno: autenticación segura en el backend, interfaz React con internacionalización y gestión de estado, infraestructura completa como código en Terraform, y tres pipelines de CI/CD automatizados que no usan credenciales de larga duración en ningún punto del proceso.
+## Security architecture
 
-## El problema que resuelve
+Authentication is stateless. No server-side sessions. Every request carries a JWT in the `Authorization: Bearer` header. Token expiry is 1 hour. The security module is isolated in `infrastructure/security/` — `JwtService`, `JwtFilter` and `SecurityConfig` — with no coupling to business logic.
 
-Construir una plataforma SaaS real no es solo escribir código de aplicación. Hay decisiones de arquitectura que impactan el costo, la seguridad y la mantenibilidad a largo plazo, y muchos ejemplos online las omiten o simplifican en exceso.
+MFA TOTP is enforced at login. The flow: validate password → validate 6-digit TOTP code from authenticator app → issue JWT. Consecutive TOTP failures trigger account lockout with a calculated unlock timestamp. The frontend `OtpInput` component handles the TOTP step identically to banking and enterprise authentication flows.
 
-NexoraTech responde a preguntas concretas:
+Flyway `validate-on-migrate=true` means a migration schema mismatch fails the application at startup before it serves any requests. Schema integrity is verified on every deployment.
 
-- ¿Cómo se estructuran los módulos Terraform para que sean reutilizables sin acoplarse?
-- ¿Cómo se manejan los secretos de forma que nunca aparezcan en código, imágenes Docker ni logs?
-- ¿Cómo se diferencia la infraestructura entre dev y prod de forma coherente sin duplicar código?
-- ¿Cómo se implementa MFA sin acoplar la lógica de autenticación al resto del sistema?
+MapStruct generates DTO-to-entity mappers at compile time. No JPA entity is serialized directly into API responses. Serialization leaks — exposing internal entity relationships through JSON — are structurally prevented.
 
-## Arquitectura técnica
+## Infrastructure
 
-El tráfico sigue el camino: `CloudFront → S3` para el frontend estático, y `CloudFront (o directo) → ALB → ECS Fargate → RDS` para el backend.
+10 independent Terraform modules. The `secrets` module exists as a separate layer because DB credentials are created by the RDS module, referenced by the ECS module, and need a lifecycle independent of both. Separating secrets into a dedicated module eliminates the circular dependency while making credential management the explicit responsibility of a single module.
 
-```
-Usuarios ──► Route53 ──► CloudFront ──► S3 (React SPA)
-                    │
-                    └──► ALB ──► ECS Fargate (Spring Boot :8080)
-                                     └──► RDS PostgreSQL 15
-                                     └──► Secrets Manager
-                                     └──► S3 Documents
-```
+Dev environment: ECS tasks in public subnets, no NAT Gateway, RDS in single-AZ, no deletion protection. Production environment: ECS tasks in private subnets, NAT Gateway for outbound access, RDS Multi-AZ with deletion protection and Performance Insights.
 
-**Separación dev/prod:** El ambiente de desarrollo usa subnets públicas para los tasks de ECS (sin NAT Gateway, sin costo adicional) y una instancia RDS `db.t3.micro` en una sola zona sin backups. Producción usa subnets privadas con NAT Gateway, RDS `db.t3.small` Multi-AZ con 7 días de backups, deletion protection, y performance insights habilitados.
+## Testing
 
-Esta separación no es solo de configuración — está diseñada en los módulos Terraform con variables que cambian el comportamiento completo: topología de red, tamaño de recursos, políticas de backup y niveles de protección.
+Testcontainers spins up a real PostgreSQL 15 container for integration tests. H2 in-memory databases accept SQL that PostgreSQL rejects — particularly around constraint handling, JSON column types and certain aggregate functions. Tests running against H2 can pass while the equivalent operations fail against the production database. Testcontainers eliminates this gap.
 
-## Backend: Spring Boot 4 + JWT + MFA
+Flyway `validate-on-migrate` runs against the Testcontainers database during integration testing. If a migration is missing or inconsistent with the current entity schema, tests fail before the code reaches CI.
 
-El backend es una API REST stateless con autenticación JWT usando JJWT 0.12.6. Cada request lleva el token en el header; no hay sesiones en servidor.
+## CI/CD
 
-El módulo de seguridad está aislado en `infrastructure/security/` con `JwtService`, `JwtFilter` y `SecurityConfig`. La autenticación no depende de lógica de negocio.
+Three OIDC-authenticated pipelines with separated concerns:
 
-**MFA TOTP** se implementa con códigos temporales compatibles con Google Authenticator. El flujo completo:
+- **backend.yml** — Maven test → JaCoCo report → Docker build with commit SHA tag → ECR push → ECS force deploy
+- **frontend.yml** — `npm ci && npm run build` with `VITE_API_URL` → S3 sync with differentiated cache-control → CloudFront invalidation
+- **terraform.yml** — `fmt -check + validate` → `plan` with PR comment → `apply -auto-approve` on merge to main
 
-1. El usuario activa MFA y recibe un QR code para registrar la app autenticadora
-2. En cada login, después de validar password, el backend verifica el código TOTP
-3. Más de N intentos fallidos consecutivos bloquea la cuenta hasta una fecha calculada
-
-El frontend React muestra el componente `OtpInput` para ingresar el código de 6 dígitos.
-
-## Frontend: React 18 + Zustand + i18next
-
-La SPA está organizada por dominio: `api/` para los servicios HTTP (Axios), `components/` con UI reutilizable, `store/` con estado global en Zustand y `i18n/` con soporte multi-idioma.
-
-**Despliegue:** Vite genera assets con hash en el nombre del archivo. La estrategia de cache en CloudFront diferencia:
-
-- `*.js`, `*.css`, imágenes: cache de 1 año (inmutable por el hash)
-- `index.html`: `no-cache` (siempre se descarga la versión actual)
-
-Esto significa que un nuevo deploy invalida solo el `index.html` y los assets referenciados por el nuevo bundle, sin romper usuarios que tienen la versión anterior cargada.
-
-## Terraform: 10 módulos independientes
-
-```
-infrastructure/modules/
-├── vpc/               # CIDR, subnets públicas/privadas, IGW, NAT conditional
-├── security_groups/   # Cadena ALB → ECS → RDS
-├── ecr/               # Registro privado de imágenes con lifecycle policies
-├── rds/               # PostgreSQL 15 con parámetros por ambiente
-├── secrets/           # Secretos de DB, JWT y SMTP en Secrets Manager
-├── alb/               # Load balancer HTTP (dev) / HTTPS (prod con ACM)
-├── ecs_backend/       # Fargate service, task definition, IAM roles, logs
-├── s3_frontend/       # Bucket privado para la SPA
-├── s3_documents/      # Bucket para documentos de usuarios
-└── cloudfront/        # CDN con OAC, SPA routing y headers de cache
-```
-
-El módulo `ecs_backend` inyecta automáticamente los secretos de Secrets Manager en el task definition como variables de entorno. La aplicación Spring Boot las lee en startup sin saber si viene de un `.env` local o de AWS.
-
-**State remoto:** S3 bucket `nexoratech-terraform-state` con DynamoDB para locking, evitando applies simultáneos en el mismo ambiente.
-
-## CI/CD: 3 pipelines con OIDC
-
-### Backend (`backend.yml`)
-
-1. **Test:** `./mvnw test` con `SPRING_PROFILES_ACTIVE=test` y upload del reporte Jacoco
-2. **Deploy Dev:** push a `develop` → build JAR → Docker image con SHA de commit → push a ECR → update ECS service
-3. **Deploy Prod:** push a `main` → mismo flujo apuntando al ambiente de producción
-
-### Frontend (`frontend.yml`)
-
-1. **Build:** `npm ci && npm run build` con la variable `VITE_API_URL` del ambiente
-2. **Deploy:** sync a S3 con cache-control diferenciado + invalidación de CloudFront en todas las rutas
-
-### Infraestructura (`terraform.yml`)
-
-1. `terraform fmt -check` + `terraform validate`
-2. `terraform plan` con comentario automático en PR
-3. `terraform apply -auto-approve` en merge a `main`
-
-Los tres pipelines usan **OIDC federation**: GitHub Actions asume un rol IAM específico (Terraform role o Deploy role) sin que ningún `AWS_ACCESS_KEY_ID` ni `AWS_SECRET_ACCESS_KEY` exista en los secrets del repositorio.
-
-## AI DevOps Agent
-
-El archivo `agent.py` es un agente conversacional que usa la Claude API con tool use para consultar y gestionar la infraestructura AWS en lenguaje natural.
-
-El agente tiene acceso a más de 30 herramientas que cubren:
-
-- **Cómputo:** EC2, ECS, EKS, Lambda, Elastic Beanstalk
-- **Base de datos:** RDS, DynamoDB, ElastiCache
-- **Red:** VPC, ALB, Route53, CloudFront, API Gateway
-- **Seguridad:** IAM, GuardDuty, análisis de Security Groups (detecta puertos abiertos peligrosos)
-- **Observabilidad:** CloudWatch alarms, logs y métricas
-- **Costos:** Cost Explorer por servicio
-
-Una consulta como *"¿cuánto estamos gastando en RDS este mes y hay alguna alarma activa?"* genera múltiples llamadas paralelas a AWS, consolida los resultados y responde en español en lenguaje natural.
-
-## Seguridad end-to-end
-
-**En red:**
-- Producción: ECS en subnets privadas — los tasks no tienen IP pública. El único punto de entrada es el ALB
-- Security groups en cadena: el ALB solo acepta tráfico público; ECS solo acepta tráfico del ALB; RDS solo acepta tráfico de ECS
-- S3 buckets privados accedidos exclusivamente por CloudFront via OAC
-
-**En datos:**
-- RDS con cifrado en reposo (TDE)
-- S3 con SSE-S3
-- Secrets Manager con KMS
-
-**En CI/CD:**
-- Roles IAM separados: uno para Terraform (PowerUserAccess + IAM) y otro para deploy (solo ECR, ECS, S3, CloudFront)
-- OIDC scoped al repositorio — ningún otro repo puede asumir estos roles
-
-**En aplicación:**
-- BCrypt para passwords
-- JWT con expiración configurable
-- MFA con bloqueo de cuenta
-- Tokens de activación de cuenta con expiración de 24 horas
-- Headers de seguridad en Nginx: `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`
-
-## Lessons learned
-
-**La diferencia real entre dev y prod no es solo el tamaño de la instancia.** Es la topología de red completa: pasar de subnets públicas a privadas requiere NAT Gateway, cambia los security groups, y obliga a repensar cómo los tasks de ECS acceden a internet para descargar imágenes de ECR. Modelar esto en Terraform con una variable `enable_nat_gateway` que cambia múltiples recursos fue el ejercicio más revelador del proyecto.
-
-**Secrets Manager es más simple de lo que parece.** La mayor complejidad no está en crear los secretos sino en el IAM: el execution role del task necesita `secretsmanager:GetSecretValue` sobre los ARNs específicos. Una vez que ese permiso existe, ECS inyecta los valores automáticamente antes de que el contenedor arranque.
-
-**OIDC elimina una categoría completa de riesgo.** Con credenciales estáticas, un leak en CI expone acceso permanente hasta que alguien rote manualmente. Con OIDC, las credenciales son tokens efímeros válidos por minutos. No hay nada que rotar porque no hay nada persistente que comprometer.
+GitHub Actions assumes the appropriate IAM role via OIDC. The Terraform role and Deploy role have separate, minimal permissions. No `AWS_ACCESS_KEY_ID` or `AWS_SECRET_ACCESS_KEY` exists in the repository secrets.

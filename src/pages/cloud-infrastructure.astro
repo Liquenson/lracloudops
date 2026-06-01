@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://lracloudops.com/cloud-infrastructure#service',
+  name: 'Cloud Infrastructure Engineering',
+  serviceType: 'Cloud Infrastructure',
+  description: 'Codified AWS environments with defined networking, security boundaries and access policies. Terraform modules that are auditable, version-controlled and reproducible across accounts.',
+  url: 'https://lracloudops.com/cloud-infrastructure',
+  provider: { '@id': 'https://lracloudops.com/#organization' },
+  areaServed: 'Worldwide',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Cloud Infrastructure Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Terraform Infrastructure as Code' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AWS VPC & Networking Design' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'IAM & Security Boundaries' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Multi-Account AWS Architecture' } },
+    ],
+  },
+}
+---
+
+<Layout
+  titulo="Cloud Infrastructure · AWS Platform Engineering"
+  descripcion="Codified AWS environments with defined networking, security boundaries and access policies. Terraform modules that are auditable, version-controlled and reproducible across accounts."
+  schema={serviceSchema}
+>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(30,111,255,0.12) 0%, transparent 65%);"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          01 · Cloud Infrastructure
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left" style="letter-spacing: -0.02em;">
+          Infrastructure that can be<br />reproduced, audited and recovered.
+        </h1>
+        <p class="text-lg max-w-2xl animate-fade-up delay-200" style="color: rgba(147,184,255,0.8);">
+          Manual AWS environments produce configuration drift, undocumented state and infrastructure that cannot be reliably reproduced. We replace that with codified, version-controlled environments where every resource has an owner and every change has a commit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4">The challenge</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What manual infrastructure costs you.</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Most infrastructure problems are not caused by the tools chosen. They are caused by how infrastructure is provisioned and managed over time.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {[
+          { title: 'Configuration drift', desc: 'Environments diverge from their intended state over time. Nobody knows what changed, when, or why. Reproducing the environment from scratch is impossible.' },
+          { title: 'Undocumented state', desc: 'Resources created from the console have no audit trail. When the engineer who provisioned them leaves, the knowledge goes with them.' },
+          { title: 'Manual dependency on humans', desc: 'Every new account, region or environment requires manual work. Scaling the platform requires scaling the headcount.' },
+          { title: 'Security configuration applied after the fact', desc: 'Security groups, IAM policies and network boundaries added retroactively are inconsistent and frequently incomplete.' },
+        ].map(item => (
+          <div class="card p-6">
+            <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{item.title}</h3>
+            <p class="text-sm leading-relaxed" style="color: #64748b;">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE APPROACH -->
+  <section class="py-20" style="background: #f8fafc;">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4">Architecture approach</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">The platform stack we deliver.</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Every layer is version-controlled, auditable and recoverable. No manual provisioning, no console-only configuration.</p>
+      </div>
+      <div class="space-y-4">
+        {[
+          { layer: 'Network Foundation', tools: 'Terraform · VPC · Subnets · NAT Gateway · IGW', desc: 'Multi-AZ VPC with public subnets for load balancers and private subnets for compute and data. No backend component has a public IP address.' },
+          { layer: 'Compute Layer', tools: 'EKS 1.31+ · ECS Fargate · EC2 Auto Scaling', desc: 'Kubernetes clusters or Fargate tasks depending on workload requirements. Node groups managed as code. HPA configured at provisioning time.' },
+          { layer: 'Data Layer', tools: 'RDS PostgreSQL 15 · Multi-AZ · Encrypted · Private subnets', desc: 'Managed databases in private subnets with automated failover, 7-day backups and encryption at rest. Security group access restricted to compute tier only.' },
+          { layer: 'Content Delivery', tools: 'CloudFront · S3 · Route 53 · ACM', desc: 'CDN, static asset hosting and DNS managed as code. TLS certificates provisioned and rotated automatically.' },
+          { layer: 'Identity & Access', tools: 'IAM · OIDC · Least-privilege policies · No static credentials', desc: 'OIDC-based authentication for CI/CD pipelines — no long-lived access keys. IAM roles and policies defined in Terraform and reviewed before apply.' },
+          { layer: 'State Management', tools: 'S3 backend · DynamoDB locking · SSE-S3 · Workspaces', desc: 'Remote Terraform state with encryption and distributed locking. Separate workspaces for dev and production — no shared state files.' },
+        ].map((item, i) => (
+          <div class="bg-white rounded-xl p-6 flex flex-col sm:flex-row gap-5 items-start" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
+            <div class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white" style="background: #1E6FFF;">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                <h3 class="text-base font-bold" style="color: #0A2540;">{item.layer}</h3>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{item.tools}</span>
+              </div>
+              <p class="text-sm leading-relaxed" style="color: #64748b;">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPLEMENTATION METHODOLOGY -->
+  <section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4">Implementation methodology</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">How we implement it.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          { step: '01', title: 'Current state assessment', desc: 'Review existing architecture, document gaps and identify risk areas before writing a line of Terraform.' },
+          { step: '02', title: 'Module design', desc: 'Design reusable, independently deployable Terraform modules with clear input/output contracts.' },
+          { step: '03', title: 'Environment provisioning', desc: 'Deploy dev environment first. Validate end-to-end before applying the same configuration to production.' },
+          { step: '04', title: 'Observability and handover', desc: 'CloudWatch alarms, cost alerts and runbooks delivered alongside the infrastructure — not as an afterthought.' },
+        ].map(item => (
+          <div class="card p-6 text-center">
+            <div class="text-3xl font-extrabold mb-3" style="color: #c3d9ff;">{item.step}</div>
+            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{item.title}</h3>
+            <p class="text-xs leading-relaxed" style="color: #64748b;">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="py-20" style="background: #EEF4FF;">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4" style="background: white;">Operational outcomes</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What changes when infrastructure is codified.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {[
+          { metric: 'Any environment reproducible', detail: 'from a single terraform apply', icon: '✓' },
+          { metric: 'Zero manual configuration', detail: 'every resource defined in code', icon: '✓' },
+          { metric: 'Full audit trail', detail: 'every change tied to a commit and a reviewer', icon: '✓' },
+          { metric: 'Disaster recovery tested', detail: 'reproducibility verified before production', icon: '✓' },
+          { metric: 'Security applied at provisioning', detail: 'not after the first security review', icon: '✓' },
+          { metric: 'New environments in minutes', detail: 'not days of manual work', icon: '✓' },
+        ].map(item => (
+          <div class="bg-white rounded-xl p-5 flex items-start gap-4" style="border: 1px solid #c3d9ff;">
+            <span class="text-green-500 font-bold text-lg flex-shrink-0">{item.icon}</span>
+            <div>
+              <p class="text-sm font-bold" style="color: #0A2540;">{item.metric}</p>
+              <p class="text-xs" style="color: #64748b;">{item.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
+    <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4" style="letter-spacing: -0.02em;">Start with an infrastructure review.</h2>
+      <p class="mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Bring your current AWS environment. We assess reproducibility, security posture and state management — and outline a concrete path to codified infrastructure.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto" class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);">
+          Book a technical review
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href="/servicios" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10" style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);">
+          All solutions
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

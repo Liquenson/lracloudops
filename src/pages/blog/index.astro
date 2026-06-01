@@ -5,12 +5,12 @@ import { getCollection } from 'astro:content'
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
 
-const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD', 'AI+DevOps']
+const categories = ['All', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD', 'AI+DevOps']
 ---
 
 <Layout
-  titulo="Blog Técnico"
-  descripcion="Artículos sobre Cloud Operations, DevOps, Terraform, Kubernetes y CI/CD basados en proyectos reales de producción."
+  titulo="Technical Blog · Cloud Infrastructure & Platform Engineering"
+  descripcion="Technical articles on AWS, Kubernetes, Terraform and CI/CD. Architecture decisions, implementation strategies and operational lessons from production workloads."
 >
 
   <!-- HERO -->
@@ -19,11 +19,11 @@ const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'
     <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
       <div class="max-w-2xl">
         <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
-          Blog · {posts.length} artículo{posts.length !== 1 ? 's' : ''}
+          Blog · {posts.length} article{posts.length !== 1 ? 's' : ''}
         </span>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">Artículos técnicos</h1>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">Technical writing</h1>
         <p class="text-lg" style="color: rgba(147,184,255,0.8);">
-          Experiencias reales, no tutoriales genéricos. Todo lo que escribo viene de proyectos en producción.
+          Architecture decisions, production incidents and implementation strategies. Not tutorials — documented engineering work.
         </p>
       </div>
     </div>
@@ -33,13 +33,13 @@ const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'
   <section class="bg-white py-16">
     <div class="max-w-4xl mx-auto px-6">
 
-      <!-- Filtros por categoría -->
+      <!-- Category filters -->
       <div class="flex flex-wrap gap-2 mb-10" id="filtros-blog">
-        {categorias.map(cat => (
+        {categories.map(cat => (
           <button
             data-categoria={cat}
-            class={`filtro-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-200 ${cat === 'Todos' ? 'filtro-activo' : ''}`}
-            style={cat === 'Todos'
+            class={`filtro-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-200 ${cat === 'All' ? 'filtro-activo' : ''}`}
+            style={cat === 'All'
               ? 'background: #0A2540; color: white; border-color: #0A2540; box-shadow: 0 2px 8px rgba(10,37,64,0.2);'
               : 'background: white; color: #64748b; border-color: #e2e8f0;'}
           >
@@ -50,7 +50,7 @@ const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'
 
       {posts.length === 0 ? (
         <div class="text-center py-20">
-          <p class="text-gray-400">Próximamente nuevos artículos.</p>
+          <p class="text-gray-400">Articles coming soon.</p>
         </div>
       ) : (
         <div class="space-y-4" id="lista-posts">
@@ -74,10 +74,10 @@ const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'
               </div>
               <div class="flex sm:flex-col items-center sm:items-end gap-4 flex-shrink-0">
                 <span class="text-xs whitespace-nowrap" style="color: #94a3b8;">
-                  {post.data.fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
+                  {post.data.fecha.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
                 </span>
                 <span class="inline-flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all" style="color: #1E6FFF;">
-                  Leer
+                  Read
                   <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -88,16 +88,16 @@ const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'
         </div>
       )}
 
-      <!-- Mensaje sin resultados -->
+      <!-- No results message -->
       <div id="sin-resultados" class="hidden text-center py-16">
-        <p class="text-sm" style="color: #64748b;">No hay artículos en esta categoría aún.</p>
+        <p class="text-sm" style="color: #64748b;">No articles in this category yet.</p>
       </div>
 
-      <!-- CTA: Contacto -->
+      <!-- CTA -->
       <div class="mt-16 pt-12 border-t border-gray-100 text-center">
-        <p class="text-sm mb-4" style="color: #64748b;">¿Tienes un tema que te gustaría que cubriera?</p>
+        <p class="text-sm mb-4" style="color: #64748b;">Working on something that should be documented?</p>
         <a href="/contacto" class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
-          Sugerir un tema
+          Get in touch
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -113,7 +113,7 @@ const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'
   const tarjetas = document.querySelectorAll<HTMLElement>('.post-card')
   const sinResultados = document.getElementById('sin-resultados')
 
-  const categoriaATags: Record<string, string[]> = {
+  const categoryToTags: Record<string, string[]> = {
     'AWS': ['AWS'],
     'Kubernetes': ['Kubernetes'],
     'Terraform': ['Terraform'],
@@ -129,10 +129,10 @@ const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'
       const tags = (card.dataset.tags || '').split(',')
       let mostrar = false
 
-      if (categoria === 'Todos') {
+      if (categoria === 'All') {
         mostrar = true
       } else {
-        const tagsObjetivo = categoriaATags[categoria] || [categoria]
+        const tagsObjetivo = categoryToTags[categoria] || [categoria]
         mostrar = tagsObjetivo.some(t => tags.includes(t))
       }
 
@@ -147,7 +147,7 @@ const categorias = ['Todos', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'
 
   botones.forEach(btn => {
     btn.addEventListener('click', () => {
-      const cat = btn.dataset.categoria || 'Todos'
+      const cat = btn.dataset.categoria || 'All'
 
       botones.forEach(b => {
         const esActivo = b.dataset.categoria === cat
