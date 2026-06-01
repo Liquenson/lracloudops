@@ -82,7 +82,7 @@ export const ui = {
     'nav.caseStudies': 'Casos de uso',
     'nav.about': 'Nosotros',
     'nav.blog': 'Blog',
-    'nav.cta': 'Agendar consulta',
+    'nav.cta': 'Reservar consulta',
 
     // Footer — section headers
     'footer.solutions': 'Soluciones',
@@ -108,7 +108,7 @@ export const ui = {
     'footer.tagline': 'Infraestructura cloud, plataformas Kubernetes y automatización DevOps. Entornos AWS de producción construidos como código.',
     'footer.available': 'Disponible para nuevos proyectos',
     'footer.copyright': '© 2026 LRA Cloud Ops. Todos los derechos reservados.',
-    'footer.edge': 'Red de borde de Cloudflare',
+    'footer.edge': 'Cloudflare Edge Network',
 
     // Blog
     'blog.back': 'Volver al blog',
