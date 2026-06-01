@@ -1,9 +1,9 @@
 ---
-titulo: "LRA Cloud Operations"
-descripcion: "Sitio web de portafolio y marketing para la marca LRA Cloud Operations con blog técnico sobre DevOps y cloud. Construido con Astro 6 + Tailwind CSS 4, desplegado globalmente en Cloudflare Pages con CI/CD automático."
+titulo: "LRA Cloud Operations Platform"
+descripcion: "Static marketing and engineering platform for the LRA Cloud Operations brand. Built with Astro 6 and Tailwind CSS 4, deployed globally on Cloudflare Pages with automated CI/CD, structured data, Open Graph and Content Collections API."
 fecha: 2026-05-01
-categoria: "Frontend & Web"
-madurez: "Producción"
+categoria: "Web Platform"
+madurez: "Production"
 stack: ["Astro 6.2.1", "Tailwind CSS 4", "TypeScript", "Cloudflare Pages", "Web3Forms", "Content Collections"]
 cicd: true
 github: "https://github.com/Liquenson/lracloudops"
@@ -11,79 +11,47 @@ featured: false
 iconPath: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
 draft: false
 metricas:
-  - { label: "Páginas", value: "6 rutas" }
+  - { label: "Pages", value: "15+ routes" }
   - { label: "Build time", value: "< 30s" }
-  - { label: "Deploy", value: "Edge global" }
-  - { label: "Backend", value: "0 servidores" }
+  - { label: "Deploy", value: "Global edge" }
+  - { label: "Backend", value: "0 servers" }
 highlights:
-  - "Static site generation con Astro: cero JavaScript de framework enviado al cliente por defecto"
-  - "Tailwind CSS 4 via Vite plugin: compilación incremental sin configuración de purge manual"
-  - "Content Collections API con schema Zod: blog y case studies validados en build time"
-  - "Cloudflare Pages: deploy automático en cada push a main, CDN en 300+ edge locations"
-  - "Web3Forms para el formulario de contacto: sin backend propio, sin Lambda, spam protection incluida"
-  - "Sistema de diseño consistente sin UI frameworks: #0A2540 / #1E6FFF / #EEF4FF"
+  - "Static site generation with Astro: zero framework JavaScript shipped to the client by default"
+  - "Tailwind CSS 4 via Vite plugin: incremental compilation without manual purge configuration"
+  - "Content Collections API with Zod schema: blog posts and project case studies validated at build time"
+  - "Cloudflare Pages: automatic deployment on push to main, CDN across 300+ edge locations"
+  - "Web3Forms for contact form: no backend, no Lambda, built-in spam protection"
+  - "Consistent design system without UI frameworks: #0A2540 / #1E6FFF / #EEF4FF palette"
+  - "Organization and Article structured data (JSON-LD) for SEO authority signals"
+  - "Open Graph and Twitter Card meta tags on every page"
 arquitectura:
-  - { nombre: "Astro 6 SSG", descripcion: "Genera HTML estático en build time: sin runtime de servidor, máximo rendimiento inicial" }
-  - { nombre: "Content Collections", descripcion: "Blog y case studies en Markdown con schema Zod validado antes del deploy" }
-  - { nombre: "Tailwind CSS 4 + Vite", descripcion: "CSS utility-first cargado como Vite plugin sin archivo tailwind.config.js" }
-  - { nombre: "Cloudflare Pages", descripcion: "Hosting edge global con CI/CD integrado: push → build → deploy en menos de 60s" }
-  - { nombre: "Web3Forms", descripcion: "Formulario de contacto serverless con API key pública y protección anti-spam integrada" }
+  - { nombre: "Astro 6 SSG", descripcion: "Generates static HTML at build time: no server runtime, maximum initial performance" }
+  - { nombre: "Content Collections", descripcion: "Blog posts and project case studies in Markdown with Zod schema validated before deployment" }
+  - { nombre: "Tailwind CSS 4 + Vite", descripcion: "Utility-first CSS loaded as Vite plugin — no tailwind.config.js required" }
+  - { nombre: "Cloudflare Pages", descripcion: "Global edge hosting with integrated CI/CD: push → build → deploy in under 60 seconds" }
+  - { nombre: "Web3Forms", descripcion: "Serverless contact form with public API key and built-in anti-spam protection" }
 ---
 
-## Descripción del proyecto
+## Platform overview
 
-LRA Cloud Operations es el sitio web de portafolio y marketing de la marca, construido con el stack de static site generation más moderno disponible. El objetivo era demostrar con el mismo sitio los principios que predica: rendimiento máximo, infraestructura mínima y automatización completa del deploy.
+The engineering and marketing platform for LRA Cloud Operations. Built with Astro 6 static site generation and Tailwind CSS 4, deployed globally on Cloudflare Pages. The platform demonstrates the same principles it describes — minimal server footprint, automated deployment and infrastructure defined as code.
 
-El sitio incluye 6 páginas principales — inicio, servicios, proyectos, blog, contacto y case studies individuales — sin un solo servidor que mantener.
+15+ routes covering solutions, case studies, service pages, blog and contact. Zero servers to maintain. Zero runtime to manage.
 
-## Por qué Astro
+## Technical decisions
 
-Astro resuelve un problema fundamental de los frameworks JavaScript modernos: envían demasiado JavaScript al cliente. Una página de portafolio no necesita hidratación del lado del cliente, routing dinámico ni un virtual DOM.
+**Astro over JavaScript frameworks** — a marketing and engineering documentation site has no need for client-side hydration, dynamic routing or a virtual DOM. Astro generates HTML at build time. The client receives plain HTML with no framework runtime. First Contentful Paint in tenths of a second. Lighthouse scores starting at 90+ without additional optimization.
 
-Con Astro, cada página se convierte en HTML estático en build time. El cliente recibe HTML puro — sin runtime de React, sin Angular, sin Vue. El resultado es un First Contentful Paint medido en décimas de segundo y un Lighthouse score que parte de 90+ sin optimizaciones adicionales.
+**Content Collections with build-time validation** — blog posts and project case studies are Markdown files with Zod-validated frontmatter. Adding a required field to the schema means all existing files must be updated or the build fails. Invalid metadata cannot reach production. The schema is the contract between content authors and the rendering layer.
 
-## Content Collections con validación en build time
+**Tailwind CSS 4 integration** — Tailwind CSS 4 changed the integration model significantly. Instead of `@astrojs/tailwind`, version 4 uses `@tailwindcss/vite` as a Vite plugin in `astro.config.mjs`. No `tailwind.config.js` file exists. Custom design tokens are defined as CSS variables in `global.css`. Documentation from Tailwind v3 does not apply.
 
-Los artículos del blog y los case studies de proyectos son archivos Markdown con frontmatter validado por un schema Zod. Si un artículo tiene un campo faltante o con el tipo incorrecto, el build falla — es imposible publicar contenido con metadata incorrecta.
+**Design system without UI component libraries** — the entire design system is CSS variables and Tailwind utility classes. No Shadcn, no Material UI, no component library dependency to maintain or upgrade. The color palette is intentionally limited to three semantic values: `#0A2540` for dark backgrounds and primary text, `#1E6FFF` for accents and interactive elements, `#EEF4FF` for soft backgrounds and cards.
 
-```
-src/content/
-├── blog/          # Artículos del blog (.md con schema validado)
-└── projects/      # Case studies de proyectos (.md con schema validado)
-```
+**Cloudflare Pages deployment** — Cloudflare detects a push to `main`, runs `npm run build`, and distributes artifacts to 300+ edge locations. Typical time from push to globally available is under 60 seconds. TLS, CDN caching and performance optimization are handled by the platform — no configuration required.
 
-Los case studies incluyen campos estructurados: métricas numéricas, highlights en lista, y componentes de arquitectura — todo validado antes del deploy.
+**Contact form without backend** — Web3Forms provides a contact form API using a public API key. No Lambda function, no backend server, no form processing infrastructure. Spam protection is built into the service.
 
-## Tailwind CSS 4 y el cambio de integración
+## Key constraint
 
-La versión 4 de Tailwind CSS cambió significativamente la forma de integrarse con Astro. En lugar de `@astrojs/tailwind`, usa `@tailwindcss/vite` como plugin de Vite en `astro.config.mjs`. No hay `tailwind.config.js` — la configuración custom se hace en el archivo CSS con variables.
-
-```css
-/* En global.css: variables del sistema de diseño */
-:root {
-  --color-primary: #0A2540;
-  --color-accent: #1E6FFF;
-  --color-bg-soft: #EEF4FF;
-}
-```
-
-## Sistema de diseño sin UI frameworks
-
-El sitio no usa Shadcn, Material UI ni ninguna biblioteca de componentes. Todo el sistema de diseño son variables CSS + clases Tailwind. Esto mantiene el bundle mínimo y permite control total sobre el HTML generado.
-
-La paleta es deliberadamente limitada a tres colores con significado semántico:
-- `#0A2540` — dark navy para fondos de secciones hero y texto principal
-- `#1E6FFF` — accent azul para CTAs, links activos, categorías y badges de Template
-- `#EEF4FF` — soft blue para fondos de cards e iconos de categoría
-
-## Despliegue en Cloudflare Pages
-
-Cloudflare Pages detecta el push a `main`, ejecuta `npm run build`, y distribuye los artefactos en su CDN global con más de 300 edge locations. El tiempo entre push y disponibilidad en producción es típicamente menor a 60 segundos.
-
-No hay servidor que gestionar, certificado SSL que renovar, ni escalado que configurar. La infraestructura es completamente invisible.
-
-## Lessons learned
-
-La mayor lección fue sobre el cambio de paradigma de Tailwind CSS 4. La versión 4 elimina `tailwind.config.js` en favor de configuración en CSS y el plugin de Vite. La integración con Astro requiere usar `@tailwindcss/vite` como plugin en `astro.config.mjs` — la documentación de Tailwind v3 no aplica y puede generar confusión durante la migración.
-
-La segunda lección: Astro Content Collections valida el schema en build time, no en runtime. Añadir un campo obligatorio nuevo al schema de los case studies requiere actualizarlo en todos los archivos Markdown existentes simultáneamente — o marcarlo como opcional con `.optional()` en el schema Zod para mantener retrocompatibilidad.
+Astro Content Collections validates the schema at build time, not at runtime. Adding a new required field to the project case study schema requires updating all existing project markdown files simultaneously — or marking the field optional with `.optional()` to maintain backward compatibility. This constraint means content schema changes are coordinated across all content files, which is a property, not a bug: it prevents partial migrations that deploy with missing data.

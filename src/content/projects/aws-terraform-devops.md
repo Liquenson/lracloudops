@@ -1,9 +1,9 @@
 ---
-titulo: "AWS Terraform DevOps"
-descripcion: "Infraestructura AWS production-ready con cluster EKS 1.31, HPA (CPU 70%), RDS PostgreSQL 15 Multi-AZ y 6 módulos Terraform. Pipeline dual GitHub Actions + Jenkins con SonarCloud, cobertura ≥80% y CloudWatch alarms proactivas."
+titulo: "AWS Terraform DevOps Platform"
+descripcion: "Production AWS environment with EKS 1.31, HPA at 70% CPU, RDS PostgreSQL 15 Multi-AZ and 6 modular Terraform modules. Dual CI/CD pipeline with GitHub Actions and Jenkins, SonarCloud coverage gate at ≥80% and CloudWatch proactive alarms."
 fecha: 2026-05-01
-categoria: "Cloud & IaC"
-madurez: "Producción"
+categoria: "Cloud Infrastructure"
+madurez: "Production"
 stack: ["Flask 3.0.3", "Python 3.11", "Terraform 1.9.8", "AWS EKS 1.31", "RDS PostgreSQL 15", "ECR", "Docker", "GitHub Actions", "Jenkins", "Helm", "Gunicorn", "SonarCloud", "CloudWatch"]
 cicd: true
 github: "https://github.com/Liquenson/aws-terraform-devops"
@@ -11,82 +11,71 @@ featured: true
 iconPath: "M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"
 draft: false
 metricas:
-  - { label: "Módulos Terraform", value: "6" }
-  - { label: "Tests totales", value: "17 (8 Flask + 9 infra)" }
-  - { label: "Pipelines", value: "2 paralelos" }
-  - { label: "Ambientes", value: "Dev + Prod" }
+  - { label: "Terraform Modules", value: "6" }
+  - { label: "Automated Tests", value: "17 (8 Flask + 9 infra)" }
+  - { label: "Pipelines", value: "2 parallel" }
+  - { label: "Environments", value: "Dev + Prod" }
 highlights:
-  - "Terraform 100% modular: 6 módulos (vpc, eks, rds, ecr, iam, cloudwatch) con state S3 + DynamoDB locking + SSE-S3"
-  - "EKS 1.31 con HPA (CPU threshold 70%), rolling update maxUnavailable=0 y resource limits"
-  - "RDS PostgreSQL 15 Multi-AZ con failover automático, backups 7 días y security groups estrictos"
-  - "CloudWatch alarms proactivas: CPU>80%, Memory>85%, retención de logs 30 días"
-  - "17 tests: 8 Flask (100% cobertura endpoints) + 9 tests de infra con mocks boto3"
-  - "Dockerfile multi-stage, usuario non-root y automountServiceAccountToken: false"
-  - "SonarCloud integrado con umbral de cobertura ≥80% como gate de calidad"
-  - "Pipeline dual: GitHub Actions + Jenkins en paralelo con misma lógica build-test-deploy"
+  - "Terraform 100% modular: 6 modules (vpc, eks, rds, ecr, iam, cloudwatch) with S3 remote state + DynamoDB locking + SSE-S3"
+  - "EKS 1.31 with HPA at 70% CPU threshold, rolling update maxUnavailable=0 and resource limits"
+  - "RDS PostgreSQL 15 Multi-AZ with automatic failover, 7-day backups and strict security group isolation"
+  - "CloudWatch proactive alarms: CPU>80%, Memory>85%, 30-day log retention"
+  - "17 tests: 8 Flask (100% endpoint coverage) + 9 infrastructure tests with boto3 mocks"
+  - "Multi-stage Dockerfile, non-root user and automountServiceAccountToken: false"
+  - "SonarCloud integrated with ≥80% coverage gate enforced before Docker build"
+  - "Dual pipeline: GitHub Actions + Jenkins running identical logic in parallel"
 arquitectura:
-  - { nombre: "VPC Multi-AZ", descripcion: "6 módulos Terraform con state remoto en S3, DynamoDB locking y SSE-S3 encryption" }
-  - { nombre: "AWS EKS 1.31", descripcion: "Cluster Kubernetes gestionado con HPA (CPU 70%) y rolling update maxUnavailable=0" }
-  - { nombre: "RDS PostgreSQL 15 Multi-AZ", descripcion: "Base de datos en subnets privadas con réplica standby, failover automático y 7 días de backups" }
-  - { nombre: "ALB + Target Groups", descripcion: "Load balancer de capa 7 con health checks y SSL termination" }
-  - { nombre: "ECR + CloudWatch", descripcion: "Registro privado de imágenes con lifecycle policies y alarms CPU>80% / Memory>85%" }
-  - { nombre: "IAM Roles + OIDC", descripcion: "Autenticación sin credenciales hardcodeadas via GitHub OIDC" }
+  - { nombre: "Multi-AZ VPC", descripcion: "6 Terraform modules with S3 remote state, DynamoDB locking and SSE-S3 encryption" }
+  - { nombre: "AWS EKS 1.31", descripcion: "Managed Kubernetes cluster with HPA at 70% CPU and rolling update maxUnavailable=0" }
+  - { nombre: "RDS PostgreSQL 15 Multi-AZ", descripcion: "Database in private subnets with synchronous standby, automatic failover and 7-day backups" }
+  - { nombre: "ALB + Target Groups", descripcion: "Layer 7 load balancer with health checks and TLS termination" }
+  - { nombre: "ECR + CloudWatch", descripcion: "Private image registry with lifecycle policies and proactive CPU/Memory alarms" }
+  - { nombre: "IAM Roles + OIDC", descripcion: "Credential-free authentication for GitHub Actions via OIDC federation" }
 ---
 
-## Descripción del proyecto
+## Platform overview
 
-AWS Terraform DevOps es un proyecto de infraestructura cloud production-ready que demuestra cómo construir y operar un stack AWS completo usando Infrastructure as Code, CI/CD y Kubernetes. El stack real incluye Flask 3.0.3 + Gunicorn sobre EKS 1.31, 6 módulos Terraform con state remoto en S3 + DynamoDB locking + SSE-S3 encryption, y un pipeline dual GitHub Actions + Jenkins.
+A production AWS environment deploying Flask 3.0.3 + Gunicorn on EKS 1.31, with RDS PostgreSQL 15 in a Multi-AZ configuration and a dual CI/CD pipeline implemented in both GitHub Actions and Jenkins. Every resource is defined in Terraform. No resource was created from the AWS console.
 
-El proyecto nació de la necesidad de tener un ejemplo real y funcional que combinara todas las piezas del stack DevOps moderno: infraestructura como código, containerización, orquestación, pipelines automatizados y análisis de calidad.
+The full stack is reproducible from a single `terraform apply`. Dev and prod environments use the same module definitions with different variable values — the differences between environments are explicit and auditable.
 
-## El problema que resuelve
+## Infrastructure design
 
-Muchos tutoriales de AWS muestran cómo desplegar un recurso individual. Este proyecto demuestra cómo funciona todo el sistema junto:
+Six Terraform modules with distinct responsibilities:
 
-- Infraestructura definida como código y versionada en Git
-- Aplicación containerizada con tests y análisis de calidad obligatorios
-- Despliegue automático sin intervención humana
-- Múltiples ambientes (dev/prod) con configuración separada
+- **vpc** — VPC, public and private subnets, Internet Gateway, NAT Gateway
+- **eks** — EKS cluster 1.31, managed node groups, HPA configuration
+- **rds** — PostgreSQL 15 Multi-AZ in private subnets with 7-day backup retention
+- **ecr** — Private container registry with image lifecycle policies
+- **iam** — EKS cluster and node roles, OIDC provider for GitHub Actions
+- **cloudwatch** — Alarms at CPU>80% and Memory>85%, log groups with 30-day retention
 
-## Arquitectura técnica
+IAM is a dedicated module because EKS roles are IAM resources, not EKS resources. The separation allows IAM policies to evolve independently when cluster permissions need updating.
 
-La aplicación Flask (Python + Gunicorn) se ejecuta en pods de Kubernetes sobre EKS. El tráfico llega via ALB, pasa por los target groups y llega a los pods con autoscaling configurado.
+Remote state lives in S3 with DynamoDB locking. Two concurrent applies against the same state file produce corruption — locking prevents this by design.
 
-La base de datos RDS PostgreSQL 15 está en subnets privadas, accesible solo desde el cluster EKS mediante security groups estrictos. Los backups automáticos retienen 7 días de historia.
+## Compute and scaling
 
-Todo el código de infraestructura está en Terraform modular: 6 módulos separados para vpc, eks, rds, ecr, iam y cloudwatch. El state se almacena en S3 con locking via DynamoDB y SSE-S3 encryption. CloudWatch alarms cubren CPU>80%, Memory>85% y logs con retención de 30 días.
+EKS node groups are managed as code. HPA is configured at cluster provisioning time with a 70% CPU threshold — not added after the first performance incident. Rolling update policy sets `maxUnavailable=0`, ensuring zero-downtime deployments at the cost of requiring capacity headroom during the rollout.
 
-## Pipeline CI/CD
+## Database layer
 
-El pipeline tiene dos implementaciones paralelas:
+RDS PostgreSQL 15 operates in Multi-AZ configuration. Each write is committed to both primary and synchronous standby before acknowledging to the application. Failover to the standby completes in 60-120 seconds with no connection string change — the RDS DNS endpoint routes automatically to the active instance.
 
-**GitHub Actions** maneja el build, tests, análisis SonarCloud, push a ECR y despliegue via Helm cuando se hace push a main.
+The security group allows connections only from the EKS cluster security group. No direct public access to the database at any network path.
 
-**Jenkins** (Jenkinsfile) implementa el mismo pipeline con capacidad de ejecutarse en infraestructura propia, útil para entornos con restricciones de red.
+## Pipeline design
 
-Ambos pipelines verifican cobertura de tests ≥80% antes de permitir el despliegue.
+Both pipelines implement the same four stages: test → quality → Docker build → Helm deploy. The logic is identical. The platform primitives differ.
 
-## Decisiones técnicas
+SonarCloud enforces a ≥80% coverage gate. If coverage drops below threshold, the pipeline terminates before building the Docker image. The ECR registry stays clean — no images built from code that does not meet the quality threshold.
 
-**¿Por qué módulos Terraform en lugar de monolito?**
-Con módulos, se puede reutilizar la configuración de VPC entre proyectos y actualizar EKS sin tocar la base de datos. Los 6 módulos (vpc, eks, rds, ecr, iam, cloudwatch) tienen outputs bien definidos que exponen solo los valores necesarios.
+`helm upgrade --install webapp ... --wait` makes deployment synchronous. If pods fail health checks within the configured timeout, Helm rolls back to the previous release. Every deployment is an atomic, recoverable operation.
 
-**¿Por qué Jenkins además de GitHub Actions?**
-Para demostrar que la lógica del pipeline no depende de la plataforma. Los principios son los mismos: build → test → push → deploy.
+## Key decisions
 
-**¿Por qué RDS PostgreSQL y no Aurora?**
-El proyecto prioriza demostrar conceptos de IaC y CI/CD. RDS PostgreSQL 15 es más predecible para un lab y los conceptos (Multi-AZ, failover, backups) son transferibles a Aurora si el volumen lo justifica.
+**Why both GitHub Actions and Jenkins** — the deployment logic should not be coupled to the platform executing it. The same test-quality-build-deploy structure runs on both. When an organization switches CI platforms, the pipeline principles transfer.
 
-## Estado actual y mejoras en progreso
+**Why separate CloudWatch module** — observability configuration changes at a different rate than cluster infrastructure. Adjusting an alarm threshold should not produce a plan diff against the EKS module. Each module changes at its own rate.
 
-El proyecto tiene madurez de producción en la infraestructura Terraform y tests, pero hay dos áreas en corrección activa:
-
-- **Jenkinsfile**: actualmente usa plugins Maven en un proyecto Python — se está migrando a la misma lógica de GitHub Actions con pip y pytest
-- **GitHub Actions**: el job de Docker build/push está en progreso para cerrar la paridad con el pipeline Jenkins
-- **EKS versiones**: dev usa 1.31 y prod 1.29 — se está alineando a 1.31 en ambos ambientes
-
-## Lessons learned
-
-La mayor lección fue que el tiempo de plan de Terraform no refleja el tiempo de apply. Algunos recursos como el cluster EKS pueden tardar 15-20 minutos en crearse, lo que afecta los tiempos de pipeline en el primer deploy.
-
-Solución: separar el apply de infraestructura base (VPC, EKS, RDS) del deploy de aplicación. La infraestructura se aplica raramente; la aplicación se despliega frecuentemente.
+**Why remote state from day one** — a local state file becomes a single point of failure the first time two engineers or two pipeline runs execute simultaneously. Distributed state with locking is not optional in a team environment.

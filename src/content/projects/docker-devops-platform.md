@@ -1,9 +1,9 @@
 ---
 titulo: "Docker DevOps Platform"
-descripcion: "Plataforma backend containerizada con FastAPI y PostgreSQL 15. Implementa best practices de containerización: multi-stage builds, usuario no-root, health checks y retry logic para conexión a base de datos."
+descripcion: "Containerized backend platform with FastAPI and PostgreSQL 15. Multi-stage builds with non-root execution, exponential backoff connection retry and integration CI that verifies the full stack starts and the health endpoint responds."
 fecha: 2026-05-01
-categoria: "Containerización"
-madurez: "En Desarrollo"
+categoria: "Containerization"
+madurez: "In Development"
 stack: ["Python 3.12", "FastAPI 0.115.0", "Uvicorn 0.30.0", "PostgreSQL 15-alpine", "psycopg2-binary 2.9.9", "Docker", "Docker Compose", "GitHub Actions"]
 cicd: true
 github: "https://github.com/Liquenson/docker-devops-platform"
@@ -11,84 +11,78 @@ featured: false
 iconPath: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"
 draft: false
 metricas:
-  - { label: "Servicios Docker", value: "2" }
-  - { label: "Endpoints API", value: "2" }
-  - { label: "Build stages", value: "Multi-stage" }
-  - { label: "Usuario container", value: "Non-root" }
+  - { label: "Docker Services", value: "2" }
+  - { label: "API Endpoints", value: "2" }
+  - { label: "Build Stages", value: "Multi-stage" }
+  - { label: "Container User", value: "Non-root" }
 highlights:
-  - "Multistage Dockerfile: builder stage (pip install) → runtime slim sin pip ni setuptools — menor superficie CVE"
-  - "Base Alpine para PostgreSQL: imagen más liviana con menor huella de vulnerabilidades"
-  - "Usuario no-root (appuser) en FastAPI container: seguridad desde el diseño inicial"
-  - "Retry logic con backoff exponencial: 5 reintentos con 2s delay para conexión a PostgreSQL"
-  - "CMD en forma JSON (PID 1 correcto): señales del OS manejadas directamente por Uvicorn"
-  - "Health checks declarados en Docker Compose con dependencias entre servicios"
-  - "FastAPI + Uvicorn 0.30.0 ASGI: alta performance y documentación automática en /docs"
-  - "CI verifica build + arranque + health endpoint en cada push antes de mergear"
+  - "Multi-stage Dockerfile: builder stage (pip install --user) → runtime slim without pip or setuptools — reduced CVE surface"
+  - "PostgreSQL Alpine base: smaller image with fewer installed packages and lower vulnerability footprint"
+  - "Non-root appuser in FastAPI container: least-privilege execution from the initial container design"
+  - "Retry logic with exponential backoff: 5 retries with 2s delay for PostgreSQL connection on startup"
+  - "CMD in JSON array form (correct PID 1): OS signals handled directly by Uvicorn, not by a shell wrapper"
+  - "Health checks declared in Docker Compose with service dependencies"
+  - "FastAPI + Uvicorn 0.30.0 ASGI: high performance with automatic OpenAPI documentation at /docs"
+  - "CI verifies build + startup + health endpoint on every push before merge"
 arquitectura:
-  - { nombre: "FastAPI + Uvicorn", descripcion: "API ASGI de alta performance con documentación OpenAPI automática en /docs" }
-  - { nombre: "PostgreSQL 15", descripcion: "Base de datos relacional en contenedor Docker con volumen persistente nombrado" }
-  - { nombre: "Docker Compose", descripcion: "Orquestación multi-servicio con healthchecks declarados y dependencias entre containers" }
-  - { nombre: "Multi-stage Build", descripcion: "Dependencias instaladas en builder stage; imagen final solo con runtime" }
-  - { nombre: "GitHub Actions CI", descripcion: "Pipeline que construye, arranca y verifica el endpoint /health en cada commit" }
+  - { nombre: "FastAPI + Uvicorn", descripcion: "High-performance ASGI API with automatic OpenAPI documentation at /docs" }
+  - { nombre: "PostgreSQL 15", descripcion: "Relational database in Docker container with named persistent volume" }
+  - { nombre: "Docker Compose", descripcion: "Multi-service orchestration with declared health checks and inter-container dependencies" }
+  - { nombre: "Multi-stage Build", descripcion: "Dependencies installed in builder stage; runtime image contains only what is needed to execute" }
+  - { nombre: "GitHub Actions CI", descripcion: "Pipeline that builds, starts and verifies the /health endpoint on every commit" }
 ---
 
-## Descripción del proyecto
+## Platform overview
 
-Docker DevOps Platform es una plataforma backend que sirve como referencia de best practices de containerización con Python y PostgreSQL. El objetivo es demostrar que containerizar correctamente una aplicación va más allá de ejecutar `docker build` — hay decisiones de diseño que afectan la seguridad, el rendimiento y la mantenibilidad a largo plazo.
+A containerized FastAPI backend with PostgreSQL 15, documenting the design decisions that separate a container image that runs from one that is production-ready. Every decision in the Dockerfile addresses a specific failure mode: attack surface, startup ordering, process signal handling or operational observability.
 
-## Best practices implementadas
+## Container design
 
-### Multi-stage build
+The Dockerfile implements a 19-line design with explicit reasoning for each directive:
 
-El Dockerfile usa dos stages: el primero instala dependencias (incluyendo herramientas de compilación), el segundo copia solo lo necesario para ejecutar la aplicación en runtime. La imagen final no contiene pip, setuptools ni ninguna herramienta de desarrollo.
+**Multi-stage build** — the builder stage installs dependencies with `pip install --user`, placing them in `~/.local`. The runtime stage copies only that directory into the non-root user's home. No pip, no setuptools, no compilation tools in the runtime image. The primary benefit is reduced attack surface — an image without a package manager is harder to exploit for arbitrary package installation if the container is compromised.
 
-```dockerfile
-FROM python:3.12-slim AS builder
-RUN pip install --user -r requirements.txt
+**Non-root execution** — `useradd -m appuser` creates a user with no elevated privileges. `USER appuser` switches to that user before the application starts. If a vulnerability in FastAPI or Uvicorn allows arbitrary code execution, the attacker operates with the limited permissions of `appuser` rather than root.
 
-FROM python:3.12-slim
-COPY --from=builder /root/.local /root/.local
-COPY app/ app/
+**CMD array syntax** — `CMD ["uvicorn", "src.main:app", ...]` runs Uvicorn as PID 1 directly. The shell form of CMD wraps the command in `/bin/sh -c`, making the shell PID 1. Signals sent by Docker on `docker stop` (SIGTERM) reach the shell, which may not propagate them to the application. The array form ensures signals reach Uvicorn directly, enabling graceful shutdown.
+
+## Health check design
+
+The `/health` endpoint verifies active database connectivity:
+
+```python
+@app.get("/health")
+def health():
+    try:
+        conn = get_db_connection()
+        conn.close()
+        return {"status": "ok", "db": "connected"}
+    except Exception as e:
+        return {"status": "error", "db": str(e)}
 ```
 
-### Usuario no-root
+A health check that only confirms the process is running produces false positives. When the database connection pool is exhausted or the database is unreachable, the application cannot serve requests — but a process-level health check would report healthy. The active connection check exposes the actual service state.
 
-Los contenedores que corren como root son un riesgo de seguridad. Si hay una vulnerabilidad en la aplicación y el atacante obtiene ejecución de código, tiene privilegios de root en el contenedor. La plataforma define un usuario `appuser` dedicado sin privilegios elevados.
+## Startup ordering
 
-### Retry logic para base de datos
+Docker Compose `depends_on` confirms that the PostgreSQL container is in `running` state — not that PostgreSQL is accepting connections. PostgreSQL takes 2-4 seconds after container startup to initialize its data cluster. The application implements retry logic to handle this window:
 
-Los contenedores no arrancan en orden exacto aunque Docker Compose declare dependencias con `depends_on`. PostgreSQL puede tardar 2-3 segundos extra en inicializar después de que el contenedor está "running". La aplicación implementa retry logic: si la conexión falla, espera y reintenta hasta N veces antes de fallar con un error claro.
+5 attempts with 2-second intervals provide up to 10 seconds of grace before the application fails with a clear error message. This eliminates the crash loop that occurs when the application connects before PostgreSQL is ready.
 
-## Pipeline de CI
+## CI integration testing
 
-El workflow de GitHub Actions replica exactamente lo que un desarrollador haría manualmente para verificar que el servicio funciona:
+The GitHub Actions pipeline verifies not just that the image builds, but that the full stack starts and communicates:
 
-1. `docker build` — verifica que la imagen compila sin errores
-2. `docker compose up -d` — arranca todos los servicios en background
-3. `curl http://localhost:8000/health` — verifica que la aplicación responde y se conecta a la DB
-4. `docker compose down` — limpia el entorno
+1. `docker build` — image compiles without errors
+2. `docker compose up -d` — both services start
+3. `curl -f http://localhost:8000/health` — application responds and database connection succeeds
+4. `docker compose down` — cleanup
 
-Este enfoque detecta problemas de integración que los tests unitarios no pueden detectar: que los servicios realmente arrancan juntos, que la conexión a la base de datos funciona en el entorno real.
+This integration test catches failures that unit tests cannot: a Dockerfile that builds but fails at runtime, missing environment variables, network configuration that prevents inter-container communication.
 
-## API actual
+## Planned capabilities
 
-```
-GET /       → {"message": "Docker DevOps Platform", "status": "running"}
-GET /health → {"status": "healthy", "database": "connected"}
-```
-
-El endpoint `/health` verifica activamente la conectividad con PostgreSQL, no solo que el proceso Python esté vivo.
-
-## Roadmap
-
-El proyecto está activamente en desarrollo con estas capacidades planificadas:
-- NGINX como reverse proxy con headers de seguridad y rate limiting
-- Push automático de imagen a Docker Hub o GHCR en CI/CD
-- Manifests de Kubernetes para despliegue en cluster
-- Prometheus metrics endpoint para observabilidad
-
-## Lessons learned
-
-La lección más importante fue sobre el orden de arranque en Docker Compose. El parámetro `depends_on` verifica que el contenedor esté corriendo, no que la aplicación dentro esté lista. PostgreSQL tarda unos segundos en inicializar el cluster de datos después de que el contenedor arranca. La solución correcta es retry logic en la aplicación — no confiar en el healthcheck de Docker Compose como única garantía.
-
-La segunda lección: los multi-stage builds reducen el tamaño de imagen significativamente, pero el principal beneficio es de seguridad: una imagen sin compilador ni pip tiene una superficie de ataque mucho menor si el contenedor es comprometido.
+- NGINX reverse proxy with rate limiting and security headers
+- Automatic image push to ECR or GHCR in CI
+- Kubernetes manifests for cluster deployment
+- Prometheus metrics endpoint for operational observability

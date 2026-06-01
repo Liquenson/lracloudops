@@ -1,248 +1,230 @@
 ---
-titulo: "Construimos un agente CLI con IA para gestionar AWS en lenguaje natural"
-descripcion: "Cómo construimos el AWS DevOps Agent con Claude Sonnet 4.6, boto3 y Python: arquitectura real del agente, 31 herramientas AWS implementadas y las lecciones que no estaban en ningún tutorial."
+titulo: "Building a Natural Language AWS Operations Agent with Claude and boto3"
+descripcion: "Architecture of the AWS DevOps Agent: Claude Sonnet 4.6 as the reasoning layer, 31 boto3 tools as the execution layer, and the engineering decisions that determine whether a tool-use agent is operationally useful."
 fecha: 2026-05-05
 tags: ["AI", "AWS", "Python", "DevOps", "Claude", "boto3", "Agentes"]
 draft: false
 ---
 
-## El problema que llevó a este proyecto
+## Problem
 
-Hay una pregunta que cualquier ingeniero DevOps se hace varias veces al día: *"¿cómo está la infraestructura ahora mismo?"*. La respuesta implica abrir varias consolas, ejecutar una docena de comandos de AWS CLI, parsear JSON crudo y sintetizar mentalmente el estado de múltiples servicios. Cuando lo haces en una situación de incidente, cada segundo cuenta.
+Answering the question "what is the current state of the infrastructure?" requires opening multiple consoles, running a dozen AWS CLI commands, parsing raw JSON and synthesizing the state of multiple services mentally. Under normal conditions this takes minutes. During an incident, those minutes have operational cost.
 
-La pregunta que nos hicimos fue directa: ¿podemos reemplazar ese ciclo de comandos por una conversación en lenguaje natural que devuelva una respuesta sintetizada? La respuesta fue el **AWS DevOps Agent** — un agente CLI escrito en Python que usa Claude Sonnet 4.6 como motor de razonamiento y boto3 como capa de ejecución.
+The question was whether a natural language interface over AWS APIs could reduce that operational overhead — not as a replacement for understanding the infrastructure, but as a way to query it without context-switching through multiple tools.
 
-Este artículo describe cómo lo construimos, las decisiones técnicas reales que tomamos y lo que aprendimos en el proceso.
+## Context
 
-## Arquitectura del sistema
+The AWS DevOps Agent is a CLI tool written in Python that uses Claude Sonnet 4.6 as the reasoning layer and boto3 as the execution layer. A user types a question in natural language. Claude selects which AWS operations to perform, the agent executes them via boto3, and Claude synthesizes the results into a structured response.
 
-El agente tiene tres capas:
+The architectural constraint that makes this useful rather than a demo: Claude does not execute Python directly. It selects tools defined as JSON schemas, the agent executes them, and returns results to Claude for interpretation. This tool-use pattern allows Claude to chain multiple operations, evaluate intermediate results, and decide whether additional data is needed before responding.
+
+## Architecture
+
+Three layers:
 
 ```
-Usuario (lenguaje natural)
+User (natural language)
         ↓
-Claude Sonnet 4.6 (razonamiento + selección de herramientas)
+Claude Sonnet 4.6 (reasoning + tool selection)
         ↓
-boto3 (ejecución real contra la cuenta AWS)
+boto3 (execution against the AWS account)
         ↓
-Respuesta sintetizada en español
+Synthesized response
 ```
 
-El punto clave es que Claude no ejecuta código de Python directamente — selecciona herramientas definidas como schemas JSON, el agente las ejecuta con boto3, y devuelve los resultados de vuelta a Claude para que los interprete. Este patrón de **tool use** (function calling) es lo que hace al sistema robusto: Claude puede encadenar múltiples herramientas, evaluar los resultados intermedios y decidir si necesita más información antes de responder.
+The agent loop runs until Claude reaches a conclusion:
 
 ```python
-def agente(pregunta):
-    messages = [{"role": "user", "content": pregunta}]
+def run_agent(query: str) -> str:
+    messages = [{"role": "user", "content": query}]
     while True:
         response = client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=4096,
             tools=tools,
-            system="Eres un agente DevOps experto en AWS...",
+            system=SYSTEM_PROMPT,
             messages=messages
         )
         if response.stop_reason == "tool_use":
-            # Ejecutar cada herramienta solicitada
             tool_results = []
             for block in response.content:
                 if block.type == "tool_use":
-                    resultado = ejecutar_herramienta(block.name, block.input)
+                    result = execute_tool(block.name, block.input)
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": block.id,
-                        "content": json.dumps(resultado, ensure_ascii=False)
+                        "content": json.dumps(result)
                     })
+            messages.append({"role": "assistant", "content": response.content})
             messages.append({"role": "user", "content": tool_results})
         elif response.stop_reason == "end_turn":
-            break
+            return extract_text(response.content)
 ```
 
-El loop continúa mientras Claude necesite ejecutar herramientas. Cuando Claude considera que tiene suficiente información, devuelve la respuesta final y el loop termina.
+The loop continues while Claude requires tool execution. When Claude has sufficient information, it terminates and returns the final response.
 
-## Los 31 clientes boto3 y por qué son tantos
+## Implementation
 
-La primera decisión fue inicializar todos los clientes boto3 al arrancar el agente, no en cada llamada:
+### Client initialization
+
+All 31 boto3 clients initialize at agent startup, not on each tool invocation:
 
 ```python
 REGION = "eu-west-1"
 
-ec2     = boto3.client("ec2",            region_name=REGION)
-s3      = boto3.client("s3")
-logs    = boto3.client("logs",           region_name=REGION)
-ecs     = boto3.client("ecs",            region_name=REGION)
-eks     = boto3.client("eks",            region_name=REGION)
-rds     = boto3.client("rds",            region_name=REGION)
-lmb     = boto3.client("lambda",         region_name=REGION)
-iam     = boto3.client("iam")
-ce      = boto3.client("ce",             region_name="us-east-1")
-# ... 22 más
-gd      = boto3.client("guardduty",      region_name=REGION)
+ec2     = boto3.client("ec2",       region_name=REGION)
+ecs     = boto3.client("ecs",       region_name=REGION)
+eks     = boto3.client("eks",       region_name=REGION)
+rds     = boto3.client("rds",       region_name=REGION)
+lmb     = boto3.client("lambda",    region_name=REGION)
+logs    = boto3.client("logs",      region_name=REGION)
+iam     = boto3.client("iam")                            # global service
+s3      = boto3.client("s3")                             # global service
+ce      = boto3.client("ce", region_name="us-east-1")   # Cost Explorer: us-east-1 only
+gd      = boto3.client("guardduty", region_name=REGION)
 ```
 
-La excepción es Cost Explorer (`ce`): este servicio de AWS solo acepta requests desde `us-east-1` independientemente de dónde esté la infraestructura — ese fue el primer gotcha que encontramos. IAM y S3 tampoco requieren región porque son servicios globales.
+Two non-obvious constraints: IAM and S3 are global services with no region requirement. Cost Explorer only accepts requests from `us-east-1` regardless of where the infrastructure runs — configuring it with any other region causes silent failures that surface only when the cost query executes.
 
-Los 31 clientes cubren: EC2, S3, RDS, EKS, ECS, Lambda, IAM, Cost Explorer, SNS, SQS, CloudFormation, Route53, CloudWatch, ALB/ELB, ECR, DynamoDB, ElastiCache, SSM, EventBridge, API Gateway, CodePipeline, CodeBuild, CloudFront y GuardDuty.
+### Tool schema design
 
-## Las herramientas más interesantes
-
-### Auditoría de Security Groups
-
-Esta herramienta analiza todos los security groups de la cuenta y detecta reglas con CIDR `0.0.0.0/0` — exposición pública. Clasifica el riesgo según el puerto:
-
-```python
-puertos_criticos = [22, 3306, 5432, 27017, 6379, 3389]
-
-for sg in response["SecurityGroups"]:
-    for rule in sg.get("IpPermissions", []):
-        for ip in rule.get("IpRanges", []):
-            if ip.get("CidrIp") == "0.0.0.0/0":
-                puerto = rule.get("FromPort", "todos")
-                peligrosos.append({
-                    "sg_id": sg["GroupId"],
-                    "nombre": sg["GroupName"],
-                    "puerto": puerto,
-                    "riesgo": "ALTO" if puerto in puertos_criticos else "MEDIO"
-                })
-```
-
-Un puerto 22 (SSH) abierto al mundo es riesgo ALTO. Un puerto 8080 abierto es riesgo MEDIO. Claude toma esta clasificación y la incluye en la respuesta con recomendaciones concretas.
-
-### Rotación de Access Keys IAM
-
-Otra herramienta crítica detecta access keys antiguas:
-
-```python
-antiguedad = (datetime.now(k["CreateDate"].tzinfo) - k["CreateDate"]).days
-resultado.append({
-    "usuario": u["UserName"],
-    "key_id": k["AccessKeyId"],
-    "estado": k["Status"],
-    "antiguedad_dias": antiguedad,
-    "riesgo": "ALTO" if antiguedad > 90 else "OK"
-})
-```
-
-Una key activa con más de 90 días sin rotar es un riesgo de seguridad estándar. El agente puede detectar esto con una sola pregunta: *"¿tenemos access keys antiguas que deberíamos rotar?"*.
-
-### Costes por servicio
-
-Cost Explorer devuelve datos agrupados por servicio del mes en curso:
-
-```python
-response = ce.get_cost_and_usage(
-    TimePeriod={"Start": inicio, "End": fin},
-    Granularity="MONTHLY",
-    Metrics=["UnblendedCost"],
-    GroupBy=[{"Type": "DIMENSION", "Key": "SERVICE"}]
-)
-```
-
-El resultado se ordena de mayor a menor coste y Claude presenta solo los servicios con coste > $0.01, eliminando el ruido de servicios gratuitos que aparecen en el desglose de AWS.
-
-## Cómo definimos las herramientas para Claude
-
-Cada herramienta tiene un schema JSON que Claude usa para entender cuándo y cómo invocarla:
+Each tool is defined as a JSON schema that Claude uses to determine when and how to invoke it:
 
 ```python
 tools = [
     {
-        "name": "revisar_security_groups",
-        "description": "Detecta security groups peligrosos abiertos al mundo",
+        "name": "audit_security_groups",
+        "description": "Detects security groups with rules open to 0.0.0.0/0. Classifies risk by port: SSH/RDP/database ports are HIGH risk.",
         "input_schema": {"type": "object", "properties": {}, "required": []}
     },
     {
-        "name": "ver_logs_cloudwatch",
-        "description": "Muestra logs recientes de un grupo CloudWatch",
+        "name": "get_cloudwatch_logs",
+        "description": "Returns recent log events from a CloudWatch log group",
         "input_schema": {
             "type": "object",
             "properties": {
-                "log_group": {"type": "string"},
-                "minutos": {"type": "integer"}
+                "log_group": {"type": "string", "description": "The log group name"},
+                "minutes": {"type": "integer", "description": "Number of minutes of history to return", "default": 60}
             },
             "required": ["log_group"]
         }
-    },
-    # ... 29 más
+    }
 ]
 ```
 
-La descripción de cada herramienta es crítica. Claude no lee el código Python — solo lee el `name` y `description`. Si la descripción es ambigua, Claude puede invocar la herramienta incorrecta o no invocarla cuando debería.
+The description field is operationally critical. Claude infers when to use each tool from the name and description — not from the Python implementation. Ambiguous descriptions produce incorrect tool selection. Time spent writing precise, unambiguous tool descriptions reduces incorrect behavior in production.
 
-El sistema de despacho mapea el nombre de cada herramienta a su función Python:
-
-```python
-def ejecutar_herramienta(nombre, inputs):
-    mapa = {
-        "listar_instancias_ec2":        lambda: listar_instancias_ec2(),
-        "parar_instancia":              lambda: parar_instancia(inputs["instance_id"]),
-        "ver_logs_cloudwatch":          lambda: ver_logs_cloudwatch(
-                                            inputs["log_group"],
-                                            inputs.get("minutos", 60)
-                                        ),
-        # ... 28 más
-    }
-    fn = mapa.get(nombre)
-    return fn() if fn else {"error": f"Herramienta {nombre} no encontrada"}
-```
-
-## El prompt del sistema: por qué importa más de lo esperado
-
-El system prompt del agente es más corto de lo que uno esperaría:
-
-```
-Eres un agente DevOps experto en AWS con acceso completo a la infraestructura.
-Responde siempre en español de forma clara y concisa.
-Usa las herramientas para obtener datos reales antes de responder.
-Cuando detectes problemas de seguridad sé específico y da recomendaciones concretas.
-Cuando muestres costes ordénalos de mayor a menor.
-```
-
-La clave es "usa las herramientas para obtener datos reales antes de responder". Sin esta instrucción, Claude puede responder con información de su training data en lugar de consultar la cuenta AWS real. También fue importante especificar el idioma (español) para que tanto las respuestas como los errores sean consistentes.
-
-## Manejo de errores: cuando AWS falla
-
-Cada función boto3 está envuelta en try/except que devuelve un dict con el error en lugar de lanzar una excepción:
+### Security group auditing
 
 ```python
-def listar_bases_de_datos_rds():
+def audit_security_groups() -> list:
+    critical_ports = [22, 3306, 5432, 27017, 6379, 3389]
+    exposed = []
+    
+    response = ec2.describe_security_groups()
+    for sg in response["SecurityGroups"]:
+        for rule in sg.get("IpPermissions", []):
+            for ip_range in rule.get("IpRanges", []):
+                if ip_range.get("CidrIp") == "0.0.0.0/0":
+                    port = rule.get("FromPort", "all")
+                    exposed.append({
+                        "sg_id": sg["GroupId"],
+                        "name": sg["GroupName"],
+                        "port": port,
+                        "risk": "HIGH" if port in critical_ports else "MEDIUM"
+                    })
+    return exposed
+```
+
+Port 22 open to the world is HIGH risk. Port 8080 open to the world is MEDIUM risk. Claude receives this classification and includes concrete remediation recommendations in the response — not just the finding.
+
+### IAM key age detection
+
+```python
+def check_iam_key_age() -> list:
+    result = []
+    users = iam.list_users()["Users"]
+    for user in users:
+        keys = iam.list_access_keys(UserName=user["UserName"])["AccessKeyMetadata"]
+        for key in keys:
+            age_days = (datetime.now(key["CreateDate"].tzinfo) - key["CreateDate"]).days
+            result.append({
+                "user": user["UserName"],
+                "key_id": key["AccessKeyId"],
+                "status": key["Status"],
+                "age_days": age_days,
+                "risk": "HIGH" if age_days > 90 else "OK"
+            })
+    return result
+```
+
+An active key over 90 days without rotation is a standard security risk. This query answers "are there aged credentials that should be rotated?" in one natural language question.
+
+### Result projection
+
+AWS APIs return large JSON objects. `describe_instances` returns dozens of fields per instance. If the agent returns raw API output to Claude, context window is exhausted quickly.
+
+Each function projects only the fields the user needs:
+
+```python
+def list_ec2_instances() -> list:
+    response = ec2.describe_instances()
+    instances = []
+    for reservation in response["Reservations"]:
+        for instance in reservation["Instances"]:
+            instances.append({
+                "id": instance["InstanceId"],
+                "type": instance["InstanceType"],
+                "state": instance["State"]["Name"],
+                "public_ip": instance.get("PublicIpAddress", "none")
+            })
+    return instances
+```
+
+Four fields instead of forty. Claude receives enough context to answer the question without exhausting the conversation window on fields that are never used.
+
+### Error handling
+
+Every boto3 function is wrapped to return a structured error rather than raise an exception:
+
+```python
+def list_rds_instances() -> list:
     try:
         response = rds.describe_db_instances()
-        # ... procesar
+        # ... process
     except Exception as e:
         return [{"error": str(e)}]
 ```
 
-Esto es importante porque Claude recibe el resultado del tool use como JSON. Si la función lanza una excepción no capturada, el agente se rompe. Si devuelve `{"error": "mensaje"}`, Claude puede interpretarlo y comunicarlo: *"No tengo permisos para listar las instancias RDS. Verifica que las credenciales tengan el permiso `rds:DescribeDBInstances`"*.
+If the function raises an unhandled exception, the agent breaks. If it returns `{"error": "message"}`, Claude interprets it: "The RDS query failed — verify that the credentials have `rds:DescribeDBInstances` permission." The error becomes part of the conversation rather than terminating it.
 
-## Lecciones aprendidas
+## Operational Considerations
 
-**La primera lección fue sobre las descripciones de las herramientas.** Claude infiere cuándo usar cada herramienta basándose en el nombre y descripción, no en el código. Si tienes `listar_instancias_ec2` y `listar_servicios_ecs`, Claude los diferencia correctamente. Pero si tienes dos herramientas con descripciones similares, puede invocar la incorrecta. Tiempo invertido en describir bien las herramientas = menos prompts de corrección.
+**Destructive action confirmation** — the agent can stop EC2 instances. Confirmation is handled at the system prompt level rather than in code:
 
-**La segunda lección fue sobre el volumen de los resultados de AWS.** Algunas APIs como `describe_instances` devuelven objetos JSON enormes con decenas de campos por recurso. Si el agente devuelve todo eso a Claude, agota rápido el context window. La solución fue proyectar solo los campos útiles en cada función Python — el agente extrae `InstanceId`, `InstanceType`, `State`, `PublicIpAddress` y nada más.
-
-**La tercera lección fue sobre Cost Explorer.** Es el único servicio de AWS que exige que el cliente esté en `us-east-1`. Nuestro código original usó `eu-west-1` para todo y Cost Explorer fallaba silenciosamente. Cuando añadiste el try/except y viste el error, fue inmediatamente obvio.
-
-**La cuarta lección fue sobre las acciones destructivas.** El agente puede parar instancias EC2 con la función `parar_instancia`. No implementamos confirmación a nivel de código — la instrucción de confirmación está en el system prompt. Claude la interpreta correctamente: antes de ejecutar `parar_instancia`, pregunta "¿Confirmas que quieres parar la instancia web-prod (i-0abc123)?". Funciona en la práctica, aunque una confirmación a nivel de código sería más robusta para un entorno de producción real.
-
-## Cómo ejecutarlo
-
-El agente necesita credenciales AWS configuradas localmente (`~/.aws/credentials` o variables de entorno) y una API key de Anthropic:
-
-```bash
-pip install anthropic boto3 python-dotenv
-
-# .env
-ANTHROPIC_API_KEY=sk-ant-...
-
-python agent.py
+```
+Before executing any action that modifies or stops a resource, state exactly what you are about to do and ask for explicit confirmation.
 ```
 
-Al arrancar, muestra los servicios disponibles y abre el prompt interactivo. Cada query ejecuta el loop de tool use hasta que Claude tiene suficiente contexto para responder.
+Claude applies this instruction consistently. Before executing `stop_instances`, it describes the exact instance and asks for confirmation. A code-level confirmation mechanism would be more robust for a production deployment.
 
-## Próximos pasos
+**System prompt scope** — the system prompt is shorter than expected:
 
-El agente actual es stateless — cada sesión comienza desde cero. El siguiente paso natural es persistir el contexto de la sesión para que el agente recuerde operaciones previas entre reinicios. También tenemos en roadmap integración con SNS para que el agente pueda enviar notificaciones directamente cuando detecta problemas.
+```
+You are a DevOps operations agent with full access to the AWS infrastructure via the provided tools.
+Use tools to retrieve real data before responding — do not rely on prior knowledge about the account state.
+When identifying security issues, be specific and provide concrete remediation steps.
+When reporting costs, sort by amount descending.
+```
 
-Si trabajas en proyectos donde la gestión de infraestructura AWS es parte del día a día, o si quieres explorar cómo integrar agentes de IA en tus flujos DevOps, [escríbenos](/contacto) — estamos construyendo esto activamente y nos interesa conocer casos de uso reales.
+The instruction to use tools for real data is critical. Without it, Claude may answer questions from its training knowledge about AWS rather than querying the actual account.
 
-El código fuente de este proyecto es parte del portafolio de LRA Cloud Operations. Puedes ver la arquitectura completa en la [página del proyecto](/projects/aws-devops-agent).
+**Stateless sessions** — the agent is stateless. Each session starts from scratch. Operational context built during one session — instance names, recent changes, current alerts — does not persist to the next. For a production operations tool, session persistence would reduce the setup cost of each conversation.
+
+## Outcome
+
+The agent reduces the operational overhead of routine AWS infrastructure queries. Questions that previously required multiple console views and CLI commands are answered in one natural language exchange. Security auditing, cost analysis and IAM hygiene checks that would otherwise require scheduled scripts run on demand.
+
+The tool-use architecture means Claude's reasoning capability applies to the synthesized data — it can observe that EC2 spend increased this month, correlate it with a specific instance launched on a specific date, and surface that connection without being explicitly asked to perform that analysis.
+
+The engineering investment is in tool quality, not agent complexity. The agent loop is 30 lines. The value is in the 31 precisely-described tools that give Claude accurate operational access.

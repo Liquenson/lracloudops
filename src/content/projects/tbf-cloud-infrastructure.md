@@ -1,9 +1,9 @@
 ---
 titulo: "TBF Cloud Infrastructure"
-descripcion: "Plataforma SaaS completa con Spring Boot 4.0.3 y React 18.3.1 en AWS ECS Fargate. 11 módulos Terraform 1.9.8, OIDC puro sin credenciales estáticas, circuit breaker con rollback automático y CloudFront OAC con cache diferenciado."
+descripcion: "Full-stack SaaS platform on AWS ECS Fargate with Spring Boot 4.0.3 and React 18.3.1. 11 Terraform modules, OIDC authentication with ephemeral credentials, automated circuit breaker rollback and CloudFront OAC with differentiated cache policy."
 fecha: 2026-05-01
-categoria: "Full Stack + Cloud"
-madurez: "Producción"
+categoria: "Platform Engineering"
+madurez: "Production"
 stack: ["Spring Boot 4.0.3", "Java 17", "React 18.3.1", "Vite 5.4.14", "Terraform 1.9.8", "AWS ECS Fargate", "CloudFront", "RDS PostgreSQL 15", "AWS Secrets Manager", "ALB", "S3", "GitHub Actions"]
 cicd: true
 github: null
@@ -11,66 +11,70 @@ featured: true
 iconPath: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
 draft: false
 metricas:
-  - { label: "Módulos Terraform", value: "11" }
-  - { label: "Pipelines CI/CD", value: "3" }
-  - { label: "Servicios AWS", value: "15+" }
-  - { label: "Ambientes", value: "Dev + Prod" }
+  - { label: "Terraform Modules", value: "11" }
+  - { label: "CI/CD Pipelines", value: "3" }
+  - { label: "AWS Services", value: "15+" }
+  - { label: "Environments", value: "Dev + Prod" }
 highlights:
-  - "OIDC puro: tokens IAM efímeros de 15 minutos — cero AWS keys almacenadas en GitHub Secrets"
-  - "ECS circuit breaker con rollback automático en deploy fallido — sin intervención manual"
-  - "CloudFront OAC moderno (no OAI legacy) con cache diferenciado: assets 1 año immutable vs index.html no-cache"
-  - "RDS PostgreSQL 15 Multi-AZ con deletion protection, 7 días de backups y performance insights"
-  - "11 módulos Terraform: vpc, ecr, ecs_backend, rds, alb, cloudfront, s3_frontend, s3_documents, secrets_manager, nat, security_group"
-  - "Separación dev/prod: dev sin NAT Gateway (reducción de costo), prod con subnets privadas y NAT"
-  - "AWS Secrets Manager: rotación de credenciales sin redeploy — solo reiniciar el task de ECS"
-  - "ECS Exec habilitado en dev para diagnóstico directo en contenedores sin SSH"
+  - "Pure OIDC: 15-minute ephemeral IAM tokens — zero AWS keys stored in GitHub Secrets"
+  - "ECS deployment circuit breaker with automatic rollback on failed deployment — no manual intervention"
+  - "CloudFront OAC (not legacy OAI) with differentiated cache: assets 1 year immutable vs index.html no-cache"
+  - "RDS PostgreSQL 15 Multi-AZ with deletion protection, 7-day backups and Performance Insights"
+  - "11 Terraform modules: vpc, ecr, ecs_backend, rds, alb, cloudfront, s3_frontend, s3_documents, secrets_manager, nat, security_group"
+  - "Dev/prod topology: dev without NAT Gateway (cost reduction), prod with private subnets and NAT"
+  - "AWS Secrets Manager: credential rotation without redeployment — ECS task restart picks up new values"
+  - "ECS Exec enabled in dev for direct container diagnostics without SSH"
 arquitectura:
-  - { nombre: "CloudFront + S3", descripcion: "CDN global serviendo el frontend React con OAC (Origin Access Control)" }
-  - { nombre: "ALB → ECS Fargate", descripcion: "Load balancer redirige tráfico a contenedores Spring Boot en Fargate" }
-  - { nombre: "RDS PostgreSQL 15", descripcion: "Base de datos en subnets privadas, Multi-AZ en producción" }
-  - { nombre: "AWS Secrets Manager", descripcion: "Inyección de secretos en runtime sin exponer credenciales" }
-  - { nombre: "S3 Documents", descripcion: "Bucket separado para documentos de usuario con presigned URLs" }
-  - { nombre: "NAT Gateway (prod)", descripcion: "Dev usa subnets públicas para reducir costos; prod usa NAT privado" }
+  - { nombre: "CloudFront + S3", descripcion: "Global CDN serving the React frontend with OAC (Origin Access Control) — no public S3 access" }
+  - { nombre: "ALB → ECS Fargate", descripcion: "Load balancer routes traffic to Spring Boot containers — tasks have no public IPs in production" }
+  - { nombre: "RDS PostgreSQL 15", descripcion: "Database in private subnets, Multi-AZ in production with automatic failover" }
+  - { nombre: "AWS Secrets Manager", descripcion: "Runtime secret injection — no credentials in environment variables or source control" }
+  - { nombre: "S3 Documents", descripcion: "Separate bucket for user documents with pre-signed URL access" }
+  - { nombre: "NAT Gateway (prod)", descripcion: "Dev uses public subnets to eliminate NAT cost; prod uses private subnets with NAT for security" }
 ---
 
-## Descripción del proyecto
+## Platform overview
 
-TBF Cloud Infrastructure es una plataforma SaaS completa que demuestra cómo construir, desplegar y operar una aplicación web moderna en AWS con todas las mejores prácticas de seguridad, escalabilidad y automatización.
+A production SaaS platform deploying Spring Boot 4.0.3 and React 18.3.1 on AWS ECS Fargate. Infrastructure is fully provisioned through 11 Terraform modules. Three independent CI/CD pipelines handle backend, frontend and infrastructure changes separately. No static AWS credentials exist anywhere in the repository or CI configuration.
 
-El proyecto incluye backend (Spring Boot 4), frontend (React 18 + Vite) y toda la infraestructura AWS en Terraform modular, con tres pipelines independientes de CI/CD.
+Traffic flows: CloudFront serves the React SPA from a private S3 bucket via OAC. API requests route through the ALB to ECS Fargate tasks running Spring Boot on port 8080. Tasks connect to RDS PostgreSQL and retrieve runtime credentials from AWS Secrets Manager at startup.
 
-## Arquitectura de la plataforma
+## Infrastructure design
 
-El tráfico de usuarios llega a CloudFront. Las peticiones al frontend se sirven desde S3 directamente. Las peticiones a la API (/api/*) se redirigen al ALB, que las distribuye entre los contenedores ECS Fargate ejecutando Spring Boot.
+11 Terraform modules with explicit responsibility boundaries:
 
-Los contenedores acceden a RDS PostgreSQL y a S3 para documentos. Los secretos (contraseña DB, JWT secret, credenciales email) se obtienen de AWS Secrets Manager en el arranque del contenedor.
+- **vpc** — CIDR allocation, public/private subnets, Internet Gateway
+- **nat** — NAT Gateway (provisioned only in production)
+- **security_group** — firewall rules per network layer: ALB, ECS, RDS
+- **ecr** — container registry with lifecycle policies
+- **rds** — PostgreSQL 15 with environment-specific Multi-AZ and backup configuration
+- **alb** — HTTP (dev) / HTTPS with ACM (prod) load balancer
+- **secrets_manager** — DB credentials, JWT secret and SMTP credentials
+- **ecs_backend** — Fargate service, task definition, execution role, log groups
+- **s3_frontend** — private bucket for the React SPA
+- **s3_documents** — user document storage with pre-signed URL pattern
+- **cloudfront** — CDN with OAC, SPA routing rules and differentiated cache behavior
 
-## Decisiones de diseño Dev vs Prod
+## Dev vs prod topology
 
-Una decisión deliberada es que dev y prod tienen configuraciones de infraestructura diferentes:
+The environments differ in network topology, not just resource size:
 
-**Dev:** ECS tasks en subnets públicas, sin NAT Gateway (ahorra ~$35/mes), RDS sin Multi-AZ.
+**Development** — ECS tasks run in public subnets with public IPs. Image pulls from ECR route directly without NAT Gateway. RDS runs in a single AZ without Multi-AZ failover. The NAT module is not provisioned. Cost is substantially lower.
 
-**Prod:** ECS en subnets privadas, NAT Gateway, RDS Multi-AZ, deletion protection habilitada, HTTPS con ACM.
+**Production** — ECS tasks run in private subnets with no public IPs. Image pulls from ECR route through the NAT Gateway. RDS runs Multi-AZ with deletion protection and 7-day backup retention. The only inbound path to any backend component is through the ALB.
 
-Esta separación permite desarrollar y testear en un entorno económico mientras prod mantiene todos los controles de seguridad y disponibilidad.
+This topology difference is encoded in Terraform variables. The VPC module provisions or skips the NAT Gateway and routes based on `enable_nat_gateway`. The ECS module places tasks in the appropriate subnet tier based on configuration.
 
-## CI/CD con tres pipelines
+## Credential management
 
-**backend.yml:** Ejecuta tests Maven, construye imagen Docker, la sube a ECR y hace force-deploy del servicio ECS. Usa AWS OIDC para autenticación sin credenciales hardcodeadas.
+No secret is stored in the CI configuration. GitHub Actions authenticates to AWS via OIDC federation — the pipeline assumes an IAM role and receives a 15-minute ephemeral token. When the pipeline completes, the token expires. Nothing to rotate.
 
-**frontend.yml:** Build con Vite, sube artefactos a S3 y ejecuta invalidación de CloudFront para que los usuarios reciban la versión nueva inmediatamente.
+Application secrets (database password, JWT signing key, SMTP credentials) live in AWS Secrets Manager. The ECS task execution role has `secretsmanager:GetSecretValue` scoped to the specific secret ARNs for that environment. ECS injects secret values as environment variables before the container starts. Spring Boot reads them at startup without awareness of the source.
 
-**terraform.yml:** Valida y planea en PRs; aplica solo en push a main desde el workflow aprobado.
+Rotating a credential requires updating the Secrets Manager secret value and restarting the ECS tasks. No redeployment of application code.
 
-## Gestión de secretos
+## Deployment safety
 
-En entornos desplegados, ningún secreto existe en variables de entorno del repositorio ni en archivos .env. Spring Boot obtiene todos los secretos de AWS Secrets Manager al arrancar, usando el IAM role del task de ECS.
+The ECS deployment circuit breaker monitors task health during rollout. If the new task definition fails its health checks, ECS stops the deployment and reverts to the previous task definition automatically. No manual intervention is required for a failed deployment.
 
-Esto significa que rotar una contraseña no requiere redesplegar la aplicación, solo actualizar el secreto en Secrets Manager y reiniciar el task.
-
-## Lessons learned
-
-La mayor complejidad fue el orden de creación de recursos en Terraform. El security group del ECS task necesita saber el ID del security group de RDS para la regla de egreso, pero RDS necesita el security group de ECS para su regla de ingreso. Esto crea dependencias circulares que Terraform resuelve con referencias explícitas entre módulos.
-
-La segunda lección importante: los presigned URLs de S3 tienen tiempo de expiración. Para documentos que los usuarios acceden repetidamente, es mejor generar URLs nuevas en cada request en lugar de guardarlas en la base de datos.
+CloudFront cache strategy: hashed asset filenames get a 1-year `immutable` cache header — the hash in the filename changes whenever the content changes, so browsers cache aggressively. The `index.html` gets `no-cache, no-store` so users always receive the current entry point. Frontend deployments invalidate CloudFront after S3 sync completes.

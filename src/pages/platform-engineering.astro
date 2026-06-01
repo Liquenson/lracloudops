@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://lracloudops.com/platform-engineering#service',
+  name: 'Platform Engineering',
+  serviceType: 'Platform Engineering',
+  description: 'Internal developer platforms built on Kubernetes, GitOps and policy-as-code. Self-service infrastructure that reduces deployment friction without reducing operational control.',
+  url: 'https://lracloudops.com/platform-engineering',
+  provider: { '@id': 'https://lracloudops.com/#organization' },
+  areaServed: 'Worldwide',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Platform Engineering Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kubernetes Control Plane Design' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'GitOps with ArgoCD' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Policy as Code with OPA/Kyverno' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Internal Developer Platform' } },
+    ],
+  },
+}
+---
+
+<Layout
+  titulo="Platform Engineering · Internal Developer Platform"
+  descripcion="Internal developer platforms built on Kubernetes, GitOps and policy-as-code. Self-service infrastructure that reduces deployment friction without reducing operational control."
+  schema={serviceSchema}
+>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(30,111,255,0.12) 0%, transparent 65%);"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          02 · Platform Engineering
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left" style="letter-spacing: -0.02em;">
+          A platform your engineers<br />can ship from without asking ops.
+        </h1>
+        <p class="text-lg max-w-2xl animate-fade-up delay-200" style="color: rgba(147,184,255,0.8);">
+          Platform engineering is not about tooling. It is about removing the friction between a code change and a production deployment — without removing the guardrails that keep production stable. We build internal developer platforms that encode operational standards so they are applied automatically, not enforced manually.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4">The challenge</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What happens without a platform.</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Most engineering bottlenecks are not caused by slow developers. They are caused by the operational overhead every deployment requires.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {[
+          { title: 'Every deployment requires operations', desc: 'Developers open tickets to request environment changes, secrets or infrastructure. The bottleneck is not talent — it is the approval queue.' },
+          { title: 'Standards applied inconsistently', desc: 'Security, networking and logging requirements are documented. But without automation, compliance depends on each team remembering to apply them.' },
+          { title: 'No paved path for new services', desc: 'Starting a new service means assembling the deployment pipeline from scratch — copying Helm charts, YAML files and CI configs from older services, hoping nothing is outdated.' },
+          { title: 'Observability as an afterthought', desc: 'Dashboards, alerts and runbooks are added after the first production incident — not before. Teams discover what they need to observe by finding out what they failed to observe.' },
+        ].map(item => (
+          <div class="card p-6">
+            <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{item.title}</h3>
+            <p class="text-sm leading-relaxed" style="color: #64748b;">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM COMPONENTS -->
+  <section class="py-20" style="background: #f8fafc;">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4">Platform components</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What we build into the platform.</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">Each component removes a category of manual work. Together they form a self-service layer that enforces operational standards automatically.</p>
+      </div>
+      <div class="space-y-4">
+        {[
+          { layer: 'Kubernetes Control Plane', tools: 'EKS 1.31+ · Managed node groups · Cluster Autoscaler', desc: 'Production-grade Kubernetes clusters with managed node groups, autoscaling and network policies applied at provisioning. RBAC configured for team-level access — no cluster-admin by default.' },
+          { layer: 'GitOps Delivery Engine', tools: 'ArgoCD · App of Apps · Sync policies · RBAC', desc: 'ArgoCD as the single deployment mechanism. All application state tracked in Git. Automated sync with drift detection and self-heal. No imperative kubectl commands in production.' },
+          { layer: 'Service Mesh & Networking', tools: 'AWS Load Balancer Controller · ExternalDNS · Cert-manager', desc: 'Automatic ingress provisioning, DNS record management and TLS certificate rotation. Services exposed correctly the first time — no manual Route 53 records or ACM configuration.' },
+          { layer: 'Policy & Compliance', tools: 'OPA / Kyverno · Admission webhooks · Namespace policies', desc: 'Admission controllers that enforce resource requests/limits, security contexts, image registry allowlists and label requirements. Compliance is enforced at deploy time — not discovered in audits.' },
+          { layer: 'Service Catalog', tools: 'Helm charts · Golden path templates · CI/CD scaffolding', desc: 'Parameterized templates for common service types. A new application gets a fully wired Helm chart, ArgoCD application manifest and CI pipeline — with monitoring, ingress and HPA — in minutes.' },
+          { layer: 'Secrets Distribution', tools: 'AWS Secrets Manager · External Secrets Operator · IRSA', desc: 'Secrets synced from AWS Secrets Manager into Kubernetes Secrets via External Secrets Operator. No secrets stored in Git. Rotation propagated automatically.' },
+        ].map((item, i) => (
+          <div class="bg-white rounded-xl p-6 flex flex-col sm:flex-row gap-5 items-start" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
+            <div class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white" style="background: #1E6FFF;">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                <h3 class="text-base font-bold" style="color: #0A2540;">{item.layer}</h3>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{item.tools}</span>
+              </div>
+              <p class="text-sm leading-relaxed" style="color: #64748b;">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPLEMENTATION METHODOLOGY -->
+  <section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4">Implementation methodology</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">How we build and hand over the platform.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          { step: '01', title: 'Platform assessment', desc: 'Map current deployment process, identify friction points and document the operational standards that must be enforced.' },
+          { step: '02', title: 'Control plane setup', desc: 'Provision EKS cluster with all platform components — ArgoCD, ingress, cert-manager, external-secrets — as code, not runbooks.' },
+          { step: '03', title: 'Golden path delivery', desc: 'Build and validate service templates. Migrate one real application end-to-end before creating the template library.' },
+          { step: '04', title: 'Enablement and handover', desc: 'Runbooks, observability dashboards and internal documentation delivered so teams can operate and extend the platform themselves.' },
+        ].map(item => (
+          <div class="card p-6 text-center">
+            <div class="text-3xl font-extrabold mb-3" style="color: #c3d9ff;">{item.step}</div>
+            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{item.title}</h3>
+            <p class="text-xs leading-relaxed" style="color: #64748b;">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="py-20" style="background: #EEF4FF;">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4" style="background: white;">Platform outcomes</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4 mb-4" style="color: #0A2540;">What changes when a platform is in place.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {[
+          { metric: 'New services deployed without ops tickets', detail: 'developers provision via self-service templates', icon: '✓' },
+          { metric: 'Compliance applied at deploy time', detail: 'admission controllers enforce standards before pods run', icon: '✓' },
+          { metric: 'All production state in Git', detail: 'no undocumented resources, no drift between clusters', icon: '✓' },
+          { metric: 'Secrets rotation without application changes', detail: 'External Secrets Operator propagates updates automatically', icon: '✓' },
+          { metric: 'No cluster-admin access in production', detail: 'RBAC scoped to namespace and team boundaries', icon: '✓' },
+          { metric: 'TLS and DNS provisioned automatically', detail: 'cert-manager and ExternalDNS remove manual certificate work', icon: '✓' },
+        ].map(item => (
+          <div class="bg-white rounded-xl p-5 flex items-start gap-4" style="border: 1px solid #c3d9ff;">
+            <span class="text-green-500 font-bold text-lg flex-shrink-0">{item.icon}</span>
+            <div>
+              <p class="text-sm font-bold" style="color: #0A2540;">{item.metric}</p>
+              <p class="text-xs" style="color: #64748b;">{item.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
+    <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4" style="letter-spacing: -0.02em;">Start with a platform assessment.</h2>
+      <p class="mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Bring your current deployment process. We assess the friction, identify what standards need encoding and outline a concrete path to a self-service platform.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto" class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);">
+          Book a technical review
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+        <a href="/servicios" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10" style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);">
+          All solutions
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

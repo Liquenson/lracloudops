@@ -1,45 +1,50 @@
 ---
-titulo: "Infraestructura AWS production-ready con Terraform: EKS, RDS Multi-AZ y CI/CD completo"
-descripcion: "Cómo diseñamos e implementamos una infraestructura AWS completa con Terraform modular, EKS con autoscaling, RDS MySQL Multi-AZ y pipelines duales con SonarCloud. Decisiones técnicas reales y lessons learned."
+titulo: "Production AWS Infrastructure with Terraform: EKS, RDS Multi-AZ and Dual CI/CD Pipelines"
+descripcion: "Architecture decisions for a modular Terraform stack deploying Flask on EKS with RDS PostgreSQL 15 Multi-AZ, dual GitHub Actions and Jenkins pipelines, and SonarCloud coverage gates. What each decision costs and why it was made."
 fecha: 2026-05-03
 tags: ["Terraform", "AWS", "EKS", "Kubernetes", "IaC", "CI/CD", "Jenkins", "GitHub Actions"]
 draft: false
 ---
 
-## Por qué este proyecto existe
+## Problem
 
-Hay una diferencia importante entre "usar AWS" y "diseñar infraestructura AWS production-ready". El primero implica crear recursos desde la consola, uno por uno, con configuración manual. El segundo implica que cada recurso está definido como código, versionado en Git, reproducible en cualquier momento y desplegable en menos de 30 minutos en un ambiente nuevo.
+There is a meaningful difference between using AWS and designing production-grade AWS infrastructure. The first means creating resources from the console. The second means every resource is defined as code, versioned in Git, reproducible from scratch and deployable in under 30 minutes on a new account.
 
-El proyecto **aws-terraform-devops** nació de la necesidad de tener una referencia real y funcional que combinara todas las piezas del stack DevOps moderno: infraestructura como código modular, containerización, orquestación Kubernetes, análisis de calidad obligatorio y pipelines automatizados. No otro tutorial de "crea una EC2 con Terraform", sino una arquitectura completa que refleje cómo funciona realmente en producción.
+The gap between these two states is not technical complexity — the tools are documented. The gap is in the decisions: which resources belong in the same module, how state files are structured, what quality gates must pass before code reaches production, how environments differ without diverging.
 
-## La arquitectura que construimos
+## Context
 
-El stack despliega una aplicación Flask (Python 3.11 + Gunicorn) sobre Kubernetes en AWS, con base de datos relacional gestionada y pipeline CI/CD dual:
+The `aws-terraform-devops` project deploys a Flask application (Python 3.11 + Gunicorn) on Kubernetes in AWS, with managed relational database storage and a dual CI/CD pipeline. Every architectural decision was made to demonstrate production infrastructure behavior, not to demonstrate tools.
+
+## Architecture
 
 ```
-Internet → ALB → EKS (pods Flask + Gunicorn) → RDS MySQL Multi-AZ
-                      ↑
-               ECR (imágenes Docker)
+Internet → ALB → EKS (Flask + Gunicorn pods) → RDS PostgreSQL 15 Multi-AZ
+                       ↑
+                ECR (Docker images)
 ```
 
-Todos los componentes están en una VPC multi-AZ con subnets públicas para el load balancer y privadas para el cluster EKS y la base de datos. Ningún componente de backend tiene IP pública.
+All components run in a multi-AZ VPC with public subnets for the load balancer and private subnets for the EKS cluster and database. No backend component has a public IP address.
 
-## Estructura Terraform: 7 módulos independientes
+## Implementation
 
-La decisión más importante fue la modularidad. El directorio `modules/` contiene 7 módulos con responsabilidades bien delimitadas:
+### Module structure
+
+The project organizes Terraform into 6 modules with distinct responsibilities:
 
 ```
 modules/
-├── vpc/          # VPC, subnets públicas/privadas, IGW, NAT Gateway
-├── eks/          # Cluster EKS, node groups, HPA
-├── rds/          # MySQL Multi-AZ, backups, security groups
-├── ecr/          # Registro privado Docker con lifecycle policies
-├── iam/          # Roles EKS cluster, roles nodos, OIDC provider
-├── s3_bucket/    # Buckets con configuración de lifecycle
-└── cloudwatch/   # Alarmas, dashboards, log groups
+├── vpc/          # VPC, public/private subnets, IGW, NAT Gateway
+├── eks/          # EKS cluster, node groups, HPA configuration
+├── rds/          # PostgreSQL 15, Multi-AZ, backups, security groups
+├── ecr/          # Private Docker registry with lifecycle policies
+├── iam/          # EKS cluster role, node roles, OIDC provider
+└── cloudwatch/   # Alarms, dashboards, log groups with retention
 ```
 
-Y el `main.tf` que los orquesta:
+IAM is a separate module by design. The roles required by EKS (cluster role, node role) are IAM resources, not EKS resources. Placing them in a dedicated module keeps the EKS module clean and allows IAM policies to evolve independently. When the cluster needs a new permission — for a CNI plugin, for external-secrets-operator — only the IAM module changes.
+
+Module composition in the environment `main.tf`:
 
 ```hcl
 module "vpc" {
@@ -74,11 +79,11 @@ module "rds" {
 }
 ```
 
-La separación de IAM en su propio módulo fue una decisión consciente. Los roles que necesita EKS (cluster role y node role) son recursos IAM, no recursos EKS, y tenerlos en un módulo separado hace que el módulo EKS sea más limpio y que los roles puedan evolucionar independientemente.
+Outputs from lower-layer modules feed as inputs to upper-layer modules. Network → IAM → Compute → Data. No circular dependencies.
 
-## EKS con autoscaling horizontal
+### EKS autoscaling
 
-El módulo EKS expone variables de capacidad que el `terraform.tfvars` de cada ambiente configura de forma diferente:
+The EKS module exposes capacity variables configured differently per environment:
 
 ```hcl
 # environments/dev/terraform.tfvars
@@ -94,161 +99,121 @@ max_capacity     = 8
 instance_type    = "t3.large"
 ```
 
-El Horizontal Pod Autoscaler (HPA) está configurado a nivel de Kubernetes para escalar los pods de la aplicación antes de que el cluster tenga que escalar nodos — la estrategia correcta es escalar pods primero y nodos como último recurso.
+The Horizontal Pod Autoscaler is configured at the Kubernetes layer to scale pods before the cluster autoscaler scales nodes. This is the correct sequence: pod scaling is faster and cheaper than node scaling. Node autoscaling is a response to sustained pod-level resource exhaustion, not to individual request spikes.
 
-## RDS MySQL Multi-AZ: lo que nadie te dice
+HPA is configured at provisioning time, not added after the first performance incident.
 
-El módulo RDS despliega MySQL en configuración Multi-AZ. Lo que esto significa en la práctica:
+### RDS Multi-AZ: the operational behavior
 
-- AWS mantiene una instancia standby en una segunda zona de disponibilidad
-- La replicación es síncrona — cada write se confirma solo cuando está en ambas zonas
-- En caso de fallo de la zona primaria, el failover automático ocurre en 60-120 segundos sin intervención humana
-- La cadena de connection strings no cambia — el endpoint DNS de RDS apunta automáticamente a la instancia activa
+Multi-AZ for RDS means AWS maintains a synchronous standby replica in a second availability zone. Every write is confirmed only after it has been committed on both the primary and the standby. In the event of a primary zone failure, automatic failover completes in 60-120 seconds with no change to the connection string — the DNS endpoint for the RDS instance automatically points to the new primary.
 
-La configuración de security groups es estricta: la instancia RDS solo acepta conexiones desde el security group del cluster EKS, no desde el mundo exterior.
+Security group configuration is strict: the RDS instance accepts connections only from the EKS cluster security group. No direct access from outside the cluster.
 
-## El pipeline dual: GitHub Actions + Jenkins
+Why PostgreSQL 15 rather than Aurora: RDS PostgreSQL 15 Multi-AZ demonstrates the relevant operational concepts — failover, backup retention, security group isolation — at a lower and more predictable cost for a reference architecture. When workload volume justifies Aurora's performance characteristics, the Terraform module requires minimal changes.
 
-La decisión de implementar dos pipelines paralelos no fue por capricho técnico — fue para demostrar que la lógica del pipeline no debería estar atada a una plataforma específica. Las organizaciones cambian de herramientas; los principios del pipeline permanecen.
+### Dual pipeline: GitHub Actions and Jenkins
 
-### GitHub Actions
+Two pipelines implement identical logic:
 
 ```yaml
-# .github/workflows/deploy.yml
+# GitHub Actions: .github/workflows/deploy.yml
 jobs:
   test:
     - run: pytest scripts/tests/ docker/src/tests/ --cov --cov-report=xml
-    
+
   sonarcloud:
     - uses: SonarSource/sonarcloud-github-action@master
-    
+
   docker:
     - run: |
-        aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REPO
-        docker build -t $ECR_REPO:$GITHUB_SHA .
-        docker push $ECR_REPO:$GITHUB_SHA
-  
+        docker build -t $ECR_REPO:${{ github.sha }} .
+        docker push $ECR_REPO:${{ github.sha }}
+
   deploy:
     - run: |
-        aws eks update-kubeconfig --name devops-cluster --region eu-west-1
         helm upgrade --install webapp helm/webapp \
-          --set image.tag=$GITHUB_SHA \
-          --wait
+          --set image.tag=${{ github.sha }} --wait
 ```
 
-### Jenkins (Jenkinsfile)
-
 ```groovy
-pipeline {
-  agent any
-  environment {
-    AWS_REGION  = 'eu-west-1'
-    ECR_REPO    = "${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/webapp"
-  }
-  stages {
-    stage('Test')      { steps { sh 'mvn test' } }
-    stage('SonarQube') { steps { withSonarQubeEnv('sonar') { sh 'mvn sonar:sonar' } } }
-    stage('Docker')    {
-      steps {
-        sh '''
-          aws ecr get-login-password --region $AWS_REGION | \
-            docker login --username AWS --password-stdin $ECR_REPO
-          docker build -t $ECR_REPO:$BUILD_NUMBER .
-          docker push $ECR_REPO:$BUILD_NUMBER
-        '''
-      }
-    }
-    stage('Deploy EKS') {
-      steps {
-        sh '''
-          aws eks update-kubeconfig --name devops-cluster --region $AWS_REGION
-          helm upgrade --install webapp helm/webapp \
-            --set image.tag=$BUILD_NUMBER --wait
-        '''
-      }
-    }
-  }
+// Jenkins: Jenkinsfile
+stages {
+  stage('Test')      { steps { sh 'pytest scripts/tests/ docker/src/tests/ --cov' } }
+  stage('SonarQube') { steps { withSonarQubeEnv('sonar') { sh 'mvn sonar:sonar' } } }
+  stage('Docker')    { steps { sh 'docker build -t $ECR_REPO:$BUILD_NUMBER . && docker push ...' } }
+  stage('Deploy EKS') { steps { sh 'helm upgrade --install webapp helm/webapp --set image.tag=$BUILD_NUMBER --wait' } }
 }
 ```
 
-La estructura es idéntica en ambos pipelines: test → calidad → build de imagen → push a ECR → deploy con Helm. La diferencia son los primitivos de la plataforma (`steps { sh ... }` en Jenkins vs `run: |` en GitHub Actions), no la lógica.
+The structure is identical: test → quality → build → push → deploy. The primitives differ (`steps { sh ... }` vs `run: |`) but the logic does not. This demonstrates that pipeline logic should not be coupled to the specific tool executing it.
 
-## SonarCloud: calidad no negociable
+### SonarCloud coverage gate
 
-El pipeline tiene una regla fija: si la cobertura de tests cae por debajo del 80%, el pipeline falla antes de construir la imagen Docker. No hay forma de hacer deploy sin pasar por esta puerta.
+Coverage enforcement is a hard gate, not a report. If coverage drops below 80%, the pipeline stops before the Docker image is built:
 
-La configuración de SonarCloud vive en `sonar-project.properties`:
-
-```properties
-sonar.projectKey=aws-terraform-devops
-sonar.organization=lracloudops
-sonar.sources=docker/src
-sonar.tests=docker/src/tests,scripts/tests
+```
 sonar.python.coverage.reportPaths=coverage.xml
 ```
 
-Los tests cubren la aplicación Flask (`docker/src/tests/`) y los scripts de infraestructura (`scripts/tests/`). Tener tests de infraestructura — no solo de aplicación — fue una decisión que salvó tiempo durante varios refactors del código de Terraform.
+Tests cover both the Flask application (`docker/src/tests/`) and infrastructure scripts (`scripts/tests/`). Infrastructure tests — validating boto3 mock behavior and script logic — caught several regressions during Terraform module refactoring that would otherwise have appeared as runtime failures.
 
-## Despliegue con Helm: valores por ambiente
+### Helm deployment
 
-Los manifests de Kubernetes están gestionados con Helm. El chart en `helm/webapp/` define el Deployment, Service y HPA con variables configurables por ambiente:
+Kubernetes manifests are managed with Helm. The `--wait` flag makes the deployment operation synchronous: Helm waits for the Deployment to become healthy before reporting success. If pods fail their health checks within the configured timeout, Helm rolls back to the previous release automatically.
 
 ```bash
-# Deploy en dev
-helm upgrade --install webapp helm/webapp \
-  -f helm/webapp/values-dev.yaml \
-  --set image.tag=$BUILD_NUMBER
-
-# Deploy en prod
 helm upgrade --install webapp helm/webapp \
   -f helm/webapp/values-prod.yaml \
-  --set image.tag=$BUILD_NUMBER
+  --set image.tag=$BUILD_NUMBER \
+  --wait
 ```
 
-El flag `--wait` hace que Helm espere a que el Deployment esté healthy antes de marcar el deploy como exitoso. Si los pods no están ready en el tiempo configurado, Helm hace rollback automático a la versión anterior. Esto convierte cada deploy en una operación atómica y segura.
+Environment-specific values (`values-dev.yaml`, `values-prod.yaml`) configure replica counts, resource limits and environment variables without duplicating the chart structure.
 
-## La aplicación Flask
-
-La aplicación es intencionalmente simple — un servidor Flask con tres endpoints:
+### Flask application endpoints
 
 ```python
-@app.route("/")
-def index():
-    return jsonify({
-        "app": "devops-lab-webapp",
-        "version": os.getenv("APP_VERSION", "1.0.0"),
-        "environment": os.getenv("AWS_REGION", "local"),
-        "status": "ok"
-    })
-
-@app.route("/health")  # Usado por los health checks de Kubernetes
+@app.route("/health")
 def health():
     return jsonify({"status": "healthy"}), 200
 
-@app.route("/ready")   # Usado por el readiness probe de EKS
+@app.route("/ready")
 def ready():
     return jsonify({"status": "ready"}), 200
 ```
 
-Los endpoints `/health` y `/ready` son consumidos por Kubernetes para determinar si un pod está vivo y listo para recibir tráfico. La diferencia es importante: `/health` indica que el proceso está vivo; `/ready` indica que el pod está listo para recibir requests del load balancer.
+The distinction between `/health` and `/ready` is operationally significant in Kubernetes. The liveness probe uses `/health` to determine whether a pod should be restarted. The readiness probe uses `/ready` to determine whether a pod should receive traffic from the load balancer. A pod can be alive (process running) but not ready (database connection pool exhausted). Probes that conflate these conditions produce incorrect restart or traffic routing behavior.
 
-## Decisiones técnicas y por qué
+## Operational Considerations
 
-**¿Por qué RDS MySQL y no Aurora?**
-Aurora tiene mejor rendimiento y disponibilidad, pero el costo es notablemente mayor para un laboratorio. Los conceptos que demostramos — Multi-AZ, failover, backups automáticos, security groups — son idénticos en MySQL estándar. Cuando el presupuesto justifica Aurora, la transición desde el módulo RDS es mínima.
+**Apply time on first deploy** — EKS cluster provisioning takes 15-20 minutes. RDS Multi-AZ provisioning takes 10-15 minutes. A full initial apply exceeds 30 minutes. Subsequent applies that change only application configuration (image tag, replica count) take under 2 minutes. Separating infrastructure state from application configuration state — two distinct Terraform workspaces — allows fast application deploys without touching the infrastructure apply pipeline.
 
-**¿Por qué Helm en lugar de kubectl apply directamente?**
-Helm gestiona el historial de releases y permite rollback con un solo comando. `kubectl apply` no tiene memoria de versiones anteriores — si el deploy falla, volver al estado anterior requiere saber exactamente qué cambió.
+**Remote state is mandatory in teams** — two concurrent `terraform apply` calls against the same state file produce state corruption that is difficult to recover from. DynamoDB locking prevents this:
 
-**¿Por qué CloudWatch en un módulo separado?**
-Las alarmas y dashboards cambian frecuentemente durante la vida del proyecto — se añaden métricas, se ajustan thresholds, se agregan notificaciones. Tener CloudWatch en su propio módulo permite iterar sobre observabilidad sin tocar el cluster EKS ni la base de datos.
+```hcl
+terraform {
+  backend "s3" {
+    bucket         = "company-terraform-state"
+    key            = "prod/terraform.tfstate"
+    region         = "eu-west-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
+```
 
-## Lecciones aprendidas
+A state file without locking is a liability that will produce an incident the first time two engineers or two pipeline runs execute simultaneously.
 
-**El tiempo de apply de Terraform no es lineal.** Crear el cluster EKS tarda 15-20 minutos. Crear una RDS Multi-AZ tarda 10-15 minutos. Si ejecutas `terraform apply` con todo junto en el primer deploy, el pipeline tarda más de 30 minutos. La solución que adoptamos es separar la infraestructura base — que cambia raramente — de la configuración de aplicación, que puede cambiar en cada deploy.
+**OIDC trust policy precision** — the IAM role trust policy for GitHub Actions must specify the exact repository and branch. An overly permissive condition allows any GitHub repository — including public forks — to assume the role and access the AWS account. The sub condition should always include both the repository identifier and the branch reference:
 
-**El state remoto en S3 + DynamoDB no es opcional en equipo.** Dos applies simultáneos sin locking pueden corromper el state file y dejar la infraestructura en un estado inconsistente que es difícil de recuperar. El módulo `backend.tf` configura el bucket S3 y la tabla DynamoDB para locking desde el día uno.
+```json
+"token.actions.githubusercontent.com:sub": "repo:org/repo:ref:refs/heads/main"
+```
 
-**Los permisos IAM de OIDC para GitHub Actions requieren más precisión de lo que parece.** El trust policy del rol necesita especificar exactamente qué repositorio y qué rama puede asumir el rol. Un rol demasiado permisivo permite que cualquier repositorio de GitHub (incluidos forks públicos) asuma el rol y tenga acceso a la cuenta AWS.
+**CloudWatch module rationale** — CloudWatch alarms and dashboards change more frequently than cluster or database configuration. New metrics are added, thresholds are adjusted, notification channels are modified. Placing observability configuration in its own module means updating a CloudWatch alarm does not trigger a plan diff against the EKS module. Each module should change at its own rate.
 
-Si estás diseñando infraestructura AWS desde cero o refactorizando una arquitectura existente hacia IaC completo, [contáctanos](/contacto) — este es exactamente el tipo de trabajo que hacemos con nuestros clientes.
+## Outcome
+
+The modular Terraform approach produces infrastructure with these properties at steady state: dev and prod environments are provisioned from the same code with different variable values, making their configuration differences explicit and auditable rather than implicit and discoverable only by incident. Any environment can be reproduced from a `terraform apply`. Changes are scoped to their module and do not produce unexpected diffs in unrelated infrastructure. The dual pipeline demonstrates that deployment logic is portable across tools.
+
+The 17 automated tests — 8 application, 9 infrastructure — enforce a quality floor that prevents regressions during refactoring. The coverage gate ensures this floor is maintained without manual enforcement.

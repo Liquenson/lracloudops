@@ -1,9 +1,9 @@
 ---
-titulo: "Python CI/CD Template"
-descripcion: "Template production-ready de API REST con Flask diseñado como punto de partida para microservicios Python con DevOps integrado desde el primer commit. Pipeline completo: flake8, pytest con cobertura y verificación del contenedor Docker en CI."
+titulo: "Python CI/CD Starter"
+descripcion: "Production-ready Flask REST API starter with integrated DevOps from the first commit. Three-stage pipeline: flake8 with explicit error selectors, pytest with 80% coverage enforcement, and Docker build with container health check verification."
 fecha: 2026-05-01
 categoria: "Templates"
-madurez: "Template"
+madurez: "Starter"
 stack: ["Python 3.11", "Flask 3.0.3", "pytest 8.2.2", "pytest-cov 5.0.0", "flake8 7.1.0", "Docker", "GitHub Actions"]
 cicd: true
 github: "https://github.com/Liquenson/python-cicd-template"
@@ -11,43 +11,43 @@ featured: false
 iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
 draft: false
 metricas:
-  - { label: "Stages CI", value: "3" }
-  - { label: "Cobertura mínima", value: "80%" }
-  - { label: "Docker tag", value: "github.sha determinístico" }
-  - { label: "Complejidad máx.", value: "10 por función" }
+  - { label: "Pipeline Stages", value: "3" }
+  - { label: "Coverage Gate", value: "80%" }
+  - { label: "Docker Tag", value: "git SHA deterministic" }
+  - { label: "Max Complexity", value: "10 per function" }
 highlights:
-  - "Pipeline 3 stages: Stage 1 (flake8 + pytest --cov 80%) → Stage 2 (Docker build github.sha + health check) → Stage 3 (Deploy configurable)"
-  - "flake8 con selectores explícitos E9/F63/F7/F82 y max-complexity=10: errores bloqueantes, no solo advertencias"
-  - "Cobertura mínima 80%: el pipeline falla si no se alcanza el umbral antes de construir la imagen"
-  - "Tag Docker determinístico con github.sha: trazabilidad exacta entre imagen y commit que la generó"
-  - "Docker build solo en main: el health check solo corre en pushes al branch de producción"
-  - "debug=False en producción: Flask no expone stack traces ni el debugger interactivo en prod"
-  - "Tres endpoints de referencia listos para reemplazar con la lógica del microservicio"
+  - "3-stage pipeline: Stage 1 (flake8 + pytest --cov 80%) → Stage 2 (Docker build git.sha + health check) → Stage 3 (configurable deploy)"
+  - "flake8 with explicit selectors E9/F63/F7/F82 and max-complexity=10: blocking errors, not advisory warnings"
+  - "80% coverage threshold enforced before image build: quality gate prevents untested code from reaching a container"
+  - "Deterministic Docker tag with github.sha: exact traceability between image artifact and the commit that produced it"
+  - "Docker build gated to main branch: container health check only runs on production branch pushes"
+  - "debug=False in production: Flask does not expose stack traces or the interactive debugger"
+  - "Three reference endpoints ready to replace with microservice business logic"
 arquitectura:
-  - { nombre: "Flask 3.0.3", descripcion: "Micro-framework web Python con routing declarativo y extensibilidad mínima" }
-  - { nombre: "flake8 7.1", descripcion: "Linter PEP8 que detecta errores de estilo y problemas potenciales en el código" }
-  - { nombre: "pytest + pytest-cov", descripcion: "Framework de tests con reporte de cobertura de código integrado" }
-  - { nombre: "Docker multi-stage", descripcion: "Build en dos stages: dependencias en builder, solo runtime en imagen final" }
-  - { nombre: "GitHub Actions", descripcion: "Pipeline CI/CD con 3 stages secuenciales: lint+test → build+healthcheck → deploy" }
+  - { nombre: "Flask 3.0.3", descripcion: "Python micro-framework with declarative routing and minimal surface area" }
+  - { nombre: "flake8 7.1", descripcion: "PEP8 linter that catches style violations and potential runtime errors as a build gate" }
+  - { nombre: "pytest + pytest-cov", descripcion: "Test framework with integrated coverage reporting and threshold enforcement" }
+  - { nombre: "Docker multi-stage", descripcion: "Two-stage build: dependencies in builder stage, runtime-only in final image" }
+  - { nombre: "GitHub Actions", descripcion: "3-stage sequential CI pipeline: lint+test → build+healthcheck → deploy" }
 ---
 
-## Descripción del proyecto
+## Platform overview
 
-Python CI/CD Template es un punto de partida listo para usar al iniciar un microservicio Python. Incluye todas las herramientas de calidad y el pipeline de CI/CD preconfigurado, para que el equipo pueda concentrarse en la lógica de negocio desde el primer commit en lugar de invertir tiempo en configurar el entorno de calidad.
+A production-ready starting point for Python microservices with quality gates and CI/CD pre-configured. The pipeline enforces lint, test coverage and container health before any code reaches a deployment target. Teams clone the repository, replace the reference endpoints with business logic, and operate a service with a functioning CI/CD pipeline from the first commit.
 
-El mayor costo invisible en proyectos Python es configurar correctamente las herramientas de calidad al principio. Este template elimina ese costo: clonas el repositorio, actualizas los endpoints, y tienes un servicio con CI/CD funcionando en minutos.
+The largest hidden cost when starting a Python service is configuring quality tooling correctly. Linting configurations added after the fact encounter accumulated violations. Coverage thresholds introduced after code is written are often set to whatever the current coverage happens to be. This starter configures those gates at the origin.
 
-## Pipeline de 4 etapas
+## Pipeline architecture
 
 ```
-Lint (flake8) → Test (pytest) → Build (docker) → Health Check
+Lint (flake8) → Test (pytest --cov) → Build (docker) → Health Check
 ```
 
-Cada etapa es condición necesaria para la siguiente. Si el linting falla, los tests no se ejecutan. Si los tests fallan, no se construye la imagen. Si la imagen no compila, no se verifica el health check.
+Each stage is a prerequisite for the next. A linting failure prevents test execution. A coverage threshold miss prevents the image build. A failed image build prevents the health check. The pipeline fails at the earliest detectable defect.
 
-La etapa de health check corre solo en push a `main`: arranca el contenedor y hace `curl http://localhost:5000/health`. Si el endpoint no responde 200, el pipeline falla antes de que el código esté disponible para deploy.
+The health check stage runs only on push to `main`: the container starts and `curl http://localhost:5000/health` must return 200. This catches container startup failures — import errors at runtime, missing required environment variables, port conflicts in the CI runner — that unit tests cannot detect.
 
-## Endpoints de referencia
+## Reference endpoints
 
 ```python
 GET /           → {"status": "running", "service": "mi-proyecto"}
@@ -55,26 +55,25 @@ GET /health     → {"status": "healthy"}
 GET /items/<id> → {"id": 1, "name": "Item 1", "price": 10.99}
 ```
 
-Los endpoints son ejemplos deliberadamente simples. El `/health` es el único que debe mantenerse — el resto se reemplaza con la lógica real del microservicio.
+The `/health` endpoint is the only one that must be preserved. The remaining endpoints are replacement targets for actual microservice logic.
 
-## Configuración de flake8
+## flake8 configuration
 
-La configuración por defecto aplica PEP8 con línea máxima de 88 caracteres (compatible con Black si decides añadirlo). Los errores de estilo son bloqueantes: un `E501` (línea demasiado larga) detiene el pipeline.
+The configuration applies PEP8 with a maximum line length of 88 characters, compatible with Black if added later. The error selectors are explicit:
 
-```bash
-# Ejecutar localmente antes de push
-flake8 app.py
-```
+- `E9` — runtime errors (syntax errors, import failures)
+- `F63` — invalid escape sequences and star imports
+- `F7` — syntax errors in annotations
+- `F82` — undefined names
 
-## Cómo usar el template
+`max-complexity=10` enforces cyclomatic complexity per function. Functions exceeding this threshold indicate logic that should be decomposed. Style violations are blocking — the pipeline does not proceed past a flake8 failure.
 
-1. Fork o copia el repositorio
-2. Añade tus endpoints en `app.py`
-3. Escribe los tests en `tests/test_app.py`
-4. El pipeline CI/CD está listo — no es necesario modificar workflows, Dockerfile ni configuración de flake8 para el caso estándar
+## docker build safety
 
-## Lessons learned
+The image tag uses `github.sha` — the exact commit hash that triggered the pipeline run. This creates a deterministic mapping between every running container image and the source commit that produced it. Rollback is selecting the previous SHA tag; the image already exists in the registry.
 
-El valor más importante del template no es el código de Flask — es la disciplina de tener lint y tests como prerequisito del build. Los proyectos que empiezan sin linting acumulan deuda técnica rápidamente porque "arreglar el linter después" siempre se posterga.
+`debug=False` is enforced in the production configuration. Flask's debug mode enables an interactive WSGI debugger accessible over HTTP — a remote code execution vector when exposed. The starter ships with debug disabled in the production path.
 
-Incluir el health check en CI detecta problemas de arranque del contenedor que los tests unitarios no pueden ver: imports que fallan en runtime, variables de entorno requeridas que no están definidas, puertos ya ocupados en el entorno de CI.
+## Known constraint
+
+The starter uses Python 3.11 and Flask 3.0.3. The pipeline runs on GitHub Actions with a standard Ubuntu runner. No secrets management, database connectivity or service discovery is included — those are service-specific concerns that belong in the consuming repository, not the starter itself.
