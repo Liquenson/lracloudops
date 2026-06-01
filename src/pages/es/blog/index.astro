@@ -18,11 +18,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
           Blog · {posts.length} artículo{posts.length !== 1 ? 's' : ''}
         </span>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">Artículos técnicos</h1>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">Notas de ingeniería.</h1>
         <p class="text-lg" style="color: rgba(147,184,255,0.8);">
-          Decisiones de arquitectura, estrategias de implementación y lecciones de producción.
+          Decisiones de arquitectura, estrategias de implementación y lecciones aprendidas en producción.
         </p>
-        <p class="text-sm mt-3" style="color: rgba(147,184,255,0.5);">Los artículos están escritos en inglés.</p>
       </div>
     </div>
   </section>
