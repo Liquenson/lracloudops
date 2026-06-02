@@ -1,10 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro'
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is included in the initial assessment?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A review of your current architecture, infrastructure, delivery processes and observability setup. We identify gaps and outline a concrete approach — at no charge and before any commitment.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can scopes be adjusted after the engagement starts?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. We define the initial scope clearly, but if requirements change during the engagement we discuss adjustments transparently. No surprise invoices.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you work with teams that have no existing cloud infrastructure?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Greenfield is our preferred starting point. We provision everything as code from day one — no legacy constraints, no manual configurations to unwind.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the typical delivery timeline for an implementation?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most implementation engagements deliver a production-ready environment in 4–8 weeks depending on scope. Complex multi-account or regulated environments take longer.',
+      },
+    },
+  ],
+}
 ---
 
 <Layout
   titulo="Pricing · Transparent Cloud Infrastructure Engagements"
   descripcion="Fixed-scope DevOps and cloud infrastructure engagements with clear deliverables. Advisory from €400, full implementation from €3,000, ongoing retainer from €800/mo."
+  keywords="DevOps pricing Spain, cloud infrastructure cost, Kubernetes consulting rates, Terraform implementation price, DevOps freelance rates Europe, platform engineering cost"
+  schema={faqSchema}
 >
 
   <!-- HERO -->

@@ -10,6 +10,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 <Layout
   titulo="Cloud Infrastructure & Platform Engineering"
   descripcion="Cloud infrastructure and platform engineering. Kubernetes, Terraform and AWS — designed for operational reliability and automated delivery."
+  keywords="DevOps freelance España, Kubernetes consultant AWS, Platform Engineering consulting, Terraform AWS expert, cloud infrastructure engineer Spain, DevOps engineer Las Palmas"
 >
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
@@ -202,9 +203,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="max-w-7xl mx-auto px-6 py-10">
       <div class="grid grid-cols-2 sm:grid-cols-4">
         {[
-          { number: '11',   suffix: '',  label: 'Proyectos' },
-          { number: '4',    suffix: '',  label: 'Ingenieros' },
-          { number: '25',   suffix: '+', label: 'Servicios AWS' },
+          { number: '11',   suffix: '',  label: 'Cloud Projects' },
+          { number: '4',    suffix: '',  label: 'Engineers' },
+          { number: '25',   suffix: '+', label: 'AWS Services' },
           { number: '100',  suffix: '%', label: 'IaC' },
         ].map(({ number, suffix, label }, i) => (
           <div class={`text-center py-6 px-4 ${i > 0 ? 'border-l border-gray-200' : ''}`}>
@@ -702,18 +703,18 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="text-center mb-16 animate-fade-up">
         <span class="section-label">Industries</span>
         <h2 id="sectors-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
-          Sectores donde operamos
+          Industries we serve
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Experiencia demostrada en entornos regulados y de alta disponibilidad
+          Proven experience in regulated and high-availability environments
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { icon: '🏥', title: 'Healthcare',           desc: 'Plataformas con requisitos HIPAA, alta disponibilidad y auditoría completa.' },
-          { icon: '🏦', title: 'Financial Services',   desc: 'Infraestructura en entornos regulados con trazabilidad total y zero downtime.' },
-          { icon: '☁️', title: 'Cloud Native',         desc: 'Migración y modernización de aplicaciones hacia arquitecturas cloud-native en AWS.' },
-          { icon: '🔧', title: 'Platform Engineering', desc: 'Construcción de plataformas internas que aceleran la entrega de los equipos de desarrollo.' },
+          { icon: '🏥', title: 'Healthcare',           desc: 'Platforms with HIPAA requirements, high availability and complete audit trails.' },
+          { icon: '🏦', title: 'Financial Services',   desc: 'Infrastructure in regulated environments with full traceability and zero downtime.' },
+          { icon: '☁️', title: 'Cloud Native',         desc: 'Migration and modernization of applications to cloud-native architectures on AWS.' },
+          { icon: '🔧', title: 'Platform Engineering', desc: 'Building internal platforms that accelerate delivery for development teams.' },
         ].map(({ icon, title, desc }, i) => (
           <div class={`card-enterprise animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}>
             <div class="text-3xl mb-4" aria-hidden="true">{icon}</div>
@@ -1000,11 +1001,64 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
       <div class="text-center mt-12 animate-fade-up">
         <a href="/blog" class="btn-outline">
-          Ver todos los artículos
+          View all articles
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 9. LEAD MAGNET — AWS Checklist                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden" aria-labelledby="checklist-heading">
+    <div class="py-20 px-6" style="background: #0A2540;">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+        style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 28px 28px;"></div>
+
+      <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
+        <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
+          style="background: rgba(30,111,255,0.2); color: #93C5FD; border: 1px solid rgba(96,165,250,0.3);">
+          Free resource
+        </span>
+        <h2 id="checklist-heading" class="text-3xl sm:text-4xl font-extrabold text-white mb-4" style="letter-spacing: -0.025em;">
+          AWS Production Readiness Checklist
+        </h2>
+        <p class="text-base mb-2 max-w-xl mx-auto" style="color: rgba(148,163,184,0.8);">
+          47 checks across security, reliability, performance and cost optimization.
+          Used by our team on every engagement before go-live.
+        </p>
+        <p class="text-sm mb-8" style="color: rgba(148,163,184,0.5);">
+          Sent to your inbox. No spam, no drip campaigns.
+        </p>
+
+        <form id="checklist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+          <input type="hidden" name="subject" value="Checklist Download - LRA Cloud Ops" />
+          <input type="hidden" name="from_name" value="LRA Cloud Operations" />
+          <input type="hidden" name="checklist_request" value="AWS Production Readiness Checklist" />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="you@company.com"
+            class="flex-1 px-4 py-3.5 text-sm rounded-xl outline-none transition-all"
+            style="background: white; color: #111827; border: 1px solid rgba(255,255,255,0.1);"
+            onfocus="this.style.boxShadow='0 0 0 3px rgba(96,165,250,0.3)';"
+            onblur="this.style.boxShadow='none';"
+          />
+          <button
+            type="submit"
+            id="checklist-btn"
+            class="text-sm font-bold px-6 py-3.5 rounded-xl flex-shrink-0 transition-all hover:-translate-y-px active:scale-[0.98]"
+            style="background: #1E6FFF; color: white; box-shadow: 0 4px 16px rgba(30,111,255,0.4);"
+          >
+            Download free →
+          </button>
+        </form>
+        <div id="checklist-status" class="hidden text-sm mt-4 px-4 py-2 rounded-lg inline-block"></div>
       </div>
     </div>
   </section>
@@ -1059,4 +1113,41 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
 </Layout>
+
+<script>
+  const form = document.getElementById('checklist-form') as HTMLFormElement | null
+  const btn = document.getElementById('checklist-btn') as HTMLButtonElement | null
+  const statusEl = document.getElementById('checklist-status') as HTMLDivElement | null
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!btn || !statusEl) return
+    btn.textContent = 'Sending...'
+    btn.disabled = true
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      })
+      const data = await res.json()
+      if (data.success) {
+        statusEl.textContent = 'Subscribed! We will send the checklist to your inbox shortly.'
+        statusEl.style.cssText = 'display:inline-block; background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.3);'
+        form.reset()
+      } else {
+        statusEl.textContent = 'Something went wrong. Please try again.'
+        statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+      }
+    } catch {
+      statusEl.textContent = 'Connection error. Please try again.'
+      statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+    }
+
+    btn.textContent = 'Download free →'
+    btn.disabled = false
+    statusEl.classList.remove('hidden')
+  })
+</script>
 
