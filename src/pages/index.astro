@@ -8,9 +8,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 ---
 
 <Layout
-  titulo="Cloud Infrastructure & Platform Engineering"
-  descripcion="Cloud infrastructure and platform engineering. Kubernetes, Terraform and AWS — designed for operational reliability and automated delivery."
-  keywords="DevOps freelance España, Kubernetes consultant AWS, Platform Engineering consulting, Terraform AWS expert, cloud infrastructure engineer Spain, DevOps engineer Las Palmas"
+  titulo="Platform Engineering & DevOps Consulting | LRA Cloud Operations"
+  descripcion="Expert DevOps team specializing in Kubernetes, AWS infrastructure and GitOps. We design and operate cloud-native platforms that scale."
+  keywords="DevOps consulting Spain, Kubernetes consulting, AWS platform engineering, Terraform experts, GitOps implementation, cloud infrastructure team"
 >
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
@@ -791,9 +791,15 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <h2 id="testimonials-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
           Trusted by engineering teams
         </h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+        <p class="text-lg max-w-2xl mx-auto mb-6" style="color: #64748B;">
           Real outcomes from real infrastructure projects
         </p>
+        <a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+          See the full case studies
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1057,10 +1063,16 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         )}
       </div>
 
-      <div class="text-center mt-12 animate-fade-up">
+      <div class="text-center mt-12 animate-fade-up flex flex-wrap items-center justify-center gap-4">
         <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
           style="color: #0F172A; border-color: #E5E7EB; background: white;">
           View all articles
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="/resources" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+          Technical guides &amp; resources
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

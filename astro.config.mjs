@@ -22,6 +22,31 @@ export default defineConfig({
       filter: (page) => !page.includes('/404'),
       changefreq: 'weekly',
       priority: 0.7,
+      serialize(item) {
+        const url = item.url
+        if (url === 'https://lracloudops.com/' || url === 'https://lracloudops.com/es') {
+          item.priority = 1.0
+        } else if (
+          url.includes('/services') ||
+          url.includes('/solutions') ||
+          url.includes('/pricing')
+        ) {
+          item.priority = 0.9
+        } else if (
+          url.includes('/about') ||
+          url.includes('/contact') ||
+          url.includes('/nosotros') ||
+          url.includes('/contacto')
+        ) {
+          item.priority = 0.8
+        } else if (
+          url.includes('/blog/') ||
+          url.includes('/projects/')
+        ) {
+          item.priority = 0.7
+        }
+        return item
+      },
       i18n: {
         defaultLocale: 'en',
         locales: {
