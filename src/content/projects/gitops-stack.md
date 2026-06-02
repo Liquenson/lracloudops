@@ -15,6 +15,10 @@ metricas:
   - { label: "IAM identities", value: "22 users · 5 groups" }
   - { label: "EKS nodes", value: "min 1 · desired 2 · max 3" }
   - { label: "Ansible roles", value: "3 (common · security · monitoring)" }
+outcomes:
+  - "Configuration drift: zero via GitOps reconciliation"
+  - "IAM identities: 22 managed as code, zero static keys"
+  - "Pipeline stages: 7 automated gates before production"
 highlights:
   - "7-stage Jenkins pipeline: Test → Build → ECR Push → Terraform → Ansible SSM → Kubernetes → Rollout verify"
   - "No SSH keys anywhere: EKS node access exclusively via AWS Systems Manager Session Manager"

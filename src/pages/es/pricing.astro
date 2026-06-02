@@ -99,9 +99,9 @@ import Layout from '../../layouts/Layout.astro'
             </div>
             <h3 class="text-xl font-bold mb-2 text-white">Implementación</h3>
             <div class="text-3xl font-extrabold mb-1 text-white" style="letter-spacing: -0.03em;">
-              desde <span style="color: #93b8ff;">€3.000</span>
+              desde <span style="color: #93b8ff;">€8.000</span>
             </div>
-            <p class="text-sm" style="color: rgba(147,184,255,0.6);">Alcance fijo</p>
+            <p class="text-sm" style="color: rgba(147,184,255,0.6);">Proyecto típico: €8.000–25.000 según alcance</p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: rgba(147,184,255,0.8);">
@@ -200,6 +200,44 @@ import Layout from '../../layouts/Layout.astro'
         </a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- FAQ empresarial -->
+  <section class="py-20 border-t border-gray-100" style="background: #F8FAFC;">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">Preguntas frecuentes</h2>
+      </div>
+      <div class="space-y-4">
+        {[
+          {
+            q: '¿Cómo gestionáis nuestras credenciales AWS?',
+            a: 'Nunca usamos claves de acceso estáticas. Toda la automatización utiliza federación OIDC — tokens temporales acotados al mínimo de permisos requeridos. Vuestras credenciales nunca salen de vuestra cuenta.',
+          },
+          {
+            q: '¿Podéis firmar un NDA antes de la llamada inicial?',
+            a: 'Sí. Firmamos NDAs habitualmente antes de cualquier discusión técnica. Contactadnos y enviaremos nuestro NDA estándar en menos de 24 horas.',
+          },
+          {
+            q: '¿Qué pasa después del soporte de 30 días?',
+            a: 'Sois propietarios de todo — código, infraestructura, documentación. Ofrecemos contratos de retainer opcionales para soporte continuo, pero no hay lock-in.',
+          },
+          {
+            q: '¿Podemos hablar con clientes anteriores?',
+            a: 'Podemos facilitar referencias previa solicitud tras una llamada inicial. La confidencialidad del cliente nos impide publicar nombres públicamente.',
+          },
+          {
+            q: '¿Trabajáis con equipos sin infraestructura cloud existente?',
+            a: 'Sí. Greenfield es nuestro punto de partida preferido. Aprovisionamos todo como código desde el primer día — sin restricciones legacy ni configuraciones manuales que deshacer.',
+          },
+        ].map(({ q, a }) => (
+          <div class="bg-white rounded-2xl p-6" style="border: 1px solid #e2e8f0;">
+            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{q}</h3>
+            <p class="text-sm leading-relaxed" style="color: #64748b;">{a}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 

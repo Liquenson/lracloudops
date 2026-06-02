@@ -47,7 +47,7 @@ const breadcrumbSchema = segments.length > 0
 const organizationSchema = {
   '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://lracloudops.com/#organization',
   name: 'LRA Cloud Ops', url: 'https://lracloudops.com', logo: 'https://lracloudops.com/logo.svg',
-  email: 'info@lracloudops.com', foundingDate: '2022', numberOfEmployees: '4',
+  email: 'info@lracloudops.com', foundingDate: '2021', numberOfEmployees: '4',
   areaServed: ['ES', 'US', 'LATAM'],
   serviceType: ['DevOps Consulting', 'Cloud Infrastructure', 'Kubernetes', 'Platform Engineering'],
   priceRange: '€€€',
@@ -91,6 +91,7 @@ const resourcesItems: NavItem[] = [
   { href: '/blog',      label: 'Blog',        desc: 'Cloud engineering insights & tutorials',     iconPath: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z' },
   { href: '/projects',  label: 'Case Studies', desc: 'Real-world production implementations',     iconPath: 'M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z' },
   { href: '/resources', label: 'Guides',       desc: 'Technical guides & best practices',         iconPath: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25' },
+  { href: '/why-lra',   label: 'Why LRA →',   desc: 'The case for specialized over generalist',  iconPath: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
 ]
 
 const isServicesActive  = servicesItems.some(i => currentPath === i.href || currentPath.startsWith(i.href + '/')) || currentPath.startsWith('/services')
@@ -539,9 +540,14 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
                 </svg>
               </a>
             </div>
-            <div class="flex items-center gap-2 text-sm" style="color:rgba(52,211,153,0.9);">
+            <div class="flex items-center gap-2 text-sm mb-4" style="color:rgba(52,211,153,0.9);">
               <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" aria-hidden="true"></span>
               <span>{lang === 'es' ? 'Disponible para nuevos proyectos' : 'Accepting new engagements'}</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full" style="background: rgba(123,66,188,0.15); color: #A78BFA; border: 1px solid rgba(123,66,188,0.3);">HashiCorp</span>
+              <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full" style="background: rgba(4,159,217,0.15); color: #7DD3FC; border: 1px solid rgba(4,159,217,0.3);">Cisco</span>
+              <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full" style="background: rgba(238,49,36,0.15); color: #FCA5A5; border: 1px solid rgba(238,49,36,0.3);">Fortinet ×2</span>
             </div>
           </div>
 
@@ -574,15 +580,20 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
                 { label: 'Precios', href: '/es/pricing' },
                 { label: 'Blog', href: '/es/blog' },
                 { label: 'Contacto', href: '/es/contacto' },
+                { label: 'Seguridad', href: '/security' },
+                { label: 'Privacidad', href: '/privacy' },
                 { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
               ] : [
                 { label: 'About', href: '/about' },
+                { label: 'Why LRA', href: '/why-lra' },
                 { label: 'Pricing', href: '/pricing' },
                 { label: 'Resources', href: '/resources' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Contact', href: '/contact' },
+                { label: 'Security', href: '/security' },
+                { label: 'Privacy', href: '/privacy' },
                 { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
-              ]).map(({ label, href, external }: { label: string; href: string; external?: boolean }) => (
+              ] as { label: string; href: string; external?: boolean }[]).map(({ label, href, external }) => (
                 <li>
                   <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">{label}</a>
                 </li>
@@ -597,6 +608,7 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
             <span class="text-xs" style="color:rgba(148,163,184,0.4);">
               {lang === 'es' ? '© 2026 LRA Cloud Ops. Todos los derechos reservados.' : '© 2026 LRA Cloud Ops. All rights reserved.'}
             </span>
+            <span class="text-xs hidden sm:inline" style="color:rgba(148,163,184,0.3);">LRA Cloud Operations · Las Palmas de Gran Canaria, Spain · EU-based · info@lracloudops.com</span>
             <a href={lang === 'es' ? '/es/privacy' : '/privacy'} class="text-xs transition-colors hover:text-white" style="color:rgba(148,163,184,0.35);">{lang === 'es' ? 'Privacidad' : 'Privacy Policy'}</a>
             <a href={lang === 'es' ? '/es/terms' : '/terms'} class="text-xs transition-colors hover:text-white" style="color:rgba(148,163,184,0.35);">{lang === 'es' ? 'Términos' : 'Terms of Service'}</a>
           </div>

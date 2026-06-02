@@ -42,6 +42,7 @@ const projects = defineCollection({
       value: z.string(),
     })).optional(),
     highlights: z.array(z.string()).optional(),
+    outcomes: z.array(z.string()).optional(),
     arquitectura: z.array(z.object({
       nombre: z.string(),
       descripcion: z.string(),
