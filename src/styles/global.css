@@ -68,9 +68,9 @@ body {
 }
 
 /* ── Typography scale ─────────────────────────────────────────────────── */
-h1 { font-weight: 800; letter-spacing: -0.035em; line-height: 1.06; }
-h2 { font-weight: 700; letter-spacing: -0.025em; line-height: 1.14; }
-h3 { font-weight: 700; letter-spacing: -0.015em; line-height: 1.22; }
+h1 { font-weight: 900; letter-spacing: -0.04em;  line-height: 1.06; }
+h2 { font-weight: 800; letter-spacing: -0.03em;  line-height: 1.14; }
+h3 { font-weight: 700; letter-spacing: -0.02em;  line-height: 1.22; }
 h4 { font-weight: 600; letter-spacing: -0.01em; }
 p  { font-weight: 400; }
 
@@ -324,6 +324,44 @@ p  { font-weight: 400; }
   background: linear-gradient(90deg, #1D4ED8 0%, #2563EB 50%, #60A5FA 100%);
 }
 
+/* ── Section backgrounds ──────────────────────────────────────────────── */
+.section-white { background: #ffffff; }
+.section-gray  { background: #F8FAFC; }
+.section-dark  { background: #0A2540; }
+
+/* ── Card enterprise (Red Hat style — left accent border) ─────────────── */
+.card-enterprise {
+  border-left: 4px solid #1E6FFF;
+  border-radius: 0 16px 16px 0;
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-enterprise:hover {
+  box-shadow: 0 8px 32px rgba(30,111,255,0.12);
+  transform: translateY(-2px);
+}
+
+/* ── Btn outline ──────────────────────────────────────────────────────── */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid #1E6FFF;
+  color: #1E6FFF;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background: #1E6FFF;
+  color: white;
+}
+
 /* ── prefers-reduced-motion ───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
@@ -333,7 +371,9 @@ p  { font-weight: 400; }
     translate: none;
     transition: none;
   }
-  .line-draw { width: 100%; transition: none; }
-  .card-lift  { transition: none; }
-  .hero-gradient { animation: none; }
+  .line-draw        { width: 100%; transition: none; }
+  .card-lift        { transition: none; }
+  .hero-gradient    { animation: none; }
+  .card-enterprise  { transition: none; }
+  .btn-outline      { transition: none; }
 }

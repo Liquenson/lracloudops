@@ -158,6 +158,26 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
 
   <body class="bg-white text-gray-900 antialiased">
 
+    <!-- ── ANNOUNCEMENT BAR ──────────────────────────────────────────── -->
+    <div
+      id="announcement-bar"
+      style="height: 40px; background: #0A2540; border-bottom: 1px solid rgba(30,111,255,0.2); display: flex; align-items: center; justify-content: center; position: relative;"
+    >
+      <a
+        href={lang === 'es' ? '/es/contacto' : '/contact'}
+        class="flex items-center gap-2 transition-opacity hover:opacity-80"
+        style="font-size: 13px; color: rgba(255,255,255,0.9); text-decoration: none;"
+      >
+        <span>{lang === 'es' ? 'Disponibles para nuevos proyectos · Respuesta en 24h' : 'Available for new projects · Response within 24h'}</span>
+        <span style="color: #1E6FFF; font-weight: 700; font-size: 15px;">→</span>
+      </a>
+      <button
+        id="announcement-close"
+        aria-label={lang === 'es' ? 'Cerrar anuncio' : 'Dismiss announcement'}
+        style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 20px; line-height: 1; padding: 4px 8px;"
+      >×</button>
+    </div>
+
     <!-- ── SKIP NAVIGATION (accessibility) ── -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:font-semibold">
       {skipLabel}
@@ -389,45 +409,30 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
     <footer style="background-color: #0B1220;" role="contentinfo">
       <div class="max-w-7xl mx-auto px-6 pt-16 pb-10">
 
-        <!-- Footer Grid — 5 columns on desktop -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 mb-14">
+        <!-- Footer Grid — 4 columns enterprise -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
 
-          <!-- Brand col (spans 2 on lg) -->
-          <div class="col-span-2 lg:col-span-2">
+          <!-- Brand col -->
+          <div class="col-span-2 md:col-span-1">
             <a href={lang === 'es' ? '/es' : '/'} class="inline-block mb-5" aria-label="LRA Cloud Ops — Home">
-              <img
-                src="/logo.svg"
-                alt="LRA Cloud Ops"
-                class="h-9 w-auto"
-                style="filter: brightness(0) invert(1) opacity(0.9);"
-              />
+              <img src="/logo.svg" alt="LRA Cloud Ops" class="h-9 w-auto" style="filter: brightness(0) invert(1) opacity(0.9);" />
             </a>
             <p class="text-sm leading-relaxed mb-6 max-w-xs" style="color: rgba(148,163,184,0.8);">
               {lang === 'es'
-                ? 'Infraestructura cloud, plataformas Kubernetes y automatización DevOps. Entornos AWS de producción construidos como código.'
-                : 'Cloud infrastructure, Kubernetes platforms and DevOps automation. Production AWS environments built as code.'}
+                ? 'Infraestructura cloud, plataformas Kubernetes y automatización DevOps.'
+                : 'Cloud infrastructure, Kubernetes platforms and DevOps automation.'}
             </p>
-            <div class="flex gap-2.5 mb-6">
-              <a
-                href="https://github.com/Liquenson"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div class="flex gap-2.5 mb-5">
+              <a href="https://github.com/Liquenson" target="_blank" rel="noopener noreferrer"
                 class="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-white/15"
-                style="background: rgba(255,255,255,0.08);"
-                aria-label="GitHub"
-              >
+                style="background: rgba(255,255,255,0.08);" aria-label="GitHub">
                 <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                 </svg>
               </a>
-              <a
-                href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/" target="_blank" rel="noopener noreferrer"
                 class="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-white/15"
-                style="background: rgba(255,255,255,0.08);"
-                aria-label="LinkedIn"
-              >
+                style="background: rgba(255,255,255,0.08);" aria-label="LinkedIn">
                 <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
@@ -439,54 +444,32 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
             </div>
           </div>
 
-          <!-- Solutions -->
+          <!-- Services -->
           <div>
-            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">{lang === 'es' ? 'Soluciones' : 'Solutions'}</h3>
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">{lang === 'es' ? 'Servicios' : 'Services'}</h3>
             <ul class="space-y-3">
-              {(lang === 'es' ? [
-                { label: 'Infraestructura Cloud', href: '/cloud-infrastructure' },
+              {[
+                { label: lang === 'es' ? 'Infraestructura Cloud' : 'Cloud Infrastructure', href: '/cloud-infrastructure' },
                 { label: 'Platform Engineering', href: '/platform-engineering' },
                 { label: 'DevOps Automation', href: '/devops-automation' },
                 { label: 'Observability', href: '/observability' },
-              ] : [
-                { label: 'Cloud Infrastructure', href: '/cloud-infrastructure' },
-                { label: 'Platform Engineering', href: '/platform-engineering' },
-                { label: 'DevOps Automation', href: '/devops-automation' },
-                { label: 'Observability', href: '/observability' },
-              ]).map(({ label, href }) => (
-                <li>
-                  <a
-                    href={href}
-                    class="text-sm transition-colors hover:text-white"
-                    style="color: rgba(148,163,184,0.7);"
-                  >{label}</a>
-                </li>
+              ].map(({ label, href }) => (
+                <li><a href={href} class="text-sm transition-colors hover:text-white" style="color: rgba(148,163,184,0.7);">{label}</a></li>
               ))}
             </ul>
           </div>
 
-          <!-- Resources -->
+          <!-- Projects -->
           <div>
-            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">{lang === 'es' ? 'Recursos' : 'Resources'}</h3>
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">{lang === 'es' ? 'Proyectos' : 'Projects'}</h3>
             <ul class="space-y-3">
-              {(lang === 'es' ? [
-                { label: 'Blog', href: '/es/blog' },
-                { label: 'Casos de uso', href: '/es/proyectos' },
-                { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
-              ] : [
-                { label: 'Blog', href: '/blog' },
-                { label: 'Case Studies', href: '/projects' },
-                { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
-              ]).map(({ label, href, external }: { label: string; href: string; external?: boolean }) => (
-                <li>
-                  <a
-                    href={href}
-                    target={external ? '_blank' : undefined}
-                    rel={external ? 'noopener noreferrer' : undefined}
-                    class="text-sm transition-colors hover:text-white"
-                    style="color: rgba(148,163,184,0.7);"
-                  >{label}</a>
-                </li>
+              {[
+                { label: 'AWS Terraform', href: '/projects/aws-terraform-devops' },
+                { label: 'TBF Cloud', href: '/projects/tbf-cloud-infrastructure' },
+                { label: 'NexoraTech', href: '/projects' },
+                { label: 'Linux Fleet Manager', href: '/projects' },
+              ].map(({ label, href }) => (
+                <li><a href={href} class="text-sm transition-colors hover:text-white" style="color: rgba(148,163,184,0.7);">{label}</a></li>
               ))}
             </ul>
           </div>
@@ -497,31 +480,20 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
             <ul class="space-y-3">
               {(lang === 'es' ? [
                 { label: 'Nosotros', href: '/es/nosotros' },
+                { label: 'Blog', href: '/es/blog' },
                 { label: 'Contacto', href: '/es/contacto' },
+                { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
               ] : [
                 { label: 'About', href: '/about' },
+                { label: 'Blog', href: '/blog' },
                 { label: 'Contact', href: '/contact' },
-              ]).map(({ label, href }) => (
+                { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
+              ]).map(({ label, href, external }: { label: string; href: string; external?: boolean }) => (
                 <li>
-                  <a
-                    href={href}
-                    class="text-sm transition-colors hover:text-white"
-                    style="color: rgba(148,163,184,0.7);"
-                  >{label}</a>
+                  <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}
+                    class="text-sm transition-colors hover:text-white" style="color: rgba(148,163,184,0.7);">{label}</a>
                 </li>
               ))}
-              <li class="pt-2">
-                <a
-                  href={lang === 'es' ? '/es/contacto' : '/contact'}
-                  class="inline-flex items-center gap-1.5 text-xs font-semibold text-white px-3.5 py-2 rounded-lg transition-all hover:opacity-90"
-                  style="background: rgba(37,99,235,0.25); border: 1px solid rgba(37,99,235,0.4);"
-                >
-                  {lang === 'es' ? 'Reservar consulta' : 'Book a Consultation'}
-                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </li>
             </ul>
           </div>
         </div>
