@@ -242,6 +242,23 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
           </a>
         </div>
 
+        <!-- Mobile Navbar Language Switcher (always visible, between logo and hamburger) -->
+        <div class="lg:hidden flex items-center flex-shrink-0" role="group" aria-label="Language selector">
+          <a
+            href={enUrl}
+            class={`px-2 py-1 text-xs font-bold transition-colors ${lang !== 'es' ? 'text-[#1E6FFF]' : 'text-[#94a3b8] hover:text-[#64748b]'}`}
+            aria-label="Switch to English"
+            aria-current={lang !== 'es' ? 'true' : undefined}
+          >EN</a>
+          <span class="text-[#e2e8f0] text-xs select-none" aria-hidden="true">|</span>
+          <a
+            href={esUrl}
+            class={`px-2 py-1 text-xs font-bold transition-colors ${lang === 'es' ? 'text-[#1E6FFF]' : 'text-[#94a3b8] hover:text-[#64748b]'}`}
+            aria-label="Cambiar a español"
+            aria-current={lang === 'es' ? 'true' : undefined}
+          >ES</a>
+        </div>
+
         <!-- Mobile Hamburger -->
         <button
           id="menu-btn"
