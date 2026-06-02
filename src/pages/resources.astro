@@ -1,122 +1,312 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { getCollection } from 'astro:content'
-
-const posts = (await getCollection('blog')).sort((a, b) =>
-  new Date(b.data.fecha ?? b.data.date ?? '2025-01-01').getTime() -
-  new Date(a.data.fecha ?? a.data.date ?? '2025-01-01').getTime()
-).slice(0, 6)
 ---
 
 <Layout
-  titulo="Resources & Technical Guides"
-  descripcion="Technical guides, best practices, and reference architectures for cloud infrastructure, Kubernetes, DevOps automation, and platform engineering."
+  titulo="Engineering Resources · LRA Cloud Operations"
+  descripcion="Free production-grade engineering resources: AWS checklists, Kubernetes security guides, GitOps playbooks and Terraform best practices."
+  keywords="DevOps resources, AWS production checklist, Kubernetes security guide, GitOps playbook, Terraform best practices, cloud engineering PDF"
 >
-  <!-- Hero -->
-  <section style="background: linear-gradient(135deg, #0A2540 0%, #0d2f50 100%); padding: 80px 24px 70px;">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8" style="background: rgba(30,111,255,0.15); color: #60A5FA; border: 1px solid rgba(30,111,255,0.25);">
-        Resources
-      </div>
-      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-        Technical guides & reference architectures
+
+  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.2) 0%, transparent 65%);"></div>
+
+    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
+      <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
+        Free Resources
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6" style="letter-spacing: -0.02em;">
+        Engineering Resources
       </h1>
-      <p class="text-lg sm:text-xl max-w-2xl mx-auto" style="color: rgba(148,163,184,0.9);">
-        Practical cloud engineering resources — from Terraform modules to Kubernetes patterns. Written from production experience, not documentation summaries.
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-4" style="color: rgba(147,184,255,0.8);">
+        Production-tested checklists, hardening guides and implementation playbooks. Used by our team on every engagement. Download free.
+      </p>
+      <p class="text-sm font-medium" style="color: rgba(147,184,255,0.5);">
+        PDF guides &middot; No spam &middot; Sent to your inbox
       </p>
     </div>
   </section>
 
-  <!-- Resource categories -->
-  <section style="background: #F8FAFC; padding: 80px 24px;">
-    <div class="max-w-6xl mx-auto">
+  <!-- ─── RESOURCES GRID ───────────────────────────────────────────────── -->
+  <section class="py-20" style="background: #F8FAFC;">
+    <div class="max-w-5xl mx-auto px-6">
 
-      <!-- Category grid -->
-      <div class="grid sm:grid-cols-3 gap-6 mb-16">
-        {[
-          {
-            label: 'Infrastructure Guides',
-            desc: 'Terraform patterns, AWS account strategies, networking design, and multi-cloud architectures from production deployments.',
-            href: '/blog',
-            icon: 'M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z',
-            count: '12+ guides',
-          },
-          {
-            label: 'Kubernetes Playbooks',
-            desc: 'EKS provisioning, Helm chart patterns, GitOps workflows with ArgoCD, RBAC design, and multi-tenant isolation strategies.',
-            href: '/blog',
-            icon: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
-            count: '8+ playbooks',
-          },
-          {
-            label: 'DevOps Automation',
-            desc: 'GitHub Actions pipeline design, container security scanning, progressive delivery patterns, and trunk-based development workflows.',
-            href: '/blog',
-            icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
-            count: '10+ templates',
-          },
-        ].map(({ label, desc, href, icon, count }) => (
-          <a href={href} class="bg-white rounded-2xl p-7 group transition-all hover:-translate-y-0.5 hover:shadow-lg" style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04); text-decoration: none;">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background: #EEF4FF;">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #1E6FFF;" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
+
+        <!-- AWS Production Readiness Checklist -->
+        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #FF9900; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); box-shadow: 0 4px 12px rgba(255,153,0,0.3);">
+              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6" />
               </svg>
             </div>
-            <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #1E6FFF;">{count}</div>
-            <h3 class="text-lg font-semibold mb-3 group-hover:text-blue-600 transition-colors" style="color: #0A2540;">{label}</h3>
-            <p class="text-sm leading-relaxed" style="color: #64748B;">{desc}</p>
-          </a>
-        ))}
-      </div>
-
-      <!-- Recent blog posts -->
-      {posts.length > 0 && (
-        <div>
-          <div class="flex items-center justify-between mb-8">
-            <h2 class="text-2xl font-bold" style="color: #0A2540;">Latest articles</h2>
-            <a href="/blog" class="text-sm font-semibold transition-colors hover:underline" style="color: #1E6FFF;">View all →</a>
+            <div class="flex-1 min-w-0">
+              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #FF9900;">AWS &middot; Checklist</span>
+              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">AWS Production Readiness Checklist</h2>
+            </div>
           </div>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map(post => (
-              <a href={`/blog/${post.slug}`} class="bg-white rounded-2xl p-6 group transition-all hover:-translate-y-0.5 hover:shadow-md" style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 8px rgba(15,23,42,0.04); text-decoration: none;">
-                {post.data.tags && post.data.tags[0] && (
-                  <span class="inline-block text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF;">{post.data.tags[0]}</span>
-                )}
-                <h3 class="text-base font-semibold mb-2 group-hover:text-blue-600 transition-colors line-clamp-2" style="color: #0A2540;">{post.data.titulo ?? post.data.title}</h3>
-                <p class="text-sm line-clamp-2" style="color: #64748B;">{post.data.descripcion ?? post.data.description}</p>
-              </a>
+          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
+            47 checks across security, reliability, performance and cost optimization. Used by our team before every go-live on AWS. Covers VPC, IAM, RDS, EKS, CloudFront, Route 53 and monitoring.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            {['Security', 'IAM', 'VPC', 'RDS', 'EKS', 'CloudFront'].map(tag => (
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #FFF8EE; color: #B45309; border: 1px solid #FDE68A;">{tag}</span>
             ))}
           </div>
+          <div class="flex items-center gap-2 text-xs mb-5" style="color: #64748b;">
+            <svg class="w-4 h-4 flex-shrink-0" style="color: #FF9900;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span><strong style="color: #0A2540;">47 checks</strong> &middot; PDF &middot; Free</span>
+          </div>
+          <button
+            data-resource="AWS Production Readiness Checklist"
+            class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+            style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); color: white; box-shadow: 0 2px 8px rgba(255,153,0,0.3);"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download Free
+          </button>
         </div>
-      )}
-    </div>
-  </section>
 
-  <!-- Case studies link -->
-  <section style="background: white; padding: 60px 24px; border-top: 1px solid rgba(15,23,42,0.05);">
-    <div class="max-w-5xl mx-auto">
-      <div class="rounded-2xl p-10 flex flex-col md:flex-row items-center justify-between gap-6" style="background: #EEF4FF; border: 1px solid rgba(30,111,255,0.12);">
-        <div>
-          <h2 class="text-2xl font-bold mb-2" style="color: #0A2540;">See these patterns in production</h2>
-          <p style="color: #64748B;">Real implementations across AWS, Kubernetes, and GitOps — with architecture details and outcomes.</p>
+        <!-- Kubernetes Security Hardening Guide -->
+        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); box-shadow: 0 4px 12px rgba(50,108,229,0.3);">
+              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #326CE5;">Kubernetes &middot; Security</span>
+              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Kubernetes Security Hardening Guide</h2>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
+            Production hardening patterns for EKS clusters: RBAC, Pod Security Standards, NetworkPolicies, Secrets encryption, image scanning and audit logging. Based on real production deployments.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            {['RBAC', 'NetworkPolicy', 'PSS', 'Secrets', 'Audit Logs', 'EKS'].map(tag => (
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{tag}</span>
+            ))}
+          </div>
+          <div class="flex items-center gap-2 text-xs mb-5" style="color: #64748b;">
+            <svg class="w-4 h-4 flex-shrink-0" style="color: #326CE5;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span><strong style="color: #0A2540;">60+ patterns</strong> &middot; PDF &middot; Free</span>
+          </div>
+          <button
+            data-resource="Kubernetes Security Hardening Guide"
+            class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+            style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; box-shadow: 0 2px 8px rgba(50,108,229,0.3);"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download Free
+          </button>
         </div>
-        <a href="/projects" class="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px whitespace-nowrap" style="background: #1E6FFF; box-shadow: 0 4px 14px rgba(30,111,255,0.35);">
-          View case studies
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </a>
+
+        <!-- GitOps Implementation Playbook -->
+        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #EF7B4D; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #EF7B4D 0%, #C05A2D 100%); box-shadow: 0 4px 12px rgba(239,123,77,0.3);">
+              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #EF7B4D;">GitOps &middot; ArgoCD</span>
+              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">GitOps Implementation Playbook</h2>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
+            Step-by-step guide to implementing GitOps with ArgoCD: repository structure, app-of-apps pattern, sync policies, drift detection, Helm values per environment and rollback procedures.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            {['ArgoCD', 'Helm', 'App-of-Apps', 'Drift Detection', 'Rollback'].map(tag => (
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #FFF5F0; color: #C05A2D; border: 1px solid #FDBA8C;">{tag}</span>
+            ))}
+          </div>
+          <div class="flex items-center gap-2 text-xs mb-5" style="color: #64748b;">
+            <svg class="w-4 h-4 flex-shrink-0" style="color: #EF7B4D;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span><strong style="color: #0A2540;">Step-by-step guide</strong> &middot; PDF &middot; Free</span>
+          </div>
+          <button
+            data-resource="GitOps Implementation Playbook"
+            class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+            style="background: linear-gradient(135deg, #EF7B4D 0%, #C05A2D 100%); color: white; box-shadow: 0 2px 8px rgba(239,123,77,0.3);"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download Free
+          </button>
+        </div>
+
+        <!-- Terraform Module Best Practices -->
+        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #7B42BC; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #7B42BC 0%, #5B2E9E 100%); box-shadow: 0 4px 12px rgba(123,66,188,0.3);">
+              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #7B42BC;">Terraform &middot; IaC</span>
+              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Terraform Module Best Practices</h2>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
+            Production module patterns for multi-environment AWS infrastructure: remote state with locking, workspace strategy, variable validation, output contracts and module versioning for team codebases.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            {['Modules', 'Remote State', 'Workspaces', 'Validation', 'Multi-env'].map(tag => (
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #F5F0FF; color: #5B2E9E; border: 1px solid #C4B5FD;">{tag}</span>
+            ))}
+          </div>
+          <div class="flex items-center gap-2 text-xs mb-5" style="color: #64748b;">
+            <svg class="w-4 h-4 flex-shrink-0" style="color: #7B42BC;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span><strong style="color: #0A2540;">Patterns &amp; examples</strong> &middot; PDF &middot; Free</span>
+          </div>
+          <button
+            data-resource="Terraform Module Best Practices"
+            class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+            style="background: linear-gradient(135deg, #7B42BC 0%, #5B2E9E 100%); color: white; box-shadow: 0 2px 8px rgba(123,66,188,0.3);"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download Free
+          </button>
+        </div>
+
       </div>
+
+      <!-- ─── DOWNLOAD FORM ─────────────────────────────────────────────── -->
+      <div id="download-form-section" class="max-w-xl mx-auto rounded-2xl p-10 text-center" style="background: white; border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.10);">
+        <div class="w-14 h-14 flex items-center justify-center rounded-2xl mx-auto mb-5" style="background: #EEF4FF;">
+          <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-2" style="color: #0A2540;" id="form-resource-title">Select a resource above to download</h3>
+        <p class="text-sm mb-7" style="color: #64748b;">Enter your work email and we will send it to your inbox. No spam, no drip campaigns.</p>
+
+        <form id="resource-form" class="space-y-3">
+          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+          <input type="hidden" name="subject" id="form-subject" value="Resource Download - LRA Cloud Ops" />
+          <input type="hidden" name="from_name" value="LRA Cloud Operations" />
+          <input type="hidden" name="resource_requested" id="form-resource-hidden" value="" />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="you@company.com"
+            class="w-full px-4 py-3.5 text-sm rounded-xl outline-none transition-all"
+            style="background: #F8FAFC; color: #111827; border: 1px solid #e2e8f0;"
+            onfocus="this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.2)'; this.style.borderColor='#93b8ff';"
+            onblur="this.style.boxShadow='none'; this.style.borderColor='#e2e8f0';"
+          />
+          <button
+            type="submit"
+            id="resource-submit-btn"
+            class="w-full text-sm font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-px active:scale-[0.98]"
+            style="background: #1E6FFF; color: white; box-shadow: 0 4px 16px rgba(30,111,255,0.4); opacity: 0.5; cursor: not-allowed;"
+          >
+            Send me the resource &rarr;
+          </button>
+        </form>
+
+        <div id="resource-status" class="hidden text-sm mt-4 px-4 py-2.5 rounded-lg"></div>
+      </div>
+
     </div>
   </section>
 
-  <!-- CTA -->
-  <section style="background: #0A2540; padding: 80px 24px;">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Need guidance on a specific architecture decision?</h2>
-      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">Schedule a 30-minute technical review — we'll dig into your specific situation and provide concrete recommendations.</p>
-      <a href="/contact" class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px" style="background: #1E6FFF; box-shadow: 0 4px 24px rgba(30,111,255,0.45);">
-        Schedule architecture review
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+  <!-- ─── CTA ──────────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4" style="letter-spacing: -0.02em;">
+        Need a production architecture review?
+      </h2>
+      <p class="text-base mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Schedule a free 30-minute call. We will review your current setup and outline a concrete roadmap.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]"
+        style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 24px rgba(30,111,255,0.4);"
+      >
+        Schedule free consultation
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
       </a>
     </div>
   </section>
+
 </Layout>
+
+<script>
+  const buttons = document.querySelectorAll('.resource-download-btn') as NodeListOf<HTMLButtonElement>
+  const formSection = document.getElementById('download-form-section')
+  const formTitle = document.getElementById('form-resource-title')
+  const formSubject = document.getElementById('form-subject') as HTMLInputElement | null
+  const formHidden = document.getElementById('form-resource-hidden') as HTMLInputElement | null
+  const submitBtn = document.getElementById('resource-submit-btn') as HTMLButtonElement | null
+  const form = document.getElementById('resource-form') as HTMLFormElement | null
+  const statusEl = document.getElementById('resource-status') as HTMLDivElement | null
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const resource = btn.dataset.resource ?? ''
+      if (formTitle) formTitle.textContent = resource
+      if (formSubject) formSubject.value = `Resource Download: ${resource} - LRA Cloud Ops`
+      if (formHidden) formHidden.value = resource
+      if (submitBtn) {
+        submitBtn.disabled = false
+        submitBtn.style.opacity = '1'
+        submitBtn.style.cursor = 'pointer'
+      }
+      formSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  })
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!submitBtn || !statusEl) return
+    const original = submitBtn.textContent
+    submitBtn.textContent = 'Sending...'
+    submitBtn.disabled = true
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      })
+      const data = await res.json()
+      if (data.success) {
+        statusEl.textContent = "Check your inbox! We'll send the resource shortly."
+        statusEl.style.cssText = 'display:block; background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 12px 16px;'
+        form.reset()
+        submitBtn.textContent = 'Sent ✓'
+      } else {
+        statusEl.textContent = 'Something went wrong. Please try again.'
+        statusEl.style.cssText = 'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
+        submitBtn.textContent = original
+        submitBtn.disabled = false
+      }
+    } catch {
+      statusEl.textContent = 'Connection error. Please try again.'
+      statusEl.style.cssText = 'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
+      submitBtn.textContent = original
+      submitBtn.disabled = false
+    }
+    statusEl.classList.remove('hidden')
+  })
+</script>

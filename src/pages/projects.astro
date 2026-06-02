@@ -140,6 +140,21 @@ const implementations = [
   },
 ]
 
+const projectMeta: Record<string, { metric: { value: string; label: string }; industry: string; duration: string }> = {
+  'aws-terraform-devops':      { metric: { value: '80%',   label: 'faster deployments'      }, industry: 'Healthcare',         duration: '4 years'   },
+  'tbf-cloud-infrastructure':  { metric: { value: '11',    label: 'Terraform modules'        }, industry: 'Financial Services', duration: '1 year'    },
+  'nexoratech':                { metric: { value: '3',     label: 'OIDC pipelines'           }, industry: 'SaaS',               duration: '1 year'    },
+  'linux-fleet-manager':       { metric: { value: '3 OS',  label: 'platforms validated'      }, industry: 'Operations',         duration: 'Ongoing'   },
+  'gitops-stack':              { metric: { value: '22',    label: 'IAM identities as code'   }, industry: 'Cloud Native',       duration: '6 months'  },
+  'lracloudops':               { metric: { value: '62',    label: 'pages · 0 build errors'   }, industry: 'Web Platform',       duration: 'Ongoing'   },
+  'docker-devops-platform':    { metric: { value: '5×',    label: 'retry with exp backoff'   }, industry: 'Containerization',   duration: 'In progress' },
+  'medical-appointment-system':{ metric: { value: '3',     label: 'RBAC roles'               }, industry: 'Healthcare',         duration: 'In progress' },
+  'aws-devops-agent':          { metric: { value: '31',    label: 'boto3 tools'              }, industry: 'AI Ops',             duration: 'In progress' },
+  'k8s-devops-platform':       { metric: { value: '3',     label: 'node cluster'             }, industry: 'Cloud Native',       duration: '6 months'  },
+  'python-cicd-template':      { metric: { value: '80%',   label: 'coverage gate'            }, industry: 'DevOps',             duration: 'Template'  },
+  'springboot-rest-template':  { metric: { value: '0',     label: 'Dockerfile required'      }, industry: 'Backend',            duration: 'Template'  },
+}
+
 function badgeStyle(madurez: string) {
   const map: Record<string, string> = {
     "Production":     "background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;",
@@ -217,7 +232,9 @@ const starters = implementations.filter(p => p.madurez === "Starter")
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-        {implementations.map((p, i) => (
+        {implementations.map((p, i) => {
+          const meta = projectMeta[p.slug];
+          return (
           <div class={`bg-white rounded-2xl flex flex-col group hover:-translate-y-1 transition-all duration-200 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400','delay-500','delay-500','delay-100','delay-200','delay-300','delay-400','delay-500'][i] ?? 'delay-500'}`} style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07); border: 1px solid #e8eef4; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07)'; this.style.borderColor='#e8eef4';">
 
             <!-- Status bar -->
@@ -236,6 +253,9 @@ const starters = implementations.filter(p => p.madurez === "Starter")
                   </svg>
                 </div>
                 <div class="flex flex-col items-end gap-1.5">
+                  {meta && (
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{meta.industry}</span>
+                  )}
                   <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style={badgeStyle(p.madurez)}>
                     {p.madurez}
                   </span>
@@ -251,11 +271,18 @@ const starters = implementations.filter(p => p.madurez === "Starter")
                 <span class="text-xs font-semibold uppercase tracking-wider" style="color: #94a3b8;">{p.categoria}</span>
               </div>
               <h2 class="text-lg font-bold mb-3 group-hover:text-blue-700 transition-colors" style="color: #0A2540;">{p.nombre}</h2>
-              <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">{p.descripcion}</p>
+              <p class="text-sm leading-relaxed mb-4 flex-1" style="color: #64748b;">{p.descripcion}</p>
 
-              <div class="flex flex-wrap gap-1.5 mb-6">
+              {meta && (
+                <div class="flex items-baseline gap-2 mb-4 px-4 py-3 rounded-xl" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
+                  <span class="text-2xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">{meta.metric.value}</span>
+                  <span class="text-xs font-medium" style="color: #3b5bdb;">{meta.metric.label}</span>
+                </div>
+              )}
+
+              <div class="flex flex-wrap gap-1.5 mb-5">
                 {p.stack.slice(0, 5).map(t => (
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{t}</span>
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #374151; border: 1px solid #e2e8f0;">{t}</span>
                 ))}
                 {p.stack.length > 5 && (
                   <span class="text-xs px-2 py-1 rounded-full" style="background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0;">+{p.stack.length - 5} more</span>
@@ -290,7 +317,8 @@ const starters = implementations.filter(p => p.madurez === "Starter")
               </div>
             </div>
           </div>
-        ))}
+          );
+        })}
 
       </div>
     </div>
