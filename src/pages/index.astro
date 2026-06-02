@@ -580,22 +580,22 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </article>
 
         <article class="card card-accent p-7 flex flex-col animate-fade-up delay-200"
-          aria-label="Case study: GitOps Kubernetes Platform">
+          aria-label="Case study: GitOps Stack — EKS Production Pipeline">
           <div class="flex items-start justify-between mb-5">
             <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EFF6FF;" aria-hidden="true">
               <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
             </div>
-            <span class="text-xs font-bold px-2.5 py-1.5 rounded-full" style="background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE;">Demo / Template</span>
+            <span class="text-xs font-bold px-2.5 py-1.5 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
           </div>
-          <p class="text-xs font-bold uppercase tracking-wider mb-1.5" style="color: #2563EB;">Kubernetes & GitOps</p>
-          <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">GitOps Kubernetes Platform</h3>
+          <p class="text-xs font-bold uppercase tracking-wider mb-1.5" style="color: #2563EB;">GitOps & CI/CD</p>
+          <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">GitOps Stack — EKS Production Pipeline</h3>
           <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">
-            A reference platform for teams evaluating GitOps adoption. Three-node Kubernetes cluster with ArgoCD as the delivery controller, Kustomize overlays for environment promotion and HPA configured for production-like autoscaling behavior.
+            A production GitOps platform on AWS EKS 1.35 with a 7-stage Jenkins pipeline. No SSH keys, no static credentials — Jenkins assumes eks-admin-role via STS and accesses EKS nodes through AWS Systems Manager. 22 IAM identities in 5 groups managed entirely as Terraform code.
           </p>
           <div class="flex gap-5 mb-5">
-            {[{ value: 'GitOps', label: 'Delivery model' }, { value: '0', label: 'Manual deploys' }].map(({ value, label }) => (
+            {[{ value: '7', label: 'Pipeline stages' }, { value: '22', label: 'IAM identities as code' }].map(({ value, label }) => (
               <div>
                 <div class="text-xl font-extrabold" style="color: #2563EB; letter-spacing: -0.04em;">{value}</div>
                 <div class="text-xs mt-0.5" style="color: #64748B;">{label}</div>
@@ -603,12 +603,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             ))}
           </div>
           <div class="flex flex-wrap gap-1.5 mb-5">
-            {['Kubernetes 1.29', 'ArgoCD', 'KinD', 'Kustomize', 'Helm'].map(tag => (
+            {['Terraform 1.9', 'AWS EKS 1.35', 'Jenkins 2.555', 'Ansible 2.10', 'AWS SSM'].map(tag => (
               <span class="stack-tag">{tag}</span>
             ))}
           </div>
           <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-            <a href="https://github.com/Liquenson/k8s-devops-platform" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/Liquenson/gitops-stack" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
               style="color: #0F172A;">
               <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -616,7 +616,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               </svg>
               View on GitHub
             </a>
-            <a href="/projects/k8s-devops-platform" class="text-xs font-semibold" style="color: #2563EB;">Case study &rarr;</a>
+            <a href="/projects/gitops-stack" class="text-xs font-semibold" style="color: #2563EB;">Full case study &rarr;</a>
           </div>
         </article>
       </div>
