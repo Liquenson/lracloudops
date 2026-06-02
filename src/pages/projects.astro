@@ -48,6 +48,17 @@ const implementations = [
     slug: "linux-fleet-manager",
   },
   {
+    nombre: "GitOps Stack — EKS Production Pipeline",
+    descripcion: "Production GitOps CI/CD pipeline on AWS EKS 1.35: 7-stage Jenkins with STS role assumption and manual approval gate, SSM-based Ansible node configuration on Amazon Linux 2023, Terraform-managed VPC with 22 IAM identities in 5 groups. Zero SSH keys — all cluster access via IAM AssumeRole and AWS Systems Manager.",
+    stack: ["Terraform 1.9", "AWS EKS 1.35", "Jenkins 2.555", "Ansible 2.10", "AWS SSM", "Python 3.11", "Flask 3.0.0", "GitHub Actions"],
+    madurez: "Production",
+    cicd: true,
+    github: "https://github.com/Liquenson/gitops-stack",
+    categoria: "GitOps & CI/CD",
+    iconPath: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+    slug: "gitops-stack",
+  },
+  {
     nombre: "LRA Cloud Operations Platform",
     descripcion: "Static marketing and engineering platform for the LRA Cloud Operations brand — built with Astro 6 and Tailwind CSS 4, deployed globally on Cloudflare Pages with automated CI/CD. Structured data, Open Graph, Content Collections API and automated blog.",
     stack: ["Astro 6.2", "Tailwind CSS 4", "TypeScript", "Cloudflare Pages", "Content Collections"],
