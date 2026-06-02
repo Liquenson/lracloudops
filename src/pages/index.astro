@@ -196,6 +196,29 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 1B. STATS BAR                                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-gray border-b border-gray-100" aria-label="Key metrics">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <div class="grid grid-cols-2 sm:grid-cols-4">
+        {[
+          { number: '11',   suffix: '',  label: 'Proyectos' },
+          { number: '4',    suffix: '',  label: 'Ingenieros' },
+          { number: '25',   suffix: '+', label: 'Servicios AWS' },
+          { number: '100',  suffix: '%', label: 'IaC' },
+        ].map(({ number, suffix, label }, i) => (
+          <div class={`text-center py-6 px-4 ${i > 0 ? 'border-l border-gray-200' : ''}`}>
+            <div class="font-black text-[#0A2540] mb-1 leading-none" style="font-size: 3rem; letter-spacing: -0.04em;">
+              {number}<span style="color: #1E6FFF;">{suffix}</span>
+            </div>
+            <div class="text-xs font-bold uppercase tracking-wider mt-1" style="color: #64748B;">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 2. TRUSTED TECHNOLOGIES                                             -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="bg-white" style="border-bottom: 1px solid #E5E7EB;" aria-label="Technologies we work with">
@@ -672,6 +695,37 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 6B. SECTORES / INDUSTRIES                                           -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="sectors-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Industries</span>
+        <h2 id="sectors-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          Sectores donde operamos
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Experiencia demostrada en entornos regulados y de alta disponibilidad
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { icon: '🏥', title: 'Healthcare',           desc: 'Plataformas con requisitos HIPAA, alta disponibilidad y auditoría completa.' },
+          { icon: '🏦', title: 'Financial Services',   desc: 'Infraestructura en entornos regulados con trazabilidad total y zero downtime.' },
+          { icon: '☁️', title: 'Cloud Native',         desc: 'Migración y modernización de aplicaciones hacia arquitecturas cloud-native en AWS.' },
+          { icon: '🔧', title: 'Platform Engineering', desc: 'Construcción de plataformas internas que aceleran la entrega de los equipos de desarrollo.' },
+        ].map(({ icon, title, desc }, i) => (
+          <div class={`card-enterprise animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}>
+            <div class="text-3xl mb-4" aria-hidden="true">{icon}</div>
+            <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{title}</h3>
+            <p class="text-sm leading-relaxed" style="color: #64748B;">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 7. SELECTED ENGAGEMENTS                                              -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="engagements-heading">
@@ -805,26 +859,31 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {recentPosts.length > 0 ? recentPosts.map((post, i) => (
           <article class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100','delay-200','delay-300'][i]}`}>
-            <div class="flex flex-wrap gap-1.5 mb-4">
-              {post.data.tags?.slice(0, 2).map((tag: string) => (
-                <span class="stack-tag">{tag}</span>
-              ))}
+            <div class="flex items-center gap-2 mb-4">
+              {post.data.tags?.[0] && (
+                <span class="text-xs font-bold uppercase tracking-wider" style="color: #1E6FFF;">{post.data.tags[0]}</span>
+              )}
+              {post.data.tags?.[1] && (
+                <><span class="text-xs" style="color: #CBD5E1;">·</span>
+                <span class="text-xs font-medium" style="color: #94A3B8;">{post.data.tags[1]}</span></>
+              )}
             </div>
             <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">
               <a href={`/blog/${post.id}`} class="hover:text-blue-600 transition-colors">
                 {post.data.titulo}
               </a>
             </h3>
-            <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">
-              {post.data.descripcion?.slice(0, 110)}{post.data.descripcion && post.data.descripcion.length > 110 ? '…' : ''}
+            <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">
+              {post.data.descripcion}
             </p>
             <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
               <time class="text-xs" style="color: #94A3B8;">
                 {new Date(post.data.fecha).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
               </time>
-              <a href={`/blog/${post.id}`} class="text-xs font-semibold" style="color: #2563EB;"
+              <a href={`/blog/${post.id}`} class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70" style="color: #2563EB;"
                 aria-label={`Read: ${post.data.titulo}`}>
-                Read more &rarr;
+                Read more
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </a>
             </div>
           </article>
@@ -849,18 +908,30 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             href: '/blog',
           }].map(({ title, tags, date, desc, href }, i) => (
             <article class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100','delay-200','delay-300'][i]}`}>
-              <div class="flex flex-wrap gap-1.5 mb-4">
-                {tags.map(t => <span class="stack-tag">{t}</span>)}
+              <div class="flex items-center gap-2 mb-4">
+                {tags[0] && <span class="text-xs font-bold uppercase tracking-wider" style="color: #1E6FFF;">{tags[0]}</span>}
               </div>
               <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">{title}</h3>
-              <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">{desc}</p>
+              <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">{desc}</p>
               <div class="flex items-center justify-between pt-4 border-t border-gray-100">
                 <span class="text-xs" style="color: #94A3B8;">{date}</span>
-                <a href={href} class="text-xs font-semibold" style="color: #2563EB;">Read more &rarr;</a>
+                <a href={href} class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70" style="color: #2563EB;">
+                  Read more
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </a>
               </div>
             </article>
           ))
         )}
+      </div>
+
+      <div class="text-center mt-12 animate-fade-up">
+        <a href="/blog" class="btn-outline">
+          Ver todos los artículos
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
