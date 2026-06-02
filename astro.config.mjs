@@ -36,7 +36,9 @@ export default defineConfig({
           url.includes('/about') ||
           url.includes('/contact') ||
           url.includes('/nosotros') ||
-          url.includes('/contacto')
+          url.includes('/contacto') ||
+          url.includes('/why-lra') ||
+          url.includes('/security')
         ) {
           item.priority = 0.8
         } else if (

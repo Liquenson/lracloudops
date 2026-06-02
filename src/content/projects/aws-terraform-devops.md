@@ -15,6 +15,10 @@ metricas:
   - { label: "Automated Tests", value: "17 (8 Flask + 9 infra)" }
   - { label: "Pipelines", value: "2 parallel" }
   - { label: "Environments", value: "Dev + Prod" }
+outcomes:
+  - "Deploy time: manual weeks → 12 minutes automated"
+  - "Infrastructure drift: eliminated with Terraform state"
+  - "Pipeline quality gates: 80%+ coverage enforced"
 highlights:
   - "Terraform 100% modular: 6 modules (vpc, eks, rds, ecr, iam, cloudwatch) with S3 remote state + DynamoDB locking + SSE-S3"
   - "EKS 1.31 with HPA at 70% CPU threshold, rolling update maxUnavailable=0 and resource limits"

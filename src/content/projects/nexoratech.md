@@ -15,6 +15,10 @@ metricas:
   - { label: "Environments", value: "Dev / Staging / Prod" }
   - { label: "CI/CD Pipelines", value: "3 parallel" }
   - { label: "Security Layers", value: "JWT + MFA + OIDC" }
+outcomes:
+  - "MFA adoption: 100% enforced via TOTP"
+  - "Infrastructure: 10 Terraform modules, fully reproducible"
+  - "Deployment: push-to-main → production in under 10 minutes"
 highlights:
   - "BCryptPasswordEncoder + JJWT 0.12.6 stateless (1h expiry, 256+ bits) + MFA TOTP with failure counter and account lockout"
   - "MapStruct DTOs: no JPA entity is exposed directly in the API — zero serialization leaks"

@@ -15,6 +15,10 @@ metricas:
   - { label: "CI/CD Pipelines", value: "3" }
   - { label: "AWS Services", value: "15+" }
   - { label: "Environments", value: "Dev + Prod" }
+outcomes:
+  - "Zero-downtime deployments: ECS rolling updates"
+  - "Secret rotation: automated via AWS Secrets Manager"
+  - "CI/CD: 3 independent pipelines, OIDC-only auth"
 highlights:
   - "Pure OIDC: 15-minute ephemeral IAM tokens — zero AWS keys stored in GitHub Secrets"
   - "ECS deployment circuit breaker with automatic rollback on failed deployment — no manual intervention"

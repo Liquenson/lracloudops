@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props
 const { Content } = await render(project)
-const { titulo, descripcion, fecha, categoria, madurez, stack, cicd, github, metricas, highlights, arquitectura } = project.data
+const { titulo, descripcion, fecha, categoria, madurez, stack, cicd, github, metricas, highlights, outcomes, arquitectura } = project.data
 
 function badgeStyle(m: string) {
   const map: Record<string, string> = {
@@ -218,6 +218,27 @@ const projectSchema = {
       </div>
     </div>
   </section>
+
+  <!-- MEASURED OUTCOMES -->
+  {outcomes && outcomes.length > 0 && (
+    <section class="bg-white py-12 border-t border-gray-100">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl">
+          <h2 class="text-xl font-bold mb-6" style="color: #0A2540;">Measured Outcomes</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {outcomes.map(outcome => (
+              <div class="rounded-xl p-5 flex items-start gap-3" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #15803D;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-sm leading-relaxed font-medium" style="color: #166534;">{outcome}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- ARCHITECTURE COMPONENTS -->
   {arquitectura && arquitectura.length > 0 && (
