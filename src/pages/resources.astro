@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const posts = (await getCollection('blog')).sort((a, b) =>
+  new Date(b.data.fecha ?? b.data.date ?? '2025-01-01').getTime() -
+  new Date(a.data.fecha ?? a.data.date ?? '2025-01-01').getTime()
+).slice(0, 6)
+---
+
+<Layout
+  titulo="Resources & Technical Guides"
+  descripcion="Technical guides, best practices, and reference architectures for cloud infrastructure, Kubernetes, DevOps automation, and platform engineering."
+>
+  <!-- Hero -->
+  <section style="background: linear-gradient(135deg, #0A2540 0%, #0d2f50 100%); padding: 80px 24px 70px;">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8" style="background: rgba(30,111,255,0.15); color: #60A5FA; border: 1px solid rgba(30,111,255,0.25);">
+        Resources
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+        Technical guides & reference architectures
+      </h1>
+      <p class="text-lg sm:text-xl max-w-2xl mx-auto" style="color: rgba(148,163,184,0.9);">
+        Practical cloud engineering resources — from Terraform modules to Kubernetes patterns. Written from production experience, not documentation summaries.
+      </p>
+    </div>
+  </section>
+
+  <!-- Resource categories -->
+  <section style="background: #F8FAFC; padding: 80px 24px;">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Category grid -->
+      <div class="grid sm:grid-cols-3 gap-6 mb-16">
+        {[
+          {
+            label: 'Infrastructure Guides',
+            desc: 'Terraform patterns, AWS account strategies, networking design, and multi-cloud architectures from production deployments.',
+            href: '/blog',
+            icon: 'M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z',
+            count: '12+ guides',
+          },
+          {
+            label: 'Kubernetes Playbooks',
+            desc: 'EKS provisioning, Helm chart patterns, GitOps workflows with ArgoCD, RBAC design, and multi-tenant isolation strategies.',
+            href: '/blog',
+            icon: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+            count: '8+ playbooks',
+          },
+          {
+            label: 'DevOps Automation',
+            desc: 'GitHub Actions pipeline design, container security scanning, progressive delivery patterns, and trunk-based development workflows.',
+            href: '/blog',
+            icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+            count: '10+ templates',
+          },
+        ].map(({ label, desc, href, icon, count }) => (
+          <a href={href} class="bg-white rounded-2xl p-7 group transition-all hover:-translate-y-0.5 hover:shadow-lg" style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04); text-decoration: none;">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background: #EEF4FF;">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #1E6FFF;" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
+              </svg>
+            </div>
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #1E6FFF;">{count}</div>
+            <h3 class="text-lg font-semibold mb-3 group-hover:text-blue-600 transition-colors" style="color: #0A2540;">{label}</h3>
+            <p class="text-sm leading-relaxed" style="color: #64748B;">{desc}</p>
+          </a>
+        ))}
+      </div>
+
+      <!-- Recent blog posts -->
+      {posts.length > 0 && (
+        <div>
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold" style="color: #0A2540;">Latest articles</h2>
+            <a href="/blog" class="text-sm font-semibold transition-colors hover:underline" style="color: #1E6FFF;">View all →</a>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map(post => (
+              <a href={`/blog/${post.slug}`} class="bg-white rounded-2xl p-6 group transition-all hover:-translate-y-0.5 hover:shadow-md" style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 8px rgba(15,23,42,0.04); text-decoration: none;">
+                {post.data.tags && post.data.tags[0] && (
+                  <span class="inline-block text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF;">{post.data.tags[0]}</span>
+                )}
+                <h3 class="text-base font-semibold mb-2 group-hover:text-blue-600 transition-colors line-clamp-2" style="color: #0A2540;">{post.data.titulo ?? post.data.title}</h3>
+                <p class="text-sm line-clamp-2" style="color: #64748B;">{post.data.descripcion ?? post.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Case studies link -->
+  <section style="background: white; padding: 60px 24px; border-top: 1px solid rgba(15,23,42,0.05);">
+    <div class="max-w-5xl mx-auto">
+      <div class="rounded-2xl p-10 flex flex-col md:flex-row items-center justify-between gap-6" style="background: #EEF4FF; border: 1px solid rgba(30,111,255,0.12);">
+        <div>
+          <h2 class="text-2xl font-bold mb-2" style="color: #0A2540;">See these patterns in production</h2>
+          <p style="color: #64748B;">Real implementations across AWS, Kubernetes, and GitOps — with architecture details and outcomes.</p>
+        </div>
+        <a href="/projects" class="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px whitespace-nowrap" style="background: #1E6FFF; box-shadow: 0 4px 14px rgba(30,111,255,0.35);">
+          View case studies
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540; padding: 80px 24px;">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Need guidance on a specific architecture decision?</h2>
+      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">Schedule a 30-minute technical review — we'll dig into your specific situation and provide concrete recommendations.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px" style="background: #1E6FFF; box-shadow: 0 4px 24px rgba(30,111,255,0.45);">
+        Schedule architecture review
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </div>
+  </section>
+</Layout>
