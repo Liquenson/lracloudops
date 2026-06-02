@@ -5,6 +5,3 @@
 /contacto           /contact            301
 /case-studies       /projects           301
 
-# Legacy blog/projects paths — keep for backward compat
-/blog/*             /blog/:splat        200
-/projects/*         /projects/:splat    200

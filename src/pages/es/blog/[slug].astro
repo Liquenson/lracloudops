@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro'
+import Layout from '../../../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog')
+  const posts = await getCollection('esBlog')
   return posts.map(post => ({
     params: { slug: post.id },
     props: { post },
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props
 const { Content } = await render(post)
 
-const postUrl = `https://lracloudops.com/blog/${post.id}`
+const postUrl = `https://lracloudops.com/es/blog/${post.id}`
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
@@ -31,22 +31,22 @@ const articleSchema = {
   publisher: { '@id': 'https://lracloudops.com/#organization' },
   isPartOf: { '@id': 'https://lracloudops.com/#website' },
   keywords: post.data.tags.join(', '),
-  inLanguage: 'en-US',
+  inLanguage: 'es-ES',
   about: post.data.tags.map((tag: string) => ({ '@type': 'Thing', name: tag })),
 }
 ---
 
-<Layout titulo={post.data.titulo} descripcion={post.data.descripcion} schema={articleSchema}>
+<Layout titulo={post.data.titulo} descripcion={post.data.descripcion} schema={articleSchema} ogType="article">
 
   <!-- HEADER DEL ARTÍCULO -->
   <section style="background-color: #0A2540;" class="relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="relative max-w-4xl mx-auto px-6 py-16 sm:py-20">
-      <a href="/blog" class="inline-flex items-center gap-2 text-xs font-medium mb-8 transition-colors" style="color: rgba(147,184,255,0.7);" onmouseover="this.style.color='rgba(147,184,255,1)'" onmouseout="this.style.color='rgba(147,184,255,0.7)'">
+      <a href="/es/blog" class="inline-flex items-center gap-2 text-xs font-medium mb-8 transition-colors" style="color: rgba(147,184,255,0.7);" onmouseover="this.style.color='rgba(147,184,255,1)'" onmouseout="this.style.color='rgba(147,184,255,0.7)'">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
-        Technical Blog
+        Blog Técnico
       </a>
       <div class="flex flex-wrap gap-2 mb-5">
         {post.data.tags.map(tag => (
@@ -56,7 +56,7 @@ const articleSchema = {
       <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">{post.data.titulo}</h1>
       <p class="text-base mb-6" style="color: rgba(147,184,255,0.75);">{post.data.descripcion}</p>
       <p class="text-xs font-medium" style="color: rgba(147,184,255,0.5);">
-        {post.data.fecha.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+        {post.data.fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
       </p>
     </div>
   </section>
@@ -81,14 +81,14 @@ const articleSchema = {
       <!-- Footer del artículo -->
       <div class="mt-16 pt-8 border-t border-gray-100">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium transition-colors" style="color: #64748b;">
+          <a href="/es/blog" class="inline-flex items-center gap-2 text-sm font-medium transition-colors" style="color: #64748b;">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to Blog
+            Volver al blog
           </a>
-          <a href="/contact" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
-            Have questions? Get in touch
+          <a href="/es/contacto" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+            ¿Tienes preguntas? Contáctame
           </a>
         </div>
       </div>
@@ -96,5 +96,3 @@ const articleSchema = {
   </section>
 
 </Layout>
-
-
