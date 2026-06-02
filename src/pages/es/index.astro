@@ -24,7 +24,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px pointer-events-none" aria-hidden="true"
       style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.4), transparent);"></div>
 
-    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-24 sm:py-32 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
 
       <!-- Izquierda: Copy -->
       <div class="animate-fade-left">
@@ -35,10 +35,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </div>
 
         <h1 id="hero-heading"
-          class="text-[44px] sm:text-[58px] lg:text-[68px] font-extrabold text-white leading-[1.04] mb-7"
+          class="text-[34px] sm:text-[52px] lg:text-[68px] font-extrabold text-white leading-[1.04] mb-7"
           style="letter-spacing: -0.035em;">
-          Platform engineering<br />para infraestructura<br />
-          <span style="color: #60A5FA;">que tiene que funcionar.</span>
+          Ingeniería de plataformas<br />para infraestructuras<br />
+          <span style="color: #60A5FA;">que deben funcionar.</span>
         </h1>
 
         <p class="text-lg sm:text-xl leading-relaxed mb-10 max-w-[520px]" style="color: rgba(148,163,184,0.85);">
@@ -67,7 +67,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <!-- Métricas hero -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { value: '3+', label: 'Años en producción' },
+            { value: '4+', label: 'Años en producción' },
             { value: '20+', label: 'Herramientas gestionadas como código' },
             { value: '99.9%', label: 'Objetivo de disponibilidad' },
             { value: 'IaC', label: 'Sin aprovisionamiento manual' },
@@ -617,7 +617,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         {[
           { count: 11, suffix: '+', label: 'Despliegues en producción', sub: 'Workloads reales. Sin demos.' },
           { count: 20, suffix: '+', label: 'Herramientas gestionadas como código', sub: 'Sin configuración manual.' },
-          { count: 3,  suffix: '+', label: 'Años operando en producción', sub: 'No solo construyendo pipelines.' },
+          { count: 4,  suffix: '+', label: 'Años operando en producción', sub: 'No solo construyendo pipelines.' },
           { count: 100, suffix: '%', label: 'Infrastructure as Code', sub: 'Cero aprovisionamiento manual.' },
         ].map(({ count, suffix, label, sub }, i) => (
           <div class={`bg-white rounded-2xl p-7 text-center animate-fade-up border ${['delay-100','delay-200','delay-300','delay-400'][i]}`}

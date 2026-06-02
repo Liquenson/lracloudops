@@ -176,14 +176,15 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
     <!-- ── ANNOUNCEMENT BAR ──────────────────────────────────────────── -->
     <div
       id="announcement-bar"
-      style="height: 40px; background: #0A2540; border-bottom: 1px solid rgba(30,111,255,0.2); display: flex; align-items: center; justify-content: center; position: relative;"
+      style="min-height: 40px; background: #0A2540; border-bottom: 1px solid rgba(30,111,255,0.2); display: flex; align-items: center; justify-content: center; position: relative; padding: 6px 48px;"
     >
       <a
         href={lang === 'es' ? '/es/contacto' : '/contact'}
-        class="flex items-center gap-2 transition-opacity hover:opacity-80"
+        class="flex items-center gap-2 transition-opacity hover:opacity-80 text-center"
         style="font-size: 13px; color: rgba(255,255,255,0.9); text-decoration: none;"
       >
-        <span>{lang === 'es' ? 'Aceptando nuevos proyectos · Respuesta en 24 horas' : 'Now accepting new engagements · Response within 24 hours'}</span>
+        <span class="sm:hidden">{lang === 'es' ? 'Nuevos proyectos · 24h' : 'New engagements · 24h'}</span>
+        <span class="hidden sm:inline">{lang === 'es' ? 'Aceptando nuevos proyectos · Respuesta en 24 horas' : 'Now accepting new engagements · Response within 24 hours'}</span>
         <span style="color: #1E6FFF; font-weight: 700; font-size: 15px;">→</span>
       </a>
       <button
@@ -211,7 +212,7 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
 
         <!-- Logo -->
         <a href={lang === 'es' ? '/es' : '/'} class="flex-shrink-0 z-50 flex items-center gap-2.5" aria-label="LRA Cloud Ops — Home">
-          <img src="/logo.svg" alt="LRA Cloud Ops" class="h-[38px] w-auto" />
+          <img src="/logo.svg" alt="LRA Cloud Ops" class="h-[38px] w-auto max-w-[120px] sm:max-w-none" />
         </a>
 
         <!-- Desktop Nav -->
@@ -479,7 +480,7 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
       <div class="max-w-7xl mx-auto px-6 pt-16 pb-10">
 
         <!-- Footer Grid — 4 columns enterprise -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-14">
 
           <!-- Brand col -->
           <div class="col-span-2 md:col-span-1">
@@ -544,7 +545,7 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
           </div>
 
           <!-- Company -->
-          <div>
+          <div class="col-span-2 md:col-span-1">
             <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">{lang === 'es' ? 'Empresa' : 'Company'}</h3>
             <ul class="space-y-3">
               {(lang === 'es' ? [
