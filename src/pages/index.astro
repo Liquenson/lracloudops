@@ -14,7 +14,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 >
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 1. HERO ENTERPRISE                                                  -->
+  <!-- 1. HERO ENTERPRISE                                                   -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="relative overflow-hidden hero-gradient" aria-labelledby="hero-heading">
 
@@ -34,53 +34,49 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="animate-fade-left">
         <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8 text-xs font-semibold"
           style="background: rgba(37,99,235,0.15); border: 1px solid rgba(96,165,250,0.3); color: #93C5FD;">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0 animate-pulse-soft" aria-hidden="true"></span>
+          <span class="w-2 h-2 rounded-full flex-shrink-0 animate-pulse-soft" style="background: #60A5FA;" aria-hidden="true"></span>
           Cloud Infrastructure &middot; Platform Engineering
         </div>
 
         <h1 id="hero-heading"
-          class="text-[34px] sm:text-[52px] lg:text-[68px] font-extrabold text-white leading-[1.04] mb-7"
+          class="text-[34px] sm:text-[52px] lg:text-[62px] font-extrabold text-white leading-[1.04] mb-7"
           style="letter-spacing: -0.035em;">
-          Platform engineering<br />for infrastructure<br />
-          <span style="color: #60A5FA;">that has to work.</span>
+          Platform Engineering<br />for Infrastructure<br />
+          <span style="color: #60A5FA;">That Must Work.</span>
         </h1>
 
-        <p class="text-lg sm:text-xl leading-relaxed mb-10 max-w-[520px]" style="color: rgba(148,163,184,0.85);">
-          Repeatable infrastructure. Automated delivery. Operational resilience from day one. No manual provisioning, no improvised architecture, no untracked changes.
+        <p class="text-lg sm:text-xl leading-relaxed mb-8 max-w-[520px]" style="color: rgba(148,163,184,0.85);">
+          We design, automate and operate cloud-native platforms on AWS. Kubernetes, GitOps, Terraform — production-grade from day one.
         </p>
 
-        <div class="flex flex-wrap gap-4 mb-12">
+        <div class="flex flex-wrap gap-4 mb-6">
           <a href="/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.45);">
-            Start an infrastructure review
+            Schedule Free Consultation
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-          <a href="/services"
+          <a href="/projects"
             class="inline-flex items-center gap-2.5 text-sm font-semibold px-7 py-4 rounded-xl border transition-all hover:bg-white/10"
             style="color: rgba(148,163,184,0.9); border-color: rgba(148,163,184,0.25);">
-            See how we work
+            View Case Studies
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </a>
         </div>
 
-        <!-- Hero metrics -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[
-            { value: '4+', label: 'Years in production' },
-            { value: '20+', label: 'Tools managed as code' },
-            { value: '99.9%', label: 'Uptime design target' },
-            { value: 'IaC', label: 'No manual provisioning' },
-          ].map(({ value, label }) => (
-            <div class="text-center px-3 py-4 rounded-xl"
-              style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
-              <div class="text-xl sm:text-2xl font-extrabold text-white mb-1" style="letter-spacing: -0.03em;">{value}</div>
-              <div class="text-[10px] font-semibold uppercase tracking-wider" style="color: rgba(148,163,184,0.55);">{label}</div>
-            </div>
+        <!-- Trust indicators -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          {['Response within 24h', 'Free initial assessment', 'No lock-in contracts'].map(item => (
+            <span class="flex items-center gap-1.5 text-xs font-medium" style="color: rgba(148,163,184,0.65);">
+              <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+              {item}
+            </span>
           ))}
         </div>
       </div>
@@ -197,54 +193,34 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 1B. STATS BAR                                                       -->
+  <!-- 2. TRUST BAR — Technologies                                          -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="section-gray border-b border-gray-100" aria-label="Key metrics">
-    <div class="max-w-7xl mx-auto px-6 py-10">
-      <div class="grid grid-cols-2 sm:grid-cols-4">
-        {[
-          { number: '11',   suffix: '',  label: 'Cloud Projects' },
-          { number: '4',    suffix: '',  label: 'Engineers' },
-          { number: '25',   suffix: '+', label: 'AWS Services' },
-          { number: '100',  suffix: '%', label: 'IaC' },
-        ].map(({ number, suffix, label }, i) => (
-          <div class={`text-center py-6 px-4 ${i > 0 ? 'border-l border-gray-200' : ''}`}>
-            <div class="font-black text-[#0A2540] mb-1 leading-none text-4xl sm:text-5xl" style="letter-spacing: -0.04em;">
-              {number}<span style="color: #1E6FFF;">{suffix}</span>
-            </div>
-            <div class="text-xs font-bold uppercase tracking-wider mt-1" style="color: #64748B;">{label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 2. TRUSTED TECHNOLOGIES                                             -->
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="bg-white" style="border-bottom: 1px solid #E5E7EB;" aria-label="Technologies we work with">
-    <div class="max-w-7xl mx-auto px-6 py-14">
-      <p class="text-center text-[10px] font-bold uppercase tracking-widest mb-10" style="color: #94A3B8;">
-        Core platform technologies
+  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB;" aria-label="Technologies we operate in production">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <p class="text-center text-[11px] font-bold uppercase tracking-widest mb-12" style="color: #94A3B8;">
+        Trusted technologies we operate in production
       </p>
-      <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-4 items-center">
+      <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-5">
         {[
-          { name: 'AWS',        icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg' },
-          { name: 'Kubernetes', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg' },
-          { name: 'Docker',     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg' },
-          { name: 'Terraform',  icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg' },
-          { name: 'GitHub',     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg' },
-          { name: 'Jenkins',    icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg' },
-          { name: 'ArgoCD',     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/argo.svg' },
-          { name: 'Prometheus', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prometheus.svg' },
-          { name: 'Grafana',    icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grafana.svg' },
+          { name: 'AWS',            icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg' },
+          { name: 'Terraform',      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg' },
+          { name: 'Kubernetes',     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg' },
+          { name: 'Docker',         icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg' },
+          { name: 'GitHub Actions', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubactions.svg' },
+          { name: 'Prometheus',     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prometheus.svg' },
+          { name: 'Grafana',        icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grafana.svg' },
+          { name: 'Ansible',        icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ansible.svg' },
+          { name: 'Jenkins',        icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg' },
+          { name: 'ArgoCD',         icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/argo.svg' },
+          { name: 'Helm',           icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/helm.svg' },
+          { name: 'Linux',          icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linux.svg' },
         ].map(({ name, icon }) => (
-          <div class="tech-logo-item group" title={name}>
-            <div class="w-10 h-10 flex items-center justify-center rounded-xl transition-colors group-hover:bg-blue-50"
-              style="background: white; border: 1px solid #E5E7EB;">
-              <img src={icon} alt={name} class="w-6 h-6" style="filter: brightness(0) opacity(0.5);" loading="lazy" />
+          <div class="flex flex-col items-center gap-3 group cursor-default" title={name}>
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white transition-all group-hover:shadow-md group-hover:border-blue-200"
+              style="border: 1px solid #E5E7EB;">
+              <img src={icon} alt={name} class="w-7 h-7 transition-opacity group-hover:opacity-70" style="filter: brightness(0) opacity(0.45);" loading="lazy" />
             </div>
-            <span class="text-[10px] font-semibold text-gray-600">{name}</span>
+            <span class="text-[11px] font-semibold text-center leading-tight" style="color: #64748B;">{name}</span>
           </div>
         ))}
       </div>
@@ -252,60 +228,105 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 3. SOLUTIONS                                                         -->
+  <!-- 3. ENTERPRISE METRICS                                               -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white" aria-labelledby="solutions-heading">
-    <div class="max-w-7xl mx-auto px-6">
-
-      <div class="text-center mb-16 animate-fade-up">
-        <span class="section-label">Solutions</span>
-        <h2 id="solutions-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
-          Four platform disciplines.<br />One operating model.
+  <section class="bg-white" aria-labelledby="metrics-heading">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-14 animate-fade-up">
+        <span class="section-label">By the numbers</span>
+        <h2 id="metrics-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">
+          Platform reliability at scale
         </h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Each layer reduces the operational surface your teams manage. Together, they form a repeatable delivery platform.
+        <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">
+          Real production metrics from infrastructure we design, build and operate.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up" style="background: #E5E7EB;">
+        {[
+          { value: '99.95%', label: 'Platform Availability', sub: 'Design target' },
+          { value: '12+',    label: 'Production Projects',  sub: 'Across industries' },
+          { value: '4',      label: 'Certified Engineers',  sub: 'AWS certified' },
+          { value: '100%',   label: 'Infrastructure as Code', sub: 'Zero manual changes' },
+          { value: '4+',     label: 'Years in Production',  sub: 'Not just demos' },
+          { value: '24h',    label: 'Response Time',        sub: 'Support SLA' },
+        ].map(({ value, label, sub }) => (
+          <div class="flex flex-col items-center justify-center text-center px-6 py-12 bg-white hover:bg-blue-50 transition-colors cursor-default">
+            <div class="text-3xl sm:text-4xl font-black mb-2 leading-none" style="color: #1E6FFF; letter-spacing: -0.04em;">
+              {value}
+            </div>
+            <div class="text-sm font-bold mb-1" style="color: #0A2540;">{label}</div>
+            <div class="text-xs" style="color: #94A3B8;">{sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 4. SERVICES OVERVIEW                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="services-heading">
+    <div class="max-w-7xl mx-auto px-6 py-24">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Services</span>
+        <h2 id="services-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          What we build and operate
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Six engineering disciplines. One unified platform operating model designed for production reliability.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
           {
             icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
             title: 'Cloud Infrastructure',
+            href: '/cloud-infrastructure',
             desc: 'Codified AWS environments with defined networking, security boundaries and access policies. Terraform modules that can be audited, version-controlled and reproduced across accounts.',
-            tags: ['AWS', 'VPC', 'EKS', 'RDS'],
           },
           {
             icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
-            title: 'Platform Engineering',
-            desc: 'Kubernetes clusters operated as internal platforms. GitOps delivery through ArgoCD. Development teams deploy without raising infrastructure tickets.',
-            tags: ['Kubernetes', 'ArgoCD', 'Helm'],
+            title: 'Kubernetes Platforms',
+            href: '/platform-engineering',
+            desc: 'Production EKS clusters operated as internal platforms. GitOps delivery via ArgoCD. Development teams deploy without raising infrastructure tickets.',
           },
           {
             icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
             title: 'DevOps Automation',
+            href: '/devops-automation',
             desc: 'End-to-end pipelines that enforce tests, security scans and policy gates before reaching a cluster. Every release is traceable. Every rollback takes one command.',
-            tags: ['GitHub Actions', 'Jenkins', 'OIDC'],
+          },
+          {
+            icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+            title: 'Platform Engineering',
+            href: '/platform-engineering',
+            desc: 'Building internal developer platforms that reduce cognitive load and accelerate delivery for engineering teams, from golden paths to self-service portals.',
           },
           {
             icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-            title: 'Observability',
-            desc: 'Instrumented from day one, not after the first incident. Prometheus metrics, structured logs and alerting thresholds configured before the first user hits production.',
-            tags: ['Prometheus', 'Grafana', 'SRE'],
+            title: 'Observability & SRE',
+            href: '/observability',
+            desc: 'Prometheus metrics, Grafana dashboards and alerting configured before go-live. SLOs defined. You know what is failing before a ticket is filed.',
           },
-        ].map(({ icon, title, desc, tags }, i) => (
-          <div class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}>
+          {
+            icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+            title: 'Security & Compliance',
+            href: '/services',
+            desc: 'OIDC authentication, least-privilege IAM, network isolation and compliance boundaries enforced at the infrastructure layer — not retrofitted after launch.',
+          },
+        ].map(({ icon, title, desc, href }, i) => (
+          <div class={`bg-white rounded-2xl p-8 flex flex-col card-lift animate-fade-up ${['delay-100','delay-200','delay-300','delay-100','delay-200','delay-300'][i]}`}
+            style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
             <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6 flex-shrink-0" style="background: #EFF6FF;" aria-hidden="true">
               <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
               </svg>
             </div>
             <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">{title}</h3>
-            <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">{desc}</p>
-            <div class="flex flex-wrap gap-1.5 mb-5">
-              {tags.map(tag => <span class="stack-tag">{tag}</span>)}
-            </div>
-            <a href="/services" class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto" style="color: #2563EB;">
+            <p class="text-sm leading-relaxed flex-1 mb-6" style="color: #64748B;">{desc}</p>
+            <a href={href} class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto" style="color: #2563EB;">
               Learn more
               <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -315,10 +336,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         ))}
       </div>
 
-      <div class="text-center mt-12 animate-fade-up">
+      <div class="text-center mt-12">
         <a href="/services"
-          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50"
-          style="color: #0F172A; border-color: #E5E7EB;">
+          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
+          style="color: #0F172A; border-color: #D1D5DB; background: white;">
           View all solutions
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -329,7 +350,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 4. PLATFORM ARCHITECTURE                                            -->
+  <!-- 5. PLATFORM ARCHITECTURE                                            -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="py-24 relative overflow-hidden" style="background: #0B1220;" aria-labelledby="architecture-heading">
     <div class="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true"
@@ -361,7 +382,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               { label: 'Terraform', sub: 'Infrastructure as Code · Modular', color: '#7B42BC', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
               { label: 'Kubernetes (EKS)', sub: 'Container Orchestration · HPA · Auto-scaling', color: '#326CE5', icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2' },
               { label: 'ArgoCD', sub: 'GitOps · Continuous Delivery · Drift detection', color: '#EF7B4D', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
-              { label: 'Applications', sub: 'Spring Boot · FastAPI · React · Docker', color: '#10B981', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+              { label: 'Applications', sub: 'Spring Boot · FastAPI · React · Docker', color: '#2563EB', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
               { label: 'Prometheus + Grafana', sub: 'Observability · Alerting · Real-time dashboards', color: '#E5421E', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
             ].map(({ label, sub, color, icon }, i, arr) => (
               <div>
@@ -437,9 +458,63 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 5. CASE STUDIES                                                      -->
+  <!-- 6. ENGAGEMENT MODEL — How we work                                   -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white" aria-labelledby="case-studies-heading">
+  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="engagement-heading">
+    <div class="max-w-7xl mx-auto px-6 py-24">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">How we work</span>
+        <h2 id="engagement-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          From kickoff to production
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          A structured six-phase approach that takes you from initial discovery to an optimized, self-healing production platform.
+        </p>
+      </div>
+
+      <div class="relative">
+        <!-- Connecting line (desktop only) -->
+        <div class="hidden lg:block absolute h-px" aria-hidden="true"
+          style="top: 2.25rem; left: calc(8.33% + 2.25rem); right: calc(8.33% + 2.25rem); background: linear-gradient(90deg, transparent, #BFDBFE 8%, #BFDBFE 92%, transparent);"></div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+          {[
+            { num: '01', title: 'Discover', desc: 'Audit your current infrastructure, identify gaps in reliability, security and delivery velocity.' },
+            { num: '02', title: 'Design', desc: 'Architect the target platform: network topology, cluster config, pipeline structure and observability model.' },
+            { num: '03', title: 'Build', desc: 'Implement with production-grade Terraform modules, Kubernetes manifests and CI/CD pipelines.' },
+            { num: '04', title: 'Automate', desc: 'Wire GitOps delivery, automated testing, policy gates and rollback procedures into every release path.' },
+            { num: '05', title: 'Operate', desc: 'Run the platform in production with defined SLOs, on-call procedures and runbooks for every failure mode.' },
+            { num: '06', title: 'Optimize', desc: 'Continuously tune for cost efficiency, performance and developer experience as your platform matures.' },
+          ].map(({ num, title, desc }, i) => (
+            <div class={`flex flex-col items-center text-center animate-fade-up ${['delay-100','delay-200','delay-300','delay-100','delay-200','delay-300'][i]}`}>
+              <div class="w-[4.5rem] h-[4.5rem] rounded-full flex items-center justify-center font-black text-white text-sm mb-5 relative z-10"
+                style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.3);">
+                {num}
+              </div>
+              <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{title}</h3>
+              <p class="text-xs leading-relaxed" style="color: #64748B;">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="text-center mt-14">
+        <a href="/contact"
+          class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);">
+          Start your engagement
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 7. CASE STUDIES PREVIEW                                             -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="case-studies-heading">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
@@ -459,174 +534,151 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </a>
       </div>
 
-      <!-- Featured wide card -->
-      <article class="card card-accent mb-6 p-8 animate-fade-up" style="border-left: 3px solid #2563EB;"
-        aria-label="Case study: Healthcare Platform Migration">
-        <div class="flex flex-col lg:flex-row gap-10">
-          <div class="flex-1">
-            <div class="flex items-center flex-wrap gap-3 mb-6">
-              <span class="text-xs font-bold px-3 py-1.5 rounded-full"
-                style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
-              <span class="flex items-center gap-1.5 text-xs" style="color: #64748B;">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
-                CI/CD Active
-              </span>
-              <span class="text-xs font-bold" style="color: #2563EB;">Cloud & IaC</span>
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            <h3 class="text-2xl font-bold mb-3" style="color: #0F172A;">Healthcare Platform Migration</h3>
-            <p class="text-base leading-relaxed mb-2" style="color: #64748B;">
-              A healthcare SaaS running on improvised infrastructure: single-AZ database, manual deployments, no state management. We replaced it with a Terraform-managed AWS environment — EKS 1.31 with HPA, RDS PostgreSQL 15 Multi-AZ, remote state on S3 with DynamoDB locking, and a dual CI/CD pipeline enforcing SonarCloud coverage ≥ 80%.
+        <!-- Case Study 1: Healthcare -->
+        <article class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-100"
+          style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+          aria-label="Case study: Healthcare Platform Migration">
+          <div class="px-7 pt-7 pb-6 flex-1 flex flex-col" style="border-left: 4px solid #2563EB;">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE;">Healthcare</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">Healthcare Platform Migration</h3>
+            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748B;">
+              Replaced improvised single-AZ infrastructure with a Terraform-managed AWS environment — EKS 1.31, RDS PostgreSQL 15 Multi-AZ, and a dual CI/CD pipeline with SonarCloud coverage gate at 80%.
             </p>
-
-            <div class="flex flex-wrap gap-6 my-6">
-              {[
-                { value: '80%', label: 'Faster deployments' },
-                { value: '6', label: 'Terraform modules' },
-                { value: '17', label: 'Tests passing' },
-              ].map(({ value, label }) => (
-                <div>
-                  <div class="text-2xl font-extrabold" style="color: #2563EB; letter-spacing: -0.04em;">{value}</div>
-                  <div class="text-xs mt-0.5" style="color: #64748B;">{label}</div>
-                </div>
-              ))}
+            <!-- Key metric -->
+            <div class="flex items-baseline gap-2 mb-5 pb-5" style="border-bottom: 1px solid #F1F5F9;">
+              <span class="text-3xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">80%</span>
+              <span class="text-sm font-medium" style="color: #64748B;">faster deployments</span>
             </div>
-
-            <div class="flex flex-wrap gap-1.5 mb-7">
-              {['Terraform 1.9.8', 'AWS EKS 1.31', 'RDS PostgreSQL 15', 'Flask 3.0.3', 'GitHub Actions', 'Jenkins', 'Helm', 'SonarCloud'].map(tag => (
+            <!-- Stack -->
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              {['Terraform 1.9.8', 'AWS EKS 1.31', 'RDS PostgreSQL 15', 'GitHub Actions', 'Jenkins'].map(tag => (
                 <span class="stack-tag">{tag}</span>
               ))}
             </div>
-
-            <div class="flex items-center gap-5">
+            <div class="flex items-center justify-between">
               <a href="https://github.com/Liquenson/aws-terraform-devops" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-70"
-                style="color: #0F172A;">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70" style="color: #64748B;">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                 </svg>
-                View on GitHub
+                GitHub
               </a>
-              <a href="/projects/aws-terraform-devops"
-                class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
-                style="color: #2563EB;">
-                Full case study
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <a href="/projects/aws-terraform-devops" class="inline-flex items-center gap-1 text-xs font-semibold" style="color: #2563EB;">
+                Read case study
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
             </div>
           </div>
+        </article>
 
-          <!-- Architecture panel -->
-          <aside class="lg:w-60 flex-shrink-0 rounded-2xl p-6 flex flex-col"
-            style="background: #0B1220; min-height: 220px;" aria-label="AWS architecture breakdown">
-            <div class="text-[10px] font-bold uppercase tracking-widest mb-5" style="color: rgba(148,163,184,0.7);">AWS Architecture</div>
-            <div class="space-y-3 flex-1">
-              {['CloudFront CDN','ALB Load Balancer','EKS 1.31 + HPA','RDS PostgreSQL 15 Multi-AZ','S3 + ECR'].map(label => (
-                <div class="flex items-center gap-2.5">
-                  <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-emerald-400" aria-hidden="true"></span>
-                  <span class="text-xs" style="color: rgba(255,255,255,0.55);">{label}</span>
-                </div>
+        <!-- Case Study 2: Fintech -->
+        <article class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-200"
+          style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+          aria-label="Case study: Financial Services Automation">
+          <div class="px-7 pt-7 pb-6 flex-1 flex flex-col" style="border-left: 4px solid #2563EB;">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;">Fintech</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">Financial Services Automation</h3>
+            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748B;">
+              Rebuilt a financial SaaS delivery pipeline on ECS Fargate with 11 Terraform modules and OIDC authentication — eliminating static credentials and automating the full release cycle with CloudFront OAC.
+            </p>
+            <!-- Key metric -->
+            <div class="flex items-baseline gap-2 mb-5 pb-5" style="border-bottom: 1px solid #F1F5F9;">
+              <span class="text-3xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">3×</span>
+              <span class="text-sm font-medium" style="color: #64748B;">deployment velocity</span>
+            </div>
+            <!-- Stack -->
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              {['Spring Boot 4', 'React 18', 'ECS Fargate', 'Terraform 1.9.8', 'CloudFront'].map(tag => (
+                <span class="stack-tag">{tag}</span>
               ))}
             </div>
-            <div class="mt-5 pt-4 text-xs font-mono" style="border-top: 1px solid rgba(255,255,255,0.06); color: rgba(148,163,184,0.45);">
-              6 Terraform modules &middot; GitOps enabled
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5 text-xs" style="color: #CBD5E1;">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                Private repo
+              </span>
+              <a href="/projects/tbf-cloud-infrastructure" class="inline-flex items-center gap-1 text-xs font-semibold" style="color: #2563EB;">
+                Read case study
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
-          </aside>
-        </div>
-      </article>
-
-      <!-- Two column cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <article class="card card-accent p-7 flex flex-col animate-fade-up delay-100"
-          aria-label="Case study: Financial Services Automation">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EFF6FF;" aria-hidden="true">
-              <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-            </div>
-            <span class="text-xs font-bold px-2.5 py-1.5 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
-          </div>
-          <p class="text-xs font-bold uppercase tracking-wider mb-1.5" style="color: #2563EB;">Full Stack + Cloud</p>
-          <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">Financial Services Automation</h3>
-          <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">
-            A financial services platform with no repeatable deployment process and credential-based AWS access. We rebuilt the delivery pipeline using ECS Fargate, 11 Terraform modules and OIDC authentication — eliminating static credentials and automating the full release cycle.
-          </p>
-          <div class="flex gap-5 mb-5">
-            {[{ value: '3x', label: 'Deploy velocity' }, { value: '100%', label: 'IaC coverage' }].map(({ value, label }) => (
-              <div>
-                <div class="text-xl font-extrabold" style="color: #2563EB; letter-spacing: -0.04em;">{value}</div>
-                <div class="text-xs mt-0.5" style="color: #64748B;">{label}</div>
-              </div>
-            ))}
-          </div>
-          <div class="flex flex-wrap gap-1.5 mb-5">
-            {['Spring Boot 4', 'React 18', 'ECS Fargate', 'Terraform 1.9.8', 'CloudFront'].map(tag => (
-              <span class="stack-tag">{tag}</span>
-            ))}
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-            <span class="flex items-center gap-1 text-xs" style="color: #CBD5E1;">
-              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-              Private repository
-            </span>
-            <a href="/projects/tbf-cloud-infrastructure" class="text-xs font-semibold" style="color: #2563EB;">Full case study &rarr;</a>
           </div>
         </article>
 
-        <article class="card card-accent p-7 flex flex-col animate-fade-up delay-200"
-          aria-label="Case study: GitOps Stack — EKS Production Pipeline">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EFF6FF;" aria-hidden="true">
-              <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
+        <!-- Case Study 3: Cloud Native -->
+        <article class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-300"
+          style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+          aria-label="Case study: GitOps Stack EKS Production Pipeline">
+          <div class="px-7 pt-7 pb-6 flex-1 flex flex-col" style="border-left: 4px solid #2563EB;">
+            <div class="flex items-center gap-2 mb-5">
+              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #F0F9FF; color: #0369A1; border: 1px solid #BAE6FD;">Cloud Native</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
             </div>
-            <span class="text-xs font-bold px-2.5 py-1.5 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
-          </div>
-          <p class="text-xs font-bold uppercase tracking-wider mb-1.5" style="color: #2563EB;">GitOps & CI/CD</p>
-          <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">GitOps Stack — EKS Production Pipeline</h3>
-          <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">
-            A production GitOps platform on AWS EKS 1.35 with a 7-stage Jenkins pipeline. No SSH keys, no static credentials — Jenkins assumes eks-admin-role via STS and accesses EKS nodes through AWS Systems Manager. 22 IAM identities in 5 groups managed entirely as Terraform code.
-          </p>
-          <div class="flex gap-5 mb-5">
-            {[{ value: '7', label: 'Pipeline stages' }, { value: '22', label: 'IAM identities as code' }].map(({ value, label }) => (
-              <div>
-                <div class="text-xl font-extrabold" style="color: #2563EB; letter-spacing: -0.04em;">{value}</div>
-                <div class="text-xs mt-0.5" style="color: #64748B;">{label}</div>
-              </div>
-            ))}
-          </div>
-          <div class="flex flex-wrap gap-1.5 mb-5">
-            {['Terraform 1.9', 'AWS EKS 1.35', 'Jenkins 2.555', 'Ansible 2.10', 'AWS SSM'].map(tag => (
-              <span class="stack-tag">{tag}</span>
-            ))}
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-            <a href="https://github.com/Liquenson/gitops-stack" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
-              style="color: #0F172A;">
-              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-              </svg>
-              View on GitHub
-            </a>
-            <a href="/projects/gitops-stack" class="text-xs font-semibold" style="color: #2563EB;">Full case study &rarr;</a>
+            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">GitOps Stack — EKS Production Pipeline</h3>
+            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748B;">
+              A production GitOps platform on AWS EKS 1.35 with a 7-stage Jenkins pipeline. No SSH keys, no static credentials — Jenkins assumes eks-admin-role via STS. 22 IAM identities managed entirely as code.
+            </p>
+            <!-- Key metric -->
+            <div class="flex items-baseline gap-2 mb-5 pb-5" style="border-bottom: 1px solid #F1F5F9;">
+              <span class="text-3xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">100%</span>
+              <span class="text-sm font-medium" style="color: #64748B;">zero static credentials</span>
+            </div>
+            <!-- Stack -->
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              {['Terraform 1.9', 'AWS EKS 1.35', 'Jenkins 2.555', 'Ansible 2.10', 'AWS SSM'].map(tag => (
+                <span class="stack-tag">{tag}</span>
+              ))}
+            </div>
+            <div class="flex items-center justify-between">
+              <a href="https://github.com/Liquenson/gitops-stack" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70" style="color: #64748B;">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                GitHub
+              </a>
+              <a href="/projects/gitops-stack" class="inline-flex items-center gap-1 text-xs font-semibold" style="color: #2563EB;">
+                Read case study
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </article>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50"
+          style="color: #0F172A; border-color: #E5E7EB;">
+          View all case studies
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 6. WHY CHOOSE US — Counters + value props                           -->
+  <!-- 8. WHY CHOOSE US — Value propositions                               -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24" style="background: #F8FAFC;" aria-labelledby="why-heading">
+  <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="why-heading">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="text-center mb-16 animate-fade-up">
@@ -639,29 +691,6 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </p>
       </div>
 
-      <!-- Animated counters -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        {[
-          { count: 11, suffix: '+', label: 'Production deployments', sub: 'Real workloads. No demos.' },
-          { count: 20, suffix: '+', label: 'Tools managed as code', sub: 'No manual configuration.' },
-          { count: 4,  suffix: '+', label: 'Years operating in production', sub: 'Not just building pipelines.' },
-          { count: 100, suffix: '%', label: 'Infrastructure as code', sub: 'Zero manual provisioning.' },
-        ].map(({ count, suffix, label, sub }, i) => (
-          <div class={`bg-white rounded-2xl p-7 text-center animate-fade-up border ${['delay-100','delay-200','delay-300','delay-400'][i]}`}
-            style="border-color: #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
-            <div class="text-4xl font-extrabold mb-2 counter-value"
-              data-count={count} data-suffix={suffix}
-              style="color: #2563EB; letter-spacing: -0.04em;"
-              aria-label={`${count}${suffix} ${label}`}>
-              0{suffix}
-            </div>
-            <div class="text-sm font-bold text-gray-800 mb-1">{label}</div>
-            <div class="text-xs" style="color: #94A3B8;">{sub}</div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Value props -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
           {
@@ -680,8 +709,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             desc: 'Prometheus metrics, Grafana dashboards and Alertmanager thresholds configured before the first user hits production. You know what\'s failing before a ticket is filed.',
           },
         ].map(({ icon, title, desc }, i) => (
-          <div class={`bg-white rounded-2xl p-8 animate-fade-up border card-lift ${['delay-100','delay-200','delay-300'][i]}`}
-            style="border-color: #E5E7EB; border-left: 3px solid #2563EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+          <div class={`bg-white rounded-2xl p-8 animate-fade-up card-lift ${['delay-100','delay-200','delay-300'][i]}`}
+            style="border: 1px solid #E5E7EB; border-left: 3px solid #2563EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
             <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EFF6FF;" aria-hidden="true">
               <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
@@ -696,7 +725,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 6B. SECTORES / INDUSTRIES                                           -->
+  <!-- 8B. INDUSTRIES                                                       -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="sectors-heading">
     <div class="max-w-7xl mx-auto px-6">
@@ -716,7 +745,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           { icon: '☁️', title: 'Cloud Native',         desc: 'Migration and modernization of applications to cloud-native architectures on AWS.' },
           { icon: '🔧', title: 'Platform Engineering', desc: 'Building internal platforms that accelerate delivery for development teams.' },
         ].map(({ icon, title, desc }, i) => (
-          <div class={`card-enterprise animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}>
+          <div class={`bg-white rounded-2xl p-7 card-lift animate-fade-up border ${['delay-100','delay-200','delay-300','delay-400'][i]}`}
+            style="border-color: #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
             <div class="text-3xl mb-4" aria-hidden="true">{icon}</div>
             <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{title}</h3>
             <p class="text-sm leading-relaxed" style="color: #64748B;">{desc}</p>
@@ -727,7 +757,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 6C. TESTIMONIALS                                                     -->
+  <!-- 9. TESTIMONIALS                                                      -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="testimonials-heading">
     <div class="max-w-7xl mx-auto px-6">
@@ -748,48 +778,46 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             role: "Head of Infrastructure",
             company: "Healthcare Technology Company",
             sector: "Healthcare",
-            sectorColor: "#0A2540",
-            bg: "white",
+            initial: "HI",
           },
           {
             quote: "The GitOps implementation with ArgoCD eliminated our manual deployment errors completely. 100% automated delivery from day one.",
             role: "VP of Engineering",
             company: "Financial Services Platform",
             sector: "Financial Services",
-            sectorColor: "#1E6FFF",
-            bg: "#F8FAFC",
+            initial: "VP",
           },
           {
             quote: "Their Terraform modules are production-grade. We've reused them across 4 different projects with minimal changes.",
             role: "Senior DevOps Engineer",
             company: "Cloud Native Startup",
             sector: "Cloud Native",
-            sectorColor: "#10B981",
-            bg: "white",
+            initial: "SD",
           },
-        ].map(({ quote, role, company, sector, sectorColor, bg }, i) => (
+        ].map(({ quote, role, company, sector, initial }, i) => (
           <figure
-            class={`flex flex-col p-8 rounded-2xl animate-fade-up ${['delay-100','delay-200','delay-300'][i]}`}
-            style={`background: ${bg}; border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);`}
+            class={`flex flex-col p-8 rounded-2xl animate-fade-up bg-white ${['delay-100','delay-200','delay-300'][i]}`}
+            style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
           >
-            <div class="flex-1">
-              <div class="flex gap-4 mb-5">
+            <div class="flex-1 mb-6">
+              <div class="flex gap-4">
                 <div class="w-1 rounded-full flex-shrink-0" style="background: #1E6FFF;" aria-hidden="true"></div>
-                <blockquote class="text-base leading-relaxed italic" style="color: #334155; font-size: 1.05rem;">
+                <blockquote class="text-base leading-relaxed italic" style="color: #334155;">
                   "{quote}"
                 </blockquote>
               </div>
             </div>
-            <figcaption class="flex items-center gap-3 pt-5 border-t border-gray-100 mt-4">
-              <div class="w-10 h-10 flex items-center justify-center rounded-full text-sm font-bold text-white flex-shrink-0"
-                style={`background: ${sectorColor};`} aria-hidden="true">
-                {role.split(' ').map((w: string) => w[0]).slice(0, 2).join('')}
+            <figcaption class="flex items-center gap-3 pt-5" style="border-top: 1px solid #F1F5F9;">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full text-xs font-bold text-white flex-shrink-0"
+                style="background: #0A2540;" aria-hidden="true">
+                {initial}
               </div>
-              <div>
+              <div class="flex-1 min-w-0">
                 <div class="text-sm font-semibold" style="color: #0F172A;">{role}</div>
-                <div class="text-xs" style="color: #64748B;">{company}</div>
+                <div class="text-xs truncate" style="color: #64748B;">{company}</div>
               </div>
-              <span class="ml-auto text-xs font-semibold px-2.5 py-1 rounded-full" style={`background: ${sectorColor}15; color: ${sectorColor}; border: 1px solid ${sectorColor}30;`}>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
+                style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;">
                 {sector}
               </span>
             </figcaption>
@@ -800,7 +828,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 7. SELECTED ENGAGEMENTS                                              -->
+  <!-- 10. SELECTED ENGAGEMENTS                                             -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="engagements-heading">
     <div class="max-w-7xl mx-auto px-6">
@@ -910,14 +938,14 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 8. BLOG                                                              -->
+  <!-- 11. RESOURCES PREVIEW — Blog                                         -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white" aria-labelledby="blog-heading">
+  <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="blog-heading">
     <div class="max-w-7xl mx-auto px-6">
 
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
         <div class="animate-fade-up">
-          <span class="section-label">Technical Blog</span>
+          <span class="section-label">Technical Resources</span>
           <h2 id="blog-heading" class="text-4xl sm:text-5xl font-bold mt-5" style="color: #0F172A; letter-spacing: -0.025em;">
             Engineering notes.
           </h2>
@@ -932,14 +960,14 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {recentPosts.length > 0 ? recentPosts.map((post, i) => (
-          <article class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100','delay-200','delay-300'][i]}`}>
+          <article class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100','delay-200','delay-300'][i]}`}
+            style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
             <div class="flex items-center gap-2 mb-4">
               {post.data.tags?.[0] && (
-                <span class="text-xs font-bold uppercase tracking-wider" style="color: #1E6FFF;">{post.data.tags[0]}</span>
+                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF;">{post.data.tags[0]}</span>
               )}
               {post.data.tags?.[1] && (
-                <><span class="text-xs" style="color: #CBD5E1;">·</span>
-                <span class="text-xs font-medium" style="color: #94A3B8;">{post.data.tags[1]}</span></>
+                <span class="text-xs font-medium" style="color: #94A3B8;">{post.data.tags[1]}</span>
               )}
             </div>
             <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">
@@ -950,7 +978,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">
               {post.data.descripcion}
             </p>
-            <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+            <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
               <time class="text-xs" style="color: #94A3B8;">
                 {new Date(post.data.fecha).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
               </time>
@@ -964,30 +992,35 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         )) : (
           [{
             title: 'GitOps with ArgoCD: Production patterns',
-            tags: ['GitOps', 'ArgoCD'],
+            category: 'GitOps',
+            tag: 'ArgoCD',
             date: 'Jun 2026',
             desc: 'How to implement GitOps workflows with ArgoCD for zero-downtime deployments in Kubernetes.',
             href: '/blog',
           }, {
             title: 'Kubernetes Production Checklist',
-            tags: ['Kubernetes', 'SRE'],
+            category: 'Kubernetes',
+            tag: 'SRE',
             date: 'May 2026',
             desc: 'Everything you need before going live: security, autoscaling, observability and disaster recovery.',
             href: '/blog',
           }, {
             title: 'Terraform Enterprise Patterns',
-            tags: ['Terraform', 'IaC'],
+            category: 'Terraform',
+            tag: 'IaC',
             date: 'Apr 2026',
             desc: 'Modular Terraform for multi-environment, multi-account AWS infrastructure at scale.',
             href: '/blog',
-          }].map(({ title, tags, date, desc, href }, i) => (
-            <article class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100','delay-200','delay-300'][i]}`}>
+          }].map(({ title, category, tag, date, desc, href }, i) => (
+            <article class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100','delay-200','delay-300'][i]}`}
+              style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
               <div class="flex items-center gap-2 mb-4">
-                {tags[0] && <span class="text-xs font-bold uppercase tracking-wider" style="color: #1E6FFF;">{tags[0]}</span>}
+                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF;">{category}</span>
+                <span class="text-xs font-medium" style="color: #94A3B8;">{tag}</span>
               </div>
               <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">{title}</h3>
               <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">{desc}</p>
-              <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+              <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
                 <span class="text-xs" style="color: #94A3B8;">{date}</span>
                 <a href={href} class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70" style="color: #2563EB;">
                   Read more
@@ -1000,7 +1033,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
 
       <div class="text-center mt-12 animate-fade-up">
-        <a href="/blog" class="btn-outline">
+        <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
+          style="color: #0F172A; border-color: #E5E7EB; background: white;">
           View all articles
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -1011,7 +1045,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 9. LEAD MAGNET — AWS Checklist                                       -->
+  <!-- 12. LEAD MAGNET — AWS Checklist                                      -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="relative overflow-hidden" aria-labelledby="checklist-heading">
     <div class="py-20 px-6" style="background: #0A2540;">
@@ -1055,7 +1089,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             class="text-sm font-bold px-6 py-3.5 rounded-xl flex-shrink-0 transition-all hover:-translate-y-px active:scale-[0.98]"
             style="background: #1E6FFF; color: white; box-shadow: 0 4px 16px rgba(30,111,255,0.4);"
           >
-            Download free →
+            Download free &rarr;
           </button>
         </form>
         <div id="checklist-status" class="hidden text-sm mt-4 px-4 py-2 rounded-lg inline-block"></div>
@@ -1064,44 +1098,57 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 8. CTA FINAL                                                         -->
+  <!-- 13. FINAL CTA ENTERPRISE                                             -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="relative overflow-hidden" aria-labelledby="cta-heading">
-    <div class="py-24 px-6 relative" style="background: linear-gradient(90deg, #1D4ED8 0%, #2563EB 55%, #60A5FA 100%);">
+    <div class="py-28 px-6 relative" style="background: #0A2540;">
       <!-- Dot overlay -->
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-        style="background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 28px 28px;"></div>
+        style="background-image: radial-gradient(circle, rgba(96,165,250,0.07) 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <!-- Radial glow -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+        style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.25) 0%, transparent 60%);"></div>
+      <!-- Top line -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px pointer-events-none" aria-hidden="true"
+        style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.35), transparent);"></div>
 
-      <div class="relative max-w-4xl mx-auto text-center animate-fade-up">
+      <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
+        <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8"
+          style="background: rgba(30,111,255,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);">
+          Get started
+        </span>
+
         <h2 id="cta-heading"
           class="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white mb-6"
           style="letter-spacing: -0.03em; line-height: 1.06;">
-          Start with an<br />infrastructure review.
+          Ready to modernize<br />your infrastructure?
         </h2>
-        <p class="text-xl mb-10 max-w-2xl mx-auto leading-relaxed" style="color: rgba(255,255,255,0.8);">
-          Bring your current architecture. We identify gaps in resilience, delivery automation and observability — and outline a concrete path forward.
+
+        <p class="text-xl mb-10 max-w-xl mx-auto leading-relaxed" style="color: rgba(148,163,184,0.8);">
+          Schedule a free 30-minute consultation. We'll review your current setup and propose a concrete roadmap.
         </p>
+
         <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
           <a href="/contact"
             class="inline-flex items-center gap-2.5 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 hover:-translate-y-px active:scale-[0.98] shadow-xl"
             style="background: white; color: #1D4ED8;">
-            Book a technical review
+            Schedule Consultation
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
           <a href="/projects"
             class="inline-flex items-center gap-2 text-base font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
-            style="color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.3);">
-            View our work
+            style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.25);">
+            View Our Work
           </a>
         </div>
 
         <!-- Trust indicators -->
-        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style="color: rgba(255,255,255,0.6);">
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style="color: rgba(255,255,255,0.5);">
           {['30 minutes. No sales deck.', 'Response within 24 hours.', 'Architecture assessment included.'].map(item => (
             <span class="flex items-center gap-2 text-sm">
-              <svg class="w-4 h-4 flex-shrink-0" style="color: rgba(255,255,255,0.8);" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               {item}
@@ -1150,4 +1197,3 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     statusEl.classList.remove('hidden')
   })
 </script>
-
