@@ -28,7 +28,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px pointer-events-none" aria-hidden="true"
       style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.4), transparent);"></div>
 
-    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-24 sm:py-32 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
 
       <!-- Left: Copy -->
       <div class="animate-fade-left">
@@ -39,7 +39,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </div>
 
         <h1 id="hero-heading"
-          class="text-[44px] sm:text-[58px] lg:text-[68px] font-extrabold text-white leading-[1.04] mb-7"
+          class="text-[34px] sm:text-[52px] lg:text-[68px] font-extrabold text-white leading-[1.04] mb-7"
           style="letter-spacing: -0.035em;">
           Platform engineering<br />for infrastructure<br />
           <span style="color: #60A5FA;">that has to work.</span>
@@ -71,7 +71,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <!-- Hero metrics -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { value: '3+', label: 'Years in production' },
+            { value: '4+', label: 'Years in production' },
             { value: '20+', label: 'Tools managed as code' },
             { value: '99.9%', label: 'Uptime design target' },
             { value: 'IaC', label: 'No manual provisioning' },
@@ -209,7 +209,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           { number: '100',  suffix: '%', label: 'IaC' },
         ].map(({ number, suffix, label }, i) => (
           <div class={`text-center py-6 px-4 ${i > 0 ? 'border-l border-gray-200' : ''}`}>
-            <div class="font-black text-[#0A2540] mb-1 leading-none" style="font-size: 3rem; letter-spacing: -0.04em;">
+            <div class="font-black text-[#0A2540] mb-1 leading-none text-4xl sm:text-5xl" style="letter-spacing: -0.04em;">
               {number}<span style="color: #1E6FFF;">{suffix}</span>
             </div>
             <div class="text-xs font-bold uppercase tracking-wider mt-1" style="color: #64748B;">{label}</div>
@@ -644,7 +644,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         {[
           { count: 11, suffix: '+', label: 'Production deployments', sub: 'Real workloads. No demos.' },
           { count: 20, suffix: '+', label: 'Tools managed as code', sub: 'No manual configuration.' },
-          { count: 3,  suffix: '+', label: 'Years operating in production', sub: 'Not just building pipelines.' },
+          { count: 4,  suffix: '+', label: 'Years operating in production', sub: 'Not just building pipelines.' },
           { count: 100, suffix: '%', label: 'Infrastructure as code', sub: 'Zero manual provisioning.' },
         ].map(({ count, suffix, label, sub }, i) => (
           <div class={`bg-white rounded-2xl p-7 text-center animate-fade-up border ${['delay-100','delay-200','delay-300','delay-400'][i]}`}
