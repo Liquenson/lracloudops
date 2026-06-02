@@ -34,6 +34,7 @@ const pathLabels: Record<string, string> = {
   'platform-engineering': 'Platform Engineering',
   'devops-automation': 'DevOps Automation',
   observability: 'Observability',
+  pricing: 'Pricing',
   // Spanish routes (under /es/)
   es: 'ES',
   servicios: 'Soluciones',
@@ -87,6 +88,7 @@ const navLinks = lang === 'es'
   ? [
       { href: '/es', label: 'Inicio' },
       { href: '/es/servicios', label: 'Soluciones' },
+      { href: '/pricing', label: 'Precios' },
       { href: '/es/proyectos', label: 'Casos de uso' },
       { href: '/es/nosotros', label: 'Nosotros' },
       { href: '/es/blog', label: 'Blog' },
@@ -94,10 +96,18 @@ const navLinks = lang === 'es'
   : [
       { href: '/', label: 'Home' },
       { href: '/services', label: 'Solutions' },
+      { href: '/pricing', label: 'Pricing' },
       { href: '/projects', label: 'Case Studies' },
       { href: '/about', label: 'About' },
       { href: '/blog', label: 'Blog' },
     ]
+
+const solutionDropdown = [
+  { href: '/cloud-infrastructure', label: lang === 'es' ? 'Cloud Infrastructure' : 'Cloud Infrastructure' },
+  { href: '/platform-engineering', label: 'Platform Engineering' },
+  { href: '/devops-automation', label: 'DevOps Automation' },
+  { href: '/observability', label: 'Observability' },
+]
 
 const contactHref = lang === 'es' ? '/es/contacto' : '/contact'
 const ctaLabel   = lang === 'es' ? 'Agendar consulta' : 'Schedule Consultation'
@@ -154,6 +164,9 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- TODO: reemplazar CLOUDFLARE_ANALYTICS_TOKEN con el token real de Cloudflare Dashboard → Analytics → Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "CLOUDFLARE_ANALYTICS_TOKEN"}'></script>
   </head>
 
   <body class="bg-white text-gray-900 antialiased">
@@ -168,7 +181,7 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
         class="flex items-center gap-2 transition-opacity hover:opacity-80"
         style="font-size: 13px; color: rgba(255,255,255,0.9); text-decoration: none;"
       >
-        <span>{lang === 'es' ? 'Disponibles para nuevos proyectos · Respuesta en 24h' : 'Available for new projects · Response within 24h'}</span>
+        <span>{lang === 'es' ? 'Aceptando nuevos proyectos · Respuesta en 24 horas' : 'Now accepting new engagements · Response within 24 hours'}</span>
         <span style="color: #1E6FFF; font-weight: 700; font-size: 15px;">→</span>
       </a>
       <button
@@ -205,6 +218,60 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
             const isActive = href === '/' || href === '/es'
               ? currentPath === href
               : currentPath.startsWith(href)
+            const isSolutions = (label === 'Solutions' || label === 'Soluciones')
+            if (isSolutions) {
+              const isSolActive = solutionDropdown.some(s => currentPath.startsWith(s.href)) || currentPath.startsWith('/services') || currentPath.startsWith('/es/servicios')
+              return (
+                <div class="relative" id="solutions-dropdown-wrapper">
+                  <a
+                    href={href}
+                    id="solutions-btn"
+                    class={`relative inline-flex items-center gap-1 text-sm font-medium px-3.5 py-2 rounded-lg transition-all duration-200 ${
+                      isSolActive
+                        ? 'text-[#0F172A] font-semibold'
+                        : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'
+                    }`}
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-current={isSolActive ? 'page' : undefined}
+                  >
+                    {label}
+                    <svg id="solutions-chevron" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                    </svg>
+                    {isSolActive && (
+                      <span class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full" style="background: #2563EB;"></span>
+                    )}
+                  </a>
+                  <div
+                    id="solutions-menu"
+                    role="menu"
+                    aria-label="Solutions submenu"
+                    class="absolute top-full left-0 mt-1 w-56 rounded-xl overflow-hidden opacity-0 pointer-events-none transition-all duration-200"
+                    style="background: white; border: 1px solid rgba(15,23,42,0.08); box-shadow: 0 4px 6px rgba(15,23,42,0.04), 0 12px 40px rgba(15,23,42,0.12); transform: translateY(-4px);"
+                  >
+                    <div class="p-1.5">
+                      {solutionDropdown.map(({ href: sh, label: sl }) => {
+                        const isSubActive = currentPath.startsWith(sh)
+                        return (
+                          <a
+                            href={sh}
+                            role="menuitem"
+                            class={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg text-sm transition-colors ${isSubActive ? 'font-semibold' : ''}`}
+                            style={isSubActive ? 'background: #EFF6FF; color: #1D4ED8;' : 'color: #374151;'}
+                            onmouseenter={`this.style.background='#F9FAFB'; if(!this.style.background.includes('EFF6FF')) this.style.color='#0F172A';`}
+                            onmouseleave={`if(${isSubActive}) { this.style.background='#EFF6FF'; this.style.color='#1D4ED8'; } else { this.style.background=''; this.style.color='#374151'; }`}
+                          >
+                            <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style={`background: ${isSubActive ? '#2563EB' : '#CBD5E1'};`} aria-hidden="true"></span>
+                            {sl}
+                          </a>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+              )
+            }
             return (
               <a
                 href={href}
@@ -480,11 +547,13 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
             <ul class="space-y-3">
               {(lang === 'es' ? [
                 { label: 'Nosotros', href: '/es/nosotros' },
+                { label: 'Precios', href: '/es/pricing' },
                 { label: 'Blog', href: '/es/blog' },
                 { label: 'Contacto', href: '/es/contacto' },
                 { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
               ] : [
                 { label: 'About', href: '/about' },
+                { label: 'Pricing', href: '/pricing' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Contact', href: '/contact' },
                 { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
@@ -519,6 +588,49 @@ const skipLabel  = lang === 'es' ? 'Ir al contenido principal' : 'Skip to main c
     </footer>
 
     <!-- ── Scripts ──────────────────────────────────────────────────────── -->
+    <script>
+      // Announcement bar — localStorage dismiss
+      const bar = document.getElementById('announcement-bar')
+      const closeBtn = document.getElementById('announcement-close')
+      if (bar && localStorage.getItem('announcement-dismissed') === '1') {
+        bar.style.display = 'none'
+      }
+      closeBtn?.addEventListener('click', () => {
+        if (bar) bar.style.display = 'none'
+        localStorage.setItem('announcement-dismissed', '1')
+      })
+
+      // Solutions dropdown
+      const dropdownWrapper = document.getElementById('solutions-dropdown-wrapper')
+      const dropdownMenu = document.getElementById('solutions-menu')
+      const dropdownBtn = document.getElementById('solutions-btn')
+      const dropdownChevron = document.getElementById('solutions-chevron')
+      let dropdownOpen = false
+
+      function openDropdown() {
+        if (!dropdownMenu || !dropdownBtn || !dropdownChevron) return
+        dropdownOpen = true
+        dropdownMenu.style.opacity = '1'
+        dropdownMenu.style.pointerEvents = 'auto'
+        dropdownMenu.style.transform = 'translateY(0)'
+        dropdownChevron.style.transform = 'rotate(180deg)'
+        dropdownBtn.setAttribute('aria-expanded', 'true')
+      }
+      function closeDropdown() {
+        if (!dropdownMenu || !dropdownBtn || !dropdownChevron) return
+        dropdownOpen = false
+        dropdownMenu.style.opacity = '0'
+        dropdownMenu.style.pointerEvents = 'none'
+        dropdownMenu.style.transform = 'translateY(-4px)'
+        dropdownChevron.style.transform = ''
+        dropdownBtn.setAttribute('aria-expanded', 'false')
+      }
+      dropdownWrapper?.addEventListener('mouseenter', openDropdown)
+      dropdownWrapper?.addEventListener('mouseleave', closeDropdown)
+      dropdownBtn?.addEventListener('focus', openDropdown)
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && dropdownOpen) closeDropdown() })
+    </script>
+
     <script>
       const menuBtn   = document.getElementById('menu-btn')
       const drawer    = document.getElementById('mobile-drawer')

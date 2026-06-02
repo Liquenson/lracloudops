@@ -726,6 +726,79 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 6C. TESTIMONIALS                                                     -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="testimonials-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Client Testimonials</span>
+        <h2 id="testimonials-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          Trusted by engineering teams
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Real outcomes from real infrastructure projects
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            quote: "They migrated our entire infrastructure to EKS with zero downtime. What we estimated would take 3 months was done in 6 weeks.",
+            role: "Head of Infrastructure",
+            company: "Healthcare Technology Company",
+            sector: "Healthcare",
+            sectorColor: "#0A2540",
+            bg: "white",
+          },
+          {
+            quote: "The GitOps implementation with ArgoCD eliminated our manual deployment errors completely. 100% automated delivery from day one.",
+            role: "VP of Engineering",
+            company: "Financial Services Platform",
+            sector: "Financial Services",
+            sectorColor: "#1E6FFF",
+            bg: "#F8FAFC",
+          },
+          {
+            quote: "Their Terraform modules are production-grade. We've reused them across 4 different projects with minimal changes.",
+            role: "Senior DevOps Engineer",
+            company: "Cloud Native Startup",
+            sector: "Cloud Native",
+            sectorColor: "#10B981",
+            bg: "white",
+          },
+        ].map(({ quote, role, company, sector, sectorColor, bg }, i) => (
+          <figure
+            class={`flex flex-col p-8 rounded-2xl animate-fade-up ${['delay-100','delay-200','delay-300'][i]}`}
+            style={`background: ${bg}; border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);`}
+          >
+            <div class="flex-1">
+              <div class="flex gap-4 mb-5">
+                <div class="w-1 rounded-full flex-shrink-0" style="background: #1E6FFF;" aria-hidden="true"></div>
+                <blockquote class="text-base leading-relaxed italic" style="color: #334155; font-size: 1.05rem;">
+                  "{quote}"
+                </blockquote>
+              </div>
+            </div>
+            <figcaption class="flex items-center gap-3 pt-5 border-t border-gray-100 mt-4">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full text-sm font-bold text-white flex-shrink-0"
+                style={`background: ${sectorColor};`} aria-hidden="true">
+                {role.split(' ').map((w: string) => w[0]).slice(0, 2).join('')}
+              </div>
+              <div>
+                <div class="text-sm font-semibold" style="color: #0F172A;">{role}</div>
+                <div class="text-xs" style="color: #64748B;">{company}</div>
+              </div>
+              <span class="ml-auto text-xs font-semibold px-2.5 py-1 rounded-full" style={`background: ${sectorColor}15; color: ${sectorColor}; border: 1px solid ${sectorColor}30;`}>
+                {sector}
+              </span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 7. SELECTED ENGAGEMENTS                                              -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="engagements-heading">

@@ -1,0 +1,59 @@
+---
+import SolutionLayout from '../../components/SolutionLayout.astro'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://lracloudops.com/es/platform-engineering#service',
+  name: 'Platform Engineering · Kubernetes',
+  serviceType: 'Platform Engineering',
+  description: 'Clústeres Kubernetes operados como plataformas internas. Entrega GitOps a través de ArgoCD. Los equipos de desarrollo despliegan sin abrir tickets de infraestructura.',
+  url: 'https://lracloudops.com/es/platform-engineering',
+  provider: { '@id': 'https://lracloudops.com/#organization' },
+  areaServed: 'Worldwide',
+  inLanguage: 'es-ES',
+}
+---
+
+<SolutionLayout
+  titulo="Platform Engineering · Kubernetes y GitOps"
+  descripcion="Clústeres Kubernetes operados como plataformas internas. Entrega GitOps a través de ArgoCD. Los equipos de desarrollo despliegan sin abrir tickets de infraestructura."
+  badgeLabel="02 · Platform Engineering"
+  h1="Una plataforma que permite desplegar sin abrir tickets."
+  heroSubtitle="Los equipos de desarrollo que tienen que solicitar despliegues a operaciones crean cuellos de botella. Los equipos con acceso directo a un clúster sin guardianes crean caos. La plataforma de ingeniería resuelve esta tensión: entrega con autonomía dentro de límites definidos."
+  schema={schema}
+  sectionNumber="02"
+  challenges={[
+    { title: 'Despliegues como cuello de botella', desc: 'Los equipos de desarrollo esperan que operaciones aplique cambios. La velocidad de entrega está limitada por la disponibilidad de una persona, no por el tiempo de build.' },
+    { title: 'Deriva del estado del clúster', desc: 'Los cambios aplicados directamente al clúster no están en Git. El siguiente deploy sobreescribe fixes de producción. Nadie sabe el estado real del clúster.' },
+    { title: 'Sin gestión del ciclo de vida de aplicaciones', desc: 'Promoción de versiones, rollbacks y gestión de configuración por entorno manejados de formas ad-hoc que no escalan con el equipo.' },
+    { title: 'Autoscaling no configurado hasta el primer incidente', desc: 'HPA añadido cuando el servicio ya está bajo carga. El daño ya está hecho. El autoscaling debe ser parte de la definición inicial, no del plan de remedición.' },
+  ]}
+  archTitle="La plataforma de entrega que construimos."
+  archSubtitle="GitOps como modelo de entrega. El repositorio es la única fuente de verdad para el estado del clúster."
+  layers={[
+    { layer: 'Plano de Control Kubernetes', tools: 'EKS 1.31+ · Node groups gestionados · RBAC · Network Policies', desc: 'Clúster EKS con grupos de nodos gestionados por Terraform. RBAC configurado por namespace. Network policies que restringen tráfico entre servicios por defecto.' },
+    { layer: 'Motor de Entrega GitOps', tools: 'ArgoCD · Helm · Kustomize · Auto-sync + prune + selfHeal', desc: 'ArgoCD como controlador de entrega. Git como única fuente de verdad para el estado del clúster. Cualquier diferencia entre Git y el clúster se reconcilia automáticamente.' },
+    { layer: 'Gestión de Configuración', tools: 'Kustomize overlays · Helm values por entorno · ConfigMaps · Secrets', desc: 'Overlays de Kustomize por entorno. La base es compartida; los patches son específicos del entorno. Las diferencias son explícitas, no implícitas.' },
+    { layer: 'Autoscaling', tools: 'HPA · VPA · Cluster Autoscaler · Resource quotas', desc: 'HPA configurado en el aprovisionamiento inicial basado en métricas de CPU y memoria. Cluster Autoscaler para escalar grupos de nodos. Quotas por namespace para proteger la capacidad compartida.' },
+    { layer: 'Gestión de Secretos', tools: 'Sealed Secrets · External Secrets · AWS Secrets Manager', desc: 'Los secretos no se almacenan en Git en texto plano. External Secrets Operator para sincronización desde AWS Secrets Manager. Rotación automática de secretos con zero-downtime.' },
+    { layer: 'Ingress y Routing', tools: 'AWS Load Balancer Controller · Nginx Ingress · TLS automático', desc: 'Controlador de Load Balancer para aprovisionamiento automático de ALB desde recursos Ingress de Kubernetes. TLS terminado en el ALB con certificados ACM.' },
+  ]}
+  steps={[
+    { step: '01', title: 'Diseño de la plataforma', desc: 'Definimos el modelo de entrega, la estrategia de namespaces y los límites de acceso basándonos en la estructura y los procesos del equipo.' },
+    { step: '02', title: 'Aprovisionamiento del clúster', desc: 'EKS con Terraform. ArgoCD instalado e integrado con el repositorio de la plataforma. Primera aplicación desplegada via GitOps.' },
+    { step: '03', title: 'Migración de cargas de trabajo', desc: 'Los servicios existentes se migran al clúster uno por uno. Cada uno sigue el mismo patrón: Helm chart, values por entorno, pipeline de despliegue.' },
+    { step: '04', title: 'Transferencia de conocimiento', desc: 'El equipo de desarrollo comprende el modelo GitOps y puede operar la plataforma de forma independiente. Runbooks para escenarios operacionales comunes.' },
+  ]}
+  outcomes={[
+    { metric: 'Cero despliegues manuales', detail: 'toda entrega a través del pipeline GitOps' },
+    { metric: 'Auto-reconciliación del clúster', detail: 'derive detectada y corregida automáticamente' },
+    { metric: 'Autoscaling desde el día 1', detail: 'HPA configurado en el aprovisionamiento inicial' },
+    { metric: 'Rollback en un commit', detail: 'reversión a cualquier estado anterior en minutos' },
+    { metric: 'Secretos gestionados', detail: 'sin credenciales en texto plano en repositorios' },
+    { metric: 'RBAC por equipo', detail: 'cada equipo accede solo a sus namespaces' },
+  ]}
+  ctaH2="Construye tu plataforma interna."
+  ctaSubtitle="Trae tus cargas de trabajo actuales y el tamaño de tu equipo. Diseñamos la plataforma Kubernetes que permite despliegues autónomos dentro de límites seguros."
+  backLabel="Volver a Soluciones"
+/>

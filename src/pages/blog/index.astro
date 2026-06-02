@@ -93,6 +93,41 @@ const categories = ['All', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD', 
         <p class="text-sm" style="color: #64748b;">No articles in this category yet.</p>
       </div>
 
+      <!-- NEWSLETTER -->
+      <div class="mt-16 rounded-2xl px-8 py-12 text-center" style="background: #0A2540;">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Newsletter
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3" style="letter-spacing: -0.02em;">
+          DevOps Engineering Newsletter
+        </h2>
+        <p class="text-sm mb-8 max-w-md mx-auto" style="color: rgba(148,163,184,0.8);">
+          Monthly insights on cloud infrastructure, Kubernetes and platform engineering. No spam, unsubscribe anytime.
+        </p>
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+          <input type="hidden" name="subject" value="Newsletter Subscription - LRA Cloud Ops" />
+          <input type="hidden" name="from_name" value="LRA Cloud Ops Newsletter" />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="you@company.com"
+            class="flex-1 px-4 py-3 text-sm rounded-xl outline-none"
+            style="background: white; color: #111827; border: 1px solid rgba(255,255,255,0.2);"
+          />
+          <button
+            type="submit"
+            id="btn-newsletter"
+            class="px-6 py-3 text-sm font-semibold text-white rounded-xl transition-all hover:opacity-90 flex-shrink-0"
+            style="background: #1E6FFF; box-shadow: 0 4px 14px rgba(30,111,255,0.4);"
+          >
+            Subscribe
+          </button>
+        </form>
+        <div id="newsletter-status" class="hidden mt-4 text-sm rounded-xl py-2.5 px-4 max-w-md mx-auto"></div>
+      </div>
+
       <!-- CTA -->
       <div class="mt-16 pt-12 border-t border-gray-100 text-center">
         <p class="text-sm mb-4" style="color: #64748b;">Working on something that should be documented?</p>
@@ -159,6 +194,42 @@ const categories = ['All', 'AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD', 
 
       filtrar(cat)
     })
+  })
+</script>
+
+<script>
+  const newsletterForm = document.getElementById('newsletter-form') as HTMLFormElement
+  const btnNewsletter = document.getElementById('btn-newsletter') as HTMLButtonElement
+  const newsletterStatus = document.getElementById('newsletter-status') as HTMLDivElement
+
+  newsletterForm?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    btnNewsletter.textContent = 'Subscribing...'
+    btnNewsletter.disabled = true
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(newsletterForm)))
+      })
+      const data = await res.json()
+      if (data.success) {
+        newsletterStatus.textContent = 'Subscribed! You will receive our next issue.'
+        newsletterStatus.style.cssText = 'display:block; background: rgba(240,253,244,0.15); color: #86efac; border: 1px solid rgba(134,239,172,0.3);'
+        newsletterForm.reset()
+      } else {
+        newsletterStatus.textContent = 'Error subscribing. Please try again.'
+        newsletterStatus.style.cssText = 'display:block; background: rgba(254,242,242,0.1); color: #fca5a5; border: 1px solid rgba(252,165,165,0.3);'
+      }
+    } catch {
+      newsletterStatus.textContent = 'Connection error. Please try again.'
+      newsletterStatus.style.cssText = 'display:block; background: rgba(254,242,242,0.1); color: #fca5a5; border: 1px solid rgba(252,165,165,0.3);'
+    }
+
+    btnNewsletter.textContent = 'Subscribe'
+    btnNewsletter.disabled = false
+    newsletterStatus.classList.remove('hidden')
   })
 </script>
 
