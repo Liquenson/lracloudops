@@ -16,9 +16,11 @@ metricas:
   - { label: "EKS nodes", value: "min 1 · desired 2 · max 3" }
   - { label: "Ansible roles", value: "3 (common · security · monitoring)" }
 outcomes:
-  - "Configuration drift: zero via GitOps reconciliation"
-  - "IAM identities: 22 managed as code, zero static keys"
-  - "Pipeline stages: 7 automated gates before production"
+  - "Deploy time: manual process → fully automated in 7 pipeline stages"
+  - "IAM identities: 22 managed as code, zero static credentials"
+  - "Configuration drift: eliminated via GitOps reconciliation"
+  - "Infrastructure reproducibility: 100% — any environment rebuilt in minutes"
+  - "Security posture: OIDC-only authentication across all pipelines"
 highlights:
   - "7-stage Jenkins pipeline: Test → Build → ECR Push → Terraform → Ansible SSM → Kubernetes → Rollout verify"
   - "No SSH keys anywhere: EKS node access exclusively via AWS Systems Manager Session Manager"
@@ -89,3 +91,11 @@ The monitoring role installs the CloudWatch Agent via RPM, deploys a JSON config
 **Why manual approval before terraform apply** — Terraform plan output shows exactly what will change before it changes. The gate between plan and apply prevents automated infrastructure changes from running unseen. Operators review the plan; Jenkins executes the apply.
 
 **Why STS role assumption instead of long-lived credentials** — The credentials Jenkins uses for EKS expire in 60 minutes. There are no static AWS credentials that could be rotated or leaked. The role assumption also decouples the Jenkins identity from the cluster admin permission — the role can be revoked without changing Jenkins configuration.
+
+## Results & Metrics
+
+- **Deploy time**: manual process → fully automated in 7 pipeline stages
+- **IAM identities**: 22 managed as code, zero static credentials
+- **Configuration drift**: eliminated via GitOps reconciliation
+- **Infrastructure reproducibility**: 100% — any environment rebuilt in minutes
+- **Security posture**: OIDC-only authentication across all pipelines

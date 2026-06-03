@@ -221,20 +221,31 @@ const projectSchema = {
 
   <!-- MEASURED OUTCOMES -->
   {outcomes && outcomes.length > 0 && (
-    <section class="bg-white py-12 border-t border-gray-100">
+    <section style="background: #F0FDF4;" class="py-14 border-t border-green-100">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="max-w-3xl">
-          <h2 class="text-xl font-bold mb-6" style="color: #0A2540;">Measured Outcomes</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {outcomes.map(outcome => (
-              <div class="rounded-xl p-5 flex items-start gap-3" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
-                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #15803D;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="text-sm leading-relaxed font-medium" style="color: #166534;">{outcome}</span>
+        <div class="text-center mb-10">
+          <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-3" style="background: white; color: #15803d; border: 1px solid #BBF7D0;">Results</span>
+          <h2 class="text-2xl font-bold" style="color: #0A2540;">Measured Outcomes</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-4xl mx-auto">
+          {outcomes.map((outcome: string) => {
+            const colonIdx = outcome.indexOf(': ')
+            const label = colonIdx > -1 ? outcome.slice(0, colonIdx) : outcome
+            const detail = colonIdx > -1 ? outcome.slice(colonIdx + 2) : ''
+            return (
+              <div class="bg-white rounded-2xl p-6 flex items-start gap-4" style="border: 1px solid #BBF7D0; box-shadow: 0 1px 4px rgba(34,197,94,0.08);">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #DCFCE7;">
+                  <svg class="w-5 h-5" style="color: #22C55E;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm font-bold mb-1" style="color: #0A2540;">{label}</div>
+                  {detail && <div class="text-sm leading-relaxed" style="color: #166534;">{detail}</div>}
+                </div>
               </div>
-            ))}
-          </div>
+            )
+          })}
         </div>
       </div>
     </section>

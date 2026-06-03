@@ -16,9 +16,11 @@ metricas:
   - { label: "AWS Services", value: "15+" }
   - { label: "Environments", value: "Dev + Prod" }
 outcomes:
-  - "Zero-downtime deployments: ECS rolling updates"
-  - "Secret rotation: automated via AWS Secrets Manager"
-  - "CI/CD: 3 independent pipelines, OIDC-only auth"
+  - "Deployment reliability: zero-downtime rolling updates via ECS circuit breaker"
+  - "Secret security: zero static credentials — Secrets Manager + OIDC only"
+  - "CDN performance: CloudFront with cache headers — assets cached 1 year"
+  - "Multi-environment: dev/prod fully isolated with conditional NAT Gateway"
+  - "CI/CD: 3 independent pipelines running in parallel — backend, frontend, infra"
 highlights:
   - "Pure OIDC: 15-minute ephemeral IAM tokens — zero AWS keys stored in GitHub Secrets"
   - "ECS deployment circuit breaker with automatic rollback on failed deployment — no manual intervention"
@@ -82,3 +84,11 @@ Rotating a credential requires updating the Secrets Manager secret value and res
 The ECS deployment circuit breaker monitors task health during rollout. If the new task definition fails its health checks, ECS stops the deployment and reverts to the previous task definition automatically. No manual intervention is required for a failed deployment.
 
 CloudFront cache strategy: hashed asset filenames get a 1-year `immutable` cache header — the hash in the filename changes whenever the content changes, so browsers cache aggressively. The `index.html` gets `no-cache, no-store` so users always receive the current entry point. Frontend deployments invalidate CloudFront after S3 sync completes.
+
+## Results & Metrics
+
+- **Deployment reliability**: zero-downtime rolling updates via ECS circuit breaker
+- **Secret security**: zero static credentials — Secrets Manager + OIDC only
+- **CDN performance**: CloudFront with cache headers — assets cached 1 year
+- **Multi-environment**: dev/prod fully isolated with conditional NAT Gateway
+- **CI/CD**: 3 independent pipelines running in parallel — backend, frontend, infra
