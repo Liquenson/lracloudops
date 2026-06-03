@@ -322,24 +322,55 @@
       sendBtn!.disabled = true
       showTyping()
 
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 30000)
+
       try {
+        const messages = history.map(m => ({ role: m.role, content: m.content }))
+        console.log('Sending:', messages)
+
         const res = await fetch(WORKER, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: history }),
+          body: JSON.stringify({ messages }),
+          signal: controller.signal,
         })
-        if (!res.ok) throw new Error('HTTP ' + res.status)
-        const data = await res.json()
-        console.log('Worker response:', data)
+
+        clearTimeout(timeout)
+        console.log('Status:', res.status)
+
+        if (!res.ok) {
+          hideTyping()
+          agentCount++
+          addMsg('assistant', `Service error (HTTP ${res.status}). Please try again in a moment.`)
+          return
+        }
+
+        let data: any
+        try {
+          data = await res.json()
+        } catch {
+          hideTyping()
+          agentCount++
+          addMsg('assistant', 'Service temporarily unavailable. Please try again.')
+          return
+        }
+
+        console.log('Data:', data)
         const reply: string = data.text ?? "Sorry, I couldn't process your request. Please try again."
         hideTyping()
         agentCount++
         addMsg('assistant', reply)
-      } catch (err) {
+      } catch (err: any) {
+        clearTimeout(timeout)
         console.error('Worker error:', err)
         hideTyping()
         agentCount++
-        addMsg('assistant', 'Connection error. Please try again in a moment.')
+        if (err?.name === 'AbortError') {
+          addMsg('assistant', 'Request timed out. Please try again.')
+        } else {
+          addMsg('assistant', 'Connection error. Please check your network and try again.')
+        }
       } finally {
         loading = false
         sendBtn!.disabled = false
