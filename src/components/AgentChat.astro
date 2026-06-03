@@ -330,16 +330,13 @@
         })
         if (!res.ok) throw new Error('HTTP ' + res.status)
         const data = await res.json()
-        const reply: string =
-          data.response ??
-          data.content ??
-          data.choices?.[0]?.message?.content ??
-          data.text ??
-          "Sorry, I couldn't process your request. Please try again."
+        console.log('Worker response:', data)
+        const reply: string = data.text ?? "Sorry, I couldn't process your request. Please try again."
         hideTyping()
         agentCount++
         addMsg('assistant', reply)
-      } catch {
+      } catch (err) {
+        console.error('Worker error:', err)
         hideTyping()
         agentCount++
         addMsg('assistant', 'Connection error. Please try again in a moment.')
