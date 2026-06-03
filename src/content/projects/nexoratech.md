@@ -16,9 +16,11 @@ metricas:
   - { label: "CI/CD Pipelines", value: "3 parallel" }
   - { label: "Security Layers", value: "JWT + MFA + OIDC" }
 outcomes:
-  - "MFA adoption: 100% enforced via TOTP"
-  - "Infrastructure: 10 Terraform modules, fully reproducible"
-  - "Deployment: push-to-main → production in under 10 minutes"
+  - "Security: MFA TOTP enforced — 100% of user accounts protected"
+  - "Infrastructure: 10 Terraform modules, fully reproducible environments"
+  - "Deployment: push to main → production in under 10 minutes"
+  - "Database: Flyway migrations with validate-on-migrate — zero schema drift"
+  - "API security: JWT stateless with 1h expiry, BCrypt password hashing"
 highlights:
   - "BCryptPasswordEncoder + JJWT 0.12.6 stateless (1h expiry, 256+ bits) + MFA TOTP with failure counter and account lockout"
   - "MapStruct DTOs: no JPA entity is exposed directly in the API — zero serialization leaks"
@@ -74,3 +76,11 @@ Three OIDC-authenticated pipelines with separated concerns:
 - **terraform.yml** — `fmt -check + validate` → `plan` with PR comment → `apply -auto-approve` on merge to main
 
 GitHub Actions assumes the appropriate IAM role via OIDC. The Terraform role and Deploy role have separate, minimal permissions. No `AWS_ACCESS_KEY_ID` or `AWS_SECRET_ACCESS_KEY` exists in the repository secrets.
+
+## Results & Metrics
+
+- **Security**: MFA TOTP enforced — 100% of user accounts protected
+- **Infrastructure**: 10 Terraform modules, fully reproducible environments
+- **Deployment**: push to main → production in under 10 minutes
+- **Database**: Flyway migrations with validate-on-migrate — zero schema drift
+- **API security**: JWT stateless with 1h expiry, BCrypt password hashing

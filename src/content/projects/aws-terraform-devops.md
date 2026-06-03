@@ -16,9 +16,11 @@ metricas:
   - { label: "Pipelines", value: "2 parallel" }
   - { label: "Environments", value: "Dev + Prod" }
 outcomes:
-  - "Deploy time: manual weeks → 12 minutes automated"
-  - "Infrastructure drift: eliminated with Terraform state"
-  - "Pipeline quality gates: 80%+ coverage enforced"
+  - "Pipeline execution: commit to production in under 12 minutes"
+  - "Code quality: 80%+ test coverage enforced on every merge"
+  - "Infrastructure: 6 Terraform modules, fully reusable across projects"
+  - "Scalability: HPA configured — auto-scales from 2 to 20 pods under load"
+  - "Observability: CloudWatch alarms on CPU >80%, Memory >85%"
 highlights:
   - "Terraform 100% modular: 6 modules (vpc, eks, rds, ecr, iam, cloudwatch) with S3 remote state + DynamoDB locking + SSE-S3"
   - "EKS 1.31 with HPA at 70% CPU threshold, rolling update maxUnavailable=0 and resource limits"
@@ -83,3 +85,11 @@ SonarCloud enforces a ≥80% coverage gate. If coverage drops below threshold, t
 **Why separate CloudWatch module** — observability configuration changes at a different rate than cluster infrastructure. Adjusting an alarm threshold should not produce a plan diff against the EKS module. Each module changes at its own rate.
 
 **Why remote state from day one** — a local state file becomes a single point of failure the first time two engineers or two pipeline runs execute simultaneously. Distributed state with locking is not optional in a team environment.
+
+## Results & Metrics
+
+- **Pipeline execution**: commit to production in under 12 minutes
+- **Code quality**: 80%+ test coverage enforced on every merge
+- **Infrastructure**: 6 Terraform modules, fully reusable across projects
+- **Scalability**: HPA configured — auto-scales from 2 to 20 pods under load
+- **Observability**: CloudWatch alarms on CPU >80%, Memory >85%
