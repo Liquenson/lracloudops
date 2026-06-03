@@ -96,7 +96,7 @@ import Layout from '../layouts/Layout.astro'
                 ))}
               </div>
               <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-                Designs and operates production AWS infrastructure. Specializes in EKS, Terraform, GitOps with ArgoCD, and end-to-end CI/CD with Jenkins. Builds complete delivery platforms — infrastructure as code, automated deployments, integrated observability (Prometheus, Grafana, CloudWatch) and security applied at design time. Production experience in regulated sectors: healthcare and financial services. Immutable infrastructure — no manual changes in production.
+                DevOps Lead Engineer with 4+ years designing and operating production-grade cloud infrastructure on AWS. Specialized in Kubernetes (EKS), GitOps with ArgoCD, Terraform IaC and CI/CD automation. Proven experience in regulated environments — healthcare and financial services. Advocate for infrastructure immutability: no manual changes in production, ever.
               </p>
               <div class="flex flex-wrap gap-1.5 mb-5 pb-5 border-b border-gray-100">
                 {['AWS', 'Kubernetes', 'EKS', 'Terraform', 'Docker', 'ArgoCD', 'Helm', 'Jenkins', 'Ansible', 'Prometheus', 'Grafana', 'CloudWatch', 'Python', 'Bash', 'Linux', 'SonarQube', 'GitHub Actions', 'IAM', 'ECR', 'RDS'].map(tag => (
@@ -123,7 +123,7 @@ import Layout from '../layouts/Layout.astro'
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                 <div>
                   <h3 class="text-2xl font-bold mb-1" style="color: #0A2540;">Darwin Pochet</h3>
-                  <p class="text-sm font-semibold mb-1" style="color: #1E6FFF;">Project Management</p>
+                  <p class="text-sm font-semibold mb-1" style="color: #1E6FFF;">Chief Executive Officer | IT Consultant | Network Administrator | Cybersecurity</p>
                   <div class="flex items-center gap-1.5 text-sm" style="color: #64748b;">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -149,24 +149,30 @@ import Layout from '../layouts/Layout.astro'
                 </a>
               </div>
               <div class="flex flex-wrap gap-2 mb-5">
-                {['Project Management', 'IT Strategy', 'Cybersecurity'].map(role => (
+                {['CEO & IT Strategy', 'Network Admin', 'Cybersecurity', 'ITIL 4'].map(role => (
                   <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
                     {role}
                   </span>
                 ))}
               </div>
               <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-                Founder of Nibble Tech LLC. 20+ years in IT infrastructure, network security and systems administration for small and mid-sized businesses. Specializes in Fortinet, Cisco and Linux environments. Applies AI tooling to network automation and operational workflows.
+                CEO and Founder of Nibble Tech LLC with 15+ years in IT consulting and infrastructure. Specialist in network architecture, cybersecurity, Cisco systems and IT strategy for SMBs. ITIL 4 certified. AI enthusiast applying machine learning to IT operations and business automation. Currently leading technology consulting and project management for LRA Cloud Operations engagements.
               </p>
               <div class="flex flex-wrap gap-1.5 mb-5 pb-5 border-b border-gray-100">
-                {['Linux', 'Firewalls', 'Windows Server', 'Cisco', 'Active Directory', 'Python', 'JavaScript', 'Node.js', 'Fortinet'].map(tag => (
+                {['Cisco Systems', 'Windows Server', 'Active Directory', 'Firewalls', 'VoIP', 'VPN', 'Python', 'JavaScript', 'Node.js', 'Fortinet', 'Linux', 'AI/ML'].map(tag => (
                   <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
                 ))}
               </div>
               <div class="flex flex-wrap gap-2">
-                {['Fortinet Certified Associate Cybersecurity', 'Fortinet Certified Fundamentals Cybersecurity'].map(cert => (
+                {[
+                  { cert: 'ITIL 4 Foundation', color: '#6B21A8' },
+                  { cert: 'CCNA — Cisco Networking Academy', color: '#1BA0D7' },
+                  { cert: 'Fortinet Certified Associate Cybersecurity', color: '#EE3124' },
+                  { cert: 'Fortinet Certified Fundamentals Cybersecurity', color: '#EE3124' },
+                  { cert: 'The Guiding Principles of Service Value System', color: '#6B21A8' },
+                ].map(({ cert, color }) => (
                   <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #0A2540; border: 1px solid #c3d9ff;">
-                    <svg class="w-3 h-3 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-3 h-3 flex-shrink-0" style={`color: ${color};`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                     {cert}
@@ -187,7 +193,7 @@ import Layout from '../layouts/Layout.astro'
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                 <div>
                   <h3 class="text-2xl font-bold mb-1" style="color: #0A2540;">Kelvin Osaigbovo</h3>
-                  <p class="text-sm font-semibold mb-1" style="color: #1E6FFF;">DevOps Engineer | Platform Engineer</p>
+                  <p class="text-sm font-semibold mb-1" style="color: #1E6FFF;">DevOps Engineer | Platform Engineer | Cloud Engineer | Linux SysAdmin | AWS | Azure</p>
                   <div class="flex items-center gap-1.5 text-sm" style="color: #64748b;">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -213,27 +219,33 @@ import Layout from '../layouts/Layout.astro'
                 </a>
               </div>
               <div class="flex flex-wrap gap-2 mb-5">
-                {['DevOps Engineer', 'Platform Engineer', 'Cloud Engineer', 'Azure Admin'].map(role => (
+                {['DevOps Engineer', 'Platform Engineer', 'Cloud Engineer', 'Linux SysAdmin'].map(role => (
                   <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
                     {role}
                   </span>
                 ))}
               </div>
               <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-                Senior DevOps Engineer with 4+ years in cloud-native platforms. Specialized in AWS, Azure and Kubernetes for enterprise environments. Currently leading platform engineering initiatives.
+                DevOps and Platform Engineer with 6+ years building and maintaining cloud-native environments. Specialized in AWS, Azure and Kubernetes for enterprise environments. Deep expertise in CI/CD pipelines, container orchestration and infrastructure automation. Currently leading DevOps engineering initiatives in enterprise environments across Spain.
               </p>
               <div class="flex flex-wrap gap-1.5 mb-5 pb-5 border-b border-gray-100">
-                {['AWS', 'Azure', 'Kubernetes', 'Docker', 'Terraform', 'Ansible', 'Jenkins', 'ECS Fargate', 'Python', 'Bash', 'Git'].map(tag => (
+                {['AWS', 'Azure', 'Kubernetes', 'Docker', 'Terraform', 'Ansible', 'Jenkins', 'ECS Fargate', 'Python', 'Bash', 'Git', 'Maven', 'Azure DevOps'].map(tag => (
                   <span class="text-xs px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
                 ))}
               </div>
-              <div class="flex flex-wrap gap-3">
-                <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #0A2540; border: 1px solid #c3d9ff;">
-                  <svg class="w-3 h-3 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                  </svg>
-                  Cisco Introduction to Cybersecurity
-                </span>
+              <div class="flex flex-wrap gap-2">
+                {[
+                  { cert: 'Introduction to Cybersecurity (Cisco) · Jul 2025', color: '#1BA0D7' },
+                  { cert: 'Microsoft Certified: Azure Fundamentals', color: '#0078D4' },
+                  { cert: 'Helm Course', color: '#0F1689' },
+                ].map(({ cert, color }) => (
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #0A2540; border: 1px solid #c3d9ff;">
+                    <svg class="w-3 h-3 flex-shrink-0" style={`color: ${color};`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                    {cert}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -249,13 +261,13 @@ import Layout from '../layouts/Layout.astro'
               <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                 <div>
                   <h3 class="text-2xl font-bold mb-1" style="color: #0A2540;">Wesley Osaigbovo</h3>
-                  <p class="text-sm font-semibold mb-1" style="color: #1E6FFF;">DevOps Engineer | Cloud Engineer</p>
+                  <p class="text-sm font-semibold mb-1" style="color: #1E6FFF;">DevOps Engineer | Cloud Engineer | Linux System Administrator | AWS</p>
                   <div class="flex items-center gap-1.5 text-sm" style="color: #64748b;">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    Las Palmas, Spain
+                    Las Palmas, Gran Canaria, Spain
                   </div>
                 </div>
                 <a
@@ -275,14 +287,14 @@ import Layout from '../layouts/Layout.astro'
                 </a>
               </div>
               <div class="flex flex-wrap gap-2 mb-5">
-                {['DevOps Engineer', 'Cloud Engineer', 'Linux SysAdmin', 'AWS'].map(role => (
+                {['DevOps Engineer', 'Cloud Engineer', 'Linux SysAdmin', 'AWS', 'HashiCorp Certified'].map(role => (
                   <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
                     {role}
                   </span>
                 ))}
               </div>
               <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-                DevOps Engineer specializing in AWS infrastructure and GitOps. HashiCorp Certified Terraform Associate. Experience delivering cloud platforms in regulated financial environments.
+                DevOps Engineer with 4+ years delivering cloud infrastructure in regulated environments. HashiCorp Certified Terraform Associate. Specialized in AWS infrastructure, GitOps and container platforms. Currently working on cloud infrastructure for large-scale financial platforms in Spain.
               </p>
               <div class="flex flex-wrap gap-1.5 mb-5 pb-5 border-b border-gray-100">
                 {['AWS', 'Terraform', 'Kubernetes', 'Docker', 'Ansible', 'Jenkins', 'ECS Fargate', 'Python', 'Bash', 'Git', 'Maven'].map(tag => (
