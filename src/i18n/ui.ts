@@ -25,6 +25,10 @@ export const ui = {
     // Navigation
     'nav.home': 'Home',
     'nav.solutions': 'Solutions',
+    'nav.industries': 'Industries',
+    'nav.resources': 'Resources',
+    'nav.whylra': 'Why LRA',
+    'nav.pricing': 'Pricing',
     'nav.caseStudies': 'Case Studies',
     'nav.about': 'About',
     'nav.blog': 'Blog',
@@ -48,6 +52,9 @@ export const ui = {
     // Footer — Company links
     'footer.about': 'About',
     'footer.contact': 'Contact',
+    'footer.pricing': 'Pricing',
+    'footer.security': 'Security',
+    'footer.whylra': 'Why LRA',
     'footer.bookConsultation': 'Book a Consultation',
 
     // Footer — brand / status
@@ -79,6 +86,10 @@ export const ui = {
     // Navigation
     'nav.home': 'Inicio',
     'nav.solutions': 'Soluciones',
+    'nav.industries': 'Industrias',
+    'nav.resources': 'Recursos',
+    'nav.whylra': 'Por qué LRA',
+    'nav.pricing': 'Precios',
     'nav.caseStudies': 'Casos de uso',
     'nav.about': 'Nosotros',
     'nav.blog': 'Blog',
@@ -102,6 +113,9 @@ export const ui = {
     // Footer — Company links
     'footer.about': 'Nosotros',
     'footer.contact': 'Contacto',
+    'footer.pricing': 'Precios',
+    'footer.security': 'Seguridad',
+    'footer.whylra': 'Por qué LRA',
     'footer.bookConsultation': 'Reservar consulta',
 
     // Footer — brand / status

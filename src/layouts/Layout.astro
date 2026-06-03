@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css'
-import { getLangFromUrl, getAlternateUrl } from '../i18n'
+import { getLangFromUrl } from '../i18n'
 
 interface Props {
   titulo: string
@@ -17,8 +17,28 @@ const lang = getLangFromUrl(Astro.url)
 const canonicalURL = new URL(currentPath, 'https://lracloudops.com')
 const finalOgImage = ogImage ?? 'https://lracloudops.com/og-image.png'
 
-const enUrl = 'https://lracloudops.com' + getAlternateUrl(currentPath, 'en')
-const esUrl = 'https://lracloudops.com' + getAlternateUrl(currentPath, 'es')
+// Smart bilingual route mapping (handles slug differences like /services ↔ /es/servicios)
+const _enToEs: Record<string, string> = {
+  '/': '/es',
+  '/services': '/es/servicios',
+  '/about': '/es/nosotros',
+  '/contact': '/es/contacto',
+  '/pricing': '/es/pricing',
+  '/projects': '/es/proyectos',
+  '/blog': '/es/blog',
+  '/resources': '/es/resources',
+  '/security': '/es/security',
+  '/why-lra': '/es/why-lra',
+}
+const _smartEsPath = currentPath.startsWith('/es')
+  ? currentPath
+  : (_enToEs[currentPath] ?? '/es' + currentPath)
+const _smartEnPath = !currentPath.startsWith('/es')
+  ? currentPath
+  : (Object.entries(_enToEs).find(([, v]) => v === currentPath)?.[0] ?? (currentPath === '/es' ? '/' : currentPath.slice(3)))
+const enUrl = 'https://lracloudops.com' + _smartEnPath
+const esUrl = 'https://lracloudops.com' + _smartEsPath
+const currentLangLabel = lang === 'es' ? 'Español' : 'English'
 
 const pathLabels: Record<string, string> = {
   services: 'Solutions', projects: 'Case Studies', about: 'About', contact: 'Contact',
@@ -322,10 +342,27 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
 
         <!-- Desktop right: language switcher + GitHub + CTA -->
         <div class="hidden lg:flex items-center gap-3 flex-shrink-0">
-          <div class="flex items-center gap-0 text-xs font-semibold rounded-lg overflow-hidden" style="border:1px solid #e2e8f0;">
-            <a href={enUrl} class={`px-2.5 py-1.5 transition-colors ${lang !== 'es' ? 'bg-[#0A2540] text-white' : 'text-[#64748B] hover:bg-gray-50'}`} aria-label="Switch to English">EN</a>
-            <span style="width:1px; background:#e2e8f0; align-self:stretch;"></span>
-            <a href={esUrl} class={`px-2.5 py-1.5 transition-colors ${lang === 'es' ? 'bg-[#0A2540] text-white' : 'text-[#64748B] hover:bg-gray-50'}`} aria-label="Cambiar a español">ES</a>
+          <!-- Desktop language dropdown -->
+          <div data-lang-dropdown data-lang-style="desktop" class="relative">
+            <button data-lang-dropdown-btn class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors" style="border:1px solid #e2e8f0;" aria-haspopup="listbox" aria-expanded="false" aria-label={lang === 'es' ? 'Seleccionar idioma' : 'Select language'}>
+              <span aria-hidden="true" style="font-size:0.9rem; line-height:1;">🌐</span>
+              <span>{currentLangLabel}</span>
+              <svg data-lang-chevron class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div data-lang-dropdown-menu role="listbox" aria-label={lang === 'es' ? 'Opciones de idioma' : 'Language options'} class="absolute top-full right-0 mt-2 w-40 rounded-xl overflow-hidden opacity-0 pointer-events-none" style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 16px 40px rgba(15,23,42,0.12); transform:translateY(-6px); transition:opacity 0.15s ease,transform 0.15s ease; z-index:10;">
+              <div class="p-1.5 space-y-0.5">
+                <a href={enUrl} role="option" aria-selected={lang !== 'es' ? 'true' : 'false'} data-lang-option="en" class={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${lang !== 'es' ? 'font-semibold' : 'text-gray-700 hover:bg-gray-50'}`} style={lang !== 'es' ? 'color:#0A2540; background:#EEF4FF;' : ''}>
+                  <span aria-hidden="true">🇬🇧</span> English
+                  {lang !== 'es' && <svg class="w-3.5 h-3.5 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>}
+                </a>
+                <a href={esUrl} role="option" aria-selected={lang === 'es' ? 'true' : 'false'} data-lang-option="es" class={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${lang === 'es' ? 'font-semibold' : 'text-gray-700 hover:bg-gray-50'}`} style={lang === 'es' ? 'color:#0A2540; background:#EEF4FF;' : ''}>
+                  <span aria-hidden="true">🇪🇸</span> Español
+                  {lang === 'es' && <svg class="w-3.5 h-3.5 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>}
+                </a>
+              </div>
+            </div>
           </div>
           <a href="https://github.com/Liquenson" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors" aria-label="GitHub profile">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -335,13 +372,6 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
           <a href={contactHref} class="text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-px active:scale-[0.98]" style="background:#2563EB; box-shadow:0 2px 8px rgba(37,99,235,0.3);">
             {ctaLabel}
           </a>
-        </div>
-
-        <!-- Mobile: language switcher -->
-        <div class="lg:hidden flex items-center flex-shrink-0" role="group" aria-label="Language selector">
-          <a href={enUrl} class={`px-2 py-1 text-xs font-bold transition-colors ${lang !== 'es' ? 'text-[#1E6FFF]' : 'text-[#94a3b8] hover:text-[#64748b]'}`} aria-label="Switch to English" aria-current={lang !== 'es' ? 'true' : undefined}>EN</a>
-          <span class="text-[#e2e8f0] text-xs select-none" aria-hidden="true">|</span>
-          <a href={esUrl} class={`px-2 py-1 text-xs font-bold transition-colors ${lang === 'es' ? 'text-[#1E6FFF]' : 'text-[#94a3b8] hover:text-[#64748b]'}`} aria-label="Cambiar a español" aria-current={lang === 'es' ? 'true' : undefined}>ES</a>
         </div>
 
         <!-- Mobile hamburger -->
@@ -362,13 +392,8 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
     <div id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation menu" class="fixed top-0 right-0 bottom-0 z-40 w-72 lg:hidden flex flex-col" style="background:white; transform:translateX(100%); transition:transform 0.32s cubic-bezier(0.4,0,0.2,1); box-shadow:-12px 0 40px rgba(11,18,32,0.15);">
 
       <!-- Drawer header -->
-      <div class="h-[64px] flex-shrink-0 border-b border-gray-100 flex items-center justify-between px-5">
+      <div class="h-[64px] flex-shrink-0 border-b border-gray-100 flex items-center px-5">
         <span class="text-[10px] font-bold uppercase tracking-widest" style="color:#2563EB;">Navigation</span>
-        <div class="flex items-center gap-0 text-sm font-semibold rounded-xl overflow-hidden" style="border:1px solid #e2e8f0;">
-          <a href={enUrl} class={`flex items-center justify-center min-w-[52px] min-h-[44px] px-4 transition-colors ${lang !== 'es' ? 'bg-[#0A2540] text-white' : 'text-[#64748B] hover:bg-gray-50'}`} aria-label="Switch to English">EN</a>
-          <span style="width:1px; background:#e2e8f0; align-self:stretch;" aria-hidden="true"></span>
-          <a href={esUrl} class={`flex items-center justify-center min-w-[52px] min-h-[44px] px-4 transition-colors ${lang === 'es' ? 'bg-[#0A2540] text-white' : 'text-[#64748B] hover:bg-gray-50'}`} aria-label="Cambiar a español">ES</a>
-        </div>
       </div>
 
       <!-- Drawer nav -->
@@ -483,6 +508,33 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
         <a href={lang === 'es' ? '/es/nosotros' : '/about'} class={`flex items-center gap-3 px-5 py-3.5 text-sm font-medium border-b border-gray-50 transition-colors ${isAboutActive ? 'text-blue-600 bg-blue-50/50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`} aria-current={isAboutActive ? 'page' : undefined}>
           {lang === 'es' ? 'Nosotros' : 'About'}
         </a>
+
+        <!-- Language selector (Red Hat style, end of drawer) -->
+        <div class="border-t border-gray-100 mt-1">
+          <div data-lang-dropdown data-lang-style="mobile" class="relative">
+            <button data-lang-dropdown-btn class="flex items-center gap-2 w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors" aria-haspopup="listbox" aria-expanded="false" aria-label={lang === 'es' ? 'Seleccionar idioma' : 'Select language'}>
+              <span aria-hidden="true" style="font-size:1rem; line-height:1;">🌐</span>
+              <span>{currentLangLabel}</span>
+              <svg data-lang-chevron class="w-4 h-4 text-gray-400 transition-transform duration-200 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div data-lang-dropdown-menu role="listbox" aria-label={lang === 'es' ? 'Opciones de idioma' : 'Language options'} class="overflow-hidden" style="max-height:0; opacity:0; transition:max-height 0.25s ease, opacity 0.2s ease; background:#EEF4FF;">
+              <div class="px-4 pb-3 pt-1 space-y-1">
+                <a href={enUrl} role="option" aria-selected={lang !== 'es' ? 'true' : 'false'} data-lang-option="en" class={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${lang !== 'es' ? 'font-semibold' : 'hover:bg-white/60'}`} style={lang !== 'es' ? 'color:#0A2540; background:rgba(255,255,255,0.7);' : 'color:#0A2540;'}>
+                  <span aria-hidden="true" class="flex-shrink-0">🇬🇧</span>
+                  English
+                  {lang !== 'es' && <svg class="w-4 h-4 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>}
+                </a>
+                <a href={esUrl} role="option" aria-selected={lang === 'es' ? 'true' : 'false'} data-lang-option="es" class={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${lang === 'es' ? 'font-semibold' : 'hover:bg-white/60'}`} style={lang === 'es' ? 'color:#0A2540; background:rgba(255,255,255,0.7);' : 'color:#0A2540;'}>
+                  <span aria-hidden="true" class="flex-shrink-0">🇪🇸</span>
+                  Español
+                  {lang === 'es' && <svg class="w-4 h-4 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
 
       <!-- Drawer footer CTA -->
@@ -613,6 +665,29 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
             <a href={lang === 'es' ? '/es/terms' : '/terms'} class="text-xs transition-colors hover:text-white" style="color:rgba(148,163,184,0.35);">{lang === 'es' ? 'Términos' : 'Terms of Service'}</a>
           </div>
           <div class="flex items-center gap-4">
+            <!-- Footer language selector -->
+            <div data-lang-dropdown data-lang-style="footer" class="relative">
+              <button data-lang-dropdown-btn class="inline-flex items-center gap-1 text-xs transition-colors hover:text-white" style="color:rgba(148,163,184,0.55);" aria-haspopup="listbox" aria-expanded="false" aria-label={lang === 'es' ? 'Seleccionar idioma' : 'Select language'}>
+                <span aria-hidden="true">🌐</span>
+                <span>{currentLangLabel}</span>
+                <svg data-lang-chevron class="w-3 h-3 ml-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div data-lang-dropdown-menu role="listbox" class="absolute bottom-full right-0 mb-2 w-36 rounded-xl overflow-hidden opacity-0 pointer-events-none" style="background:#0F1E33; border:1px solid rgba(255,255,255,0.1); box-shadow:0 -4px 20px rgba(0,0,0,0.4); transform:translateY(6px); transition:opacity 0.15s ease,transform 0.15s ease; z-index:10;">
+                <div class="p-1.5 space-y-0.5">
+                  <a href={enUrl} role="option" aria-selected={lang !== 'es' ? 'true' : 'false'} data-lang-option="en" class={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-colors ${lang !== 'es' ? 'font-semibold' : 'hover:bg-white/5'}`} style={lang !== 'es' ? 'color:white; background:rgba(30,111,255,0.2);' : 'color:rgba(148,163,184,0.7);'}>
+                    <span aria-hidden="true">🇬🇧</span> English
+                    {lang !== 'es' && <svg class="w-3 h-3 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>}
+                  </a>
+                  <a href={esUrl} role="option" aria-selected={lang === 'es' ? 'true' : 'false'} data-lang-option="es" class={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-colors ${lang === 'es' ? 'font-semibold' : 'hover:bg-white/5'}`} style={lang === 'es' ? 'color:white; background:rgba(30,111,255,0.2);' : 'color:rgba(148,163,184,0.7);'}>
+                    <span aria-hidden="true">🇪🇸</span> Español
+                    {lang === 'es' && <svg class="w-3 h-3 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <span style="color:rgba(255,255,255,0.05);" aria-hidden="true">|</span>
             <div class="flex items-center gap-1.5 text-xs" style="color:rgba(148,163,184,0.4);">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" aria-hidden="true"></span>
               Cloudflare Edge Network
@@ -798,6 +873,78 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible') })
       }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' })
       document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade, .line-draw').forEach(el => scrollObserver.observe(el))
+    </script>
+
+    <script>
+      // Language dropdown (🌐) + localStorage preference persistence
+      const LANG_PREF_KEY = 'lang-preference'
+
+      // Save preference on manual selection — no auto-redirect to avoid loops
+      document.querySelectorAll('[data-lang-option]').forEach(el => {
+        el.addEventListener('click', () => {
+          const v = (el as HTMLElement).dataset.langOption
+          if (v) localStorage.setItem(LANG_PREF_KEY, v)
+        })
+      })
+
+      const langDropdowns = Array.from(document.querySelectorAll('[data-lang-dropdown]'))
+
+      function closeLangDropdown(wrapper: Element) {
+        const m = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-menu]')
+        const b = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-btn]')
+        const c = wrapper.querySelector<HTMLElement>('[data-lang-chevron]')
+        const style = (wrapper as HTMLElement).dataset.langStyle
+        if (m) {
+          if (style === 'mobile') {
+            m.style.maxHeight = '0'; m.style.opacity = '0'
+          } else {
+            m.style.opacity = '0'; m.style.pointerEvents = 'none'
+            m.style.transform = style === 'footer' ? 'translateY(6px)' : 'translateY(-6px)'
+          }
+        }
+        if (b) b.setAttribute('aria-expanded', 'false')
+        if (c) c.style.transform = ''
+      }
+
+      function closeAllLangDropdowns() { langDropdowns.forEach(w => closeLangDropdown(w)) }
+
+      langDropdowns.forEach(wrapper => {
+        const btn     = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-btn]')
+        const menu    = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-menu]')
+        const chevron = wrapper.querySelector<HTMLElement>('[data-lang-chevron]')
+        const style   = (wrapper as HTMLElement).dataset.langStyle
+        if (!btn || !menu) return
+
+        function openLang() {
+          closeAllLangDropdowns()
+          if (style === 'mobile') {
+            menu!.style.maxHeight = menu!.scrollHeight + 'px'
+            menu!.style.opacity = '1'
+          } else {
+            menu!.style.opacity = '1'
+            menu!.style.pointerEvents = 'auto'
+            menu!.style.transform = 'translateY(0)'
+          }
+          btn!.setAttribute('aria-expanded', 'true')
+          if (chevron) chevron.style.transform = 'rotate(180deg)'
+        }
+
+        btn.addEventListener('click', e => {
+          e.stopPropagation()
+          btn!.getAttribute('aria-expanded') === 'true' ? closeLangDropdown(wrapper) : openLang()
+        })
+        btn.addEventListener('keydown', (e: KeyboardEvent) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn!.getAttribute('aria-expanded') === 'true' ? closeLangDropdown(wrapper) : openLang() }
+          if (e.key === 'Escape') closeLangDropdown(wrapper)
+        })
+      })
+
+      document.addEventListener('click', (e: MouseEvent) => {
+        if (!langDropdowns.some(w => w.contains(e.target as Node))) closeAllLangDropdowns()
+      })
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape') closeAllLangDropdowns()
+      })
     </script>
 
     <script>
