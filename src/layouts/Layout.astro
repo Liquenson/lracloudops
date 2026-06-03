@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import { getLangFromUrl } from '../i18n'
+import AgentChat from '../components/AgentChat.astro'
 
 interface Props {
   titulo: string
@@ -970,5 +971,6 @@ const isHomeActive      = currentPath === '/' || currentPath === '/es'
       document.querySelectorAll('.counter-value').forEach(el => counterObserver.observe(el))
     </script>
 
+    {lang !== 'es' && <AgentChat />}
   </body>
 </html>
