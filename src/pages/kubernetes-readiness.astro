@@ -185,6 +185,25 @@ function showResult() {
           <p class="text-sm leading-relaxed" style="color:#64748b;">${r.desc}</p>
         </div>
       </div>
+
+      <div id="email-capture" style="margin: 1.5rem 0; padding: 1.5rem; background: #EEF4FF; border-radius: 12px; border: 1px solid #C7D7FD;">
+        <p style="font-weight: 600; color: #0A2540; margin-bottom: 0.5rem;">Get your personalized action plan by email</p>
+        <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 1rem;">We\'ll send you a detailed roadmap based on your score. No spam.</p>
+        <form id="assessment-email-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485">
+          <input type="hidden" name="subject" id="assessment-subject">
+          <input type="hidden" name="assessment_score" id="assessment-score-field">
+          <input type="hidden" name="assessment_level" id="assessment-level-field">
+          <input type="email" name="email" placeholder="your@email.com" required
+            style="flex: 1; min-width: 200px; padding: 0.75rem 1rem; border: 1px solid #C7D7FD; border-radius: 8px; font-size: 0.875rem;">
+          <button type="submit"
+            style="padding: 0.75rem 1.5rem; background: #1E6FFF; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+            Send my plan →
+          </button>
+        </form>
+        <p id="email-success" style="display:none; color: #16a34a; font-size: 0.875rem; margin-top: 0.75rem;">✓ Check your inbox! We\'ll send your plan within 24 hours.</p>
+      </div>
+
       <a href="${CAL}" target="_blank" rel="noopener noreferrer"
         class="inline-flex items-center gap-2 text-sm font-bold px-6 py-3.5 rounded-xl transition-all hover:opacity-90 hover:-translate-y-px"
         style="background:${r.color};color:white;box-shadow:0 4px 16px rgba(0,0,0,0.15);">
@@ -193,6 +212,28 @@ function showResult() {
     </div>
     <button onclick="location.reload()" class="text-sm font-medium hover:opacity-70 transition-opacity" style="color:#64748b;">← Retake assessment</button>`
 }
+
+
+  // Email capture setup
+  const subjEl = document.getElementById('assessment-subject') as HTMLInputElement
+  const scoreEl2 = document.getElementById('assessment-score-field') as HTMLInputElement
+  const levelEl = document.getElementById('assessment-level-field') as HTMLInputElement
+  if (subjEl) subjEl.value = `Kubernetes Readiness Assessment — Score ${score}/${maxScore} (${r.title})`
+  if (scoreEl2) scoreEl2.value = String(score)
+  if (levelEl) levelEl.value = r.title
+  const emailForm = document.getElementById('assessment-email-form') as HTMLFormElement
+  emailForm?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const fd = new FormData(emailForm)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+      if (res.ok) {
+        emailForm.style.display = 'none'
+        const ok = document.getElementById('email-success')
+        if (ok) ok.style.display = 'block'
+      }
+    } catch {}
+  })
 
 ;(window as any).selectAnswer = selectAnswer
 render()

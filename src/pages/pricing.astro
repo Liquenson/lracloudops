@@ -52,7 +52,7 @@ const faqSchema = {
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
     <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"></div>
-    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
+    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-10 sm:py-14 text-center">
       <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
         Engagement Models
       </span>
@@ -68,52 +68,6 @@ const faqSchema = {
   <!-- PRICING TIERS -->
   <section class="py-20 bg-white" aria-labelledby="pricing-heading">
     <div class="max-w-6xl mx-auto px-6">
-
-      <div class="text-center mb-12">
-        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
-          Engagement models
-        </span>
-        <h2 id="pricing-heading" class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Choose your engagement</h2>
-        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
-          Every engagement includes an initial technical assessment. We define scope before any commitment.
-        </p>
-      </div>
-
-      <!-- Why engagement vs. hiring -->
-      <div class="mb-16 rounded-2xl overflow-hidden" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
-        <div class="px-7 py-5" style="background: #0A2540;">
-          <h3 class="text-base font-bold text-white">Why engagement vs. hiring full-time?</h3>
-          <p class="text-sm mt-1" style="color: rgba(147,184,255,0.7);">A direct comparison across cost, time-to-start and accountability.</p>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr style="border-bottom: 1px solid #e2e8f0;">
-                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #94a3b8; background: #f8fafc;"></th>
-                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #1E6FFF; background: #EEF4FF;">LRA Cloud Ops</th>
-                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #64748b; background: #f8fafc;">DevOps FTE (Spain)</th>
-                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #64748b; background: #f8fafc;">Big Consultancy</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { label: 'Cost', lra: '€8K–25K/project', fte: '€45K–70K/year + benefits', big: '€150K–400K/project' },
-                { label: 'Start time', lra: '1–2 weeks', fte: '2–4 months hiring', big: '3–6 months' },
-                { label: 'Senior access', lra: 'Direct', fte: 'Depends on hire', big: 'Via account manager' },
-                { label: 'Accountability', lra: 'Full ownership', fte: 'Internal politics', big: 'Diluted' },
-                { label: 'Flexibility', lra: 'Scope-based', fte: 'Fixed headcount', big: 'Contract lock-in' },
-              ].map(({ label, lra, fte, big }, i) => (
-                <tr style={i % 2 === 0 ? 'background: white;' : 'background: #fafbfc;'}>
-                  <td class="px-6 py-3.5 text-xs font-bold" style="color: #0A2540;">{label}</td>
-                  <td class="px-6 py-3.5 text-xs font-semibold" style="color: #1E6FFF; background: rgba(238,244,255,0.5);">{lra}</td>
-                  <td class="px-6 py-3.5 text-xs" style="color: #64748b;">{fte}</td>
-                  <td class="px-6 py-3.5 text-xs" style="color: #64748b;">{big}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
@@ -275,6 +229,42 @@ const faqSchema = {
         <a href="/contact" class="text-sm font-semibold px-5 py-2.5 rounded-xl flex-shrink-0 transition-all hover:opacity-90" style="background: #0A2540; color: white;">
           Discuss your scope →
         </a>
+      </div>
+
+      <!-- Why engagement vs. hiring -->
+      <div class="mb-16 rounded-2xl overflow-hidden" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);">
+        <div class="px-7 py-5" style="background: #0A2540;">
+          <h3 class="text-base font-bold text-white">Why engagement vs. hiring full-time?</h3>
+          <p class="text-sm mt-1" style="color: rgba(147,184,255,0.7);">A direct comparison across cost, time-to-start and accountability.</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr style="border-bottom: 1px solid #e2e8f0;">
+                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #94a3b8; background: #f8fafc;"></th>
+                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #1E6FFF; background: #EEF4FF;">LRA Cloud Ops</th>
+                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #64748b; background: #f8fafc;">DevOps FTE (Spain)</th>
+                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #64748b; background: #f8fafc;">Big Consultancy</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { label: 'Cost', lra: '€8K–25K/project', fte: '€45K–70K/year + benefits', big: '€150K–400K/project' },
+                { label: 'Start time', lra: '1–2 weeks', fte: '2–4 months hiring', big: '3–6 months' },
+                { label: 'Senior access', lra: 'Direct', fte: 'Depends on hire', big: 'Via account manager' },
+                { label: 'Accountability', lra: 'Full ownership', fte: 'Internal politics', big: 'Diluted' },
+                { label: 'Flexibility', lra: 'Scope-based', fte: 'Fixed headcount', big: 'Contract lock-in' },
+              ].map(({ label, lra, fte, big }, i) => (
+                <tr style={i % 2 === 0 ? 'background: white;' : 'background: #fafbfc;'}>
+                  <td class="px-6 py-3.5 text-xs font-bold" style="color: #0A2540;">{label}</td>
+                  <td class="px-6 py-3.5 text-xs font-semibold" style="color: #1E6FFF; background: rgba(238,244,255,0.5);">{lra}</td>
+                  <td class="px-6 py-3.5 text-xs" style="color: #64748b;">{fte}</td>
+                  <td class="px-6 py-3.5 text-xs" style="color: #64748b;">{big}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>

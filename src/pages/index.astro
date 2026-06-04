@@ -68,6 +68,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           </a>
         </div>
 
+        <p style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 1rem;">
+          Trusted by 15+ engineering teams across healthcare, fintech and cloud-native companies
+        </p>
+
         <!-- Trust indicators -->
         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
           {['Response within 24h', 'No lock-in contracts'].map(item => (
