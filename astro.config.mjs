@@ -24,28 +24,31 @@ export default defineConfig({
       priority: 0.7,
       serialize(item) {
         const url = item.url
-        if (url === 'https://lracloudops.com/' || url === 'https://lracloudops.com/es') {
+        const path = url.replace('https://lracloudops.com', '')
+        if (path === '/' || path === '/es' || path === '/es/') {
           item.priority = 1.0
         } else if (
-          url.includes('/services') ||
-          url.includes('/solutions') ||
-          url.includes('/pricing')
+          /^\/(services|pricing|assessment)\/?$/.test(path) ||
+          /^\/es\/(servicios|pricing|assessment)\/?$/.test(path)
         ) {
           item.priority = 0.9
         } else if (
-          url.includes('/about') ||
-          url.includes('/contact') ||
-          url.includes('/nosotros') ||
-          url.includes('/contacto') ||
-          url.includes('/why-lra') ||
-          url.includes('/security')
+          /^\/(about|contact|certifications|why-lra|projects|blog|resources)\/?$/.test(path) ||
+          /^\/es\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(path)
         ) {
           item.priority = 0.8
         } else if (
           url.includes('/blog/') ||
-          url.includes('/projects/')
+          url.includes('/projects/') ||
+          url.includes('/solutions/') ||
+          url.includes('/industries/')
         ) {
           item.priority = 0.7
+        } else if (
+          /^\/(security|privacy|terms)\/?$/.test(path) ||
+          /^\/es\/(security|privacy|terms)\/?$/.test(path)
+        ) {
+          item.priority = 0.5
         }
         return item
       },
