@@ -58,7 +58,8 @@ export const ui = {
     'footer.bookConsultation': 'Book a Consultation',
 
     // Footer — brand / status
-    'footer.tagline': 'Cloud infrastructure, Kubernetes platforms and DevOps automation. Production AWS environments built as code.',
+    'footer.tagline':
+      'Cloud infrastructure, Kubernetes platforms and DevOps automation. Production AWS environments built as code.',
     'footer.available': 'Available for new projects',
     'footer.copyright': '© 2026 LRA Cloud Ops. All rights reserved.',
     'footer.edge': 'Cloudflare Edge Network',
@@ -119,7 +120,8 @@ export const ui = {
     'footer.bookConsultation': 'Reservar consulta',
 
     // Footer — brand / status
-    'footer.tagline': 'Infraestructura cloud, plataformas Kubernetes y automatización DevOps. Entornos AWS de producción construidos como código.',
+    'footer.tagline':
+      'Infraestructura cloud, plataformas Kubernetes y automatización DevOps. Entornos AWS de producción construidos como código.',
     'footer.available': 'Disponible para nuevos proyectos',
     'footer.copyright': '© 2026 LRA Cloud Ops. Todos los derechos reservados.',
     'footer.edge': 'Cloudflare Edge Network',

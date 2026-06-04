@@ -7,7 +7,8 @@ const schema = {
   '@id': 'https://lracloudops.com/observability#service',
   name: 'Observability Engineering',
   serviceType: 'Monitoring, Alerting & SRE',
-  description: 'Structured logs, distributed traces and metrics that tell you what failed, where, and why — before your users report it. Alerting on symptoms, not thresholds.',
+  description:
+    'Structured logs, distributed traces and metrics that tell you what failed, where, and why — before your users report it. Alerting on symptoms, not thresholds.',
   url: 'https://lracloudops.com/observability',
   provider: { '@id': 'https://lracloudops.com/#organization' },
   areaServed: ['ES', 'US', 'LATAM'],
@@ -15,10 +16,25 @@ const schema = {
     '@type': 'OfferCatalog',
     name: 'Observability Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Prometheus & Grafana Setup' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CloudWatch Container Insights' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SLI/SLO Definition' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Alerting Design' } },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'Prometheus & Grafana Setup' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'CloudWatch Container Insights',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'SLI/SLO Definition' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'Alerting Design' },
+      },
     ],
   },
 }
@@ -33,34 +49,102 @@ const schema = {
   schema={schema}
   sectionNumber="04"
   challenges={[
-    { title: 'Discovering failures through user reports', desc: 'The first indication of a problem is a support ticket. By the time the team investigates, the blast radius has already expanded.' },
-    { title: 'Dashboards built after incidents', desc: 'Monitoring that covers what broke last time misses what will break next time. Reactive observability is not observability.' },
-    { title: 'Alerting on the wrong signals', desc: 'CPU and memory thresholds alert on causes, not symptoms. Teams spend time investigating non-events while real failures go undetected.' },
-    { title: 'No SLIs or error budgets', desc: 'Without defined service level indicators, every incident is equally urgent. No error budget means no rational basis for prioritizing reliability work.' },
+    {
+      title: 'Discovering failures through user reports',
+      desc: 'The first indication of a problem is a support ticket. By the time the team investigates, the blast radius has already expanded.',
+    },
+    {
+      title: 'Dashboards built after incidents',
+      desc: 'Monitoring that covers what broke last time misses what will break next time. Reactive observability is not observability.',
+    },
+    {
+      title: 'Alerting on the wrong signals',
+      desc: 'CPU and memory thresholds alert on causes, not symptoms. Teams spend time investigating non-events while real failures go undetected.',
+    },
+    {
+      title: 'No SLIs or error budgets',
+      desc: 'Without defined service level indicators, every incident is equally urgent. No error budget means no rational basis for prioritizing reliability work.',
+    },
   ]}
   archTitle="The observability stack we deliver."
   archSubtitle="Three pillars — metrics, logs and alerting — configured before the first workload reaches production."
   layers={[
-    { layer: 'Metrics Collection', tools: 'Prometheus · ServiceMonitors · PodMonitors · kube-state-metrics', desc: 'Prometheus scrapes workload and cluster metrics from deployment day. Custom metrics exposed via standard /metrics endpoints. No vendor lock-in.' },
-    { layer: 'Visualization', tools: 'Grafana · Pre-built dashboards · Infrastructure + application panels', desc: 'Grafana dashboards covering Kubernetes cluster health, workload performance and application-level metrics in a single view.' },
-    { layer: 'Cloud Monitoring', tools: 'CloudWatch · Container Insights · Log Insights · Alarms', desc: 'CloudWatch Container Insights for EKS and ECS workloads. Alarms on latency, error rates and queue depth — not raw CPU.' },
-    { layer: 'Alerting', tools: 'Alertmanager · PagerDuty · Slack · Routing rules', desc: 'Alert routing by severity and team. On-call receives actionable alerts with runbook links, not raw metric dumps.' },
-    { layer: 'SLIs and SLOs', tools: 'Error budgets · Burn rate alerts · Multi-window alerting', desc: 'Service level indicators defined at design time. Error budget burn rate alerts before the budget is exhausted, not after.' },
-    { layer: 'Log Management', tools: 'Structured JSON logs · CloudWatch Logs · Log Insights queries', desc: 'Structured logging from application startup. Log Insights queries pre-built for the most common failure modes.' },
+    {
+      layer: 'Metrics Collection',
+      tools: 'Prometheus · ServiceMonitors · PodMonitors · kube-state-metrics',
+      desc: 'Prometheus scrapes workload and cluster metrics from deployment day. Custom metrics exposed via standard /metrics endpoints. No vendor lock-in.',
+    },
+    {
+      layer: 'Visualization',
+      tools:
+        'Grafana · Pre-built dashboards · Infrastructure + application panels',
+      desc: 'Grafana dashboards covering Kubernetes cluster health, workload performance and application-level metrics in a single view.',
+    },
+    {
+      layer: 'Cloud Monitoring',
+      tools: 'CloudWatch · Container Insights · Log Insights · Alarms',
+      desc: 'CloudWatch Container Insights for EKS and ECS workloads. Alarms on latency, error rates and queue depth — not raw CPU.',
+    },
+    {
+      layer: 'Alerting',
+      tools: 'Alertmanager · PagerDuty · Slack · Routing rules',
+      desc: 'Alert routing by severity and team. On-call receives actionable alerts with runbook links, not raw metric dumps.',
+    },
+    {
+      layer: 'SLIs and SLOs',
+      tools: 'Error budgets · Burn rate alerts · Multi-window alerting',
+      desc: 'Service level indicators defined at design time. Error budget burn rate alerts before the budget is exhausted, not after.',
+    },
+    {
+      layer: 'Log Management',
+      tools: 'Structured JSON logs · CloudWatch Logs · Log Insights queries',
+      desc: 'Structured logging from application startup. Log Insights queries pre-built for the most common failure modes.',
+    },
   ]}
   steps={[
-    { step: '01', title: 'Observability audit', desc: 'Review what is currently instrumented, what is missing and what alert fatigue exists before adding more noise.' },
-    { step: '02', title: 'SLI definition', desc: 'Define service level indicators for each workload — availability, latency, error rate — before writing a single alert rule.' },
-    { step: '03', title: 'Instrumentation rollout', desc: 'Deploy Prometheus, configure ServiceMonitors and validate metric collection in staging before production.' },
-    { step: '04', title: 'Alerting and runbooks', desc: 'Configure alert routing, build Grafana dashboards and write runbooks for the top failure modes before go-live.' },
+    {
+      step: '01',
+      title: 'Observability audit',
+      desc: 'Review what is currently instrumented, what is missing and what alert fatigue exists before adding more noise.',
+    },
+    {
+      step: '02',
+      title: 'SLI definition',
+      desc: 'Define service level indicators for each workload — availability, latency, error rate — before writing a single alert rule.',
+    },
+    {
+      step: '03',
+      title: 'Instrumentation rollout',
+      desc: 'Deploy Prometheus, configure ServiceMonitors and validate metric collection in staging before production.',
+    },
+    {
+      step: '04',
+      title: 'Alerting and runbooks',
+      desc: 'Configure alert routing, build Grafana dashboards and write runbooks for the top failure modes before go-live.',
+    },
   ]}
   outcomes={[
-    { metric: 'Failures detected before user reports', detail: 'alerting on symptoms, not thresholds' },
-    { metric: 'SLIs tracked from day one', detail: 'not added after the first SLA breach' },
+    {
+      metric: 'Failures detected before user reports',
+      detail: 'alerting on symptoms, not thresholds',
+    },
+    {
+      metric: 'SLIs tracked from day one',
+      detail: 'not added after the first SLA breach',
+    },
     { metric: 'Mean time to detect reduced', detail: 'from hours to minutes' },
-    { metric: 'On-call receives actionable alerts', detail: 'with runbook links, not raw metrics' },
-    { metric: 'Error budgets defined', detail: 'rational basis for reliability prioritization' },
-    { metric: 'Infrastructure and application in one view', detail: 'single Grafana instance, no context switching' },
+    {
+      metric: 'On-call receives actionable alerts',
+      detail: 'with runbook links, not raw metrics',
+    },
+    {
+      metric: 'Error budgets defined',
+      detail: 'rational basis for reliability prioritization',
+    },
+    {
+      metric: 'Infrastructure and application in one view',
+      detail: 'single Grafana instance, no context switching',
+    },
   ]}
   ctaH2="Start with an observability review."
   ctaSubtitle="Bring your current monitoring setup. We identify what is missing, what is generating noise and what would actually detect your next outage before your users do."

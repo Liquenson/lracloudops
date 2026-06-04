@@ -7,7 +7,8 @@ const schema = {
   '@id': 'https://lracloudops.com/platform-engineering#service',
   name: 'Platform Engineering',
   serviceType: 'Internal Developer Platform',
-  description: 'Internal developer platforms built on Kubernetes, GitOps and policy-as-code. Self-service infrastructure that reduces deployment friction without reducing operational control.',
+  description:
+    'Internal developer platforms built on Kubernetes, GitOps and policy-as-code. Self-service infrastructure that reduces deployment friction without reducing operational control.',
   url: 'https://lracloudops.com/platform-engineering',
   provider: { '@id': 'https://lracloudops.com/#organization' },
   areaServed: ['ES', 'US', 'LATAM'],
@@ -15,10 +16,25 @@ const schema = {
     '@type': 'OfferCatalog',
     name: 'Platform Engineering Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kubernetes Platform Design' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'GitOps with ArgoCD' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Internal Developer Platform' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Policy as Code' } },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'Kubernetes Platform Design' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'GitOps with ArgoCD' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Internal Developer Platform',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'Policy as Code' },
+      },
     ],
   },
 }
@@ -33,34 +49,104 @@ const schema = {
   schema={schema}
   sectionNumber="02"
   challenges={[
-    { title: 'Deployment bottleneck through ops', desc: 'Every deployment requires a ticket to the platform team. Development velocity is constrained by operations capacity, not engineering output.' },
-    { title: 'Inconsistent cluster configuration', desc: 'Clusters configured manually diverge from each other. What works in dev fails in production for reasons that take hours to diagnose.' },
-    { title: 'No enforcement of standards', desc: 'Without policy, teams apply whatever resource limits and security configurations they prefer. Standards exist only in documentation nobody reads.' },
-    { title: 'Undocumented cluster knowledge', desc: 'Critical cluster configuration lives in the memory of the engineers who set it up. Runbooks do not exist. On-call is a guessing game.' },
+    {
+      title: 'Deployment bottleneck through ops',
+      desc: 'Every deployment requires a ticket to the platform team. Development velocity is constrained by operations capacity, not engineering output.',
+    },
+    {
+      title: 'Inconsistent cluster configuration',
+      desc: 'Clusters configured manually diverge from each other. What works in dev fails in production for reasons that take hours to diagnose.',
+    },
+    {
+      title: 'No enforcement of standards',
+      desc: 'Without policy, teams apply whatever resource limits and security configurations they prefer. Standards exist only in documentation nobody reads.',
+    },
+    {
+      title: 'Undocumented cluster knowledge',
+      desc: 'Critical cluster configuration lives in the memory of the engineers who set it up. Runbooks do not exist. On-call is a guessing game.',
+    },
   ]}
   archTitle="The platform components we deliver."
   archSubtitle="Each component reduces the operational surface your teams manage. Together, they form a self-service delivery platform."
   layers={[
-    { layer: 'Kubernetes Orchestration', tools: 'EKS 1.31+ · Node groups · Managed add-ons', desc: 'Fully managed EKS clusters with node groups defined in Terraform. Cluster upgrades are tested in dev before production. No manual kubectl apply in production.' },
-    { layer: 'GitOps Delivery', tools: 'ArgoCD · ApplicationSets · Auto-sync · Prune + selfHeal', desc: 'Git is the single source of truth. ArgoCD syncs cluster state from the repository. Manual changes are overwritten on the next sync cycle.' },
-    { layer: 'Workload Management', tools: 'Helm Charts · Kustomize · Per-environment values', desc: 'One Helm chart per service, promoted through environments by changing values files. Rollback is a git revert, not a kubectl command.' },
-    { layer: 'Autoscaling', tools: 'HPA · VPA · Cluster Autoscaler · KEDA', desc: 'Horizontal Pod Autoscaler configured at deployment time. Cluster Autoscaler provisions nodes before the workload needs them, not after.' },
-    { layer: 'Access Control', tools: 'RBAC · ServiceAccounts · OPA Gatekeeper · Namespace isolation', desc: 'Least-privilege service accounts per workload. OPA Gatekeeper enforces resource limits, image policies and security contexts before admission.' },
-    { layer: 'Local Development', tools: 'KinD · Tilt · Skaffold · Local registry', desc: 'Local Kubernetes cluster that mirrors the production configuration. Engineers test against real cluster behavior before opening a pull request.' },
+    {
+      layer: 'Kubernetes Orchestration',
+      tools: 'EKS 1.31+ · Node groups · Managed add-ons',
+      desc: 'Fully managed EKS clusters with node groups defined in Terraform. Cluster upgrades are tested in dev before production. No manual kubectl apply in production.',
+    },
+    {
+      layer: 'GitOps Delivery',
+      tools: 'ArgoCD · ApplicationSets · Auto-sync · Prune + selfHeal',
+      desc: 'Git is the single source of truth. ArgoCD syncs cluster state from the repository. Manual changes are overwritten on the next sync cycle.',
+    },
+    {
+      layer: 'Workload Management',
+      tools: 'Helm Charts · Kustomize · Per-environment values',
+      desc: 'One Helm chart per service, promoted through environments by changing values files. Rollback is a git revert, not a kubectl command.',
+    },
+    {
+      layer: 'Autoscaling',
+      tools: 'HPA · VPA · Cluster Autoscaler · KEDA',
+      desc: 'Horizontal Pod Autoscaler configured at deployment time. Cluster Autoscaler provisions nodes before the workload needs them, not after.',
+    },
+    {
+      layer: 'Access Control',
+      tools: 'RBAC · ServiceAccounts · OPA Gatekeeper · Namespace isolation',
+      desc: 'Least-privilege service accounts per workload. OPA Gatekeeper enforces resource limits, image policies and security contexts before admission.',
+    },
+    {
+      layer: 'Local Development',
+      tools: 'KinD · Tilt · Skaffold · Local registry',
+      desc: 'Local Kubernetes cluster that mirrors the production configuration. Engineers test against real cluster behavior before opening a pull request.',
+    },
   ]}
   steps={[
-    { step: '01', title: 'Platform requirements', desc: 'Map the deployment workflow, identify bottlenecks and define the self-service contract between platform and product teams.' },
-    { step: '02', title: 'Cluster design', desc: 'Design the EKS architecture, node group strategy, network policy and RBAC model before provisioning anything.' },
-    { step: '03', title: 'GitOps bootstrap', desc: 'Deploy ArgoCD, configure ApplicationSets for all environments and migrate existing workloads to GitOps delivery.' },
-    { step: '04', title: 'Policy and handover', desc: 'Implement admission policies, document the deployment workflow and run a platform walkthrough with the engineering team.' },
+    {
+      step: '01',
+      title: 'Platform requirements',
+      desc: 'Map the deployment workflow, identify bottlenecks and define the self-service contract between platform and product teams.',
+    },
+    {
+      step: '02',
+      title: 'Cluster design',
+      desc: 'Design the EKS architecture, node group strategy, network policy and RBAC model before provisioning anything.',
+    },
+    {
+      step: '03',
+      title: 'GitOps bootstrap',
+      desc: 'Deploy ArgoCD, configure ApplicationSets for all environments and migrate existing workloads to GitOps delivery.',
+    },
+    {
+      step: '04',
+      title: 'Policy and handover',
+      desc: 'Implement admission policies, document the deployment workflow and run a platform walkthrough with the engineering team.',
+    },
   ]}
   outcomes={[
-    { metric: 'Deployments without ops tickets', detail: 'teams ship by merging a pull request' },
-    { metric: 'Consistent cluster configuration', detail: 'every cluster provisioned from the same Terraform module' },
-    { metric: 'Policy enforced at admission', detail: 'not discovered at incident post-mortems' },
-    { metric: 'Rollback in under 2 minutes', detail: 'git revert, not manual intervention' },
-    { metric: 'Autoscaling without manual intervention', detail: 'HPA and Cluster Autoscaler handle load spikes' },
-    { metric: 'Local development mirrors production', detail: 'issues found before they reach a cluster' },
+    {
+      metric: 'Deployments without ops tickets',
+      detail: 'teams ship by merging a pull request',
+    },
+    {
+      metric: 'Consistent cluster configuration',
+      detail: 'every cluster provisioned from the same Terraform module',
+    },
+    {
+      metric: 'Policy enforced at admission',
+      detail: 'not discovered at incident post-mortems',
+    },
+    {
+      metric: 'Rollback in under 2 minutes',
+      detail: 'git revert, not manual intervention',
+    },
+    {
+      metric: 'Autoscaling without manual intervention',
+      detail: 'HPA and Cluster Autoscaler handle load spikes',
+    },
+    {
+      metric: 'Local development mirrors production',
+      detail: 'issues found before they reach a cluster',
+    },
   ]}
   ctaH2="Start with a platform review."
   ctaSubtitle="Bring your current Kubernetes setup or deployment workflow. We identify where friction is costing you velocity and outline what a self-service platform would look like for your team."

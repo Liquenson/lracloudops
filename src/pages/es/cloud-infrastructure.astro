@@ -7,7 +7,8 @@ const schema = {
   '@id': 'https://lracloudops.com/es/cloud-infrastructure#service',
   name: 'Infraestructura Cloud AWS',
   serviceType: 'Cloud Infrastructure',
-  description: 'Entornos AWS codificados con networking definido, límites de seguridad y políticas de acceso. Módulos Terraform auditables, versionados y reproducibles entre cuentas.',
+  description:
+    'Entornos AWS codificados con networking definido, límites de seguridad y políticas de acceso. Módulos Terraform auditables, versionados y reproducibles entre cuentas.',
   url: 'https://lracloudops.com/es/cloud-infrastructure',
   provider: { '@id': 'https://lracloudops.com/#organization' },
   areaServed: 'Worldwide',
@@ -24,34 +25,105 @@ const schema = {
   schema={schema}
   sectionNumber="01"
   challenges={[
-    { title: 'Deriva de configuración', desc: 'Los entornos divergen de su estado previsto con el tiempo. Nadie sabe qué cambió, cuándo ni por qué. Reproducir el entorno desde cero es imposible.' },
-    { title: 'Estado no documentado', desc: 'Los recursos creados desde la consola no tienen registro de auditoría. Cuando el ingeniero que los aprovisionó se va, el conocimiento se va con él.' },
-    { title: 'Dependencia manual de personas', desc: 'Cada nueva cuenta, región o entorno requiere trabajo manual. Escalar la plataforma requiere escalar el personal.' },
-    { title: 'Seguridad aplicada a posteriori', desc: 'Los grupos de seguridad, políticas IAM y límites de red añadidos retroactivamente son inconsistentes y con frecuencia incompletos.' },
+    {
+      title: 'Deriva de configuración',
+      desc: 'Los entornos divergen de su estado previsto con el tiempo. Nadie sabe qué cambió, cuándo ni por qué. Reproducir el entorno desde cero es imposible.',
+    },
+    {
+      title: 'Estado no documentado',
+      desc: 'Los recursos creados desde la consola no tienen registro de auditoría. Cuando el ingeniero que los aprovisionó se va, el conocimiento se va con él.',
+    },
+    {
+      title: 'Dependencia manual de personas',
+      desc: 'Cada nueva cuenta, región o entorno requiere trabajo manual. Escalar la plataforma requiere escalar el personal.',
+    },
+    {
+      title: 'Seguridad aplicada a posteriori',
+      desc: 'Los grupos de seguridad, políticas IAM y límites de red añadidos retroactivamente son inconsistentes y con frecuencia incompletos.',
+    },
   ]}
   archTitle="El stack de plataforma que entregamos."
   archSubtitle="Cada capa está versionada, es auditable y recuperable. Sin aprovisionamiento manual, sin configuración solo por consola."
   layers={[
-    { layer: 'Fundación de Red', tools: 'Terraform · VPC · Subnets · NAT Gateway · IGW', desc: 'VPC Multi-AZ con subnets públicas para balanceadores y privadas para cómputo y datos. Ningún componente de backend tiene IP pública.' },
-    { layer: 'Capa de Cómputo', tools: 'EKS 1.31+ · ECS Fargate · EC2 Auto Scaling', desc: 'Clústeres Kubernetes o tareas Fargate según los requisitos de la carga de trabajo. Node groups gestionados como código. HPA configurado en el momento del aprovisionamiento.' },
-    { layer: 'Capa de Datos', tools: 'RDS PostgreSQL 15 · Multi-AZ · Cifrado · Subnets privadas', desc: 'Bases de datos gestionadas en subnets privadas con failover automático, backups de 7 días y cifrado en reposo. Acceso por grupo de seguridad restringido solo a la capa de cómputo.' },
-    { layer: 'Distribución de Contenido', tools: 'CloudFront · S3 · Route 53 · ACM', desc: 'CDN, hosting de assets estáticos y DNS gestionados como código. Certificados TLS aprovisionados y rotados automáticamente.' },
-    { layer: 'Identidad y Acceso', tools: 'IAM · OIDC · Políticas de mínimo privilegio · Sin credenciales estáticas', desc: 'Autenticación basada en OIDC para pipelines CI/CD — sin claves de acceso de larga duración. Roles y políticas IAM definidos en Terraform y revisados antes de aplicar.' },
-    { layer: 'Gestión de Estado', tools: 'S3 backend · Bloqueo DynamoDB · SSE-S3 · Workspaces', desc: 'Estado Terraform remoto con cifrado y bloqueo distribuido. Workspaces separados para dev y producción — sin archivos de estado compartidos.' },
+    {
+      layer: 'Fundación de Red',
+      tools: 'Terraform · VPC · Subnets · NAT Gateway · IGW',
+      desc: 'VPC Multi-AZ con subnets públicas para balanceadores y privadas para cómputo y datos. Ningún componente de backend tiene IP pública.',
+    },
+    {
+      layer: 'Capa de Cómputo',
+      tools: 'EKS 1.31+ · ECS Fargate · EC2 Auto Scaling',
+      desc: 'Clústeres Kubernetes o tareas Fargate según los requisitos de la carga de trabajo. Node groups gestionados como código. HPA configurado en el momento del aprovisionamiento.',
+    },
+    {
+      layer: 'Capa de Datos',
+      tools: 'RDS PostgreSQL 15 · Multi-AZ · Cifrado · Subnets privadas',
+      desc: 'Bases de datos gestionadas en subnets privadas con failover automático, backups de 7 días y cifrado en reposo. Acceso por grupo de seguridad restringido solo a la capa de cómputo.',
+    },
+    {
+      layer: 'Distribución de Contenido',
+      tools: 'CloudFront · S3 · Route 53 · ACM',
+      desc: 'CDN, hosting de assets estáticos y DNS gestionados como código. Certificados TLS aprovisionados y rotados automáticamente.',
+    },
+    {
+      layer: 'Identidad y Acceso',
+      tools:
+        'IAM · OIDC · Políticas de mínimo privilegio · Sin credenciales estáticas',
+      desc: 'Autenticación basada en OIDC para pipelines CI/CD — sin claves de acceso de larga duración. Roles y políticas IAM definidos en Terraform y revisados antes de aplicar.',
+    },
+    {
+      layer: 'Gestión de Estado',
+      tools: 'S3 backend · Bloqueo DynamoDB · SSE-S3 · Workspaces',
+      desc: 'Estado Terraform remoto con cifrado y bloqueo distribuido. Workspaces separados para dev y producción — sin archivos de estado compartidos.',
+    },
   ]}
   steps={[
-    { step: '01', title: 'Evaluación del estado actual', desc: 'Revisamos la arquitectura existente, documentamos brechas e identificamos áreas de riesgo antes de escribir una línea de Terraform.' },
-    { step: '02', title: 'Diseño de módulos', desc: 'Diseñamos módulos Terraform reutilizables e independientemente desplegables con contratos claros de entrada/salida.' },
-    { step: '03', title: 'Aprovisionamiento del entorno', desc: 'Desplegamos primero el entorno de desarrollo. Validamos end-to-end antes de aplicar la misma configuración a producción.' },
-    { step: '04', title: 'Observabilidad y entrega', desc: 'Alarmas CloudWatch, alertas de coste y runbooks entregados junto con la infraestructura — no como una tarea adicional.' },
+    {
+      step: '01',
+      title: 'Evaluación del estado actual',
+      desc: 'Revisamos la arquitectura existente, documentamos brechas e identificamos áreas de riesgo antes de escribir una línea de Terraform.',
+    },
+    {
+      step: '02',
+      title: 'Diseño de módulos',
+      desc: 'Diseñamos módulos Terraform reutilizables e independientemente desplegables con contratos claros de entrada/salida.',
+    },
+    {
+      step: '03',
+      title: 'Aprovisionamiento del entorno',
+      desc: 'Desplegamos primero el entorno de desarrollo. Validamos end-to-end antes de aplicar la misma configuración a producción.',
+    },
+    {
+      step: '04',
+      title: 'Observabilidad y entrega',
+      desc: 'Alarmas CloudWatch, alertas de coste y runbooks entregados junto con la infraestructura — no como una tarea adicional.',
+    },
   ]}
   outcomes={[
-    { metric: 'Cualquier entorno reproducible', detail: 'desde un único terraform apply' },
-    { metric: 'Cero configuración manual', detail: 'cada recurso definido como código' },
-    { metric: 'Registro de auditoría completo', detail: 'cada cambio ligado a un commit y un revisor' },
-    { metric: 'Recuperación ante desastres probada', detail: 'reproducibilidad verificada antes de producción' },
-    { metric: 'Seguridad aplicada en aprovisionamiento', detail: 'no tras la primera revisión de seguridad' },
-    { metric: 'Nuevos entornos en minutos', detail: 'no días de trabajo manual' },
+    {
+      metric: 'Cualquier entorno reproducible',
+      detail: 'desde un único terraform apply',
+    },
+    {
+      metric: 'Cero configuración manual',
+      detail: 'cada recurso definido como código',
+    },
+    {
+      metric: 'Registro de auditoría completo',
+      detail: 'cada cambio ligado a un commit y un revisor',
+    },
+    {
+      metric: 'Recuperación ante desastres probada',
+      detail: 'reproducibilidad verificada antes de producción',
+    },
+    {
+      metric: 'Seguridad aplicada en aprovisionamiento',
+      detail: 'no tras la primera revisión de seguridad',
+    },
+    {
+      metric: 'Nuevos entornos en minutos',
+      detail: 'no días de trabajo manual',
+    },
   ]}
   ctaH2="Empieza con una revisión de infraestructura."
   ctaSubtitle="Trae tu entorno AWS actual. Evaluamos reproducibilidad, postura de seguridad y gestión de estado — y trazamos un camino concreto hacia infraestructura codificada."

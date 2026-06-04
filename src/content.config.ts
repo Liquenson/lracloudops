@@ -37,16 +37,24 @@ const projects = defineCollection({
     featured: z.boolean().default(false),
     iconPath: z.string().optional(),
     draft: z.boolean().default(false),
-    metricas: z.array(z.object({
-      label: z.string(),
-      value: z.string(),
-    })).optional(),
+    metricas: z
+      .array(
+        z.object({
+          label: z.string(),
+          value: z.string(),
+        })
+      )
+      .optional(),
     highlights: z.array(z.string()).optional(),
     outcomes: z.array(z.string()).optional(),
-    arquitectura: z.array(z.object({
-      nombre: z.string(),
-      descripcion: z.string(),
-    })).optional(),
+    arquitectura: z
+      .array(
+        z.object({
+          nombre: z.string(),
+          descripcion: z.string(),
+        })
+      )
+      .optional(),
   }),
 })
 

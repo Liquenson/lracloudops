@@ -7,21 +7,40 @@ import Layout from '../../layouts/Layout.astro'
   descripcion="Recursos de ingeniería de nivel producción: checklists AWS, guías de seguridad Kubernetes, playbooks GitOps y mejores prácticas Terraform. Descarga gratuita."
   keywords="recursos DevOps, checklist AWS producción, guía seguridad Kubernetes, playbook GitOps, mejores prácticas Terraform, PDF ingeniería cloud"
 >
-
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.2) 0%, transparent 65%);"></div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.2) 0%, transparent 65%);"
+    >
+    </div>
 
-    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
-      <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <span
+        class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
+        style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
+      >
         Recursos Gratuitos
       </span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6" style="letter-spacing: -0.02em;">
+      <h1
+        class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
+        style="letter-spacing: -0.02em;"
+      >
         Recursos Técnicos
       </h1>
-      <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-4" style="color: rgba(147,184,255,0.8);">
-        Guías y recursos basados en despliegues reales en AWS, Kubernetes y GitOps. Usados por nuestro equipo en cada engagement. Descarga gratuita.
+      <p
+        class="text-lg leading-relaxed max-w-2xl mx-auto mb-4"
+        style="color: rgba(147,184,255,0.8);"
+      >
+        Guías y recursos basados en despliegues reales en AWS, Kubernetes y
+        GitOps. Usados por nuestro equipo en cada engagement. Descarga gratuita.
       </p>
       <p class="text-sm font-medium" style="color: rgba(147,184,255,0.5);">
         Guías PDF &middot; Sin spam &middot; Enviadas a tu bandeja de entrada
@@ -32,402 +51,1210 @@ import Layout from '../../layouts/Layout.astro'
   <!-- ─── RECURSOS GRID ─────────────────────────────────────────────────── -->
   <section class="py-20" style="background: #F8FAFC;">
     <div class="max-w-5xl mx-auto px-6">
-
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
-
         <!-- Checklist de Preparación AWS para Producción -->
-        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #FF9900; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+        <div
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
+          style="border: 1px solid #e2e8f0; border-left: 4px solid #FF9900; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+        >
           <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); box-shadow: 0 4px 12px rgba(255,153,0,0.3);">
-              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6" />
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0"
+              style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); box-shadow: 0 4px 12px rgba(255,153,0,0.3);"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"></path>
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #FF9900;">AWS &middot; Checklist</span>
-              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Checklist de Preparación AWS para Producción</h2>
+              <span
+                class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                style="color: #FF9900;">AWS &middot; Checklist</span
+              >
+              <h2
+                class="text-base font-bold leading-tight"
+                style="color: #0A2540;"
+              >
+                Checklist de Preparación AWS para Producción
+              </h2>
             </div>
           </div>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            47 comprobaciones en seguridad, fiabilidad, rendimiento y optimización de costes. Usado por nuestro equipo antes de cada go-live en AWS. Cubre VPC, IAM, RDS, EKS, CloudFront, Route 53 y monitorización.
+          <p
+            class="text-sm leading-relaxed mb-5 flex-1"
+            style="color: #64748b;"
+          >
+            47 comprobaciones en seguridad, fiabilidad, rendimiento y
+            optimización de costes. Usado por nuestro equipo antes de cada
+            go-live en AWS. Cubre VPC, IAM, RDS, EKS, CloudFront, Route 53 y
+            monitorización.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
-            {['Seguridad', 'IAM', 'VPC', 'RDS', 'EKS', 'CloudFront'].map(tag => (
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #FFF8EE; color: #B45309; border: 1px solid #FDE68A;">{tag}</span>
-            ))}
+            {
+              ['Seguridad', 'IAM', 'VPC', 'RDS', 'EKS', 'CloudFront'].map(
+                (tag) => (
+                  <span
+                    class="text-xs font-medium px-2.5 py-1 rounded-full"
+                    style="background: #FFF8EE; color: #B45309; border: 1px solid #FDE68A;"
+                  >
+                    {tag}
+                  </span>
+                )
+              )
+            }
           </div>
-          <div class="flex items-center gap-2 text-xs mb-5" style="color: #64748b;">
-            <svg class="w-4 h-4 flex-shrink-0" style="color: #FF9900;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <div
+            class="flex items-center gap-2 text-xs mb-5"
+            style="color: #64748b;"
+          >
+            <svg
+              class="w-4 h-4 flex-shrink-0"
+              style="color: #FF9900;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
             </svg>
-            <span><strong style="color: #0A2540;">47 comprobaciones</strong> &middot; PDF &middot; Gratis</span>
+            <span
+              ><strong style="color: #0A2540;">47 comprobaciones</strong> &middot;
+              PDF &middot; Gratis</span
+            >
           </div>
           <button
             data-resource="Checklist de Preparación AWS para Producción"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); color: white; box-shadow: 0 2px 8px rgba(255,153,0,0.3);"
           >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path></svg
+            >
             Descargar Gratis
           </button>
         </div>
 
         <!-- Guía de Hardening de Seguridad Kubernetes -->
-        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+        <div
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
+          style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+        >
           <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); box-shadow: 0 4px 12px rgba(50,108,229,0.3);">
-              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0"
+              style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); box-shadow: 0 4px 12px rgba(50,108,229,0.3);"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
+                ></path>
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #326CE5;">Kubernetes &middot; Seguridad</span>
-              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Guía de Hardening de Seguridad Kubernetes</h2>
+              <span
+                class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                style="color: #326CE5;">Kubernetes &middot; Seguridad</span
+              >
+              <h2
+                class="text-base font-bold leading-tight"
+                style="color: #0A2540;"
+              >
+                Guía de Hardening de Seguridad Kubernetes
+              </h2>
             </div>
           </div>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Patrones de hardening en producción para clústeres EKS: RBAC, Pod Security Standards, NetworkPolicies, cifrado de Secrets, escaneo de imágenes y audit logging. Basado en despliegues reales en producción.
+          <p
+            class="text-sm leading-relaxed mb-5 flex-1"
+            style="color: #64748b;"
+          >
+            Patrones de hardening en producción para clústeres EKS: RBAC, Pod
+            Security Standards, NetworkPolicies, cifrado de Secrets, escaneo de
+            imágenes y audit logging. Basado en despliegues reales en
+            producción.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
-            {['RBAC', 'NetworkPolicy', 'PSS', 'Secrets', 'Audit Logs', 'EKS'].map(tag => (
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{tag}</span>
-            ))}
+            {
+              [
+                'RBAC',
+                'NetworkPolicy',
+                'PSS',
+                'Secrets',
+                'Audit Logs',
+                'EKS',
+              ].map((tag) => (
+                <span
+                  class="text-xs font-medium px-2.5 py-1 rounded-full"
+                  style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+                >
+                  {tag}
+                </span>
+              ))
+            }
           </div>
-          <div class="flex items-center gap-2 text-xs mb-5" style="color: #64748b;">
-            <svg class="w-4 h-4 flex-shrink-0" style="color: #326CE5;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <div
+            class="flex items-center gap-2 text-xs mb-5"
+            style="color: #64748b;"
+          >
+            <svg
+              class="w-4 h-4 flex-shrink-0"
+              style="color: #326CE5;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
             </svg>
-            <span><strong style="color: #0A2540;">60+ patrones</strong> &middot; PDF &middot; Gratis</span>
+            <span
+              ><strong style="color: #0A2540;">60+ patrones</strong> &middot; PDF
+              &middot; Gratis</span
+            >
           </div>
           <button
             data-resource="Guía de Hardening de Seguridad Kubernetes"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; box-shadow: 0 2px 8px rgba(50,108,229,0.3);"
           >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path></svg
+            >
             Descargar Gratis
           </button>
         </div>
 
         <!-- Playbook de Implementación GitOps -->
-        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #EF7B4D; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+        <div
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
+          style="border: 1px solid #e2e8f0; border-left: 4px solid #EF7B4D; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+        >
           <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #EF7B4D 0%, #C05A2D 100%); box-shadow: 0 4px 12px rgba(239,123,77,0.3);">
-              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0"
+              style="background: linear-gradient(135deg, #EF7B4D 0%, #C05A2D 100%); box-shadow: 0 4px 12px rgba(239,123,77,0.3);"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                ></path>
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #EF7B4D;">GitOps &middot; ArgoCD</span>
-              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Playbook de Implementación GitOps</h2>
+              <span
+                class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                style="color: #EF7B4D;">GitOps &middot; ArgoCD</span
+              >
+              <h2
+                class="text-base font-bold leading-tight"
+                style="color: #0A2540;"
+              >
+                Playbook de Implementación GitOps
+              </h2>
             </div>
           </div>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Guía paso a paso para implementar GitOps con ArgoCD: estructura de repositorio, patrón app-of-apps, políticas de sincronización, detección de drift, valores Helm por entorno y procedimientos de rollback.
+          <p
+            class="text-sm leading-relaxed mb-5 flex-1"
+            style="color: #64748b;"
+          >
+            Guía paso a paso para implementar GitOps con ArgoCD: estructura de
+            repositorio, patrón app-of-apps, políticas de sincronización,
+            detección de drift, valores Helm por entorno y procedimientos de
+            rollback.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
-            {['ArgoCD', 'Helm', 'App-of-Apps', 'Drift Detection', 'Rollback'].map(tag => (
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #FFF5F0; color: #C05A2D; border: 1px solid #FDBA8C;">{tag}</span>
-            ))}
+            {
+              [
+                'ArgoCD',
+                'Helm',
+                'App-of-Apps',
+                'Drift Detection',
+                'Rollback',
+              ].map((tag) => (
+                <span
+                  class="text-xs font-medium px-2.5 py-1 rounded-full"
+                  style="background: #FFF5F0; color: #C05A2D; border: 1px solid #FDBA8C;"
+                >
+                  {tag}
+                </span>
+              ))
+            }
           </div>
-          <div class="flex items-center gap-2 text-xs mb-5" style="color: #64748b;">
-            <svg class="w-4 h-4 flex-shrink-0" style="color: #EF7B4D;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <div
+            class="flex items-center gap-2 text-xs mb-5"
+            style="color: #64748b;"
+          >
+            <svg
+              class="w-4 h-4 flex-shrink-0"
+              style="color: #EF7B4D;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
             </svg>
-            <span><strong style="color: #0A2540;">Guía paso a paso</strong> &middot; PDF &middot; Gratis</span>
+            <span
+              ><strong style="color: #0A2540;">Guía paso a paso</strong> &middot;
+              PDF &middot; Gratis</span
+            >
           </div>
           <button
             data-resource="Playbook de Implementación GitOps"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #EF7B4D 0%, #C05A2D 100%); color: white; box-shadow: 0 2px 8px rgba(239,123,77,0.3);"
           >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path></svg
+            >
             Descargar Gratis
           </button>
         </div>
 
         <!-- Mejores Prácticas de Módulos Terraform -->
-        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #7B42BC; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+        <div
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
+          style="border: 1px solid #e2e8f0; border-left: 4px solid #7B42BC; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+        >
           <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #7B42BC 0%, #5B2E9E 100%); box-shadow: 0 4px 12px rgba(123,66,188,0.3);">
-              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0"
+              style="background: linear-gradient(135deg, #7B42BC 0%, #5B2E9E 100%); box-shadow: 0 4px 12px rgba(123,66,188,0.3);"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #7B42BC;">Terraform &middot; IaC</span>
-              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Mejores Prácticas de Módulos Terraform</h2>
+              <span
+                class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                style="color: #7B42BC;">Terraform &middot; IaC</span
+              >
+              <h2
+                class="text-base font-bold leading-tight"
+                style="color: #0A2540;"
+              >
+                Mejores Prácticas de Módulos Terraform
+              </h2>
             </div>
           </div>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Patrones de módulos en producción para infraestructura AWS multi-entorno: estado remoto con bloqueo, estrategia de workspaces, validación de variables, contratos de outputs y versionado de módulos para bases de código en equipo.
+          <p
+            class="text-sm leading-relaxed mb-5 flex-1"
+            style="color: #64748b;"
+          >
+            Patrones de módulos en producción para infraestructura AWS
+            multi-entorno: estado remoto con bloqueo, estrategia de workspaces,
+            validación de variables, contratos de outputs y versionado de
+            módulos para bases de código en equipo.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
-            {['Módulos', 'Estado Remoto', 'Workspaces', 'Validación', 'Multi-entorno'].map(tag => (
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #F5F0FF; color: #5B2E9E; border: 1px solid #C4B5FD;">{tag}</span>
-            ))}
+            {
+              [
+                'Módulos',
+                'Estado Remoto',
+                'Workspaces',
+                'Validación',
+                'Multi-entorno',
+              ].map((tag) => (
+                <span
+                  class="text-xs font-medium px-2.5 py-1 rounded-full"
+                  style="background: #F5F0FF; color: #5B2E9E; border: 1px solid #C4B5FD;"
+                >
+                  {tag}
+                </span>
+              ))
+            }
           </div>
-          <div class="flex items-center gap-2 text-xs mb-5" style="color: #64748b;">
-            <svg class="w-4 h-4 flex-shrink-0" style="color: #7B42BC;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <div
+            class="flex items-center gap-2 text-xs mb-5"
+            style="color: #64748b;"
+          >
+            <svg
+              class="w-4 h-4 flex-shrink-0"
+              style="color: #7B42BC;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
             </svg>
-            <span><strong style="color: #0A2540;">Patrones y ejemplos</strong> &middot; PDF &middot; Gratis</span>
+            <span
+              ><strong style="color: #0A2540;">Patrones y ejemplos</strong> &middot;
+              PDF &middot; Gratis</span
+            >
           </div>
           <button
             data-resource="Mejores Prácticas de Módulos Terraform"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #7B42BC 0%, #5B2E9E 100%); color: white; box-shadow: 0 2px 8px rgba(123,66,188,0.3);"
           >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path></svg
+            >
             Descargar Gratis
           </button>
         </div>
 
         <!-- Estándares de Producción Kubernetes -->
-        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+        <div
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
+          style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+        >
           <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); box-shadow: 0 4px 12px rgba(50,108,229,0.3);">
-              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0"
+              style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); box-shadow: 0 4px 12px rgba(50,108,229,0.3);"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
+                ></path>
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #326CE5;">Kubernetes &middot; Producción</span>
-              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Estándares de Producción Kubernetes</h2>
+              <span
+                class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                style="color: #326CE5;">Kubernetes &middot; Producción</span
+              >
+              <h2
+                class="text-base font-bold leading-tight"
+                style="color: #0A2540;"
+              >
+                Estándares de Producción Kubernetes
+              </h2>
             </div>
           </div>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Nuestro checklist interno para llevar un clúster Kubernetes a producción. Basado en despliegues EKS reales en entornos sanitarios y financieros.
+          <p
+            class="text-sm leading-relaxed mb-5 flex-1"
+            style="color: #64748b;"
+          >
+            Nuestro checklist interno para llevar un clúster Kubernetes a
+            producción. Basado en despliegues EKS reales en entornos sanitarios
+            y financieros.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
-            {['Límites de recursos', 'Health Checks', 'Pod Security', 'HPA', 'NetworkPolicy', 'EKS'].map(tag => (
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{tag}</span>
-            ))}
+            {
+              [
+                'Límites de recursos',
+                'Health Checks',
+                'Pod Security',
+                'HPA',
+                'NetworkPolicy',
+                'EKS',
+              ].map((tag) => (
+                <span
+                  class="text-xs font-medium px-2.5 py-1 rounded-full"
+                  style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+                >
+                  {tag}
+                </span>
+              ))
+            }
           </div>
           <div class="flex items-center justify-between mb-5">
-            <div class="flex items-center gap-2 text-xs" style="color: #64748b;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color: #326CE5;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <div
+              class="flex items-center gap-2 text-xs"
+              style="color: #64748b;"
+            >
+              <svg
+                class="w-4 h-4 flex-shrink-0"
+                style="color: #326CE5;"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
               </svg>
-              <span><strong style="color: #0A2540;">Checklist de producción</strong> &middot; PDF &middot; Gratis</span>
+              <span
+                ><strong style="color: #0A2540;">Checklist de producción</strong
+                > &middot; PDF &middot; Gratis</span
+              >
             </div>
-            <span class="text-xs font-medium" style="color: #94A3B8;">1.2k descargas</span>
+            <span class="text-xs font-medium" style="color: #94A3B8;"
+              >1.2k descargas</span
+            >
           </div>
-          <button data-resource="Estándares de Producción Kubernetes" class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; box-shadow: 0 2px 8px rgba(50,108,229,0.3);">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          <button
+            data-resource="Estándares de Producción Kubernetes"
+            class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+            style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; box-shadow: 0 2px 8px rgba(50,108,229,0.3);"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path></svg
+            >
             Descargar Gratis
           </button>
         </div>
 
         <!-- Runbook de Implementación GitOps -->
-        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #FF6C37; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+        <div
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
+          style="border: 1px solid #e2e8f0; border-left: 4px solid #FF6C37; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+        >
           <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); box-shadow: 0 4px 12px rgba(255,108,55,0.3);">
-              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0"
+              style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); box-shadow: 0 4px 12px rgba(255,108,55,0.3);"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                ></path>
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #FF6C37;">GitOps &middot; Runbook</span>
-              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Runbook de Implementación GitOps</h2>
+              <span
+                class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                style="color: #FF6C37;">GitOps &middot; Runbook</span
+              >
+              <h2
+                class="text-base font-bold leading-tight"
+                style="color: #0A2540;"
+              >
+                Runbook de Implementación GitOps
+              </h2>
             </div>
           </div>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Runbook paso a paso para implementar GitOps con ArgoCD en AWS EKS. Basado en nuestros despliegues en producción.
+          <p
+            class="text-sm leading-relaxed mb-5 flex-1"
+            style="color: #64748b;"
+          >
+            Runbook paso a paso para implementar GitOps con ArgoCD en AWS EKS.
+            Basado en nuestros despliegues en producción.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
-            {['ArgoCD', 'EKS', 'App-of-Apps', 'Sync Policies', 'Helm', 'Drift Detection'].map(tag => (
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #FFF5F0; color: #C04A1E; border: 1px solid #FDBA8C;">{tag}</span>
-            ))}
+            {
+              [
+                'ArgoCD',
+                'EKS',
+                'App-of-Apps',
+                'Sync Policies',
+                'Helm',
+                'Drift Detection',
+              ].map((tag) => (
+                <span
+                  class="text-xs font-medium px-2.5 py-1 rounded-full"
+                  style="background: #FFF5F0; color: #C04A1E; border: 1px solid #FDBA8C;"
+                >
+                  {tag}
+                </span>
+              ))
+            }
           </div>
           <div class="flex items-center justify-between mb-5">
-            <div class="flex items-center gap-2 text-xs" style="color: #64748b;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color: #FF6C37;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <div
+              class="flex items-center gap-2 text-xs"
+              style="color: #64748b;"
+            >
+              <svg
+                class="w-4 h-4 flex-shrink-0"
+                style="color: #FF6C37;"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
               </svg>
-              <span><strong style="color: #0A2540;">Runbook paso a paso</strong> &middot; PDF &middot; Gratis</span>
+              <span
+                ><strong style="color: #0A2540;">Runbook paso a paso</strong> &middot;
+                PDF &middot; Gratis</span
+              >
             </div>
-            <span class="text-xs font-medium" style="color: #94A3B8;">934 descargas</span>
+            <span class="text-xs font-medium" style="color: #94A3B8;"
+              >934 descargas</span
+            >
           </div>
-          <button data-resource="Runbook de Implementación GitOps" class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); color: white; box-shadow: 0 2px 8px rgba(255,108,55,0.3);">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          <button
+            data-resource="Runbook de Implementación GitOps"
+            class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+            style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); color: white; box-shadow: 0 2px 8px rgba(255,108,55,0.3);"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path></svg
+            >
             Descargar Gratis
           </button>
         </div>
 
         <!-- Guía de Pipeline DevSecOps -->
-        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #EE3124; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+        <div
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
+          style="border: 1px solid #e2e8f0; border-left: 4px solid #EE3124; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+        >
           <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #EE3124 0%, #B52018 100%); box-shadow: 0 4px 12px rgba(238,49,36,0.3);">
-              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0"
+              style="background: linear-gradient(135deg, #EE3124 0%, #B52018 100%); box-shadow: 0 4px 12px rgba(238,49,36,0.3);"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #EE3124;">Seguridad &middot; CI/CD</span>
-              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Guía de Pipeline DevSecOps</h2>
+              <span
+                class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                style="color: #EE3124;">Seguridad &middot; CI/CD</span
+              >
+              <h2
+                class="text-base font-bold leading-tight"
+                style="color: #0A2540;"
+              >
+                Guía de Pipeline DevSecOps
+              </h2>
             </div>
           </div>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Cómo integrar seguridad en tu pipeline CI/CD. Federación OIDC, SAST con SonarQube, escaneo de contenedores y policy gates.
+          <p
+            class="text-sm leading-relaxed mb-5 flex-1"
+            style="color: #64748b;"
+          >
+            Cómo integrar seguridad en tu pipeline CI/CD. Federación OIDC, SAST
+            con SonarQube, escaneo de contenedores y policy gates.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
-            {['OIDC', 'SonarQube', 'Escaneo Contenedores', 'Policy Gates', 'SAST', 'GitHub Actions'].map(tag => (
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #FFF5F5; color: #B52018; border: 1px solid #FCA5A5;">{tag}</span>
-            ))}
+            {
+              [
+                'OIDC',
+                'SonarQube',
+                'Escaneo Contenedores',
+                'Policy Gates',
+                'SAST',
+                'GitHub Actions',
+              ].map((tag) => (
+                <span
+                  class="text-xs font-medium px-2.5 py-1 rounded-full"
+                  style="background: #FFF5F5; color: #B52018; border: 1px solid #FCA5A5;"
+                >
+                  {tag}
+                </span>
+              ))
+            }
           </div>
           <div class="flex items-center justify-between mb-5">
-            <div class="flex items-center gap-2 text-xs" style="color: #64748b;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color: #EE3124;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <div
+              class="flex items-center gap-2 text-xs"
+              style="color: #64748b;"
+            >
+              <svg
+                class="w-4 h-4 flex-shrink-0"
+                style="color: #EE3124;"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
               </svg>
-              <span><strong style="color: #0A2540;">Guía de pipeline seguro</strong> &middot; PDF &middot; Gratis</span>
+              <span
+                ><strong style="color: #0A2540;">Guía de pipeline seguro</strong
+                > &middot; PDF &middot; Gratis</span
+              >
             </div>
-            <span class="text-xs font-medium" style="color: #94A3B8;">615 descargas</span>
+            <span class="text-xs font-medium" style="color: #94A3B8;"
+              >615 descargas</span
+            >
           </div>
-          <button data-resource="Guía de Pipeline DevSecOps" class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #EE3124 0%, #B52018 100%); color: white; box-shadow: 0 2px 8px rgba(238,49,36,0.3);">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          <button
+            data-resource="Guía de Pipeline DevSecOps"
+            class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+            style="background: linear-gradient(135deg, #EE3124 0%, #B52018 100%); color: white; box-shadow: 0 2px 8px rgba(238,49,36,0.3);"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path></svg
+            >
             Descargar Gratis
           </button>
         </div>
 
         <!-- Guía de Configuración del Stack de Observabilidad -->
-        <div class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #F97316; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+        <div
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
+          style="border: 1px solid #e2e8f0; border-left: 4px solid #F97316; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+        >
           <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0" style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); box-shadow: 0 4px 12px rgba(249,115,22,0.3);">
-              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-2xl flex-shrink-0"
+              style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); box-shadow: 0 4px 12px rgba(249,115,22,0.3);"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                ></path>
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #F97316;">Observabilidad &middot; Monitorización</span>
-              <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Guía de Configuración del Stack de Observabilidad</h2>
+              <span
+                class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                style="color: #F97316;"
+                >Observabilidad &middot; Monitorización</span
+              >
+              <h2
+                class="text-base font-bold leading-tight"
+                style="color: #0A2540;"
+              >
+                Guía de Configuración del Stack de Observabilidad
+              </h2>
             </div>
           </div>
-          <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-            Observabilidad en producción con Prometheus, Grafana y CloudWatch. Reglas de alertas, plantillas de dashboards y runbooks de escalado.
+          <p
+            class="text-sm leading-relaxed mb-5 flex-1"
+            style="color: #64748b;"
+          >
+            Observabilidad en producción con Prometheus, Grafana y CloudWatch.
+            Reglas de alertas, plantillas de dashboards y runbooks de escalado.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
-            {['Prometheus', 'Grafana', 'CloudWatch', 'Reglas de Alerta', 'Dashboards', 'Escalado'].map(tag => (
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #FFF7ED; color: #C2570B; border: 1px solid #FED7AA;">{tag}</span>
-            ))}
+            {
+              [
+                'Prometheus',
+                'Grafana',
+                'CloudWatch',
+                'Reglas de Alerta',
+                'Dashboards',
+                'Escalado',
+              ].map((tag) => (
+                <span
+                  class="text-xs font-medium px-2.5 py-1 rounded-full"
+                  style="background: #FFF7ED; color: #C2570B; border: 1px solid #FED7AA;"
+                >
+                  {tag}
+                </span>
+              ))
+            }
           </div>
           <div class="flex items-center justify-between mb-5">
-            <div class="flex items-center gap-2 text-xs" style="color: #64748b;">
-              <svg class="w-4 h-4 flex-shrink-0" style="color: #F97316;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <div
+              class="flex items-center gap-2 text-xs"
+              style="color: #64748b;"
+            >
+              <svg
+                class="w-4 h-4 flex-shrink-0"
+                style="color: #F97316;"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
               </svg>
-              <span><strong style="color: #0A2540;">Guía + plantillas</strong> &middot; PDF &middot; Gratis</span>
+              <span
+                ><strong style="color: #0A2540;">Guía + plantillas</strong> &middot;
+                PDF &middot; Gratis</span
+              >
             </div>
-            <span class="text-xs font-medium" style="color: #94A3B8;">518 descargas</span>
+            <span class="text-xs font-medium" style="color: #94A3B8;"
+              >518 descargas</span
+            >
           </div>
-          <button data-resource="Guía de Configuración del Stack de Observabilidad" class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); color: white; box-shadow: 0 2px 8px rgba(249,115,22,0.3);">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          <button
+            data-resource="Guía de Configuración del Stack de Observabilidad"
+            class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+            style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); color: white; box-shadow: 0 2px 8px rgba(249,115,22,0.3);"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path></svg
+            >
             Descargar Gratis
           </button>
         </div>
-
       </div>
 
       <!-- ─── BLUEPRINTS DE ARQUITECTURA ────────────────────────────────── -->
       <div class="mb-10 mt-4">
         <div class="flex items-center gap-3 mb-6">
           <div class="h-px flex-1" style="background: #e2e8f0;"></div>
-          <span class="text-xs font-bold uppercase tracking-wider px-3" style="color: #94A3B8;">Blueprints de Arquitectura</span>
+          <span
+            class="text-xs font-bold uppercase tracking-wider px-3"
+            style="color: #94A3B8;">Blueprints de Arquitectura</span
+          >
           <div class="h-px flex-1" style="background: #e2e8f0;"></div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
           <!-- AWS Landing Zone Blueprint -->
-          <div class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #FF9900; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+          <div
+            class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
+            style="border: 1px solid #e2e8f0; border-left: 4px solid #FF9900; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+          >
             <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); box-shadow: 0 4px 12px rgba(255,153,0,0.3);">
-                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"/></svg>
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+                style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); box-shadow: 0 4px 12px rgba(255,153,0,0.3);"
+              >
+                <svg
+                  class="w-6 h-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"
+                  ></path></svg
+                >
               </div>
               <div class="flex-1 min-w-0">
-                <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #FF9900;">Arquitectura &middot; AWS</span>
-                <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Blueprint AWS Landing Zone</h2>
+                <span
+                  class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                  style="color: #FF9900;">Arquitectura &middot; AWS</span
+                >
+                <h2
+                  class="text-base font-bold leading-tight"
+                  style="color: #0A2540;"
+                >
+                  Blueprint AWS Landing Zone
+                </h2>
               </div>
             </div>
-            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">Estrategia AWS multi-cuenta con Security Account, Shared Services y OUs de workload. SCPs, GuardDuty y CloudTrail centralizado en todas las cuentas.</p>
-            <a href="/architectures/aws-landing-zone" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(255,153,0,0.3);">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <p
+              class="text-sm leading-relaxed mb-5 flex-1"
+              style="color: #64748b;"
+            >
+              Estrategia AWS multi-cuenta con Security Account, Shared Services
+              y OUs de workload. SCPs, GuardDuty y CloudTrail centralizado en
+              todas las cuentas.
+            </p>
+            <a
+              href="/architectures/aws-landing-zone"
+              class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+              style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(255,153,0,0.3);"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path></svg
+              >
               Ver Arquitectura
             </a>
           </div>
 
           <!-- EKS Production Blueprint -->
-          <div class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+          <div
+            class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
+            style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+          >
             <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); box-shadow: 0 4px 12px rgba(50,108,229,0.3);">
-                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg>
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+                style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); box-shadow: 0 4px 12px rgba(50,108,229,0.3);"
+              >
+                <svg
+                  class="w-6 h-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
+                  ></path></svg
+                >
               </div>
               <div class="flex-1 min-w-0">
-                <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #326CE5;">Arquitectura &middot; Kubernetes</span>
-                <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Blueprint EKS Producción</h2>
+                <span
+                  class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                  style="color: #326CE5;">Arquitectura &middot; Kubernetes</span
+                >
+                <h2
+                  class="text-base font-bold leading-tight"
+                  style="color: #0A2540;"
+                >
+                  Blueprint EKS Producción
+                </h2>
               </div>
             </div>
-            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">EKS de nivel producción con managed node groups, GitOps ArgoCD, External Secrets Operator, HPA y CloudWatch Container Insights.</p>
-            <a href="/architectures/eks-production-platform" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(50,108,229,0.3);">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <p
+              class="text-sm leading-relaxed mb-5 flex-1"
+              style="color: #64748b;"
+            >
+              EKS de nivel producción con managed node groups, GitOps ArgoCD,
+              External Secrets Operator, HPA y CloudWatch Container Insights.
+            </p>
+            <a
+              href="/architectures/eks-production-platform"
+              class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+              style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(50,108,229,0.3);"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path></svg
+              >
               Ver Arquitectura
             </a>
           </div>
 
           <!-- GitOps Platform Blueprint -->
-          <div class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #FF6C37; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+          <div
+            class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
+            style="border: 1px solid #e2e8f0; border-left: 4px solid #FF6C37; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+          >
             <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); box-shadow: 0 4px 12px rgba(255,108,55,0.3);">
-                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+                style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); box-shadow: 0 4px 12px rgba(255,108,55,0.3);"
+              >
+                <svg
+                  class="w-6 h-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  ></path></svg
+                >
               </div>
               <div class="flex-1 min-w-0">
-                <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #FF6C37;">Arquitectura &middot; GitOps</span>
-                <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Blueprint Plataforma GitOps</h2>
+                <span
+                  class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                  style="color: #FF6C37;">Arquitectura &middot; GitOps</span
+                >
+                <h2
+                  class="text-base font-bold leading-tight"
+                  style="color: #0A2540;"
+                >
+                  Blueprint Plataforma GitOps
+                </h2>
               </div>
             </div>
-            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">Entrega automatizada con GitHub Actions CI, ArgoCD CD y autenticación OIDC. Git como única fuente de verdad para todos los despliegues.</p>
-            <a href="/architectures/gitops-platform" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(255,108,55,0.3);">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <p
+              class="text-sm leading-relaxed mb-5 flex-1"
+              style="color: #64748b;"
+            >
+              Entrega automatizada con GitHub Actions CI, ArgoCD CD y
+              autenticación OIDC. Git como única fuente de verdad para todos los
+              despliegues.
+            </p>
+            <a
+              href="/architectures/gitops-platform"
+              class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+              style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(255,108,55,0.3);"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path></svg
+              >
               Ver Arquitectura
             </a>
           </div>
 
           <!-- Observability Blueprint -->
-          <div class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #F97316; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+          <div
+            class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
+            style="border: 1px solid #e2e8f0; border-left: 4px solid #F97316; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
+          >
             <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); box-shadow: 0 4px 12px rgba(249,115,22,0.3);">
-                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"/></svg>
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+                style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); box-shadow: 0 4px 12px rgba(249,115,22,0.3);"
+              >
+                <svg
+                  class="w-6 h-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"
+                  ></path></svg
+                >
               </div>
               <div class="flex-1 min-w-0">
-                <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #F97316;">Arquitectura &middot; Observabilidad</span>
-                <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Blueprint Observabilidad</h2>
+                <span
+                  class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
+                  style="color: #F97316;"
+                  >Arquitectura &middot; Observabilidad</span
+                >
+                <h2
+                  class="text-base font-bold leading-tight"
+                  style="color: #0A2540;"
+                >
+                  Blueprint Observabilidad
+                </h2>
               </div>
             </div>
-            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">Prometheus + Grafana + Fluent Bit + CloudWatch. Reglas de alerta, plantillas de dashboards y runbooks de escalado para workloads en producción.</p>
-            <a href="/architectures/observability-platform" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(249,115,22,0.3);">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <p
+              class="text-sm leading-relaxed mb-5 flex-1"
+              style="color: #64748b;"
+            >
+              Prometheus + Grafana + Fluent Bit + CloudWatch. Reglas de alerta,
+              plantillas de dashboards y runbooks de escalado para workloads en
+              producción.
+            </p>
+            <a
+              href="/architectures/observability-platform"
+              class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
+              style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(249,115,22,0.3);"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path></svg
+              >
               Ver Arquitectura
             </a>
           </div>
-
         </div>
       </div>
 
       <!-- ─── FORMULARIO DE DESCARGA ──────────────────────────────────────── -->
-      <div id="download-form-section" class="max-w-xl mx-auto rounded-2xl p-10 text-center" style="background: white; border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.10);">
-        <div class="w-14 h-14 flex items-center justify-center rounded-2xl mx-auto mb-5" style="background: #EEF4FF;">
-          <svg class="w-6 h-6" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      <div
+        id="download-form-section"
+        class="max-w-xl mx-auto rounded-2xl p-10 text-center"
+        style="background: white; border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.10);"
+      >
+        <div
+          class="w-14 h-14 flex items-center justify-center rounded-2xl mx-auto mb-5"
+          style="background: #EEF4FF;"
+        >
+          <svg
+            class="w-6 h-6"
+            style="color: #1E6FFF;"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-2" style="color: #0A2540;" id="form-resource-title">Selecciona un recurso arriba para descargar</h3>
-        <p class="text-sm mb-7" style="color: #64748b;">Introduce tu email de trabajo y te lo enviaremos a tu bandeja de entrada. Sin spam, sin campañas de email.</p>
+        <h3
+          class="text-xl font-bold mb-2"
+          style="color: #0A2540;"
+          id="form-resource-title"
+        >
+          Selecciona un recurso arriba para descargar
+        </h3>
+        <p class="text-sm mb-7" style="color: #64748b;">
+          Introduce tu email de trabajo y te lo enviaremos a tu bandeja de
+          entrada. Sin spam, sin campañas de email.
+        </p>
 
         <form id="resource-form" class="space-y-3">
-          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
-          <input type="hidden" name="subject" id="form-subject" value="Descarga de Recurso - LRA Cloud Ops" />
+          <input
+            type="hidden"
+            name="access_key"
+            value="e8aaab4e-270c-4163-bb76-6a8dfc247485"
+          />
+          <input
+            type="hidden"
+            name="subject"
+            id="form-subject"
+            value="Descarga de Recurso - LRA Cloud Ops"
+          />
           <input type="hidden" name="from_name" value="LRA Cloud Operations" />
-          <input type="hidden" name="resource_requested" id="form-resource-hidden" value="" />
+          <input
+            type="hidden"
+            name="resource_requested"
+            id="form-resource-hidden"
+            value=""
+          />
           <input
             type="email"
             name="email"
@@ -448,21 +1275,35 @@ import Layout from '../../layouts/Layout.astro'
           </button>
         </form>
 
-        <div id="resource-status" class="hidden text-sm mt-4 px-4 py-2.5 rounded-lg"></div>
+        <div
+          id="resource-status"
+          class="hidden text-sm mt-4 px-4 py-2.5 rounded-lg"
+        >
+        </div>
       </div>
-
     </div>
   </section>
 
   <!-- ─── CTA ──────────────────────────────────────────────────────────── -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 32px 32px;"
+    >
+    </div>
     <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4" style="letter-spacing: -0.02em;">
+      <h2
+        class="text-3xl sm:text-4xl font-extrabold text-white mb-4"
+        style="letter-spacing: -0.02em;"
+      >
         ¿Necesitas una revisión de arquitectura de producción?
       </h2>
-      <p class="text-base mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
-        Agenda una llamada gratuita de 30 minutos. Revisaremos tu setup actual y definiremos una hoja de ruta concreta.
+      <p
+        class="text-base mb-8 max-w-xl mx-auto"
+        style="color: rgba(147,184,255,0.8);"
+      >
+        Agenda una llamada gratuita de 30 minutos. Revisaremos tu setup actual y
+        definiremos una hoja de ruta concreta.
       </p>
       <a
         href="/es/contacto"
@@ -470,30 +1311,51 @@ import Layout from '../../layouts/Layout.astro'
         style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 24px rgba(30,111,255,0.4);"
       >
         Agendar consulta gratuita
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
         </svg>
       </a>
     </div>
   </section>
-
 </Layout>
 
 <script>
-  const buttons = document.querySelectorAll('.resource-download-btn') as NodeListOf<HTMLButtonElement>
+  const buttons = document.querySelectorAll(
+    '.resource-download-btn'
+  ) as NodeListOf<HTMLButtonElement>
   const formSection = document.getElementById('download-form-section')
   const formTitle = document.getElementById('form-resource-title')
-  const formSubject = document.getElementById('form-subject') as HTMLInputElement | null
-  const formHidden = document.getElementById('form-resource-hidden') as HTMLInputElement | null
-  const submitBtn = document.getElementById('resource-submit-btn') as HTMLButtonElement | null
-  const form = document.getElementById('resource-form') as HTMLFormElement | null
-  const statusEl = document.getElementById('resource-status') as HTMLDivElement | null
+  const formSubject = document.getElementById(
+    'form-subject'
+  ) as HTMLInputElement | null
+  const formHidden = document.getElementById(
+    'form-resource-hidden'
+  ) as HTMLInputElement | null
+  const submitBtn = document.getElementById(
+    'resource-submit-btn'
+  ) as HTMLButtonElement | null
+  const form = document.getElementById(
+    'resource-form'
+  ) as HTMLFormElement | null
+  const statusEl = document.getElementById(
+    'resource-status'
+  ) as HTMLDivElement | null
 
-  buttons.forEach(btn => {
+  buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const resource = btn.dataset.resource ?? ''
       if (formTitle) formTitle.textContent = resource
-      if (formSubject) formSubject.value = `Descarga de Recurso: ${resource} - LRA Cloud Ops`
+      if (formSubject)
+        formSubject.value = `Descarga de Recurso: ${resource} - LRA Cloud Ops`
       if (formHidden) formHidden.value = resource
       if (submitBtn) {
         submitBtn.disabled = false
@@ -519,19 +1381,23 @@ import Layout from '../../layouts/Layout.astro'
       })
       const data = await res.json()
       if (data.success) {
-        statusEl.textContent = '¡Revisa tu bandeja de entrada! Te enviaremos el recurso en breve.'
-        statusEl.style.cssText = 'display:block; background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 12px 16px;'
+        statusEl.textContent =
+          '¡Revisa tu bandeja de entrada! Te enviaremos el recurso en breve.'
+        statusEl.style.cssText =
+          'display:block; background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 12px 16px;'
         form.reset()
         submitBtn.textContent = 'Enviado ✓'
       } else {
         statusEl.textContent = 'Algo salió mal. Por favor, inténtalo de nuevo.'
-        statusEl.style.cssText = 'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
+        statusEl.style.cssText =
+          'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
         submitBtn.textContent = original
         submitBtn.disabled = false
       }
     } catch {
       statusEl.textContent = 'Error de conexión. Por favor, inténtalo de nuevo.'
-      statusEl.style.cssText = 'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
+      statusEl.style.cssText =
+        'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
       submitBtn.textContent = original
       submitBtn.disabled = false
     }

@@ -8,23 +8,54 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
   descripcion="Full-stack observability with Prometheus, Grafana, Fluent Bit and CloudWatch. Alert rules, dashboard templates and escalation runbooks for production workloads."
   keywords="observability platform architecture, Prometheus Grafana Kubernetes, CloudWatch Container Insights, AlertManager production, Fluent Bit log forwarding"
 >
-
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
     <div class="relative max-w-6xl mx-auto px-6 py-16 sm:py-20">
-      <div class="flex items-center gap-2 text-xs mb-8" style="color: rgba(147,184,255,0.5);">
-        <a href="/" class="hover:text-white transition-colors" style="color: rgba(147,184,255,0.5);">Home</a>
+      <div
+        class="flex items-center gap-2 text-xs mb-8"
+        style="color: rgba(147,184,255,0.5);"
+      >
+        <a
+          href="/"
+          class="hover:text-white transition-colors"
+          style="color: rgba(147,184,255,0.5);">Home</a
+        >
         <span>/</span>
-        <a href="/architectures" class="hover:text-white transition-colors" style="color: rgba(147,184,255,0.5);">Architectures</a>
+        <a
+          href="/architectures"
+          class="hover:text-white transition-colors"
+          style="color: rgba(147,184,255,0.5);">Architectures</a
+        >
         <span>/</span>
-        <span style="color: rgba(147,184,255,0.9);">Observability Platform</span>
+        <span style="color: rgba(147,184,255,0.9);">Observability Platform</span
+        >
       </div>
       <div class="flex flex-wrap items-center gap-3 mb-5">
-        <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Production Tested</span>
-        <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: rgba(249,115,22,0.15); color: #F97316; border: 1px solid rgba(249,115,22,0.3);">Observability</span>
+        <span
+          class="text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;"
+          >Production Tested</span
+        >
+        <span
+          class="text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: rgba(249,115,22,0.15); color: #F97316; border: 1px solid rgba(249,115,22,0.3);"
+          >Observability</span
+        >
       </div>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4" style="letter-spacing: -0.02em;">Observability Platform</h1>
-      <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">Full-stack observability for cloud-native workloads: metrics, logs and alerts configured before the first deployment reaches production.</p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
+        style="letter-spacing: -0.02em;"
+      >
+        Observability Platform
+      </h1>
+      <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+        Full-stack observability for cloud-native workloads: metrics, logs and
+        alerts configured before the first deployment reaches production.
+      </p>
     </div>
   </section>
 
@@ -32,187 +63,713 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div class="lg:col-span-2 space-y-10">
-
           <div>
-            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">Overview</h2>
-            <p class="text-base leading-relaxed mb-4" style="color: #64748b;">This architecture combines Prometheus for metrics collection, Grafana for visualization, Fluent Bit for log forwarding and AlertManager for notifications. CloudWatch Container Insights provides node-level metrics from EKS without additional instrumentation.</p>
-            <p class="text-base leading-relaxed" style="color: #64748b;">The rule: observability is configured before the first deployment, not after the first incident. Prometheus is deployed via kube-prometheus-stack Helm chart. Alert rules cover CPU, memory, error rates, pod restarts and network latency. On-call channels receive structured notifications with runbook links.</p>
+            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">
+              Overview
+            </h2>
+            <p class="text-base leading-relaxed mb-4" style="color: #64748b;">
+              This architecture combines Prometheus for metrics collection,
+              Grafana for visualization, Fluent Bit for log forwarding and
+              AlertManager for notifications. CloudWatch Container Insights
+              provides node-level metrics from EKS without additional
+              instrumentation.
+            </p>
+            <p class="text-base leading-relaxed" style="color: #64748b;">
+              The rule: observability is configured before the first deployment,
+              not after the first incident. Prometheus is deployed via
+              kube-prometheus-stack Helm chart. Alert rules cover CPU, memory,
+              error rates, pod restarts and network latency. On-call channels
+              receive structured notifications with runbook links.
+            </p>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">Architecture Diagram</h2>
-            <ArchitectureDiagram title="Observability Platform — Data Flow" description="How metrics, logs and alerts flow from application containers to dashboards and on-call channels." archId="observability">
-              <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" class="w-full" style="min-width: 520px; font-family: Inter, system-ui, sans-serif;">
-
+            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">
+              Architecture Diagram
+            </h2>
+            <ArchitectureDiagram
+              title="Observability Platform — Data Flow"
+              description="How metrics, logs and alerts flow from application containers to dashboards and on-call channels."
+              archId="observability"
+            >
+              <svg
+                viewBox="0 0 720 360"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-full"
+                style="min-width: 520px; font-family: Inter, system-ui, sans-serif;"
+              >
                 <!-- Applications -->
-                <rect x="10" y="130" width="110" height="100" rx="8" fill="#EEF4FF" stroke="#1E6FFF" stroke-width="1.5"/>
-                <text x="65" y="155" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="700">Applications</text>
-                <text x="65" y="172" text-anchor="middle" fill="#64748b" font-size="8">expose /metrics</text>
-                <text x="65" y="185" text-anchor="middle" fill="#64748b" font-size="8">stdout logs</text>
-                <text x="65" y="198" text-anchor="middle" fill="#64748b" font-size="8">health probes</text>
-                <text x="65" y="218" text-anchor="middle" fill="#94A3B8" font-size="7">EKS pods</text>
+                <rect
+                  x="10"
+                  y="130"
+                  width="110"
+                  height="100"
+                  rx="8"
+                  fill="#EEF4FF"
+                  stroke="#1E6FFF"
+                  stroke-width="1.5"></rect>
+                <text
+                  x="65"
+                  y="155"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="700">Applications</text
+                >
+                <text
+                  x="65"
+                  y="172"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">expose /metrics</text
+                >
+                <text
+                  x="65"
+                  y="185"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">stdout logs</text
+                >
+                <text
+                  x="65"
+                  y="198"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">health probes</text
+                >
+                <text
+                  x="65"
+                  y="218"
+                  text-anchor="middle"
+                  fill="#94A3B8"
+                  font-size="7">EKS pods</text
+                >
 
                 <!-- Metrics path -->
-                <line x1="120" y1="155" x2="170" y2="155" stroke="#F97316" stroke-width="1.5" marker-end="url(#ao)"/>
-                <text x="145" y="148" text-anchor="middle" fill="#F97316" font-size="8">scrape</text>
+                <line
+                  x1="120"
+                  y1="155"
+                  x2="170"
+                  y2="155"
+                  stroke="#F97316"
+                  stroke-width="1.5"
+                  marker-end="url(#ao)"></line>
+                <text
+                  x="145"
+                  y="148"
+                  text-anchor="middle"
+                  fill="#F97316"
+                  font-size="8">scrape</text
+                >
 
                 <!-- Prometheus -->
-                <rect x="170" y="80" width="120" height="70" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
-                <text x="230" y="105" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="700">Prometheus</text>
-                <text x="230" y="120" text-anchor="middle" fill="#64748b" font-size="8">15-day retention</text>
-                <text x="230" y="133" text-anchor="middle" fill="#64748b" font-size="8">30s scrape interval</text>
-                <text x="230" y="144" text-anchor="middle" fill="#94A3B8" font-size="7">kube-prometheus-stack</text>
+                <rect
+                  x="170"
+                  y="80"
+                  width="120"
+                  height="70"
+                  rx="8"
+                  fill="#FFF7ED"
+                  stroke="#F97316"
+                  stroke-width="1.5"></rect>
+                <text
+                  x="230"
+                  y="105"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="700">Prometheus</text
+                >
+                <text
+                  x="230"
+                  y="120"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">15-day retention</text
+                >
+                <text
+                  x="230"
+                  y="133"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">30s scrape interval</text
+                >
+                <text
+                  x="230"
+                  y="144"
+                  text-anchor="middle"
+                  fill="#94A3B8"
+                  font-size="7">kube-prometheus-stack</text
+                >
 
                 <!-- AlertManager -->
-                <rect x="170" y="200" width="120" height="55" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
-                <text x="230" y="222" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="700">AlertManager</text>
-                <text x="230" y="237" text-anchor="middle" fill="#64748b" font-size="8">CPU >80%</text>
-                <text x="230" y="248" text-anchor="middle" fill="#64748b" font-size="8">Memory >85% · Error rate >1%</text>
+                <rect
+                  x="170"
+                  y="200"
+                  width="120"
+                  height="55"
+                  rx="8"
+                  fill="#FEF2F2"
+                  stroke="#DC2626"
+                  stroke-width="1.5"></rect>
+                <text
+                  x="230"
+                  y="222"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="700">AlertManager</text
+                >
+                <text
+                  x="230"
+                  y="237"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">CPU >80%</text
+                >
+                <text
+                  x="230"
+                  y="248"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Memory >85% · Error rate >1%</text
+                >
 
                 <!-- Arrow Prometheus → AlertManager -->
-                <line x1="230" y1="150" x2="230" y2="200" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ar)"/>
-                <text x="245" y="178" fill="#DC2626" font-size="8">fire alert</text>
+                <line
+                  x1="230"
+                  y1="150"
+                  x2="230"
+                  y2="200"
+                  stroke="#DC2626"
+                  stroke-width="1.5"
+                  stroke-dasharray="4,3"
+                  marker-end="url(#ar)"></line>
+                <text x="245" y="178" fill="#DC2626" font-size="8"
+                  >fire alert</text
+                >
 
                 <!-- Grafana -->
-                <rect x="330" y="80" width="110" height="70" rx="8" fill="#F0FDF4" stroke="#059669" stroke-width="1.5"/>
-                <text x="385" y="105" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="700">Grafana</text>
-                <text x="385" y="120" text-anchor="middle" fill="#64748b" font-size="8">Dashboards</text>
-                <text x="385" y="133" text-anchor="middle" fill="#64748b" font-size="8">Node · Pod · App views</text>
-                <text x="385" y="144" text-anchor="middle" fill="#94A3B8" font-size="7">Prometheus datasource</text>
+                <rect
+                  x="330"
+                  y="80"
+                  width="110"
+                  height="70"
+                  rx="8"
+                  fill="#F0FDF4"
+                  stroke="#059669"
+                  stroke-width="1.5"></rect>
+                <text
+                  x="385"
+                  y="105"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="700">Grafana</text
+                >
+                <text
+                  x="385"
+                  y="120"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Dashboards</text
+                >
+                <text
+                  x="385"
+                  y="133"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Node · Pod · App views</text
+                >
+                <text
+                  x="385"
+                  y="144"
+                  text-anchor="middle"
+                  fill="#94A3B8"
+                  font-size="7">Prometheus datasource</text
+                >
 
                 <!-- Arrow Prometheus → Grafana -->
-                <line x1="290" y1="115" x2="330" y2="115" stroke="#059669" stroke-width="1.5" marker-end="url(#ag)"/>
+                <line
+                  x1="290"
+                  y1="115"
+                  x2="330"
+                  y2="115"
+                  stroke="#059669"
+                  stroke-width="1.5"
+                  marker-end="url(#ag)"></line>
 
                 <!-- Logs path -->
-                <line x1="120" y1="195" x2="170" y2="280" stroke="#7B42BC" stroke-width="1.5" marker-end="url(#ap)"/>
-                <text x="135" y="250" text-anchor="middle" fill="#7B42BC" font-size="8">forward</text>
+                <line
+                  x1="120"
+                  y1="195"
+                  x2="170"
+                  y2="280"
+                  stroke="#7B42BC"
+                  stroke-width="1.5"
+                  marker-end="url(#ap)"></line>
+                <text
+                  x="135"
+                  y="250"
+                  text-anchor="middle"
+                  fill="#7B42BC"
+                  font-size="8">forward</text
+                >
 
                 <!-- Fluent Bit -->
-                <rect x="170" y="280" width="120" height="55" rx="8" fill="#F5F0FF" stroke="#7B42BC" stroke-width="1.5"/>
-                <text x="230" y="302" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="700">Fluent Bit</text>
-                <text x="230" y="317" text-anchor="middle" fill="#64748b" font-size="8">DaemonSet on every node</text>
-                <text x="230" y="328" text-anchor="middle" fill="#64748b" font-size="8">structured parsing</text>
+                <rect
+                  x="170"
+                  y="280"
+                  width="120"
+                  height="55"
+                  rx="8"
+                  fill="#F5F0FF"
+                  stroke="#7B42BC"
+                  stroke-width="1.5"></rect>
+                <text
+                  x="230"
+                  y="302"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="700">Fluent Bit</text
+                >
+                <text
+                  x="230"
+                  y="317"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">DaemonSet on every node</text
+                >
+                <text
+                  x="230"
+                  y="328"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">structured parsing</text
+                >
 
                 <!-- CloudWatch -->
-                <rect x="330" y="200" width="110" height="55" rx="8" fill="#F8FAFC" stroke="#FF9900" stroke-width="1.5"/>
-                <text x="385" y="222" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="700">CloudWatch</text>
-                <text x="385" y="237" text-anchor="middle" fill="#64748b" font-size="8">Container Insights</text>
-                <text x="385" y="248" text-anchor="middle" fill="#64748b" font-size="8">30-day log retention</text>
+                <rect
+                  x="330"
+                  y="200"
+                  width="110"
+                  height="55"
+                  rx="8"
+                  fill="#F8FAFC"
+                  stroke="#FF9900"
+                  stroke-width="1.5"></rect>
+                <text
+                  x="385"
+                  y="222"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="700">CloudWatch</text
+                >
+                <text
+                  x="385"
+                  y="237"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Container Insights</text
+                >
+                <text
+                  x="385"
+                  y="248"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">30-day log retention</text
+                >
 
                 <!-- Arrow Fluent Bit → CloudWatch -->
-                <line x1="290" y1="307" x2="330" y2="250" stroke="#FF9900" stroke-width="1.5" marker-end="url(#aw)"/>
+                <line
+                  x1="290"
+                  y1="307"
+                  x2="330"
+                  y2="250"
+                  stroke="#FF9900"
+                  stroke-width="1.5"
+                  marker-end="url(#aw)"></line>
 
                 <!-- Notifications -->
-                <rect x="480" y="190" width="115" height="70" rx="8" fill="#F8FAFC" stroke="#e2e8f0" stroke-width="1.5"/>
-                <text x="537" y="212" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="700">Notifications</text>
-                <text x="537" y="228" text-anchor="middle" fill="#64748b" font-size="8">Slack #on-call</text>
-                <text x="537" y="241" text-anchor="middle" fill="#64748b" font-size="8">Email (severity HIGH)</text>
-                <text x="537" y="254" text-anchor="middle" fill="#64748b" font-size="8">Runbook link in alert</text>
+                <rect
+                  x="480"
+                  y="190"
+                  width="115"
+                  height="70"
+                  rx="8"
+                  fill="#F8FAFC"
+                  stroke="#e2e8f0"
+                  stroke-width="1.5"></rect>
+                <text
+                  x="537"
+                  y="212"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="700">Notifications</text
+                >
+                <text
+                  x="537"
+                  y="228"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Slack #on-call</text
+                >
+                <text
+                  x="537"
+                  y="241"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Email (severity HIGH)</text
+                >
+                <text
+                  x="537"
+                  y="254"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Runbook link in alert</text
+                >
 
                 <!-- Arrow AlertManager → Notifications -->
-                <line x1="290" y1="225" x2="480" y2="225" stroke="#DC2626" stroke-width="1.5" marker-end="url(#ar)"/>
+                <line
+                  x1="290"
+                  y1="225"
+                  x2="480"
+                  y2="225"
+                  stroke="#DC2626"
+                  stroke-width="1.5"
+                  marker-end="url(#ar)"></line>
 
                 <!-- AWS CW Alarms -->
-                <rect x="480" y="80" width="115" height="70" rx="8" fill="#F8FAFC" stroke="#FF9900" stroke-width="1"/>
-                <text x="537" y="102" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="600">CW Alarms</text>
-                <text x="537" y="117" text-anchor="middle" fill="#64748b" font-size="8">CPU >80%</text>
-                <text x="537" y="130" text-anchor="middle" fill="#64748b" font-size="8">Memory >85%</text>
-                <text x="537" y="143" text-anchor="middle" fill="#64748b" font-size="8">SNS → Email/Slack</text>
-                <line x1="440" y1="115" x2="480" y2="115" stroke="#FF9900" stroke-width="1" marker-end="url(#aw)"/>
+                <rect
+                  x="480"
+                  y="80"
+                  width="115"
+                  height="70"
+                  rx="8"
+                  fill="#F8FAFC"
+                  stroke="#FF9900"
+                  stroke-width="1"></rect>
+                <text
+                  x="537"
+                  y="102"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="600">CW Alarms</text
+                >
+                <text
+                  x="537"
+                  y="117"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">CPU >80%</text
+                >
+                <text
+                  x="537"
+                  y="130"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Memory >85%</text
+                >
+                <text
+                  x="537"
+                  y="143"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">SNS → Email/Slack</text
+                >
+                <line
+                  x1="440"
+                  y1="115"
+                  x2="480"
+                  y2="115"
+                  stroke="#FF9900"
+                  stroke-width="1"
+                  marker-end="url(#aw)"></line>
 
                 <defs>
-                  <marker id="ao" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#F97316"/></marker>
-                  <marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#DC2626"/></marker>
-                  <marker id="ag" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#059669"/></marker>
-                  <marker id="ap" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#7B42BC"/></marker>
-                  <marker id="aw" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#FF9900"/></marker>
+                  <marker
+                    id="ao"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="5"
+                    refY="3"
+                    orient="auto"
+                    ><path d="M0,0 L0,6 L6,3 z" fill="#F97316"></path></marker
+                  >
+                  <marker
+                    id="ar"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="5"
+                    refY="3"
+                    orient="auto"
+                    ><path d="M0,0 L0,6 L6,3 z" fill="#DC2626"></path></marker
+                  >
+                  <marker
+                    id="ag"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="5"
+                    refY="3"
+                    orient="auto"
+                    ><path d="M0,0 L0,6 L6,3 z" fill="#059669"></path></marker
+                  >
+                  <marker
+                    id="ap"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="5"
+                    refY="3"
+                    orient="auto"
+                    ><path d="M0,0 L0,6 L6,3 z" fill="#7B42BC"></path></marker
+                  >
+                  <marker
+                    id="aw"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="5"
+                    refY="3"
+                    orient="auto"
+                    ><path d="M0,0 L0,6 L6,3 z" fill="#FF9900"></path></marker
+                  >
                 </defs>
               </svg>
             </ArchitectureDiagram>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-5" style="color: #0A2540;">Components</h2>
+            <h2 class="text-2xl font-bold mb-5" style="color: #0A2540;">
+              Components
+            </h2>
             <div class="space-y-4">
-              {[
-                { name: 'Prometheus + AlertManager', detail: 'Deployed via kube-prometheus-stack Helm chart. Scrapes all pods with /metrics endpoint at 30s intervals. Stores 15 days of time-series data. AlertManager routes firing alerts to Slack and email with runbook links.', color: '#F97316' },
-                { name: 'Grafana', detail: 'Persistent dashboards for node, pod and application metrics. Pre-built dashboards from grafana.com for common stacks (nginx, postgres, kafka). Alerting via Grafana Alerting as backup.', color: '#059669' },
-                { name: 'Fluent Bit DaemonSet', detail: 'Runs on every EKS node. Reads container stdout/stderr, parses structured JSON logs, enriches with pod metadata (namespace, pod name, container name). Forwards to CloudWatch Logs grouped by service.', color: '#7B42BC' },
-                { name: 'CloudWatch Container Insights', detail: 'Node-level CPU, memory, disk and network metrics without any agent beyond the CloudWatch agent. Integrated with CloudWatch Alarms. Alarms at CPU >80%, Memory >85% with 5-minute evaluation period.', color: '#FF9900' },
-              ].map(({ name, detail, color }) => (
-                <div class="flex gap-4 p-5 rounded-xl" style="background: #F8FAFC; border: 1px solid #e2e8f0;">
-                  <div class="w-2 rounded-full flex-shrink-0 mt-1" style={`background: ${color};`}></div>
-                  <div>
-                    <h3 class="text-sm font-bold mb-1" style="color: #0A2540;">{name}</h3>
-                    <p class="text-sm leading-relaxed" style="color: #64748b;">{detail}</p>
+              {
+                [
+                  {
+                    name: 'Prometheus + AlertManager',
+                    detail:
+                      'Deployed via kube-prometheus-stack Helm chart. Scrapes all pods with /metrics endpoint at 30s intervals. Stores 15 days of time-series data. AlertManager routes firing alerts to Slack and email with runbook links.',
+                    color: '#F97316',
+                  },
+                  {
+                    name: 'Grafana',
+                    detail:
+                      'Persistent dashboards for node, pod and application metrics. Pre-built dashboards from grafana.com for common stacks (nginx, postgres, kafka). Alerting via Grafana Alerting as backup.',
+                    color: '#059669',
+                  },
+                  {
+                    name: 'Fluent Bit DaemonSet',
+                    detail:
+                      'Runs on every EKS node. Reads container stdout/stderr, parses structured JSON logs, enriches with pod metadata (namespace, pod name, container name). Forwards to CloudWatch Logs grouped by service.',
+                    color: '#7B42BC',
+                  },
+                  {
+                    name: 'CloudWatch Container Insights',
+                    detail:
+                      'Node-level CPU, memory, disk and network metrics without any agent beyond the CloudWatch agent. Integrated with CloudWatch Alarms. Alarms at CPU >80%, Memory >85% with 5-minute evaluation period.',
+                    color: '#FF9900',
+                  },
+                ].map(({ name, detail, color }) => (
+                  <div
+                    class="flex gap-4 p-5 rounded-xl"
+                    style="background: #F8FAFC; border: 1px solid #e2e8f0;"
+                  >
+                    <div
+                      class="w-2 rounded-full flex-shrink-0 mt-1"
+                      style={`background: ${color};`}
+                    />
+                    <div>
+                      <h3
+                        class="text-sm font-bold mb-1"
+                        style="color: #0A2540;"
+                      >
+                        {name}
+                      </h3>
+                      <p
+                        class="text-sm leading-relaxed"
+                        style="color: #64748b;"
+                      >
+                        {detail}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              }
             </div>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-5" style="color: #0A2540;">Alert Rules</h2>
-            <div class="overflow-x-auto rounded-xl" style="border: 1px solid #e2e8f0;">
+            <h2 class="text-2xl font-bold mb-5" style="color: #0A2540;">
+              Alert Rules
+            </h2>
+            <div
+              class="overflow-x-auto rounded-xl"
+              style="border: 1px solid #e2e8f0;"
+            >
               <table class="w-full text-sm">
                 <thead>
-                  <tr style="background: #F8FAFC; border-bottom: 1px solid #e2e8f0;">
-                    <th class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider" style="color: #64748b;">Alert</th>
-                    <th class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider" style="color: #64748b;">Threshold</th>
-                    <th class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider" style="color: #64748b;">Duration</th>
-                    <th class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider" style="color: #64748b;">Severity</th>
+                  <tr
+                    style="background: #F8FAFC; border-bottom: 1px solid #e2e8f0;"
+                  >
+                    <th
+                      class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider"
+                      style="color: #64748b;">Alert</th
+                    >
+                    <th
+                      class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider"
+                      style="color: #64748b;">Threshold</th
+                    >
+                    <th
+                      class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider"
+                      style="color: #64748b;">Duration</th
+                    >
+                    <th
+                      class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider"
+                      style="color: #64748b;">Severity</th
+                    >
                   </tr>
                 </thead>
                 <tbody>
-                  {[
-                    { alert: 'High CPU Usage', threshold: '>80%', dur: '5 min', sev: 'warning', sevColor: '#D97706' },
-                    { alert: 'High Memory Usage', threshold: '>85%', dur: '5 min', sev: 'warning', sevColor: '#D97706' },
-                    { alert: 'Pod CrashLoop', threshold: 'restart > 3', dur: '15 min', sev: 'critical', sevColor: '#DC2626' },
-                    { alert: 'High Error Rate', threshold: '>1% 5xx', dur: '5 min', sev: 'critical', sevColor: '#DC2626' },
-                    { alert: 'Node Not Ready', threshold: 'any node', dur: '2 min', sev: 'critical', sevColor: '#DC2626' },
-                    { alert: 'Disk Usage High', threshold: '>80%', dur: '10 min', sev: 'warning', sevColor: '#D97706' },
-                  ].map(({ alert, threshold, dur, sev, sevColor }) => (
-                    <tr style="border-bottom: 1px solid #f1f5f9;">
-                      <td class="px-4 py-3 text-sm font-medium" style="color: #0A2540;">{alert}</td>
-                      <td class="px-4 py-3 text-sm font-mono" style="color: #64748b;">{threshold}</td>
-                      <td class="px-4 py-3 text-sm" style="color: #64748b;">{dur}</td>
-                      <td class="px-4 py-3">
-                        <span class="text-xs font-semibold px-2 py-1 rounded-full" style={`color: ${sevColor}; background: ${sevColor}22;`}>{sev}</span>
-                      </td>
-                    </tr>
-                  ))}
+                  {
+                    [
+                      {
+                        alert: 'High CPU Usage',
+                        threshold: '>80%',
+                        dur: '5 min',
+                        sev: 'warning',
+                        sevColor: '#D97706',
+                      },
+                      {
+                        alert: 'High Memory Usage',
+                        threshold: '>85%',
+                        dur: '5 min',
+                        sev: 'warning',
+                        sevColor: '#D97706',
+                      },
+                      {
+                        alert: 'Pod CrashLoop',
+                        threshold: 'restart > 3',
+                        dur: '15 min',
+                        sev: 'critical',
+                        sevColor: '#DC2626',
+                      },
+                      {
+                        alert: 'High Error Rate',
+                        threshold: '>1% 5xx',
+                        dur: '5 min',
+                        sev: 'critical',
+                        sevColor: '#DC2626',
+                      },
+                      {
+                        alert: 'Node Not Ready',
+                        threshold: 'any node',
+                        dur: '2 min',
+                        sev: 'critical',
+                        sevColor: '#DC2626',
+                      },
+                      {
+                        alert: 'Disk Usage High',
+                        threshold: '>80%',
+                        dur: '10 min',
+                        sev: 'warning',
+                        sevColor: '#D97706',
+                      },
+                    ].map(({ alert, threshold, dur, sev, sevColor }) => (
+                      <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td
+                          class="px-4 py-3 text-sm font-medium"
+                          style="color: #0A2540;"
+                        >
+                          {alert}
+                        </td>
+                        <td
+                          class="px-4 py-3 text-sm font-mono"
+                          style="color: #64748b;"
+                        >
+                          {threshold}
+                        </td>
+                        <td class="px-4 py-3 text-sm" style="color: #64748b;">
+                          {dur}
+                        </td>
+                        <td class="px-4 py-3">
+                          <span
+                            class="text-xs font-semibold px-2 py-1 rounded-full"
+                            style={`color: ${sevColor}; background: ${sevColor}22;`}
+                          >
+                            {sev}
+                          </span>
+                        </td>
+                      </tr>
+                    ))
+                  }
                 </tbody>
               </table>
             </div>
           </div>
-
         </div>
 
         <div class="lg:col-span-1">
           <div class="sticky top-24 space-y-5">
-            <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid #e2e8f0;">
-              <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Stack</h3>
+            <div
+              class="rounded-2xl p-6"
+              style="background: #F8FAFC; border: 1px solid #e2e8f0;"
+            >
+              <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">
+                Stack
+              </h3>
               <div class="flex flex-wrap gap-1.5">
-                {['Prometheus', 'Grafana', 'AlertManager', 'Fluent Bit', 'CloudWatch', 'CloudWatch Alarms', 'SNS', 'kube-prometheus-stack'].map(tag => (
-                  <span class="text-xs px-2.5 py-1 rounded-full" style="background: white; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
-                ))}
+                {
+                  [
+                    'Prometheus',
+                    'Grafana',
+                    'AlertManager',
+                    'Fluent Bit',
+                    'CloudWatch',
+                    'CloudWatch Alarms',
+                    'SNS',
+                    'kube-prometheus-stack',
+                  ].map((tag) => (
+                    <span
+                      class="text-xs px-2.5 py-1 rounded-full"
+                      style="background: white; color: #64748b; border: 1px solid #e2e8f0;"
+                    >
+                      {tag}
+                    </span>
+                  ))
+                }
               </div>
             </div>
-            <div class="rounded-2xl p-6" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
-              <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">Need this implemented?</h3>
-              <p class="text-xs leading-relaxed mb-4" style="color: #64748b;">We configure full observability stacks — alerting configured before first deployment.</p>
-              <a href="/contact" class="flex items-center justify-center gap-2 text-sm font-bold text-white py-3 rounded-xl hover:opacity-90 transition-opacity" style="background: #1E6FFF;">Start a conversation →</a>
+            <div
+              class="rounded-2xl p-6"
+              style="background: #EEF4FF; border: 1px solid #c3d9ff;"
+            >
+              <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">
+                Need this implemented?
+              </h3>
+              <p class="text-xs leading-relaxed mb-4" style="color: #64748b;">
+                We configure full observability stacks — alerting configured
+                before first deployment.
+              </p>
+              <a
+                href="/contact"
+                class="flex items-center justify-center gap-2 text-sm font-bold text-white py-3 rounded-xl hover:opacity-90 transition-opacity"
+                style="background: #1E6FFF;">Start a conversation →</a
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
 </Layout>
 
 <script>
   if (typeof window !== 'undefined' && (window as any).cf) {
-    (window as any).cf.track('architecture_viewed', { architecture: 'observability-platform' })
+    ;(window as any).cf.track('architecture_viewed', {
+      architecture: 'observability-platform',
+    })
   }
 </script>

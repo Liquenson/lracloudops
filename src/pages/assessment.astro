@@ -7,20 +7,39 @@ import Layout from '../layouts/Layout.astro'
   descripcion="10-question assessment to understand your infrastructure maturity level and get personalized recommendations from our platform engineering team."
   keywords="DevOps maturity assessment free, Kubernetes readiness assessment, AWS infrastructure audit, DevOps maturity model, cloud readiness check"
 >
-
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.18) 1px, transparent 1px); background-size: 28px 28px;"></div>
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"></div>
-    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
-      <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.18) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <span
+        class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
+        style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
+      >
         Free Tool
       </span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6" style="letter-spacing: -0.02em;">
+      <h1
+        class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
+        style="letter-spacing: -0.02em;"
+      >
         DevOps Maturity Assessment
       </h1>
-      <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-4" style="color: rgba(147,184,255,0.8);">
-        10 questions to understand your infrastructure maturity and get personalized recommendations from our team.
+      <p
+        class="text-lg leading-relaxed max-w-2xl mx-auto mb-4"
+        style="color: rgba(147,184,255,0.8);"
+      >
+        10 questions to understand your infrastructure maturity and get
+        personalized recommendations from our team.
       </p>
       <p class="text-sm font-medium" style="color: rgba(147,184,255,0.6);">
         IaC · CI/CD · Security · Observability · Kubernetes · GitOps
@@ -31,15 +50,30 @@ import Layout from '../layouts/Layout.astro'
   <!-- ─── ASSESSMENT WIDGET ─────────────────────────────────────────────── -->
   <section class="bg-white py-20">
     <div class="max-w-2xl mx-auto px-6">
-
       <!-- Progress bar -->
       <div class="mb-10">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-semibold" style="color: #64748b;" id="progress-label">Question 1 of 10</span>
-          <span class="text-xs font-semibold" style="color: #1E6FFF;" id="score-display">Score: 0 / 30</span>
+          <span
+            class="text-xs font-semibold"
+            style="color: #64748b;"
+            id="progress-label">Question 1 of 10</span
+          >
+          <span
+            class="text-xs font-semibold"
+            style="color: #1E6FFF;"
+            id="score-display">Score: 0 / 30</span
+          >
         </div>
-        <div class="h-2 rounded-full overflow-hidden" style="background: #e2e8f0;">
-          <div id="progress-bar" class="h-full rounded-full transition-all duration-500" style="width: 10%; background: linear-gradient(90deg, #1E6FFF, #60A5FA);"></div>
+        <div
+          class="h-2 rounded-full overflow-hidden"
+          style="background: #e2e8f0;"
+        >
+          <div
+            id="progress-bar"
+            class="h-full rounded-full transition-all duration-500"
+            style="width: 10%; background: linear-gradient(90deg, #1E6FFF, #60A5FA);"
+          >
+          </div>
         </div>
       </div>
 
@@ -52,172 +86,181 @@ import Layout from '../layouts/Layout.astro'
       <div id="result-container" class="hidden">
         <!-- Injected by JS -->
       </div>
-
     </div>
   </section>
-
 </Layout>
 
 <script>
-const questions = [
-  {
-    q: 'How do you manage infrastructure?',
-    options: [
-      { label: 'Manual CLI / Console', pts: 0 },
-      { label: 'Some scripts / templates', pts: 1 },
-      { label: 'Terraform / CloudFormation', pts: 2 },
-      { label: 'Full IaC with modules and remote state', pts: 3 },
-    ],
-  },
-  {
-    q: 'How often do you deploy to production?',
-    options: [
-      { label: 'Monthly or less', pts: 0 },
-      { label: 'Weekly', pts: 1 },
-      { label: 'Daily', pts: 2 },
-      { label: 'Multiple times per day with automated rollback', pts: 3 },
-    ],
-  },
-  {
-    q: 'How do you handle secrets and credentials?',
-    options: [
-      { label: 'Hardcoded in code', pts: 0 },
-      { label: 'Environment variables', pts: 1 },
-      { label: 'Secrets Manager / Vault', pts: 2 },
-      { label: 'OIDC federation — no static keys ever', pts: 3 },
-    ],
-  },
-  {
-    q: 'What is your CI/CD maturity?',
-    options: [
-      { label: 'Manual deployments', pts: 0 },
-      { label: 'Basic CI with tests', pts: 1 },
-      { label: 'Full CI/CD with quality gates', pts: 2 },
-      { label: 'GitOps with ArgoCD, automated rollback', pts: 3 },
-    ],
-  },
-  {
-    q: 'How do you monitor your infrastructure?',
-    options: [
-      { label: 'No monitoring', pts: 0 },
-      { label: 'Basic cloud metrics only', pts: 1 },
-      { label: 'Prometheus + Grafana', pts: 2 },
-      { label: 'Full observability — metrics, logs, traces, alerts', pts: 3 },
-    ],
-  },
-  {
-    q: 'How do you manage Kubernetes?',
-    options: [
-      { label: 'We do not use Kubernetes', pts: 0 },
-      { label: 'Manual kubectl deployments', pts: 1 },
-      { label: 'Helm charts with CI/CD', pts: 2 },
-      { label: 'GitOps with ArgoCD, auto-sync, prune and selfHeal', pts: 3 },
-    ],
-  },
-  {
-    q: 'How do you handle security in your pipeline?',
-    options: [
-      { label: 'No security scanning', pts: 0 },
-      { label: 'Basic dependency scanning', pts: 1 },
-      { label: 'SAST + container scanning', pts: 2 },
-      { label: 'Full DevSecOps with policy gates and SonarQube', pts: 3 },
-    ],
-  },
-  {
-    q: 'What is your disaster recovery strategy?',
-    options: [
-      { label: 'No formal strategy', pts: 0 },
-      { label: 'Manual backups', pts: 1 },
-      { label: 'Automated backups with RTO/RPO defined', pts: 2 },
-      { label: 'Multi-AZ with automated failover and tested runbooks', pts: 3 },
-    ],
-  },
-  {
-    q: 'How do you manage cloud costs?',
-    options: [
-      { label: 'No cost management', pts: 0 },
-      { label: 'Monthly review', pts: 1 },
-      { label: 'Tagging strategy + budget alerts', pts: 2 },
-      { label: 'FinOps practice with optimization automation', pts: 3 },
-    ],
-  },
-  {
-    q: 'How do you document your infrastructure?',
-    options: [
-      { label: 'No documentation', pts: 0 },
-      { label: 'Basic README files', pts: 1 },
-      { label: 'Architecture diagrams + runbooks', pts: 2 },
-      { label: 'Living documentation as code, auto-generated', pts: 3 },
-    ],
-  },
-]
+  const questions = [
+    {
+      q: 'How do you manage infrastructure?',
+      options: [
+        { label: 'Manual CLI / Console', pts: 0 },
+        { label: 'Some scripts / templates', pts: 1 },
+        { label: 'Terraform / CloudFormation', pts: 2 },
+        { label: 'Full IaC with modules and remote state', pts: 3 },
+      ],
+    },
+    {
+      q: 'How often do you deploy to production?',
+      options: [
+        { label: 'Monthly or less', pts: 0 },
+        { label: 'Weekly', pts: 1 },
+        { label: 'Daily', pts: 2 },
+        { label: 'Multiple times per day with automated rollback', pts: 3 },
+      ],
+    },
+    {
+      q: 'How do you handle secrets and credentials?',
+      options: [
+        { label: 'Hardcoded in code', pts: 0 },
+        { label: 'Environment variables', pts: 1 },
+        { label: 'Secrets Manager / Vault', pts: 2 },
+        { label: 'OIDC federation — no static keys ever', pts: 3 },
+      ],
+    },
+    {
+      q: 'What is your CI/CD maturity?',
+      options: [
+        { label: 'Manual deployments', pts: 0 },
+        { label: 'Basic CI with tests', pts: 1 },
+        { label: 'Full CI/CD with quality gates', pts: 2 },
+        { label: 'GitOps with ArgoCD, automated rollback', pts: 3 },
+      ],
+    },
+    {
+      q: 'How do you monitor your infrastructure?',
+      options: [
+        { label: 'No monitoring', pts: 0 },
+        { label: 'Basic cloud metrics only', pts: 1 },
+        { label: 'Prometheus + Grafana', pts: 2 },
+        { label: 'Full observability — metrics, logs, traces, alerts', pts: 3 },
+      ],
+    },
+    {
+      q: 'How do you manage Kubernetes?',
+      options: [
+        { label: 'We do not use Kubernetes', pts: 0 },
+        { label: 'Manual kubectl deployments', pts: 1 },
+        { label: 'Helm charts with CI/CD', pts: 2 },
+        { label: 'GitOps with ArgoCD, auto-sync, prune and selfHeal', pts: 3 },
+      ],
+    },
+    {
+      q: 'How do you handle security in your pipeline?',
+      options: [
+        { label: 'No security scanning', pts: 0 },
+        { label: 'Basic dependency scanning', pts: 1 },
+        { label: 'SAST + container scanning', pts: 2 },
+        { label: 'Full DevSecOps with policy gates and SonarQube', pts: 3 },
+      ],
+    },
+    {
+      q: 'What is your disaster recovery strategy?',
+      options: [
+        { label: 'No formal strategy', pts: 0 },
+        { label: 'Manual backups', pts: 1 },
+        { label: 'Automated backups with RTO/RPO defined', pts: 2 },
+        {
+          label: 'Multi-AZ with automated failover and tested runbooks',
+          pts: 3,
+        },
+      ],
+    },
+    {
+      q: 'How do you manage cloud costs?',
+      options: [
+        { label: 'No cost management', pts: 0 },
+        { label: 'Monthly review', pts: 1 },
+        { label: 'Tagging strategy + budget alerts', pts: 2 },
+        { label: 'FinOps practice with optimization automation', pts: 3 },
+      ],
+    },
+    {
+      q: 'How do you document your infrastructure?',
+      options: [
+        { label: 'No documentation', pts: 0 },
+        { label: 'Basic README files', pts: 1 },
+        { label: 'Architecture diagrams + runbooks', pts: 2 },
+        { label: 'Living documentation as code, auto-generated', pts: 3 },
+      ],
+    },
+  ]
 
-const results = [
-  {
-    range: [0, 10],
-    level: 'Initial Stage',
-    badge: 'High Risk',
-    badgeColor: '#EF4444',
-    bg: '#FEF2F2',
-    border: '#FECACA',
-    text: 'Your infrastructure relies heavily on manual processes. This creates significant risk, slow delivery and high operational costs. We recommend starting with IaC foundations and basic CI/CD automation.',
-    cta: 'Schedule a free infrastructure assessment →',
-  },
-  {
-    range: [11, 18],
-    level: 'Developing Stage',
-    badge: 'Growing',
-    badgeColor: '#D97706',
-    bg: '#FFFBEB',
-    border: '#FDE68A',
-    text: 'You have automation in place but critical gaps remain in security, observability and deployment reliability. Focus on standardizing your pipeline and implementing proper secret management.',
-    cta: 'Get a personalized improvement roadmap →',
-  },
-  {
-    range: [19, 25],
-    level: 'Defined Stage',
-    badge: 'Strong Foundation',
-    badgeColor: '#2563EB',
-    bg: '#EEF4FF',
-    border: '#c3d9ff',
-    text: 'Good maturity level. You have solid DevOps practices. Now focus on GitOps, advanced observability and security automation to reach full production-grade maturity.',
-    cta: 'See how we can accelerate your journey →',
-  },
-  {
-    range: [26, 30],
-    level: 'Optimized Stage',
-    badge: 'Enterprise Grade',
-    badgeColor: '#15803D',
-    bg: '#F0FDF4',
-    border: '#BBF7D0',
-    text: "Excellent! You are operating at enterprise level with strong automation, security and reliability practices. Let's discuss advanced platform engineering and FinOps optimization.",
-    cta: 'Talk to our senior engineers →',
-  },
-]
+  const results = [
+    {
+      range: [0, 10],
+      level: 'Initial Stage',
+      badge: 'High Risk',
+      badgeColor: '#EF4444',
+      bg: '#FEF2F2',
+      border: '#FECACA',
+      text: 'Your infrastructure relies heavily on manual processes. This creates significant risk, slow delivery and high operational costs. We recommend starting with IaC foundations and basic CI/CD automation.',
+      cta: 'Schedule a free infrastructure assessment →',
+    },
+    {
+      range: [11, 18],
+      level: 'Developing Stage',
+      badge: 'Growing',
+      badgeColor: '#D97706',
+      bg: '#FFFBEB',
+      border: '#FDE68A',
+      text: 'You have automation in place but critical gaps remain in security, observability and deployment reliability. Focus on standardizing your pipeline and implementing proper secret management.',
+      cta: 'Get a personalized improvement roadmap →',
+    },
+    {
+      range: [19, 25],
+      level: 'Defined Stage',
+      badge: 'Strong Foundation',
+      badgeColor: '#2563EB',
+      bg: '#EEF4FF',
+      border: '#c3d9ff',
+      text: 'Good maturity level. You have solid DevOps practices. Now focus on GitOps, advanced observability and security automation to reach full production-grade maturity.',
+      cta: 'See how we can accelerate your journey →',
+    },
+    {
+      range: [26, 30],
+      level: 'Optimized Stage',
+      badge: 'Enterprise Grade',
+      badgeColor: '#15803D',
+      bg: '#F0FDF4',
+      border: '#BBF7D0',
+      text: "Excellent! You are operating at enterprise level with strong automation, security and reliability practices. Let's discuss advanced platform engineering and FinOps optimization.",
+      cta: 'Talk to our senior engineers →',
+    },
+  ]
 
-let currentQ = 0
-let score = 0
-let answers: number[] = []
+  let currentQ = 0
+  let score = 0
+  let answers: number[] = []
 
-const calUrl = 'https://cal.com/ruben-alexis-h6qkjk/30min'
+  const calUrl = 'https://cal.com/ruben-alexis-h6qkjk/30min'
 
-function letterOf(i: number) { return ['A', 'B', 'C', 'D'][i] }
+  function letterOf(i: number) {
+    return ['A', 'B', 'C', 'D'][i]
+  }
 
-function renderQuestion() {
-  const qc = document.getElementById('question-container')!
-  const q = questions[currentQ]
-  const pct = Math.round(((currentQ + 1) / questions.length) * 100)
+  function renderQuestion() {
+    const qc = document.getElementById('question-container')!
+    const q = questions[currentQ]
+    const pct = Math.round(((currentQ + 1) / questions.length) * 100)
 
-  ;(document.getElementById('progress-label') as HTMLSpanElement).textContent = `Question ${currentQ + 1} of ${questions.length}`
-  ;(document.getElementById('score-display') as HTMLSpanElement).textContent = `Score: ${score} / 30`
-  ;(document.getElementById('progress-bar') as HTMLDivElement).style.width = `${pct}%`
+    ;(
+      document.getElementById('progress-label') as HTMLSpanElement
+    ).textContent = `Question ${currentQ + 1} of ${questions.length}`
+    ;(document.getElementById('score-display') as HTMLSpanElement).textContent =
+      `Score: ${score} / 30`
+    ;(document.getElementById('progress-bar') as HTMLDivElement).style.width =
+      `${pct}%`
 
-  qc.innerHTML = `
+    qc.innerHTML = `
     <div class="rounded-2xl p-8 sm:p-10 animate-fade" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 8px 32px rgba(10,37,64,0.09);">
       <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: #94a3b8;">Question ${currentQ + 1}</p>
       <h2 class="text-xl sm:text-2xl font-bold mb-8" style="color: #0A2540;">${q.q}</h2>
       <div class="space-y-3">
-        ${q.options.map((opt, i) => `
+        ${q.options
+          .map(
+            (opt, i) => `
           <button
             class="option-btn w-full text-left flex items-center gap-4 px-5 py-4 rounded-xl border-2 transition-all hover:border-blue-400 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400"
             style="border-color: #e2e8f0; background: white;"
@@ -227,43 +270,47 @@ function renderQuestion() {
             <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background: #EEF4FF; color: #1E6FFF;">${letterOf(i)}</span>
             <span class="text-sm font-medium" style="color: #334155;">${opt.label}</span>
           </button>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
     </div>
   `
 
-  qc.querySelectorAll('.option-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const pts = parseInt((btn as HTMLElement).dataset.pts ?? '0')
-      answers.push(pts)
-      score += pts
-      currentQ++
-      if (currentQ < questions.length) {
-        renderQuestion()
-      } else {
-        showResult()
-      }
+    qc.querySelectorAll('.option-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const pts = parseInt((btn as HTMLElement).dataset.pts ?? '0')
+        answers.push(pts)
+        score += pts
+        currentQ++
+        if (currentQ < questions.length) {
+          renderQuestion()
+        } else {
+          showResult()
+        }
+      })
     })
-  })
-}
+  }
 
-function showResult() {
-  const qc = document.getElementById('question-container')!
-  const rc = document.getElementById('result-container')!
-  const pb = document.getElementById('progress-bar') as HTMLDivElement
-  const pl = document.getElementById('progress-label') as HTMLSpanElement
-  const sd = document.getElementById('score-display') as HTMLSpanElement
+  function showResult() {
+    const qc = document.getElementById('question-container')!
+    const rc = document.getElementById('result-container')!
+    const pb = document.getElementById('progress-bar') as HTMLDivElement
+    const pl = document.getElementById('progress-label') as HTMLSpanElement
+    const sd = document.getElementById('score-display') as HTMLSpanElement
 
-  qc.classList.add('hidden')
-  rc.classList.remove('hidden')
-  pb.style.width = '100%'
-  pl.textContent = 'Assessment complete'
-  sd.textContent = `Final score: ${score} / 30`
+    qc.classList.add('hidden')
+    rc.classList.remove('hidden')
+    pb.style.width = '100%'
+    pl.textContent = 'Assessment complete'
+    sd.textContent = `Final score: ${score} / 30`
 
-  const result = results.find(r => score >= r.range[0] && score <= r.range[1])!
-  const pct = Math.round((score / 30) * 100)
+    const result = results.find(
+      (r) => score >= r.range[0] && score <= r.range[1]
+    )!
+    const pct = Math.round((score / 30) * 100)
 
-  rc.innerHTML = `
+    rc.innerHTML = `
     <div class="rounded-2xl p-8 sm:p-10 text-center" style="background: ${result.bg}; border: 2px solid ${result.border};">
       <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4" style="background: white; color: ${result.badgeColor}; border: 1px solid ${result.border};">
         ${result.badge}
@@ -312,61 +359,92 @@ function showResult() {
     <div class="mt-8 rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid #e2e8f0;">
       <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Your answers breakdown</h3>
       <div class="space-y-2">
-        ${questions.map((q, i) => {
-          const pts = answers[i] ?? 0
-          const opt = q.options[q.options.findIndex(o => o.pts === pts)] ?? q.options[0]
-          const color = pts === 3 ? '#15803d' : pts === 2 ? '#2563EB' : pts === 1 ? '#D97706' : '#EF4444'
-          return `
+        ${questions
+          .map((q, i) => {
+            const pts = answers[i] ?? 0
+            const opt =
+              q.options[q.options.findIndex((o) => o.pts === pts)] ??
+              q.options[0]
+            const color =
+              pts === 3
+                ? '#15803d'
+                : pts === 2
+                  ? '#2563EB'
+                  : pts === 1
+                    ? '#D97706'
+                    : '#EF4444'
+            return `
             <div class="flex items-center gap-3 text-xs">
               <span class="w-5 h-5 rounded-full flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0" style="background: ${color};">${pts}</span>
               <span style="color: #64748b;">${q.q}</span>
             </div>
           `
-        }).join('')}
+          })
+          .join('')}
       </div>
     </div>
   `
 
+    // Email capture setup
+    const subjEl = document.getElementById(
+      'assessment-subject'
+    ) as HTMLInputElement
+    const scoreEl2 = document.getElementById(
+      'assessment-score-field'
+    ) as HTMLInputElement
+    const levelEl = document.getElementById(
+      'assessment-level-field'
+    ) as HTMLInputElement
+    if (subjEl)
+      subjEl.value = `DevOps Maturity Assessment — Score ${score}/30 (${result.level})`
+    if (scoreEl2) scoreEl2.value = String(score)
+    if (levelEl) levelEl.value = result.level
+    const emailForm = document.getElementById(
+      'assessment-email-form'
+    ) as HTMLFormElement
+    emailForm?.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const fd = new FormData(emailForm)
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: fd,
+        })
+        if (res.ok) {
+          emailForm.style.display = 'none'
+          const ok = document.getElementById('email-success')
+          if (ok) ok.style.display = 'block'
+        }
+      } catch {}
+    })
 
-  // Email capture setup
-  const subjEl = document.getElementById('assessment-subject') as HTMLInputElement
-  const scoreEl2 = document.getElementById('assessment-score-field') as HTMLInputElement
-  const levelEl = document.getElementById('assessment-level-field') as HTMLInputElement
-  if (subjEl) subjEl.value = `DevOps Maturity Assessment — Score ${score}/30 (${result.level})`
-  if (scoreEl2) scoreEl2.value = String(score)
-  if (levelEl) levelEl.value = result.level
-  const emailForm = document.getElementById('assessment-email-form') as HTMLFormElement
-  emailForm?.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    const fd = new FormData(emailForm)
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
-      if (res.ok) {
-        emailForm.style.display = 'none'
-        const ok = document.getElementById('email-success')
-        if (ok) ok.style.display = 'block'
-      }
-    } catch {}
-  })
+    document.getElementById('retake-btn')?.addEventListener('click', () => {
+      currentQ = 0
+      score = 0
+      answers = []
+      qc.classList.remove('hidden')
+      rc.classList.add('hidden')
+      ;(document.getElementById('progress-bar') as HTMLDivElement).style.width =
+        '10%'
+      renderQuestion()
+    })
+  }
 
-  document.getElementById('retake-btn')?.addEventListener('click', () => {
-    currentQ = 0
-    score = 0
-    answers = []
-    qc.classList.remove('hidden')
-    rc.classList.add('hidden')
-    ;(document.getElementById('progress-bar') as HTMLDivElement).style.width = '10%'
-    renderQuestion()
-  })
-}
-
-renderQuestion()
+  renderQuestion()
 </script>
 
 <style>
   @keyframes fade {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  .animate-fade { animation: fade 0.25s ease forwards; }
+  .animate-fade {
+    animation: fade 0.25s ease forwards;
+  }
 </style>
