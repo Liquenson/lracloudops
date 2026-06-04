@@ -306,19 +306,19 @@ const faqSchema = {
           },
           {
             q: 'How do you handle our AWS credentials?',
-            a: 'We never use static access keys. All automation uses OIDC federation — temporary tokens scoped to the minimum required permissions. Your credentials never leave your account.',
+            a: 'We operate on a strict zero static keys policy. All automation uses OIDC federation with temporary tokens scoped to minimum required permissions — typically 15-minute expiry. Your long-lived credentials never leave your account.',
           },
           {
             q: 'Can you sign an NDA before the initial call?',
-            a: 'Yes. We routinely sign NDAs before any technical discussion. Contact us and we\'ll send our standard NDA within 24 hours.',
+            a: 'Yes, always. We routinely sign NDAs before any technical discussion. Send us an email and we will have our standard NDA back to you within 24 hours.',
           },
           {
-            q: 'What happens after the 30-day support period?',
-            a: 'You own everything — code, infrastructure, documentation. We offer optional retainer contracts for ongoing support, but there\'s no lock-in.',
+            q: 'What happens to our infrastructure after the engagement?',
+            a: 'You own 100% of everything — code, modules, pipelines, documentation. We use your repositories and your AWS accounts. At delivery, we perform a structured handoff with no residual access retained.',
           },
           {
-            q: 'Can we speak with previous clients?',
-            a: 'We can provide references upon request after an initial call. Client confidentiality prevents us from publishing names publicly.',
+            q: 'Can we speak with previous clients as references?',
+            a: 'Yes, upon request after an initial call. We maintain confidentiality publicly but can arrange reference calls with previous clients who have agreed to this.',
           },
         ].map(({ q, a }) => (
           <div class="bg-white rounded-2xl p-6" style="border: 1px solid #e2e8f0;">
