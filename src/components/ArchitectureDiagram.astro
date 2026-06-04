@@ -1,0 +1,119 @@
+---
+interface Props {
+  title: string
+  description: string
+  archId: string
+}
+const { title, description, archId } = Astro.props
+---
+
+<div class="architecture-diagram-wrapper rounded-2xl overflow-hidden" style="background: #F8FAFC; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between px-6 py-4" style="border-bottom: 1px solid #e2e8f0; background: white;">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-wider mb-0.5" style="color: #1E6FFF;">Architecture Diagram</p>
+      <h3 class="text-sm font-semibold" style="color: #0A2540;">{title}</h3>
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        id={`zoom-btn-${archId}`}
+        aria-label="View fullscreen"
+        class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all hover:opacity-80"
+        style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5"/></svg>
+        Zoom
+      </button>
+      <button
+        id={`dl-btn-${archId}`}
+        aria-label="Download SVG"
+        class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all hover:opacity-80"
+        style="background: #F8FAFC; color: #64748b; border: 1px solid #e2e8f0;"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download SVG
+      </button>
+    </div>
+  </div>
+
+  <!-- SVG Container -->
+  <div id={`diagram-${archId}`} class="overflow-x-auto p-4" style="min-height: 200px;">
+    <slot />
+  </div>
+
+  {description && (
+    <div class="px-6 py-3 text-xs" style="border-top: 1px solid #e2e8f0; color: #64748b; background: white;">
+      {description}
+    </div>
+  )}
+
+</div>
+
+<!-- Fullscreen Modal -->
+<div
+  id={`modal-${archId}`}
+  class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-4"
+  style="background: rgba(10,37,64,0.85); backdrop-filter: blur(8px);"
+  aria-modal="true"
+  role="dialog"
+>
+  <div class="relative w-full max-w-6xl max-h-[90vh] overflow-auto rounded-2xl bg-white">
+    <div class="flex items-center justify-between px-6 py-4" style="border-bottom: 1px solid #e2e8f0;">
+      <h3 class="text-base font-bold" style="color: #0A2540;">{title}</h3>
+      <button id={`close-modal-${archId}`} aria-label="Close" class="w-8 h-8 rounded-lg flex items-center justify-center transition-colors hover:bg-gray-100" style="color: #64748b;">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id={`modal-content-${archId}`} class="p-6 overflow-x-auto"></div>
+  </div>
+</div>
+
+<script define:vars={{ archId }}>
+  const zoomBtn   = document.getElementById(`zoom-btn-${archId}`)
+  const dlBtn     = document.getElementById(`dl-btn-${archId}`)
+  const modal     = document.getElementById(`modal-${archId}`)
+  const closeBtn  = document.getElementById(`close-modal-${archId}`)
+  const diagramEl = document.getElementById(`diagram-${archId}`)
+  const modalContent = document.getElementById(`modal-content-${archId}`)
+
+  zoomBtn?.addEventListener('click', () => {
+    if (!modal || !diagramEl || !modalContent) return
+    modalContent.innerHTML = diagramEl.innerHTML
+    modal.classList.remove('hidden')
+    document.body.style.overflow = 'hidden'
+  })
+
+  closeBtn?.addEventListener('click', () => {
+    modal?.classList.add('hidden')
+    document.body.style.overflow = ''
+  })
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden')
+      document.body.style.overflow = ''
+    }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      modal.classList.add('hidden')
+      document.body.style.overflow = ''
+    }
+  })
+
+  dlBtn?.addEventListener('click', () => {
+    const svgEl = diagramEl?.querySelector('svg')
+    if (!svgEl) return
+    const serializer = new XMLSerializer()
+    const svgStr = serializer.serializeToString(svgEl)
+    const blob = new Blob([svgStr], { type: 'image/svg+xml' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${archId}-architecture.svg`
+    a.click()
+    URL.revokeObjectURL(url)
+  })
+</script>

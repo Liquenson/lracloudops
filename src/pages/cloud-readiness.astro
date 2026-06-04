@@ -173,6 +173,9 @@ function showResult() {
   const pct = Math.round((score / maxScore) * 100)
   el('question-container').classList.add('hidden')
   el('result-container').classList.remove('hidden')
+  if (typeof window !== 'undefined' && (window as any).cf) {
+    (window as any).cf.track('assessment_completed', { type: 'cloud-readiness', score })
+  }
   el('result-container').innerHTML = `
     <div class="rounded-2xl p-8 mb-6" style="background:${r.bg};border:1px solid ${r.border};">
       <div class="flex items-start gap-5 mb-6">
@@ -193,4 +196,8 @@ function showResult() {
 
 ;(window as any).selectAnswer = selectAnswer
 render()
+
+if (typeof window !== 'undefined' && (window as any).cf) {
+  (window as any).cf.track('assessment_started', { type: 'cloud-readiness' })
+}
 </script>
