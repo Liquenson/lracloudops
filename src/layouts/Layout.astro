@@ -1827,112 +1827,98 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
 
           <!-- Services -->
           <div>
-            <h3
-              class="text-xs font-bold uppercase tracking-widest mb-5 text-white"
-            >
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
               {lang === 'es' ? 'Servicios' : 'Services'}
             </h3>
             <ul class="space-y-3">
-              {
-                servicesItems.map(({ label, href }) => (
-                  <li>
-                    <a
-                      href={href}
-                      class="text-sm transition-colors hover:text-white"
-                      style="color:rgba(148,163,184,0.7);"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))
-              }
+              {(lang === 'es' ? [
+                { label: 'Cloud Infrastructure', href: '/es/cloud-infrastructure' },
+                { label: 'Kubernetes Platforms', href: '/kubernetes-platforms' },
+                { label: 'DevOps Automation', href: '/es/devops-automation' },
+                { label: 'Platform Engineering', href: '/es/platform-engineering' },
+                { label: 'Observability & SRE', href: '/es/observability' },
+                { label: 'Modelos de engagement', href: '/es/pricing' },
+              ] : [
+                { label: 'Cloud Infrastructure', href: '/cloud-infrastructure' },
+                { label: 'Kubernetes Platforms', href: '/kubernetes-platforms' },
+                { label: 'DevOps Automation', href: '/devops-automation' },
+                { label: 'Platform Engineering', href: '/platform-engineering' },
+                { label: 'Observability & SRE', href: '/observability' },
+                { label: 'Engagement Models', href: '/pricing' },
+              ]).map(({ label, href }) => (
+                <li>
+                  <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <!-- Solutions -->
+          <!-- Resources -->
           <div>
-            <h3
-              class="text-xs font-bold uppercase tracking-widest mb-5 text-white"
-            >
-              Solutions
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+              {lang === 'es' ? 'Recursos' : 'Resources'}
             </h3>
             <ul class="space-y-3">
-              {
-                solutionsItems.map(({ label, href }) => (
-                  <li>
-                    <a
-                      href={href}
-                      class="text-sm transition-colors hover:text-white"
-                      style="color:rgba(148,163,184,0.7);"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))
-              }
+              {(lang === 'es' ? [
+                { label: 'Blog', href: '/es/blog' },
+                { label: 'Documentación', href: '/docs' },
+                { label: 'Architecture Center', href: '/architectures' },
+                { label: 'Herramientas de evaluación', href: '/es/assessment' },
+                { label: 'Casos de uso', href: '/es/proyectos' },
+                { label: 'Seguridad', href: '/es/security' },
+              ] : [
+                { label: 'Blog', href: '/blog' },
+                { label: 'Documentation', href: '/docs' },
+                { label: 'Architecture Center', href: '/architectures' },
+                { label: 'Assessment Tools', href: '/assessments' },
+                { label: 'Case Studies', href: '/projects' },
+                { label: 'Security', href: '/security' },
+              ]).map(({ label, href }) => (
+                <li>
+                  <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <!-- Company -->
-          <div class="col-span-2 md:col-span-1">
-            <h3
-              class="text-xs font-bold uppercase tracking-widest mb-5 text-white"
-            >
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
               {lang === 'es' ? 'Empresa' : 'Company'}
             </h3>
             <ul class="space-y-3">
-              {
-                (lang === 'es'
-                  ? [
-                      { label: 'Nosotros', href: '/es/nosotros' },
-                      { label: 'Certificaciones', href: '/es/certifications' },
-                      { label: 'Evaluación DevOps', href: '/es/assessment' },
-                      { label: 'Precios', href: '/es/pricing' },
-                      { label: 'Blog', href: '/es/blog' },
-                      { label: 'Contacto', href: '/es/contacto' },
-                      { label: 'Seguridad', href: '/security' },
-                      { label: 'Privacidad', href: '/privacy' },
-                      {
-                        label: 'GitHub',
-                        href: 'https://github.com/Liquenson',
-                        external: true,
-                      },
-                    ]
-                  : ([
-                      { label: 'About', href: '/about' },
-                      { label: 'Certifications', href: '/certifications' },
-                      { label: 'DevOps Assessment', href: '/assessment' },
-                      { label: 'Why LRA', href: '/why-lra' },
-                      { label: 'Pricing', href: '/pricing' },
-                      { label: 'Resources', href: '/resources' },
-                      { label: 'Documentation', href: '/docs' },
-                      { label: 'Architecture Center', href: '/architectures' },
-                      { label: 'Cloud Readiness', href: '/cloud-readiness' },
-                      { label: 'K8s Readiness', href: '/kubernetes-readiness' },
-                      { label: 'Blog', href: '/blog' },
-                      { label: 'Contact', href: '/contact' },
-                      { label: 'Security', href: '/security' },
-                      { label: 'Privacy', href: '/privacy' },
-                      {
-                        label: 'GitHub',
-                        href: 'https://github.com/Liquenson',
-                        external: true,
-                      },
-                    ] as { label: string; href: string; external?: boolean }[])
-                ).map(({ label, href, external }) => (
-                  <li>
-                    <a
-                      href={href}
-                      target={external ? '_blank' : undefined}
-                      rel={external ? 'noopener noreferrer' : undefined}
-                      class="text-sm transition-colors hover:text-white"
-                      style="color:rgba(148,163,184,0.7);"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))
-              }
+              {(lang === 'es' ? [
+                { label: 'Nosotros', href: '/es/nosotros' },
+                { label: 'Certificaciones', href: '/es/certifications' },
+                { label: '¿Por qué LRA?', href: '/es/why-lra' },
+                { label: 'Contacto', href: '/es/contacto' },
+                { label: 'Privacidad', href: '/es/privacy' },
+                { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
+              ] : ([
+                { label: 'About', href: '/about' },
+                { label: 'Certifications', href: '/certifications' },
+                { label: 'Why LRA', href: '/why-lra' },
+                { label: 'Contact', href: '/contact' },
+                { label: 'Privacy', href: '/privacy' },
+                { label: 'GitHub', href: 'https://github.com/Liquenson', external: true },
+              ] as { label: string; href: string; external?: boolean }[])
+              ).map(({ label, href, external }) => (
+                <li>
+                  <a
+                    href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                    class="text-sm transition-colors hover:text-white"
+                    style="color:rgba(148,163,184,0.7);"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -1944,18 +1930,10 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span class="text-xs" style="color:rgba(148,163,184,0.4);">
-              {
-                lang === 'es'
-                  ? '© 2026 LRA Cloud Ops. Todos los derechos reservados.'
-                  : '© 2026 LRA Cloud Ops. All rights reserved.'
-              }
+              {lang === 'es'
+                ? '© 2026 LRA Cloud Operations · Licencia MIT · Hecho con Astro + Cloudflare · Consultora con sede en la UE'
+                : '© 2026 LRA Cloud Operations · MIT License · Built with Astro + Cloudflare · EU-based consultancy'}
             </span>
-            <span
-              class="text-xs hidden sm:inline"
-              style="color:rgba(148,163,184,0.3);"
-              >LRA Cloud Operations · Las Palmas de Gran Canaria, Canary
-              Islands, Spain · EU-based consultancy · info@lracloudops.com</span
-            >
             <a
               href={lang === 'es' ? '/es/privacy' : '/privacy'}
               class="text-xs transition-colors hover:text-white"
