@@ -7,18 +7,32 @@ import Layout from '../layouts/Layout.astro'
   descripcion="How LRA Cloud Operations handles your infrastructure security. Zero static keys, OIDC-only credentials, NDA available, GDPR compliant."
   keywords="DevOps security practices, AWS OIDC authentication, cloud infrastructure security, NDA consulting"
 >
-
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
-    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
-      <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
+    <div
+      class="absolute inset-0 pointer-events-none opacity-40"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <span
+        class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
+        style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
+      >
         Security
       </span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6" style="letter-spacing: -0.02em;">
+      <h1
+        class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
+        style="letter-spacing: -0.02em;"
+      >
         How We Handle Your Infrastructure
       </h1>
-      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color: rgba(147,184,255,0.8);">
+      <p
+        class="text-lg leading-relaxed max-w-2xl mx-auto"
+        style="color: rgba(147,184,255,0.8);"
+      >
         Security and trust practices for every engagement
       </p>
     </div>
@@ -27,118 +41,264 @@ import Layout from '../layouts/Layout.astro'
   <!-- SECURITY SECTIONS -->
   <section class="bg-white py-20">
     <div class="max-w-4xl mx-auto px-6 space-y-8">
-
       <!-- Credential Management -->
-      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.08);">
+      <div
+        class="bg-white rounded-2xl p-8"
+        style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.08);"
+      >
         <div class="flex items-start gap-4 mb-5">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
-            <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+            style="background: #EEF4FF;"
+          >
+            <svg
+              class="w-5 h-5"
+              style="color: #1E6FFF;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path>
             </svg>
           </div>
           <div>
-            <h2 class="text-xl font-bold mb-1" style="color: #0A2540;">Credential Management</h2>
-            <p class="text-sm" style="color: #94a3b8;">Zero static keys policy</p>
+            <h2 class="text-xl font-bold mb-1" style="color: #0A2540;">
+              Credential Management
+            </h2>
+            <p class="text-sm" style="color: #94a3b8;">
+              Zero static keys policy
+            </p>
           </div>
         </div>
         <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-          We operate on a zero static keys policy. All AWS access uses OIDC federation with temporary credentials scoped to minimum required permissions. We never store, transmit or retain long-lived AWS credentials.
+          We operate on a zero static keys policy. All AWS access uses OIDC
+          federation with temporary credentials scoped to minimum required
+          permissions. We never store, transmit or retain long-lived AWS
+          credentials.
         </p>
         <div class="flex flex-wrap gap-3">
-          {['✓ OIDC-only', '✓ No static keys', '✓ Least privilege IAM'].map(item => (
-            <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{item}</span>
-          ))}
+          {
+            ['✓ OIDC-only', '✓ No static keys', '✓ Least privilege IAM'].map(
+              (item) => (
+                <span
+                  class="text-xs font-semibold px-3 py-1.5 rounded-full"
+                  style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+                >
+                  {item}
+                </span>
+              )
+            )
+          }
         </div>
       </div>
 
       <!-- Code & IP Ownership -->
-      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.08);">
+      <div
+        class="bg-white rounded-2xl p-8"
+        style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.08);"
+      >
         <div class="flex items-start gap-4 mb-5">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
-            <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+            style="background: #EEF4FF;"
+          >
+            <svg
+              class="w-5 h-5"
+              style="color: #1E6FFF;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
           </div>
           <div>
-            <h2 class="text-xl font-bold mb-1" style="color: #0A2540;">Code & IP Ownership</h2>
-            <p class="text-sm" style="color: #94a3b8;">Everything belongs to you from day one</p>
+            <h2 class="text-xl font-bold mb-1" style="color: #0A2540;">
+              Code & IP Ownership
+            </h2>
+            <p class="text-sm" style="color: #94a3b8;">
+              Everything belongs to you from day one
+            </p>
           </div>
         </div>
         <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-          All code produced belongs to you from day one. We use your repositories, your AWS accounts, your infrastructure. At engagement end, we perform a complete handoff with no residual access.
+          All code produced belongs to you from day one. We use your
+          repositories, your AWS accounts, your infrastructure. At engagement
+          end, we perform a complete handoff with no residual access.
         </p>
         <div class="flex flex-wrap gap-3">
-          {['✓ Your repos', '✓ Your accounts', '✓ Full handoff', '✓ No backdoors'].map(item => (
-            <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{item}</span>
-          ))}
+          {
+            [
+              '✓ Your repos',
+              '✓ Your accounts',
+              '✓ Full handoff',
+              '✓ No backdoors',
+            ].map((item) => (
+              <span
+                class="text-xs font-semibold px-3 py-1.5 rounded-full"
+                style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+              >
+                {item}
+              </span>
+            ))
+          }
         </div>
       </div>
 
       <!-- Confidentiality -->
-      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.08);">
+      <div
+        class="bg-white rounded-2xl p-8"
+        style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.08);"
+      >
         <div class="flex items-start gap-4 mb-5">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
-            <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+            style="background: #EEF4FF;"
+          >
+            <svg
+              class="w-5 h-5"
+              style="color: #1E6FFF;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
             </svg>
           </div>
           <div>
-            <h2 class="text-xl font-bold mb-1" style="color: #0A2540;">Confidentiality</h2>
-            <p class="text-sm" style="color: #94a3b8;">NDA before any technical discussion</p>
+            <h2 class="text-xl font-bold mb-1" style="color: #0A2540;">
+              Confidentiality
+            </h2>
+            <p class="text-sm" style="color: #94a3b8;">
+              NDA before any technical discussion
+            </p>
           </div>
         </div>
         <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-          We sign NDAs before technical discussions. Client details, architecture decisions and business context are never shared or referenced in public materials without explicit written consent.
+          We sign NDAs before technical discussions. Client details,
+          architecture decisions and business context are never shared or
+          referenced in public materials without explicit written consent.
         </p>
         <div class="flex flex-wrap gap-3">
-          {['✓ NDA available', '✓ Client anonymization', '✓ No public case studies without consent'].map(item => (
-            <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{item}</span>
-          ))}
+          {
+            [
+              '✓ NDA available',
+              '✓ Client anonymization',
+              '✓ No public case studies without consent',
+            ].map((item) => (
+              <span
+                class="text-xs font-semibold px-3 py-1.5 rounded-full"
+                style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+              >
+                {item}
+              </span>
+            ))
+          }
         </div>
       </div>
 
       <!-- GDPR & Data Handling -->
-      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.08);">
+      <div
+        class="bg-white rounded-2xl p-8"
+        style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.08);"
+      >
         <div class="flex items-start gap-4 mb-5">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EEF4FF;">
-            <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+            style="background: #EEF4FF;"
+          >
+            <svg
+              class="w-5 h-5"
+              style="color: #1E6FFF;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
             </svg>
           </div>
           <div>
-            <h2 class="text-xl font-bold mb-1" style="color: #0A2540;">GDPR & Data Handling</h2>
-            <p class="text-sm" style="color: #94a3b8;">Cookieless analytics · No tracking</p>
+            <h2 class="text-xl font-bold mb-1" style="color: #0A2540;">
+              GDPR & Data Handling
+            </h2>
+            <p class="text-sm" style="color: #94a3b8;">
+              Cookieless analytics · No tracking
+            </p>
           </div>
         </div>
         <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
-          Contact form data is processed via Web3Forms (GDPR compliant). Cloudflare Web Analytics is cookieless and anonymous. We do not use retargeting pixels or behavioral tracking.
+          Contact form data is processed via Web3Forms (GDPR compliant).
+          Cloudflare Web Analytics is cookieless and anonymous. We do not use
+          retargeting pixels or behavioral tracking.
         </p>
         <div class="flex flex-wrap gap-3">
-          {['✓ Cookieless analytics', '✓ No tracking pixels', '✓ Data minimization'].map(item => (
-            <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{item}</span>
-          ))}
+          {
+            [
+              '✓ Cookieless analytics',
+              '✓ No tracking pixels',
+              '✓ Data minimization',
+            ].map((item) => (
+              <span
+                class="text-xs font-semibold px-3 py-1.5 rounded-full"
+                style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+              >
+                {item}
+              </span>
+            ))
+          }
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- CTA -->
   <section class="py-16 border-t border-gray-100" style="background: #F8FAFC;">
     <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">Questions about our security practices?</h2>
+      <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">
+        Questions about our security practices?
+      </h2>
       <p class="text-base mb-8" style="color: #64748b;">
-        We're happy to discuss any aspect of how we handle your infrastructure before starting an engagement.
+        We're happy to discuss any aspect of how we handle your infrastructure
+        before starting an engagement.
       </p>
-      <a href="/contact"
+      <a
+        href="/contact"
         class="inline-flex items-center gap-2 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
-        style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.35);">
+        style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.35);"
+      >
         Contact us
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
         </svg>
       </a>
     </div>
   </section>
-
 </Layout>

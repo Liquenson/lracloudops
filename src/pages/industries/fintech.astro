@@ -7,23 +7,51 @@ import Layout from '../../layouts/Layout.astro'
   descripcion="Secure, low-latency cloud infrastructure for fintech companies. PCI-DSS aligned architecture, high-availability Kubernetes platforms, and automated compliance controls on AWS."
 >
   <!-- Hero -->
-  <section style="background: linear-gradient(135deg, #0A2540 0%, #0d2f50 100%); padding: 100px 24px 80px;">
+  <section
+    style="background: linear-gradient(135deg, #0A2540 0%, #0d2f50 100%); padding: 100px 24px 80px;"
+  >
     <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8" style="background: rgba(30,111,255,0.15); color: #60A5FA; border: 1px solid rgba(30,111,255,0.25);">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8"
+        style="background: rgba(30,111,255,0.15); color: #60A5FA; border: 1px solid rgba(30,111,255,0.25);"
+      >
         Industry · Fintech
       </div>
       <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
         Financial-grade infrastructure<br />that scales without compromise.
       </h1>
-      <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-10" style="color: rgba(148,163,184,0.9);">
-        Cloud platforms engineered for the security, latency, and regulatory requirements of fintech — PCI-DSS aligned, highly available, and built to handle transaction volumes at scale.
+      <p
+        class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
+        style="color: rgba(148,163,184,0.9);"
+      >
+        Cloud platforms engineered for the security, latency, and regulatory
+        requirements of fintech — PCI-DSS aligned, highly available, and built
+        to handle transaction volumes at scale.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contact" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px" style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.4);">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+          style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
+        >
           Talk to an architect
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
         </a>
-        <a href="/cloud-infrastructure" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:bg-white/10" style="color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);">
+        <a
+          href="/cloud-infrastructure"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:bg-white/10"
+          style="color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);"
+        >
           View infrastructure services
         </a>
       </div>
@@ -34,42 +62,71 @@ import Layout from '../../layouts/Layout.astro'
   <section style="background: #F8FAFC; padding: 80px 24px;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">Infrastructure built for financial workloads</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">Low latency, high availability, and regulatory compliance are architecture requirements — not afterthoughts.</p>
+        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
+          Infrastructure built for financial workloads
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Low latency, high availability, and regulatory compliance are
+          architecture requirements — not afterthoughts.
+        </p>
       </div>
       <div class="grid sm:grid-cols-2 gap-6">
-        {[
-          {
-            title: 'PCI-DSS aligned network architecture',
-            desc: 'Cardholder data environments isolated in dedicated VPCs with strict egress controls, WAF, and DDoS protection via AWS Shield Advanced. Network segmentation enforced at the infrastructure layer.',
-            icon: 'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z',
-          },
-          {
-            title: 'Sub-millisecond latency optimization',
-            desc: 'Placement groups for latency-sensitive compute, enhanced networking (ENA), and VPC endpoint routing to avoid public internet traversal. Critical paths benchmarked before production cutover.',
-            icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
-          },
-          {
-            title: '99.99% availability architecture',
-            desc: 'Multi-AZ EKS with auto-scaling, Aurora Global Database for cross-region replication, and automated failover tested quarterly. SLA commitments backed by architecture, not SLAs on paper.',
-            icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
-          },
-          {
-            title: 'Secrets management and encryption',
-            desc: 'AWS Secrets Manager for credential rotation, KMS CMKs for envelope encryption, and HashiCorp Vault for dynamic secrets in Kubernetes. No plaintext credentials in config files or environment variables.',
-            icon: 'M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z',
-          },
-        ].map(({ title, desc, icon }) => (
-          <div class="bg-white rounded-2xl p-7" style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04);">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background: #EEF4FF;">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #1E6FFF;" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
-              </svg>
+        {
+          [
+            {
+              title: 'PCI-DSS aligned network architecture',
+              desc: 'Cardholder data environments isolated in dedicated VPCs with strict egress controls, WAF, and DDoS protection via AWS Shield Advanced. Network segmentation enforced at the infrastructure layer.',
+              icon: 'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z',
+            },
+            {
+              title: 'Sub-millisecond latency optimization',
+              desc: 'Placement groups for latency-sensitive compute, enhanced networking (ENA), and VPC endpoint routing to avoid public internet traversal. Critical paths benchmarked before production cutover.',
+              icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+            },
+            {
+              title: '99.99% availability architecture',
+              desc: 'Multi-AZ EKS with auto-scaling, Aurora Global Database for cross-region replication, and automated failover tested quarterly. SLA commitments backed by architecture, not SLAs on paper.',
+              icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+            },
+            {
+              title: 'Secrets management and encryption',
+              desc: 'AWS Secrets Manager for credential rotation, KMS CMKs for envelope encryption, and HashiCorp Vault for dynamic secrets in Kubernetes. No plaintext credentials in config files or environment variables.',
+              icon: 'M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z',
+            },
+          ].map(({ title, desc, icon }) => (
+            <div
+              class="bg-white rounded-2xl p-7"
+              style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04);"
+            >
+              <div
+                class="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style="background: #EEF4FF;"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  style="color: #1E6FFF;"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: #64748B;">
+                {desc}
+              </p>
             </div>
-            <h3 class="text-lg font-semibold mb-3" style="color: #0A2540;">{title}</h3>
-            <p class="text-sm leading-relaxed" style="color: #64748B;">{desc}</p>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
@@ -77,11 +134,30 @@ import Layout from '../../layouts/Layout.astro'
   <!-- CTA -->
   <section style="background: #0A2540; padding: 80px 24px;">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Building financial infrastructure that needs to be bulletproof?</h2>
-      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">Let's review your architecture and design a platform that meets your compliance requirements and latency targets.</p>
-      <a href="/contact" class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px" style="background: #1E6FFF; box-shadow: 0 4px 24px rgba(30,111,255,0.45);">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        Building financial infrastructure that needs to be bulletproof?
+      </h2>
+      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">
+        Let's review your architecture and design a platform that meets your
+        compliance requirements and latency targets.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+        style="background: #1E6FFF; box-shadow: 0 4px 24px rgba(30,111,255,0.45);"
+      >
         Talk to an architect
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
       </a>
     </div>
   </section>

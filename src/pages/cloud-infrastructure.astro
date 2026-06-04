@@ -7,7 +7,8 @@ const schema = {
   '@id': 'https://lracloudops.com/cloud-infrastructure#service',
   name: 'Cloud Infrastructure Engineering',
   serviceType: 'Cloud Infrastructure',
-  description: 'Codified AWS environments with defined networking, security boundaries and access policies. Terraform modules that are auditable, version-controlled and reproducible across accounts.',
+  description:
+    'Codified AWS environments with defined networking, security boundaries and access policies. Terraform modules that are auditable, version-controlled and reproducible across accounts.',
   url: 'https://lracloudops.com/cloud-infrastructure',
   provider: { '@id': 'https://lracloudops.com/#organization' },
   areaServed: ['ES', 'US', 'LATAM'],
@@ -15,10 +16,31 @@ const schema = {
     '@type': 'OfferCatalog',
     name: 'Cloud Infrastructure Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Terraform Infrastructure as Code' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AWS VPC & Networking Design' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'IAM & Security Boundaries' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Multi-Account AWS Architecture' } },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Terraform Infrastructure as Code',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AWS VPC & Networking Design',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'IAM & Security Boundaries' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Multi-Account AWS Architecture',
+        },
+      },
     ],
   },
 }
@@ -33,34 +55,104 @@ const schema = {
   schema={schema}
   sectionNumber="01"
   challenges={[
-    { title: 'Configuration drift', desc: 'Environments diverge from their intended state over time. Nobody knows what changed, when, or why. Reproducing the environment from scratch is impossible.' },
-    { title: 'Undocumented state', desc: 'Resources created from the console have no audit trail. When the engineer who provisioned them leaves, the knowledge goes with them.' },
-    { title: 'Manual dependency on humans', desc: 'Every new account, region or environment requires manual work. Scaling the platform requires scaling the headcount.' },
-    { title: 'Security configuration applied after the fact', desc: 'Security groups, IAM policies and network boundaries added retroactively are inconsistent and frequently incomplete.' },
+    {
+      title: 'Configuration drift',
+      desc: 'Environments diverge from their intended state over time. Nobody knows what changed, when, or why. Reproducing the environment from scratch is impossible.',
+    },
+    {
+      title: 'Undocumented state',
+      desc: 'Resources created from the console have no audit trail. When the engineer who provisioned them leaves, the knowledge goes with them.',
+    },
+    {
+      title: 'Manual dependency on humans',
+      desc: 'Every new account, region or environment requires manual work. Scaling the platform requires scaling the headcount.',
+    },
+    {
+      title: 'Security configuration applied after the fact',
+      desc: 'Security groups, IAM policies and network boundaries added retroactively are inconsistent and frequently incomplete.',
+    },
   ]}
   archTitle="The platform stack we deliver."
   archSubtitle="Every layer is version-controlled, auditable and recoverable. No manual provisioning, no console-only configuration."
   layers={[
-    { layer: 'Network Foundation', tools: 'Terraform · VPC · Subnets · NAT Gateway · IGW', desc: 'Multi-AZ VPC with public subnets for load balancers and private subnets for compute and data. No backend component has a public IP address.' },
-    { layer: 'Compute Layer', tools: 'EKS 1.31+ · ECS Fargate · EC2 Auto Scaling', desc: 'Kubernetes clusters or Fargate tasks depending on workload requirements. Node groups managed as code. HPA configured at provisioning time.' },
-    { layer: 'Data Layer', tools: 'RDS PostgreSQL 15 · Multi-AZ · Encrypted · Private subnets', desc: 'Managed databases in private subnets with automated failover, 7-day backups and encryption at rest. Security group access restricted to compute tier only.' },
-    { layer: 'Content Delivery', tools: 'CloudFront · S3 · Route 53 · ACM', desc: 'CDN, static asset hosting and DNS managed as code. TLS certificates provisioned and rotated automatically.' },
-    { layer: 'Identity & Access', tools: 'IAM · OIDC · Least-privilege policies · No static credentials', desc: 'OIDC-based authentication for CI/CD pipelines — no long-lived access keys. IAM roles and policies defined in Terraform and reviewed before apply.' },
-    { layer: 'State Management', tools: 'S3 backend · DynamoDB locking · SSE-S3 · Workspaces', desc: 'Remote Terraform state with encryption and distributed locking. Separate workspaces for dev and production — no shared state files.' },
+    {
+      layer: 'Network Foundation',
+      tools: 'Terraform · VPC · Subnets · NAT Gateway · IGW',
+      desc: 'Multi-AZ VPC with public subnets for load balancers and private subnets for compute and data. No backend component has a public IP address.',
+    },
+    {
+      layer: 'Compute Layer',
+      tools: 'EKS 1.31+ · ECS Fargate · EC2 Auto Scaling',
+      desc: 'Kubernetes clusters or Fargate tasks depending on workload requirements. Node groups managed as code. HPA configured at provisioning time.',
+    },
+    {
+      layer: 'Data Layer',
+      tools: 'RDS PostgreSQL 15 · Multi-AZ · Encrypted · Private subnets',
+      desc: 'Managed databases in private subnets with automated failover, 7-day backups and encryption at rest. Security group access restricted to compute tier only.',
+    },
+    {
+      layer: 'Content Delivery',
+      tools: 'CloudFront · S3 · Route 53 · ACM',
+      desc: 'CDN, static asset hosting and DNS managed as code. TLS certificates provisioned and rotated automatically.',
+    },
+    {
+      layer: 'Identity & Access',
+      tools: 'IAM · OIDC · Least-privilege policies · No static credentials',
+      desc: 'OIDC-based authentication for CI/CD pipelines — no long-lived access keys. IAM roles and policies defined in Terraform and reviewed before apply.',
+    },
+    {
+      layer: 'State Management',
+      tools: 'S3 backend · DynamoDB locking · SSE-S3 · Workspaces',
+      desc: 'Remote Terraform state with encryption and distributed locking. Separate workspaces for dev and production — no shared state files.',
+    },
   ]}
   steps={[
-    { step: '01', title: 'Current state assessment', desc: 'Review existing architecture, document gaps and identify risk areas before writing a line of Terraform.' },
-    { step: '02', title: 'Module design', desc: 'Design reusable, independently deployable Terraform modules with clear input/output contracts.' },
-    { step: '03', title: 'Environment provisioning', desc: 'Deploy dev environment first. Validate end-to-end before applying the same configuration to production.' },
-    { step: '04', title: 'Observability and handover', desc: 'CloudWatch alarms, cost alerts and runbooks delivered alongside the infrastructure — not as an afterthought.' },
+    {
+      step: '01',
+      title: 'Current state assessment',
+      desc: 'Review existing architecture, document gaps and identify risk areas before writing a line of Terraform.',
+    },
+    {
+      step: '02',
+      title: 'Module design',
+      desc: 'Design reusable, independently deployable Terraform modules with clear input/output contracts.',
+    },
+    {
+      step: '03',
+      title: 'Environment provisioning',
+      desc: 'Deploy dev environment first. Validate end-to-end before applying the same configuration to production.',
+    },
+    {
+      step: '04',
+      title: 'Observability and handover',
+      desc: 'CloudWatch alarms, cost alerts and runbooks delivered alongside the infrastructure — not as an afterthought.',
+    },
   ]}
   outcomes={[
-    { metric: 'Any environment reproducible', detail: 'from a single terraform apply' },
-    { metric: 'Zero manual configuration', detail: 'every resource defined in code' },
-    { metric: 'Full audit trail', detail: 'every change tied to a commit and a reviewer' },
-    { metric: 'Disaster recovery tested', detail: 'reproducibility verified before production' },
-    { metric: 'Security applied at provisioning', detail: 'not after the first security review' },
-    { metric: 'New environments in minutes', detail: 'not days of manual work' },
+    {
+      metric: 'Any environment reproducible',
+      detail: 'from a single terraform apply',
+    },
+    {
+      metric: 'Zero manual configuration',
+      detail: 'every resource defined in code',
+    },
+    {
+      metric: 'Full audit trail',
+      detail: 'every change tied to a commit and a reviewer',
+    },
+    {
+      metric: 'Disaster recovery tested',
+      detail: 'reproducibility verified before production',
+    },
+    {
+      metric: 'Security applied at provisioning',
+      detail: 'not after the first security review',
+    },
+    {
+      metric: 'New environments in minutes',
+      detail: 'not days of manual work',
+    },
   ]}
   ctaH2="Start with an infrastructure review."
   ctaSubtitle="Bring your current AWS environment. We assess reproducibility, security posture and state management — and outline a concrete path to codified infrastructure."

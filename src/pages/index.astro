@@ -12,79 +12,163 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   descripcion="Expert DevOps team specializing in Kubernetes, AWS infrastructure and GitOps. We design and operate cloud-native platforms that scale."
   keywords="DevOps consulting Spain, Kubernetes consultant AWS, platform engineering consulting, Terraform expert Spain, GitOps implementation, cloud infrastructure team Las Palmas, DevOps freelance España, AWS EKS specialist"
 >
-
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 1. HERO ENTERPRISE                                                   -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="relative overflow-hidden hero-gradient" aria-labelledby="hero-heading">
-
+  <section
+    class="relative overflow-hidden hero-gradient"
+    aria-labelledby="hero-heading"
+  >
     <!-- Dot grid -->
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-      style="background-image: radial-gradient(circle, rgba(96,165,250,0.14) 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.14) 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
     <!-- Radial glow -->
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-      style="background: radial-gradient(ellipse 90% 60% at 50% 115%, rgba(37,99,235,0.22) 0%, transparent 65%);"></div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 90% 60% at 50% 115%, rgba(37,99,235,0.22) 0%, transparent 65%);"
+    >
+    </div>
     <!-- Top edge line -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px pointer-events-none" aria-hidden="true"
-      style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.4), transparent);"></div>
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-px pointer-events-none"
+      aria-hidden="true"
+      style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.4), transparent);"
+    >
+    </div>
 
-    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
-
+    <div
+      class="relative max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center"
+    >
       <!-- Left: Copy -->
       <div class="animate-fade-left">
-        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8 text-xs font-semibold"
-          style="background: rgba(37,99,235,0.15); border: 1px solid rgba(96,165,250,0.3); color: #93C5FD;">
-          <span class="w-2 h-2 rounded-full flex-shrink-0 animate-pulse-soft" style="background: #60A5FA;" aria-hidden="true"></span>
+        <div
+          class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8 text-xs font-semibold"
+          style="background: rgba(37,99,235,0.15); border: 1px solid rgba(96,165,250,0.3); color: #93C5FD;"
+        >
+          <span
+            class="w-2 h-2 rounded-full flex-shrink-0 animate-pulse-soft"
+            style="background: #60A5FA;"
+            aria-hidden="true"></span>
           Cloud Infrastructure &middot; Platform Engineering
         </div>
 
-        <h1 id="hero-heading"
+        <h1
+          id="hero-heading"
           class="text-[34px] sm:text-[52px] lg:text-[62px] font-extrabold text-white leading-[1.04] mb-7"
-          style="letter-spacing: -0.035em;">
+          style="letter-spacing: -0.035em;"
+        >
           Platform Engineering<br />for Infrastructure<br />
           <span style="color: #60A5FA;">That Must Work.</span>
         </h1>
 
-        <p class="text-lg sm:text-xl leading-relaxed mb-8 max-w-[520px]" style="color: rgba(148,163,184,0.85);">
-          We design, automate and operate cloud-native platforms on AWS. Kubernetes, GitOps, Terraform — production-grade from day one.
+        <p
+          class="text-lg sm:text-xl leading-relaxed mb-8 max-w-[520px]"
+          style="color: rgba(148,163,184,0.85);"
+        >
+          We design, automate and operate cloud-native platforms on AWS.
+          Kubernetes, GitOps, Terraform — production-grade from day one.
         </p>
 
         <div class="flex flex-wrap gap-4 mb-6">
-          <a href="/contact"
+          <a
+            href="/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
-            style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.45);">
+            style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.45);"
+          >
             Schedule Free Consultation
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </a>
-          <a href="/projects"
+          <a
+            href="/projects"
             class="inline-flex items-center gap-2.5 text-sm font-semibold px-7 py-4 rounded-xl border transition-all hover:bg-white/10"
-            style="color: rgba(148,163,184,0.9); border-color: rgba(148,163,184,0.25);">
+            style="color: rgba(148,163,184,0.9); border-color: rgba(148,163,184,0.25);"
+          >
             View Case Studies
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path>
             </svg>
           </a>
         </div>
 
-        <p style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 1rem;">
-          Trusted by 15+ engineering teams across healthcare, fintech and cloud-native companies
+        <p
+          style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 1rem;"
+        >
+          Trusted by 15+ engineering teams across healthcare, fintech and
+          cloud-native companies
         </p>
 
         <!-- Trust indicators -->
         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          {['Response within 24h', 'No lock-in contracts'].map(item => (
-            <span class="flex items-center gap-1.5 text-xs font-medium" style="color: rgba(148,163,184,0.65);">
-              <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-              </svg>
-              {item}
-            </span>
-          ))}
-          <a href="/assessment" class="flex items-center gap-1.5 text-xs font-medium transition-colors hover:opacity-80" style="color: rgba(148,163,184,0.65);">
-            <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+          {
+            ['Response within 24h', 'No lock-in contracts'].map((item) => (
+              <span
+                class="flex items-center gap-1.5 text-xs font-medium"
+                style="color: rgba(148,163,184,0.65);"
+              >
+                <svg
+                  class="w-3.5 h-3.5 flex-shrink-0"
+                  style="color: #60A5FA;"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                {item}
+              </span>
+            ))
+          }
+          <a
+            href="/assessment"
+            class="flex items-center gap-1.5 text-xs font-medium transition-colors hover:opacity-80"
+            style="color: rgba(148,163,184,0.65);"
+          >
+            <svg
+              class="w-3.5 h-3.5 flex-shrink-0"
+              style="color: #60A5FA;"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M5 13l4 4L19 7"></path>
             </svg>
             Free DevOps assessment
           </a>
@@ -92,109 +176,214 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
 
       <!-- Right: Terminal mockup -->
-      <div class="relative flex justify-center lg:justify-end animate-fade-up delay-200">
+      <div
+        class="relative flex justify-center lg:justify-end animate-fade-up delay-200"
+      >
         <div class="relative w-full max-w-[510px]">
+          <div
+            class="absolute -inset-6 rounded-3xl pointer-events-none"
+            aria-hidden="true"
+            style="background: radial-gradient(ellipse at center, rgba(37,99,235,0.25) 0%, transparent 70%); filter: blur(24px);"
+          >
+          </div>
 
-          <div class="absolute -inset-6 rounded-3xl pointer-events-none" aria-hidden="true"
-            style="background: radial-gradient(ellipse at center, rgba(37,99,235,0.25) 0%, transparent 70%); filter: blur(24px);"></div>
-
-          <div class="relative rounded-2xl overflow-hidden"
-            style="background: #0d1117; border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);">
-
+          <div
+            class="relative rounded-2xl overflow-hidden"
+            style="background: #0d1117; border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);"
+          >
             <!-- Chrome bar -->
-            <div class="flex items-center gap-2 px-4 py-3.5"
-              style="background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.07);">
-              <div class="w-3 h-3 rounded-full" style="background: #FF5F57;" aria-hidden="true"></div>
-              <div class="w-3 h-3 rounded-full" style="background: #FEBC2E;" aria-hidden="true"></div>
-              <div class="w-3 h-3 rounded-full" style="background: #28C840;" aria-hidden="true"></div>
-              <div class="flex-1 text-center">
-                <span class="text-xs font-mono" style="color: rgba(255,255,255,0.25);">aws-production &middot; main</span>
+            <div
+              class="flex items-center gap-2 px-4 py-3.5"
+              style="background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.07);"
+            >
+              <div
+                class="w-3 h-3 rounded-full"
+                style="background: #FF5F57;"
+                aria-hidden="true"
+              >
               </div>
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>
-              <span class="text-xs font-mono" style="color: rgba(255,255,255,0.25);">live</span>
+              <div
+                class="w-3 h-3 rounded-full"
+                style="background: #FEBC2E;"
+                aria-hidden="true"
+              >
+              </div>
+              <div
+                class="w-3 h-3 rounded-full"
+                style="background: #28C840;"
+                aria-hidden="true"
+              >
+              </div>
+              <div class="flex-1 text-center">
+                <span
+                  class="text-xs font-mono"
+                  style="color: rgba(255,255,255,0.25);"
+                  >aws-production &middot; main</span
+                >
+              </div>
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-emerald-400"
+                aria-hidden="true"></span>
+              <span
+                class="text-xs font-mono"
+                style="color: rgba(255,255,255,0.25);">live</span
+              >
             </div>
 
             <!-- Terminal body -->
-            <div class="p-5 font-mono text-xs sm:text-sm leading-relaxed space-y-1" aria-label="Terminal output showing Terraform and Kubernetes commands">
+            <div
+              class="p-5 font-mono text-xs sm:text-sm leading-relaxed space-y-1"
+              aria-label="Terminal output showing Terraform and Kubernetes commands"
+            >
               <div class="flex items-center gap-2">
                 <span style="color: #79C0FF;">❯</span>
                 <span class="text-white">terraform apply --auto-approve</span>
               </div>
-              <div class="mt-2 text-[0.68rem]" style="color: rgba(255,255,255,0.35);">Plan: 14 to add, 0 to change, 0 to destroy.</div>
-              <div class="space-y-0.5 mt-2">
-                {[
-                  ['aws_vpc.main', '6s'],
-                  ['aws_eks_cluster.main', '2m 18s'],
-                  ['aws_rds_cluster.db', '1m 44s'],
-                  ['aws_cloudfront_distribution.cdn', '47s'],
-                  ['module.alb.aws_lb.main', '52s'],
-                ].map(([res, time]) => (
-                  <div class="text-xs">
-                    <span style="color: #3FB950;">✓</span>{' '}
-                    <span style="color: rgba(255,255,255,0.5);">{res}</span>{' '}
-                    <span style="color: rgba(255,255,255,0.22); font-size: 0.65rem;">({time})</span>
-                  </div>
-                ))}
+              <div
+                class="mt-2 text-[0.68rem]"
+                style="color: rgba(255,255,255,0.35);"
+              >
+                Plan: 14 to add, 0 to change, 0 to destroy.
               </div>
-              <div class="mt-2.5 text-xs font-semibold" style="color: #3FB950;">Apply complete! Resources: 14 added.</div>
+              <div class="space-y-0.5 mt-2">
+                {
+                  [
+                    ['aws_vpc.main', '6s'],
+                    ['aws_eks_cluster.main', '2m 18s'],
+                    ['aws_rds_cluster.db', '1m 44s'],
+                    ['aws_cloudfront_distribution.cdn', '47s'],
+                    ['module.alb.aws_lb.main', '52s'],
+                  ].map(([res, time]) => (
+                    <div class="text-xs">
+                      <span style="color: #3FB950;">✓</span>{' '}
+                      <span style="color: rgba(255,255,255,0.5);">{res}</span>{' '}
+                      <span style="color: rgba(255,255,255,0.22); font-size: 0.65rem;">
+                        ({time})
+                      </span>
+                    </div>
+                  ))
+                }
+              </div>
+              <div class="mt-2.5 text-xs font-semibold" style="color: #3FB950;">
+                Apply complete! Resources: 14 added.
+              </div>
 
               <div class="mt-5 flex items-center gap-2">
                 <span style="color: #79C0FF;">❯</span>
                 <span class="text-white">kubectl get pods -n production</span>
               </div>
               <div class="space-y-0.5 mt-1">
-                {['webapp-7d4b9f-x2k9p', 'webapp-7d4b9f-m8n3q', 'webapp-7d4b9f-p9l1w'].map(pod => (
-                  <div style="font-size: 0.68rem;">
-                    <span style="color: rgba(255,255,255,0.5);">{pod}&nbsp;&nbsp;</span>
-                    <span style="color: rgba(255,255,255,0.4);">2/2&nbsp;&nbsp;</span>
-                    <span style="color: #3FB950;">Running</span>
-                  </div>
-                ))}
+                {
+                  [
+                    'webapp-7d4b9f-x2k9p',
+                    'webapp-7d4b9f-m8n3q',
+                    'webapp-7d4b9f-p9l1w',
+                  ].map((pod) => (
+                    <div style="font-size: 0.68rem;">
+                      <span style="color: rgba(255,255,255,0.5);">
+                        {pod}&nbsp;&nbsp;
+                      </span>
+                      <span style="color: rgba(255,255,255,0.4);">
+                        2/2&nbsp;&nbsp;
+                      </span>
+                      <span style="color: #3FB950;">Running</span>
+                    </div>
+                  ))
+                }
               </div>
               <div class="mt-4 flex items-center gap-1.5">
                 <span style="color: #79C0FF;">❯</span>
-                <span class="terminal-cursor w-1.5 h-4 inline-block rounded-sm" style="background: rgba(255,255,255,0.6);" aria-hidden="true"></span>
+                <span
+                  class="terminal-cursor w-1.5 h-4 inline-block rounded-sm"
+                  style="background: rgba(255,255,255,0.6);"
+                  aria-hidden="true"></span>
               </div>
             </div>
 
             <!-- CI/CD strip -->
-            <div class="px-5 pb-4 pt-2.5" style="border-top: 1px solid rgba(255,255,255,0.06);">
-              <div class="flex items-center gap-0.5" aria-label="All CI/CD stages passed">
-                {['Build', 'Test', 'Security', 'Docker', 'Deploy'].map((step, i) => (
-                  <div class="flex items-center">
-                    <div class="flex items-center gap-1 text-xs font-mono">
-                      <span style="color: #3FB950;" aria-hidden="true">✓</span>
-                      <span style="color: rgba(255,255,255,0.4); font-size: 0.62rem;">{step}</span>
-                    </div>
-                    {i < 4 && <div class="w-4 h-px mx-1" style="background: rgba(63,185,80,0.3);" aria-hidden="true"></div>}
-                  </div>
-                ))}
+            <div
+              class="px-5 pb-4 pt-2.5"
+              style="border-top: 1px solid rgba(255,255,255,0.06);"
+            >
+              <div
+                class="flex items-center gap-0.5"
+                aria-label="All CI/CD stages passed"
+              >
+                {
+                  ['Build', 'Test', 'Security', 'Docker', 'Deploy'].map(
+                    (step, i) => (
+                      <div class="flex items-center">
+                        <div class="flex items-center gap-1 text-xs font-mono">
+                          <span style="color: #3FB950;" aria-hidden="true">
+                            ✓
+                          </span>
+                          <span style="color: rgba(255,255,255,0.4); font-size: 0.62rem;">
+                            {step}
+                          </span>
+                        </div>
+                        {i < 4 && (
+                          <div
+                            class="w-4 h-px mx-1"
+                            style="background: rgba(63,185,80,0.3);"
+                            aria-hidden="true"
+                          />
+                        )}
+                      </div>
+                    )
+                  )
+                }
               </div>
             </div>
           </div>
 
           <!-- Floating badge: Deploy success -->
-          <div class="absolute -top-5 -right-2 sm:-right-8 bg-white rounded-2xl px-4 py-3 shadow-xl animate-fade-up delay-400"
-            style="border: 1px solid rgba(15,23,42,0.07);">
+          <div
+            class="absolute -top-5 -right-2 sm:-right-8 bg-white rounded-2xl px-4 py-3 shadow-xl animate-fade-up delay-400"
+            style="border: 1px solid rgba(15,23,42,0.07);"
+          >
             <div class="flex items-center gap-2 mb-0.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400" aria-hidden="true"></span>
-              <span class="text-xs font-bold text-gray-800">Deploy successful</span>
+              <span
+                class="w-2 h-2 rounded-full bg-emerald-400"
+                aria-hidden="true"></span>
+              <span class="text-xs font-bold text-gray-800"
+                >Deploy successful</span
+              >
             </div>
-            <p class="text-[10px]" style="color: #64748B;">aws-production &middot; 2m ago</p>
+            <p class="text-[10px]" style="color: #64748B;">
+              aws-production &middot; 2m ago
+            </p>
           </div>
 
           <!-- Floating badge: K8s -->
-          <div class="absolute -bottom-5 -left-2 sm:-left-8 bg-white rounded-2xl px-4 py-3 shadow-xl animate-fade-up delay-500"
-            style="border: 1px solid rgba(15,23,42,0.07);">
+          <div
+            class="absolute -bottom-5 -left-2 sm:-left-8 bg-white rounded-2xl px-4 py-3 shadow-xl animate-fade-up delay-500"
+            style="border: 1px solid rgba(15,23,42,0.07);"
+          >
             <div class="flex items-center gap-2 mb-1">
-              <svg class="w-3.5 h-3.5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+              <svg
+                class="w-3.5 h-3.5"
+                style="color: #2563EB;"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
+                ></path>
               </svg>
               <span class="text-xs font-bold text-gray-800">EKS Cluster</span>
             </div>
             <div class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>
-              <span class="text-[10px]" style="color: #64748B;">3/3 nodes healthy</span>
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-emerald-400"
+                aria-hidden="true"></span>
+              <span class="text-[10px]" style="color: #64748B;"
+                >3/3 nodes healthy</span
+              >
             </div>
           </div>
         </div>
@@ -205,26 +394,81 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 1B. TRUST BADGE STRIP — Certifications & Trust signals               -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section style="background: white; border-bottom: 1px solid #E2E8F0; padding: 12px 0;" aria-label="Team certifications and trust signals">
+  <section
+    style="background: white; border-bottom: 1px solid #E2E8F0; padding: 12px 0;"
+    aria-label="Team certifications and trust signals"
+  >
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-        <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #F5F0FF; color: #7B42BC; border: 1px solid #D6B9F5;">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #F5F0FF; color: #7B42BC; border: 1px solid #D6B9F5;"
+        >
+          <svg
+            class="w-3.5 h-3.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+            ></path></svg
+          >
           HashiCorp Certified
         </span>
-        <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EFF8FF; color: #049FD9; border: 1px solid #BAE6FD;">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #EFF8FF; color: #049FD9; border: 1px solid #BAE6FD;"
+        >
+          <svg
+            class="w-3.5 h-3.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+            ></path></svg
+          >
           Cisco Cybersecurity
         </span>
-        <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #FFF5F5; color: #EE3124; border: 1px solid #FCA5A5;">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #FFF5F5; color: #EE3124; border: 1px solid #FCA5A5;"
+        >
+          <svg
+            class="w-3.5 h-3.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path></svg
+          >
           Fortinet Certified ×2
         </span>
-        <a href="/certifications" class="text-xs font-semibold transition-colors hover:opacity-80" style="color: #1E6FFF;">View all credentials →</a>
-        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
-        <span class="text-xs font-medium" style="color: #64748b;">OIDC-only credentials · No static AWS keys</span>
-        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
-        <span class="text-xs font-medium" style="color: #64748b;">NDA available · GDPR compliant</span>
+        <a
+          href="/certifications"
+          class="text-xs font-semibold transition-colors hover:opacity-80"
+          style="color: #1E6FFF;">View all credentials →</a
+        >
+        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"
+        ></span>
+        <span class="text-xs font-medium" style="color: #64748b;"
+          >OIDC-only credentials · No static AWS keys</span
+        >
+        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"
+        ></span>
+        <span class="text-xs font-medium" style="color: #64748b;"
+          >NDA available · GDPR compliant</span
+        >
       </div>
     </div>
   </section>
@@ -232,37 +476,106 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 2. TRUST BAR — Technologies                                          -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB;" aria-label="Technologies we operate in production">
+  <section
+    style="background: #F8FAFC; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB;"
+    aria-label="Technologies we operate in production"
+  >
     <div class="max-w-7xl mx-auto px-6 py-16">
-      <p class="text-center text-[11px] font-bold uppercase tracking-widest mb-12" style="color: #94A3B8;">
+      <p
+        class="text-center text-[11px] font-bold uppercase tracking-widest mb-12"
+        style="color: #94A3B8;"
+      >
         Trusted technologies we operate in production
       </p>
       <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-5 gap-5">
-        {[
-          { name: 'AWS',            icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg' },
-          { name: 'Terraform',      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg' },
-          { name: 'Kubernetes',     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg' },
-          { name: 'Docker',         icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg' },
-          { name: 'GitHub Actions', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubactions.svg' },
-          { name: 'Azure',          icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftazure.svg' },
-          { name: 'Prometheus',     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prometheus.svg' },
-          { name: 'Grafana',        icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grafana.svg' },
-          { name: 'Ansible',        icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ansible.svg' },
-          { name: 'Jenkins',        icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg' },
-          { name: 'ArgoCD',         icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/argo.svg' },
-          { name: 'Helm',           icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/helm.svg' },
-          { name: 'SonarQube',      icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/sonarqube.svg' },
-          { name: 'Maven',          icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachemaven.svg' },
-          { name: 'Linux',          icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linux.svg' },
-        ].map(({ name, icon }) => (
-          <div class="flex flex-col items-center gap-3 group cursor-default" title={name}>
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white transition-all group-hover:shadow-md group-hover:border-blue-200"
-              style="border: 1px solid #E5E7EB;">
-              <img src={icon} alt={name} class="w-7 h-7 transition-opacity group-hover:opacity-70" style="filter: brightness(0) opacity(0.45);" loading="lazy" />
+        {
+          [
+            {
+              name: 'AWS',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg',
+            },
+            {
+              name: 'Terraform',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg',
+            },
+            {
+              name: 'Kubernetes',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg',
+            },
+            {
+              name: 'Docker',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg',
+            },
+            {
+              name: 'GitHub Actions',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubactions.svg',
+            },
+            {
+              name: 'Azure',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftazure.svg',
+            },
+            {
+              name: 'Prometheus',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prometheus.svg',
+            },
+            {
+              name: 'Grafana',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grafana.svg',
+            },
+            {
+              name: 'Ansible',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ansible.svg',
+            },
+            {
+              name: 'Jenkins',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jenkins.svg',
+            },
+            {
+              name: 'ArgoCD',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/argo.svg',
+            },
+            {
+              name: 'Helm',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/helm.svg',
+            },
+            {
+              name: 'SonarQube',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/sonarqube.svg',
+            },
+            {
+              name: 'Maven',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachemaven.svg',
+            },
+            {
+              name: 'Linux',
+              icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linux.svg',
+            },
+          ].map(({ name, icon }) => (
+            <div
+              class="flex flex-col items-center gap-3 group cursor-default"
+              title={name}
+            >
+              <div
+                class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white transition-all group-hover:shadow-md group-hover:border-blue-200"
+                style="border: 1px solid #E5E7EB;"
+              >
+                <img
+                  src={icon}
+                  alt={name}
+                  class="w-7 h-7 transition-opacity group-hover:opacity-70"
+                  style="filter: brightness(0) opacity(0.45);"
+                  loading="lazy"
+                />
+              </div>
+              <span
+                class="text-[11px] font-semibold text-center leading-tight"
+                style="color: #64748B;"
+              >
+                {name}
+              </span>
             </div>
-            <span class="text-[11px] font-semibold text-center leading-tight" style="color: #64748B;">{name}</span>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
@@ -274,31 +587,64 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="max-w-7xl mx-auto px-6 py-20">
       <div class="text-center mb-14 animate-fade-up">
         <span class="section-label">By the numbers</span>
-        <h2 id="metrics-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">
+        <h2
+          id="metrics-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-4"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
           Platform reliability at scale
         </h2>
         <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">
-          Real production metrics from infrastructure we design, build and operate.
+          Real production metrics from infrastructure we design, build and
+          operate.
         </p>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up" style="background: #E5E7EB;">
-        {[
-          { value: '99.95%', label: 'Platform Availability', sub: 'Design target' },
-          { value: '12+',    label: 'Production Projects',  sub: 'Across industries' },
-          { value: '4',      label: 'Certified Engineers',  sub: 'AWS certified' },
-          { value: '100%',   label: 'Infrastructure as Code', sub: 'Zero manual changes' },
-          { value: '4+',     label: 'Years in Production',  sub: 'Not just demos' },
-          { value: '24h',    label: 'Response Time',        sub: 'Support SLA' },
-        ].map(({ value, label, sub }) => (
-          <div class="flex flex-col items-center justify-center text-center px-6 py-12 bg-white hover:bg-blue-50 transition-colors cursor-default">
-            <div class="text-3xl sm:text-4xl font-black mb-2 leading-none" style="color: #1E6FFF; letter-spacing: -0.04em;">
-              {value}
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up"
+        style="background: #E5E7EB;"
+      >
+        {
+          [
+            {
+              value: '99.95%',
+              label: 'Platform Availability',
+              sub: 'Design target',
+            },
+            {
+              value: '12+',
+              label: 'Production Projects',
+              sub: 'Across industries',
+            },
+            { value: '4', label: 'Certified Engineers', sub: 'AWS certified' },
+            {
+              value: '100%',
+              label: 'Infrastructure as Code',
+              sub: 'Zero manual changes',
+            },
+            {
+              value: '4+',
+              label: 'Years in Production',
+              sub: 'Not just demos',
+            },
+            { value: '24h', label: 'Response Time', sub: 'Support SLA' },
+          ].map(({ value, label, sub }) => (
+            <div class="flex flex-col items-center justify-center text-center px-6 py-12 bg-white hover:bg-blue-50 transition-colors cursor-default">
+              <div
+                class="text-3xl sm:text-4xl font-black mb-2 leading-none"
+                style="color: #1E6FFF; letter-spacing: -0.04em;"
+              >
+                {value}
+              </div>
+              <div class="text-sm font-bold mb-1" style="color: #0A2540;">
+                {label}
+              </div>
+              <div class="text-xs" style="color: #94A3B8;">
+                {sub}
+              </div>
             </div>
-            <div class="text-sm font-bold mb-1" style="color: #0A2540;">{label}</div>
-            <div class="text-xs" style="color: #94A3B8;">{sub}</div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
@@ -306,83 +652,144 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 4. SERVICES OVERVIEW                                                -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="services-heading">
+  <section
+    style="background: #F8FAFC; border-top: 1px solid #E5E7EB;"
+    aria-labelledby="services-heading"
+  >
     <div class="max-w-7xl mx-auto px-6 py-24">
       <div class="text-center mb-16 animate-fade-up">
         <span class="section-label">Services</span>
-        <h2 id="services-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+        <h2
+          id="services-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
           What we build and operate
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Six engineering disciplines. One unified platform operating model designed for production reliability.
+          Six engineering disciplines. One unified platform operating model
+          designed for production reliability.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          {
-            icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
-            title: 'Cloud Infrastructure',
-            href: '/cloud-infrastructure',
-            desc: 'Codified AWS environments with defined networking, security boundaries and access policies. Terraform modules that can be audited, version-controlled and reproduced across accounts.',
-          },
-          {
-            icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
-            title: 'Kubernetes Platforms',
-            href: '/platform-engineering',
-            desc: 'Production EKS clusters operated as internal platforms. GitOps delivery via ArgoCD. Development teams deploy without raising infrastructure tickets.',
-          },
-          {
-            icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
-            title: 'DevOps Automation',
-            href: '/devops-automation',
-            desc: 'End-to-end pipelines that enforce tests, security scans and policy gates before reaching a cluster. Every release is traceable. Every rollback takes one command.',
-          },
-          {
-            icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
-            title: 'Platform Engineering',
-            href: '/platform-engineering',
-            desc: 'Building internal developer platforms that reduce cognitive load and accelerate delivery for engineering teams, from golden paths to self-service portals.',
-          },
-          {
-            icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-            title: 'Observability & SRE',
-            href: '/observability',
-            desc: 'Prometheus metrics, Grafana dashboards and alerting configured before go-live. SLOs defined. You know what is failing before a ticket is filed.',
-          },
-          {
-            icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-            title: 'Security & Compliance',
-            href: '/services',
-            desc: 'OIDC authentication, least-privilege IAM, network isolation and compliance boundaries enforced at the infrastructure layer — not retrofitted after launch.',
-          },
-        ].map(({ icon, title, desc, href }, i) => (
-          <div class={`bg-white rounded-2xl p-8 flex flex-col card-lift animate-fade-up ${['delay-100','delay-200','delay-300','delay-100','delay-200','delay-300'][i]}`}
-            style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
-            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6 flex-shrink-0" style="background: #EFF6FF;" aria-hidden="true">
-              <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
-              </svg>
+        {
+          [
+            {
+              icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
+              title: 'Cloud Infrastructure',
+              href: '/cloud-infrastructure',
+              desc: 'Codified AWS environments with defined networking, security boundaries and access policies. Terraform modules that can be audited, version-controlled and reproduced across accounts.',
+            },
+            {
+              icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
+              title: 'Kubernetes Platforms',
+              href: '/platform-engineering',
+              desc: 'Production EKS clusters operated as internal platforms. GitOps delivery via ArgoCD. Development teams deploy without raising infrastructure tickets.',
+            },
+            {
+              icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+              title: 'DevOps Automation',
+              href: '/devops-automation',
+              desc: 'End-to-end pipelines that enforce tests, security scans and policy gates before reaching a cluster. Every release is traceable. Every rollback takes one command.',
+            },
+            {
+              icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+              title: 'Platform Engineering',
+              href: '/platform-engineering',
+              desc: 'Building internal developer platforms that reduce cognitive load and accelerate delivery for engineering teams, from golden paths to self-service portals.',
+            },
+            {
+              icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+              title: 'Observability & SRE',
+              href: '/observability',
+              desc: 'Prometheus metrics, Grafana dashboards and alerting configured before go-live. SLOs defined. You know what is failing before a ticket is filed.',
+            },
+            {
+              icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+              title: 'Security & Compliance',
+              href: '/services',
+              desc: 'OIDC authentication, least-privilege IAM, network isolation and compliance boundaries enforced at the infrastructure layer — not retrofitted after launch.',
+            },
+          ].map(({ icon, title, desc, href }, i) => (
+            <div
+              class={`bg-white rounded-2xl p-8 flex flex-col card-lift animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-100', 'delay-200', 'delay-300'][i]}`}
+              style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl mb-6 flex-shrink-0"
+                style="background: #EFF6FF;"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-5 h-5"
+                  style="color: #2563EB;"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">
+                {title}
+              </h3>
+              <p
+                class="text-sm leading-relaxed flex-1 mb-6"
+                style="color: #64748B;"
+              >
+                {desc}
+              </p>
+              <a
+                href={href}
+                class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto"
+                style="color: #2563EB;"
+              >
+                Learn more
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
             </div>
-            <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">{title}</h3>
-            <p class="text-sm leading-relaxed flex-1 mb-6" style="color: #64748B;">{desc}</p>
-            <a href={href} class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto" style="color: #2563EB;">
-              Learn more
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
-        ))}
+          ))
+        }
       </div>
 
       <div class="text-center mt-12">
-        <a href="/services"
+        <a
+          href="/services"
           class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
-          style="color: #0F172A; border-color: #D1D5DB; background: white;">
+          style="color: #0F172A; border-color: #D1D5DB; background: white;"
+        >
           View all solutions
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
@@ -392,105 +799,224 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 5. PLATFORM ARCHITECTURE                                            -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 relative overflow-hidden" style="background: #0B1220;" aria-labelledby="architecture-heading">
-    <div class="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true"
-      style="background-image: radial-gradient(circle, rgba(96,165,250,0.15) 1px, transparent 1px); background-size: 32px 32px;"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] pointer-events-none" aria-hidden="true"
-      style="background: radial-gradient(ellipse at center, rgba(37,99,235,0.18) 0%, transparent 70%);"></div>
+  <section
+    class="py-24 relative overflow-hidden"
+    style="background: #0B1220;"
+    aria-labelledby="architecture-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none opacity-20"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.15) 1px, transparent 1px); background-size: 32px 32px;"
+    >
+    </div>
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse at center, rgba(37,99,235,0.18) 0%, transparent 70%);"
+    >
+    </div>
 
     <div class="relative max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 animate-fade-up">
-        <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5"
-          style="background: rgba(37,99,235,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);">
+        <span
+          class="inline-flex items-center text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5"
+          style="background: rgba(37,99,235,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);"
+        >
           Platform Architecture
         </span>
-        <h2 id="architecture-heading" class="text-4xl sm:text-5xl font-bold text-white mt-2 mb-5" style="letter-spacing: -0.025em;">
+        <h2
+          id="architecture-heading"
+          class="text-4xl sm:text-5xl font-bold text-white mt-2 mb-5"
+          style="letter-spacing: -0.025em;"
+        >
           The platform stack,<br />layer by layer.
         </h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(148,163,184,0.8);">
-          Six layers that form an auditable, repeatable infrastructure operating model. Each one is version-controlled and recoverable.
+        <p
+          class="text-lg max-w-2xl mx-auto"
+          style="color: rgba(148,163,184,0.8);"
+        >
+          Six layers that form an auditable, repeatable infrastructure operating
+          model. Each one is version-controlled and recoverable.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
         <!-- Architecture stack diagram -->
-        <div class="animate-fade-left" role="img" aria-label="Architecture layers: AWS, Terraform, Kubernetes EKS, ArgoCD, Applications, Prometheus and Grafana">
+        <div
+          class="animate-fade-left"
+          role="img"
+          aria-label="Architecture layers: AWS, Terraform, Kubernetes EKS, ArgoCD, Applications, Prometheus and Grafana"
+        >
           <div class="space-y-0">
-            {[
-              { label: 'AWS', sub: 'Cloud Provider · Multi-AZ · 99.99% SLA', color: '#FF9900', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
-              { label: 'Terraform', sub: 'Infrastructure as Code · Modular', color: '#7B42BC', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
-              { label: 'Kubernetes (EKS)', sub: 'Container Orchestration · HPA · Auto-scaling', color: '#326CE5', icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2' },
-              { label: 'ArgoCD', sub: 'GitOps · Continuous Delivery · Drift detection', color: '#EF7B4D', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
-              { label: 'Applications', sub: 'Spring Boot · FastAPI · React · Docker', color: '#2563EB', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
-              { label: 'Prometheus + Grafana', sub: 'Observability · Alerting · Real-time dashboards', color: '#E5421E', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
-            ].map(({ label, sub, color, icon }, i, arr) => (
-              <div>
-                <div class="flex items-center gap-4 p-4 rounded-xl transition-all hover:-translate-x-1 cursor-default"
-                  style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
-                  <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0"
-                    style={`background: ${color}22; border: 1px solid ${color}44;`} aria-hidden="true">
-                    <svg class="w-5 h-5" style={`color: ${color};`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
-                    </svg>
+            {
+              [
+                {
+                  label: 'AWS',
+                  sub: 'Cloud Provider · Multi-AZ · 99.99% SLA',
+                  color: '#FF9900',
+                  icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
+                },
+                {
+                  label: 'Terraform',
+                  sub: 'Infrastructure as Code · Modular',
+                  color: '#7B42BC',
+                  icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+                },
+                {
+                  label: 'Kubernetes (EKS)',
+                  sub: 'Container Orchestration · HPA · Auto-scaling',
+                  color: '#326CE5',
+                  icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
+                },
+                {
+                  label: 'ArgoCD',
+                  sub: 'GitOps · Continuous Delivery · Drift detection',
+                  color: '#EF7B4D',
+                  icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+                },
+                {
+                  label: 'Applications',
+                  sub: 'Spring Boot · FastAPI · React · Docker',
+                  color: '#2563EB',
+                  icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+                },
+                {
+                  label: 'Prometheus + Grafana',
+                  sub: 'Observability · Alerting · Real-time dashboards',
+                  color: '#E5421E',
+                  icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+                },
+              ].map(({ label, sub, color, icon }, i, arr) => (
+                <div>
+                  <div
+                    class="flex items-center gap-4 p-4 rounded-xl transition-all hover:-translate-x-1 cursor-default"
+                    style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
+                  >
+                    <div
+                      class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0"
+                      style={`background: ${color}22; border: 1px solid ${color}44;`}
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        style={`color: ${color};`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d={icon}
+                        />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="text-sm font-bold text-white">{label}</div>
+                      <div
+                        class="text-xs mt-0.5"
+                        style="color: rgba(148,163,184,0.6);"
+                      >
+                        {sub}
+                      </div>
+                    </div>
+                    <div
+                      class="w-2 h-2 rounded-full flex-shrink-0"
+                      style={`background: ${color};`}
+                      aria-hidden="true"
+                    />
                   </div>
-                  <div class="flex-1 min-w-0">
-                    <div class="text-sm font-bold text-white">{label}</div>
-                    <div class="text-xs mt-0.5" style="color: rgba(148,163,184,0.6);">{sub}</div>
-                  </div>
-                  <div class="w-2 h-2 rounded-full flex-shrink-0" style={`background: ${color};`} aria-hidden="true"></div>
+                  {i < arr.length - 1 && (
+                    <div
+                      class="flex justify-start ml-9 my-1"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        width="16"
+                        height="20"
+                        viewBox="0 0 16 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M8 0 L8 14 M4 10 L8 14 L12 10"
+                          stroke="#2563EB"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  )}
                 </div>
-                {i < arr.length - 1 && (
-                  <div class="flex justify-start ml-9 my-1" aria-hidden="true">
-                    <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
-                      <path d="M8 0 L8 14 M4 10 L8 14 L12 10" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                )}
-              </div>
-            ))}
+              ))
+            }
           </div>
         </div>
 
         <!-- Architecture benefits -->
         <div class="animate-fade-up delay-200">
-          <h3 class="text-2xl font-bold text-white mb-8">What makes this model work</h3>
+          <h3 class="text-2xl font-bold text-white mb-8">
+            What makes this model work
+          </h3>
           <div class="space-y-6">
-            {[
-              {
-                title: 'Immutable infrastructure',
-                desc: 'Every change goes through Terraform and Git. Servers are not configured manually. Environments are not unique. Everything is reproducible.',
-                icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
-              },
-              {
-                title: 'GitOps delivery model',
-                desc: 'ArgoCD uses Git as the single source of truth for cluster state. Drift is detected and reconciled automatically — no manual kubectl apply in production.',
-                icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
-              },
-              {
-                title: 'Instrumented from day one',
-                desc: 'Prometheus and Grafana are part of the initial deployment, not a follow-up project. Alerting thresholds are set before the first user reaches production.',
-                icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
-              },
-              {
-                title: 'Designed for failure',
-                desc: 'HPA responds to CPU and memory pressure. RDS is Multi-AZ with automatic failover. Component failures are isolated before they become user-facing incidents.',
-                icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-              },
-            ].map(({ title, desc, icon }) => (
-              <div class="flex gap-4">
-                <div class="w-9 h-9 flex items-center justify-center rounded-xl flex-shrink-0 mt-0.5"
-                  style="background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.3);" aria-hidden="true">
-                  <svg class="w-4 h-4" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
-                  </svg>
+            {
+              [
+                {
+                  title: 'Immutable infrastructure',
+                  desc: 'Every change goes through Terraform and Git. Servers are not configured manually. Environments are not unique. Everything is reproducible.',
+                  icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
+                },
+                {
+                  title: 'GitOps delivery model',
+                  desc: 'ArgoCD uses Git as the single source of truth for cluster state. Drift is detected and reconciled automatically — no manual kubectl apply in production.',
+                  icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+                },
+                {
+                  title: 'Instrumented from day one',
+                  desc: 'Prometheus and Grafana are part of the initial deployment, not a follow-up project. Alerting thresholds are set before the first user reaches production.',
+                  icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
+                },
+                {
+                  title: 'Designed for failure',
+                  desc: 'HPA responds to CPU and memory pressure. RDS is Multi-AZ with automatic failover. Component failures are isolated before they become user-facing incidents.',
+                  icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+                },
+              ].map(({ title, desc, icon }) => (
+                <div class="flex gap-4">
+                  <div
+                    class="w-9 h-9 flex items-center justify-center rounded-xl flex-shrink-0 mt-0.5"
+                    style="background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.3);"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      style="color: #60A5FA;"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d={icon}
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold text-white mb-1">{title}</div>
+                    <div
+                      class="text-sm leading-relaxed"
+                      style="color: rgba(148,163,184,0.7);"
+                    >
+                      {desc}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div class="text-sm font-bold text-white mb-1">{title}</div>
-                  <div class="text-sm leading-relaxed" style="color: rgba(148,163,184,0.7);">{desc}</div>
-                </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
         </div>
       </div>
@@ -500,51 +1026,109 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 6. ENGAGEMENT MODEL — How we work                                   -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="engagement-heading">
+  <section
+    style="background: #F8FAFC; border-top: 1px solid #E5E7EB;"
+    aria-labelledby="engagement-heading"
+  >
     <div class="max-w-7xl mx-auto px-6 py-24">
       <div class="text-center mb-16 animate-fade-up">
         <span class="section-label">How we work</span>
-        <h2 id="engagement-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+        <h2
+          id="engagement-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
           From kickoff to production
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          A structured six-phase approach that takes you from initial discovery to an optimized, self-healing production platform.
+          A structured six-phase approach that takes you from initial discovery
+          to an optimized, self-healing production platform.
         </p>
       </div>
 
       <div class="relative">
         <!-- Connecting line (desktop only) -->
-        <div class="hidden lg:block absolute h-px" aria-hidden="true"
-          style="top: 2.25rem; left: calc(8.33% + 2.25rem); right: calc(8.33% + 2.25rem); background: linear-gradient(90deg, transparent, #BFDBFE 8%, #BFDBFE 92%, transparent);"></div>
+        <div
+          class="hidden lg:block absolute h-px"
+          aria-hidden="true"
+          style="top: 2.25rem; left: calc(8.33% + 2.25rem); right: calc(8.33% + 2.25rem); background: linear-gradient(90deg, transparent, #BFDBFE 8%, #BFDBFE 92%, transparent);"
+        >
+        </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
-          {[
-            { num: '01', title: 'Discover', desc: 'Audit your current infrastructure, identify gaps in reliability, security and delivery velocity.' },
-            { num: '02', title: 'Design', desc: 'Architect the target platform: network topology, cluster config, pipeline structure and observability model.' },
-            { num: '03', title: 'Build', desc: 'Implement with production-grade Terraform modules, Kubernetes manifests and CI/CD pipelines.' },
-            { num: '04', title: 'Automate', desc: 'Wire GitOps delivery, automated testing, policy gates and rollback procedures into every release path.' },
-            { num: '05', title: 'Operate', desc: 'Run the platform in production with defined SLOs, on-call procedures and runbooks for every failure mode.' },
-            { num: '06', title: 'Optimize', desc: 'Continuously tune for cost efficiency, performance and developer experience as your platform matures.' },
-          ].map(({ num, title, desc }, i) => (
-            <div class={`flex flex-col items-center text-center animate-fade-up ${['delay-100','delay-200','delay-300','delay-100','delay-200','delay-300'][i]}`}>
-              <div class="w-[4.5rem] h-[4.5rem] rounded-full flex items-center justify-center font-black text-white text-sm mb-5 relative z-10"
-                style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.3);">
-                {num}
+          {
+            [
+              {
+                num: '01',
+                title: 'Discover',
+                desc: 'Audit your current infrastructure, identify gaps in reliability, security and delivery velocity.',
+              },
+              {
+                num: '02',
+                title: 'Design',
+                desc: 'Architect the target platform: network topology, cluster config, pipeline structure and observability model.',
+              },
+              {
+                num: '03',
+                title: 'Build',
+                desc: 'Implement with production-grade Terraform modules, Kubernetes manifests and CI/CD pipelines.',
+              },
+              {
+                num: '04',
+                title: 'Automate',
+                desc: 'Wire GitOps delivery, automated testing, policy gates and rollback procedures into every release path.',
+              },
+              {
+                num: '05',
+                title: 'Operate',
+                desc: 'Run the platform in production with defined SLOs, on-call procedures and runbooks for every failure mode.',
+              },
+              {
+                num: '06',
+                title: 'Optimize',
+                desc: 'Continuously tune for cost efficiency, performance and developer experience as your platform matures.',
+              },
+            ].map(({ num, title, desc }, i) => (
+              <div
+                class={`flex flex-col items-center text-center animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-100', 'delay-200', 'delay-300'][i]}`}
+              >
+                <div
+                  class="w-[4.5rem] h-[4.5rem] rounded-full flex items-center justify-center font-black text-white text-sm mb-5 relative z-10"
+                  style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.3);"
+                >
+                  {num}
+                </div>
+                <h3 class="text-base font-bold mb-2" style="color: #0A2540;">
+                  {title}
+                </h3>
+                <p class="text-xs leading-relaxed" style="color: #64748B;">
+                  {desc}
+                </p>
               </div>
-              <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{title}</h3>
-              <p class="text-xs leading-relaxed" style="color: #64748B;">{desc}</p>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
 
       <div class="text-center mt-14">
-        <a href="/contact"
+        <a
+          href="/contact"
           class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
-          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);">
+          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
+        >
           Start your engagement
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
@@ -554,64 +1138,146 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 7. CASE STUDIES PREVIEW                                             -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="case-studies-heading">
+  <section
+    class="py-24 bg-white border-t border-gray-100"
+    aria-labelledby="case-studies-heading"
+  >
     <div class="max-w-7xl mx-auto px-6">
-
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+      <div
+        class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14"
+      >
         <div class="animate-fade-up">
           <span class="section-label">Case Studies</span>
-          <h2 id="case-studies-heading" class="text-4xl sm:text-5xl font-bold mt-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          <h2
+            id="case-studies-heading"
+            class="text-4xl sm:text-5xl font-bold mt-5"
+            style="color: #0F172A; letter-spacing: -0.025em;"
+          >
             Production workloads.<br />Documented outcomes.
           </h2>
         </div>
-        <a href="/projects"
+        <a
+          href="/projects"
           class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors animate-fade"
-          style="color: #2563EB;">
+          style="color: #2563EB;"
+        >
           View all projects
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
         <!-- Case Study 1: Healthcare -->
-        <article class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-100"
+        <article
+          class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-100"
           style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
-          aria-label="Case study: Healthcare Platform Migration">
-          <div class="px-7 pt-7 pb-6 flex-1 flex flex-col" style="border-left: 4px solid #2563EB;">
+          aria-label="Case study: Healthcare Platform Migration"
+        >
+          <div
+            class="px-7 pt-7 pb-6 flex-1 flex flex-col"
+            style="border-left: 4px solid #2563EB;"
+          >
             <div class="flex items-center gap-2 mb-5">
-              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE;">Healthcare</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+              <span
+                class="text-xs font-bold px-3 py-1 rounded-full"
+                style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE;"
+                >Healthcare</span
+              >
+              <span
+                class="text-xs font-bold px-3 py-1 rounded-full"
+                style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
+                >Production</span
+              >
             </div>
-            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">Healthcare Platform Migration</h3>
-            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748B;">
-              Replaced improvised single-AZ infrastructure with a Terraform-managed AWS environment — EKS 1.31, RDS PostgreSQL 15 Multi-AZ, and a dual CI/CD pipeline with SonarCloud coverage gate at 80%.
+            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">
+              Healthcare Platform Migration
+            </h3>
+            <p
+              class="text-sm leading-relaxed mb-5 flex-1"
+              style="color: #64748B;"
+            >
+              Replaced improvised single-AZ infrastructure with a
+              Terraform-managed AWS environment — EKS 1.31, RDS PostgreSQL 15
+              Multi-AZ, and a dual CI/CD pipeline with SonarCloud coverage gate
+              at 80%.
             </p>
             <!-- Key metric -->
-            <div class="flex items-baseline gap-2 mb-5 pb-5" style="border-bottom: 1px solid #F1F5F9;">
-              <span class="text-3xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">80%</span>
-              <span class="text-sm font-medium" style="color: #64748B;">faster deployments</span>
+            <div
+              class="flex items-baseline gap-2 mb-5 pb-5"
+              style="border-bottom: 1px solid #F1F5F9;"
+            >
+              <span
+                class="text-3xl font-black"
+                style="color: #1E6FFF; letter-spacing: -0.04em;">80%</span
+              >
+              <span class="text-sm font-medium" style="color: #64748B;"
+                >faster deployments</span
+              >
             </div>
             <!-- Stack -->
             <div class="flex flex-wrap gap-1.5 mb-5">
-              {['Terraform 1.9.8', 'AWS EKS 1.31', 'RDS PostgreSQL 15', 'GitHub Actions', 'Jenkins'].map(tag => (
-                <span class="stack-tag">{tag}</span>
-              ))}
+              {
+                [
+                  'Terraform 1.9.8',
+                  'AWS EKS 1.31',
+                  'RDS PostgreSQL 15',
+                  'GitHub Actions',
+                  'Jenkins',
+                ].map((tag) => <span class="stack-tag">{tag}</span>)
+              }
             </div>
             <div class="flex items-center justify-between">
-              <a href="https://github.com/Liquenson/aws-terraform-devops" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70" style="color: #64748B;">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              <a
+                href="https://github.com/Liquenson/aws-terraform-devops"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
+                style="color: #64748B;"
+              >
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  ></path>
                 </svg>
                 GitHub
               </a>
-              <a href="/projects/aws-terraform-devops" class="inline-flex items-center gap-1 text-xs font-semibold" style="color: #2563EB;">
+              <a
+                href="/projects/aws-terraform-devops"
+                class="inline-flex items-center gap-1 text-xs font-semibold"
+                style="color: #2563EB;"
+              >
                 Read case study
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <svg
+                  class="w-3 h-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                 </svg>
               </a>
             </div>
@@ -619,40 +1285,103 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </article>
 
         <!-- Case Study 2: Fintech -->
-        <article class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-200"
+        <article
+          class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-200"
           style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
-          aria-label="Case study: Financial Services Automation">
-          <div class="px-7 pt-7 pb-6 flex-1 flex flex-col" style="border-left: 4px solid #2563EB;">
+          aria-label="Case study: Financial Services Automation"
+        >
+          <div
+            class="px-7 pt-7 pb-6 flex-1 flex flex-col"
+            style="border-left: 4px solid #2563EB;"
+          >
             <div class="flex items-center gap-2 mb-5">
-              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;">Fintech</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+              <span
+                class="text-xs font-bold px-3 py-1 rounded-full"
+                style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;"
+                >Fintech</span
+              >
+              <span
+                class="text-xs font-bold px-3 py-1 rounded-full"
+                style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
+                >Production</span
+              >
             </div>
-            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">Financial Services Automation</h3>
-            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748B;">
-              Rebuilt a financial SaaS delivery pipeline on ECS Fargate with 11 Terraform modules and OIDC authentication — eliminating static credentials and automating the full release cycle with CloudFront OAC.
+            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">
+              Financial Services Automation
+            </h3>
+            <p
+              class="text-sm leading-relaxed mb-5 flex-1"
+              style="color: #64748B;"
+            >
+              Rebuilt a financial SaaS delivery pipeline on ECS Fargate with 11
+              Terraform modules and OIDC authentication — eliminating static
+              credentials and automating the full release cycle with CloudFront
+              OAC.
             </p>
             <!-- Key metric -->
-            <div class="flex items-baseline gap-2 mb-5 pb-5" style="border-bottom: 1px solid #F1F5F9;">
-              <span class="text-3xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">3×</span>
-              <span class="text-sm font-medium" style="color: #64748B;">deployment velocity</span>
+            <div
+              class="flex items-baseline gap-2 mb-5 pb-5"
+              style="border-bottom: 1px solid #F1F5F9;"
+            >
+              <span
+                class="text-3xl font-black"
+                style="color: #1E6FFF; letter-spacing: -0.04em;">3×</span
+              >
+              <span class="text-sm font-medium" style="color: #64748B;"
+                >deployment velocity</span
+              >
             </div>
             <!-- Stack -->
             <div class="flex flex-wrap gap-1.5 mb-5">
-              {['Spring Boot 4', 'React 18', 'ECS Fargate', 'Terraform 1.9.8', 'CloudFront'].map(tag => (
-                <span class="stack-tag">{tag}</span>
-              ))}
+              {
+                [
+                  'Spring Boot 4',
+                  'React 18',
+                  'ECS Fargate',
+                  'Terraform 1.9.8',
+                  'CloudFront',
+                ].map((tag) => <span class="stack-tag">{tag}</span>)
+              }
             </div>
             <div class="flex items-center justify-between">
-              <span class="flex items-center gap-1.5 text-xs" style="color: #CBD5E1;">
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              <span
+                class="flex items-center gap-1.5 text-xs"
+                style="color: #CBD5E1;"
+              >
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  ></path>
                 </svg>
                 Private repo
               </span>
-              <a href="/projects/tbf-cloud-infrastructure" class="inline-flex items-center gap-1 text-xs font-semibold" style="color: #2563EB;">
+              <a
+                href="/projects/tbf-cloud-infrastructure"
+                class="inline-flex items-center gap-1 text-xs font-semibold"
+                style="color: #2563EB;"
+              >
                 Read case study
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <svg
+                  class="w-3 h-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                 </svg>
               </a>
             </div>
@@ -660,55 +1389,130 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </article>
 
         <!-- Case Study 3: Cloud Native -->
-        <article class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-300"
+        <article
+          class="bg-white rounded-2xl flex flex-col overflow-hidden animate-fade-up delay-300"
           style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
-          aria-label="Case study: GitOps Stack EKS Production Pipeline">
-          <div class="px-7 pt-7 pb-6 flex-1 flex flex-col" style="border-left: 4px solid #2563EB;">
+          aria-label="Case study: GitOps Stack EKS Production Pipeline"
+        >
+          <div
+            class="px-7 pt-7 pb-6 flex-1 flex flex-col"
+            style="border-left: 4px solid #2563EB;"
+          >
             <div class="flex items-center gap-2 mb-5">
-              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #F0F9FF; color: #0369A1; border: 1px solid #BAE6FD;">Cloud Native</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-full" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+              <span
+                class="text-xs font-bold px-3 py-1 rounded-full"
+                style="background: #F0F9FF; color: #0369A1; border: 1px solid #BAE6FD;"
+                >Cloud Native</span
+              >
+              <span
+                class="text-xs font-bold px-3 py-1 rounded-full"
+                style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
+                >Production</span
+              >
             </div>
-            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">GitOps Stack — EKS Production Pipeline</h3>
-            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748B;">
-              A production GitOps platform on AWS EKS 1.35 with a 7-stage Jenkins pipeline. No SSH keys, no static credentials — Jenkins assumes eks-admin-role via STS. 22 IAM identities managed entirely as code.
+            <h3 class="text-xl font-bold mb-3" style="color: #0F172A;">
+              GitOps Stack — EKS Production Pipeline
+            </h3>
+            <p
+              class="text-sm leading-relaxed mb-5 flex-1"
+              style="color: #64748B;"
+            >
+              A production GitOps platform on AWS EKS 1.35 with a 7-stage
+              Jenkins pipeline. No SSH keys, no static credentials — Jenkins
+              assumes eks-admin-role via STS. 22 IAM identities managed entirely
+              as code.
             </p>
             <!-- Key metric -->
-            <div class="flex items-baseline gap-2 mb-5 pb-5" style="border-bottom: 1px solid #F1F5F9;">
-              <span class="text-3xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">100%</span>
-              <span class="text-sm font-medium" style="color: #64748B;">zero static credentials</span>
+            <div
+              class="flex items-baseline gap-2 mb-5 pb-5"
+              style="border-bottom: 1px solid #F1F5F9;"
+            >
+              <span
+                class="text-3xl font-black"
+                style="color: #1E6FFF; letter-spacing: -0.04em;">100%</span
+              >
+              <span class="text-sm font-medium" style="color: #64748B;"
+                >zero static credentials</span
+              >
             </div>
             <!-- Stack -->
             <div class="flex flex-wrap gap-1.5 mb-5">
-              {['Terraform 1.9', 'AWS EKS 1.35', 'Jenkins 2.555', 'Ansible 2.10', 'AWS SSM'].map(tag => (
-                <span class="stack-tag">{tag}</span>
-              ))}
+              {
+                [
+                  'Terraform 1.9',
+                  'AWS EKS 1.35',
+                  'Jenkins 2.555',
+                  'Ansible 2.10',
+                  'AWS SSM',
+                ].map((tag) => <span class="stack-tag">{tag}</span>)
+              }
             </div>
             <div class="flex items-center justify-between">
-              <a href="https://github.com/Liquenson/gitops-stack" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70" style="color: #64748B;">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              <a
+                href="https://github.com/Liquenson/gitops-stack"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
+                style="color: #64748B;"
+              >
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  ></path>
                 </svg>
                 GitHub
               </a>
-              <a href="/projects/gitops-stack" class="inline-flex items-center gap-1 text-xs font-semibold" style="color: #2563EB;">
+              <a
+                href="/projects/gitops-stack"
+                class="inline-flex items-center gap-1 text-xs font-semibold"
+                style="color: #2563EB;"
+              >
                 Read case study
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <svg
+                  class="w-3 h-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                 </svg>
               </a>
             </div>
           </div>
         </article>
-
       </div>
 
       <div class="text-center mt-12">
-        <a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50"
-          style="color: #0F172A; border-color: #E5E7EB;">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50"
+          style="color: #0F172A; border-color: #E5E7EB;"
+        >
           View all case studies
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
@@ -718,48 +1522,79 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 8. WHY CHOOSE US — Value propositions                               -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="why-heading">
+  <section
+    class="py-24 border-t border-gray-100"
+    style="background: #F8FAFC;"
+    aria-labelledby="why-heading"
+  >
     <div class="max-w-7xl mx-auto px-6">
-
       <div class="text-center mb-16 animate-fade-up">
         <span class="section-label">Why choose us</span>
-        <h2 id="why-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+        <h2
+          id="why-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
           Platform engineering<br />reduces operational risk.
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Reliability, delivery velocity and observability are properties of the platform — not afterthoughts added during incidents.
+          Reliability, delivery velocity and observability are properties of the
+          platform — not afterthoughts added during incidents.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[
-          {
-            icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
-            title: 'Reliability is engineered, not hoped for.',
-            desc: 'Multi-AZ topology, automated failover and circuit breakers. Component failures stay isolated. Users don\'t see them.',
-          },
-          {
-            icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
-            title: 'Delivery velocity is a platform property.',
-            desc: 'Every pipeline enforces tests, security scans and policy gates before a container reaches a cluster. Teams release faster when the platform handles the gatekeeping.',
-          },
-          {
-            icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
-            title: 'Operate with data, not assumptions.',
-            desc: 'Prometheus metrics, Grafana dashboards and Alertmanager thresholds configured before the first user hits production. You know what\'s failing before a ticket is filed.',
-          },
-        ].map(({ icon, title, desc }, i) => (
-          <div class={`bg-white rounded-2xl p-8 animate-fade-up card-lift ${['delay-100','delay-200','delay-300'][i]}`}
-            style="border: 1px solid #E5E7EB; border-left: 3px solid #2563EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
-            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EFF6FF;" aria-hidden="true">
-              <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
-              </svg>
+        {
+          [
+            {
+              icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+              title: 'Reliability is engineered, not hoped for.',
+              desc: "Multi-AZ topology, automated failover and circuit breakers. Component failures stay isolated. Users don't see them.",
+            },
+            {
+              icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+              title: 'Delivery velocity is a platform property.',
+              desc: 'Every pipeline enforces tests, security scans and policy gates before a container reaches a cluster. Teams release faster when the platform handles the gatekeeping.',
+            },
+            {
+              icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
+              title: 'Operate with data, not assumptions.',
+              desc: "Prometheus metrics, Grafana dashboards and Alertmanager thresholds configured before the first user hits production. You know what's failing before a ticket is filed.",
+            },
+          ].map(({ icon, title, desc }, i) => (
+            <div
+              class={`bg-white rounded-2xl p-8 animate-fade-up card-lift ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+              style="border: 1px solid #E5E7EB; border-left: 3px solid #2563EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl mb-6"
+                style="background: #EFF6FF;"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-5 h-5"
+                  style="color: #2563EB;"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: #64748B;">
+                {desc}
+              </p>
             </div>
-            <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">{title}</h3>
-            <p class="text-sm leading-relaxed" style="color: #64748B;">{desc}</p>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
@@ -767,11 +1602,18 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 8B. INDUSTRIES                                                       -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="sectors-heading">
+  <section
+    class="py-24 bg-white border-t border-gray-100"
+    aria-labelledby="sectors-heading"
+  >
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 animate-fade-up">
         <span class="section-label">Industries</span>
-        <h2 id="sectors-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+        <h2
+          id="sectors-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
           Industries we serve
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
@@ -779,44 +1621,73 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          {
-            title: 'Healthcare',
-            desc: 'HIPAA-aware infrastructure with full audit trails',
-            detail: 'Multi-AZ availability and automated compliance controls. IAM least-privilege, encrypted data at rest and compliance boundaries enforced at provisioning. Proven in real healthcare environments — 4+ years production operations.',
-            icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
-          },
-          {
-            title: 'Financial Services',
-            desc: 'Zero-downtime deployments in regulated financial environments',
-            detail: 'Banking-grade security with OIDC-only credentials and immutable infrastructure. Full audit trail from commit to production. Experience with large-scale financial platforms — no manual intervention in the release path.',
-            icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z',
-          },
-          {
-            title: 'Cloud Native SaaS',
-            desc: 'Scalable platforms that grow with your product',
-            detail: 'GitOps-driven delivery, Kubernetes orchestration and full observability from day one. HPA, cluster autoscaler and ECS Fargate for elastic workloads. Every release is versioned and instantly reversible.',
-            icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
-          },
-          {
-            title: 'IT Consulting & SMB',
-            desc: 'Comprehensive IT consulting and infrastructure management',
-            detail: 'Network architecture, cybersecurity and digital transformation for small and medium businesses. Cisco, Fortinet and Windows Server environments. 8+ years serving SMBs, call centers, legal sector and healthcare.',
-            icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
-          },
-        ].map(({ title, desc, detail, icon }, i) => (
-          <div class={`bg-white rounded-2xl p-7 card-lift animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}
-            style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
-            <div class="w-11 h-11 flex items-center justify-center rounded-xl mb-5 flex-shrink-0" style="background: #EEF4FF;" aria-hidden="true">
-              <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
-              </svg>
+        {
+          [
+            {
+              title: 'Healthcare',
+              desc: 'HIPAA-aware infrastructure with full audit trails',
+              detail:
+                'Multi-AZ availability and automated compliance controls. IAM least-privilege, encrypted data at rest and compliance boundaries enforced at provisioning. Proven in real healthcare environments — 4+ years production operations.',
+              icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+            },
+            {
+              title: 'Financial Services',
+              desc: 'Zero-downtime deployments in regulated financial environments',
+              detail:
+                'Banking-grade security with OIDC-only credentials and immutable infrastructure. Full audit trail from commit to production. Experience with large-scale financial platforms — no manual intervention in the release path.',
+              icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z',
+            },
+            {
+              title: 'Cloud Native SaaS',
+              desc: 'Scalable platforms that grow with your product',
+              detail:
+                'GitOps-driven delivery, Kubernetes orchestration and full observability from day one. HPA, cluster autoscaler and ECS Fargate for elastic workloads. Every release is versioned and instantly reversible.',
+              icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
+            },
+            {
+              title: 'IT Consulting & SMB',
+              desc: 'Comprehensive IT consulting and infrastructure management',
+              detail:
+                'Network architecture, cybersecurity and digital transformation for small and medium businesses. Cisco, Fortinet and Windows Server environments. 8+ years serving SMBs, call centers, legal sector and healthcare.',
+              icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+            },
+          ].map(({ title, desc, detail, icon }, i) => (
+            <div
+              class={`bg-white rounded-2xl p-7 card-lift animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-400'][i]}`}
+              style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+            >
+              <div
+                class="w-11 h-11 flex items-center justify-center rounded-xl mb-5 flex-shrink-0"
+                style="background: #EEF4FF;"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-5 h-5"
+                  style="color: #1E6FFF;"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-base font-bold mb-1" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-sm font-semibold mb-3" style="color: #1E6FFF;">
+                {desc}
+              </p>
+              <p class="text-xs leading-relaxed" style="color: #64748B;">
+                {detail}
+              </p>
             </div>
-            <h3 class="text-base font-bold mb-1" style="color: #0A2540;">{title}</h3>
-            <p class="text-sm font-semibold mb-3" style="color: #1E6FFF;">{desc}</p>
-            <p class="text-xs leading-relaxed" style="color: #64748B;">{detail}</p>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
@@ -824,82 +1695,138 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 9. TESTIMONIALS                                                      -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="testimonials-heading">
+  <section
+    class="py-24 border-t border-gray-100"
+    style="background: #F8FAFC;"
+    aria-labelledby="testimonials-heading"
+  >
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 animate-fade-up">
         <span class="section-label">Client Testimonials</span>
-        <h2 id="testimonials-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+        <h2
+          id="testimonials-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
           Trusted by engineering teams
         </h2>
         <p class="text-lg max-w-2xl mx-auto mb-6" style="color: #64748B;">
           Real outcomes from real infrastructure projects
         </p>
-        <a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          style="color: #2563EB;"
+        >
           See the full case studies
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[
-          {
-            metric: "3 weeks → 45 min deploy time",
-            quote: "They migrated our entire AWS infrastructure to EKS in 6 weeks with zero downtime. Deploy time went from 3 weeks to 45 minutes. The Terraform modules they delivered are still running in production 18 months later.",
-            role: "Head of Infrastructure",
-            company: "Healthcare Technology Platform, Spain",
-            year: "2024",
-            initial: "HI",
-          },
-          {
-            metric: "100% automated deployments",
-            quote: "The GitOps implementation with ArgoCD completely eliminated our manual deployment errors. From day one, every change was tracked, versioned and automatically rolled back if something failed. Exactly what we needed in a regulated environment.",
-            role: "VP of Engineering",
-            company: "Financial Services Platform, Spain",
-            year: "2025",
-            initial: "VP",
-          },
-          {
-            metric: "4 projects reusing same modules",
-            quote: "Their Terraform modules are production-grade. We reused the same architecture patterns across 4 different client projects with minimal changes. The OIDC-only credential approach was a requirement from our security team — they delivered it from day one.",
-            role: "Senior DevOps Engineer",
-            company: "Cloud Native SaaS, LATAM",
-            year: "2025",
-            initial: "SD",
-          },
-        ].map(({ metric, quote, role, company, year, initial }, i) => (
-          <figure
-            class={`flex flex-col p-8 rounded-2xl animate-fade-up bg-white ${['delay-100','delay-200','delay-300'][i]}`}
-            style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
-          >
-            <div class="mb-5">
-              <span class="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;">{metric}</span>
-            </div>
-            <div class="flex-1 mb-6">
-              <div class="flex gap-4">
-                <div class="w-1 rounded-full flex-shrink-0" style="background: #1E6FFF;" aria-hidden="true"></div>
-                <blockquote class="text-base leading-relaxed italic" style="color: #334155;">
-                  "{quote}"
-                </blockquote>
+        {
+          [
+            {
+              metric: '3 weeks → 45 min deploy time',
+              quote:
+                'They migrated our entire AWS infrastructure to EKS in 6 weeks with zero downtime. Deploy time went from 3 weeks to 45 minutes. The Terraform modules they delivered are still running in production 18 months later.',
+              role: 'Head of Infrastructure',
+              company: 'Healthcare Technology Platform, Spain',
+              year: '2024',
+              initial: 'HI',
+            },
+            {
+              metric: '100% automated deployments',
+              quote:
+                'The GitOps implementation with ArgoCD completely eliminated our manual deployment errors. From day one, every change was tracked, versioned and automatically rolled back if something failed. Exactly what we needed in a regulated environment.',
+              role: 'VP of Engineering',
+              company: 'Financial Services Platform, Spain',
+              year: '2025',
+              initial: 'VP',
+            },
+            {
+              metric: '4 projects reusing same modules',
+              quote:
+                'Their Terraform modules are production-grade. We reused the same architecture patterns across 4 different client projects with minimal changes. The OIDC-only credential approach was a requirement from our security team — they delivered it from day one.',
+              role: 'Senior DevOps Engineer',
+              company: 'Cloud Native SaaS, LATAM',
+              year: '2025',
+              initial: 'SD',
+            },
+          ].map(({ metric, quote, role, company, year, initial }, i) => (
+            <figure
+              class={`flex flex-col p-8 rounded-2xl animate-fade-up bg-white ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+              style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+            >
+              <div class="mb-5">
+                <span
+                  class="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full"
+                  style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;"
+                >
+                  {metric}
+                </span>
               </div>
-            </div>
-            <figcaption class="pt-5" style="border-top: 1px solid #F1F5F9;">
-              <div class="flex items-center gap-3 mb-2">
-                <div class="w-10 h-10 flex items-center justify-center rounded-full text-xs font-bold text-white flex-shrink-0"
-                  style="background: #0A2540;" aria-hidden="true">
-                  {initial}
+              <div class="flex-1 mb-6">
+                <div class="flex gap-4">
+                  <div
+                    class="w-1 rounded-full flex-shrink-0"
+                    style="background: #1E6FFF;"
+                    aria-hidden="true"
+                  />
+                  <blockquote
+                    class="text-base leading-relaxed italic"
+                    style="color: #334155;"
+                  >
+                    "{quote}"
+                  </blockquote>
                 </div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-sm font-semibold" style="color: #0F172A;">{role}</div>
-                  <div class="text-xs truncate" style="color: #64748B;">{company}</div>
-                </div>
-                <span class="text-xs font-medium flex-shrink-0" style="color: #94A3B8;">{year}</span>
               </div>
-              <p class="text-[10px]" style="color: #CBD5E1; padding-left: 52px;">Anonymous by request</p>
-            </figcaption>
-          </figure>
-        ))}
+              <figcaption class="pt-5" style="border-top: 1px solid #F1F5F9;">
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center rounded-full text-xs font-bold text-white flex-shrink-0"
+                    style="background: #0A2540;"
+                    aria-hidden="true"
+                  >
+                    {initial}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-semibold" style="color: #0F172A;">
+                      {role}
+                    </div>
+                    <div class="text-xs truncate" style="color: #64748B;">
+                      {company}
+                    </div>
+                  </div>
+                  <span
+                    class="text-xs font-medium flex-shrink-0"
+                    style="color: #94A3B8;"
+                  >
+                    {year}
+                  </span>
+                </div>
+                <p
+                  class="text-[10px]"
+                  style="color: #CBD5E1; padding-left: 52px;"
+                >
+                  Anonymous by request
+                </p>
+              </figcaption>
+            </figure>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -907,107 +1834,192 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 10. SELECTED ENGAGEMENTS                                             -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="engagements-heading">
+  <section
+    class="py-24 bg-white border-t border-gray-100"
+    aria-labelledby="engagements-heading"
+  >
     <div class="max-w-7xl mx-auto px-6">
-
       <div class="text-center mb-16 animate-fade-up">
         <span class="section-label">Selected Engagements</span>
-        <h2 id="engagements-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+        <h2
+          id="engagements-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
           Production outcomes.
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Representative platform implementations across regulated industries. Metrics reflect production environments, not benchmarks.
+          Representative platform implementations across regulated industries.
+          Metrics reflect production environments, not benchmarks.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {[
-          {
-            industry: 'Healthcare Platform',
-            type: 'Cloud Infrastructure + Platform Engineering',
-            description: 'Multi-region AWS environment with EKS, Terraform and end-to-end CI/CD. Infrastructure provisioned as code from day one. Compliance boundaries enforced at the IAM and network layer.',
-            metrics: [
-              { value: '6 modules', label: 'Terraform' },
-              { value: 'Multi-AZ', label: 'RDS PostgreSQL' },
-              { value: 'Zero', label: 'Manual changes in production' },
-              { value: '80%', label: 'Coverage gate enforced' },
-            ],
-            highlights: ['OIDC authentication throughout CI/CD', 'GitOps delivery via ArgoCD', 'Full observability stack from launch'],
-          },
-          {
-            industry: 'Financial Services Platform',
-            type: 'Platform Engineering + DevOps Automation',
-            description: 'SaaS platform on ECS Fargate with CloudFront OAC, Secrets Manager and three OIDC pipelines. JWT + MFA authentication. Testcontainers integration tests against a real database.',
-            metrics: [
-              { value: '11 modules', label: 'Terraform' },
-              { value: '3 pipelines', label: 'OIDC — no static credentials' },
-              { value: 'CloudFront', label: 'OAC with differentiated cache' },
-              { value: 'Real DB', label: 'Integration tests (Testcontainers)' },
-            ],
-            highlights: ['Spring Boot 4.0.3 + Java 17', 'Flyway validate-on-migrate', 'Automated circuit breaker with rollback'],
-          },
-          {
-            industry: 'Logistics Platform',
-            type: 'GitOps + Kubernetes + Observability',
-            description: 'Kubernetes cluster with GitOps delivery, full observability and zero-downtime deployments. Prometheus and Grafana configured at provisioning. SLIs defined before go-live.',
-            metrics: [
-              { value: 'HPA', label: 'Autoscaling active' },
-              { value: 'GitOps', label: 'Single deployment interface' },
-              { value: 'ArgoCD', label: 'Auto-sync + prune + selfHeal' },
-              { value: 'Grafana', label: 'Infra + app in one view' },
-            ],
-            highlights: ['KinD for local development mirrors production', 'Helm Charts per-environment values', 'Alertmanager routing by severity'],
-          },
-          {
-            industry: 'Cloud Native Platform',
-            type: 'DevOps Automation + Infrastructure Review',
-            description: 'Legacy infrastructure audit followed by full codification. Manual environment replaced with Terraform modules, automated pipelines and structured observability.',
-            metrics: [
-              { value: 'From 0', label: 'IaC coverage before' },
-              { value: '100%', label: 'IaC coverage after' },
-              { value: 'Weekly', label: 'Release cadence (was monthly)' },
-              { value: 'OIDC', label: 'No static credentials remaining' },
-            ],
-            highlights: ['ShellCheck CI across 3 platforms', 'Configuration drift eliminated', 'Rollback tested before production'],
-          },
-        ].map((eng, i) => (
-          <div class={`bg-white rounded-2xl p-8 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}
-            style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
-            <div class="flex items-start justify-between mb-5">
-              <div>
-                <span class="text-xs font-semibold uppercase tracking-widest mb-1 block" style="color: #94a3b8;">{eng.type}</span>
-                <h3 class="text-lg font-bold" style="color: #0A2540;">{eng.industry}</h3>
-              </div>
-              <span class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-3" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Production</span>
-            </div>
-            <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">{eng.description}</p>
-            <div class="grid grid-cols-2 gap-3 mb-6">
-              {eng.metrics.map(m => (
-                <div class="rounded-xl p-3" style="background: #f8fafc; border: 1px solid #e2e8f0;">
-                  <div class="text-base font-bold mb-0.5" style="color: #0A2540;">{m.value}</div>
-                  <div class="text-xs" style="color: #64748b;">{m.label}</div>
+        {
+          [
+            {
+              industry: 'Healthcare Platform',
+              type: 'Cloud Infrastructure + Platform Engineering',
+              description:
+                'Multi-region AWS environment with EKS, Terraform and end-to-end CI/CD. Infrastructure provisioned as code from day one. Compliance boundaries enforced at the IAM and network layer.',
+              metrics: [
+                { value: '6 modules', label: 'Terraform' },
+                { value: 'Multi-AZ', label: 'RDS PostgreSQL' },
+                { value: 'Zero', label: 'Manual changes in production' },
+                { value: '80%', label: 'Coverage gate enforced' },
+              ],
+              highlights: [
+                'OIDC authentication throughout CI/CD',
+                'GitOps delivery via ArgoCD',
+                'Full observability stack from launch',
+              ],
+            },
+            {
+              industry: 'Financial Services Platform',
+              type: 'Platform Engineering + DevOps Automation',
+              description:
+                'SaaS platform on ECS Fargate with CloudFront OAC, Secrets Manager and three OIDC pipelines. JWT + MFA authentication. Testcontainers integration tests against a real database.',
+              metrics: [
+                { value: '11 modules', label: 'Terraform' },
+                { value: '3 pipelines', label: 'OIDC — no static credentials' },
+                { value: 'CloudFront', label: 'OAC with differentiated cache' },
+                {
+                  value: 'Real DB',
+                  label: 'Integration tests (Testcontainers)',
+                },
+              ],
+              highlights: [
+                'Spring Boot 4.0.3 + Java 17',
+                'Flyway validate-on-migrate',
+                'Automated circuit breaker with rollback',
+              ],
+            },
+            {
+              industry: 'Logistics Platform',
+              type: 'GitOps + Kubernetes + Observability',
+              description:
+                'Kubernetes cluster with GitOps delivery, full observability and zero-downtime deployments. Prometheus and Grafana configured at provisioning. SLIs defined before go-live.',
+              metrics: [
+                { value: 'HPA', label: 'Autoscaling active' },
+                { value: 'GitOps', label: 'Single deployment interface' },
+                { value: 'ArgoCD', label: 'Auto-sync + prune + selfHeal' },
+                { value: 'Grafana', label: 'Infra + app in one view' },
+              ],
+              highlights: [
+                'KinD for local development mirrors production',
+                'Helm Charts per-environment values',
+                'Alertmanager routing by severity',
+              ],
+            },
+            {
+              industry: 'Cloud Native Platform',
+              type: 'DevOps Automation + Infrastructure Review',
+              description:
+                'Legacy infrastructure audit followed by full codification. Manual environment replaced with Terraform modules, automated pipelines and structured observability.',
+              metrics: [
+                { value: 'From 0', label: 'IaC coverage before' },
+                { value: '100%', label: 'IaC coverage after' },
+                { value: 'Weekly', label: 'Release cadence (was monthly)' },
+                { value: 'OIDC', label: 'No static credentials remaining' },
+              ],
+              highlights: [
+                'ShellCheck CI across 3 platforms',
+                'Configuration drift eliminated',
+                'Rollback tested before production',
+              ],
+            },
+          ].map((eng, i) => (
+            <div
+              class={`bg-white rounded-2xl p-8 animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-400'][i]}`}
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+            >
+              <div class="flex items-start justify-between mb-5">
+                <div>
+                  <span
+                    class="text-xs font-semibold uppercase tracking-widest mb-1 block"
+                    style="color: #94a3b8;"
+                  >
+                    {eng.type}
+                  </span>
+                  <h3 class="text-lg font-bold" style="color: #0A2540;">
+                    {eng.industry}
+                  </h3>
                 </div>
-              ))}
+                <span
+                  class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-3"
+                  style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;"
+                >
+                  Production
+                </span>
+              </div>
+              <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
+                {eng.description}
+              </p>
+              <div class="grid grid-cols-2 gap-3 mb-6">
+                {eng.metrics.map((m) => (
+                  <div
+                    class="rounded-xl p-3"
+                    style="background: #f8fafc; border: 1px solid #e2e8f0;"
+                  >
+                    <div
+                      class="text-base font-bold mb-0.5"
+                      style="color: #0A2540;"
+                    >
+                      {m.value}
+                    </div>
+                    <div class="text-xs" style="color: #64748b;">
+                      {m.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <ul class="space-y-2">
+                {eng.highlights.map((h) => (
+                  <li
+                    class="flex items-center gap-2.5 text-xs"
+                    style="color: #64748b;"
+                  >
+                    <svg
+                      class="w-3.5 h-3.5 flex-shrink-0"
+                      style="color: #1E6FFF;"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    {h}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul class="space-y-2">
-              {eng.highlights.map(h => (
-                <li class="flex items-center gap-2.5 text-xs" style="color: #64748b;">
-                  <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {h}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          ))
+        }
       </div>
 
       <div class="text-center mt-12">
-        <a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          style="color: #2563EB;"
+        >
           View all implementations
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
@@ -1017,110 +2029,251 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 11. RESOURCES PREVIEW — Blog                                         -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="blog-heading">
+  <section
+    class="py-24 border-t border-gray-100"
+    style="background: #F8FAFC;"
+    aria-labelledby="blog-heading"
+  >
     <div class="max-w-7xl mx-auto px-6">
-
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+      <div
+        class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14"
+      >
         <div class="animate-fade-up">
           <span class="section-label">Technical Resources</span>
-          <h2 id="blog-heading" class="text-4xl sm:text-5xl font-bold mt-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          <h2
+            id="blog-heading"
+            class="text-4xl sm:text-5xl font-bold mt-5"
+            style="color: #0F172A; letter-spacing: -0.025em;"
+          >
             Engineering notes.
           </h2>
         </div>
-        <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors animate-fade" style="color: #2563EB;">
+        <a
+          href="/blog"
+          class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors animate-fade"
+          style="color: #2563EB;"
+        >
           All articles
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {recentPosts.length > 0 ? recentPosts.map((post, i) => (
-          <article class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100','delay-200','delay-300'][i]}`}
-            style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
-            <div class="flex items-center gap-2 mb-4">
-              {post.data.tags?.[0] && (
-                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF;">{post.data.tags[0]}</span>
-              )}
-              {post.data.tags?.[1] && (
-                <span class="text-xs font-medium" style="color: #94A3B8;">{post.data.tags[1]}</span>
-              )}
-            </div>
-            <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">
-              <a href={`/blog/${post.id}`} class="hover:text-blue-600 transition-colors">
-                {post.data.titulo}
-              </a>
-            </h3>
-            <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">
-              {post.data.descripcion}
-            </p>
-            <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
-              <time class="text-xs" style="color: #94A3B8;">
-                {new Date(post.data.fecha).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-              </time>
-              <a href={`/blog/${post.id}`} class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70" style="color: #2563EB;"
-                aria-label={`Read: ${post.data.titulo}`}>
-                Read more
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </a>
-            </div>
-          </article>
-        )) : (
-          [{
-            title: 'GitOps with ArgoCD: Production patterns',
-            category: 'GitOps',
-            tag: 'ArgoCD',
-            date: 'Jun 2026',
-            desc: 'How to implement GitOps workflows with ArgoCD for zero-downtime deployments in Kubernetes.',
-            href: '/blog',
-          }, {
-            title: 'Kubernetes Production Checklist',
-            category: 'Kubernetes',
-            tag: 'SRE',
-            date: 'May 2026',
-            desc: 'Everything you need before going live: security, autoscaling, observability and disaster recovery.',
-            href: '/blog',
-          }, {
-            title: 'Terraform Enterprise Patterns',
-            category: 'Terraform',
-            tag: 'IaC',
-            date: 'Apr 2026',
-            desc: 'Modular Terraform for multi-environment, multi-account AWS infrastructure at scale.',
-            href: '/blog',
-          }].map(({ title, category, tag, date, desc, href }, i) => (
-            <article class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100','delay-200','delay-300'][i]}`}
-              style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
-              <div class="flex items-center gap-2 mb-4">
-                <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF;">{category}</span>
-                <span class="text-xs font-medium" style="color: #94A3B8;">{tag}</span>
-              </div>
-              <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">{title}</h3>
-              <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">{desc}</p>
-              <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
-                <span class="text-xs" style="color: #94A3B8;">{date}</span>
-                <a href={href} class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70" style="color: #2563EB;">
-                  Read more
-                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </a>
-              </div>
-            </article>
-          ))
-        )}
+        {
+          recentPosts.length > 0
+            ? recentPosts.map((post, i) => (
+                <article
+                  class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+                  style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+                >
+                  <div class="flex items-center gap-2 mb-4">
+                    {post.data.tags?.[0] && (
+                      <span
+                        class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                        style="background: #EEF4FF; color: #1E6FFF;"
+                      >
+                        {post.data.tags[0]}
+                      </span>
+                    )}
+                    {post.data.tags?.[1] && (
+                      <span class="text-xs font-medium" style="color: #94A3B8;">
+                        {post.data.tags[1]}
+                      </span>
+                    )}
+                  </div>
+                  <h3
+                    class="text-base font-bold mb-3 flex-1"
+                    style="color: #0F172A; line-height: 1.4;"
+                  >
+                    <a
+                      href={`/blog/${post.id}`}
+                      class="hover:text-blue-600 transition-colors"
+                    >
+                      {post.data.titulo}
+                    </a>
+                  </h3>
+                  <p
+                    class="text-sm leading-relaxed mb-5 line-clamp-2"
+                    style="color: #64748B;"
+                  >
+                    {post.data.descripcion}
+                  </p>
+                  <div
+                    class="flex items-center justify-between pt-4 mt-auto"
+                    style="border-top: 1px solid #F1F5F9;"
+                  >
+                    <time class="text-xs" style="color: #94A3B8;">
+                      {new Date(post.data.fecha).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                      })}
+                    </time>
+                    <a
+                      href={`/blog/${post.id}`}
+                      class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70"
+                      style="color: #2563EB;"
+                      aria-label={`Read: ${post.data.titulo}`}
+                    >
+                      Read more
+                      <svg
+                        class="w-3 h-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+              ))
+            : [
+                {
+                  title: 'GitOps with ArgoCD: Production patterns',
+                  category: 'GitOps',
+                  tag: 'ArgoCD',
+                  date: 'Jun 2026',
+                  desc: 'How to implement GitOps workflows with ArgoCD for zero-downtime deployments in Kubernetes.',
+                  href: '/blog',
+                },
+                {
+                  title: 'Kubernetes Production Checklist',
+                  category: 'Kubernetes',
+                  tag: 'SRE',
+                  date: 'May 2026',
+                  desc: 'Everything you need before going live: security, autoscaling, observability and disaster recovery.',
+                  href: '/blog',
+                },
+                {
+                  title: 'Terraform Enterprise Patterns',
+                  category: 'Terraform',
+                  tag: 'IaC',
+                  date: 'Apr 2026',
+                  desc: 'Modular Terraform for multi-environment, multi-account AWS infrastructure at scale.',
+                  href: '/blog',
+                },
+              ].map(({ title, category, tag, date, desc, href }, i) => (
+                <article
+                  class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+                  style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+                >
+                  <div class="flex items-center gap-2 mb-4">
+                    <span
+                      class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                      style="background: #EEF4FF; color: #1E6FFF;"
+                    >
+                      {category}
+                    </span>
+                    <span class="text-xs font-medium" style="color: #94A3B8;">
+                      {tag}
+                    </span>
+                  </div>
+                  <h3
+                    class="text-base font-bold mb-3 flex-1"
+                    style="color: #0F172A; line-height: 1.4;"
+                  >
+                    {title}
+                  </h3>
+                  <p
+                    class="text-sm leading-relaxed mb-5 line-clamp-2"
+                    style="color: #64748B;"
+                  >
+                    {desc}
+                  </p>
+                  <div
+                    class="flex items-center justify-between pt-4 mt-auto"
+                    style="border-top: 1px solid #F1F5F9;"
+                  >
+                    <span class="text-xs" style="color: #94A3B8;">
+                      {date}
+                    </span>
+                    <a
+                      href={href}
+                      class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70"
+                      style="color: #2563EB;"
+                    >
+                      Read more
+                      <svg
+                        class="w-3 h-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+              ))
+        }
       </div>
 
-      <div class="text-center mt-12 animate-fade-up flex flex-wrap items-center justify-center gap-4">
-        <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
-          style="color: #0F172A; border-color: #E5E7EB; background: white;">
+      <div
+        class="text-center mt-12 animate-fade-up flex flex-wrap items-center justify-center gap-4"
+      >
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
+          style="color: #0F172A; border-color: #E5E7EB; background: white;"
+        >
           View all articles
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
-        <a href="/resources" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+        <a
+          href="/resources"
+          class="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          style="color: #2563EB;"
+        >
           Technical guides &amp; resources
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
@@ -1132,30 +2285,58 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="relative overflow-hidden" aria-labelledby="checklist-heading">
     <div class="py-20 px-6" style="background: #0A2540;">
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-        style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <div
+        class="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 28px 28px;"
+      >
+      </div>
 
       <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
-        <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
-          style="background: rgba(30,111,255,0.2); color: #93C5FD; border: 1px solid rgba(96,165,250,0.3);">
+        <span
+          class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
+          style="background: rgba(30,111,255,0.2); color: #93C5FD; border: 1px solid rgba(96,165,250,0.3);"
+        >
           Free resource
         </span>
-        <h2 id="checklist-heading" class="text-3xl sm:text-4xl font-extrabold text-white mb-4" style="letter-spacing: -0.025em;">
+        <h2
+          id="checklist-heading"
+          class="text-3xl sm:text-4xl font-extrabold text-white mb-4"
+          style="letter-spacing: -0.025em;"
+        >
           AWS Production Readiness Checklist
         </h2>
-        <p class="text-base mb-2 max-w-xl mx-auto" style="color: rgba(148,163,184,0.8);">
-          47 checks across security, reliability, performance and cost optimization.
-          Used by our team on every engagement before go-live.
+        <p
+          class="text-base mb-2 max-w-xl mx-auto"
+          style="color: rgba(148,163,184,0.8);"
+        >
+          47 checks across security, reliability, performance and cost
+          optimization. Used by our team on every engagement before go-live.
         </p>
         <p class="text-sm mb-8" style="color: rgba(148,163,184,0.5);">
           Sent to your inbox. No spam, no drip campaigns.
         </p>
 
-        <form id="checklist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
-          <input type="hidden" name="subject" value="Checklist Download - LRA Cloud Ops" />
+        <form
+          id="checklist-form"
+          class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+        >
+          <input
+            type="hidden"
+            name="access_key"
+            value="e8aaab4e-270c-4163-bb76-6a8dfc247485"
+          />
+          <input
+            type="hidden"
+            name="subject"
+            value="Checklist Download - LRA Cloud Ops"
+          />
           <input type="hidden" name="from_name" value="LRA Cloud Operations" />
-          <input type="hidden" name="checklist_request" value="AWS Production Readiness Checklist" />
+          <input
+            type="hidden"
+            name="checklist_request"
+            value="AWS Production Readiness Checklist"
+          />
           <input
             type="email"
             name="email"
@@ -1175,7 +2356,11 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
             Download free &rarr;
           </button>
         </form>
-        <div id="checklist-status" class="hidden text-sm mt-4 px-4 py-2 rounded-lg inline-block"></div>
+        <div
+          id="checklist-status"
+          class="hidden text-sm mt-4 px-4 py-2 rounded-lg inline-block"
+        >
+        </div>
       </div>
     </div>
   </section>
@@ -1186,43 +2371,77 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="relative overflow-hidden" aria-labelledby="cta-heading">
     <div class="py-28 px-6 relative" style="background: #0A2540;">
       <!-- Dot overlay -->
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-        style="background-image: radial-gradient(circle, rgba(96,165,250,0.07) 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <div
+        class="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style="background-image: radial-gradient(circle, rgba(96,165,250,0.07) 1px, transparent 1px); background-size: 28px 28px;"
+      >
+      </div>
       <!-- Radial glow -->
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-        style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.25) 0%, transparent 60%);"></div>
+      <div
+        class="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.25) 0%, transparent 60%);"
+      >
+      </div>
       <!-- Top line -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px pointer-events-none" aria-hidden="true"
-        style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.35), transparent);"></div>
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px pointer-events-none"
+        aria-hidden="true"
+        style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.35), transparent);"
+      >
+      </div>
 
       <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
-        <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8"
-          style="background: rgba(30,111,255,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);">
+        <span
+          class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8"
+          style="background: rgba(30,111,255,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);"
+        >
           Get started
         </span>
 
-        <h2 id="cta-heading"
+        <h2
+          id="cta-heading"
           class="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white mb-6"
-          style="letter-spacing: -0.03em; line-height: 1.06;">
+          style="letter-spacing: -0.03em; line-height: 1.06;"
+        >
           Ready to modernize<br />your infrastructure?
         </h2>
 
-        <p class="text-xl mb-10 max-w-xl mx-auto leading-relaxed" style="color: rgba(148,163,184,0.8);">
-          Schedule a free 30-minute consultation. We'll review your current setup and propose a concrete roadmap.
+        <p
+          class="text-xl mb-10 max-w-xl mx-auto leading-relaxed"
+          style="color: rgba(148,163,184,0.8);"
+        >
+          Schedule a free 30-minute consultation. We'll review your current
+          setup and propose a concrete roadmap.
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
-          <a href="/contact"
+          <a
+            href="/contact"
             class="inline-flex items-center gap-2.5 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 hover:-translate-y-px active:scale-[0.98] shadow-xl"
-            style="background: white; color: #1D4ED8;">
+            style="background: white; color: #1D4ED8;"
+          >
             Schedule Consultation
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </a>
-          <a href="/projects"
+          <a
+            href="/projects"
             class="inline-flex items-center gap-2 text-base font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
-            style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.25);">
+            style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.25);"
+          >
             View Our Work
           </a>
         </div>
@@ -1234,33 +2453,66 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80 mb-8"
           style="color: rgba(148,163,184,0.55);"
         >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          <svg
+            class="w-4 h-4"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+            ></path>
           </svg>
           Follow our engineering updates on LinkedIn
         </a>
 
         <!-- Trust indicators -->
-        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style="color: rgba(255,255,255,0.5);">
-          {['30 minutes. No sales deck.', 'Response within 24 hours.', 'Architecture assessment included.'].map(item => (
-            <span class="flex items-center gap-2 text-sm">
-              <svg class="w-4 h-4 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              {item}
-            </span>
-          ))}
+        <div
+          class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+          style="color: rgba(255,255,255,0.5);"
+        >
+          {
+            [
+              '30 minutes. No sales deck.',
+              'Response within 24 hours.',
+              'Architecture assessment included.',
+            ].map((item) => (
+              <span class="flex items-center gap-2 text-sm">
+                <svg
+                  class="w-4 h-4 flex-shrink-0"
+                  style="color: #60A5FA;"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                {item}
+              </span>
+            ))
+          }
         </div>
       </div>
     </div>
   </section>
-
 </Layout>
 
 <script>
-  const form = document.getElementById('checklist-form') as HTMLFormElement | null
-  const btn = document.getElementById('checklist-btn') as HTMLButtonElement | null
-  const statusEl = document.getElementById('checklist-status') as HTMLDivElement | null
+  const form = document.getElementById(
+    'checklist-form'
+  ) as HTMLFormElement | null
+  const btn = document.getElementById(
+    'checklist-btn'
+  ) as HTMLButtonElement | null
+  const statusEl = document.getElementById(
+    'checklist-status'
+  ) as HTMLDivElement | null
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -1276,16 +2528,20 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       })
       const data = await res.json()
       if (data.success) {
-        statusEl.textContent = 'Subscribed! We will send the checklist to your inbox shortly.'
-        statusEl.style.cssText = 'display:inline-block; background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.3);'
+        statusEl.textContent =
+          'Subscribed! We will send the checklist to your inbox shortly.'
+        statusEl.style.cssText =
+          'display:inline-block; background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.3);'
         form.reset()
       } else {
         statusEl.textContent = 'Something went wrong. Please try again.'
-        statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+        statusEl.style.cssText =
+          'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
       }
     } catch {
       statusEl.textContent = 'Connection error. Please try again.'
-      statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+      statusEl.style.cssText =
+        'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
     }
 
     btn.textContent = 'Download free →'

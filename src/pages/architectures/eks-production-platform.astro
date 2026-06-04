@@ -8,23 +8,55 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
   descripcion="Production-grade Kubernetes on AWS EKS. Managed node groups, ArgoCD GitOps, External Secrets Operator, HPA and CloudWatch Container Insights."
   keywords="EKS production architecture, Kubernetes AWS architecture, EKS Terraform setup, ArgoCD EKS GitOps, EKS cluster architecture"
 >
-
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
     <div class="relative max-w-6xl mx-auto px-6 py-16 sm:py-20">
-      <div class="flex items-center gap-2 text-xs mb-8" style="color: rgba(147,184,255,0.5);">
-        <a href="/" class="hover:text-white transition-colors" style="color: rgba(147,184,255,0.5);">Home</a>
+      <div
+        class="flex items-center gap-2 text-xs mb-8"
+        style="color: rgba(147,184,255,0.5);"
+      >
+        <a
+          href="/"
+          class="hover:text-white transition-colors"
+          style="color: rgba(147,184,255,0.5);">Home</a
+        >
         <span>/</span>
-        <a href="/architectures" class="hover:text-white transition-colors" style="color: rgba(147,184,255,0.5);">Architectures</a>
+        <a
+          href="/architectures"
+          class="hover:text-white transition-colors"
+          style="color: rgba(147,184,255,0.5);">Architectures</a
+        >
         <span>/</span>
-        <span style="color: rgba(147,184,255,0.9);">EKS Production Platform</span>
+        <span style="color: rgba(147,184,255,0.9);"
+          >EKS Production Platform</span
+        >
       </div>
       <div class="flex flex-wrap items-center gap-3 mb-5">
-        <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Production Tested</span>
-        <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: rgba(50,108,229,0.15); color: #326CE5; border: 1px solid rgba(50,108,229,0.3);">Kubernetes</span>
+        <span
+          class="text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;"
+          >Production Tested</span
+        >
+        <span
+          class="text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: rgba(50,108,229,0.15); color: #326CE5; border: 1px solid rgba(50,108,229,0.3);"
+          >Kubernetes</span
+        >
       </div>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4" style="letter-spacing: -0.02em;">EKS Production Platform</h1>
-      <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">Production-grade Kubernetes on AWS EKS with managed node groups, GitOps delivery, secrets management and full observability.</p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
+        style="letter-spacing: -0.02em;"
+      >
+        EKS Production Platform
+      </h1>
+      <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+        Production-grade Kubernetes on AWS EKS with managed node groups, GitOps
+        delivery, secrets management and full observability.
+      </p>
     </div>
   </section>
 
@@ -32,100 +64,477 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div class="lg:col-span-2 space-y-10">
-
           <div>
-            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">Overview</h2>
-            <p class="text-base leading-relaxed mb-4" style="color: #64748b;">This architecture runs production workloads on AWS EKS with managed node groups distributed across multiple availability zones. The control plane is AWS-managed. Node groups are defined in Terraform with autoscaling enabled. ArgoCD handles all deployments — no kubectl apply in CI/CD.</p>
-            <p class="text-base leading-relaxed" style="color: #64748b;">External Secrets Operator synchronizes secrets from AWS Secrets Manager into Kubernetes Secrets. IRSA (IAM Roles for Service Accounts) grants pods the minimum required AWS permissions without static credentials. All workloads define resource requests and limits, run as non-root, and have health probes configured.</p>
+            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">
+              Overview
+            </h2>
+            <p class="text-base leading-relaxed mb-4" style="color: #64748b;">
+              This architecture runs production workloads on AWS EKS with
+              managed node groups distributed across multiple availability
+              zones. The control plane is AWS-managed. Node groups are defined
+              in Terraform with autoscaling enabled. ArgoCD handles all
+              deployments — no kubectl apply in CI/CD.
+            </p>
+            <p class="text-base leading-relaxed" style="color: #64748b;">
+              External Secrets Operator synchronizes secrets from AWS Secrets
+              Manager into Kubernetes Secrets. IRSA (IAM Roles for Service
+              Accounts) grants pods the minimum required AWS permissions without
+              static credentials. All workloads define resource requests and
+              limits, run as non-root, and have health probes configured.
+            </p>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">Architecture Diagram</h2>
-            <ArchitectureDiagram title="EKS Production Platform" description="Traffic flow from internet through CloudFront and ALB into EKS, with supporting AWS services." archId="eks-platform">
-              <svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" class="w-full" style="min-width: 520px; font-family: Inter, system-ui, sans-serif;">
+            <h2 class="text-2xl font-bold mb-4" style="color: #0A2540;">
+              Architecture Diagram
+            </h2>
+            <ArchitectureDiagram
+              title="EKS Production Platform"
+              description="Traffic flow from internet through CloudFront and ALB into EKS, with supporting AWS services."
+              archId="eks-platform"
+            >
+              <svg
+                viewBox="0 0 720 380"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-full"
+                style="min-width: 520px; font-family: Inter, system-ui, sans-serif;"
+              >
                 <!-- Internet -->
-                <circle cx="50" cy="190" r="30" fill="#F8FAFC" stroke="#e2e8f0" stroke-width="1.5"/>
-                <text x="50" y="186" text-anchor="middle" fill="#64748b" font-size="9" font-weight="700">Internet</text>
-                <text x="50" y="198" text-anchor="middle" fill="#94A3B8" font-size="8">Users</text>
+                <circle
+                  cx="50"
+                  cy="190"
+                  r="30"
+                  fill="#F8FAFC"
+                  stroke="#e2e8f0"
+                  stroke-width="1.5"></circle>
+                <text
+                  x="50"
+                  y="186"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="9"
+                  font-weight="700">Internet</text
+                >
+                <text
+                  x="50"
+                  y="198"
+                  text-anchor="middle"
+                  fill="#94A3B8"
+                  font-size="8">Users</text
+                >
 
                 <!-- Arrow to CloudFront -->
-                <line x1="80" y1="190" x2="120" y2="190" stroke="#1E6FFF" stroke-width="1.5" marker-end="url(#arr)"/>
+                <line
+                  x1="80"
+                  y1="190"
+                  x2="120"
+                  y2="190"
+                  stroke="#1E6FFF"
+                  stroke-width="1.5"
+                  marker-end="url(#arr)"></line>
 
                 <!-- CloudFront/ALB -->
-                <rect x="120" y="170" width="110" height="40" rx="6" fill="#FF9900" fill-opacity="0.12" stroke="#FF9900" stroke-width="1.5"/>
-                <text x="175" y="187" text-anchor="middle" fill="#0A2540" font-size="10" font-weight="700">CloudFront</text>
-                <text x="175" y="200" text-anchor="middle" fill="#64748b" font-size="9">ALB · HTTPS/TLS</text>
+                <rect
+                  x="120"
+                  y="170"
+                  width="110"
+                  height="40"
+                  rx="6"
+                  fill="#FF9900"
+                  fill-opacity="0.12"
+                  stroke="#FF9900"
+                  stroke-width="1.5"></rect>
+                <text
+                  x="175"
+                  y="187"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="10"
+                  font-weight="700">CloudFront</text
+                >
+                <text
+                  x="175"
+                  y="200"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="9">ALB · HTTPS/TLS</text
+                >
 
                 <!-- Arrow to EKS -->
-                <line x1="230" y1="190" x2="270" y2="190" stroke="#1E6FFF" stroke-width="1.5" marker-end="url(#arr)"/>
+                <line
+                  x1="230"
+                  y1="190"
+                  x2="270"
+                  y2="190"
+                  stroke="#1E6FFF"
+                  stroke-width="1.5"
+                  marker-end="url(#arr)"></line>
 
                 <!-- EKS Cluster box -->
-                <rect x="270" y="60" width="310" height="270" rx="10" fill="#EEF4FF" fill-opacity="0.5" stroke="#1E6FFF" stroke-width="1.5" stroke-dasharray="5,3"/>
-                <text x="425" y="82" text-anchor="middle" fill="#1E6FFF" font-size="11" font-weight="700">EKS Cluster 1.35</text>
+                <rect
+                  x="270"
+                  y="60"
+                  width="310"
+                  height="270"
+                  rx="10"
+                  fill="#EEF4FF"
+                  fill-opacity="0.5"
+                  stroke="#1E6FFF"
+                  stroke-width="1.5"
+                  stroke-dasharray="5,3"></rect>
+                <text
+                  x="425"
+                  y="82"
+                  text-anchor="middle"
+                  fill="#1E6FFF"
+                  font-size="11"
+                  font-weight="700">EKS Cluster 1.35</text
+                >
 
                 <!-- System Node Group -->
-                <rect x="285" y="92" width="130" height="60" rx="6" fill="white" stroke="#7B42BC" stroke-width="1"/>
-                <text x="350" y="112" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="700">System Node Group</text>
-                <text x="350" y="125" text-anchor="middle" fill="#64748b" font-size="8">ArgoCD · Prometheus</text>
-                <text x="350" y="137" text-anchor="middle" fill="#64748b" font-size="8">Grafana · ESO</text>
+                <rect
+                  x="285"
+                  y="92"
+                  width="130"
+                  height="60"
+                  rx="6"
+                  fill="white"
+                  stroke="#7B42BC"
+                  stroke-width="1"></rect>
+                <text
+                  x="350"
+                  y="112"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="700">System Node Group</text
+                >
+                <text
+                  x="350"
+                  y="125"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">ArgoCD · Prometheus</text
+                >
+                <text
+                  x="350"
+                  y="137"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Grafana · ESO</text
+                >
 
                 <!-- App Node Group -->
-                <rect x="430" y="92" width="135" height="60" rx="6" fill="white" stroke="#059669" stroke-width="1"/>
-                <text x="497" y="112" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="700">App Node Group</text>
-                <text x="497" y="125" text-anchor="middle" fill="#64748b" font-size="8">Application workloads</text>
-                <text x="497" y="137" text-anchor="middle" fill="#64748b" font-size="8">HPA · PodDisruptionBudget</text>
+                <rect
+                  x="430"
+                  y="92"
+                  width="135"
+                  height="60"
+                  rx="6"
+                  fill="white"
+                  stroke="#059669"
+                  stroke-width="1"></rect>
+                <text
+                  x="497"
+                  y="112"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="700">App Node Group</text
+                >
+                <text
+                  x="497"
+                  y="125"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Application workloads</text
+                >
+                <text
+                  x="497"
+                  y="137"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">HPA · PodDisruptionBudget</text
+                >
 
                 <!-- Spot Node Group -->
-                <rect x="285" y="168" width="130" height="50" rx="6" fill="white" stroke="#D97706" stroke-width="1"/>
-                <text x="350" y="187" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="700">Spot Node Group</text>
-                <text x="350" y="200" text-anchor="middle" fill="#64748b" font-size="8">Batch / non-critical</text>
-                <text x="350" y="212" text-anchor="middle" fill="#64748b" font-size="8">60–70% cost reduction</text>
+                <rect
+                  x="285"
+                  y="168"
+                  width="130"
+                  height="50"
+                  rx="6"
+                  fill="white"
+                  stroke="#D97706"
+                  stroke-width="1"></rect>
+                <text
+                  x="350"
+                  y="187"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="700">Spot Node Group</text
+                >
+                <text
+                  x="350"
+                  y="200"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Batch / non-critical</text
+                >
+                <text
+                  x="350"
+                  y="212"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">60–70% cost reduction</text
+                >
 
                 <!-- Networking inside cluster -->
-                <rect x="430" y="168" width="135" height="50" rx="6" fill="white" stroke="#1E6FFF" stroke-width="1"/>
-                <text x="497" y="187" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="700">Networking</text>
-                <text x="497" y="200" text-anchor="middle" fill="#64748b" font-size="8">NetworkPolicies</text>
-                <text x="497" y="212" text-anchor="middle" fill="#64748b" font-size="8">AWS VPC CNI</text>
+                <rect
+                  x="430"
+                  y="168"
+                  width="135"
+                  height="50"
+                  rx="6"
+                  fill="white"
+                  stroke="#1E6FFF"
+                  stroke-width="1"></rect>
+                <text
+                  x="497"
+                  y="187"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="700">Networking</text
+                >
+                <text
+                  x="497"
+                  y="200"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">NetworkPolicies</text
+                >
+                <text
+                  x="497"
+                  y="212"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">AWS VPC CNI</text
+                >
 
                 <!-- IRSA / Security -->
-                <rect x="285" y="233" width="280" height="40" rx="6" fill="#0A2540" fill-opacity="0.06" stroke="#0A2540" stroke-width="1"/>
-                <text x="425" y="250" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="700">IRSA · Pod Security Standards · OIDC Provider</text>
-                <text x="425" y="263" text-anchor="middle" fill="#64748b" font-size="8">IAM Roles for Service Accounts — no static credentials in pods</text>
+                <rect
+                  x="285"
+                  y="233"
+                  width="280"
+                  height="40"
+                  rx="6"
+                  fill="#0A2540"
+                  fill-opacity="0.06"
+                  stroke="#0A2540"
+                  stroke-width="1"></rect>
+                <text
+                  x="425"
+                  y="250"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="700"
+                  >IRSA · Pod Security Standards · OIDC Provider</text
+                >
+                <text
+                  x="425"
+                  y="263"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8"
+                  >IAM Roles for Service Accounts — no static credentials in
+                  pods</text
+                >
 
                 <!-- Supporting services -->
-                <rect x="285" y="288" width="280" height="32" rx="6" fill="white" stroke="#e2e8f0" stroke-width="1"/>
-                <text x="425" y="304" text-anchor="middle" fill="#64748b" font-size="9">Cluster Autoscaler · HPA (CPU 70%) · AWS Load Balancer Controller</text>
-                <text x="425" y="315" text-anchor="middle" fill="#64748b" font-size="8">kube-proxy · CoreDNS · metrics-server</text>
+                <rect
+                  x="285"
+                  y="288"
+                  width="280"
+                  height="32"
+                  rx="6"
+                  fill="white"
+                  stroke="#e2e8f0"
+                  stroke-width="1"></rect>
+                <text
+                  x="425"
+                  y="304"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="9"
+                  >Cluster Autoscaler · HPA (CPU 70%) · AWS Load Balancer
+                  Controller</text
+                >
+                <text
+                  x="425"
+                  y="315"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">kube-proxy · CoreDNS · metrics-server</text
+                >
 
                 <!-- Supporting AWS services on right -->
-                <rect x="600" y="90" width="105" height="35" rx="6" fill="#F8FAFC" stroke="#e2e8f0" stroke-width="1"/>
-                <text x="652" y="104" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="600">ECR</text>
-                <text x="652" y="116" text-anchor="middle" fill="#64748b" font-size="8">Container registry</text>
+                <rect
+                  x="600"
+                  y="90"
+                  width="105"
+                  height="35"
+                  rx="6"
+                  fill="#F8FAFC"
+                  stroke="#e2e8f0"
+                  stroke-width="1"></rect>
+                <text
+                  x="652"
+                  y="104"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="600">ECR</text
+                >
+                <text
+                  x="652"
+                  y="116"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Container registry</text
+                >
 
-                <rect x="600" y="140" width="105" height="35" rx="6" fill="#F8FAFC" stroke="#e2e8f0" stroke-width="1"/>
-                <text x="652" y="154" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="600">RDS Multi-AZ</text>
-                <text x="652" y="166" text-anchor="middle" fill="#64748b" font-size="8">PostgreSQL 15</text>
+                <rect
+                  x="600"
+                  y="140"
+                  width="105"
+                  height="35"
+                  rx="6"
+                  fill="#F8FAFC"
+                  stroke="#e2e8f0"
+                  stroke-width="1"></rect>
+                <text
+                  x="652"
+                  y="154"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="600">RDS Multi-AZ</text
+                >
+                <text
+                  x="652"
+                  y="166"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">PostgreSQL 15</text
+                >
 
-                <rect x="600" y="190" width="105" height="35" rx="6" fill="#F8FAFC" stroke="#e2e8f0" stroke-width="1"/>
-                <text x="652" y="204" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="600">Secrets Manager</text>
-                <text x="652" y="216" text-anchor="middle" fill="#64748b" font-size="8">via ESO</text>
+                <rect
+                  x="600"
+                  y="190"
+                  width="105"
+                  height="35"
+                  rx="6"
+                  fill="#F8FAFC"
+                  stroke="#e2e8f0"
+                  stroke-width="1"></rect>
+                <text
+                  x="652"
+                  y="204"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="600">Secrets Manager</text
+                >
+                <text
+                  x="652"
+                  y="216"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">via ESO</text
+                >
 
-                <rect x="600" y="240" width="105" height="35" rx="6" fill="#F8FAFC" stroke="#e2e8f0" stroke-width="1"/>
-                <text x="652" y="254" text-anchor="middle" fill="#0A2540" font-size="9" font-weight="600">CloudWatch</text>
-                <text x="652" y="266" text-anchor="middle" fill="#64748b" font-size="8">Container Insights</text>
+                <rect
+                  x="600"
+                  y="240"
+                  width="105"
+                  height="35"
+                  rx="6"
+                  fill="#F8FAFC"
+                  stroke="#e2e8f0"
+                  stroke-width="1"></rect>
+                <text
+                  x="652"
+                  y="254"
+                  text-anchor="middle"
+                  fill="#0A2540"
+                  font-size="9"
+                  font-weight="600">CloudWatch</text
+                >
+                <text
+                  x="652"
+                  y="266"
+                  text-anchor="middle"
+                  fill="#64748b"
+                  font-size="8">Container Insights</text
+                >
 
                 <!-- Arrows to supporting services -->
-                <line x1="580" y1="107" x2="600" y2="107" stroke="#e2e8f0" stroke-width="1" marker-end="url(#arrGray)"/>
-                <line x1="580" y1="157" x2="600" y2="157" stroke="#e2e8f0" stroke-width="1" marker-end="url(#arrGray)"/>
-                <line x1="580" y1="207" x2="600" y2="207" stroke="#e2e8f0" stroke-width="1" marker-end="url(#arrGray)"/>
-                <line x1="580" y1="257" x2="600" y2="257" stroke="#e2e8f0" stroke-width="1" marker-end="url(#arrGray)"/>
+                <line
+                  x1="580"
+                  y1="107"
+                  x2="600"
+                  y2="107"
+                  stroke="#e2e8f0"
+                  stroke-width="1"
+                  marker-end="url(#arrGray)"></line>
+                <line
+                  x1="580"
+                  y1="157"
+                  x2="600"
+                  y2="157"
+                  stroke="#e2e8f0"
+                  stroke-width="1"
+                  marker-end="url(#arrGray)"></line>
+                <line
+                  x1="580"
+                  y1="207"
+                  x2="600"
+                  y2="207"
+                  stroke="#e2e8f0"
+                  stroke-width="1"
+                  marker-end="url(#arrGray)"></line>
+                <line
+                  x1="580"
+                  y1="257"
+                  x2="600"
+                  y2="257"
+                  stroke="#e2e8f0"
+                  stroke-width="1"
+                  marker-end="url(#arrGray)"></line>
 
                 <defs>
-                  <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                    <path d="M0,0 L0,6 L6,3 z" fill="#1E6FFF"/>
+                  <marker
+                    id="arr"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="5"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <path d="M0,0 L0,6 L6,3 z" fill="#1E6FFF"></path>
                   </marker>
-                  <marker id="arrGray" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                    <path d="M0,0 L0,6 L6,3 z" fill="#CBD5E1"/>
+                  <marker
+                    id="arrGray"
+                    markerWidth="6"
+                    markerHeight="6"
+                    refX="5"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <path d="M0,0 L0,6 L6,3 z" fill="#CBD5E1"></path>
                   </marker>
                 </defs>
               </svg>
@@ -133,69 +542,197 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-5" style="color: #0A2540;">Key Components</h2>
+            <h2 class="text-2xl font-bold mb-5" style="color: #0A2540;">
+              Key Components
+            </h2>
             <div class="space-y-4">
-              {[
-                { name: 'AWS Load Balancer Controller', detail: 'Provisions ALB per Ingress resource. Terminates TLS, health checks, path-based routing. Replaces legacy nginx-ingress for AWS deployments.', color: '#FF9900' },
-                { name: 'ArgoCD (GitOps controller)', detail: 'Watches the GitOps repository for changes. Applies Helm releases to the cluster. Auto-sync with prune and selfHeal enabled in staging, manual approval in production.', color: '#FF6C37' },
-                { name: 'External Secrets Operator', detail: 'Synchronizes secrets from AWS Secrets Manager into Kubernetes Secrets. Uses IRSA for authentication. No static credentials. Secret values never stored in Git.', color: '#7B42BC' },
-                { name: 'Cluster Autoscaler', detail: 'Scales node groups based on pending pods. Configured with expander=least-waste. Works with Spot node group for non-critical workloads at reduced cost.', color: '#059669' },
-                { name: 'Horizontal Pod Autoscaler', detail: 'CPU target 70% for application node groups. Min replicas 2 for availability. Max replicas sized from load testing. Requires resource requests to function.', color: '#326CE5' },
-                { name: 'CloudWatch Container Insights', detail: 'Node-level CPU, memory, disk metrics. Container logs via Fluent Bit. Alarms at CPU >80%, Memory >85%. SNS notifications to on-call channel.', color: '#F97316' },
-              ].map(({ name, detail, color }) => (
-                <div class="flex gap-4 p-5 rounded-xl" style="background: #F8FAFC; border: 1px solid #e2e8f0;">
-                  <div class="w-2 rounded-full flex-shrink-0 mt-1" style={`background: ${color};`}></div>
-                  <div>
-                    <h3 class="text-sm font-bold mb-1" style="color: #0A2540;">{name}</h3>
-                    <p class="text-sm leading-relaxed" style="color: #64748b;">{detail}</p>
+              {
+                [
+                  {
+                    name: 'AWS Load Balancer Controller',
+                    detail:
+                      'Provisions ALB per Ingress resource. Terminates TLS, health checks, path-based routing. Replaces legacy nginx-ingress for AWS deployments.',
+                    color: '#FF9900',
+                  },
+                  {
+                    name: 'ArgoCD (GitOps controller)',
+                    detail:
+                      'Watches the GitOps repository for changes. Applies Helm releases to the cluster. Auto-sync with prune and selfHeal enabled in staging, manual approval in production.',
+                    color: '#FF6C37',
+                  },
+                  {
+                    name: 'External Secrets Operator',
+                    detail:
+                      'Synchronizes secrets from AWS Secrets Manager into Kubernetes Secrets. Uses IRSA for authentication. No static credentials. Secret values never stored in Git.',
+                    color: '#7B42BC',
+                  },
+                  {
+                    name: 'Cluster Autoscaler',
+                    detail:
+                      'Scales node groups based on pending pods. Configured with expander=least-waste. Works with Spot node group for non-critical workloads at reduced cost.',
+                    color: '#059669',
+                  },
+                  {
+                    name: 'Horizontal Pod Autoscaler',
+                    detail:
+                      'CPU target 70% for application node groups. Min replicas 2 for availability. Max replicas sized from load testing. Requires resource requests to function.',
+                    color: '#326CE5',
+                  },
+                  {
+                    name: 'CloudWatch Container Insights',
+                    detail:
+                      'Node-level CPU, memory, disk metrics. Container logs via Fluent Bit. Alarms at CPU >80%, Memory >85%. SNS notifications to on-call channel.',
+                    color: '#F97316',
+                  },
+                ].map(({ name, detail, color }) => (
+                  <div
+                    class="flex gap-4 p-5 rounded-xl"
+                    style="background: #F8FAFC; border: 1px solid #e2e8f0;"
+                  >
+                    <div
+                      class="w-2 rounded-full flex-shrink-0 mt-1"
+                      style={`background: ${color};`}
+                    />
+                    <div>
+                      <h3
+                        class="text-sm font-bold mb-1"
+                        style="color: #0A2540;"
+                      >
+                        {name}
+                      </h3>
+                      <p
+                        class="text-sm leading-relaxed"
+                        style="color: #64748b;"
+                      >
+                        {detail}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              }
             </div>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-5" style="color: #0A2540;">Security Controls</h2>
+            <h2 class="text-2xl font-bold mb-5" style="color: #0A2540;">
+              Security Controls
+            </h2>
             <div class="space-y-3">
-              {[
-                'OIDC provider configured — every service account maps to an IAM role with minimum required permissions',
-                'Pod Security Standards enforced at namespace level — restricted or baseline depending on workload',
-                'Network Policies: default deny all, explicit allow per service pair',
-                'All images from ECR private registry — lifecycle policies clean up untagged images',
-                'automountServiceAccountToken: false on all pods that do not need Kubernetes API access',
-                'No privileged containers in production — drop ALL capabilities, add only what is needed',
-              ].map(item => (
-                <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
-                  <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #059669;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                  <p class="text-sm leading-relaxed" style="color: #166534;">{item}</p>
-                </div>
-              ))}
+              {
+                [
+                  'OIDC provider configured — every service account maps to an IAM role with minimum required permissions',
+                  'Pod Security Standards enforced at namespace level — restricted or baseline depending on workload',
+                  'Network Policies: default deny all, explicit allow per service pair',
+                  'All images from ECR private registry — lifecycle policies clean up untagged images',
+                  'automountServiceAccountToken: false on all pods that do not need Kubernetes API access',
+                  'No privileged containers in production — drop ALL capabilities, add only what is needed',
+                ].map((item) => (
+                  <div
+                    class="flex items-start gap-3 p-4 rounded-xl"
+                    style="background: #F0FDF4; border: 1px solid #BBF7D0;"
+                  >
+                    <svg
+                      class="w-4 h-4 flex-shrink-0 mt-0.5"
+                      style="color: #059669;"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.5"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <p class="text-sm leading-relaxed" style="color: #166534;">
+                      {item}
+                    </p>
+                  </div>
+                ))
+              }
             </div>
           </div>
-
         </div>
 
         <div class="lg:col-span-1">
           <div class="sticky top-24 space-y-5">
-            <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid #e2e8f0;">
-              <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Stack</h3>
+            <div
+              class="rounded-2xl p-6"
+              style="background: #F8FAFC; border: 1px solid #e2e8f0;"
+            >
+              <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">
+                Stack
+              </h3>
               <div class="flex flex-wrap gap-1.5">
-                {['EKS 1.35', 'Terraform', 'ArgoCD', 'Helm', 'Prometheus', 'Grafana', 'CloudWatch', 'IRSA', 'ESO', 'Cluster Autoscaler', 'HPA', 'ALB Controller'].map(tag => (
-                  <span class="text-xs px-2.5 py-1 rounded-full" style="background: white; color: #64748b; border: 1px solid #e2e8f0;">{tag}</span>
-                ))}
+                {
+                  [
+                    'EKS 1.35',
+                    'Terraform',
+                    'ArgoCD',
+                    'Helm',
+                    'Prometheus',
+                    'Grafana',
+                    'CloudWatch',
+                    'IRSA',
+                    'ESO',
+                    'Cluster Autoscaler',
+                    'HPA',
+                    'ALB Controller',
+                  ].map((tag) => (
+                    <span
+                      class="text-xs px-2.5 py-1 rounded-full"
+                      style="background: white; color: #64748b; border: 1px solid #e2e8f0;"
+                    >
+                      {tag}
+                    </span>
+                  ))
+                }
               </div>
             </div>
-            <div class="rounded-2xl p-6" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
-              <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">Need this implemented?</h3>
-              <p class="text-xs leading-relaxed mb-4" style="color: #64748b;">We implement production EKS clusters with full Terraform automation, GitOps setup and observability stack included.</p>
-              <a href="/contact" class="flex items-center justify-center gap-2 text-sm font-bold text-white py-3 rounded-xl hover:opacity-90 transition-opacity" style="background: #1E6FFF;">Start a conversation →</a>
+            <div
+              class="rounded-2xl p-6"
+              style="background: #EEF4FF; border: 1px solid #c3d9ff;"
+            >
+              <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">
+                Need this implemented?
+              </h3>
+              <p class="text-xs leading-relaxed mb-4" style="color: #64748b;">
+                We implement production EKS clusters with full Terraform
+                automation, GitOps setup and observability stack included.
+              </p>
+              <a
+                href="/contact"
+                class="flex items-center justify-center gap-2 text-sm font-bold text-white py-3 rounded-xl hover:opacity-90 transition-opacity"
+                style="background: #1E6FFF;">Start a conversation →</a
+              >
             </div>
-            <div class="rounded-2xl p-5" style="background: white; border: 1px solid #e2e8f0;">
-              <h3 class="text-xs font-bold mb-3 uppercase tracking-wider" style="color: #94A3B8;">Related</h3>
+            <div
+              class="rounded-2xl p-5"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3
+                class="text-xs font-bold mb-3 uppercase tracking-wider"
+                style="color: #94A3B8;"
+              >
+                Related
+              </h3>
               <div class="space-y-2">
-                <a href="/architectures/gitops-platform" class="block text-sm font-medium hover:opacity-70 transition-opacity" style="color: #1E6FFF;">GitOps Platform →</a>
-                <a href="/docs/kubernetes-production" class="block text-sm font-medium hover:opacity-70 transition-opacity" style="color: #1E6FFF;">Kubernetes Production Guide →</a>
-                <a href="/kubernetes-readiness" class="block text-sm font-medium hover:opacity-70 transition-opacity" style="color: #1E6FFF;">K8s Readiness Assessment →</a>
+                <a
+                  href="/architectures/gitops-platform"
+                  class="block text-sm font-medium hover:opacity-70 transition-opacity"
+                  style="color: #1E6FFF;">GitOps Platform →</a
+                >
+                <a
+                  href="/docs/kubernetes-production"
+                  class="block text-sm font-medium hover:opacity-70 transition-opacity"
+                  style="color: #1E6FFF;">Kubernetes Production Guide →</a
+                >
+                <a
+                  href="/kubernetes-readiness"
+                  class="block text-sm font-medium hover:opacity-70 transition-opacity"
+                  style="color: #1E6FFF;">K8s Readiness Assessment →</a
+                >
               </div>
             </div>
           </div>
@@ -203,11 +740,12 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
       </div>
     </div>
   </section>
-
 </Layout>
 
 <script>
   if (typeof window !== 'undefined' && (window as any).cf) {
-    (window as any).cf.track('architecture_viewed', { architecture: 'eks-production-platform' })
+    ;(window as any).cf.track('architecture_viewed', {
+      architecture: 'eks-production-platform',
+    })
   }
 </script>

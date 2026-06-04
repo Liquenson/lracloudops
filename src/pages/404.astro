@@ -1,7 +1,8 @@
 ---
+
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -12,14 +13,29 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-      html { height: 100%; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        height: 100%;
+      }
       body {
         min-height: 100vh;
-        background-color: #0A2540;
-        background-image: radial-gradient(circle, rgba(96,165,250,0.09) 1px, transparent 1px);
+        background-color: #0a2540;
+        background-image: radial-gradient(
+          circle,
+          rgba(96, 165, 250, 0.09) 1px,
+          transparent 1px
+        );
         background-size: 30px 30px;
         font-family: 'Inter', system-ui, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -30,9 +46,13 @@
         padding: 2.5rem 1.5rem;
         text-align: center;
       }
-      a { text-decoration: none; }
+      a {
+        text-decoration: none;
+      }
 
-      .logo-wrap { margin-bottom: 2.75rem; }
+      .logo-wrap {
+        margin-bottom: 2.75rem;
+      }
       .logo-wrap img {
         height: 36px;
         width: auto;
@@ -42,7 +62,7 @@
       .error-code {
         font-size: clamp(5rem, 18vw, 8rem);
         font-weight: 800;
-        color: #1E6FFF;
+        color: #1e6fff;
         letter-spacing: -0.05em;
         line-height: 1;
         margin-bottom: 1.5rem;
@@ -77,17 +97,24 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        background: #2563EB;
+        background: #2563eb;
         color: #ffffff;
         font-size: 0.875rem;
         font-weight: 600;
         padding: 0.875rem 1.75rem;
         border-radius: 0.75rem;
         box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
-        transition: transform 0.15s ease, opacity 0.15s ease;
+        transition:
+          transform 0.15s ease,
+          opacity 0.15s ease;
       }
-      .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-      .btn-primary:active { transform: scale(0.98); }
+      .btn-primary:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      .btn-primary:active {
+        transform: scale(0.98);
+      }
 
       .btn-secondary {
         display: inline-flex;
@@ -100,10 +127,13 @@
         padding: 0.875rem 1.75rem;
         border-radius: 0.75rem;
         border: 1px solid rgba(148, 163, 184, 0.2);
-        transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease;
       }
       .btn-secondary:hover {
-        background: rgba(255,255,255,0.06);
+        background: rgba(255, 255, 255, 0.06);
         border-color: rgba(148, 163, 184, 0.35);
         color: #ffffff;
       }
@@ -111,7 +141,7 @@
       .divider {
         width: 48px;
         height: 1px;
-        background: rgba(255,255,255,0.08);
+        background: rgba(255, 255, 255, 0.08);
         margin: 3rem auto;
       }
 
@@ -123,7 +153,6 @@
     </style>
   </head>
   <body>
-
     <a href="/" class="logo-wrap" aria-label="LRA Cloud Ops — Inicio">
       <img src="/logo.svg" alt="LRA Cloud Ops" />
     </a>
@@ -132,21 +161,41 @@
 
     <h1 class="heading">Esta página no existe.</h1>
 
-    <p class="subtext">
-      La ruta solicitada no se encontró en el servidor.
-    </p>
+    <p class="subtext">La ruta solicitada no se encontró en el servidor.</p>
 
     <div class="btn-group">
       <a href="/" class="btn-primary">
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
         Volver al inicio
       </a>
       <a href="/projects" class="btn-secondary">
         Ver proyectos
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
         </svg>
       </a>
     </div>
@@ -154,6 +203,5 @@
     <div class="divider" aria-hidden="true"></div>
 
     <p class="footer-note">lracloudops.com &nbsp;·&nbsp; status 404</p>
-
   </body>
 </html>

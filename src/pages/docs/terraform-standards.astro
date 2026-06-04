@@ -7,93 +7,208 @@ import Layout from '../../layouts/Layout.astro'
   descripcion="Terraform engineering standards applied on every LRA engagement. Module structure, remote state, variable naming, OIDC authentication and environment separation."
   keywords="Terraform best practices, Terraform module structure, remote state S3, OIDC GitHub Actions Terraform, Terraform environment separation"
 >
-
-<div class="min-h-screen" style="background: #F8FAFC;">
-
-  <!-- HEADER -->
-  <div style="background: #0A2540; border-bottom: 1px solid rgba(255,255,255,0.08);">
-    <div class="max-w-6xl mx-auto px-6 py-5">
-      <div class="flex items-center gap-2 text-xs mb-1" style="color: rgba(147,184,255,0.5);">
-        <a href="/" style="color: rgba(147,184,255,0.5);" class="hover:text-white transition-colors">Home</a>
-        <span>/</span>
-        <a href="/docs" style="color: rgba(147,184,255,0.5);" class="hover:text-white transition-colors">Docs</a>
-        <span>/</span>
-        <span style="color: rgba(147,184,255,0.9);">Terraform Standards</span>
-      </div>
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: #7B42BC;">
-            <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-          </div>
-          <div>
-            <p class="text-xs font-bold uppercase tracking-wider" style="color: #A78BFA;">Terraform</p>
-            <h1 class="text-lg font-bold text-white">Terraform Standards</h1>
-          </div>
+  <div class="min-h-screen" style="background: #F8FAFC;">
+    <!-- HEADER -->
+    <div
+      style="background: #0A2540; border-bottom: 1px solid rgba(255,255,255,0.08);"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-5">
+        <div
+          class="flex items-center gap-2 text-xs mb-1"
+          style="color: rgba(147,184,255,0.5);"
+        >
+          <a
+            href="/"
+            style="color: rgba(147,184,255,0.5);"
+            class="hover:text-white transition-colors">Home</a
+          >
+          <span>/</span>
+          <a
+            href="/docs"
+            style="color: rgba(147,184,255,0.5);"
+            class="hover:text-white transition-colors">Docs</a
+          >
+          <span>/</span>
+          <span style="color: rgba(147,184,255,0.9);">Terraform Standards</span>
         </div>
-        <a href="https://github.com/Liquenson" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors hover:bg-white/10" style="color: rgba(147,184,255,0.6); border: 1px solid rgba(255,255,255,0.1);">
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          View on GitHub
-        </a>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 rounded-lg flex items-center justify-center"
+              style="background: #7B42BC;"
+            >
+              <svg
+                class="w-4 h-4 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
+              >
+            </div>
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-wider"
+                style="color: #A78BFA;"
+              >
+                Terraform
+              </p>
+              <h1 class="text-lg font-bold text-white">Terraform Standards</h1>
+            </div>
+          </div>
+          <a
+            href="https://github.com/Liquenson"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors hover:bg-white/10"
+            style="color: rgba(147,184,255,0.6); border: 1px solid rgba(255,255,255,0.1);"
+          >
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"
+              ><path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              ></path></svg
+            >
+            View on GitHub
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- CONTENT -->
-  <div class="max-w-6xl mx-auto px-6 py-12">
-    <div class="flex gap-10">
-
-      <!-- SIDEBAR -->
-      <aside class="hidden lg:block w-56 flex-shrink-0">
-        <div class="sticky top-24 space-y-1">
-          <p class="text-xs font-bold uppercase tracking-wider mb-3" style="color: #94A3B8;">On this page</p>
-          {[
-            ['module-structure', 'Module Structure'],
-            ['remote-state', 'Remote State'],
-            ['variable-naming', 'Variable Naming'],
-            ['oidc-auth', 'OIDC Authentication'],
-            ['env-separation', 'Environment Separation'],
-          ].map(([id, label]) => (
-            <a href={`#${id}`} class="block text-sm py-1.5 px-3 rounded-lg transition-colors hover:bg-white hover:text-[#1E6FFF]" style="color: #64748b; text-decoration: none;">{label}</a>
-          ))}
-          <div class="pt-4 mt-4" style="border-top: 1px solid #e2e8f0;">
-            <a href="/docs" class="text-xs font-medium hover:opacity-80 transition-opacity flex items-center gap-1" style="color: #64748b;">
-              ← All docs
-            </a>
+    <!-- CONTENT -->
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="flex gap-10">
+        <!-- SIDEBAR -->
+        <aside class="hidden lg:block w-56 flex-shrink-0">
+          <div class="sticky top-24 space-y-1">
+            <p
+              class="text-xs font-bold uppercase tracking-wider mb-3"
+              style="color: #94A3B8;"
+            >
+              On this page
+            </p>
+            {
+              [
+                ['module-structure', 'Module Structure'],
+                ['remote-state', 'Remote State'],
+                ['variable-naming', 'Variable Naming'],
+                ['oidc-auth', 'OIDC Authentication'],
+                ['env-separation', 'Environment Separation'],
+              ].map(([id, label]) => (
+                <a
+                  href={`#${id}`}
+                  class="block text-sm py-1.5 px-3 rounded-lg transition-colors hover:bg-white hover:text-[#1E6FFF]"
+                  style="color: #64748b; text-decoration: none;"
+                >
+                  {label}
+                </a>
+              ))
+            }
+            <div class="pt-4 mt-4" style="border-top: 1px solid #e2e8f0;">
+              <a
+                href="/docs"
+                class="text-xs font-medium hover:opacity-80 transition-opacity flex items-center gap-1"
+                style="color: #64748b;"
+              >
+                ← All docs
+              </a>
+            </div>
           </div>
-        </div>
-      </aside>
+        </aside>
 
-      <!-- MAIN -->
-      <main class="flex-1 min-w-0">
-        <div class="space-y-10">
-
-          <!-- Module Structure -->
-          <section id="module-structure" class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
-            <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">1. Module Structure</h2>
-            <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">Every Terraform module follows a consistent file structure. This makes modules predictable — anyone on the team knows exactly where to look for any given concern.</p>
-            <pre class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5" style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">module/
+        <!-- MAIN -->
+        <main class="flex-1 min-w-0">
+          <div class="space-y-10">
+            <!-- Module Structure -->
+            <section
+              id="module-structure"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                1. Module Structure
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Every Terraform module follows a consistent file structure. This
+                makes modules predictable — anyone on the team knows exactly
+                where to look for any given concern.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">module/
 ├── main.tf          # Resources
 ├── variables.tf     # Input variables with descriptions
 ├── outputs.tf       # Output values
 ├── versions.tf      # Provider and Terraform version constraints
 └── README.md        # Usage, inputs, outputs</pre>
-            <div class="space-y-3">
-              <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
-                <span class="text-base flex-shrink-0">✅</span>
-                <div><p class="text-xs font-bold mb-0.5" style="color: #15803D;">Do</p><p class="text-xs leading-relaxed" style="color: #166534;">One resource type per file for complex modules. Split <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">iam.tf</code>, <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">networking.tf</code>, <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">compute.tf</code> when main.tf exceeds ~150 lines.</p></div>
+              <div class="space-y-3">
+                <div
+                  class="flex items-start gap-3 p-4 rounded-xl"
+                  style="background: #F0FDF4; border: 1px solid #BBF7D0;"
+                >
+                  <span class="text-base flex-shrink-0">✅</span>
+                  <div>
+                    <p class="text-xs font-bold mb-0.5" style="color: #15803D;">
+                      Do
+                    </p><p
+                      class="text-xs leading-relaxed"
+                      style="color: #166534;"
+                    >
+                      One resource type per file for complex modules. Split <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >iam.tf</code
+                      >, <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >networking.tf</code
+                      >, <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >compute.tf</code
+                      > when main.tf exceeds ~150 lines.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex items-start gap-3 p-4 rounded-xl"
+                  style="background: #FEF2F2; border: 1px solid #FECACA;"
+                >
+                  <span class="text-base flex-shrink-0">❌</span>
+                  <div>
+                    <p class="text-xs font-bold mb-0.5" style="color: #DC2626;">
+                      Don't
+                    </p><p
+                      class="text-xs leading-relaxed"
+                      style="color: #991B1B;"
+                    >
+                      Put multiple unrelated resource types in main.tf. When
+                      main.tf exceeds 300 lines, it is a signal that the module
+                      has too many responsibilities.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #FEF2F2; border: 1px solid #FECACA;">
-                <span class="text-base flex-shrink-0">❌</span>
-                <div><p class="text-xs font-bold mb-0.5" style="color: #DC2626;">Don't</p><p class="text-xs leading-relaxed" style="color: #991B1B;">Put multiple unrelated resource types in main.tf. When main.tf exceeds 300 lines, it is a signal that the module has too many responsibilities.</p></div>
-              </div>
-            </div>
-          </section>
+            </section>
 
-          <!-- Remote State -->
-          <section id="remote-state" class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
-            <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">2. Remote State</h2>
-            <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">Always use S3 backend with DynamoDB locking. Local state fails the moment two engineers or two pipeline runs execute simultaneously. State files are encrypted at rest with SSE-S3.</p>
-            <pre class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5" style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">terraform {"{"}
+            <!-- Remote State -->
+            <section
+              id="remote-state"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                2. Remote State
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Always use S3 backend with DynamoDB locking. Local state fails
+                the moment two engineers or two pipeline runs execute
+                simultaneously. State files are encrypted at rest with SSE-S3.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">terraform {"{"}
   backend "s3" {"{"}
     bucket         = "your-org-terraform-state"
     key            = "project/env/component.tfstate"
@@ -102,27 +217,106 @@ import Layout from '../../layouts/Layout.astro'
     dynamodb_table = "terraform-state-lock"
   {"}"}
 {"}"}</pre>
-            <div class="space-y-3">
-              <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
-                <span class="text-base flex-shrink-0">✅</span>
-                <div><p class="text-xs font-bold mb-0.5" style="color: #15803D;">Do</p><p class="text-xs leading-relaxed" style="color: #166534;">Use separate state files per environment and component. <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">dev/vpc.tfstate</code>, <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">dev/eks.tfstate</code>, <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">prod/vpc.tfstate</code></p></div>
+              <div class="space-y-3">
+                <div
+                  class="flex items-start gap-3 p-4 rounded-xl"
+                  style="background: #F0FDF4; border: 1px solid #BBF7D0;"
+                >
+                  <span class="text-base flex-shrink-0">✅</span>
+                  <div>
+                    <p class="text-xs font-bold mb-0.5" style="color: #15803D;">
+                      Do
+                    </p><p
+                      class="text-xs leading-relaxed"
+                      style="color: #166534;"
+                    >
+                      Use separate state files per environment and component. <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >dev/vpc.tfstate</code
+                      >, <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >dev/eks.tfstate</code
+                      >, <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >prod/vpc.tfstate</code
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex items-start gap-3 p-4 rounded-xl"
+                  style="background: #FEF2F2; border: 1px solid #FECACA;"
+                >
+                  <span class="text-base flex-shrink-0">❌</span>
+                  <div>
+                    <p class="text-xs font-bold mb-0.5" style="color: #DC2626;">
+                      Don't
+                    </p><p
+                      class="text-xs leading-relaxed"
+                      style="color: #991B1B;"
+                    >
+                      Use local state in CI/CD. The state file disappears with
+                      the runner. Don't commit <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >.tfstate</code
+                      > files to version control.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex items-start gap-3 p-4 rounded-xl"
+                  style="background: #FFFBEB; border: 1px solid #FDE68A;"
+                >
+                  <span class="text-base flex-shrink-0">⚠️</span>
+                  <div>
+                    <p class="text-xs font-bold mb-0.5" style="color: #D97706;">
+                      Warning
+                    </p><p
+                      class="text-xs leading-relaxed"
+                      style="color: #92400E;"
+                    >
+                      Never commit <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >.tfstate</code
+                      > files. They contain plaintext secrets, resource IDs and configuration
+                      that should never be in version control. Add <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >*.tfstate</code
+                      > and <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >*.tfstate.backup</code
+                      > to <code
+                        style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                        >.gitignore</code
+                      >.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #FEF2F2; border: 1px solid #FECACA;">
-                <span class="text-base flex-shrink-0">❌</span>
-                <div><p class="text-xs font-bold mb-0.5" style="color: #DC2626;">Don't</p><p class="text-xs leading-relaxed" style="color: #991B1B;">Use local state in CI/CD. The state file disappears with the runner. Don't commit <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">.tfstate</code> files to version control.</p></div>
-              </div>
-              <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #FFFBEB; border: 1px solid #FDE68A;">
-                <span class="text-base flex-shrink-0">⚠️</span>
-                <div><p class="text-xs font-bold mb-0.5" style="color: #D97706;">Warning</p><p class="text-xs leading-relaxed" style="color: #92400E;">Never commit <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">.tfstate</code> files. They contain plaintext secrets, resource IDs and configuration that should never be in version control. Add <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">*.tfstate</code> and <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">*.tfstate.backup</code> to <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">.gitignore</code>.</p></div>
-              </div>
-            </div>
-          </section>
+            </section>
 
-          <!-- Variable Naming -->
-          <section id="variable-naming" class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
-            <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">3. Variable Naming</h2>
-            <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">Use <code style="background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-size: 12px;">snake_case</code> throughout. Prefix variables with their resource type for clarity. Every variable must have a <code style="background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-size: 12px;">description</code>.</p>
-            <pre class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5" style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">variable "rds_instance_class" {"{"}
+            <!-- Variable Naming -->
+            <section
+              id="variable-naming"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                3. Variable Naming
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Use <code
+                  style="background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-size: 12px;"
+                  >snake_case</code
+                > throughout. Prefix variables with their resource type for clarity.
+                Every variable must have a <code
+                  style="background: #F1F5F9; padding: 2px 6px; border-radius: 4px; font-size: 12px;"
+                  >description</code
+                >.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">variable "rds_instance_class" {"{"}
   description = "RDS instance type for the primary database"
   type        = string
   default     = "db.t3.micro"
@@ -139,33 +333,60 @@ variable "eks_min_node_count" {"{"}
   type        = number
   default     = 1
 {"}"}</pre>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="p-4 rounded-xl" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
-                <p class="text-xs font-bold mb-2" style="color: #15803D;">✅ Correct prefixes</p>
-                <ul class="space-y-1 text-xs" style="color: #166534;">
-                  <li><code>rds_</code> — database resources</li>
-                  <li><code>eks_</code> — cluster resources</li>
-                  <li><code>vpc_</code> — networking resources</li>
-                  <li><code>iam_</code> — access and roles</li>
-                </ul>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div
+                  class="p-4 rounded-xl"
+                  style="background: #F0FDF4; border: 1px solid #BBF7D0;"
+                >
+                  <p class="text-xs font-bold mb-2" style="color: #15803D;">
+                    ✅ Correct prefixes
+                  </p>
+                  <ul class="space-y-1 text-xs" style="color: #166534;">
+                    <li><code>rds_</code> — database resources</li>
+                    <li><code>eks_</code> — cluster resources</li>
+                    <li><code>vpc_</code> — networking resources</li>
+                    <li><code>iam_</code> — access and roles</li>
+                  </ul>
+                </div>
+                <div
+                  class="p-4 rounded-xl"
+                  style="background: #FEF2F2; border: 1px solid #FECACA;"
+                >
+                  <p class="text-xs font-bold mb-2" style="color: #DC2626;">
+                    ❌ Avoid
+                  </p>
+                  <ul class="space-y-1 text-xs" style="color: #991B1B;">
+                    <li><code>db_class</code> — ambiguous resource type</li>
+                    <li>
+                      <code>nodeCount</code> — camelCase breaks convention
+                    </li>
+                    <li>
+                      <code>x</code>, <code>val</code> — no descriptive name
+                    </li>
+                    <li>Variables without <code>description</code></li>
+                  </ul>
+                </div>
               </div>
-              <div class="p-4 rounded-xl" style="background: #FEF2F2; border: 1px solid #FECACA;">
-                <p class="text-xs font-bold mb-2" style="color: #DC2626;">❌ Avoid</p>
-                <ul class="space-y-1 text-xs" style="color: #991B1B;">
-                  <li><code>db_class</code> — ambiguous resource type</li>
-                  <li><code>nodeCount</code> — camelCase breaks convention</li>
-                  <li><code>x</code>, <code>val</code> — no descriptive name</li>
-                  <li>Variables without <code>description</code></li>
-                </ul>
-              </div>
-            </div>
-          </section>
+            </section>
 
-          <!-- OIDC Authentication -->
-          <section id="oidc-auth" class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
-            <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">4. OIDC Authentication</h2>
-            <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">Never use static AWS credentials in CI/CD pipelines. Always configure GitHub Actions OIDC provider. This gives pipelines 15-minute ephemeral tokens scoped to minimum required permissions.</p>
-            <pre class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5" style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);"># In your GitHub Actions workflow
+            <!-- OIDC Authentication -->
+            <section
+              id="oidc-auth"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                4. OIDC Authentication
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Never use static AWS credentials in CI/CD pipelines. Always
+                configure GitHub Actions OIDC provider. This gives pipelines
+                15-minute ephemeral tokens scoped to minimum required
+                permissions.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);"># In your GitHub Actions workflow
 - name: Configure AWS credentials
   uses: aws-actions/configure-aws-credentials@v4
   with:
@@ -175,17 +396,53 @@ variable "eks_min_node_count" {"{"}
 # Never use this:
 # aws-access-key-id: NEVER_USE_STATIC_KEYS
 # aws-secret-access-key: NEVER_USE_STATIC_KEYS</pre>
-            <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #EEF4FF; border: 1px solid #C7D7FD;">
-              <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <p class="text-xs leading-relaxed" style="color: #1E6FFF;">The Terraform OIDC provider and the deploy role require separate IAM roles with separate permission sets. The Terraform role needs <code style="background: rgba(30,111,255,0.1); padding: 1px 4px; border-radius: 3px;">terraform:*</code> on state resources. The deploy role needs only what the running service requires.</p>
-            </div>
-          </section>
+              <div
+                class="flex items-start gap-3 p-4 rounded-xl"
+                style="background: #EEF4FF; border: 1px solid #C7D7FD;"
+              >
+                <svg
+                  class="w-4 h-4 flex-shrink-0 mt-0.5"
+                  style="color: #1E6FFF;"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path></svg
+                >
+                <p class="text-xs leading-relaxed" style="color: #1E6FFF;">
+                  The Terraform OIDC provider and the deploy role require
+                  separate IAM roles with separate permission sets. The
+                  Terraform role needs <code
+                    style="background: rgba(30,111,255,0.1); padding: 1px 4px; border-radius: 3px;"
+                    >terraform:*</code
+                  > on state resources. The deploy role needs only what the running
+                  service requires.
+                </p>
+              </div>
+            </section>
 
-          <!-- Environment Separation -->
-          <section id="env-separation" class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
-            <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">5. Environment Separation</h2>
-            <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">Separate state files per environment using variable files. Use Terraform workspaces only for truly identical infrastructure — different environments typically have different configurations and should use separate state files.</p>
-            <pre class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5" style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">environments/
+            <!-- Environment Separation -->
+            <section
+              id="env-separation"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                5. Environment Separation
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Separate state files per environment using variable files. Use
+                Terraform workspaces only for truly identical infrastructure —
+                different environments typically have different configurations
+                and should use separate state files.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">environments/
 ├── dev/
 │   ├── terraform.tfvars    # dev-specific values
 │   └── backend.tf          # dev state configuration
@@ -196,37 +453,73 @@ variable "eks_min_node_count" {"{"}
 # Apply
 terraform init -backend-config=environments/dev/backend.tf
 terraform apply -var-file=environments/dev/terraform.tfvars</pre>
-            <div class="space-y-3">
-              <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
-                <span class="text-base flex-shrink-0">✅</span>
-                <div><p class="text-xs font-bold mb-0.5" style="color: #15803D;">Do</p><p class="text-xs leading-relaxed" style="color: #166534;">Use separate state files and variable files per environment. The differences between environments should be explicit, auditable and version-controlled.</p></div>
+              <div class="space-y-3">
+                <div
+                  class="flex items-start gap-3 p-4 rounded-xl"
+                  style="background: #F0FDF4; border: 1px solid #BBF7D0;"
+                >
+                  <span class="text-base flex-shrink-0">✅</span>
+                  <div>
+                    <p class="text-xs font-bold mb-0.5" style="color: #15803D;">
+                      Do
+                    </p><p
+                      class="text-xs leading-relaxed"
+                      style="color: #166534;"
+                    >
+                      Use separate state files and variable files per
+                      environment. The differences between environments should
+                      be explicit, auditable and version-controlled.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex items-start gap-3 p-4 rounded-xl"
+                  style="background: #FFFBEB; border: 1px solid #FDE68A;"
+                >
+                  <span class="text-base flex-shrink-0">⚠️</span>
+                  <div>
+                    <p class="text-xs font-bold mb-0.5" style="color: #D97706;">
+                      Warning
+                    </p><p
+                      class="text-xs leading-relaxed"
+                      style="color: #92400E;"
+                    >
+                      Terraform workspaces share the same backend configuration.
+                      If dev and prod differ in more than variable values
+                      (topology, enabled modules, resource sizes), use separate
+                      state files, not workspaces.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="flex items-start gap-3 p-4 rounded-xl" style="background: #FFFBEB; border: 1px solid #FDE68A;">
-                <span class="text-base flex-shrink-0">⚠️</span>
-                <div><p class="text-xs font-bold mb-0.5" style="color: #D97706;">Warning</p><p class="text-xs leading-relaxed" style="color: #92400E;">Terraform workspaces share the same backend configuration. If dev and prod differ in more than variable values (topology, enabled modules, resource sizes), use separate state files, not workspaces.</p></div>
-              </div>
+            </section>
+
+            <!-- Navigation footer -->
+            <div class="flex items-center justify-between pt-4">
+              <a
+                href="/docs"
+                class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-70"
+                style="color: #64748b;"
+              >
+                ← All docs
+              </a>
+              <a
+                href="/docs/gitops-standards"
+                class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90"
+                style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+              >
+                GitOps Standards →
+              </a>
             </div>
-          </section>
-
-          <!-- Navigation footer -->
-          <div class="flex items-center justify-between pt-4">
-            <a href="/docs" class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-70" style="color: #64748b;">
-              ← All docs
-            </a>
-            <a href="/docs/gitops-standards" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
-              GitOps Standards →
-            </a>
           </div>
-
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  if (typeof window !== 'undefined' && (window as any).cf) {
-    (window as any).cf.track('docs_viewed', { guide: 'terraform-standards' })
-  }
-</script>
+  <script>
+    if (typeof window !== 'undefined' && (window as any).cf) {
+      ;(window as any).cf.track('docs_viewed', { guide: 'terraform-standards' })
+    }
+  </script>
 </Layout>
