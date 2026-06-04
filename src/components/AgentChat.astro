@@ -327,8 +327,6 @@
 
       try {
         const messages = history.map(m => ({ role: m.role, content: m.content }))
-        console.log('Sending:', messages)
-
         const res = await fetch(WORKER, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
