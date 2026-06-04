@@ -1,6 +1,15 @@
 ---
 titulo: "AWS Terraform DevOps Platform"
+titulo_es: "Plataforma AWS Terraform DevOps"
 descripcion: "Production AWS environment with EKS 1.31, HPA at 70% CPU, RDS PostgreSQL 15 Multi-AZ and 6 modular Terraform modules. Dual CI/CD pipeline with GitHub Actions and Jenkins, SonarCloud coverage gate at ≥80% and CloudWatch proactive alarms."
+descripcion_es: "Entorno AWS de producción con EKS 1.31, HPA al 70% CPU, RDS PostgreSQL 15 Multi-AZ y 6 módulos Terraform modulares. Pipeline CI/CD dual con GitHub Actions y Jenkins, quality gate SonarCloud al ≥80% y alarmas proactivas en CloudWatch."
+highlights_es:
+  - "Infraestructura Multi-AZ con 6 módulos Terraform: VPC, EKS, RDS, ECR, IAM y CloudWatch — estado remoto en S3"
+  - "Pipeline CI/CD dual: GitHub Actions para despliegue automático + Jenkins para build, test y análisis de calidad"
+  - "RDS PostgreSQL 15 Multi-AZ con backups automatizados y réplica de lectura para alta disponibilidad"
+  - "HPA configurado al 70% CPU: la aplicación escala automáticamente según la carga de trabajo"
+  - "Quality gate SonarCloud ≥80% cobertura aplicado en cada pull request — ningún código deficiente llega a producción"
+  - "Alarmas CloudWatch proactivas: alertas antes de que los usuarios experimenten degradación del servicio"
 fecha: 2026-05-01
 categoria: "Cloud Infrastructure"
 madurez: "Production"

@@ -1,6 +1,16 @@
 ---
 titulo: "GitOps Stack — EKS Production Pipeline"
+titulo_es: "GitOps Stack — Pipeline de Producción EKS"
 descripcion: "Production GitOps CI/CD pipeline on AWS EKS 1.35: 7-stage Jenkins with STS role assumption, SSM-based Ansible node configuration on Amazon Linux 2023, Terraform-managed VPC with 22 IAM identities in 5 groups. Zero SSH keys — all cluster access via IAM AssumeRole and AWS Systems Manager."
+descripcion_es: "Pipeline CI/CD GitOps en AWS EKS 1.35: Jenkins de 7 etapas con asunción de rol STS, configuración de nodos Ansible vía SSM en Amazon Linux 2023, VPC gestionada con Terraform con 22 identidades IAM en 5 grupos. Sin claves SSH — todo el acceso al clúster vía IAM AssumeRole y AWS Systems Manager."
+highlights_es:
+  - "Pipeline Jenkins de 7 etapas: Test → Build → ECR Push → Terraform → Ansible SSM → Kubernetes → Verificación de rollout"
+  - "Sin claves SSH en ningún lugar: acceso a nodos EKS exclusivamente vía AWS Systems Manager Session Manager"
+  - "STS AssumeRole: Jenkins asume eks-admin-role con nombre de sesión jenkins-deploy-${BUILD_NUMBER} — cada despliegue es una entrada en CloudTrail"
+  - "22 identidades IAM gestionadas como código Terraform: devops-team, developers, security-team, monitoring-team, data-team"
+  - "Ansible vía community.aws.aws_ssm: configuración de nodos sin credenciales en Amazon Linux 2023"
+  - "CloudWatch Agent en todos los nodos EKS: CPU, memoria, disco + /var/log/messages y /var/log/secure (retención 30 días)"
+  - "Backend Terraform S3 con estado remoto: entorno completamente reproducible desde un único terraform apply"
 fecha: 2026-06-02
 categoria: "GitOps & CI/CD"
 madurez: "Production"

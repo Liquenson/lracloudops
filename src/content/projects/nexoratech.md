@@ -1,6 +1,15 @@
 ---
 titulo: "NexoraTech SaaS Platform"
+titulo_es: "Plataforma SaaS NexoraTech"
 descripcion: "Enterprise SaaS platform with Spring Boot 4.0.3, React 18 and AWS ECS Fargate. JWT + MFA TOTP authentication, Testcontainers integration testing against real PostgreSQL, 10 Terraform modules and three OIDC CI/CD pipelines."
+descripcion_es: "Plataforma SaaS enterprise con Spring Boot 4.0.3, React 18 y AWS ECS Fargate. Autenticación JWT + MFA TOTP, tests de integración con Testcontainers contra PostgreSQL real, 10 módulos Terraform y tres pipelines CI/CD con OIDC."
+highlights_es:
+  - "BCryptPasswordEncoder + JJWT 0.12.6 sin estado (expiración 1h, 256+ bits) + MFA TOTP con contador de fallos y bloqueo de cuenta"
+  - "DTOs MapStruct: ninguna entidad JPA expuesta directamente en la API — cero fugas de serialización"
+  - "Flyway con validate-on-migrate=true: desajuste de migración falla al arrancar antes de servir peticiones"
+  - "Testcontainers: tests de integración contra PostgreSQL real — mismos dialectos y restricciones que producción"
+  - "Federación OIDC: tokens IAM efímeros de 15 minutos — cero claves AWS en GitHub Secrets en todos los pipelines"
+  - "Terraform 100% modular: 10 módulos independientes (VPC, ECS, RDS, ALB, CloudFront, S3, Secrets, ECR, Security Groups)"
 fecha: 2026-05-08
 categoria: "Platform Engineering"
 madurez: "Production"
