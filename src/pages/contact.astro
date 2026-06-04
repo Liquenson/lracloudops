@@ -50,17 +50,22 @@ import Layout from '../layouts/Layout.astro'
     </div>
   </section>
 
-  <!-- TRUST STRIP -->
-  <section style="background: #F8FAFC; border-bottom: 1px solid #E2E8F0; padding: 10px 0;">
+  <!-- TRUST SIGNALS -->
+  <section style="background: #F8FAFC; border-bottom: 1px solid #E2E8F0;" class="py-10">
     <div class="max-w-5xl mx-auto px-6">
-      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium" style="color: #64748b;">
-        <span class="flex items-center gap-1.5">🔒 NDA available</span>
-        <span class="hidden sm:block w-px h-3 bg-gray-300"></span>
-        <span class="flex items-center gap-1.5">⚡ Response within 24h</span>
-        <span class="hidden sm:block w-px h-3 bg-gray-300"></span>
-        <span class="flex items-center gap-1.5">✓ OIDC-only credentials</span>
-        <span class="hidden sm:block w-px h-3 bg-gray-300"></span>
-        <span class="flex items-center gap-1.5">📋 GDPR compliant</span>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { icon: '🔒', title: 'NDA available before first call', desc: 'Signed before any technical discussion' },
+          { icon: '⚡', title: 'Response within 24 hours', desc: 'Weekdays · Monday to Friday' },
+          { icon: '✓', title: 'OIDC-only credentials', desc: 'We never store your AWS keys' },
+          { icon: '📋', title: 'Free initial assessment', desc: 'Architecture review at no charge' },
+        ].map(({ icon, title, desc }) => (
+          <div class="rounded-xl p-4" style="background: white; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
+            <div class="text-xl mb-2" aria-hidden="true">{icon}</div>
+            <div class="text-xs font-semibold mb-1" style="color: #0A2540;">{title}</div>
+            <div class="text-xs leading-relaxed" style="color: #64748b;">{desc}</div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -305,6 +310,16 @@ import Layout from '../layouts/Layout.astro'
                   <div class="text-sm font-medium group-hover:text-[#1E6FFF] transition-colors" style="color: #0A2540;">github.com/Liquenson</div>
                 </div>
               </a>
+
+              <div class="flex items-center gap-3 px-4 py-3 rounded-xl" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
+                <svg class="w-4 h-4 flex-shrink-0" style="color: #15803D;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <div class="text-xs font-semibold" style="color: #15803D;">Available for calls</div>
+                  <div class="text-xs" style="color: #166534;">Mon–Fri · 9:00–18:00 CET</div>
+                </div>
+              </div>
             </div>
           </div>
 
