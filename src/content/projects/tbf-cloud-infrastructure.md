@@ -1,6 +1,15 @@
 ---
 titulo: "TBF Cloud Infrastructure"
+titulo_es: "Infraestructura Cloud TBF"
 descripcion: "Full-stack SaaS platform on AWS ECS Fargate with Spring Boot 4.0.3 and React 18.3.1. 11 Terraform modules, OIDC authentication with ephemeral credentials, automated circuit breaker rollback and CloudFront OAC with differentiated cache policy."
+descripcion_es: "Plataforma SaaS full-stack en AWS ECS Fargate con Spring Boot 4.0.3 y React 18.3.1. 11 módulos Terraform, autenticación OIDC con credenciales efímeras, rollback automático con circuit breaker y CloudFront OAC con política de caché diferenciada."
+highlights_es:
+  - "11 módulos Terraform independientes: VPC, ECS, RDS, ALB, CloudFront, S3, Secrets, ECR, Security Groups — entornos 100% reproducibles"
+  - "Federación OIDC: tokens IAM efímeros de 15 minutos — cero claves AWS en GitHub Secrets en todos los pipelines"
+  - "Circuit breaker ECS con rollback automático en fallos de health check — cero downtime en despliegues"
+  - "CloudFront OAC + caché diferenciada: assets con hash 1 año inmutable, index.html sin caché"
+  - "3 pipelines CI/CD paralelos: backend (Maven → ECR → ECS), frontend (Vite → S3 + invalidación CloudFront), Terraform"
+  - "Dev sin NAT Gateway (ahorro ~35€/mes), producción con subnets privadas, Multi-AZ y protección contra eliminación"
 fecha: 2026-05-01
 categoria: "Platform Engineering"
 madurez: "Production"

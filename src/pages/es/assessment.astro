@@ -3,9 +3,9 @@ import Layout from '../../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Evaluación de Madurez DevOps · LRA Cloud Operations"
-  descripcion="10 preguntas para entender el nivel de madurez de tu infraestructura y obtener recomendaciones personalizadas de nuestro equipo de ingeniería de plataformas."
-  keywords="evaluación madurez DevOps, auditoría infraestructura, modelo madurez cloud, herramienta evaluación DevOps"
+  titulo="Evaluación de Madurez DevOps | LRA Cloud Operations"
+  descripcion="10 preguntas para entender el nivel de madurez de tu infraestructura y obtener recomendaciones personalizadas de nuestro equipo."
+  keywords="evaluación madurez DevOps, auditoría infraestructura, Kubernetes, cloud readiness"
 >
 
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
@@ -61,11 +61,11 @@ import Layout from '../../layouts/Layout.astro'
 <script>
 const questions = [
   {
-    q: '¿Cómo gestionas tu infraestructura?',
+    q: '¿Cómo gestionas la infraestructura?',
     options: [
-      { label: 'CLI / Consola manual', pts: 0 },
-      { label: 'Algunos scripts / plantillas', pts: 1 },
-      { label: 'Terraform / CloudFormation', pts: 2 },
+      { label: 'CLI/Consola manual', pts: 0 },
+      { label: 'Algunos scripts/plantillas', pts: 1 },
+      { label: 'Terraform/CloudFormation', pts: 2 },
       { label: 'IaC completo con módulos y estado remoto', pts: 3 },
     ],
   },
@@ -81,10 +81,10 @@ const questions = [
   {
     q: '¿Cómo gestionas secretos y credenciales?',
     options: [
-      { label: 'Hardcoded en el código', pts: 0 },
+      { label: 'Hardcodeados en el código', pts: 0 },
       { label: 'Variables de entorno', pts: 1 },
       { label: 'Secrets Manager / Vault', pts: 2 },
-      { label: 'Federación OIDC — sin claves estáticas jamás', pts: 3 },
+      { label: 'Federación OIDC — sin claves estáticas nunca', pts: 3 },
     ],
   },
   {
@@ -93,14 +93,14 @@ const questions = [
       { label: 'Despliegues manuales', pts: 0 },
       { label: 'CI básico con tests', pts: 1 },
       { label: 'CI/CD completo con quality gates', pts: 2 },
-      { label: 'GitOps con ArgoCD y rollback automático', pts: 3 },
+      { label: 'GitOps con ArgoCD, rollback automático', pts: 3 },
     ],
   },
   {
     q: '¿Cómo monitorizas tu infraestructura?',
     options: [
       { label: 'Sin monitorización', pts: 0 },
-      { label: 'Métricas cloud básicas únicamente', pts: 1 },
+      { label: 'Métricas básicas de cloud', pts: 1 },
       { label: 'Prometheus + Grafana', pts: 2 },
       { label: 'Observabilidad completa — métricas, logs, trazas, alertas', pts: 3 },
     ],
@@ -115,9 +115,9 @@ const questions = [
     ],
   },
   {
-    q: '¿Cómo gestionas la seguridad en tu pipeline?',
+    q: '¿Cómo manejas la seguridad en tu pipeline?',
     options: [
-      { label: 'Sin escaneo de seguridad', pts: 0 },
+      { label: 'Sin escáner de seguridad', pts: 0 },
       { label: 'Escaneo básico de dependencias', pts: 1 },
       { label: 'SAST + escaneo de contenedores', pts: 2 },
       { label: 'DevSecOps completo con policy gates y SonarQube', pts: 3 },
@@ -128,7 +128,7 @@ const questions = [
     options: [
       { label: 'Sin estrategia formal', pts: 0 },
       { label: 'Backups manuales', pts: 1 },
-      { label: 'Backups automáticos con RTO/RPO definidos', pts: 2 },
+      { label: 'Backups automatizados con RTO/RPO definidos', pts: 2 },
       { label: 'Multi-AZ con failover automático y runbooks probados', pts: 3 },
     ],
   },
@@ -137,7 +137,7 @@ const questions = [
     options: [
       { label: 'Sin gestión de costes', pts: 0 },
       { label: 'Revisión mensual', pts: 1 },
-      { label: 'Estrategia de etiquetado + alertas de presupuesto', pts: 2 },
+      { label: 'Estrategia de etiquetas + alertas de presupuesto', pts: 2 },
       { label: 'Práctica FinOps con automatización de optimización', pts: 3 },
     ],
   },
@@ -145,7 +145,7 @@ const questions = [
     q: '¿Cómo documentas tu infraestructura?',
     options: [
       { label: 'Sin documentación', pts: 0 },
-      { label: 'README básicos', pts: 1 },
+      { label: 'Archivos README básicos', pts: 1 },
       { label: 'Diagramas de arquitectura + runbooks', pts: 2 },
       { label: 'Documentación viva como código, autogenerada', pts: 3 },
     ],
@@ -155,43 +155,43 @@ const questions = [
 const results = [
   {
     range: [0, 10],
-    level: 'Fase Inicial',
-    badge: 'Riesgo Alto',
+    level: 'Etapa Inicial',
+    badge: 'Alto Riesgo',
     badgeColor: '#EF4444',
     bg: '#FEF2F2',
     border: '#FECACA',
-    text: 'Tu infraestructura depende en gran medida de procesos manuales. Esto crea riesgos significativos, entregas lentas y altos costes operativos. Recomendamos empezar con fundamentos de IaC y automatización básica de CI/CD.',
-    cta: 'Agenda una evaluación gratuita de infraestructura →',
+    text: 'Tu infraestructura depende en gran medida de procesos manuales. Esto genera riesgo significativo, entregas lentas y altos costes operativos. Recomendamos empezar con fundamentos IaC y automatización CI/CD básica.',
+    cta: 'Reservar una evaluación gratuita de infraestructura →',
   },
   {
     range: [11, 18],
-    level: 'Fase en Desarrollo',
-    badge: 'Creciendo',
+    level: 'Etapa en Desarrollo',
+    badge: 'En Crecimiento',
     badgeColor: '#D97706',
     bg: '#FFFBEB',
     border: '#FDE68A',
-    text: 'Tienes automatización en marcha pero quedan brechas críticas en seguridad, observabilidad y fiabilidad de despliegues. Enfócate en estandarizar tu pipeline e implementar una gestión adecuada de secretos.',
-    cta: 'Obtén una hoja de ruta personalizada →',
+    text: 'Tienes automatización en marcha pero quedan brechas críticas en seguridad, observabilidad y fiabilidad de despliegues. Enfócate en estandarizar tu pipeline e implementar gestión adecuada de secretos.',
+    cta: 'Obtener una hoja de ruta de mejora personalizada →',
   },
   {
     range: [19, 25],
-    level: 'Fase Definida',
+    level: 'Etapa Definida',
     badge: 'Base Sólida',
     badgeColor: '#2563EB',
     bg: '#EEF4FF',
     border: '#c3d9ff',
-    text: 'Buen nivel de madurez. Tienes prácticas DevOps sólidas. Ahora enfócate en GitOps, observabilidad avanzada y automatización de seguridad para alcanzar la madurez de producción enterprise.',
-    cta: 'Ve cómo podemos acelerar tu camino →',
+    text: 'Buen nivel de madurez. Tienes prácticas DevOps sólidas. Ahora enfócate en GitOps, observabilidad avanzada y automatización de seguridad para alcanzar la madurez plena de producción.',
+    cta: 'Ver cómo podemos acelerar tu camino →',
   },
   {
     range: [26, 30],
-    level: 'Fase Optimizada',
+    level: 'Etapa Optimizada',
     badge: 'Nivel Enterprise',
     badgeColor: '#15803D',
     bg: '#F0FDF4',
     border: '#BBF7D0',
-    text: '¡Excelente! Operas a nivel enterprise con prácticas sólidas de automatización, seguridad y fiabilidad. Hablemos de ingeniería de plataformas avanzada y optimización FinOps.',
-    cta: 'Habla con nuestros ingenieros senior →',
+    text: '¡Excelente! Operas a nivel enterprise con automatización, seguridad y prácticas de fiabilidad sólidas. Hablemos de ingeniería de plataformas avanzada y optimización FinOps.',
+    cta: 'Hablar con nuestros ingenieros senior →',
   },
 ]
 
@@ -270,27 +270,51 @@ function showResult() {
       </div>
       <h2 class="text-2xl sm:text-3xl font-extrabold mb-3" style="color: #0A2540;">${result.level}</h2>
       <div class="text-5xl font-black mb-2" style="color: ${result.badgeColor};">${score}<span class="text-2xl font-bold text-gray-400">/30</span></div>
-      <div class="text-sm mb-6" style="color: #64748b;">${pct}% de madurez</div>
+      <div class="text-sm mb-6" style="color: #64748b;">${pct}% puntuación de madurez</div>
+
       <div class="h-3 rounded-full overflow-hidden mb-8 mx-auto max-w-xs" style="background: rgba(0,0,0,0.08);">
         <div class="h-full rounded-full" style="width: ${pct}%; background: ${result.badgeColor};"></div>
       </div>
+
       <p class="text-base leading-relaxed mb-8 max-w-md mx-auto" style="color: #334155;">${result.text}</p>
+
+      <div id="email-capture" style="margin: 1.5rem 0; padding: 1.5rem; background: #EEF4FF; border-radius: 12px; border: 1px solid #C7D7FD;">
+        <p style="font-weight: 600; color: #0A2540; margin-bottom: 0.5rem;">Recibe tu plan de acción personalizado por email</p>
+        <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 1rem;">Te enviaremos una hoja de ruta detallada basada en tu puntuación. Sin spam.</p>
+        <form id="assessment-email-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485">
+          <input type="hidden" name="subject" id="assessment-subject">
+          <input type="hidden" name="assessment_score" id="assessment-score-field">
+          <input type="hidden" name="assessment_level" id="assessment-level-field">
+          <input type="email" name="email" placeholder="tu@empresa.com" required
+            style="flex: 1; min-width: 200px; padding: 0.75rem 1rem; border: 1px solid #C7D7FD; border-radius: 8px; font-size: 0.875rem;">
+          <button type="submit"
+            style="padding: 0.75rem 1.5rem; background: #1E6FFF; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+            Enviarme mi plan →
+          </button>
+        </form>
+        <p id="email-success" style="display:none; color: #16a34a; font-size: 0.875rem; margin-top: 0.75rem;">✓ ¡Revisa tu bandeja de entrada! Te enviaremos tu plan en 24 horas.</p>
+      </div>
+
       <a href="${calUrl}" target="_blank" rel="noopener noreferrer"
         class="inline-flex items-center gap-2 text-sm font-bold text-white px-8 py-4 rounded-xl mb-4 transition-all hover:opacity-90 hover:-translate-y-px"
         style="background: #1E6FFF; box-shadow: 0 4px 16px rgba(30,111,255,0.35);">
         ${result.cta}
       </a>
+
       <div class="mt-6">
         <button id="retake-btn" class="text-sm font-semibold transition-colors hover:underline" style="color: #64748b;">
-          Repetir evaluación
+          Repetir Evaluación
         </button>
       </div>
     </div>
+
     <div class="mt-8 rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid #e2e8f0;">
-      <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Resumen de tus respuestas</h3>
+      <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Tu respuesta por pregunta</h3>
       <div class="space-y-2">
         ${questions.map((q, i) => {
           const pts = answers[i] ?? 0
+          const opt = q.options[q.options.findIndex(o => o.pts === pts)] ?? q.options[0]
           const color = pts === 3 ? '#15803d' : pts === 2 ? '#2563EB' : pts === 1 ? '#D97706' : '#EF4444'
           return `
             <div class="flex items-center gap-3 text-xs">
@@ -302,6 +326,27 @@ function showResult() {
       </div>
     </div>
   `
+
+  // Email capture setup
+  const subjEl = document.getElementById('assessment-subject') as HTMLInputElement
+  const scoreEl2 = document.getElementById('assessment-score-field') as HTMLInputElement
+  const levelEl = document.getElementById('assessment-level-field') as HTMLInputElement
+  if (subjEl) subjEl.value = `Evaluación Madurez DevOps — Puntuación ${score}/30 (${result.level})`
+  if (scoreEl2) scoreEl2.value = String(score)
+  if (levelEl) levelEl.value = result.level
+  const emailForm = document.getElementById('assessment-email-form') as HTMLFormElement
+  emailForm?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const fd = new FormData(emailForm)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+      if (res.ok) {
+        emailForm.style.display = 'none'
+        const ok = document.getElementById('email-success')
+        if (ok) ok.style.display = 'block'
+      }
+    } catch {}
+  })
 
   document.getElementById('retake-btn')?.addEventListener('click', () => {
     currentQ = 0
