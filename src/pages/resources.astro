@@ -329,6 +329,90 @@ import Layout from '../layouts/Layout.astro'
 
       </div>
 
+      <!-- ─── ARCHITECTURE BLUEPRINTS ──────────────────────────────────────── -->
+      <div class="mb-10 mt-4">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-px flex-1" style="background: #e2e8f0;"></div>
+          <span class="text-xs font-bold uppercase tracking-wider px-3" style="color: #94A3B8;">Architecture Blueprints</span>
+          <div class="h-px flex-1" style="background: #e2e8f0;"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+          <!-- AWS Landing Zone Blueprint -->
+          <div class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #FF9900; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); box-shadow: 0 4px 12px rgba(255,153,0,0.3);">
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #FF9900;">Architecture &middot; AWS</span>
+                <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">AWS Landing Zone Blueprint</h2>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">Multi-account AWS strategy with Security Account, Shared Services and workload OUs. SCPs, GuardDuty and centralized CloudTrail across all accounts.</p>
+            <a href="/architectures/aws-landing-zone" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(255,153,0,0.3);">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              View Architecture
+            </a>
+          </div>
+
+          <!-- EKS Production Blueprint -->
+          <div class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); box-shadow: 0 4px 12px rgba(50,108,229,0.3);">
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #326CE5;">Architecture &middot; Kubernetes</span>
+                <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">EKS Production Blueprint</h2>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">Production-grade EKS with managed node groups, ArgoCD GitOps, External Secrets Operator, HPA and CloudWatch Container Insights.</p>
+            <a href="/architectures/eks-production-platform" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(50,108,229,0.3);">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              View Architecture
+            </a>
+          </div>
+
+          <!-- GitOps Platform Blueprint -->
+          <div class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #FF6C37; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); box-shadow: 0 4px 12px rgba(255,108,55,0.3);">
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #FF6C37;">Architecture &middot; GitOps</span>
+                <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">GitOps Platform Blueprint</h2>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">Automated delivery with GitHub Actions CI, ArgoCD CD and OIDC authentication. Git as the single source of truth for all deployments.</p>
+            <a href="/architectures/gitops-platform" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(255,108,55,0.3);">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              View Architecture
+            </a>
+          </div>
+
+          <!-- Observability Blueprint -->
+          <div class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200" style="border: 1px solid #e2e8f0; border-left: 4px solid #F97316; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); box-shadow: 0 4px 12px rgba(249,115,22,0.3);">
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="text-xs font-bold uppercase tracking-wider mb-0.5 block" style="color: #F97316;">Architecture &middot; Observability</span>
+                <h2 class="text-base font-bold leading-tight" style="color: #0A2540;">Observability Blueprint</h2>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">Prometheus + Grafana + Fluent Bit + CloudWatch. Alert rules, dashboard templates and escalation runbooks for production workloads.</p>
+            <a href="/architectures/observability-platform" class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90" style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); color: white; text-decoration: none; box-shadow: 0 2px 8px rgba(249,115,22,0.3);">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              View Architecture
+            </a>
+          </div>
+
+        </div>
+      </div>
+
       <!-- ─── DOWNLOAD FORM ─────────────────────────────────────────────── -->
       <div id="download-form-section" class="max-w-xl mx-auto rounded-2xl p-10 text-center" style="background: white; border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.10);">
         <div class="w-14 h-14 flex items-center justify-center rounded-2xl mx-auto mb-5" style="background: #EEF4FF;">
@@ -417,6 +501,9 @@ import Layout from '../layouts/Layout.astro'
         submitBtn.style.cursor = 'pointer'
       }
       formSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      if (typeof window !== 'undefined' && (window as any).cf) {
+        (window as any).cf.track('resource_download', { resource })
+      }
     })
   })
 
