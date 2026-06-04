@@ -10,7 +10,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 <Layout
   titulo="Platform Engineering & DevOps Consulting | LRA Cloud Operations"
   descripcion="Expert DevOps team specializing in Kubernetes, AWS infrastructure and GitOps. We design and operate cloud-native platforms that scale."
-  keywords="DevOps consulting Spain, Kubernetes consulting, AWS platform engineering, Terraform experts, GitOps implementation, cloud infrastructure team"
+  keywords="DevOps consulting Spain, Kubernetes consultant AWS, platform engineering consulting, Terraform expert Spain, GitOps implementation, cloud infrastructure team Las Palmas, DevOps freelance España, AWS EKS specialist"
 >
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
@@ -70,7 +70,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
         <!-- Trust indicators -->
         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          {['Response within 24h', 'Free initial assessment', 'No lock-in contracts'].map(item => (
+          {['Response within 24h', 'No lock-in contracts'].map(item => (
             <span class="flex items-center gap-1.5 text-xs font-medium" style="color: rgba(148,163,184,0.65);">
               <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
@@ -78,6 +78,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
               {item}
             </span>
           ))}
+          <a href="/assessment" class="flex items-center gap-1.5 text-xs font-medium transition-colors hover:opacity-80" style="color: rgba(148,163,184,0.65);">
+            <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            Free DevOps assessment
+          </a>
         </div>
       </div>
 
@@ -210,6 +216,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
           Fortinet Certified ×2
         </span>
+        <a href="/certifications" class="text-xs font-semibold transition-colors hover:opacity-80" style="color: #1E6FFF;">View all credentials →</a>
         <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
         <span class="text-xs font-medium" style="color: #64748b;">OIDC-only credentials · No static AWS keys</span>
         <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
