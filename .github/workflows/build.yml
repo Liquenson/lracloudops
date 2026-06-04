@@ -62,11 +62,6 @@ jobs:
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Required GitHub secrets: CF_API_TOKEN (Cloudflare API token with Pages:Edit permission)
-      # and CF_ACCOUNT_ID (your Cloudflare account ID from the dashboard URL).
-      - name: Deploy to Cloudflare Pages
-        if: github.ref == 'refs/heads/main'
-        run: npx wrangler pages deploy dist/ --project-name=lracloudops
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+      # Deploy is handled automatically by Cloudflare Pages
+      # via direct GitHub integration — no wrangler deploy needed.
+      # Every merge to main triggers an automatic deployment.
