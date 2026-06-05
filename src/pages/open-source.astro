@@ -44,6 +44,14 @@ const repos = [
       'FastAPI microservices platform with PostgreSQL, Docker Compose and multi-stage builds.',
     stack: ['FastAPI', 'PostgreSQL', 'Docker', 'Python'],
   },
+  {
+    name: 'devops-learning-platform',
+    url: 'https://github.com/Devopsmcpatral/Devops',
+    description:
+      'Comprehensive DevOps learning platform covering Terraform AWS infrastructure, HashiCorp stack (Vault, Consul, Nomad), Bash scripting course and Docker Azure CLI environments.',
+    stack: ['Terraform', 'Vault', 'Consul', 'Nomad', 'Bash', 'Docker', 'Azure'],
+    badge: 'Team Project',
+  },
 ]
 ---
 
@@ -85,7 +93,7 @@ const repos = [
         Production-grade tools and reference implementations. Free to use, fork and adapt.
       </p>
       <p class="text-sm font-medium" style="color: rgba(147,184,255,0.5);">
-        MIT License &middot; 6 repositories &middot; github.com/Liquenson
+        MIT License &middot; 7 repositories &middot; github.com/Liquenson
       </p>
     </div>
   </section>
@@ -121,9 +129,11 @@ const repos = [
                 </div>
                 <span
                   class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
-                  style="background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.3);"
+                  style={repo.badge === 'Team Project'
+                    ? 'background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;'
+                    : 'background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.3);'}
                 >
-                  Open Source
+                  {repo.badge ?? 'Open Source'}
                 </span>
               </div>
 
