@@ -11,7 +11,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "generate-og": "node scripts/generate-og.mjs",
-    "generate-types": "wrangler types"
+    "generate-types": "wrangler types",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
@@ -25,6 +27,7 @@
     "vite": "^7"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1"
   }
