@@ -47,3 +47,24 @@ test('AI agent chat button is visible', async ({ page }) => {
   const chatToggle = page.locator('#lra-chat-toggle')
   await expect(chatToggle).toBeVisible()
 })
+
+test('/open-source page loads correctly', async ({ page }) => {
+  await page.goto('/open-source')
+  await expect(page.locator('body')).toBeVisible()
+  const heading = page.locator('h1').first()
+  await expect(heading).toBeVisible()
+})
+
+test('/resources has filter buttons visible', async ({ page }) => {
+  await page.goto('/resources')
+  const filterContainer = page.locator('#resource-filters')
+  await expect(filterContainer).toBeVisible()
+  const filterBtns = filterContainer.locator('button')
+  expect(await filterBtns.count()).toBeGreaterThanOrEqual(3)
+})
+
+test('/blog has newsletter form', async ({ page }) => {
+  await page.goto('/blog')
+  const form = page.locator('.newsletter-cta-form').first()
+  await expect(form).toBeVisible()
+})
