@@ -35,6 +35,7 @@ const _enToEs: Record<string, string> = {
   '/projects': '/es/proyectos',
   '/blog': '/es/blog',
   '/resources': '/es/resources',
+  '/open-source': '/es/open-source',
   '/security': '/es/security',
   '/why-lra': '/es/why-lra',
 }
@@ -71,6 +72,7 @@ const pathLabels: Record<string, string> = {
   fintech: 'Fintech',
   saas: 'SaaS',
   'kubernetes-platforms': 'Kubernetes Platforms',
+  'open-source': 'Open Source',
   es: 'ES',
   servicios: 'Soluciones',
   proyectos: 'Casos de uso',
@@ -302,6 +304,12 @@ const resourcesItems: NavItem[] = [
     label: 'Why LRA →',
     desc: 'The case for specialized over generalist',
     iconPath: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    href: '/open-source',
+    label: 'Open Source',
+    desc: 'Production-grade tools & reference implementations',
+    iconPath: 'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
   },
 ]
 const aboutItems: NavItem[] = [
@@ -1869,6 +1877,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
                 { label: 'Architecture Center', href: '/architectures' },
                 { label: 'Herramientas de evaluación', href: '/es/assessment' },
                 { label: 'Casos de uso', href: '/es/proyectos' },
+                { label: 'Open Source', href: '/es/open-source' },
                 { label: 'Seguridad', href: '/es/security' },
               ] : [
                 { label: 'Blog', href: '/blog' },
@@ -1876,6 +1885,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
                 { label: 'Architecture Center', href: '/architectures' },
                 { label: 'Assessment Tools', href: '/assessments' },
                 { label: 'Case Studies', href: '/projects' },
+                { label: 'Open Source', href: '/open-source' },
                 { label: 'Security', href: '/security' },
               ]).map(({ label, href }) => (
                 <li>
