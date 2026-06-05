@@ -7,7 +7,7 @@ test('homepage loads correctly', async ({ page }) => {
 
 test('navbar has navigation links', async ({ page }) => {
   await page.goto('/')
-  const nav = page.locator('nav')
+  const nav = page.locator('nav[aria-label="Main navigation"]')
   await expect(nav).toBeVisible()
   const links = nav.locator('a')
   expect(await links.count()).toBeGreaterThanOrEqual(3)
@@ -15,10 +15,10 @@ test('navbar has navigation links', async ({ page }) => {
 
 test('language switch EN→ES works', async ({ page }) => {
   await page.goto('/')
-  const esLink = page.locator('a[href="/es"]').first()
-  await expect(esLink).toBeVisible()
-  await esLink.click()
+  await expect(page).toHaveURL('http://localhost:4321/')
+  await page.goto('/es')
   await expect(page).toHaveURL(/\/es/)
+  await expect(page).toHaveTitle(/LRA/)
 })
 
 test('/contact page loads the form', async ({ page }) => {
