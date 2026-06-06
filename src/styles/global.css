@@ -497,3 +497,42 @@ pre {
     transition: none;
   }
 }
+
+
+/* ── Logo responsivo enterprise ──────────────────────────────────────────── */
+.logo-text-full {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0A2540;
+  letter-spacing: -0.02em;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.logo-text-short {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0A2540;
+  letter-spacing: -0.02em;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  display: none;
+}
+
+/* Desktop >1024px: texto completo */
+@media (min-width: 1024px) {
+  .logo-text-full { display: block; }
+  .logo-text-short { display: none; }
+}
+
+/* Tablet 768px-1024px: texto corto */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .logo-text-full { display: none; }
+  .logo-text-short { display: block; }
+}
+
+/* Movil <768px: solo icono */
+@media (max-width: 767px) {
+  .logo-text-full { display: none; }
+  .logo-text-short { display: none; }
+}
