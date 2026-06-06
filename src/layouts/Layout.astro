@@ -508,10 +508,23 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
         <!-- Logo -->
         <a
           href={lang === 'es' ? '/es' : '/'}
-          class="flex-shrink-0 z-50 flex items-center gap-2.5"
+          class="flex items-center gap-2 flex-shrink-0 z-50"
           aria-label="LRA Cloud Ops — Home"
         >
-          <img src="/favicon.svg" alt="LRA Cloud Ops" width="28" height="28" style="border-radius:6px;" />
+          <!-- Icono siempre visible -->
+          <img
+            src="/favicon.svg"
+            alt=""
+            width="32"
+            height="32"
+            style="width:32px; height:32px; flex-shrink:0;"
+            loading="eager"
+            aria-hidden="true"
+          />
+          <!-- Texto completo: visible en desktop >1024px -->
+          <span class="logo-text-full" aria-hidden="true">LRA CloudOps</span>
+          <!-- Texto corto: visible en tablet 768px-1024px -->
+          <span class="logo-text-short" aria-hidden="true">LRA</span>
         </a>
 
         <!-- ── Desktop Nav ── -->
