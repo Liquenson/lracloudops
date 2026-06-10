@@ -1,50 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-
-const repos = [
-  {
-    name: 'gitops-stack',
-    url: 'https://github.com/Liquenson/gitops-stack',
-    description:
-      'Pipeline GitOps completo con Jenkins, ArgoCD, Kubernetes y Terraform. Arquitectura probada en producción.',
-    stack: ['Jenkins', 'ArgoCD', 'Kubernetes', 'Terraform', 'Ansible'],
-  },
-  {
-    name: 'aws-terraform-devops',
-    url: 'https://github.com/Liquenson/aws-terraform-devops',
-    description:
-      'Plataforma AWS EKS con módulos Terraform, pipeline CI/CD, HPA y observabilidad con CloudWatch.',
-    stack: ['Terraform', 'EKS', 'GitHub Actions', 'Helm', 'SonarCloud'],
-  },
-  {
-    name: 'linux-fleet-manager',
-    url: 'https://github.com/Liquenson/linux-fleet-manager',
-    description:
-      'Framework Bash enterprise para gestión de flota Linux. Multiplataforma: Linux, macOS, Windows Git Bash.',
-    stack: ['Bash', 'ShellCheck', 'SSH', 'GitHub Actions'],
-  },
-  {
-    name: 'aws-devops-agent',
-    url: 'https://github.com/Liquenson/aws-devops-agent',
-    description:
-      'Agente de operaciones AWS en lenguaje natural, impulsado por Claude AI y boto3.',
-    stack: ['Python', 'Claude AI', 'boto3', 'AWS'],
-  },
-  {
-    name: 'k8s-devops-platform',
-    url: 'https://github.com/Liquenson/k8s-devops-platform',
-    description:
-      'Plataforma Kubernetes con GitOps ArgoCD, clúster local KinD y manifiestos de producción.',
-    stack: ['Kubernetes', 'ArgoCD', 'KinD', 'Helm'],
-  },
-  {
-    name: 'docker-devops-platform',
-    url: 'https://github.com/Liquenson/docker-devops-platform',
-    description:
-      'Plataforma de microservicios FastAPI con PostgreSQL, Docker Compose y builds multi-stage.',
-    stack: ['FastAPI', 'PostgreSQL', 'Docker', 'Python'],
-  },
-]
 ---
 
 <Layout
@@ -85,130 +40,14 @@ const repos = [
         Herramientas de nivel producción e implementaciones de referencia. Libres para usar, bifurcar y adaptar.
       </p>
       <p class="text-sm font-medium" style="color: rgba(147,184,255,0.5);">
-        Licencia MIT &middot; 6 repositorios &middot; github.com/Liquenson
+        Licencia MIT &middot; github.com/Liquenson
       </p>
     </div>
   </section>
 
-  <!-- ─── REPOS GRID ───────────────────────────────────────────────────── -->
   <section class="py-20" style="background: #F8FAFC;">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        {
-          repos.map((repo) => (
-            <div
-              class="bg-white flex flex-col hover:-translate-y-1 transition-all duration-200"
-              style="border-radius: 16px; border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08); padding: 28px;"
-            >
-              <div class="flex items-start justify-between mb-5">
-                <div
-                  class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0"
-                  style="background: #0A2540;"
-                >
-                  <svg
-                    class="w-5 h-5 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                    />
-                  </svg>
-                </div>
-                <span
-                  class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
-                  style="background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.3);"
-                >
-                  Open Source
-                </span>
-              </div>
-
-              <h2 class="text-base font-bold mb-2" style="color: #0A2540; font-family: 'JetBrains Mono', monospace;">
-                {repo.name}
-              </h2>
-
-              <p class="text-sm leading-relaxed mb-5 flex-1" style="color: #64748b;">
-                {repo.description}
-              </p>
-
-              <div class="flex flex-wrap gap-1.5 mb-5">
-                {repo.stack.map((tech) => (
-                  <span
-                    class="text-xs font-medium px-2.5 py-1 rounded-full"
-                    style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={repo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
-                style="background: #0A2540; color: white; text-decoration: none;"
-              >
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                </svg>
-                Ver en GitHub →
-              </a>
-            </div>
-          ))
-        }
-      </div>
-
-      <!-- ─── CONTRIBUTE CTA ───────────────────────────────────────────── -->
-      <div
-        class="rounded-2xl p-10 text-center"
-        style="background: white; border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.08);"
-      >
-        <div
-          class="w-14 h-14 flex items-center justify-center rounded-2xl mx-auto mb-5"
-          style="background: #EEF4FF;"
-        >
-          <svg
-            class="w-6 h-6"
-            style="color: #1E6FFF;"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3" style="color: #0A2540;">
-          ¿Quieres contribuir o usar nuestros módulos?
-        </h3>
-        <p class="text-sm mb-7 max-w-md mx-auto" style="color: #64748b;">
-          Todos los repositorios tienen licencia MIT. Bifúrcalos, adáptalos a tu infraestructura o abre un pull request con mejoras.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href="https://github.com/Liquenson"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"
-            style="background: #0A2540; color: white; text-decoration: none;"
-          >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-            </svg>
-            Ver todos en GitHub
-          </a>
-          <a
-            href="/es/contacto"
-            class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"
-            style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff; text-decoration: none;"
-          >
-            Contáctanos →
-          </a>
-        </div>
-      </div>
+    <div class="text-center py-24">
+      <p class="text-[#64748b] text-lg">New projects coming soon.</p>
     </div>
   </section>
 
