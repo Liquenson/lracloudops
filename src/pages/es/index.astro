@@ -5,6 +5,10 @@ import { getCollection } from 'astro:content'
 const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
   .slice(0, 3)
+
+const allProjects = await getCollection('projects', ({ data }) => !data.draft)
+const featuredProjects = allProjects.filter((p) => p.data.featured)
+const displayProjects = featuredProjects.length > 0 ? featuredProjects : allProjects.slice(0, 4)
 ---
 
 <Layout
@@ -1393,89 +1397,11 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {
-          [
-            {
-              industry: 'Plataforma Sanitaria',
-              type: 'Infraestructura Cloud + Platform Engineering',
-              description:
-                'Entorno AWS multi-región con EKS, Terraform y CI/CD end-to-end. Infraestructura aprovisionada como código desde el primer día. Límites de cumplimiento aplicados a nivel de IAM y red.',
-              metrics: [
-                { value: '6 módulos', label: 'Terraform' },
-                { value: 'Multi-AZ', label: 'RDS PostgreSQL' },
-                { value: 'Cero', label: 'Cambios manuales en producción' },
-                { value: '80%', label: 'Quality gate de cobertura' },
-              ],
-              highlights: [
-                'Autenticación OIDC en todo el CI/CD',
-                'Entrega GitOps con ArgoCD',
-                'Stack de observabilidad completo desde el lanzamiento',
-              ],
-            },
-            {
-              industry: 'Plataforma de Servicios Financieros',
-              type: 'Platform Engineering + DevOps Automation',
-              description:
-                'Plataforma SaaS en ECS Fargate con CloudFront OAC, Secrets Manager y tres pipelines OIDC. Autenticación JWT + MFA. Tests de integración con Testcontainers contra base de datos real.',
-              metrics: [
-                { value: '11 módulos', label: 'Terraform' },
-                {
-                  value: '3 pipelines',
-                  label: 'OIDC — sin credenciales estáticas',
-                },
-                { value: 'CloudFront', label: 'OAC con caché diferenciada' },
-                {
-                  value: 'BD real',
-                  label: 'Tests de integración (Testcontainers)',
-                },
-              ],
-              highlights: [
-                'Spring Boot 4.0.3 + Java 17',
-                'Flyway validate-on-migrate',
-                'Circuit breaker automatizado con rollback',
-              ],
-            },
-            {
-              industry: 'Plataforma Logística',
-              type: 'GitOps + Kubernetes + Observability',
-              description:
-                'Cluster Kubernetes con entrega GitOps, observabilidad completa y despliegues sin tiempo de inactividad. Prometheus y Grafana configurados en el aprovisionamiento. SLIs definidos antes del go-live.',
-              metrics: [
-                { value: 'HPA', label: 'Autoscaling activo' },
-                { value: 'GitOps', label: 'Interfaz única de despliegue' },
-                { value: 'ArgoCD', label: 'Auto-sync + prune + selfHeal' },
-                { value: 'Grafana', label: 'Infra + app en una vista' },
-              ],
-              highlights: [
-                'KinD para desarrollo local replica producción',
-                'Helm Charts con valores por entorno',
-                'Alertmanager con routing por severidad',
-              ],
-            },
-            {
-              industry: 'Plataforma Cloud Native',
-              type: 'DevOps Automation + Revisión de Infraestructura',
-              description:
-                'Auditoría de infraestructura legacy seguida de codificación completa. Entorno manual reemplazado con módulos Terraform, pipelines automatizados y observabilidad estructurada.',
-              metrics: [
-                { value: 'Desde 0', label: 'Cobertura IaC antes' },
-                { value: '100%', label: 'Cobertura IaC después' },
-                {
-                  value: 'Semanal',
-                  label: 'Cadencia de release (era mensual)',
-                },
-                { value: 'OIDC', label: 'Sin credenciales estáticas' },
-              ],
-              highlights: [
-                'ShellCheck CI en 3 plataformas',
-                'Configuration drift eliminado',
-                'Rollback probado antes de producción',
-              ],
-            },
-          ].map((eng, i) => (
+      {displayProjects.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {displayProjects.map((project, i) => (
             <div
-              class={`bg-white rounded-2xl p-8 animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-400'][i]}`}
+              class={`bg-white rounded-2xl p-8 animate-fade-up ${(['delay-100', 'delay-200', 'delay-300', 'delay-400'])[i] ?? ''}`}
               style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
             >
               <div class="flex items-start justify-between mb-5">
@@ -1484,68 +1410,108 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
                     class="text-xs font-semibold uppercase tracking-widest mb-1 block"
                     style="color: #94a3b8;"
                   >
-                    {eng.type}
+                    {project.data.categoria}
                   </span>
                   <h3 class="text-lg font-bold" style="color: #0A2540;">
-                    {eng.industry}
+                    {project.data.titulo}
                   </h3>
                 </div>
                 <span
                   class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-3"
                   style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;"
                 >
-                  Producción
+                  {project.data.madurez}
                 </span>
               </div>
+
               <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-                {eng.description}
+                {project.data.descripcion}
               </p>
-              <div class="grid grid-cols-2 gap-3 mb-6">
-                {eng.metrics.map((m) => (
-                  <div
-                    class="rounded-xl p-3"
-                    style="background: #f8fafc; border: 1px solid #e2e8f0;"
-                  >
+
+              {project.data.metricas && project.data.metricas.length > 0 && (
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                  {project.data.metricas.map((m) => (
                     <div
-                      class="text-base font-bold mb-0.5"
-                      style="color: #0A2540;"
+                      class="rounded-xl p-3"
+                      style="background: #f8fafc; border: 1px solid #e2e8f0;"
                     >
-                      {m.value}
+                      <div class="text-base font-bold mb-0.5" style="color: #0A2540;">
+                        {m.value}
+                      </div>
+                      <div class="text-xs" style="color: #64748b;">{m.label}</div>
                     </div>
-                    <div class="text-xs" style="color: #64748b;">
-                      {m.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <ul class="space-y-2">
-                {eng.highlights.map((h) => (
-                  <li
-                    class="flex items-center gap-2.5 text-xs"
-                    style="color: #64748b;"
+                  ))}
+                </div>
+              )}
+
+              {project.data.stack.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mb-5">
+                  {project.data.stack.map((tag) => (
+                    <span class="stack-tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+
+              {project.data.highlights && project.data.highlights.length > 0 && (
+                <ul class="space-y-2 mb-6">
+                  {project.data.highlights.slice(0, 3).map((h) => (
+                    <li class="flex items-center gap-2.5 text-xs" style="color: #64748b;">
+                      <svg
+                        class="w-3.5 h-3.5 flex-shrink-0"
+                        style="color: #1E6FFF;"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                {project.data.github ? (
+                  <a
+                    href={project.data.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
+                    style="color: #64748B;"
                   >
-                    <svg
-                      class="w-3.5 h-3.5 flex-shrink-0"
-                      style="color: #1E6FFF;"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      />
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                     </svg>
-                    {h}
-                  </li>
-                ))}
-              </ul>
+                    GitHub
+                  </a>
+                ) : (
+                  <span class="flex items-center gap-1.5 text-xs" style="color: #CBD5E1;">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    Repositorio privado
+                  </span>
+                )}
+                <a
+                  href={`/es/projects/${project.id}`}
+                  class="inline-flex items-center gap-1 text-xs font-semibold"
+                  style="color: #2563EB;"
+                >
+                  Ver caso completo
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
             </div>
-          ))
-        }
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-24">
+          <p class="text-[#64748b] text-lg">New projects coming soon.</p>
+        </div>
+      )}
 
       <div class="text-center mt-12">
         <a
@@ -1554,17 +1520,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           style="color: #2563EB;"
         >
           Ver todas las implementaciones
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
       </div>
