@@ -56,3 +56,28 @@ No lint scripts. CI via `.github/workflows/build.yml` (npm ci + astro check + as
 **Email:** All references use `info@lracloudops.com`. Never use the personal Gmail address.
 
 **Security:** `public/_headers` configures HTTP security headers (CSP, X-Frame-Options, HSTS, Permissions-Policy) for Cloudflare Pages.
+
+## Portfolio state (updated June 11, 2026)
+
+### Active projects in `src/content/projects/`
+- `k8s-on-premise.md` — Kubernetes cluster on bare metal, Phase 3/18, In Development
+
+### Schema field names (Zod)
+The content collection schema uses different names than the intuitive ones:
+- `title` → `titulo`
+- `description` → `descripcion`
+- `status` → `madurez` (enum: Production | In Development | Reference | Starter)
+- `tags` → `stack` (string array)
+- `metrics` → `metricas` (array of `{ label, value }`)
+- `fecha` is required (YYYY-MM-DD format)
+
+### GitHub organization
+- All portfolio projects live at `github.com/lra-cloud-ops`
+- Personal repos (`github.com/Liquenson`) are NOT linked from the portfolio
+
+### To add a new project
+1. Create repo at `github.com/lra-cloud-ops/<name>`
+2. Create `src/content/projects/<slug>.md` with real data only
+3. Set `featured: false` while In Development, `featured: true` when Production
+4. Set `draft: false` to make it visible on the site
+5. PR → CI → merge → auto-deploy to Cloudflare Pages
