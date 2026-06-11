@@ -1,159 +1,8 @@
 ---
+import { getCollection } from 'astro:content'
 import Layout from '../layouts/Layout.astro'
 
-const implementations = [
-  // ── Production Platforms ─────────────────────────────────────────────────
-  {
-    nombre: "AWS Terraform DevOps Platform",
-    descripcion: "Production AWS environment: EKS 1.31 with HPA (CPU 70%), RDS PostgreSQL 15 Multi-AZ, 6 modular Terraform modules. Remote state on S3 with DynamoDB locking. Dual CI/CD pipeline: GitHub Actions + Jenkins in parallel. SonarCloud coverage gate ≥80%. 17 tests across application and infrastructure layers.",
-    stack: ["Terraform 1.9.8", "AWS EKS 1.31", "RDS PostgreSQL 15", "Flask 3.0.3", "GitHub Actions", "Jenkins", "Helm", "SonarCloud"],
-    madurez: "Production",
-    cicd: true,
-    github: "https://github.com/Liquenson/aws-terraform-devops",
-    categoria: "Cloud Infrastructure",
-    iconPath: "M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6",
-    slug: "aws-terraform-devops",
-  },
-  {
-    nombre: "TBF Cloud Infrastructure",
-    descripcion: "Full-stack SaaS platform: Spring Boot 4.0.3 and React 18.3.1 on AWS ECS Fargate. 11 Terraform 1.9.8 modules. OIDC authentication — no static credentials. Automated circuit breaker with rollback. CloudFront OAC with differentiated cache policy for API and static assets.",
-    stack: ["Spring Boot 4.0.3", "Java 17", "React 18.3.1", "Terraform 1.9.8", "AWS ECS Fargate", "CloudFront", "PostgreSQL 15"],
-    madurez: "Production",
-    cicd: true,
-    github: null,
-    categoria: "Platform Engineering",
-    iconPath: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
-    slug: "tbf-cloud-infrastructure",
-  },
-  {
-    nombre: "NexoraTech SaaS Platform",
-    descripcion: "Enterprise SaaS platform: Spring Boot 4.0.3, React 18.3.1 and AWS ECS Fargate. 10 Terraform modules. JWT + MFA TOTP + BCrypt authentication. Testcontainers with Flyway validate-on-migrate — integration tests hit a real database. Three OIDC pipelines. CloudFront OAC with differentiated cache.",
-    stack: ["Spring Boot 4.0.3", "Java 17", "React 18.3.1", "Vite 5.4.14", "JJWT 0.12.6", "Testcontainers", "Flyway", "PostgreSQL 15", "Terraform 1.9.8", "AWS ECS Fargate", "GitHub Actions"],
-    madurez: "Production",
-    cicd: true,
-    github: null,
-    categoria: "Platform Engineering",
-    iconPath: "M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z",
-    slug: "nexoratech",
-  },
-  {
-    nombre: "Linux Fleet Management Framework",
-    descripcion: "Enterprise-grade Bash automation framework: set -euo pipefail, TTY detection, SSH BatchMode and cross-platform detection (Linux/macOS/Windows Git Bash). CSV and JSON inventory exports. ShellCheck CI validated across 3 platforms in parallel.",
-    stack: ["Bash 4.0+", "ShellCheck", "SSH", "CSV / JSON", "GitHub Actions", "Ubuntu", "macOS", "Windows Git Bash"],
-    madurez: "Production",
-    cicd: true,
-    github: "https://github.com/Liquenson/linux-fleet-manager",
-    categoria: "SRE & Automation",
-    iconPath: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
-    slug: "linux-fleet-manager",
-  },
-  {
-    nombre: "GitOps Stack — EKS Production Pipeline",
-    descripcion: "Production GitOps CI/CD pipeline on AWS EKS 1.35: 7-stage Jenkins with STS role assumption and manual approval gate, SSM-based Ansible node configuration on Amazon Linux 2023, Terraform-managed VPC with 22 IAM identities in 5 groups. Zero SSH keys — all cluster access via IAM AssumeRole and AWS Systems Manager.",
-    stack: ["Terraform 1.9", "AWS EKS 1.35", "Jenkins 2.555", "Ansible 2.10", "AWS SSM", "Python 3.11", "Flask 3.0.0", "GitHub Actions"],
-    madurez: "Production",
-    cicd: true,
-    github: "https://github.com/Liquenson/gitops-stack",
-    categoria: "GitOps & CI/CD",
-    iconPath: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
-    slug: "gitops-stack",
-  },
-  {
-    nombre: "LRA Cloud Operations Platform",
-    descripcion: "Static marketing and engineering platform for the LRA Cloud Operations brand — built with Astro 6 and Tailwind CSS 4, deployed globally on Cloudflare Pages with automated CI/CD. Structured data, Open Graph, Content Collections API and automated blog.",
-    stack: ["Astro 6.2", "Tailwind CSS 4", "TypeScript", "Cloudflare Pages", "Content Collections"],
-    madurez: "Production",
-    cicd: true,
-    github: "https://github.com/Liquenson/lracloudops",
-    categoria: "Web Platform",
-    iconPath: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
-    slug: "lracloudops",
-  },
-  // ── Active Development ───────────────────────────────────────────────────
-  {
-    nombre: "Docker DevOps Platform",
-    descripcion: "Containerized backend platform: FastAPI 0.115.0 and PostgreSQL 15-alpine. Multi-stage Docker build, non-root user, exponential backoff retry logic (5 retries / 2s delay) and JSON CMD array for correct PID 1 behavior.",
-    stack: ["Python 3.12", "FastAPI 0.115.0", "Uvicorn 0.30.0", "PostgreSQL 15-alpine", "Docker", "Docker Compose", "GitHub Actions"],
-    madurez: "In Development",
-    cicd: true,
-    github: "https://github.com/Liquenson/docker-devops-platform",
-    categoria: "Containerization",
-    iconPath: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10",
-    slug: "docker-devops-platform",
-  },
-  {
-    nombre: "Medical Appointment System",
-    descripcion: "Role-based appointment management platform: JDBC authentication with Admin, Doctor and Patient roles, email verification and role-isolated views. Multi-profile: H2 in-memory locally, PostgreSQL 15 in production via Docker Compose.",
-    stack: ["Java 17", "Spring Boot 3.2", "Spring Security 6", "Thymeleaf", "H2", "PostgreSQL 15", "Docker"],
-    madurez: "In Development",
-    cicd: true,
-    github: "https://github.com/Liquenson/medical-appointment-system",
-    categoria: "Backend Platform",
-    iconPath: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
-    slug: "medical-appointment-system",
-  },
-  {
-    nombre: "AWS DevOps Agent",
-    descripcion: "Claude Sonnet 4.6-powered CLI agent with 31 boto3 tools for natural language AWS infrastructure management. Security group auditing, IAM key rotation, cost analysis, and management of EC2, ECS, EKS, RDS, Lambda, CloudWatch, GuardDuty and 20+ additional services.",
-    stack: ["Python 3.11", "Claude Sonnet 4.6", "boto3", "Anthropic SDK", "AWS", "GuardDuty", "Cost Explorer"],
-    madurez: "In Development",
-    cicd: false,
-    github: "https://github.com/Liquenson/aws-devops-agent",
-    categoria: "AI + Cloud Operations",
-    iconPath: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
-    slug: "aws-devops-agent",
-  },
-  // ── Reference Implementations ────────────────────────────────────────────
-  {
-    nombre: "Kubernetes GitOps Platform",
-    descripcion: "Reference GitOps architecture: 3-node KinD cluster (1 control plane + 2 workers) with port mapping for Ingress. ArgoCD as delivery controller. Kubernetes manifests as the single source of truth — a starting point for teams evaluating GitOps adoption.",
-    stack: ["Kubernetes 1.29", "ArgoCD", "KinD", "Docker", "Kustomize", "GitOps", "YAML"],
-    madurez: "Reference",
-    cicd: true,
-    github: "https://github.com/Liquenson/k8s-devops-platform",
-    categoria: "Kubernetes & GitOps",
-    iconPath: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
-    slug: "k8s-devops-platform",
-  },
-  // ── Starter Architectures ────────────────────────────────────────────────
-  {
-    nombre: "Python CI/CD Pipeline Template",
-    descripcion: "Production-ready Flask pipeline template: 3-stage pipeline — flake8 (E9/F63/F7/F82 + max-complexity=10), pytest with 80% coverage gate, Docker build with deterministic github.sha tag and health check, and a configurable deploy stage.",
-    stack: ["Python 3.11", "Flask 3.0.3", "pytest 8.2.2", "flake8 7.1.0", "Docker", "GitHub Actions"],
-    madurez: "Starter",
-    cicd: true,
-    github: "https://github.com/Liquenson/python-cicd-template",
-    categoria: "CI/CD Templates",
-    iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
-    slug: "python-cicd-template",
-  },
-  {
-    nombre: "Spring Boot REST API Starter",
-    descripcion: "Production-ready REST API starter: Spring Boot with pre-configured security, JPA persistence and automatic Swagger documentation. Docker image generated via Maven Jib plugin — no Dockerfile required. JaCoCo coverage reporting included.",
-    stack: ["Java 8", "Spring Boot 2.7", "Spring Security", "Swagger", "MapStruct", "Jib", "JaCoCo"],
-    madurez: "Starter",
-    cicd: false,
-    github: "https://github.com/Liquenson/springboot-rest-template",
-    categoria: "API Templates",
-    iconPath: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4",
-    slug: "springboot-rest-template",
-  },
-]
-
-const projectMeta: Record<string, { metric: { value: string; label: string }; industry: string; duration: string }> = {
-  'aws-terraform-devops':      { metric: { value: '80%',   label: 'faster deployments'      }, industry: 'Healthcare',         duration: '4 years'   },
-  'tbf-cloud-infrastructure':  { metric: { value: '11',    label: 'Terraform modules'        }, industry: 'Financial Services', duration: '1 year'    },
-  'nexoratech':                { metric: { value: '3',     label: 'OIDC pipelines'           }, industry: 'SaaS',               duration: '1 year'    },
-  'linux-fleet-manager':       { metric: { value: '3 OS',  label: 'platforms validated'      }, industry: 'Operations',         duration: 'Ongoing'   },
-  'gitops-stack':              { metric: { value: '22',    label: 'IAM identities as code'   }, industry: 'Cloud Native',       duration: '6 months'  },
-  'lracloudops':               { metric: { value: '62',    label: 'pages · 0 build errors'   }, industry: 'Web Platform',       duration: 'Ongoing'   },
-  'docker-devops-platform':    { metric: { value: '5×',    label: 'retry with exp backoff'   }, industry: 'Containerization',   duration: 'In progress' },
-  'medical-appointment-system':{ metric: { value: '3',     label: 'RBAC roles'               }, industry: 'Healthcare',         duration: 'In progress' },
-  'aws-devops-agent':          { metric: { value: '31',    label: 'boto3 tools'              }, industry: 'AI Ops',             duration: 'In progress' },
-  'k8s-devops-platform':       { metric: { value: '3',     label: 'node cluster'             }, industry: 'Cloud Native',       duration: '6 months'  },
-  'python-cicd-template':      { metric: { value: '80%',   label: 'coverage gate'            }, industry: 'DevOps',             duration: 'Template'  },
-  'springboot-rest-template':  { metric: { value: '0',     label: 'Dockerfile required'      }, industry: 'Backend',            duration: 'Template'  },
-}
+const allProjects = (await getCollection('projects')).filter(p => !p.data.draft)
 
 function badgeStyle(madurez: string) {
   const map: Record<string, string> = {
@@ -165,13 +14,19 @@ function badgeStyle(madurez: string) {
   return map[madurez] ?? map["Reference"]
 }
 
-const openSourceSlugs = ['python-cicd-template', 'springboot-rest-template', 'lracloudops']
-const coreImplementations = implementations.filter(p => !openSourceSlugs.includes(p.slug))
-const openSourceTemplates = implementations.filter(p => openSourceSlugs.includes(p.slug))
-const production = coreImplementations.filter(p => p.madurez === "Production")
-const inDevelopment = coreImplementations.filter(p => p.madurez === "In Development")
-const reference = coreImplementations.filter(p => p.madurez === "Reference")
-const starters = implementations.filter(p => p.madurez === "Starter")
+const statusBar: Record<string, string> = {
+  "Production":     "background: linear-gradient(90deg, #16a34a, #22c55e);",
+  "In Development": "background: linear-gradient(90deg, #d97706, #f59e0b);",
+  "Reference":      "background: linear-gradient(90deg, #6b7280, #9ca3af);",
+  "Starter":        "background: linear-gradient(90deg, #1E6FFF, #5B9BFF);",
+}
+
+const production    = allProjects.filter(p => p.data.madurez === "Production")
+const inDevelopment = allProjects.filter(p => p.data.madurez === "In Development")
+const reference     = allProjects.filter(p => p.data.madurez === "Reference")
+const starters      = allProjects.filter(p => p.data.madurez === "Starter")
+
+const defaultIconPath = "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
 ---
 
 <Layout
@@ -186,7 +41,7 @@ const starters = implementations.filter(p => p.madurez === "Starter")
     <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
       <div class="max-w-3xl">
         <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
-          {implementations.length} implementations · Production workloads documented
+          {allProjects.length} implementation{allProjects.length !== 1 ? 's' : ''} · Production workloads documented
         </span>
         <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left" style="letter-spacing: -0.02em;">Reference Architectures</h1>
         <p class="text-lg max-w-2xl animate-fade-up delay-200" style="color: rgba(147,184,255,0.8);">
@@ -234,197 +89,133 @@ const starters = implementations.filter(p => p.madurez === "Starter")
         ))}
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-        {coreImplementations.map((p, i) => {
-          const meta = projectMeta[p.slug];
-          return (
-          <div class={`bg-white rounded-2xl flex flex-col group hover:-translate-y-1 transition-all duration-200 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400','delay-500','delay-500','delay-100','delay-200','delay-300','delay-400','delay-500'][i] ?? 'delay-500'}`} style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07); border: 1px solid #e8eef4; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07)'; this.style.borderColor='#e8eef4';">
-
-            <!-- Status bar -->
-            <div class="h-1 rounded-t-2xl" style={
-              p.madurez === 'Production' ? 'background: linear-gradient(90deg, #16a34a, #22c55e);' :
-              p.madurez === 'In Development' ? 'background: linear-gradient(90deg, #d97706, #f59e0b);' :
-              p.madurez === 'Reference' ? 'background: linear-gradient(90deg, #6b7280, #9ca3af);' :
-              'background: linear-gradient(90deg, #1E6FFF, #5B9BFF);'
-            }></div>
-
-            <div class="p-7 flex flex-col flex-1">
-              <div class="flex items-start justify-between mb-5">
-                <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color: #EEF4FF;">
-                  <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={p.iconPath} />
-                  </svg>
-                </div>
-                <div class="flex flex-col items-end gap-1.5">
-                  {meta && (
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">{meta.industry}</span>
-                  )}
-                  <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style={badgeStyle(p.madurez)}>
-                    {p.madurez}
-                  </span>
-                  {p.cicd && (
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium" style="color: #64748b;">
-                      <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div class="mb-1.5">
-                <span class="text-xs font-semibold uppercase tracking-wider" style="color: #94a3b8;">{p.categoria}</span>
-              </div>
-              <h2 class="text-lg font-bold mb-3 group-hover:text-blue-700 transition-colors" style="color: #0A2540;">{p.nombre}</h2>
-              <p class="text-sm leading-relaxed mb-4 flex-1" style="color: #64748b;">{p.descripcion}</p>
-
-              {meta && (
-                <div class="flex items-baseline gap-2 mb-4 px-4 py-3 rounded-xl" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
-                  <span class="text-2xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">{meta.metric.value}</span>
-                  <span class="text-xs font-medium" style="color: #3b5bdb;">{meta.metric.label}</span>
-                </div>
-              )}
-
-              <div class="flex flex-wrap gap-1.5 mb-5">
-                {p.stack.slice(0, 5).map(t => (
-                  <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #374151; border: 1px solid #e2e8f0;">{t}</span>
-                ))}
-                {p.stack.length > 5 && (
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0;">+{p.stack.length - 5} more</span>
-                )}
-              </div>
-
-              <div class="flex items-center gap-3 pt-5 border-t border-gray-100">
-                <a
-                  href={`/projects/${p.slug}`}
-                  class="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all hover:-translate-y-px"
-                  style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
-                >
-                  Architecture detail
-                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-                {p.github && (
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="w-9 h-9 flex items-center justify-center rounded-xl border border-gray-200 hover:border-gray-300 transition-colors"
-                    style="color: #64748b;"
-                    aria-label={`${p.nombre} on GitHub`}
-                  >
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                    </svg>
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-          );
-        })}
-
-      </div>
-    </div>
-  </section>
-
-  <!-- OPEN SOURCE TEMPLATES -->
-  {openSourceTemplates.length > 0 && (
-    <section class="py-16 border-t border-gray-100" style="background: white;">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-8">
-          <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-3" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">Open Source</span>
-          <h2 class="text-2xl font-bold" style="color: #0A2540;">Open Source Templates</h2>
-          <p class="text-sm mt-1" style="color: #64748b;">Reusable reference implementations and starter architectures, publicly available.</p>
+      {allProjects.length === 0 ? (
+        <div class="text-center py-24">
+          <p class="text-[#64748b] text-lg">Projects coming soon. Follow <a href="https://github.com/lra-cloud-ops" target="_blank" rel="noopener noreferrer" class="font-semibold underline" style="color: #1E6FFF;">github.com/lra-cloud-ops</a> for updates.</p>
         </div>
+      ) : (
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {openSourceTemplates.map((p, i) => {
-            const meta = projectMeta[p.slug];
+          {allProjects.map((project, i) => {
+            const p = project.data
+            const slug = project.id
+            const icon = p.iconPath ?? defaultIconPath
+            const firstMetric = p.metricas?.[0]
             return (
-            <div class={`bg-white rounded-2xl flex flex-col group hover:-translate-y-1 transition-all duration-200 animate-fade-up ${['delay-100','delay-200','delay-300'][i] ?? 'delay-500'}`} style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07); border: 1px solid #e8eef4;" onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.2)';" onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07)'; this.style.borderColor='#e8eef4';">
-              <div class="h-1 rounded-t-2xl" style="background: linear-gradient(90deg, #1E6FFF, #5B9BFF);"></div>
-              <div class="p-7 flex flex-col flex-1">
-                <div class="flex items-start justify-between mb-5">
-                  <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color: #EEF4FF;">
-                    <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={p.iconPath} />
-                    </svg>
-                  </div>
-                  <div class="flex flex-col items-end gap-1.5">
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: #F0F9FF; color: #0369A1; border: 1px solid #BAE6FD;">Open Source</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style={badgeStyle(p.madurez)}>{p.madurez}</span>
-                    {p.cicd && (
-                      <span class="inline-flex items-center gap-1.5 text-xs font-medium" style="color: #64748b;">
-                        <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD
+              <div
+                class={`bg-white rounded-2xl flex flex-col group hover:-translate-y-1 transition-all duration-200 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400','delay-500','delay-500'][i] ?? 'delay-500'}`}
+                style="box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07); border: 1px solid #e8eef4; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;"
+                onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.2)';"
+                onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07)'; this.style.borderColor='#e8eef4';"
+              >
+                <!-- Status bar -->
+                <div class="h-1 rounded-t-2xl" style={statusBar[p.madurez] ?? statusBar["Reference"]}></div>
+
+                <div class="p-7 flex flex-col flex-1">
+                  <div class="flex items-start justify-between mb-5">
+                    <div class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0" style="background-color: #EEF4FF;">
+                      <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
+                      </svg>
+                    </div>
+                    <div class="flex flex-col items-end gap-1.5">
+                      <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style={badgeStyle(p.madurez)}>
+                        {p.madurez}
                       </span>
+                      {p.cicd && (
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium" style="color: #64748b;">
+                          <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>CI/CD
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div class="mb-1.5">
+                    <span class="text-xs font-semibold uppercase tracking-wider" style="color: #94a3b8;">{p.categoria}</span>
+                  </div>
+                  <h2 class="text-lg font-bold mb-3 group-hover:text-blue-700 transition-colors" style="color: #0A2540;">{p.titulo}</h2>
+                  <p class="text-sm leading-relaxed mb-4 flex-1" style="color: #64748b;">{p.descripcion}</p>
+
+                  {firstMetric && (
+                    <div class="flex items-baseline gap-2 mb-4 px-4 py-3 rounded-xl" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
+                      <span class="text-2xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">{firstMetric.value}</span>
+                      <span class="text-xs font-medium" style="color: #3b5bdb;">{firstMetric.label}</span>
+                    </div>
+                  )}
+
+                  <div class="flex flex-wrap gap-1.5 mb-5">
+                    {p.stack.slice(0, 5).map(t => (
+                      <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #374151; border: 1px solid #e2e8f0;">{t}</span>
+                    ))}
+                    {p.stack.length > 5 && (
+                      <span class="text-xs px-2 py-1 rounded-full" style="background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0;">+{p.stack.length - 5} more</span>
+                    )}
+                  </div>
+
+                  <div class="flex items-center gap-3 pt-5 border-t border-gray-100">
+                    <a
+                      href={`/projects/${slug}`}
+                      class="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all hover:-translate-y-px"
+                      style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+                    >
+                      Architecture detail
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                    {p.github && (
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-9 h-9 flex items-center justify-center rounded-xl border border-gray-200 hover:border-gray-300 transition-colors"
+                        style="color: #64748b;"
+                        aria-label={`${p.titulo} on GitHub`}
+                      >
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                        </svg>
+                      </a>
                     )}
                   </div>
                 </div>
-                <div class="mb-1.5">
-                  <span class="text-xs font-semibold uppercase tracking-wider" style="color: #94a3b8;">{p.categoria}</span>
-                </div>
-                <h2 class="text-lg font-bold mb-3 group-hover:text-blue-700 transition-colors" style="color: #0A2540;">{p.nombre}</h2>
-                <p class="text-sm leading-relaxed mb-4 flex-1" style="color: #64748b;">{p.descripcion}</p>
-                {meta && (
-                  <div class="flex items-baseline gap-2 mb-4 px-4 py-3 rounded-xl" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
-                    <span class="text-2xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">{meta.metric.value}</span>
-                    <span class="text-xs font-medium" style="color: #3b5bdb;">{meta.metric.label}</span>
-                  </div>
-                )}
-                <div class="flex flex-wrap gap-1.5 mb-5">
-                  {p.stack.slice(0, 5).map(t => (
-                    <span class="text-xs font-medium px-2.5 py-1 rounded-full" style="background: #f8fafc; color: #374151; border: 1px solid #e2e8f0;">{t}</span>
-                  ))}
-                </div>
-                <div class="flex items-center gap-3 pt-5 border-t border-gray-100">
-                  <a href={`/projects/${p.slug}`} class="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all hover:-translate-y-px" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
-                    Architecture detail
-                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                  </a>
-                  {p.github && (
-                    <a href={p.github} target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded-xl border border-gray-200 hover:border-gray-300 transition-colors" style="color: #64748b;" aria-label={`${p.nombre} on GitHub`}>
-                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
-                    </a>
-                  )}
-                </div>
               </div>
-            </div>
-            );
+            )
           })}
         </div>
+      )}
+
+      <!-- Coming soon footer -->
+      <div class="mt-12 rounded-2xl p-8 text-center" style="background: #EEF4FF; border: 1px dashed #c3d9ff;">
+        <p class="text-base font-medium mb-1" style="color: #0A2540;">More case studies being documented.</p>
+        <p class="text-sm" style="color: #64748b;">
+          Follow <a href="https://github.com/lra-cloud-ops" target="_blank" rel="noopener noreferrer" class="font-semibold underline" style="color: #1E6FFF;">github.com/lra-cloud-ops</a> for new projects as they ship.
+        </p>
       </div>
-    </section>
-  )}
+
+    </div>
+  </section>
 
   <!-- CTA -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,111,255,0.12) 0%, transparent 70%);"></div>
-    <div class="relative max-w-4xl mx-auto px-6 py-20 text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" style="letter-spacing: -0.02em;">These are the patterns we bring to every engagement.</h2>
-      <p class="mb-9 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
-        Every platform we deliver follows the same operating principles: infrastructure as code, GitOps delivery, integrated observability and no manual provisioning.
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4" style="letter-spacing: -0.02em;">
+        Need production-grade infrastructure?
+      </h2>
+      <p class="text-base mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        These implementations are the baseline. We build and operate cloud infrastructure tailored to your organization's requirements.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02] hover:shadow-xl"
-          style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
-        >
-          Start a technical review
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-        <a
-          href="/services"
-          class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
-          style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
-        >
-          View all solutions
-        </a>
-      </div>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]"
+        style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 24px rgba(30,111,255,0.4);"
+      >
+        Schedule free consultation
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
     </div>
   </section>
 
 </Layout>
-
