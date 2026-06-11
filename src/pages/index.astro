@@ -7,8 +7,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .slice(0, 3)
 
 const allProjects = await getCollection('projects', ({ data }) => !data.draft)
-const featuredProjects = allProjects.filter((p) => p.data.featured)
-const displayProjects = featuredProjects.length > 0 ? featuredProjects : allProjects.slice(0, 4)
+const displayProjects = allProjects
 ---
 
 <Layout
