@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import { getTranslations } from '../../i18n/index'
+
+const t = await getTranslations('ko')
+const allProjects = await getCollection('projects', ({ data }) => !data.draft)
+const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
+  .slice(0, 3)
+---
+
+<Layout
+  titulo={t.site?.tagline ?? '반드시 작동해야 하는 인프라를 위한 Platform Engineering'}
+  descripcion={t.hero?.subtitle ?? 'AWS에서 클라우드 네이티브 플랫폼을 설계, 자동화하고 운영합니다.'}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden hero-gradient" aria-labelledby="hero-heading">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(circle, rgba(96,165,250,0.14) 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background: radial-gradient(ellipse 90% 60% at 50% 115%, rgba(37,99,235,0.22) 0%, transparent 65%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+      <div class="animate-fade-left">
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8 text-xs font-semibold" style="background: rgba(37,99,235,0.15); border: 1px solid rgba(96,165,250,0.3); color: #93C5FD;">
+          <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0 animate-pulse-soft" aria-hidden="true"></span>
+          {t.hero?.badge}
+        </div>
+
+        <h1 id="hero-heading" class="text-[34px] sm:text-[52px] lg:text-[62px] font-extrabold text-white leading-[1.04] mb-7" style="letter-spacing: -0.035em;">
+          {t.hero?.title}<br />{t.hero?.title2}<br />
+          <span style="color: #60A5FA;">{t.hero?.title3}</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl leading-relaxed mb-8 max-w-[520px]" style="color: rgba(148,163,184,0.85);">
+          {t.hero?.subtitle}
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="/contact" class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]" style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.45);">
+            {t.hero?.cta_primary}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="/projects" class="inline-flex items-center gap-2.5 text-sm font-semibold px-7 py-4 rounded-xl border transition-all hover:bg-white/10" style="color: rgba(148,163,184,0.9); border-color: rgba(148,163,184,0.25);">
+            {t.hero?.cta_secondary}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { value: t.metrics?.projects_value ?? '4+', label: t.metrics?.projects_label ?? '' },
+            { value: t.metrics?.engineers_value ?? '4', label: t.metrics?.engineers_label ?? '' },
+            { value: t.metrics?.iac_value ?? '100%', label: t.metrics?.iac_label ?? '' },
+            { value: t.metrics?.years_value ?? '4+', label: t.metrics?.years_label ?? '' },
+          ].map(({ value, label }) => (
+            <div class="text-center px-3 py-4 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+              <div class="text-xl sm:text-2xl font-extrabold text-white mb-1" style="letter-spacing: -0.03em;">{value}</div>
+              <div class="text-[10px] font-semibold uppercase tracking-wider" style="color: rgba(148,163,184,0.55);">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="relative flex justify-center lg:justify-end animate-fade-up delay-200">
+        <div class="relative w-full max-w-[510px]">
+          <div class="absolute -inset-6 rounded-3xl pointer-events-none" aria-hidden="true" style="background: radial-gradient(ellipse at center, rgba(37,99,235,0.25) 0%, transparent 70%); filter: blur(24px);"></div>
+          <div class="relative rounded-2xl overflow-hidden" style="background: #0d1117; border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 40px 80px rgba(0,0,0,0.55);">
+            <div class="flex items-center gap-2 px-4 py-3.5" style="background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.07);">
+              <div class="w-3 h-3 rounded-full" style="background: #FF5F57;"></div>
+              <div class="w-3 h-3 rounded-full" style="background: #FEBC2E;"></div>
+              <div class="w-3 h-3 rounded-full" style="background: #28C840;"></div>
+              <div class="flex-1 text-center"><span class="text-xs font-mono" style="color: rgba(255,255,255,0.25);">aws-production · main</span></div>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span class="text-xs font-mono" style="color: rgba(255,255,255,0.25);">live</span>
+            </div>
+            <div class="p-5 font-mono text-xs sm:text-sm leading-relaxed space-y-1">
+              <div class="flex items-center gap-2"><span style="color: #79C0FF;">❯</span><span class="text-white">terraform apply --auto-approve</span></div>
+              <div class="mt-2 text-[0.68rem]" style="color: rgba(255,255,255,0.35);">Plan: 14 to add, 0 to change, 0 to destroy.</div>
+              <div class="space-y-0.5 mt-2">
+                {[['aws_vpc.main', '6s'],['aws_eks_cluster.main', '2m 18s'],['aws_rds_cluster.db', '1m 44s'],['module.alb.aws_lb.main', '52s']].map(([res, time]) => (
+                  <div class="text-xs"><span style="color: #3FB950;">✓</span> <span style="color: rgba(255,255,255,0.5);">{res}</span> <span style="color: rgba(255,255,255,0.22);">({time})</span></div>
+                ))}
+              </div>
+              <div class="mt-2.5 text-xs font-semibold" style="color: #3FB950;">Apply complete! Resources: 14 added.</div>
+            </div>
+            <div class="px-5 pb-4 pt-2.5" style="border-top: 1px solid rgba(255,255,255,0.06);">
+              <div class="flex items-center gap-0.5">
+                {['Build', 'Test', 'Security', 'Docker', 'Deploy'].map((step, i) => (
+                  <div class="flex items-center">
+                    <div class="flex items-center gap-1 text-xs font-mono">
+                      <span style="color: #3FB950;">✓</span>
+                      <span style="color: rgba(255,255,255,0.4); font-size: 0.62rem;">{step}</span>
+                    </div>
+                    {i < 4 && <div class="w-4 h-px mx-1" style="background: rgba(63,185,80,0.3);"/>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="py-24 bg-white" aria-labelledby="services-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">{t.services?.section_label}</span>
+        <h2 id="services-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          {t.services?.title}
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">{t.services?.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6', title: t.services?.cloud_infra_title ?? '클라우드 인프라', desc: t.services?.cloud_infra_desc ?? '', tags: ['AWS', 'VPC', 'EKS', 'RDS'] },
+          { icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2', title: t.services?.kubernetes_title ?? 'Kubernetes 플랫폼', desc: t.services?.kubernetes_desc ?? '', tags: ['Kubernetes', 'ArgoCD', 'Helm'] },
+          { icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15', title: t.services?.devops_title ?? 'DevOps 자동화', desc: t.services?.devops_desc ?? '', tags: ['GitHub Actions', 'Jenkins', 'OIDC'] },
+          { icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', title: t.services?.observability_title ?? '옵저버빌리티 & SRE', desc: t.services?.observability_desc ?? '', tags: ['Prometheus', 'Grafana', 'SRE'] },
+        ].map(({ icon, title, desc, tags }, i) => (
+          <div class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`}>
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6 flex-shrink-0" style="background: #EFF6FF;">
+              <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon}/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">{title}</h3>
+            <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">{desc}</p>
+            <div class="flex flex-wrap gap-1.5 mb-5">{tags.map(tag => <span class="stack-tag">{tag}</span>)}</div>
+            <a href="/services" class="inline-flex items-center gap-1.5 text-sm font-semibold" style="color: #2563EB;">
+              {t.services?.learn_more}
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="projects-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">{t.projects?.section_label}</span>
+        <h2 id="projects-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">
+          {t.projects?.title}
+        </h2>
+      </div>
+      {allProjects.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {allProjects.map((project, i) => (
+            <div class={`bg-white rounded-2xl p-8 animate-fade-up ${(['delay-100','delay-200','delay-300','delay-400'])[i] ?? ''}`} style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+              <div class="flex items-start justify-between mb-5">
+                <h3 class="text-lg font-bold" style="color: #0A2540;">{project.data.titulo}</h3>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-3" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">{project.data.madurez}</span>
+              </div>
+              <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">{project.data.descripcion}</p>
+              {project.data.stack.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mb-5">{project.data.stack.map(tag => <span class="stack-tag">{tag}</span>)}</div>
+              )}
+              <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                {project.data.github ? (
+                  <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold" style="color: #64748B;">GitHub</a>
+                ) : (
+                  <span class="text-xs" style="color: #CBD5E1;">비공개 저장소</span>
+                )}
+                <a href={`/projects/${project.id}`} class="text-xs font-semibold" style="color: #2563EB;">{t.projects?.read_cs} →</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-lg py-12" style="color: #64748B;">{t.projects?.coming_soon}</p>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden" aria-labelledby="cta-heading">
+    <div class="py-24 px-6 relative" style="background: linear-gradient(90deg, #1D4ED8 0%, #2563EB 55%, #60A5FA 100%);">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <div class="relative max-w-4xl mx-auto text-center animate-fade-up">
+        <h2 id="cta-heading" class="text-4xl sm:text-5xl font-extrabold text-white mb-6" style="letter-spacing: -0.03em;">{t.contact?.title}</h2>
+        <p class="text-xl mb-10 max-w-2xl mx-auto leading-relaxed" style="color: rgba(255,255,255,0.8);">{t.contact?.subtitle}</p>
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+          <a href="/contact" class="inline-flex items-center gap-2.5 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 shadow-xl" style="background: white; color: #1D4ED8;">
+            {t.contact?.cta}
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="/projects" class="inline-flex items-center gap-2 text-base font-semibold px-8 py-4 rounded-xl border" style="color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.3);">{t.contact?.view_work}</a>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style="color: rgba(255,255,255,0.6);">
+          {[t.contact?.no_sales, t.contact?.response, t.contact?.assessment].filter(Boolean).map(item => (
+            <span class="flex items-center gap-2 text-sm">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: rgba(255,255,255,0.8);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
