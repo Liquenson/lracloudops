@@ -20,7 +20,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.2.1",
-    "tailwindcss": "^4.2.4",
+    "tailwindcss": "^4.3.0",
     "wrangler": "^4.98.0"
   },
   "overrides": {
