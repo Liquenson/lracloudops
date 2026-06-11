@@ -43,6 +43,14 @@ import Layout from '../../layouts/Layout.astro'
         {
           [
             {
+              nombre: 'AWS Terraform DevOps Platform',
+              madurez: 'Producción',
+              categoria: 'Infraestructura Cloud',
+              desc: 'Entorno AWS de producción: EKS 1.31 con HPA, RDS PostgreSQL 15 Multi-AZ, 6 módulos Terraform. Pipeline dual GitHub Actions + Jenkins.',
+              slug: 'aws-terraform-devops',
+              github: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+            },
+            {
               nombre: 'TBF Cloud Infrastructure',
               madurez: 'Producción',
               categoria: 'Platform Engineering',
@@ -57,6 +65,22 @@ import Layout from '../../layouts/Layout.astro'
               desc: 'Plataforma SaaS enterprise: Spring Boot, React, ECS Fargate. JWT + MFA TOTP. Testcontainers con Flyway. Tres pipelines OIDC.',
               slug: 'nexoratech',
               github: null,
+            },
+            {
+              nombre: 'Linux Fleet Manager',
+              madurez: 'Producción',
+              categoria: 'SRE & Automatización',
+              desc: 'Framework Bash enterprise para gestión de flota Linux. set -euo pipefail, detección TTY, SSH BatchMode. CI ShellCheck en 3 plataformas.',
+              slug: 'linux-fleet-manager',
+              github: 'https://github.com/lra-cloud-ops/linux-fleet-manager',
+            },
+            {
+              nombre: 'Kubernetes GitOps Platform',
+              madurez: 'Referencia',
+              categoria: 'Kubernetes & GitOps',
+              desc: 'Arquitectura GitOps de referencia: cluster KinD de 3 nodos con ArgoCD como controlador de entrega. Manifiestos Kubernetes como fuente de verdad.',
+              slug: 'k8s-devops-platform',
+              github: 'https://github.com/lra-cloud-ops/k8s-devops-platform',
             },
             {
               nombre: 'AWS DevOps Agent',
