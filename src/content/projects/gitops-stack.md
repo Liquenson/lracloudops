@@ -1,0 +1,158 @@
+---
+titulo: "gitops-stack"
+descripcion: "Production-grade GitOps pipeline deployed on AWS EKS. Docker, Kubernetes, Jenkins CI, Terraform infrastructure, Ansible configuration management, CloudWatch observability — full DevOps lifecycle from commit to production."
+fecha: 2026-06-11
+categoria: "GitOps & CI/CD"
+madurez: "Production"
+featured: true
+github: "https://github.com/lra-cloud-ops/gitops-stack"
+cicd: true
+draft: false
+
+stack:
+  - "AWS EKS"
+  - "Terraform"
+  - "Jenkins"
+  - "Ansible"
+  - "Docker"
+  - "Kubernetes"
+  - "CloudWatch"
+  - "AWS IAM"
+
+metricas:
+  - label: "Pipeline stages"
+    value: "Build → Test → Deploy"
+  - label: "Infrastructure"
+    value: "100% Terraform IaC"
+  - label: "Identity"
+    value: "IAM — zero static credentials"
+  - label: "Observability"
+    value: "CloudWatch + CloudTrail"
+
+highlights:
+  - "Full GitOps pipeline — commit triggers automated build, test and deploy to EKS"
+  - "Terraform modules for VPC, EKS cluster, IAM roles and CloudWatch log groups"
+  - "Ansible playbooks for node configuration — idempotent, version-controlled"
+  - "Jenkins CI with declarative pipeline — Docker build, push to ECR, deploy to EKS"
+  - "AWS Systems Manager (SSM) for automated node configuration — no SSH keys"
+  - "CloudTrail audit trail — every API call logged and queryable"
+---
+
+## Overview
+
+`gitops-stack` is a production-grade GitOps pipeline deployed on AWS EKS. It demonstrates the complete DevOps lifecycle: from infrastructure provisioning with Terraform, through application containerization with Docker, continuous integration with Jenkins, configuration management with Ansible, deployment to Kubernetes, and full observability with CloudWatch and CloudTrail.
+
+The project was built to answer a specific question: what does a real, auditable, enterprise-grade pipeline look like from scratch? Every component is version-controlled, every change is traceable, and every credential follows least-privilege IAM principles.
+
+**Organization:** [LRA Cloud Operations](https://lracloudops.com)
+**Repository:** [github.com/lra-cloud-ops/gitops-stack](https://github.com/lra-cloud-ops/gitops-stack)
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Developer Workflow                    │
+│                                                         │
+│  git push → GitHub → Jenkins CI Pipeline                │
+│                            │                            │
+│              ┌─────────────┼─────────────┐              │
+│              ▼             ▼             ▼              │
+│           Build          Test          Deploy           │
+│         (Docker)       (pytest)      (kubectl)          │
+│              │                          │               │
+│              ▼                          ▼               │
+│       Amazon ECR                   AWS EKS              │
+│    (Container Registry)         (Kubernetes)            │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Infrastructure Layer (Terraform):**
+VPC + Subnets → EKS Cluster → IAM Roles → CloudWatch
+
+**Configuration Layer (Ansible):**
+Node setup → Package installation → Service configuration
+
+**Observability Layer (AWS):**
+CloudWatch Logs → CloudWatch Metrics → CloudTrail Audit
+
+### Repository Structure
+
+```
+gitops-stack/
+├── .github/workflows/     # GitHub Actions (CI triggers)
+├── ansible/               # Node configuration playbooks
+├── app/                   # Application source code
+├── k8s/                   # Kubernetes manifests
+├── scripts/               # Automation scripts
+├── terraform/             # Infrastructure as Code
+├── tests/                 # Test suite
+├── Dockerfile             # Container definition
+└── Jenkinsfile            # Pipeline definition
+```
+
+---
+
+## Prerequisites
+
+| Tool | Version | Purpose |
+|---|---|---|
+| AWS CLI | 2.x | AWS authentication |
+| Terraform | >= 1.5 | Infrastructure provisioning |
+| kubectl | >= 1.28 | Kubernetes operations |
+| Ansible | >= 2.14 | Configuration management |
+| Docker | >= 24.0 | Container build |
+| Jenkins | LTS | CI/CD server |
+
+**AWS permissions required:** EKS, EC2, VPC, IAM, ECR, CloudWatch, CloudTrail, SSM
+
+---
+
+## Getting Started
+
+**1. Provision infrastructure:**
+```bash
+cd terraform/
+terraform init
+terraform plan
+terraform apply
+```
+
+**2. Configure nodes:**
+```bash
+cd ansible/
+ansible-playbook -i inventory playbook.yml
+```
+
+**3. Deploy application:**
+```bash
+kubectl apply -f k8s/
+```
+
+**4. Verify:**
+```bash
+kubectl get nodes
+kubectl get pods -n production
+```
+
+---
+
+## Key Engineering Decisions
+
+**Why Jenkins over GitHub Actions for CI:** Jenkins provides full control over the build environment and integrates directly with the EKS cluster inside the VPC without exposing external endpoints.
+
+**Why Ansible for node configuration:** Ansible playbooks are idempotent. Combined with SSM, this eliminates SSH keys entirely. Node configuration is version-controlled and auditable.
+
+**Why IAM roles instead of access keys:** Every AWS service interaction uses IAM roles with least-privilege policies. No static credentials exist in the codebase or environment variables.
+
+**Why CloudTrail alongside CloudWatch:** CloudWatch monitors operational metrics. CloudTrail records every AWS API call — who did what, when, from where. Together they provide operational visibility and security audit capability.
+
+---
+
+## Results
+
+- Full infrastructure provisioned in under 15 minutes with `terraform apply`
+- Zero SSH keys — all node access via SSM Session Manager
+- Complete audit trail from every commit to every Kubernetes pod
+- Pipeline runs in under 8 minutes from push to production deployment
