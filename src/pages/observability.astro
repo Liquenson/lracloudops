@@ -148,4 +148,39 @@ const schema = {
   ]}
   ctaH2="Start with an observability review."
   ctaSubtitle="Bring your current monitoring setup. We identify what is missing, what is generating noise and what would actually detect your next outage before your users do."
-/>
+>
+  <!-- Real Implementation -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="section-label">Real Implementation</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">Observability across cloud and bare metal</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">CloudWatch + CloudTrail in production. Prometheus + Grafana in the k8s roadmap.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">gitops-stack — Cloud observability</h3>
+          <ul class="space-y-2 text-sm" style="color: #64748B;">
+            <li>• CloudWatch Logs + Metrics — application and infrastructure</li>
+            <li>• CloudTrail — every AWS API call logged and queryable</li>
+            <li>• Full audit trail: commit → pipeline → pod → API call</li>
+            <li>• Zero static credentials — IAM roles throughout</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">k8s-on-premise — Kubernetes observability</h3>
+          <ul class="space-y-2 text-sm" style="color: #64748B;">
+            <li>• Phase 6: Prometheus — metrics collection and alerting</li>
+            <li>• Phase 7: Grafana — dashboards and visualization</li>
+            <li>• Metrics Server (v0.8.0) — kubectl top nodes/pods from Phase 1</li>
+            <li>• Planned: distributed tracing with Jaeger (Phase 15)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mt-8">
+        <a href="/projects/gitops-stack" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl" style="background: #EEF4FF; color: #1E6FFF;">gitops-stack case study →</a>
+        <a href="/projects/k8s-on-premise" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl" style="background: #EEF4FF; color: #1E6FFF;">k8s-on-premise roadmap →</a>
+      </div>
+    </div>
+  </section>
+</SolutionLayout>

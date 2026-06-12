@@ -75,6 +75,14 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
               in Terraform with autoscaling enabled. ArgoCD handles all
               deployments — no kubectl apply in CI/CD.
             </p>
+            <p class="text-base leading-relaxed mb-4" style="color: #64748b;">
+              <strong style="color: #0A2540;">Live implementations:</strong>{' '}
+              <a href="/projects/aws-terraform-devops" style="color: #1E6FFF;">aws-terraform-devops</a> deploys
+              Flask on EKS with RDS PostgreSQL 15 Multi-AZ, dual GitHub Actions and Jenkins pipelines, and
+              S3+DynamoDB remote state. <a href="/projects/gitops-stack" style="color: #1E6FFF;">gitops-stack</a>{' '}
+              runs a full Build→Test→Deploy pipeline with Jenkins CI, Ansible node configuration and
+              CloudWatch + CloudTrail observability — zero SSH keys, zero static credentials.
+            </p>
             <p class="text-base leading-relaxed" style="color: #64748b;">
               External Secrets Operator synchronizes secrets from AWS Secrets
               Manager into Kubernetes Secrets. IRSA (IAM Roles for Service
@@ -667,18 +675,20 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
               <div class="flex flex-wrap gap-1.5">
                 {
                   [
-                    'EKS 1.35',
+                    'EKS (aws-terraform-devops)',
                     'Terraform',
+                    'Jenkins',
+                    'Ansible',
                     'ArgoCD',
                     'Helm',
-                    'Prometheus',
-                    'Grafana',
                     'CloudWatch',
+                    'CloudTrail',
                     'IRSA',
-                    'ESO',
-                    'Cluster Autoscaler',
-                    'HPA',
-                    'ALB Controller',
+                    'RDS Multi-AZ',
+                    'GitHub Actions',
+                    'SonarCloud',
+                    'Flask',
+                    'Docker',
                   ].map((tag) => (
                     <span
                       class="text-xs px-2.5 py-1 rounded-full"
@@ -719,14 +729,19 @@ import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro'
               </h3>
               <div class="space-y-2">
                 <a
+                  href="/projects/aws-terraform-devops"
+                  class="block text-sm font-medium hover:opacity-70 transition-opacity"
+                  style="color: #1E6FFF;">aws-terraform-devops case study →</a
+                >
+                <a
+                  href="/projects/gitops-stack"
+                  class="block text-sm font-medium hover:opacity-70 transition-opacity"
+                  style="color: #1E6FFF;">gitops-stack case study →</a
+                >
+                <a
                   href="/architectures/gitops-platform"
                   class="block text-sm font-medium hover:opacity-70 transition-opacity"
                   style="color: #1E6FFF;">GitOps Platform →</a
-                >
-                <a
-                  href="/docs/kubernetes-production"
-                  class="block text-sm font-medium hover:opacity-70 transition-opacity"
-                  style="color: #1E6FFF;">Kubernetes Production Guide →</a
                 >
                 <a
                   href="/kubernetes-readiness"
