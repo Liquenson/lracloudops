@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro'
 
 <Layout
   titulo="Kubernetes Platforms · EKS & GitOps Engineering"
-  descripcion="Production-grade EKS and GKE clusters with Terraform, GitOps delivery via ArgoCD, and full observability. Kubernetes that engineers trust and operators can maintain."
+  descripcion="Production-grade EKS clusters and bare-metal Kubernetes with Terraform, GitOps delivery via ArgoCD, and full observability. Kubernetes that engineers trust and operators can maintain."
 >
   <!-- Hero -->
   <section
@@ -24,7 +24,7 @@ import Layout from '../layouts/Layout.astro'
         class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
         style="color: rgba(148,163,184,0.9);"
       >
-        Production-grade EKS and GKE clusters with Terraform, GitOps delivery
+        Production-grade EKS on AWS and bare-metal Kubernetes with Terraform, GitOps delivery
         via ArgoCD, full observability stack, and multi-tenant platform
         capabilities — from provisioning to Day 2 operations.
       </p>
@@ -74,8 +74,8 @@ import Layout from '../layouts/Layout.astro'
         {
           [
             {
-              title: 'Terraform-provisioned EKS & GKE',
-              desc: 'Managed node groups with Karpenter autoscaling, IRSA/Workload Identity for pod-level AWS access, private API endpoints, and cluster add-ons (CoreDNS, VPC CNI, EBS CSI) all managed as code.',
+              title: 'Terraform-provisioned EKS + bare-metal kubeadm',
+              desc: 'Managed node groups with IRSA for pod-level AWS access, private API endpoints, and cluster add-ons (CoreDNS, VPC CNI, EBS CSI) all managed as code. Bare-metal clusters via kubeadm with Vagrant/VirtualBox for reproducible environments.',
               icon: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
             },
             {
