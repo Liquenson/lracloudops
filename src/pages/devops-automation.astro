@@ -153,4 +153,43 @@ const schema = {
   ]}
   ctaH2="Start with a pipeline review."
   ctaSubtitle="Bring your current release process. We identify manual steps, missing quality gates and credential exposure — and outline a path to automated delivery."
-/>
+>
+  <!-- Real Implementation -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="section-label">Real Implementations</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">Dual CI/CD in production</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">GitHub Actions for cloud. Jenkins for on-premise. Both pipelines, same quality gates.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">aws-terraform-devops — Dual pipeline</h3>
+          <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
+            <li>• GitHub Actions — OIDC auth, SonarCloud gate, Docker build, ECR push</li>
+            <li>• Jenkins — on-premise builds, same quality gates</li>
+            <li>• SonarCloud: 80% coverage threshold blocks every merge</li>
+            <li>• Flask on EKS via Helm — deployed by both pipelines</li>
+          </ul>
+          <div class="flex gap-2">
+            <a href="/projects/aws-terraform-devops" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">gitops-stack — Full DevOps lifecycle</h3>
+          <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
+            <li>• Jenkins CI: Build → Test → Deploy to EKS</li>
+            <li>• Ansible for node configuration — idempotent, version-controlled</li>
+            <li>• AWS SSM for access — zero SSH keys in the entire stack</li>
+            <li>• git push to production in under 8 minutes</li>
+          </ul>
+          <div class="flex gap-2">
+            <a href="/projects/gitops-stack" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/gitops-stack" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</SolutionLayout>

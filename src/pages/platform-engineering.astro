@@ -150,4 +150,33 @@ const schema = {
   ]}
   ctaH2="Start with a platform review."
   ctaSubtitle="Bring your current Kubernetes setup or deployment workflow. We identify where friction is costing you velocity and outline what a self-service platform would look like for your team."
-/>
+>
+  <!-- Real Implementation -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="section-label">Real Implementation</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">aws-devops-agent — AI-powered platform tooling</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">Manage 25+ AWS services in natural language. Claude Sonnet as reasoning layer, boto3 as execution layer.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-white rounded-2xl p-6" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-sm font-bold mb-3" style="color: #0A2540;">Natural Language → AWS API</h3>
+          <p class="text-xs leading-relaxed" style="color: #64748B;">Describe what you need in plain English. The agent determines the right boto3 calls, executes them, and returns a human-readable response.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-sm font-bold mb-3" style="color: #0A2540;">25+ AWS Services</h3>
+          <p class="text-xs leading-relaxed" style="color: #64748B;">EC2, S3, EKS, ECS, RDS, Lambda, IAM, CloudWatch, CloudTrail, VPC, Route53, CloudFront, SQS, SNS, DynamoDB, Secrets Manager, SSM, Cost Explorer and more.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-sm font-bold mb-3" style="color: #0A2540;">Tool-use Architecture</h3>
+          <p class="text-xs leading-relaxed" style="color: #64748B;">Claude's tool-use API routes requests to the right boto3 tool. Adding a new AWS service means adding one tool definition — no routing logic to update.</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mt-8">
+        <a href="/projects/aws-devops-agent" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl" style="background: #EEF4FF; color: #1E6FFF;">Read case study →</a>
+        <a href="https://github.com/lra-cloud-ops/aws-devops-agent" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl" style="background: #F1F5F9; color: #0A2540;">View on GitHub →</a>
+      </div>
+    </div>
+  </section>
+</SolutionLayout>
