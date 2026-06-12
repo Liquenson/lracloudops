@@ -121,9 +121,9 @@ const displayProjects = allProjects
           {
             [
               { value: '4+', label: 'Proyectos open source' },
-              { value: '4', label: 'Ingenieros certificados' },
+              { value: '73+', label: 'Commits en producción' },
               { value: '100%', label: 'Infraestructura como código' },
-              { value: '4+', label: 'Años en producción' },
+              { value: '25+', label: 'Servicios AWS' },
             ].map(({ value, label }) => (
               <div
                 class="text-center px-3 py-4 rounded-xl"
@@ -1269,28 +1269,28 @@ const displayProjects = allProjects
         {
           [
             {
-              count: 11,
-              suffix: '+',
-              label: 'Despliegues en producción',
-              sub: 'Workloads reales. Sin demos.',
-            },
-            {
-              count: 20,
-              suffix: '+',
-              label: 'Herramientas gestionadas como código',
-              sub: 'Sin configuración manual.',
-            },
-            {
               count: 4,
               suffix: '+',
-              label: 'Años operando en producción',
-              sub: 'No solo construyendo pipelines.',
+              label: 'Proyectos Open Source',
+              sub: 'github.com/lra-cloud-ops',
+            },
+            {
+              count: 73,
+              suffix: '+',
+              label: 'Commits',
+              sub: 'Solo en aws-terraform-devops',
             },
             {
               count: 100,
               suffix: '%',
-              label: 'Infrastructure as Code',
-              sub: 'Cero aprovisionamiento manual.',
+              label: 'Infraestructura como código',
+              sub: 'Cero cambios manuales',
+            },
+            {
+              count: 25,
+              suffix: '+',
+              label: 'Servicios AWS',
+              sub: 'Vía aws-devops-agent',
             },
           ].map(({ count, suffix, label, sub }, i) => (
             <div

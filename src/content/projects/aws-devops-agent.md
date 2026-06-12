@@ -4,7 +4,7 @@ descripcion: "AI-powered CLI agent for managing 25+ AWS services in natural lang
 fecha: 2026-06-11
 categoria: "AI & Cloud Automation"
 madurez: "In Development"
-featured: false
+featured: true
 github: "https://github.com/lra-cloud-ops/aws-devops-agent"
 cicd: false
 draft: false

@@ -156,4 +156,45 @@ const schema = {
   ]}
   ctaH2="Start with an infrastructure review."
   ctaSubtitle="Bring your current AWS environment. We assess reproducibility, security posture and state management — and outline a concrete path to codified infrastructure."
-/>
+>
+  <!-- Real Implementation -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="section-label">Real Implementation</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">aws-terraform-devops</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">Production AWS infrastructure with modular Terraform — deployed and running.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">Infrastructure Stack</h3>
+          <ul class="space-y-2 text-sm" style="color: #64748B;">
+            <li>• VPC with public + private subnets, IGW, NAT Gateway</li>
+            <li>• EKS cluster — managed node groups, IRSA</li>
+            <li>• RDS PostgreSQL 15 Multi-AZ — automated failover &lt;60s</li>
+            <li>• S3 remote state + DynamoDB locking — no state conflicts</li>
+            <li>• IAM OIDC — zero static credentials</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">Terraform Modules</h3>
+          <ul class="space-y-2 text-sm" style="color: #64748B;">
+            <li>• <code>modules/vpc</code> — networking layer</li>
+            <li>• <code>modules/eks</code> — cluster + node groups</li>
+            <li>• <code>modules/rds</code> — PostgreSQL 15 Multi-AZ</li>
+            <li>• <code>modules/iam</code> — roles, policies, OIDC</li>
+            <li>• <code>modules/ecr</code> — container registry</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mt-8">
+        <a href="/projects/aws-terraform-devops" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all" style="background: #EEF4FF; color: #1E6FFF;">
+          Read case study →
+        </a>
+        <a href="https://github.com/lra-cloud-ops/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all" style="background: #F1F5F9; color: #0A2540;">
+          View on GitHub →
+        </a>
+      </div>
+    </div>
+  </section>
+</SolutionLayout>
