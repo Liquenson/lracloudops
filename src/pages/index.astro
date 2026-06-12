@@ -73,8 +73,8 @@ const displayProjects = allProjects
           class="text-lg sm:text-xl leading-relaxed mb-8 max-w-[520px]"
           style="color: rgba(148,163,184,0.85);"
         >
-          We design, automate and operate cloud-native platforms on AWS.
-          Kubernetes, GitOps, Terraform — production-grade from day one.
+          We design, automate and operate cloud-native platforms.
+          AWS EKS · Kubernetes bare metal · GitOps with ArgoCD · Terraform IaC — production-grade from day one.
         </p>
 
         <div class="flex flex-wrap gap-4 mb-6">
@@ -509,7 +509,7 @@ const displayProjects = allProjects
       >
         Trusted technologies we operate in production
       </p>
-      <div class="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 gap-5">
+      <div class="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-10 gap-5">
         {
           [
             {
@@ -577,12 +577,20 @@ const displayProjects = allProjects
               svgPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z',
             },
             {
-              name: 'boto3',
-              svgPath: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+              name: 'CloudTrail',
+              svgPath: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
             },
             {
-              name: 'Flask',
-              svgPath: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+              name: 'containerd',
+              svgPath: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10',
+            },
+            {
+              name: 'Vagrant',
+              svgPath: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
+            },
+            {
+              name: 'VirtualBox',
+              svgPath: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
             },
           ].map(({ name, svgPath }) => (
             <div
@@ -652,9 +660,9 @@ const displayProjects = allProjects
               sub: 'github.com/lra-cloud-ops',
             },
             {
-              value: '73+',
-              label: 'Commits',
-              sub: 'aws-terraform-devops alone',
+              value: '18',
+              label: 'K8s Roadmap Phases',
+              sub: 'k8s-on-premise platform',
             },
             {
               value: '100%',
@@ -667,9 +675,9 @@ const displayProjects = allProjects
               sub: 'Via aws-devops-agent',
             },
             {
-              value: '18',
-              label: 'K8s Phases Roadmap',
-              sub: 'k8s-on-premise',
+              value: '4+',
+              label: 'Years in Production',
+              sub: 'Real environments',
             },
             { value: '24h', label: 'Response Time', sub: 'Support SLA' },
           ].map(({ value, label, sub }) => (
@@ -890,44 +898,44 @@ const displayProjects = allProjects
         <div
           class="animate-fade-left"
           role="img"
-          aria-label="Architecture layers: AWS, Terraform, Kubernetes EKS, ArgoCD, Applications, Prometheus and Grafana"
+          aria-label="Architecture layers: AWS, Terraform, Kubernetes v1.31, ArgoCD + Jenkins, Flask Python Claude AI, CloudWatch + Prometheus"
         >
           <div class="space-y-0">
             {
               [
                 {
                   label: 'AWS',
-                  sub: 'Cloud Provider · EKS · RDS Multi-AZ · CloudTrail · IAM OIDC',
+                  sub: 'EKS · RDS Multi-AZ · ECR · CloudTrail · IAM OIDC',
                   color: '#FF9900',
                   icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
                 },
                 {
                   label: 'Terraform',
-                  sub: 'IaC · Modular Modules · Remote State S3 · DynamoDB Lock',
+                  sub: 'Modular IaC · S3 Remote State · DynamoDB Lock · Multi-env',
                   color: '#7B42BC',
                   icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
                 },
                 {
-                  label: 'Kubernetes (EKS)',
-                  sub: 'EKS Production · Bare Metal (k8s-on-premise) · Calico CNI · NGINX Ingress',
+                  label: 'Kubernetes v1.31',
+                  sub: 'EKS Production · Bare Metal (kubeadm) · Calico v3.27 · NGINX Ingress',
                   color: '#326CE5',
                   icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
                 },
                 {
-                  label: 'ArgoCD',
-                  sub: 'GitOps Auto-sync · Jenkins CI · GitHub Actions · SonarCloud Gates',
+                  label: 'ArgoCD + Jenkins',
+                  sub: 'GitOps Auto-sync · Dual CI/CD · SonarCloud Gate · Ansible Config',
                   color: '#EF7B4D',
                   icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
                 },
                 {
-                  label: 'Applications',
-                  sub: 'Flask · Python · Docker · Ansible Config · AI Agents (boto3)',
+                  label: 'Flask · Python · Claude AI',
+                  sub: 'Docker · boto3 · Anthropic API · 25+ AWS Services',
                   color: '#2563EB',
                   icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
                 },
                 {
-                  label: 'Prometheus + Grafana',
-                  sub: 'Prometheus · Grafana · CloudWatch · Alertmanager · CloudTrail Audit',
+                  label: 'CloudWatch + Prometheus',
+                  sub: 'CloudTrail Audit · Grafana · Alertmanager · SSM Session Manager',
                   color: '#E5421E',
                   icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
                 },
