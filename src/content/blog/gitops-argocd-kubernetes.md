@@ -61,7 +61,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Liquenson/k8s-devops-platform
+    repoURL: https://github.com/lra-cloud-ops/k8s-devops-platform
     targetRevision: HEAD
     path: apps/nginx
   destination:
