@@ -549,8 +549,12 @@ const displayProjects = allProjects
               svgPath: 'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
             },
             {
-              name: 'Calico',
-              svgPath: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+              name: 'KinD',
+              svgPath: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10',
+            },
+            {
+              name: 'CloudWatch',
+              svgPath: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
             },
             {
               name: 'Prometheus',
@@ -561,24 +565,20 @@ const displayProjects = allProjects
               svgPath: 'M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z',
             },
             {
-              name: 'CloudWatch',
-              svgPath: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
-            },
-            {
-              name: 'SonarQube',
-              svgPath: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
-            },
-            {
-              name: 'Linux',
-              svgPath: 'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
-            },
-            {
-              name: 'Python',
-              svgPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z',
+              name: 'Alertmanager',
+              svgPath: 'M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9',
             },
             {
               name: 'CloudTrail',
               svgPath: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
+            },
+            {
+              name: 'SonarCloud',
+              svgPath: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
+            },
+            {
+              name: 'ShellCheck',
+              svgPath: 'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
             },
             {
               name: 'containerd',
@@ -589,8 +589,8 @@ const displayProjects = allProjects
               svgPath: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
             },
             {
-              name: 'VirtualBox',
-              svgPath: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
+              name: 'Linux',
+              svgPath: 'M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18',
             },
           ].map(({ name, svgPath }) => (
             <div

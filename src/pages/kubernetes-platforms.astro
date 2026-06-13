@@ -194,21 +194,21 @@ import Layout from '../layouts/Layout.astro'
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-12">
         <span class="section-label">Real Implementations</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">Two Kubernetes environments. One methodology.</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">EKS in production. Bare metal in the lab. Both with ArgoCD GitOps.</p>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">Three Kubernetes implementations. One methodology.</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">Bare metal. AWS EKS. KinD reference platform. All with ArgoCD GitOps.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-base font-bold" style="color: #0A2540;">k8s-on-premise</h3>
             <span class="text-xs px-2 py-1 rounded-full font-semibold" style="background: #FEF9C3; color: #854D0E;">In Development</span>
           </div>
           <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
-            <li>• Kubernetes v1.31.14 on bare metal via Vagrant + VirtualBox</li>
-            <li>• 1 master + 2 workers — ~20 min automated provisioning</li>
-            <li>• Calico v3.27.0 CNI · NGINX Ingress · containerd v2.2.1</li>
+            <li>• Kubernetes v1.31.14 on bare metal via kubeadm</li>
+            <li>• 1 master + 2 workers — ~20 min from vagrant up</li>
+            <li>• Calico v3.27 CNI · NGINX Ingress · containerd v2.2.1</li>
             <li>• ArgoCD GitOps — auto-sync + prune + selfHeal</li>
-            <li>• 18-phase roadmap: storage → observability → security → CI/CD</li>
+            <li>• 18-phase roadmap — Phase 3 complete</li>
           </ul>
           <div class="flex gap-2">
             <a href="/projects/k8s-on-premise" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
@@ -225,11 +225,28 @@ import Layout from '../layouts/Layout.astro'
             <li>• Jenkins CI → Docker build → ECR push → kubectl deploy</li>
             <li>• Ansible playbooks for node configuration — no SSH keys</li>
             <li>• CloudWatch + CloudTrail for full audit trail</li>
-            <li>• Pipeline: git push to production in under 8 minutes</li>
+            <li>• git push to production in under 8 minutes</li>
           </ul>
           <div class="flex gap-2">
             <a href="/projects/gitops-stack" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
             <a href="https://github.com/lra-cloud-ops/gitops-stack" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-bold" style="color: #0A2540;">k8s-devops-platform</h3>
+            <span class="text-xs px-2 py-1 rounded-full font-semibold" style="background: #F3F4F6; color: #4B5563;">Reference</span>
+          </div>
+          <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
+            <li>• KinD (Kubernetes in Docker) — local dev mirrors production</li>
+            <li>• ArgoCD GitOps auto-sync + prune + selfHeal</li>
+            <li>• Helm Charts with per-environment values</li>
+            <li>• Prometheus + Grafana + Alertmanager from day one</li>
+            <li>• Zero manual kubectl apply in production</li>
+          </ul>
+          <div class="flex gap-2">
+            <a href="/projects/k8s-devops-platform" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/k8s-devops-platform" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
           </div>
         </div>
       </div>

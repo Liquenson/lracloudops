@@ -80,12 +80,12 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <p class="text-base leading-relaxed mb-5" style="color: #334155;">
-          Production-grade Kubernetes cluster on bare metal. Automated with Vagrant + VirtualBox + kubeadm.
-          ArgoCD GitOps, NGINX Ingress, Calico CNI. Phase 3/18 — full cluster from scratch with a single command: <code class="font-mono text-sm px-1.5 py-0.5 rounded" style="background: #EEF4FF; color: #1E6FFF;">vagrant up</code>.
+          Production-grade Kubernetes on bare metal. kubeadm + Vagrant + VirtualBox.
+          ArgoCD GitOps, NGINX Ingress, Calico CNI. 18-phase roadmap — Phase 3 complete.
         </p>
 
         <div class="flex flex-wrap gap-2 mb-6">
-          {['Kubernetes v1.31.14', 'ArgoCD', 'Helm v3.21.0', 'Calico v3.27.0', 'NGINX Ingress', 'Vagrant', 'VirtualBox'].map(tag => (
+          {['Kubernetes v1.31', 'ArgoCD', 'Helm v3.21', 'Calico v3.27', 'NGINX Ingress', 'Vagrant'].map(tag => (
             <span
               class="text-xs px-2.5 py-1 rounded-full font-medium"
               style="background: #f8fafc; color: #475569; border: 1px solid #e2e8f0;"
@@ -140,12 +140,12 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <p class="text-base leading-relaxed mb-5" style="color: #334155;">
-          Production-grade GitOps pipeline on AWS EKS. Terraform infrastructure, Jenkins CI, Ansible configuration,
-          CloudWatch observability — full DevOps lifecycle from commit to production. Zero static credentials via IAM roles.
+          Full GitOps pipeline on AWS EKS. Jenkins CI + Ansible + Terraform IaC.
+          CloudWatch + CloudTrail observability. Zero static credentials — IAM throughout.
         </p>
 
         <div class="flex flex-wrap gap-2 mb-6">
-          {['AWS EKS', 'Terraform', 'Jenkins', 'Ansible', 'Docker', 'Kubernetes', 'CloudWatch', 'AWS IAM'].map(tag => (
+          {['AWS EKS', 'Jenkins', 'Ansible', 'Terraform', 'CloudWatch', 'CloudTrail'].map(tag => (
             <span
               class="text-xs px-2.5 py-1 rounded-full font-medium"
               style="background: #f8fafc; color: #475569; border: 1px solid #e2e8f0;"
@@ -261,12 +261,12 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <p class="text-base leading-relaxed mb-5" style="color: #334155;">
-          Production-ready AWS infrastructure with modular Terraform. EKS + RDS Multi-AZ + dual CI/CD (GitHub Actions + Jenkins).
-          SonarCloud quality gates, remote state in S3 with DynamoDB locking — zero static credentials via IAM OIDC.
+          AWS infrastructure with modular Terraform. EKS + RDS Multi-AZ + dual CI/CD.
+          SonarCloud coverage gate. Remote state in S3 + DynamoDB. Zero static credentials.
         </p>
 
         <div class="flex flex-wrap gap-2 mb-6">
-          {['Terraform', 'AWS EKS', 'RDS PostgreSQL 15', 'GitHub Actions', 'Jenkins', 'SonarCloud', 'Flask', 'Docker'].map(tag => (
+          {['Terraform', 'AWS EKS', 'RDS Multi-AZ', 'GitHub Actions', 'Jenkins', 'SonarCloud'].map(tag => (
             <span
               class="text-xs px-2.5 py-1 rounded-full font-medium"
               style="background: #f8fafc; color: #475569; border: 1px solid #e2e8f0;"

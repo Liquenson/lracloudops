@@ -25,9 +25,8 @@ import Layout from '../../layouts/Layout.astro'
         class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
         style="color: rgba(148,163,184,0.9);"
       >
-        Structured Kubernetes adoption — EKS or GKE clusters provisioned with
-        Terraform, GitOps delivery via ArgoCD, and observability from the first
-        deployment.
+        Structured Kubernetes adoption — EKS on AWS or bare metal with kubeadm,
+        GitOps delivery via ArgoCD, and observability from the first deployment.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
@@ -76,7 +75,7 @@ import Layout from '../../layouts/Layout.astro'
           [
             {
               title: 'Production-grade cluster provisioning',
-              desc: 'EKS or GKE clusters with Terraform — managed node groups, IRSA/Workload Identity, private networking, and cluster autoscaler. No ClickOps, no undocumented state.',
+              desc: 'EKS on AWS and bare-metal clusters with Terraform and kubeadm — managed node groups, IRSA, private networking, and cluster autoscaler. No ClickOps, no undocumented state.',
               icon: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
             },
             {
@@ -165,24 +164,35 @@ import Layout from '../../layouts/Layout.astro'
 
   <!-- See it in practice -->
   <section class="py-20 bg-white border-t border-gray-100">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="max-w-5xl mx-auto px-6">
       <div class="bg-white rounded-2xl p-8" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <span class="section-label">See it in practice</span>
-            <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">k8s-on-premise — Kubernetes on bare metal</h2>
+        <div class="mb-6">
+          <span class="section-label">See it in practice</span>
+          <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">Two Kubernetes implementations</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          <div class="rounded-xl p-5" style="background: #F8FAFC; border: 1px solid #E5E7EB;">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-sm font-bold" style="color: #0A2540;">k8s-on-premise</span>
+              <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: #FEF9C3; color: #854D0E; border: 1px solid #FDE047;">In Development</span>
+            </div>
+            <p class="text-xs leading-relaxed mb-3" style="color: #64748B;">Bare-metal Kubernetes with kubeadm + Vagrant. ArgoCD GitOps, Calico CNI, NGINX Ingress. vagrant up → cluster in ~20 min. Phase 3/18 roadmap.</p>
+            <div class="flex gap-2">
+              <a href="/projects/k8s-on-premise" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+              <a href="https://github.com/lra-cloud-ops/k8s-on-premise" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+            </div>
           </div>
-          <span class="text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-4" style="background: #FEF9C3; color: #854D0E; border: 1px solid #FDE047;">In Development</span>
-        </div>
-        <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">Production-grade Kubernetes cluster with kubeadm, Vagrant and VirtualBox. ArgoCD GitOps with auto-sync, NGINX Ingress, Calico CNI. Fully reproducible from a single command — 18-phase roadmap from base provisioning to full GitOps pipeline.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          {['Kubernetes v1.31','ArgoCD','Helm v3.21.0','Calico v3.27.0','NGINX Ingress','containerd v2.2.1','Vagrant','VirtualBox'].map(t => (
-            <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #F1F5F9; color: #475569;">{t}</span>
-          ))}
-        </div>
-        <div class="flex gap-3">
-          <a href="/projects/k8s-on-premise" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Read case study →</a>
-          <a href="https://github.com/lra-cloud-ops/k8s-on-premise" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          <div class="rounded-xl p-5" style="background: #F8FAFC; border: 1px solid #E5E7EB;">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-sm font-bold" style="color: #0A2540;">k8s-devops-platform</span>
+              <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: #F3F4F6; color: #4B5563; border: 1px solid #E5E7EB;">Reference</span>
+            </div>
+            <p class="text-xs leading-relaxed mb-3" style="color: #64748B;">GitOps reference platform — KinD local dev mirrors production. ArgoCD auto-sync + prune + selfHeal. Helm Charts with per-environment values.</p>
+            <div class="flex gap-2">
+              <a href="/projects/k8s-devops-platform" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+              <a href="https://github.com/lra-cloud-ops/k8s-devops-platform" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
