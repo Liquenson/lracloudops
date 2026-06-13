@@ -1,7 +1,38 @@
-# Spanish URL → English URL redirects (301 permanent)
-/servicios          /services           301
-/proyectos          /projects           301
-/sobre-nosotros     /about              301
-/contacto           /contact            301
-/case-studies       /projects           301
+# ── Redirects /es/* → raíz (URLs antiguas con /es/ prefix) ──────────────
+/es/nosotros                    /nosotros                   301
+/es/contacto                    /contacto                   301
+/es/proyectos                   /proyectos                  301
+/es/servicios                   /servicios                  301
+/es/blog/:slug                  /blog/:slug                 301
+/es/projects/:slug              /projects/:slug             301
+/es/cloud-infrastructure        /cloud-infrastructure       301
+/es/kubernetes-platforms        /kubernetes-platforms       301
+/es/devops-automation           /devops-automation          301
+/es/platform-engineering        /platform-engineering       301
+/es/observability               /observability              301
+/es/pricing                     /pricing                    301
+/es/open-source                 /open-source                301
+/es/why-lra                     /why-lra                    301
+/es/certifications              /certifications             301
+/es/security                    /security                   301
+/es/privacy                     /privacy                    301
+/es/terms                       /terms                      301
+/es/assessment                  /assessment                 301
+/es/cloud-readiness             /cloud-readiness            301
+/es/kubernetes-readiness        /kubernetes-readiness       301
+/es/resources                   /resources                  301
+/es/blog                        /blog                       301
+/es                             /                           301
+/es/                            /                           301
+/es/*                           /:splat                     301
 
+# ── Old EN root URLs → /en/ (pages moved from root to /en/) ──────────────
+/services                       /en/services                301
+/about                          /en/about                   301
+/contact                        /en/contact                 301
+/projects                       /en/projects                301
+/blog/en/:slug                  /en/blog/:slug              301
+
+# ── Legacy Spanish vanity slugs ──────────────────────────────────────────
+/sobre-nosotros                 /nosotros                   301
+/case-studies                   /proyectos                  301

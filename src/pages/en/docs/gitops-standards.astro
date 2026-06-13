@@ -1,0 +1,413 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="GitOps Standards | LRA Cloud Operations Docs"
+  descripcion="GitOps engineering standards applied on every LRA engagement. Repository structure, ArgoCD setup, Helm per environment, sync policies and OIDC secret management."
+  keywords="GitOps standards ArgoCD, Helm values per environment, ArgoCD sync policy, GitOps repository structure, OIDC Kubernetes secrets"
+>
+  <div class="min-h-screen" style="background: #F8FAFC;">
+    <!-- HEADER -->
+    <div
+      style="background: #0A2540; border-bottom: 1px solid rgba(255,255,255,0.08);"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-5">
+        <div
+          class="flex items-center gap-2 text-xs mb-1"
+          style="color: rgba(147,184,255,0.5);"
+        >
+          <a
+            href="/"
+            style="color: rgba(147,184,255,0.5);"
+            class="hover:text-white transition-colors">Home</a
+          >
+          <span>/</span>
+          <a
+            href="/docs"
+            style="color: rgba(147,184,255,0.5);"
+            class="hover:text-white transition-colors">Docs</a
+          >
+          <span>/</span>
+          <span style="color: rgba(147,184,255,0.9);">GitOps Standards</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 rounded-lg flex items-center justify-center"
+              style="background: #FF6C37;"
+            >
+              <svg
+                class="w-4 h-4 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                ></path></svg
+              >
+            </div>
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-wider"
+                style="color: #FCA06A;"
+              >
+                GitOps
+              </p>
+              <h1 class="text-lg font-bold text-white">GitOps Standards</h1>
+            </div>
+          </div>
+          <a
+            href="https://github.com/lra-cloud-ops"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors hover:bg-white/10"
+            style="color: rgba(147,184,255,0.6); border: 1px solid rgba(255,255,255,0.1);"
+          >
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"
+              ><path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              ></path></svg
+            >
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="flex gap-10">
+        <!-- SIDEBAR -->
+        <aside class="hidden lg:block w-56 flex-shrink-0">
+          <div class="sticky top-24 space-y-1">
+            <p
+              class="text-xs font-bold uppercase tracking-wider mb-3"
+              style="color: #94A3B8;"
+            >
+              On this page
+            </p>
+            {
+              [
+                ['repo-structure', 'Repository Structure'],
+                ['argocd-setup', 'ArgoCD Application Setup'],
+                ['helm-values', 'Helm Values per Environment'],
+                ['sync-policies', 'Sync Policies'],
+                ['secret-management', 'Secret Management'],
+              ].map(([id, label]) => (
+                <a
+                  href={`#${id}`}
+                  class="block text-sm py-1.5 px-3 rounded-lg transition-colors hover:bg-white hover:text-[#FF6C37]"
+                  style="color: #64748b; text-decoration: none;"
+                >
+                  {label}
+                </a>
+              ))
+            }
+            <div class="pt-4 mt-4" style="border-top: 1px solid #e2e8f0;">
+              <a
+                href="/docs"
+                class="text-xs font-medium hover:opacity-80 transition-opacity"
+                style="color: #64748b;">← All docs</a
+              >
+            </div>
+          </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="flex-1 min-w-0">
+          <div class="space-y-10">
+            <!-- Repo Structure -->
+            <section
+              id="repo-structure"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                1. Repository Structure
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                We use a monorepo structure separating application code from
+                infrastructure manifests. The GitOps repository contains only
+                Helm charts and ArgoCD Application manifests — no application
+                source code.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">gitops-repo/
+├── apps/
+│   ├── app-of-apps.yaml      # Root ArgoCD Application
+│   ├── webapp/
+│   │   ├── dev.yaml           # ArgoCD Application for dev
+│   │   └── prod.yaml          # ArgoCD Application for prod
+│   └── monitoring/
+│       └── prod.yaml
+├── charts/
+│   └── webapp/
+│       ├── Chart.yaml
+│       ├── templates/         # K8s manifests
+│       └── values/
+│           ├── dev.yaml       # Dev-specific values
+│           └── prod.yaml      # Prod-specific values
+└── platform/
+    └── argocd/
+        └── argocd-cm.yaml    # ArgoCD configuration</pre>
+            </section>
+
+            <!-- ArgoCD Setup -->
+            <section
+              id="argocd-setup"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                2. ArgoCD Application Setup
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Every service has an ArgoCD Application manifest that points to
+                the Helm chart and the environment-specific values file. The
+                Application definition lives in the GitOps repository, not in
+                the cluster directly.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: webapp-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/org/gitops-repo
+    targetRevision: main
+    path: charts/webapp
+    helm:
+      valueFiles:
+        - values/prod.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: webapp-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        maxDuration: 3m</pre>
+            </section>
+
+            <!-- Helm Values -->
+            <section
+              id="helm-values"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                3. Helm Values per Environment
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Environment differences are explicit in values files. Never use
+                conditionals based on environment name inside templates — the
+                values file should contain all environment-specific
+                configuration.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);"># values/prod.yaml
+replicaCount: 3
+image:
+  tag: "1.4.2"          # pinned in prod
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+
+# values/dev.yaml
+replicaCount: 1
+image:
+  tag: "latest"         # floating tag acceptable in dev
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "100m"
+autoscaling:
+  enabled: false</pre>
+            </section>
+
+            <!-- Sync Policies -->
+            <section
+              id="sync-policies"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                4. Sync Policies
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                We use automated sync with pruning and self-healing enabled on
+                all environments. This eliminates configuration drift — any
+                change not reflected in the repository is automatically
+                reverted.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+                {
+                  [
+                    {
+                      label: 'automated',
+                      desc: 'ArgoCD syncs automatically when the Git repository changes. No manual sync required.',
+                      color: '#059669',
+                      bg: '#F0FDF4',
+                      border: '#BBF7D0',
+                    },
+                    {
+                      label: 'prune: true',
+                      desc: 'Resources removed from Git are deleted from the cluster. No orphaned resources.',
+                      color: '#1E6FFF',
+                      bg: '#EEF4FF',
+                      border: '#C7D7FD',
+                    },
+                    {
+                      label: 'selfHeal: true',
+                      desc: 'Manual changes to the cluster are reverted. Git is the single source of truth.',
+                      color: '#7B42BC',
+                      bg: '#F5F0FF',
+                      border: '#C4B5FD',
+                    },
+                  ].map(({ label, desc, color, bg, border }) => (
+                    <div
+                      class="p-4 rounded-xl"
+                      style={`background: ${bg}; border: 1px solid ${border};`}
+                    >
+                      <code
+                        class="text-xs font-bold block mb-2"
+                        style={`color: ${color};`}
+                      >
+                        {label}
+                      </code>
+                      <p
+                        class="text-xs leading-relaxed"
+                        style="color: #64748b;"
+                      >
+                        {desc}
+                      </p>
+                    </div>
+                  ))
+                }
+              </div>
+              <div
+                class="flex items-start gap-3 p-4 rounded-xl"
+                style="background: #FFFBEB; border: 1px solid #FDE68A;"
+              >
+                <span class="text-base flex-shrink-0">⚠️</span>
+                <p class="text-xs leading-relaxed" style="color: #92400E;">
+                  <strong
+                    >Never use <code
+                      style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;"
+                      >kubectl apply</code
+                    > directly against ArgoCD-managed resources.</strong
+                  > ArgoCD will detect the drift and revert the change. All changes
+                  must go through a pull request to the GitOps repository.
+                </p>
+              </div>
+            </section>
+
+            <!-- Secret Management -->
+            <section
+              id="secret-management"
+              class="bg-white rounded-2xl p-8"
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+            >
+              <h2 class="text-xl font-bold mb-2" style="color: #0A2540;">
+                5. Secret Management with OIDC
+              </h2>
+              <p class="text-sm leading-relaxed mb-5" style="color: #64748b;">
+                Secrets never live in the GitOps repository. We use the External
+                Secrets Operator (ESO) to synchronize secrets from AWS Secrets
+                Manager into Kubernetes Secret objects. The ESO uses OIDC
+                federation — no static credentials.
+              </p>
+              <pre
+                class="rounded-xl p-5 text-sm font-mono overflow-x-auto mb-5"
+                style="background: #0d1117; color: #e6edf3; border: 1px solid rgba(255,255,255,0.08);">apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: webapp-db-credentials
+  namespace: webapp-prod
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: aws-secretsmanager
+    kind: ClusterSecretStore
+  target:
+    name: db-credentials
+    creationPolicy: Owner
+  data:
+    - secretKey: DB_PASSWORD
+      remoteRef:
+        key: prod/webapp/db
+        property: password</pre>
+              <div
+                class="flex items-start gap-3 p-4 rounded-xl"
+                style="background: #F0FDF4; border: 1px solid #BBF7D0;"
+              >
+                <span class="text-base flex-shrink-0">✅</span>
+                <div>
+                  <p class="text-xs font-bold mb-1" style="color: #15803D;">
+                    Correct secret management flow
+                  </p><p
+                    class="text-xs leading-relaxed"
+                    style="color: #166534;"
+                  >
+                    AWS Secrets Manager → External Secrets Operator (OIDC auth)
+                    → Kubernetes Secret → Pod environment variable. No secret
+                    value ever lives in the GitOps repository.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Navigation footer -->
+            <div class="flex items-center justify-between pt-4">
+              <a
+                href="/docs/terraform-standards"
+                class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-70"
+                style="color: #64748b;"
+              >
+                ← Terraform Standards
+              </a>
+              <a
+                href="/docs/kubernetes-production"
+                class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90"
+                style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+              >
+                Kubernetes Production →
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (typeof window !== 'undefined' && (window as any).cf) {
+      ;(window as any).cf.track('docs_viewed', { guide: 'gitops-standards' })
+    }
+  </script>
+</Layout>

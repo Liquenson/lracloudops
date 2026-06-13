@@ -27,6 +27,14 @@ const {
   arquitectura,
 } = project.data
 
+const titulo_es = (project.data as any).titulo_es
+const descripcion_es = (project.data as any).descripcion_es
+const highlights_es = (project.data as any).highlights_es
+
+const displayTitle = titulo_es ?? titulo
+const displayDescription = descripcion_es ?? descripcion
+const displayHighlights = highlights_es ?? highlights
+
 function badgeStyle(m: string) {
   const map: Record<string, string> = {
     Production: 'background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;',
@@ -38,14 +46,14 @@ function badgeStyle(m: string) {
   return map[m] ?? map['Reference']
 }
 
-const projectUrl = `https://lracloudops.com/projects/${project.id}`
+const projectUrl = `https://lracloudops.com/es/projects/${project.id}`
 
 const projectSchema = {
   '@context': 'https://schema.org',
   '@type': github ? 'SoftwareSourceCode' : 'CreativeWork',
   '@id': `${projectUrl}#project`,
-  name: titulo,
-  description: descripcion,
+  name: displayTitle,
+  description: displayDescription,
   url: projectUrl,
   datePublished: fecha.toISOString().split('T')[0],
   author: {
@@ -68,11 +76,15 @@ const projectSchema = {
   ...(github ? { codeRepository: github } : {}),
   ...(github ? { license: 'https://opensource.org/licenses/MIT' } : {}),
   isPartOf: { '@id': 'https://lracloudops.com/#organization' },
-  inLanguage: 'en-US',
+  inLanguage: 'es-ES',
 }
 ---
 
-<Layout titulo={titulo} descripcion={descripcion} schema={projectSchema}>
+<Layout
+  titulo={displayTitle}
+  descripcion={displayDescription}
+  schema={projectSchema}
+>
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
     <div
@@ -93,10 +105,10 @@ const projectSchema = {
         style="color: rgba(147,184,255,0.5);"
       >
         <a
-          href="/"
+          href="/es"
           onmouseover="this.style.color='rgba(147,184,255,0.9)'"
           onmouseout="this.style.color='rgba(147,184,255,0.5)'"
-          class="transition-colors">Home</a
+          class="transition-colors">Inicio</a
         >
         <svg
           class="w-3 h-3"
@@ -110,10 +122,10 @@ const projectSchema = {
             d="M9 5l7 7-7 7"></path></svg
         >
         <a
-          href="/projects"
+          href="/es/proyectos"
           onmouseover="this.style.color='rgba(147,184,255,0.9)'"
           onmouseout="this.style.color='rgba(147,184,255,0.5)'"
-          class="transition-colors">Projects</a
+          class="transition-colors">Proyectos</a
         >
         <svg
           class="w-3 h-3"
@@ -126,7 +138,7 @@ const projectSchema = {
             stroke-width="2"
             d="M9 5l7 7-7 7"></path></svg
         >
-        <span style="color: rgba(147,184,255,0.8);">{titulo}</span>
+        <span style="color: rgba(147,184,255,0.8);">{displayTitle}</span>
       </div>
 
       <div class="max-w-4xl">
@@ -158,14 +170,14 @@ const projectSchema = {
           class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-5"
           style="letter-spacing: -0.02em;"
         >
-          {titulo}
+          {displayTitle}
         </h1>
         <p class="text-lg mb-6 max-w-2xl" style="color: rgba(147,184,255,0.8);">
-          {descripcion}
+          {displayDescription}
         </p>
         <p class="text-xs" style="color: rgba(147,184,255,0.4);">
           {
-            fecha.toLocaleDateString('en-US', {
+            fecha.toLocaleDateString('es-ES', {
               month: 'long',
               year: 'numeric',
             })
@@ -232,7 +244,7 @@ const projectSchema = {
               style="border: 1px solid #e2e8f0; box-shadow: 0 2px 12px rgba(0,0,0,0.05);"
             >
               <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">
-                Technology Stack
+                Stack tecnológico
               </h3>
               <div class="flex flex-wrap gap-1.5">
                 {
@@ -250,16 +262,16 @@ const projectSchema = {
 
             <!-- Key highlights -->
             {
-              highlights && highlights.length > 0 && (
+              displayHighlights && displayHighlights.length > 0 && (
                 <div
                   class="bg-white rounded-2xl p-6"
                   style="border: 1px solid #e2e8f0; box-shadow: 0 2px 12px rgba(0,0,0,0.05);"
                 >
                   <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">
-                    Key Highlights
+                    Puntos clave
                   </h3>
                   <ul class="space-y-3">
-                    {highlights.map((h) => (
+                    {displayHighlights.map((h) => (
                       <li class="flex gap-2.5">
                         <svg
                           class="w-4 h-4 flex-shrink-0 mt-0.5"
@@ -294,7 +306,7 @@ const projectSchema = {
               style="border: 1px solid #e2e8f0; box-shadow: 0 2px 12px rgba(0,0,0,0.05);"
             >
               <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">
-                Repository
+                Repositorio
               </h3>
               {
                 github ? (
@@ -321,10 +333,10 @@ const projectSchema = {
                         class="text-sm font-semibold"
                         style="color: #0A2540;"
                       >
-                        View on GitHub
+                        Ver en GitHub
                       </div>
                       <div class="text-xs" style="color: #64748b;">
-                        Public source code
+                        Código fuente público
                       </div>
                     </div>
                     <svg
@@ -363,10 +375,10 @@ const projectSchema = {
                     </svg>
                     <div>
                       <div class="text-sm font-medium" style="color: #64748b;">
-                        Private repository
+                        Repositorio privado
                       </div>
                       <div class="text-xs" style="color: #94a3b8;">
-                        Contact for access
+                        Contactar para acceso
                       </div>
                     </div>
                   </div>
@@ -380,18 +392,18 @@ const projectSchema = {
               style="background: linear-gradient(135deg, #0A2540, #1a3d6e);"
             >
               <h3 class="text-sm font-bold text-white mb-2">
-                Need something similar?
+                ¿Necesitas algo similar?
               </h3>
               <p class="text-xs mb-4" style="color: rgba(147,184,255,0.8);">
-                We can design and implement an architecture tailored to your
-                requirements.
+                Podemos diseñar e implementar una arquitectura adaptada a tus
+                requisitos.
               </p>
               <a
-                href="/contact"
+                href="/es/contacto"
                 class="flex items-center justify-center gap-2 w-full text-sm font-semibold text-white py-3 rounded-xl transition-all hover:opacity-90"
                 style="background: rgba(30,111,255,0.6); border: 1px solid rgba(30,111,255,0.5);"
               >
-                Get in touch
+                Contáctanos
                 <svg
                   class="w-4 h-4"
                   fill="none"
@@ -425,10 +437,10 @@ const projectSchema = {
               class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-3"
               style="background: white; color: #15803d; border: 1px solid #BBF7D0;"
             >
-              Results
+              Resultados
             </span>
             <h2 class="text-2xl font-bold" style="color: #0A2540;">
-              Measured Outcomes
+              Resultados medidos
             </h2>
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-4xl mx-auto">
@@ -492,10 +504,10 @@ const projectSchema = {
               class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-3"
               style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
             >
-              Architecture
+              Arquitectura
             </span>
             <h2 class="text-2xl font-bold" style="color: #0A2540;">
-              System components
+              Componentes del sistema
             </h2>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -535,7 +547,7 @@ const projectSchema = {
   <section class="bg-white py-12 border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
       <a
-        href="/projects"
+        href="/es/proyectos"
         class="inline-flex items-center gap-2 text-sm font-medium transition-colors"
         style="color: #64748b;"
       >
@@ -551,14 +563,14 @@ const projectSchema = {
             stroke-width="2"
             d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
-        All projects
+        Todos los proyectos
       </a>
       <a
-        href="/contact"
+        href="/es/contacto"
         class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"
         style="background: #0A2540; color: white;"
       >
-        Discuss your project
+        Hablar de tu proyecto
         <svg
           class="w-4 h-4"
           fill="none"

@@ -6,19 +6,20 @@ export default defineConfig({
   site: 'https://lracloudops.com',
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es', 'de', 'fr', 'it', 'pt-br', 'ja', 'ko', 'zh-cn'],
+    defaultLocale: 'es',
+    locales: ['es', 'en', 'de', 'fr', 'it', 'pt-br', 'ja', 'ko', 'zh-cn'],
     routing: {
       prefixDefaultLocale: false,
     },
     fallback: {
-      'de': 'en',
-      'fr': 'en',
-      'it': 'en',
-      'pt-br': 'en',
-      'ja': 'en',
-      'ko': 'en',
-      'zh-cn': 'en',
+      'en': 'es',
+      'de': 'es',
+      'fr': 'es',
+      'it': 'es',
+      'pt-br': 'es',
+      'ja': 'es',
+      'ko': 'es',
+      'zh-cn': 'es',
     },
   },
 
@@ -34,16 +35,16 @@ export default defineConfig({
       serialize(item) {
         const url = item.url
         const path = url.replace('https://lracloudops.com', '')
-        if (path === '/' || path === '/es' || path === '/es/') {
+        if (path === '/') {
           item.priority = 1.0
         } else if (
-          /^\/(services|pricing|assessment)\/?$/.test(path) ||
-          /^\/es\/(servicios|pricing|assessment)\/?$/.test(path)
+          /^\/(servicios|pricing|assessment)\/?$/.test(path) ||
+          /^\/en\/(services|pricing|assessment)\/?$/.test(path)
         ) {
           item.priority = 0.9
         } else if (
-          /^\/(about|contact|certifications|why-lra|projects|blog|resources)\/?$/.test(path) ||
-          /^\/es\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(path)
+          /^\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(path) ||
+          /^\/en\/(about|contact|certifications|projects|blog|resources)\/?$/.test(path)
         ) {
           item.priority = 0.8
         } else if (
@@ -55,17 +56,17 @@ export default defineConfig({
           item.priority = 0.7
         } else if (
           /^\/(security|privacy|terms)\/?$/.test(path) ||
-          /^\/es\/(security|privacy|terms)\/?$/.test(path)
+          /^\/en\/(security|privacy|terms)\/?$/.test(path)
         ) {
           item.priority = 0.5
         }
         return item
       },
       i18n: {
-        defaultLocale: 'en',
+        defaultLocale: 'es',
         locales: {
-          en: 'en-US',
           es: 'es-ES',
+          en: 'en-US',
           de: 'de-DE',
           fr: 'fr-FR',
           it: 'it-IT',

@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="DevOps Maturity Assessment | LRA Cloud Operations"
-  descripcion="10-question assessment to understand your infrastructure maturity level and get personalized recommendations from our platform engineering team."
-  keywords="DevOps maturity assessment free, Kubernetes readiness assessment, AWS infrastructure audit, DevOps maturity model, cloud readiness check"
+  titulo="Evaluación de Madurez DevOps | LRA Cloud Operations"
+  descripcion="10 preguntas para entender el nivel de madurez de tu infraestructura y obtener recomendaciones personalizadas de nuestro equipo."
+  keywords="evaluación madurez DevOps, auditoría infraestructura, Kubernetes, cloud readiness"
 >
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
@@ -26,23 +26,23 @@ import Layout from '../layouts/Layout.astro'
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
       >
-        Free Tool
+        Herramienta Gratuita
       </span>
       <h1
         class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
         style="letter-spacing: -0.02em;"
       >
-        DevOps Maturity Assessment
+        Evaluación de Madurez DevOps
       </h1>
       <p
         class="text-lg leading-relaxed max-w-2xl mx-auto mb-4"
         style="color: rgba(147,184,255,0.8);"
       >
-        10 questions to understand your infrastructure maturity and get
-        personalized recommendations from our team.
+        10 preguntas para entender la madurez de tu infraestructura y obtener
+        recomendaciones personalizadas de nuestro equipo.
       </p>
       <p class="text-sm font-medium" style="color: rgba(147,184,255,0.6);">
-        IaC · CI/CD · Security · Observability · Kubernetes · GitOps
+        IaC · CI/CD · Seguridad · Observabilidad · Kubernetes · GitOps
       </p>
     </div>
   </section>
@@ -56,12 +56,12 @@ import Layout from '../layouts/Layout.astro'
           <span
             class="text-xs font-semibold"
             style="color: #64748b;"
-            id="progress-label">Question 1 of 10</span
+            id="progress-label">Pregunta 1 de 10</span
           >
           <span
             class="text-xs font-semibold"
             style="color: #1E6FFF;"
-            id="score-display">Score: 0 / 30</span
+            id="score-display">Puntuación: 0 / 30</span
           >
         </div>
         <div
@@ -93,96 +93,99 @@ import Layout from '../layouts/Layout.astro'
 <script>
   const questions = [
     {
-      q: 'How do you manage infrastructure?',
+      q: '¿Cómo gestionas la infraestructura?',
       options: [
-        { label: 'Manual CLI / Console', pts: 0 },
-        { label: 'Some scripts / templates', pts: 1 },
-        { label: 'Terraform / CloudFormation', pts: 2 },
-        { label: 'Full IaC with modules and remote state', pts: 3 },
+        { label: 'CLI/Consola manual', pts: 0 },
+        { label: 'Algunos scripts/plantillas', pts: 1 },
+        { label: 'Terraform/CloudFormation', pts: 2 },
+        { label: 'IaC completo con módulos y estado remoto', pts: 3 },
       ],
     },
     {
-      q: 'How often do you deploy to production?',
+      q: '¿Con qué frecuencia despliegas a producción?',
       options: [
-        { label: 'Monthly or less', pts: 0 },
-        { label: 'Weekly', pts: 1 },
-        { label: 'Daily', pts: 2 },
-        { label: 'Multiple times per day with automated rollback', pts: 3 },
+        { label: 'Mensual o menos', pts: 0 },
+        { label: 'Semanal', pts: 1 },
+        { label: 'Diario', pts: 2 },
+        { label: 'Varias veces al día con rollback automático', pts: 3 },
       ],
     },
     {
-      q: 'How do you handle secrets and credentials?',
+      q: '¿Cómo gestionas secretos y credenciales?',
       options: [
-        { label: 'Hardcoded in code', pts: 0 },
-        { label: 'Environment variables', pts: 1 },
+        { label: 'Hardcodeados en el código', pts: 0 },
+        { label: 'Variables de entorno', pts: 1 },
         { label: 'Secrets Manager / Vault', pts: 2 },
-        { label: 'OIDC federation — no static keys ever', pts: 3 },
+        { label: 'Federación OIDC — sin claves estáticas nunca', pts: 3 },
       ],
     },
     {
-      q: 'What is your CI/CD maturity?',
+      q: '¿Cuál es tu madurez en CI/CD?',
       options: [
-        { label: 'Manual deployments', pts: 0 },
-        { label: 'Basic CI with tests', pts: 1 },
-        { label: 'Full CI/CD with quality gates', pts: 2 },
-        { label: 'GitOps with ArgoCD, automated rollback', pts: 3 },
+        { label: 'Despliegues manuales', pts: 0 },
+        { label: 'CI básico con tests', pts: 1 },
+        { label: 'CI/CD completo con quality gates', pts: 2 },
+        { label: 'GitOps con ArgoCD, rollback automático', pts: 3 },
       ],
     },
     {
-      q: 'How do you monitor your infrastructure?',
+      q: '¿Cómo monitorizas tu infraestructura?',
       options: [
-        { label: 'No monitoring', pts: 0 },
-        { label: 'Basic cloud metrics only', pts: 1 },
+        { label: 'Sin monitorización', pts: 0 },
+        { label: 'Métricas básicas de cloud', pts: 1 },
         { label: 'Prometheus + Grafana', pts: 2 },
-        { label: 'Full observability — metrics, logs, traces, alerts', pts: 3 },
-      ],
-    },
-    {
-      q: 'How do you manage Kubernetes?',
-      options: [
-        { label: 'We do not use Kubernetes', pts: 0 },
-        { label: 'Manual kubectl deployments', pts: 1 },
-        { label: 'Helm charts with CI/CD', pts: 2 },
-        { label: 'GitOps with ArgoCD, auto-sync, prune and selfHeal', pts: 3 },
-      ],
-    },
-    {
-      q: 'How do you handle security in your pipeline?',
-      options: [
-        { label: 'No security scanning', pts: 0 },
-        { label: 'Basic dependency scanning', pts: 1 },
-        { label: 'SAST + container scanning', pts: 2 },
-        { label: 'Full DevSecOps with policy gates and SonarQube', pts: 3 },
-      ],
-    },
-    {
-      q: 'What is your disaster recovery strategy?',
-      options: [
-        { label: 'No formal strategy', pts: 0 },
-        { label: 'Manual backups', pts: 1 },
-        { label: 'Automated backups with RTO/RPO defined', pts: 2 },
         {
-          label: 'Multi-AZ with automated failover and tested runbooks',
+          label: 'Observabilidad completa — métricas, logs, trazas, alertas',
           pts: 3,
         },
       ],
     },
     {
-      q: 'How do you manage cloud costs?',
+      q: '¿Cómo gestionas Kubernetes?',
       options: [
-        { label: 'No cost management', pts: 0 },
-        { label: 'Monthly review', pts: 1 },
-        { label: 'Tagging strategy + budget alerts', pts: 2 },
-        { label: 'FinOps practice with optimization automation', pts: 3 },
+        { label: 'No usamos Kubernetes', pts: 0 },
+        { label: 'Despliegues manuales con kubectl', pts: 1 },
+        { label: 'Helm charts con CI/CD', pts: 2 },
+        { label: 'GitOps con ArgoCD, auto-sync, prune y selfHeal', pts: 3 },
       ],
     },
     {
-      q: 'How do you document your infrastructure?',
+      q: '¿Cómo manejas la seguridad en tu pipeline?',
       options: [
-        { label: 'No documentation', pts: 0 },
-        { label: 'Basic README files', pts: 1 },
-        { label: 'Architecture diagrams + runbooks', pts: 2 },
-        { label: 'Living documentation as code, auto-generated', pts: 3 },
+        { label: 'Sin escáner de seguridad', pts: 0 },
+        { label: 'Escaneo básico de dependencias', pts: 1 },
+        { label: 'SAST + escaneo de contenedores', pts: 2 },
+        { label: 'DevSecOps completo con policy gates y SonarQube', pts: 3 },
+      ],
+    },
+    {
+      q: '¿Cuál es tu estrategia de recuperación ante desastres?',
+      options: [
+        { label: 'Sin estrategia formal', pts: 0 },
+        { label: 'Backups manuales', pts: 1 },
+        { label: 'Backups automatizados con RTO/RPO definidos', pts: 2 },
+        {
+          label: 'Multi-AZ con failover automático y runbooks probados',
+          pts: 3,
+        },
+      ],
+    },
+    {
+      q: '¿Cómo gestionas los costes cloud?',
+      options: [
+        { label: 'Sin gestión de costes', pts: 0 },
+        { label: 'Revisión mensual', pts: 1 },
+        { label: 'Estrategia de etiquetas + alertas de presupuesto', pts: 2 },
+        { label: 'Práctica FinOps con automatización de optimización', pts: 3 },
+      ],
+    },
+    {
+      q: '¿Cómo documentas tu infraestructura?',
+      options: [
+        { label: 'Sin documentación', pts: 0 },
+        { label: 'Archivos README básicos', pts: 1 },
+        { label: 'Diagramas de arquitectura + runbooks', pts: 2 },
+        { label: 'Documentación viva como código, autogenerada', pts: 3 },
       ],
     },
   ]
@@ -190,43 +193,43 @@ import Layout from '../layouts/Layout.astro'
   const results = [
     {
       range: [0, 10],
-      level: 'Initial Stage',
-      badge: 'High Risk',
+      level: 'Etapa Inicial',
+      badge: 'Alto Riesgo',
       badgeColor: '#EF4444',
       bg: '#FEF2F2',
       border: '#FECACA',
-      text: 'Your infrastructure relies heavily on manual processes. This creates significant risk, slow delivery and high operational costs. We recommend starting with IaC foundations and basic CI/CD automation.',
-      cta: 'Schedule a free infrastructure assessment →',
+      text: 'Tu infraestructura depende en gran medida de procesos manuales. Esto genera riesgo significativo, entregas lentas y altos costes operativos. Recomendamos empezar con fundamentos IaC y automatización CI/CD básica.',
+      cta: 'Reservar una evaluación gratuita de infraestructura →',
     },
     {
       range: [11, 18],
-      level: 'Developing Stage',
-      badge: 'Growing',
+      level: 'Etapa en Desarrollo',
+      badge: 'En Crecimiento',
       badgeColor: '#D97706',
       bg: '#FFFBEB',
       border: '#FDE68A',
-      text: 'You have automation in place but critical gaps remain in security, observability and deployment reliability. Focus on standardizing your pipeline and implementing proper secret management.',
-      cta: 'Get a personalized improvement roadmap →',
+      text: 'Tienes automatización en marcha pero quedan brechas críticas en seguridad, observabilidad y fiabilidad de despliegues. Enfócate en estandarizar tu pipeline e implementar gestión adecuada de secretos.',
+      cta: 'Obtener una hoja de ruta de mejora personalizada →',
     },
     {
       range: [19, 25],
-      level: 'Defined Stage',
-      badge: 'Strong Foundation',
+      level: 'Etapa Definida',
+      badge: 'Base Sólida',
       badgeColor: '#2563EB',
       bg: '#EEF4FF',
       border: '#c3d9ff',
-      text: 'Good maturity level. You have solid DevOps practices. Now focus on GitOps, advanced observability and security automation to reach full production-grade maturity.',
-      cta: 'See how we can accelerate your journey →',
+      text: 'Buen nivel de madurez. Tienes prácticas DevOps sólidas. Ahora enfócate en GitOps, observabilidad avanzada y automatización de seguridad para alcanzar la madurez plena de producción.',
+      cta: 'Ver cómo podemos acelerar tu camino →',
     },
     {
       range: [26, 30],
-      level: 'Optimized Stage',
-      badge: 'Enterprise Grade',
+      level: 'Etapa Optimizada',
+      badge: 'Nivel Enterprise',
       badgeColor: '#15803D',
       bg: '#F0FDF4',
       border: '#BBF7D0',
-      text: "Excellent! You are operating at enterprise level with strong automation, security and reliability practices. Let's discuss advanced platform engineering and FinOps optimization.",
-      cta: 'Talk to our senior engineers →',
+      text: '¡Excelente! Operas a nivel enterprise con automatización, seguridad y prácticas de fiabilidad sólidas. Hablemos de ingeniería de plataformas avanzada y optimización FinOps.',
+      cta: 'Hablar con nuestros ingenieros senior →',
     },
   ]
 
@@ -247,15 +250,15 @@ import Layout from '../layouts/Layout.astro'
 
     ;(
       document.getElementById('progress-label') as HTMLSpanElement
-    ).textContent = `Question ${currentQ + 1} of ${questions.length}`
+    ).textContent = `Pregunta ${currentQ + 1} de ${questions.length}`
     ;(document.getElementById('score-display') as HTMLSpanElement).textContent =
-      `Score: ${score} / 30`
+      `Puntuación: ${score} / 30`
     ;(document.getElementById('progress-bar') as HTMLDivElement).style.width =
       `${pct}%`
 
     qc.innerHTML = `
     <div class="rounded-2xl p-8 sm:p-10 animate-fade" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 8px 32px rgba(10,37,64,0.09);">
-      <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: #94a3b8;">Question ${currentQ + 1}</p>
+      <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: #94a3b8;">Pregunta ${currentQ + 1}</p>
       <h2 class="text-xl sm:text-2xl font-bold mb-8" style="color: #0A2540;">${q.q}</h2>
       <div class="space-y-3">
         ${q.options
@@ -302,8 +305,8 @@ import Layout from '../layouts/Layout.astro'
     qc.classList.add('hidden')
     rc.classList.remove('hidden')
     pb.style.width = '100%'
-    pl.textContent = 'Assessment complete'
-    sd.textContent = `Final score: ${score} / 30`
+    pl.textContent = 'Evaluación completada'
+    sd.textContent = `Puntuación final: ${score} / 30`
 
     const result = results.find(
       (r) => score >= r.range[0] && score <= r.range[1]
@@ -317,7 +320,7 @@ import Layout from '../layouts/Layout.astro'
       </div>
       <h2 class="text-2xl sm:text-3xl font-extrabold mb-3" style="color: #0A2540;">${result.level}</h2>
       <div class="text-5xl font-black mb-2" style="color: ${result.badgeColor};">${score}<span class="text-2xl font-bold text-gray-400">/30</span></div>
-      <div class="text-sm mb-6" style="color: #64748b;">${pct}% maturity score</div>
+      <div class="text-sm mb-6" style="color: #64748b;">${pct}% puntuación de madurez</div>
 
       <div class="h-3 rounded-full overflow-hidden mb-8 mx-auto max-w-xs" style="background: rgba(0,0,0,0.08);">
         <div class="h-full rounded-full" style="width: ${pct}%; background: ${result.badgeColor};"></div>
@@ -326,21 +329,21 @@ import Layout from '../layouts/Layout.astro'
       <p class="text-base leading-relaxed mb-8 max-w-md mx-auto" style="color: #334155;">${result.text}</p>
 
       <div id="email-capture" style="margin: 1.5rem 0; padding: 1.5rem; background: #EEF4FF; border-radius: 12px; border: 1px solid #C7D7FD;">
-        <p style="font-weight: 600; color: #0A2540; margin-bottom: 0.5rem;">Get your personalized action plan by email</p>
-        <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 1rem;">We\'ll send you a detailed roadmap based on your score. No spam.</p>
+        <p style="font-weight: 600; color: #0A2540; margin-bottom: 0.5rem;">Recibe tu plan de acción personalizado por email</p>
+        <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 1rem;">Te enviaremos una hoja de ruta detallada basada en tu puntuación. Sin spam.</p>
         <form id="assessment-email-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
           <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485">
           <input type="hidden" name="subject" id="assessment-subject">
           <input type="hidden" name="assessment_score" id="assessment-score-field">
           <input type="hidden" name="assessment_level" id="assessment-level-field">
-          <input type="email" name="email" placeholder="your@email.com" required
+          <input type="email" name="email" placeholder="tu@empresa.com" required
             style="flex: 1; min-width: 200px; padding: 0.75rem 1rem; border: 1px solid #C7D7FD; border-radius: 8px; font-size: 0.875rem;">
           <button type="submit"
             style="padding: 0.75rem 1.5rem; background: #1E6FFF; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
-            Send my plan →
+            Enviarme mi plan →
           </button>
         </form>
-        <p id="email-success" style="display:none; color: #16a34a; font-size: 0.875rem; margin-top: 0.75rem;">✓ Check your inbox! We\'ll send your plan within 24 hours.</p>
+        <p id="email-success" style="display:none; color: #16a34a; font-size: 0.875rem; margin-top: 0.75rem;">✓ ¡Revisa tu bandeja de entrada! Te enviaremos tu plan en 24 horas.</p>
       </div>
 
       <a href="${calUrl}" target="_blank" rel="noopener noreferrer"
@@ -351,13 +354,13 @@ import Layout from '../layouts/Layout.astro'
 
       <div class="mt-6">
         <button id="retake-btn" class="text-sm font-semibold transition-colors hover:underline" style="color: #64748b;">
-          Retake Assessment
+          Repetir Evaluación
         </button>
       </div>
     </div>
 
     <div class="mt-8 rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid #e2e8f0;">
-      <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Your answers breakdown</h3>
+      <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Tu respuesta por pregunta</h3>
       <div class="space-y-2">
         ${questions
           .map((q, i) => {
@@ -396,7 +399,7 @@ import Layout from '../layouts/Layout.astro'
       'assessment-level-field'
     ) as HTMLInputElement
     if (subjEl)
-      subjEl.value = `DevOps Maturity Assessment — Score ${score}/30 (${result.level})`
+      subjEl.value = `Evaluación Madurez DevOps — Puntuación ${score}/30 (${result.level})`
     if (scoreEl2) scoreEl2.value = String(score)
     if (levelEl) levelEl.value = result.level
     const emailForm = document.getElementById(
