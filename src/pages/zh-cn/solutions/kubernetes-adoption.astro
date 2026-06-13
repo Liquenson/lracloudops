@@ -1,0 +1,70 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Kubernetes采纳 · EKS与裸金属"
+  descripcion="从零开始引导Kubernetes采纳——托管EKS或本地裸金属，首日即集成GitOps、Helm和可观测性。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Kubernetes采纳
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          生产就绪的Kubernetes，无需多年试错。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          我们引导完整的Kubernetes采纳之旅——从集群搭建到首个生产工作负载——从一开始就集成GitOps、Helm和可观测性。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">就绪性评估</h3>
+          <p class="text-sm" style="color: #64748b;">分析现有应用，识别容器化候选应用并评估采纳复杂度。包含里程碑和成功标准的清晰路线图。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">集群配置</h3>
+          <p class="text-sm" style="color: #64748b;">AWS上的EKS或使用kubeadm/k3s的裸金属集群，以代码方式部署。RBAC、NetworkPolicy和Pod Security Standards从首日起即已配置。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">工作负载容器化</h3>
+          <p class="text-sm" style="color: #64748b;">使用优化的多阶段Dockerfile将现有应用容器化。Kubernetes清单和Helm chart反映每个服务的真实需求。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">ArgoCD GitOps</h3>
+          <p class="text-sm" style="color: #64748b;">ArgoCD配置为持续交付控制器。自动同步、剪枝和自愈，支持自动重试。Git作为集群状态的唯一事实来源。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">内置可观测性</h3>
+          <p class="text-sm" style="color: #64748b;">Prometheus、Grafana和Alertmanager从一开始就集成到集群中。覆盖集群健康状态、Pod性能和资源使用情况的仪表盘。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">知识转移</h3>
+          <p class="text-sm" style="color: #64748b;">为您的团队提供运营文档和知识转移培训。涵盖日常操作和常见问题排查的运行手册。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">加速您的Kubernetes采纳之路。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">我们评估您的现状，交付包含阶段、风险和明确成功标准的采纳计划。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        联系我们
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

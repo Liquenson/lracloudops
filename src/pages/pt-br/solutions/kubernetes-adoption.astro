@@ -1,0 +1,70 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Adoção Kubernetes · EKS e Bare-Metal"
+  descripcion="Adoção Kubernetes guiada do zero — EKS gerenciado ou bare-metal on-premise com GitOps, Helm e observabilidade integrada desde o primeiro dia."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Adoção Kubernetes
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Kubernetes pronto para produção, sem anos de tentativa e erro.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Guiamos a adoção completa do Kubernetes — do cluster ao primeiro workload em produção — com GitOps, Helm e observabilidade integradas desde o início.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Avaliação de Prontidão</h3>
+          <p class="text-sm" style="color: #64748b;">Análise das aplicações atuais, identificação de candidatas à containerização e avaliação da complexidade de adoção. Roadmap claro com marcos e critérios de sucesso.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Provisão de Cluster</h3>
+          <p class="text-sm" style="color: #64748b;">EKS na AWS ou cluster bare-metal com kubeadm/k3s como código. RBAC, NetworkPolicy e Pod Security Standards configurados desde o primeiro dia.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Containerização de Workloads</h3>
+          <p class="text-sm" style="color: #64748b;">Containerização das aplicações existentes com Dockerfiles multi-stage otimizados. Manifests Kubernetes e Helm charts que refletem os requisitos reais de cada serviço.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">GitOps com ArgoCD</h3>
+          <p class="text-sm" style="color: #64748b;">ArgoCD configurado como controlador de entrega contínua. Auto-sync, prune e self-heal com retry automático. Git como única fonte de verdade para o estado do cluster.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Observabilidade Integrada</h3>
+          <p class="text-sm" style="color: #64748b;">Prometheus, Grafana e Alertmanager integrados ao cluster desde o início. Dashboards para saúde do cluster, performance de pods e uso de recursos.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Transferência de Conhecimento</h3>
+          <p class="text-sm" style="color: #64748b;">Documentação operacional e sessões de transferência de conhecimento para sua equipe. Runbooks para operações do dia a dia e troubleshooting de problemas comuns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Acelere sua adoção Kubernetes.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Avaliamos sua situação atual e entregamos um plano de adoção com fases, riscos e critérios de sucesso claros.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Fale conosco
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

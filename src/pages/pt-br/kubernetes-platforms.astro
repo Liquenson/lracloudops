@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Plataformas Kubernetes · EKS & Bare-Metal"
+  descripcion="Kubernetes no EKS e bare-metal com ArgoCD GitOps, Helm e observabilidade integrada. Deploy de clusters prontos para produção em qualquer ambiente."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Plataformas Kubernetes
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Clusters Kubernetes prontos para produção desde o primeiro dia.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Do EKS na AWS a clusters bare-metal, entregamos plataformas Kubernetes guiadas por GitOps com ArgoCD, Helm e observabilidade completa integrada.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Provisionamento EKS</h3>
+          <p class="text-sm" style="color: #64748b;">Kubernetes gerenciado na AWS com EKS. Node groups, IRSA e Cluster Autoscaler como código — sem configuração manual pelo console.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">ArgoCD GitOps</h3>
+          <p class="text-sm" style="color: #64748b;">Entrega contínua via ArgoCD com sincronização automática, prune e self-heal. Git é a única fonte de verdade para o estado do cluster.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Gerenciamento de Helm Charts</h3>
+          <p class="text-sm" style="color: #64748b;">Deploy de aplicações com Helm charts e overlays Kustomize. Separação clara entre configuração base e valores específicos por ambiente.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Kubernetes Bare-Metal</h3>
+          <p class="text-sm" style="color: #64748b;">Clusters Kubernetes on-premise com kubeadm ou k3s. Configurações prontas para produção sem dependências de cloud para workloads sensíveis.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Stack de Observabilidade</h3>
+          <p class="text-sm" style="color: #64748b;">Prometheus, Grafana e Alertmanager integrados desde o primeiro dia. Dashboards e alertas para saúde do cluster, performance e uso de recursos.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Rede & Segurança</h3>
+          <p class="text-sm" style="color: #64748b;">NetworkPolicy, RBAC e Pod Security Standards como código. Ingress controller com terminação TLS e rate limiting configurados desde o início.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Pronto para uma plataforma Kubernetes em produção?</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Avaliamos sua infraestrutura de containers atual e criamos um plano de migração concreto.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Fale conosco
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

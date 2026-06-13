@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="オブザーバビリティ · Prometheus、Grafana & CloudWatch"
+  descripcion="Kubernetes向けPrometheus、Grafana、Alertmanager。AWSワークロード向けCloudWatch。本番システムのREDメトリクス、SLOトラッキング、プロアクティブアラート。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          オブザーバビリティ
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          本番システムへの完全な可視性。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          KubernetesワークロードにPrometheus、Grafana、Alertmanager。AWSにCloudWatch。問題がユーザーに届く前に検出するSLOトラッキングとプロアクティブアラート。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Prometheusメトリクス収集</h3>
+          <p class="text-sm" style="color: #64748b;">kube-state-metricsとnode-exporterを備えたPrometheusで完全なクラスター・ノードメトリクスを収集。カスタムServiceMonitorとPodMonitorでサービスを監視。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Grafanaダッシュボード</h3>
+          <p class="text-sm" style="color: #64748b;">Kubernetesクラスターヘルス、ワークロードパフォーマンス、リソース使用率の事前設定済みダッシュボード。アプリケーション固有のREDメトリクス用カスタムダッシュボード。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Alertmanager & オンコール</h3>
+          <p class="text-sm" style="color: #64748b;">Alertmanagerによるインテリジェントなアラートルーティング。PagerDuty、Slack、メール統合。アラートグループ化と抑制でアラートファティーグを軽減。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">AWS向けCloudWatch</h3>
+          <p class="text-sm" style="color: #64748b;">AWSサービスのCloudWatchメトリクス、ログ、アラーム。コスト監視、RDSパフォーマンス、ECSタスクメトリクスを統合オブザーバビリティセットアップに統合。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">SLO & SLIトラッキング</h3>
+          <p class="text-sm" style="color: #64748b;">サービスレベル目標の定義とトラッキング。エラーバジェット管理とSLOベースのアラートでチームが真の信頼性問題に集中できる。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">ログ集約</h3>
+          <p class="text-sm" style="color: #64748b;">LokiまたはCloudWatch Logsによる集中ログ収集。相関IDを持つ構造化ログでサービス境界を越えた簡単なトレーシング。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">システムへの可視性を手に入れましょう。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">オブザーバビリティスタックをインストール・設定し、ユーザーよりも先に問題を検出できるようにします。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        お問い合わせ
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

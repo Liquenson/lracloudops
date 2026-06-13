@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="可观测性 · 生产监控"
+  descripcion="基于Prometheus、Grafana和Alertmanager的全面可见性。仪表盘、告警和SLO让您在用户感知之前发现并解决问题。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          可观测性
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          对生产系统的完整可见性。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          我们部署基于Prometheus和Grafana的监控栈，配备可操作的告警——在用户察觉之前就知道出了什么问题。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Prometheus指标</h3>
+          <p class="text-sm" style="color: #64748b;">使用Prometheus采集基础设施、应用和Kubernetes指标。基于真实时序数据的告警规则——无随意阈值。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Grafana仪表盘</h3>
+          <p class="text-sm" style="color: #64748b;">展示关键指标的运营仪表盘：服务延迟、错误率、资源饱和度。以代码方式交付，而非手动配置。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Alertmanager路由</h3>
+          <p class="text-sm" style="color: #64748b;">告警路由至正确渠道，并携带足够的上下文信息供行动。无告警噪音——只向值班团队发送可操作的通知。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">CloudWatch集成</h3>
+          <p class="text-sm" style="color: #64748b;">AWS指标和日志集成到同一可观测性视图。CloudWatch日志流与基础设施指标一同处理。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">SLO与SLI</h3>
+          <p class="text-sm" style="color: #64748b;">基于真实用户行为定义服务级别目标。错误预算在发布速度与服务可靠性之间取得平衡。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">日志集中化</h3>
+          <p class="text-sm" style="color: #64748b;">所有服务和基础设施组件的结构化日志汇聚到单一可搜索平台。日志与指标之间的事件关联分析。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">为您的系统建立真正的可观测性。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">我们评估您的当前环境，交付包含运营仪表盘和告警的完整监控栈。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        联系我们
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>
