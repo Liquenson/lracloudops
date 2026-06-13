@@ -188,27 +188,43 @@ const schema = {
   <section class="py-20 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-12">
-        <span class="section-label">Real Implementation</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">aws-devops-agent — AI-powered platform tooling</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">Manage 25+ AWS services in natural language. Claude Sonnet as reasoning layer, boto3 as execution layer.</p>
+        <span class="section-label">Real Implementations</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">Two platform engineering projects</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">AI-powered AWS tooling and a GitOps reference platform with full observability.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div class="bg-white rounded-2xl p-6" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
-          <h3 class="text-sm font-bold mb-3" style="color: #0A2540;">Natural Language → AWS API</h3>
-          <p class="text-xs leading-relaxed" style="color: #64748B;">Describe what you need in plain English. The agent determines the right boto3 calls, executes them, and returns a human-readable response.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-bold" style="color: #0A2540;">aws-devops-agent</span>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">In Development</span>
+          </div>
+          <ul class="space-y-2 text-xs mb-4" style="color: #64748B;">
+            <li>• AI CLI — Claude Sonnet as reasoning layer, boto3 as execution layer</li>
+            <li>• 25+ AWS services in natural language — no boto3 knowledge required</li>
+            <li>• Tool-use pattern — Claude decides which boto3 tools to invoke</li>
+            <li>• Stack: Python · Claude Sonnet · boto3 · Anthropic API</li>
+          </ul>
+          <div class="flex gap-2">
+            <a href="/projects/aws-devops-agent" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/aws-devops-agent" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          </div>
         </div>
-        <div class="bg-white rounded-2xl p-6" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
-          <h3 class="text-sm font-bold mb-3" style="color: #0A2540;">25+ AWS Services</h3>
-          <p class="text-xs leading-relaxed" style="color: #64748B;">EC2, S3, EKS, ECS, RDS, Lambda, IAM, CloudWatch, CloudTrail, VPC, Route53, CloudFront, SQS, SNS, DynamoDB, Secrets Manager, SSM, Cost Explorer and more.</p>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-bold" style="color: #0A2540;">k8s-devops-platform</span>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: #F3F4F6; color: #4B5563; border: 1px solid #E5E7EB;">Reference</span>
+          </div>
+          <ul class="space-y-2 text-xs mb-4" style="color: #64748B;">
+            <li>• GitOps reference platform — ArgoCD auto-sync + prune + selfHeal</li>
+            <li>• KinD local dev mirrors production — same Helm Charts and ArgoCD config</li>
+            <li>• Full observability: Prometheus + Grafana + Alertmanager from day one</li>
+            <li>• Stack: ArgoCD · Helm · KinD · Prometheus · Grafana · Alertmanager</li>
+          </ul>
+          <div class="flex gap-2">
+            <a href="/projects/k8s-devops-platform" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/k8s-devops-platform" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          </div>
         </div>
-        <div class="bg-white rounded-2xl p-6" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
-          <h3 class="text-sm font-bold mb-3" style="color: #0A2540;">Tool-use Architecture</h3>
-          <p class="text-xs leading-relaxed" style="color: #64748B;">Claude's tool-use API routes requests to the right boto3 tool. Adding a new AWS service means adding one tool definition — no routing logic to update.</p>
-        </div>
-      </div>
-      <div class="flex flex-wrap justify-center gap-3 mt-8">
-        <a href="/projects/aws-devops-agent" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl" style="background: #EEF4FF; color: #1E6FFF;">Read case study →</a>
-        <a href="https://github.com/lra-cloud-ops/aws-devops-agent" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl" style="background: #F1F5F9; color: #0A2540;">View on GitHub →</a>
       </div>
     </div>
   </section>
