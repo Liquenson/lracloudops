@@ -228,6 +228,86 @@ import Layout from '../../layouts/Layout.astro'
         </a>
       </div>
 
+      <!-- k8s-devops-platform card -->
+      <div
+        class="bg-white rounded-2xl p-8 mb-8 hover:-translate-y-1 transition-all duration-200"
+        style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 8px 32px rgba(10,37,64,0.09);"
+      >
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%);">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-7-9v18" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold" style="color: #0A2540;">k8s-devops-platform</h3>
+              <p class="text-sm" style="color: #64748b;">Kubernetes & GitOps</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb;">Referencia</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Activo</span>
+          </div>
+        </div>
+        <p class="text-base leading-relaxed mb-5" style="color: #334155;">
+          Plataforma Kubernetes con entrega GitOps vía ArgoCD. Despliegues declarativos, automatizados y versionados con KinD
+          para desarrollo local. Helm Charts con values por entorno, Prometheus, Grafana y Alertmanager.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {['Kubernetes', 'ArgoCD', 'Helm', 'KinD', 'Prometheus', 'Grafana', 'Alertmanager'].map(tag => (
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #f8fafc; color: #475569; border: 1px solid #e2e8f0;">{tag}</span>
+          ))}
+        </div>
+        <div class="flex gap-3">
+          <a href="/projects/k8s-devops-platform" class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Caso de estudio →</a>
+          <a href="https://github.com/lra-cloud-ops/k8s-devops-platform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: #0A2540; color: white;">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+            Ver en GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- linux-fleet-manager card -->
+      <div
+        class="bg-white rounded-2xl p-8 mb-8 hover:-translate-y-1 transition-all duration-200"
+        style="border: 1px solid #e2e8f0; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 8px 32px rgba(10,37,64,0.09);"
+      >
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%);">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold" style="color: #0A2540;">linux-fleet-manager</h3>
+              <p class="text-sm" style="color: #64748b;">Automatización DevOps</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Producción</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">Activo</span>
+          </div>
+        </div>
+        <p class="text-base leading-relaxed mb-5" style="color: #334155;">
+          Herramienta Bash para gestión masiva de servidores Linux a escala de infraestructura. Operaciones vía SSH — sin agentes ni daemons.
+          Validación ShellCheck en CI, scripts idempotentes, estándares de ingeniería Red Hat.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {['Bash', 'SSH', 'ShellCheck', 'Linux', 'CI/CD'].map(tag => (
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #f8fafc; color: #475569; border: 1px solid #e2e8f0;">{tag}</span>
+          ))}
+        </div>
+        <div class="flex gap-3">
+          <a href="/projects/linux-fleet-manager" class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Caso de estudio →</a>
+          <a href="https://github.com/lra-cloud-ops/linux-fleet-manager" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: #0A2540; color: white;">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+            Ver en GitHub
+          </a>
+        </div>
+      </div>
+
       <!-- Más proyectos próximamente -->
       <div
         class="rounded-2xl p-8 text-center"
