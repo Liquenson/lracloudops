@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="DevOps自動化 · CI/CDパイプラインエンジニアリング"
+  descripcion="GitHub ActionsとJenkinsによるCI/CDパイプライン。SonarCloudのクオリティゲートと完全自動化されたデプロイメント。手動介入ゼロ。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          DevOps自動化
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          手動デプロイゼロ。本番環境での驚きゼロ。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          脆弱な手動プロセスを、GitHub ActionsとJenkinsによる自動化されたCI/CDパイプラインに置き換えます。クオリティゲートと追跡可能なデプロイメントを統合。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">GitHub Actionsパイプライン</h3>
+          <p class="text-sm" style="color: #64748b;">GitHub Actionsによる完全なCI/CDパイプライン。ビルド・テストからDockerプッシュ・Helmデプロイまで。全ての変更が本番到達前に自動検証される。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Jenkins統合</h3>
+          <p class="text-sm" style="color: #64748b;">JenkinsfileによるJenkinsパイプライン as Code。ビルド・テスト・デプロイの並列ステージ — 手動オーケストレーション不要。同一のクオリティゲートを適用。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">SonarCloudクオリティゲート</h3>
+          <p class="text-sm" style="color: #64748b;">SonarCloudによる自動コード品質分析。カバレッジ閾値とセキュリティホットスポットが低品質コードのデプロイをブロック。本番環境に問題が届く前に検出。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Docker & コンテナレジストリ</h3>
+          <p class="text-sm" style="color: #64748b;">自動DockerビルドとECRへのプッシュ。最適化されたイメージのためのマルチステージビルド。パイプライン内でのコンテナ脆弱性スキャン。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Helmデプロイメント自動化</h3>
+          <p class="text-sm" style="color: #64748b;">パイプライン成功後の自動Helmアップグレード。ロールバックメカニズムとデプロイメント検証を統合。本番環境への手動介入なし。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">シークレット & OIDC認証</h3>
+          <p class="text-sm" style="color: #64748b;">GitHub ActionsはOIDCでAWSに認証。静的なアクセスキーをどこにも保存しない。認証情報は実行ごとに発行され、自動的に失効。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">パイプラインレビューから始めましょう。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">現在のリリースプロセスをご持参ください。手動ステップ、クオリティゲートの欠如、認証情報の露出を特定し、自動配信への道筋を示します。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        お問い合わせ
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

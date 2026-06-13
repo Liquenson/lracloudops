@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="DevOps自动化 · CI/CD流水线"
+  descripcion="使用GitHub Actions和Jenkins构建CI/CD流水线。SonarCloud质量门控和完全自动化部署，无需人工干预。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          DevOps自动化
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          零手动部署。零生产意外。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          我们用GitHub Actions和Jenkins的全自动CI/CD流水线替代脆弱的手动流程——内置质量门控和可追溯的部署记录。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">GitHub Actions流水线</h3>
+          <p class="text-sm" style="color: #64748b;">完整的GitHub Actions CI/CD流水线——从构建、测试到Docker推送和Helm部署。每次变更在到达生产环境之前都会自动验证。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Jenkins集成</h3>
+          <p class="text-sm" style="color: #64748b;">使用Jenkinsfile实现流水线即代码。并行阶段处理构建、测试和部署——无需手动编排。与GitHub Actions保持相同的质量门控。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">SonarCloud质量门控</h3>
+          <p class="text-sm" style="color: #64748b;">SonarCloud自动代码质量分析。覆盖率阈值和安全热点在劣质代码进入生产之前阻断部署。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Docker与容器镜像仓库</h3>
+          <p class="text-sm" style="color: #64748b;">自动Docker构建并推送至ECR。多阶段构建优化镜像体积。流水线中的容器漏洞扫描在部署前运行。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Helm部署自动化</h3>
+          <p class="text-sm" style="color: #64748b;">流水线成功后自动执行Helm升级。内置回滚机制和部署验证。生产环境无需人工干预。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Secrets与OIDC认证</h3>
+          <p class="text-sm" style="color: #64748b;">GitHub Actions通过OIDC向AWS认证。任何地方均不存储静态访问密钥。凭证按运行时发放，自动过期。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">从流水线审查开始。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">带上您当前的发布流程。我们识别手动步骤、缺失的质量门控和凭证暴露问题——并规划自动化交付路径。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        联系我们
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

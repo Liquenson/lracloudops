@@ -13,6 +13,7 @@
     aria-label="Open DevOps Advisor chat"
     aria-expanded="false"
     aria-haspopup="dialog"
+    aria-controls="lra-chat-panel"
     style="width:56px;height:56px;border-radius:50%;background:#1E6FFF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(30,111,255,0.45),0 2px 8px rgba(30,111,255,0.3);transition:transform 0.2s ease,box-shadow 0.2s ease;"
   >
     <!-- Chat icon (visible when closed) -->
@@ -53,7 +54,6 @@
   <div
     id="lra-chat-panel"
     role="dialog"
-    aria-modal="true"
     aria-label="LRA DevOps Advisor"
     aria-hidden="true"
     style="position:absolute;bottom:68px;right:0;width:380px;height:520px;background:white;border-radius:16px;box-shadow:0 8px 40px rgba(10,37,64,0.2),0 2px 12px rgba(10,37,64,0.1);display:flex;flex-direction:column;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(16px) scale(0.96);transition:opacity 0.22s ease,transform 0.22s ease;"
@@ -398,6 +398,7 @@
     function openChat() {
       isOpen = true
       panel!.removeAttribute('aria-hidden')
+      panel!.setAttribute('aria-modal', 'true')
       panel!.style.opacity = '1'
       panel!.style.pointerEvents = 'auto'
       panel!.style.transform = 'translateY(0) scale(1)'
@@ -419,6 +420,7 @@
     function closeChat() {
       isOpen = false
       panel!.setAttribute('aria-hidden', 'true')
+      panel!.removeAttribute('aria-modal')
       panel!.style.opacity = '0'
       panel!.style.pointerEvents = 'none'
       panel!.style.transform = 'translateY(16px) scale(0.96)'

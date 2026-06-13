@@ -1,0 +1,70 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="GitOps · ArgoCD Auto-Sync & Git comme source de vérité"
+  descripcion="Remplacez les kubectl et terraform apply manuels par ArgoCD Auto-Sync. Git devient la seule source de vérité pour l'état complet de votre cluster."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          GitOps
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Git est la seule source de vérité. Plus de kubectl manuel.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Nous remplaçons les kubectl apply et Terraform runs manuels par ArgoCD Auto-Sync. Chaque modification de l'état du cluster passe par une pull request.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Installation & Configuration ArgoCD</h3>
+          <p class="text-sm" style="color: #64748b;">Configuration ArgoCD avec auto-sync, prune et self-heal. Définitions d'applications en code — aucune configuration manuelle via le tableau de bord ArgoCD.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Structure du dépôt</h3>
+          <p class="text-sm" style="color: #64748b;">Conception d'une structure GitOps claire avec un pattern app-of-apps ou des dépôts individuels par environnement. Séparation nette entre code applicatif et configuration de déploiement.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Workflow de déploiement par PR</h3>
+          <p class="text-sm" style="color: #64748b;">Chaque modification d'infrastructure passe par une pull request avec revue et approbation. ArgoCD synchronise automatiquement après le merge — aucune intervention manuelle nécessaire.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Détection de dérive & Auto-guérison</h3>
+          <p class="text-sm" style="color: #64748b;">ArgoCD détecte automatiquement les écarts entre l'état souhaité et réel du cluster. Le self-heal corrige automatiquement les modifications manuelles pour revenir à l'état défini.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Rollback & Reprise après sinistre</h3>
+          <p class="text-sm" style="color: #64748b;">Rollback instantané par revert Git. L'état complet du cluster est stocké dans Git — la récupération après une panne est une seule commande de sync ArgoCD.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">GitOps Multi-Cluster</h3>
+          <p class="text-sm" style="color: #64748b;">Gestion de plusieurs clusters Kubernetes via une instance ArgoCD centralisée. Configuration cohérente entre Dev, Staging et Production avec des overlays spécifiques à l'environnement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Migrez vers GitOps avec ArgoCD.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Nous analysons votre processus de déploiement actuel et créons un plan de transition vers un GitOps complet.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Nous contacter
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Observability · Prometheus, Grafana & CloudWatch"
+  descripcion="Prometheus, Grafana und Alertmanager für Kubernetes. CloudWatch für AWS-Workloads. RED-Metriken, SLO-Tracking und proaktive Alerts für Produktionssysteme."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Observability
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Volle Sichtbarkeit in Ihre Produktionssysteme.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Prometheus, Grafana und Alertmanager für Kubernetes-Workloads. CloudWatch für AWS. SLO-Tracking und proaktive Alerts, bevor Probleme Nutzer erreichen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Prometheus Metriken-Sammlung</h3>
+          <p class="text-sm" style="color: #64748b;">Prometheus mit kube-state-metrics und node-exporter für vollständige Cluster- und Node-Metriken. Service-Monitoring über custom ServiceMonitors und PodMonitors.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Grafana Dashboards</h3>
+          <p class="text-sm" style="color: #64748b;">Vorkonfigurierte Dashboards für Kubernetes-Cluster-Health, Workload-Performance und Ressourcennutzung. Custom Dashboards für anwendungsspezifische RED-Metriken.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Alertmanager & On-Call</h3>
+          <p class="text-sm" style="color: #64748b;">Intelligente Alert-Routing-Regeln mit Alertmanager. Integration mit PagerDuty, Slack und E-Mail. Alert-Gruppierung und Inhibierung reduzieren Alert-Fatigue.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">CloudWatch für AWS</h3>
+          <p class="text-sm" style="color: #64748b;">CloudWatch-Metriken, Logs und Alarms für AWS-Dienste. Kostenüberwachung, RDS-Performance und ECS-Task-Metriken integriert in ein einheitliches Observability-Setup.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">SLO & SLI Tracking</h3>
+          <p class="text-sm" style="color: #64748b;">Definition und Tracking von Service Level Objectives. Error-Budget-Management und SLO-basierte Alerts, die Teams auf echte Zuverlässigkeitsprobleme fokussieren.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Log-Aggregation</h3>
+          <p class="text-sm" style="color: #64748b;">Zentralisierte Log-Sammlung mit Loki oder CloudWatch Logs. Strukturierte Logs mit Korrelations-IDs für einfaches Tracing über Service-Grenzen hinweg.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Gewinnen Sie Sichtbarkeit in Ihre Systeme.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Wir installieren und konfigurieren Ihren Observability-Stack und stellen sicher, dass Sie Probleme erkennen, bevor Ihre Nutzer es tun.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Kontakt aufnehmen
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

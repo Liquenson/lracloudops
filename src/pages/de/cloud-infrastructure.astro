@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Cloud-Infrastruktur · AWS Platform Engineering"
+  descripcion="Kodifizierte AWS-Umgebungen mit definiertem Netzwerk, Sicherheitsgrenzen und Zugriffsrichtlinien. Terraform-Module, die prüfbar, versioniert und reproduzierbar sind."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Cloud-Infrastruktur
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Infrastruktur, die reproduzierbar, prüfbar und wiederherstellbar ist.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Manuelle AWS-Umgebungen führen zu Konfigurationsdrift und undokumentierten Zuständen. Wir ersetzen das durch kodifizierte, versionskontrollierte Umgebungen mit Terraform.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Terraform Infrastructure as Code</h3>
+          <p class="text-sm" style="color: #64748b;">Wiederverwendbare Terraform-Module für VPC, EKS, RDS und IAM – versioniert und reproduzierbar über alle AWS-Konten hinweg.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">AWS VPC & Netzwerkdesign</h3>
+          <p class="text-sm" style="color: #64748b;">Multi-AZ VPC mit öffentlichen Subnetzen für Load Balancer und privaten Subnetzen für Compute und Daten. Keine Backend-Komponente hat eine öffentliche IP-Adresse.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">IAM & Sicherheitsgrenzen</h3>
+          <p class="text-sm" style="color: #64748b;">OIDC-basierte Authentifizierung für CI/CD-Pipelines – keine langlebigen Zugriffsschlüssel. IAM-Rollen und Richtlinien in Terraform definiert.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">EKS & Container-Plattform</h3>
+          <p class="text-sm" style="color: #64748b;">Kubernetes-Cluster oder Fargate-Tasks je nach Workload-Anforderungen. Node-Gruppen als Code verwaltet, HPA bei der Bereitstellung konfiguriert.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">RDS & Datenbankschicht</h3>
+          <p class="text-sm" style="color: #64748b;">Verwaltete PostgreSQL-Datenbanken in privaten Subnetzen mit automatischem Failover, 7-Tage-Backups und Verschlüsselung im Ruhezustand.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">State-Management & CloudFront</h3>
+          <p class="text-sm" style="color: #64748b;">Remote Terraform State mit S3 und DynamoDB-Locking. CDN, statisches Asset-Hosting und DNS als Code mit CloudFront und Route 53 verwaltet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Starten Sie mit einer Infrastruktur-Überprüfung.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Bringen Sie Ihre aktuelle AWS-Umgebung mit. Wir bewerten Reproduzierbarkeit, Sicherheitslage und State-Management.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Kontakt aufnehmen
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

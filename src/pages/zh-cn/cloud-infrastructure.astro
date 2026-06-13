@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="云基础设施 · AWS平台工程"
+  descripcion="用Terraform IaC构建AWS环境，定义网络、安全边界和访问策略。可验证、版本化、跨AWS账户可复现的模块化基础设施。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          云基础设施
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          可复现、可验证、可恢复的基础设施。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          手动管理的AWS环境会产生配置漂移和未记录的状态。我们用Terraform将其替换为代码化、版本化的环境。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Terraform基础设施即代码</h3>
+          <p class="text-sm" style="color: #64748b;">可复用的Terraform模块覆盖VPC、EKS、RDS和IAM——版本化且可在所有AWS账户中复现，无需手动配置。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">AWS VPC网络设计</h3>
+          <p class="text-sm" style="color: #64748b;">多可用区VPC，负载均衡器使用公有子网，计算和数据层使用私有子网。任何后端组件均不暴露公网IP。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">IAM与安全边界</h3>
+          <p class="text-sm" style="color: #64748b;">CI/CD流水线采用OIDC认证，无需长期访问密钥。IAM角色和策略在Terraform中定义，应用前可审查。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">EKS与容器平台</h3>
+          <p class="text-sm" style="color: #64748b;">根据工作负载需求选择Kubernetes集群或Fargate任务。托管节点组以代码方式管理，HPA在配置时即已设置。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">RDS与数据库层</h3>
+          <p class="text-sm" style="color: #64748b;">PostgreSQL数据库位于私有子网，具备自动故障转移、7天备份和静态加密。安全组仅限于计算层访问。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">状态管理与CloudFront</h3>
+          <p class="text-sm" style="color: #64748b;">Terraform远程状态存储于S3，使用DynamoDB锁。CDN、静态资产托管和DNS均以代码方式通过CloudFront和Route 53管理。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">从基础设施审查开始。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">带上您当前的AWS环境，我们评估可复现性、安全态势和状态管理。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        联系我们
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>
