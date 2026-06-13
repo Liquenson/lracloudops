@@ -4,183 +4,127 @@ import SolutionLayout from '../components/SolutionLayout.astro'
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  '@id': 'https://lracloudops.com/observability#service',
-  name: 'Observability Engineering',
-  serviceType: 'Monitoring, Alerting & SRE',
+  '@id': 'https://lracloudops.com/es/observability#service',
+  name: 'Observabilidad · Prometheus · Grafana',
+  serviceType: 'Observability',
   description:
-    'Structured logs, distributed traces and metrics that tell you what failed, where, and why — before your users report it. Alerting on symptoms, not thresholds.',
-  url: 'https://lracloudops.com/observability',
+    'Instrumentación desde el día uno, no tras el primer incidente. Métricas Prometheus, logs estructurados y umbrales de alerta configurados antes de que el primer usuario llegue a producción.',
+  url: 'https://lracloudops.com/es/observability',
   provider: { '@id': 'https://lracloudops.com/#organization' },
-  areaServed: ['ES', 'US', 'LATAM'],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Observability Services',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Prometheus & Grafana Setup' },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'CloudWatch Container Insights',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'SLI/SLO Definition' },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Alerting Design' },
-      },
-    ],
-  },
+  areaServed: 'Worldwide',
+  inLanguage: 'es-ES',
 }
 ---
 
 <SolutionLayout
-  titulo="Observability · Monitoring, Alerting & SRE"
-  descripcion="Structured logs, distributed traces and metrics that tell you what failed, where, and why — before your users report it. Alerting on symptoms, not thresholds."
+  titulo="Observabilidad · Prometheus, Grafana y SRE"
+  descripcion="Instrumentación desde el día uno, no tras el primer incidente. Métricas Prometheus, logs estructurados y umbrales de alerta configurados antes de que el primer usuario llegue a producción."
   badgeLabel="04 · Observability"
-  h1="Know what is broken before your users do."
-  heroSubtitle="Discovering problems through user reports is not an operating model. Dashboards built after the first incident detect the second. We instrument systems from day one — metrics, logs and alerts configured before the first user hits production."
+  h1="Sabes qué está fallando antes de que abran un ticket."
+  heroSubtitle="La observabilidad añadida después del primer incidente está diseñada para el incidente que ya ocurrió. La observabilidad diseñada desde el inicio cubre los incidentes que aún no han ocurrido. La diferencia es cuándo se definen los SLIs — antes de la primera carga de usuario, no después."
   schema={schema}
   sectionNumber="04"
   challenges={[
     {
-      title: 'Discovering failures through user reports',
-      desc: 'The first indication of a problem is a support ticket. By the time the team investigates, the blast radius has already expanded.',
+      title: 'Observabilidad añadida retroactivamente',
+      desc: 'El stack de monitorización se añade tras el primer incidente de producción. Las alertas se configuran para los síntomas del incidente pasado, no para los futuros.',
     },
     {
-      title: 'Dashboards built after incidents',
-      desc: 'Monitoring that covers what broke last time misses what will break next time. Reactive observability is not observability.',
+      title: 'Métricas sin contexto de negocio',
+      desc: 'CPU y memoria son necesarias pero no suficientes. Sin métricas de latencia, tasa de errores y saturación específicas de cada servicio, es imposible correlacionar el estado del sistema con el impacto en usuarios.',
     },
     {
-      title: 'Alerting on the wrong signals',
-      desc: 'CPU and memory thresholds alert on causes, not symptoms. Teams spend time investigating non-events while real failures go undetected.',
+      title: 'Logs sin estructura',
+      desc: 'Los logs en texto libre requieren búsqueda de texto completo para extraer información. Durante un incidente, buscar en logs no estructurados consume tiempo que debería destinarse a la remediación.',
     },
     {
-      title: 'No SLIs or error budgets',
-      desc: 'Without defined service level indicators, every incident is equally urgent. No error budget means no rational basis for prioritizing reliability work.',
+      title: 'Alertas que no apuntan a una acción',
+      desc: 'Una alerta que dice "CPU al 80%" no indica qué hacer. Una alerta que dice "Latencia p99 del servicio de pagos > 2s durante 5 minutos" apunta directamente a una acción.',
     },
   ]}
-  archTitle="The observability stack we deliver."
-  archSubtitle="Three pillars — metrics, logs and alerting — configured before the first workload reaches production."
+  archTitle="El stack de observabilidad que desplegamos."
+  archSubtitle="Métricas, logs y alertas configurados como código. Dashboards listos el día del primer despliegue."
   layers={[
     {
-      layer: 'Metrics Collection',
-      tools: 'Prometheus · ServiceMonitors · PodMonitors · kube-state-metrics',
-      desc: 'Prometheus scrapes workload and cluster metrics from deployment day. Custom metrics exposed via standard /metrics endpoints. No vendor lock-in.',
+      layer: 'Recolección de Métricas',
+      tools: 'Prometheus · kube-state-metrics · node-exporter · custom metrics',
+      desc: 'Prometheus scrapeando métricas de todos los componentes del clúster, los nodos y los servicios de aplicación. Métricas personalizadas de la aplicación expuestas en el endpoint /metrics.',
     },
     {
-      layer: 'Visualization',
-      tools:
-        'Grafana · Pre-built dashboards · Infrastructure + application panels',
-      desc: 'Grafana dashboards covering Kubernetes cluster health, workload performance and application-level metrics in a single view.',
-    },
-    {
-      layer: 'Cloud Monitoring',
-      tools: 'CloudWatch · Container Insights · Log Insights · Alarms',
-      desc: 'CloudWatch Container Insights for EKS and ECS workloads. Alarms on latency, error rates and queue depth — not raw CPU.',
+      layer: 'Visualización',
+      tools: 'Grafana · Dashboards como código · Annotations',
+      desc: 'Dashboards Grafana definidos como JSON y gestionados en Git. Dashboards para infraestructura (nodos, pods, red) y servicios de aplicación (latencia, tasa de errores, throughput) listos en el día uno.',
     },
     {
       layer: 'Alerting',
-      tools: 'Alertmanager · PagerDuty · Slack · Routing rules',
-      desc: 'Alert routing by severity and team. On-call receives actionable alerts with runbook links, not raw metric dumps.',
+      tools: 'Alertmanager · PagerDuty · Slack · Escalation policies',
+      desc: 'Alertas definidas en Prometheus alerting rules con umbrales basados en SLIs del servicio. Alertmanager enruta por severidad — crítico a PagerDuty, warning a Slack.',
     },
     {
-      layer: 'SLIs and SLOs',
-      tools: 'Error budgets · Burn rate alerts · Multi-window alerting',
-      desc: 'Service level indicators defined at design time. Error budget burn rate alerts before the budget is exhausted, not after.',
+      layer: 'Logs Estructurados',
+      tools: 'JSON logging · Fluent Bit · CloudWatch Logs Insights',
+      desc: 'Aplicaciones configuradas para logs JSON estructurados. Fluent Bit para recolección y envío a CloudWatch Logs. Queries de CloudWatch Logs Insights predefinidas para patrones de error comunes.',
     },
     {
-      layer: 'Log Management',
-      tools: 'Structured JSON logs · CloudWatch Logs · Log Insights queries',
-      desc: 'Structured logging from application startup. Log Insights queries pre-built for the most common failure modes.',
+      layer: 'Métricas AWS Nativas',
+      tools: 'CloudWatch · Container Insights · RDS Enhanced Monitoring',
+      desc: 'CloudWatch Container Insights para métricas de EKS y ECS. RDS Enhanced Monitoring para métricas de base de datos. Alertas de coste para detectar derivas de gasto antes de que impacten en el presupuesto.',
+    },
+    {
+      layer: 'SLIs y SLOs',
+      tools: 'Error budget · Availability targets · Latency budgets',
+      desc: 'SLIs definidos antes del primer despliegue: disponibilidad del servicio, latencia p50/p95/p99, tasa de errores. SLO calculado como disponibilidad objetivo mensual con alerta cuando el error budget se agota.',
     },
   ]}
   steps={[
     {
       step: '01',
-      title: 'Observability audit',
-      desc: 'Review what is currently instrumented, what is missing and what alert fatigue exists before adding more noise.',
+      title: 'Definición de SLIs',
+      desc: 'Identificamos las métricas que miden directamente la experiencia del usuario: disponibilidad, latencia, tasa de errores. Los SLIs se definen antes de la instrumentación.',
     },
     {
       step: '02',
-      title: 'SLI definition',
-      desc: 'Define service level indicators for each workload — availability, latency, error rate — before writing a single alert rule.',
+      title: 'Instrumentación de aplicaciones',
+      desc: 'Añadimos endpoints /metrics a los servicios. Configuramos logs estructurados en JSON. Verificamos que las métricas críticas están expuestas correctamente.',
     },
     {
       step: '03',
-      title: 'Instrumentation rollout',
-      desc: 'Deploy Prometheus, configure ServiceMonitors and validate metric collection in staging before production.',
+      title: 'Deploy del stack de observabilidad',
+      desc: 'Prometheus, Grafana y Alertmanager desplegados via Helm. Dashboards y reglas de alerta aplicados como código.',
     },
     {
       step: '04',
-      title: 'Alerting and runbooks',
-      desc: 'Configure alert routing, build Grafana dashboards and write runbooks for the top failure modes before go-live.',
+      title: 'Configuración de alertas y runbooks',
+      desc: 'Alertas configuradas para los SLIs definidos. Cada alerta tiene un runbook que describe el diagnóstico y la remediación — antes de que ocurra el primer incidente.',
     },
   ]}
   outcomes={[
     {
-      metric: 'Failures detected before user reports',
-      detail: 'alerting on symptoms, not thresholds',
+      metric: 'Dashboards listos en día 1',
+      detail: 'antes de la primera carga de usuario',
     },
     {
-      metric: 'SLIs tracked from day one',
-      detail: 'not added after the first SLA breach',
-    },
-    { metric: 'Mean time to detect reduced', detail: 'from hours to minutes' },
-    {
-      metric: 'On-call receives actionable alerts',
-      detail: 'with runbook links, not raw metrics',
+      metric: 'Alertas accionables',
+      detail: 'no solo "CPU alta" — qué servicio, qué impacto',
     },
     {
-      metric: 'Error budgets defined',
-      detail: 'rational basis for reliability prioritization',
+      metric: 'MTTD reducido',
+      detail: 'tiempo de detección de incidentes en minutos, no horas',
     },
     {
-      metric: 'Infrastructure and application in one view',
-      detail: 'single Grafana instance, no context switching',
+      metric: 'Logs estructurados',
+      detail: 'queries predefinidas para patrones de error comunes',
+    },
+    {
+      metric: 'SLOs definidos',
+      detail: 'disponibilidad y latencia medidos continuamente',
+    },
+    {
+      metric: 'Observabilidad como código',
+      detail: 'dashboards y alertas en Git, no en la UI de Grafana',
     },
   ]}
-  ctaH2="Start with an observability review."
-  ctaSubtitle="Bring your current monitoring setup. We identify what is missing, what is generating noise and what would actually detect your next outage before your users do."
->
-  <!-- Real Implementation -->
-  <section class="py-20 bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <span class="section-label">Real Implementation</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">Observability across cloud and Kubernetes</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">CloudWatch + CloudTrail on AWS. Prometheus + Grafana + Alertmanager on Kubernetes.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
-          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">gitops-stack — Cloud observability</h3>
-          <ul class="space-y-2 text-sm" style="color: #64748B;">
-            <li>• CloudWatch Logs + Metrics — application and infrastructure</li>
-            <li>• CloudTrail — every AWS API call logged and queryable</li>
-            <li>• Full audit trail: commit → pipeline → pod → API call</li>
-            <li>• Zero static credentials — IAM roles throughout</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
-          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">k8s-devops-platform — Kubernetes observability</h3>
-          <ul class="space-y-2 text-sm" style="color: #64748B;">
-            <li>• Prometheus — metrics collection from day one</li>
-            <li>• Grafana — dashboards and visualization</li>
-            <li>• Alertmanager — alert routing and notification</li>
-            <li>• Deployed as part of the initial platform — not added later</li>
-          </ul>
-        </div>
-      </div>
-      <div class="flex flex-wrap justify-center gap-3 mt-8">
-        <a href="/projects/gitops-stack" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl" style="background: #EEF4FF; color: #1E6FFF;">gitops-stack case study →</a>
-        <a href="/projects/k8s-devops-platform" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl" style="background: #EEF4FF; color: #1E6FFF;">k8s-devops-platform →</a>
-      </div>
-    </div>
-  </section>
-</SolutionLayout>
+  ctaH2="Instrumenta tu plataforma desde el inicio."
+  ctaSubtitle="Trae tus servicios actuales y los requisitos de observabilidad de tu equipo. Diseñamos el stack que permite detectar incidentes antes de que los usuarios los reporten."
+  backLabel="Volver a Soluciones"
+/>

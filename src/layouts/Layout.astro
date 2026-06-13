@@ -150,7 +150,7 @@ const websiteSchema = {
   inLanguage: lang === 'es' ? 'es-ES' : 'en-US',
 }
 
-const contactHref = lang === 'es' ? '/es/contacto' : '/contact'
+const contactHref = lang === 'es' ? '/contacto' : (lang === 'en' ? '/en/contact' : '/contacto')
 const ctaLabel = lang === 'es' ? 'Agendar consulta' : 'Schedule Consultation'
 const skipLabel =
   lang === 'es' ? 'Ir al contenido principal' : 'Skip to main content'
@@ -329,7 +329,7 @@ const aboutItems: NavItem[] = [
 const isServicesActive =
   servicesItems.some(
     (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
-  ) || currentPath.startsWith('/services')
+  ) || currentPath.startsWith('/en/services') || currentPath.startsWith('/servicios')
 const isSolutionsActive = solutionsItems.some(
   (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
 )
@@ -340,17 +340,17 @@ const isResourcesActive = resourcesItems.some(
   (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
 )
 const isAboutActive =
-  currentPath === '/about' ||
-  currentPath === '/es/nosotros' ||
+  currentPath === '/nosotros' ||
+  currentPath === '/en/about' ||
   currentPath === '/certifications' ||
-  currentPath === '/es/certifications' ||
+  currentPath === '/en/certifications' ||
   currentPath === '/open-source' ||
-  currentPath === '/es/open-source' ||
+  currentPath === '/en/open-source' ||
   currentPath === '/why-lra' ||
-  currentPath === '/es/why-lra' ||
-  currentPath === '/methodology' ||
-  currentPath === '/es/metodologia'
-const isHomeActive = currentPath === '/' || currentPath === '/es'
+  currentPath === '/en/why-lra' ||
+  currentPath === '/metodologia' ||
+  currentPath === '/en/methodology'
+const isHomeActive = currentPath === '/' || currentPath === '/en/'
 ---
 
 <!doctype html>
@@ -370,7 +370,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
     {hreflangTags.map(({ locale, href }) => (
       <link rel="alternate" hreflang={locale} href={href} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href="https://lracloudops.com/" />
 
     <meta property="og:title" content={`${titulo} | LRA Cloud Ops`} />
     <meta property="og:description" content={descripcion} />
@@ -446,7 +446,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
       style="min-height: 40px; background: #0A2540; border-bottom: 1px solid rgba(30,111,255,0.2); display: flex; align-items: center; justify-content: center; position: relative; padding: 6px 48px;"
     >
       <a
-        href={lang === 'es' ? '/es/contacto' : '/contact'}
+        href={contactHref}
         class="flex items-center gap-2 transition-opacity hover:opacity-80 text-center"
         style="font-size: 13px; color: rgba(255,255,255,0.9); text-decoration: none;"
       >
@@ -492,7 +492,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
       >
         <!-- Logo -->
         <a
-          href={lang === 'es' ? '/es' : '/'}
+          href={lang === 'en' ? '/en/' : '/'}
           class="flex items-center gap-2 flex-shrink-0 z-50"
           aria-label="LRA Cloud Ops — Home"
         >
@@ -516,7 +516,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
         <div class="hidden lg:flex items-center gap-0.5">
           <!-- Home -->
           <a
-            href={lang === 'es' ? '/es' : '/'}
+            href={lang === 'en' ? '/en/' : '/'}
             class={`relative text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 ${isHomeActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
             aria-current={isHomeActive ? 'page' : undefined}
           >
@@ -950,8 +950,10 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
                 {
                   aboutItems.map(({ href, label, desc, iconPath }) => {
                     const esHref =
-                      href === '/about' ? '/es/nosotros' : href === '/methodology' ? '/es/metodologia' : `/es${href}`
-                    const resolvedHref = lang === 'es' ? esHref : href
+                      href === '/about' ? '/nosotros' : href === '/methodology' ? '/metodologia' : href
+                    const enHref =
+                      href === '/about' ? '/en/about' : href === '/methodology' ? '/en/methodology' : `/en${href}`
+                    const resolvedHref = lang === 'es' ? esHref : lang === 'en' ? enHref : href
                     const active =
                       currentPath === resolvedHref || currentPath === href
                     return (
@@ -1160,7 +1162,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
       <nav class="flex-1 overflow-y-auto">
         <!-- Home -->
         <a
-          href={lang === 'es' ? '/es' : '/'}
+          href={lang === 'en' ? '/en/' : '/'}
           class={`flex items-center gap-3 px-5 py-3.5 text-sm font-medium border-b border-gray-50 transition-colors ${isHomeActive ? 'text-blue-600 bg-blue-50/50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
           aria-current={isHomeActive ? 'page' : undefined}
         >
@@ -1447,8 +1449,10 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
               {
                 aboutItems.map(({ href, label, iconPath }) => {
                   const esHref =
-                    href === '/about' ? '/es/nosotros' : href === '/methodology' ? '/es/metodologia' : `/es${href}`
-                  const resolvedHref = lang === 'es' ? esHref : href
+                    href === '/about' ? '/nosotros' : href === '/methodology' ? '/metodologia' : href
+                  const enHref =
+                    href === '/about' ? '/en/about' : href === '/methodology' ? '/en/methodology' : `/en${href}`
+                  const resolvedHref = lang === 'es' ? esHref : lang === 'en' ? enHref : href
                   const active =
                     currentPath === resolvedHref || currentPath === href
                   return (
@@ -1639,7 +1643,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
           <!-- Brand -->
           <div class="col-span-2 md:col-span-1">
             <a
-              href={lang === 'es' ? '/es' : '/'}
+              href={lang === 'en' ? '/en/' : '/'}
               class="inline-block mb-5"
               aria-label="LRA Cloud Ops — Home"
             >
@@ -1757,19 +1761,19 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
             </h3>
             <ul class="space-y-3">
               {(lang === 'es' ? [
-                { label: 'Cloud Infrastructure', href: '/es/cloud-infrastructure' },
-                { label: 'Kubernetes Platforms', href: '/kubernetes-platforms' },
-                { label: 'DevOps Automation', href: '/es/devops-automation' },
-                { label: 'Platform Engineering', href: '/es/platform-engineering' },
-                { label: 'Observability & SRE', href: '/es/observability' },
-                { label: 'Modelos de engagement', href: '/es/pricing' },
-              ] : [
                 { label: 'Cloud Infrastructure', href: '/cloud-infrastructure' },
                 { label: 'Kubernetes Platforms', href: '/kubernetes-platforms' },
                 { label: 'DevOps Automation', href: '/devops-automation' },
                 { label: 'Platform Engineering', href: '/platform-engineering' },
                 { label: 'Observability & SRE', href: '/observability' },
-                { label: 'Engagement Models', href: '/pricing' },
+                { label: 'Modelos de engagement', href: '/pricing' },
+              ] : [
+                { label: 'Cloud Infrastructure', href: '/en/cloud-infrastructure' },
+                { label: 'Kubernetes Platforms', href: '/en/kubernetes-platforms' },
+                { label: 'DevOps Automation', href: '/en/devops-automation' },
+                { label: 'Platform Engineering', href: '/en/platform-engineering' },
+                { label: 'Observability & SRE', href: '/en/observability' },
+                { label: 'Engagement Models', href: '/en/pricing' },
               ]).map(({ label, href }) => (
                 <li>
                   <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
@@ -1787,21 +1791,21 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
             </h3>
             <ul class="space-y-3">
               {(lang === 'es' ? [
-                { label: 'Blog', href: '/es/blog' },
-                { label: 'Documentación', href: '/docs' },
-                { label: 'Architecture Center', href: '/architectures' },
-                { label: 'Herramientas de evaluación', href: '/es/assessment' },
-                { label: 'Casos de uso', href: '/es/proyectos' },
-                { label: 'Open Source', href: '/es/open-source' },
-                { label: 'Seguridad', href: '/es/security' },
-              ] : [
                 { label: 'Blog', href: '/blog' },
-                { label: 'Documentation', href: '/docs' },
-                { label: 'Architecture Center', href: '/architectures' },
-                { label: 'Assessment Tools', href: '/assessments' },
-                { label: 'Case Studies', href: '/projects' },
+                { label: 'Documentación', href: '/en/docs' },
+                { label: 'Architecture Center', href: '/en/architectures' },
+                { label: 'Herramientas de evaluación', href: '/assessment' },
+                { label: 'Casos de uso', href: '/proyectos' },
                 { label: 'Open Source', href: '/open-source' },
-                { label: 'Security', href: '/security' },
+                { label: 'Seguridad', href: '/security' },
+              ] : [
+                { label: 'Blog', href: '/en/blog' },
+                { label: 'Documentation', href: '/en/docs' },
+                { label: 'Architecture Center', href: '/en/architectures' },
+                { label: 'Assessment Tools', href: '/en/assessments' },
+                { label: 'Case Studies', href: '/en/projects' },
+                { label: 'Open Source', href: '/en/open-source' },
+                { label: 'Security', href: '/en/security' },
               ]).map(({ label, href }) => (
                 <li>
                   <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
@@ -1819,18 +1823,18 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
             </h3>
             <ul class="space-y-3">
               {(lang === 'es' ? [
-                { label: 'Nosotros', href: '/es/nosotros' },
-                { label: 'Certificaciones', href: '/es/certifications' },
-                { label: '¿Por qué LRA?', href: '/es/why-lra' },
-                { label: 'Contacto', href: '/es/contacto' },
-                { label: 'Privacidad', href: '/es/privacy' },
+                { label: 'Nosotros', href: '/nosotros' },
+                { label: 'Certificaciones', href: '/certifications' },
+                { label: '¿Por qué LRA?', href: '/why-lra' },
+                { label: 'Contacto', href: '/contacto' },
+                { label: 'Privacidad', href: '/privacy' },
                 { label: 'GitHub', href: 'https://github.com/lra-cloud-ops', external: true },
               ] : ([
-                { label: 'About', href: '/about' },
-                { label: 'Certifications', href: '/certifications' },
-                { label: 'Why LRA', href: '/why-lra' },
-                { label: 'Contact', href: '/contact' },
-                { label: 'Privacy', href: '/privacy' },
+                { label: 'About', href: '/en/about' },
+                { label: 'Certifications', href: '/en/certifications' },
+                { label: 'Why LRA', href: '/en/why-lra' },
+                { label: 'Contact', href: '/en/contact' },
+                { label: 'Privacy', href: '/en/privacy' },
                 { label: 'GitHub', href: 'https://github.com/lra-cloud-ops', external: true },
               ] as { label: string; href: string; external?: boolean }[])
               ).map(({ label, href, external }) => (
@@ -1862,13 +1866,13 @@ const isHomeActive = currentPath === '/' || currentPath === '/es'
                 : '© 2026 LRA Cloud Operations · MIT License · Built with Astro + Cloudflare · EU-based consultancy'}
             </span>
             <a
-              href={lang === 'es' ? '/es/privacy' : '/privacy'}
+              href={lang === 'en' ? '/en/privacy' : '/privacy'}
               class="text-xs transition-colors hover:text-white"
               style="color:rgba(148,163,184,0.35);"
               >{lang === 'es' ? 'Privacidad' : 'Privacy Policy'}</a
             >
             <a
-              href={lang === 'es' ? '/es/terms' : '/terms'}
+              href={lang === 'en' ? '/en/terms' : '/terms'}
               class="text-xs transition-colors hover:text-white"
               style="color:rgba(148,163,184,0.35);"
               >{lang === 'es' ? 'Términos' : 'Terms of Service'}</a

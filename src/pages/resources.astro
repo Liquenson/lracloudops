@@ -1,12 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import NewsletterCTA from '../components/NewsletterCTA.astro'
 ---
 
 <Layout
-  titulo="Engineering Resources · LRA Cloud Operations"
-  descripcion="Free production-grade engineering resources: AWS checklists, Kubernetes security guides, GitOps playbooks and Terraform best practices."
-  keywords="DevOps resources, AWS production checklist, Kubernetes security guide, GitOps playbook, Terraform best practices, cloud engineering PDF"
+  titulo="Recursos de Ingeniería · LRA Cloud Operations"
+  descripcion="Recursos de ingeniería de nivel producción: checklists AWS, guías de seguridad Kubernetes, playbooks GitOps y mejores prácticas Terraform. Descarga gratuita."
+  keywords="recursos DevOps, checklist AWS producción, guía seguridad Kubernetes, playbook GitOps, mejores prácticas Terraform, PDF ingeniería cloud"
 >
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
@@ -28,49 +27,34 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
       >
-        Free Resources
+        Recursos Gratuitos
       </span>
       <h1
         class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
         style="letter-spacing: -0.02em;"
       >
-        Engineering Resources
+        Recursos Técnicos
       </h1>
       <p
         class="text-lg leading-relaxed max-w-2xl mx-auto mb-4"
         style="color: rgba(147,184,255,0.8);"
       >
-        Production-tested checklists, hardening guides and implementation
-        playbooks. Used by our team on every engagement. Download free.
+        Guías y recursos basados en despliegues reales en AWS, Kubernetes y
+        GitOps. Usados por nuestro equipo en cada engagement. Descarga gratuita.
       </p>
       <p class="text-sm font-medium" style="color: rgba(147,184,255,0.5);">
-        PDF guides &middot; No spam &middot; Sent to your inbox
+        Guías PDF &middot; Sin spam &middot; Enviadas a tu bandeja de entrada
       </p>
     </div>
   </section>
 
-  <!-- ─── RESOURCES GRID ───────────────────────────────────────────────── -->
+  <!-- ─── RECURSOS GRID ─────────────────────────────────────────────────── -->
   <section class="py-20" style="background: #F8FAFC;">
     <div class="max-w-5xl mx-auto px-6">
-      <!-- ─── CATEGORY FILTERS ──────────────────────────────────────────── -->
-      <div class="flex flex-wrap gap-2 mb-8" id="resource-filters">
-        {['All', 'Kubernetes', 'Terraform', 'AWS', 'GitOps', 'Security', 'Observability', 'Architecture'].map(cat => (
-          <button
-            data-filter={cat}
-            class="resource-filter-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-200"
-            style={cat === 'All'
-              ? 'background: #1E6FFF; color: white; border-color: #1E6FFF; box-shadow: 0 2px 8px rgba(30,111,255,0.3);'
-              : 'background: white; color: #64748b; border-color: #e2e8f0;'}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
-        <!-- AWS Production Readiness Checklist -->
+        <!-- Checklist de Preparación AWS para Producción -->
         <div
-          class="resource-card bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
-          data-category="AWS"
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
           style="border: 1px solid #e2e8f0; border-left: 4px solid #FF9900; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
         >
           <div class="flex items-center gap-4 mb-5">
@@ -100,7 +84,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 class="text-base font-bold leading-tight"
                 style="color: #0A2540;"
               >
-                AWS Production Readiness Checklist
+                Checklist de Preparación AWS para Producción
               </h2>
             </div>
           </div>
@@ -108,13 +92,14 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="text-sm leading-relaxed mb-5 flex-1"
             style="color: #64748b;"
           >
-            47 checks across security, reliability, performance and cost
-            optimization. Used by our team before every go-live on AWS. Covers
-            VPC, IAM, RDS, EKS, CloudFront, Route 53 and monitoring.
+            47 comprobaciones en seguridad, fiabilidad, rendimiento y
+            optimización de costes. Usado por nuestro equipo antes de cada
+            go-live en AWS. Cubre VPC, IAM, RDS, EKS, CloudFront, Route 53 y
+            monitorización.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
             {
-              ['Security', 'IAM', 'VPC', 'RDS', 'EKS', 'CloudFront'].map(
+              ['Seguridad', 'IAM', 'VPC', 'RDS', 'EKS', 'CloudFront'].map(
                 (tag) => (
                   <span
                     class="text-xs font-medium px-2.5 py-1 rounded-full"
@@ -145,12 +130,12 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               ></path>
             </svg>
             <span
-              ><strong style="color: #0A2540;">47 checks</strong> &middot; PDF &middot;
-              Free</span
+              ><strong style="color: #0A2540;">47 comprobaciones</strong> &middot;
+              PDF &middot; Gratis</span
             >
           </div>
           <button
-            data-resource="AWS Production Readiness Checklist"
+            data-resource="Checklist de Preparación AWS para Producción"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #FF9900 0%, #E07B00 100%); color: white; box-shadow: 0 2px 8px rgba(255,153,0,0.3);"
           >
@@ -166,14 +151,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path></svg
             >
-            Download Free
+            Descargar Gratis
           </button>
         </div>
 
-        <!-- Kubernetes Security Hardening Guide -->
+        <!-- Guía de Hardening de Seguridad Kubernetes -->
         <div
-          class="resource-card bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
-          data-category="Kubernetes Security"
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
           style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
         >
           <div class="flex items-center gap-4 mb-5">
@@ -198,13 +182,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             <div class="flex-1 min-w-0">
               <span
                 class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
-                style="color: #326CE5;">Kubernetes &middot; Security</span
+                style="color: #326CE5;">Kubernetes &middot; Seguridad</span
               >
               <h2
                 class="text-base font-bold leading-tight"
                 style="color: #0A2540;"
               >
-                Kubernetes Security Hardening Guide
+                Guía de Hardening de Seguridad Kubernetes
               </h2>
             </div>
           </div>
@@ -212,9 +196,10 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="text-sm leading-relaxed mb-5 flex-1"
             style="color: #64748b;"
           >
-            Production hardening patterns for EKS clusters: RBAC, Pod Security
-            Standards, NetworkPolicies, Secrets encryption, image scanning and
-            audit logging. Based on real production deployments.
+            Patrones de hardening en producción para clústeres EKS: RBAC, Pod
+            Security Standards, NetworkPolicies, cifrado de Secrets, escaneo de
+            imágenes y audit logging. Basado en despliegues reales en
+            producción.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
             {
@@ -254,12 +239,12 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               ></path>
             </svg>
             <span
-              ><strong style="color: #0A2540;">60+ patterns</strong> &middot; PDF
-              &middot; Free</span
+              ><strong style="color: #0A2540;">60+ patrones</strong> &middot; PDF
+              &middot; Gratis</span
             >
           </div>
           <button
-            data-resource="Kubernetes Security Hardening Guide"
+            data-resource="Guía de Hardening de Seguridad Kubernetes"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; box-shadow: 0 2px 8px rgba(50,108,229,0.3);"
           >
@@ -275,14 +260,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path></svg
             >
-            Download Free
+            Descargar Gratis
           </button>
         </div>
 
-        <!-- GitOps Implementation Playbook -->
+        <!-- Playbook de Implementación GitOps -->
         <div
-          class="resource-card bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
-          data-category="GitOps"
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
           style="border: 1px solid #e2e8f0; border-left: 4px solid #EF7B4D; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
         >
           <div class="flex items-center gap-4 mb-5">
@@ -313,7 +297,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 class="text-base font-bold leading-tight"
                 style="color: #0A2540;"
               >
-                GitOps Implementation Playbook
+                Playbook de Implementación GitOps
               </h2>
             </div>
           </div>
@@ -321,9 +305,10 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="text-sm leading-relaxed mb-5 flex-1"
             style="color: #64748b;"
           >
-            Step-by-step guide to implementing GitOps with ArgoCD: repository
-            structure, app-of-apps pattern, sync policies, drift detection, Helm
-            values per environment and rollback procedures.
+            Guía paso a paso para implementar GitOps con ArgoCD: estructura de
+            repositorio, patrón app-of-apps, políticas de sincronización,
+            detección de drift, valores Helm por entorno y procedimientos de
+            rollback.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
             {
@@ -362,12 +347,12 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               ></path>
             </svg>
             <span
-              ><strong style="color: #0A2540;">Step-by-step guide</strong> &middot;
-              PDF &middot; Free</span
+              ><strong style="color: #0A2540;">Guía paso a paso</strong> &middot;
+              PDF &middot; Gratis</span
             >
           </div>
           <button
-            data-resource="GitOps Implementation Playbook"
+            data-resource="Playbook de Implementación GitOps"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #EF7B4D 0%, #C05A2D 100%); color: white; box-shadow: 0 2px 8px rgba(239,123,77,0.3);"
           >
@@ -383,14 +368,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path></svg
             >
-            Download Free
+            Descargar Gratis
           </button>
         </div>
 
-        <!-- Terraform Module Best Practices -->
+        <!-- Mejores Prácticas de Módulos Terraform -->
         <div
-          class="resource-card bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
-          data-category="Terraform"
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
           style="border: 1px solid #e2e8f0; border-left: 4px solid #7B42BC; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
         >
           <div class="flex items-center gap-4 mb-5">
@@ -420,7 +404,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 class="text-base font-bold leading-tight"
                 style="color: #0A2540;"
               >
-                Terraform Module Best Practices
+                Mejores Prácticas de Módulos Terraform
               </h2>
             </div>
           </div>
@@ -428,18 +412,19 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="text-sm leading-relaxed mb-5 flex-1"
             style="color: #64748b;"
           >
-            Production module patterns for multi-environment AWS infrastructure:
-            remote state with locking, workspace strategy, variable validation,
-            output contracts and module versioning for team codebases.
+            Patrones de módulos en producción para infraestructura AWS
+            multi-entorno: estado remoto con bloqueo, estrategia de workspaces,
+            validación de variables, contratos de outputs y versionado de
+            módulos para bases de código en equipo.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
             {
               [
-                'Modules',
-                'Remote State',
+                'Módulos',
+                'Estado Remoto',
                 'Workspaces',
-                'Validation',
-                'Multi-env',
+                'Validación',
+                'Multi-entorno',
               ].map((tag) => (
                 <span
                   class="text-xs font-medium px-2.5 py-1 rounded-full"
@@ -469,12 +454,12 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               ></path>
             </svg>
             <span
-              ><strong style="color: #0A2540;">Patterns &amp; examples</strong> &middot;
-              PDF &middot; Free</span
+              ><strong style="color: #0A2540;">Patrones y ejemplos</strong> &middot;
+              PDF &middot; Gratis</span
             >
           </div>
           <button
-            data-resource="Terraform Module Best Practices"
+            data-resource="Mejores Prácticas de Módulos Terraform"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #7B42BC 0%, #5B2E9E 100%); color: white; box-shadow: 0 2px 8px rgba(123,66,188,0.3);"
           >
@@ -490,14 +475,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path></svg
             >
-            Download Free
+            Descargar Gratis
           </button>
         </div>
 
-        <!-- Kubernetes Production Standards -->
+        <!-- Estándares de Producción Kubernetes -->
         <div
-          class="resource-card bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
-          data-category="Kubernetes"
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
           style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
         >
           <div class="flex items-center gap-4 mb-5">
@@ -522,13 +506,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             <div class="flex-1 min-w-0">
               <span
                 class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
-                style="color: #326CE5;">Kubernetes &middot; Production</span
+                style="color: #326CE5;">Kubernetes &middot; Producción</span
               >
               <h2
                 class="text-base font-bold leading-tight"
                 style="color: #0A2540;"
               >
-                Kubernetes Production Standards
+                Estándares de Producción Kubernetes
               </h2>
             </div>
           </div>
@@ -536,14 +520,14 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="text-sm leading-relaxed mb-5 flex-1"
             style="color: #64748b;"
           >
-            Our internal checklist for taking a Kubernetes cluster to
-            production. Based on real EKS deployments in healthcare and
-            financial environments.
+            Nuestro checklist interno para llevar un clúster Kubernetes a
+            producción. Basado en despliegues EKS reales en entornos sanitarios
+            y financieros.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
             {
               [
-                'Resource Limits',
+                'Límites de recursos',
                 'Health Checks',
                 'Pod Security',
                 'HPA',
@@ -579,16 +563,16 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 ></path>
               </svg>
               <span
-                ><strong style="color: #0A2540;">Production checklist</strong> &middot;
-                PDF &middot; Free</span
+                ><strong style="color: #0A2540;">Checklist de producción</strong
+                > &middot; PDF &middot; Gratis</span
               >
             </div>
             <span class="text-xs font-medium" style="color: #94A3B8;"
-              >1.2k downloads</span
+              >1.2k descargas</span
             >
           </div>
           <button
-            data-resource="Kubernetes Production Standards"
+            data-resource="Estándares de Producción Kubernetes"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #326CE5 0%, #1A4DB5 100%); color: white; box-shadow: 0 2px 8px rgba(50,108,229,0.3);"
           >
@@ -604,14 +588,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path></svg
             >
-            Download Free
+            Descargar Gratis
           </button>
         </div>
 
-        <!-- GitOps Implementation Runbook -->
+        <!-- Runbook de Implementación GitOps -->
         <div
-          class="resource-card bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
-          data-category="GitOps"
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
           style="border: 1px solid #e2e8f0; border-left: 4px solid #FF6C37; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
         >
           <div class="flex items-center gap-4 mb-5">
@@ -642,7 +625,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 class="text-base font-bold leading-tight"
                 style="color: #0A2540;"
               >
-                GitOps Implementation Runbook
+                Runbook de Implementación GitOps
               </h2>
             </div>
           </div>
@@ -650,8 +633,8 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="text-sm leading-relaxed mb-5 flex-1"
             style="color: #64748b;"
           >
-            Step-by-step runbook for implementing GitOps with ArgoCD on AWS EKS.
-            Based on our production deployments.
+            Runbook paso a paso para implementar GitOps con ArgoCD en AWS EKS.
+            Basado en nuestros despliegues en producción.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
             {
@@ -692,16 +675,16 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 ></path>
               </svg>
               <span
-                ><strong style="color: #0A2540;">Step-by-step runbook</strong> &middot;
-                PDF &middot; Free</span
+                ><strong style="color: #0A2540;">Runbook paso a paso</strong> &middot;
+                PDF &middot; Gratis</span
               >
             </div>
             <span class="text-xs font-medium" style="color: #94A3B8;"
-              >934 downloads</span
+              >934 descargas</span
             >
           </div>
           <button
-            data-resource="GitOps Implementation Runbook"
+            data-resource="Runbook de Implementación GitOps"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #FF6C37 0%, #C04A1E 100%); color: white; box-shadow: 0 2px 8px rgba(255,108,55,0.3);"
           >
@@ -717,14 +700,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path></svg
             >
-            Download Free
+            Descargar Gratis
           </button>
         </div>
 
-        <!-- DevSecOps Pipeline Guide -->
+        <!-- Guía de Pipeline DevSecOps -->
         <div
-          class="resource-card bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
-          data-category="Security"
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
           style="border: 1px solid #e2e8f0; border-left: 4px solid #EE3124; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
         >
           <div class="flex items-center gap-4 mb-5">
@@ -749,13 +731,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             <div class="flex-1 min-w-0">
               <span
                 class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
-                style="color: #EE3124;">Security &middot; CI/CD</span
+                style="color: #EE3124;">Seguridad &middot; CI/CD</span
               >
               <h2
                 class="text-base font-bold leading-tight"
                 style="color: #0A2540;"
               >
-                DevSecOps Pipeline Guide
+                Guía de Pipeline DevSecOps
               </h2>
             </div>
           </div>
@@ -763,15 +745,15 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="text-sm leading-relaxed mb-5 flex-1"
             style="color: #64748b;"
           >
-            How to integrate security into your CI/CD pipeline. OIDC federation,
-            SAST with SonarQube, container scanning and policy gates.
+            Cómo integrar seguridad en tu pipeline CI/CD. Federación OIDC, SAST
+            con SonarQube, escaneo de contenedores y policy gates.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
             {
               [
                 'OIDC',
                 'SonarQube',
-                'Container Scanning',
+                'Escaneo Contenedores',
                 'Policy Gates',
                 'SAST',
                 'GitHub Actions',
@@ -805,16 +787,16 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 ></path>
               </svg>
               <span
-                ><strong style="color: #0A2540;">Security pipeline guide</strong
-                > &middot; PDF &middot; Free</span
+                ><strong style="color: #0A2540;">Guía de pipeline seguro</strong
+                > &middot; PDF &middot; Gratis</span
               >
             </div>
             <span class="text-xs font-medium" style="color: #94A3B8;"
-              >615 downloads</span
+              >615 descargas</span
             >
           </div>
           <button
-            data-resource="DevSecOps Pipeline Guide"
+            data-resource="Guía de Pipeline DevSecOps"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #EE3124 0%, #B52018 100%); color: white; box-shadow: 0 2px 8px rgba(238,49,36,0.3);"
           >
@@ -830,14 +812,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path></svg
             >
-            Download Free
+            Descargar Gratis
           </button>
         </div>
 
-        <!-- Observability Stack Setup Guide -->
+        <!-- Guía de Configuración del Stack de Observabilidad -->
         <div
-          class="resource-card bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
-          data-category="Observability"
+          class="bg-white rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-200"
           style="border: 1px solid #e2e8f0; border-left: 4px solid #F97316; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
         >
           <div class="flex items-center gap-4 mb-5">
@@ -862,13 +843,14 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             <div class="flex-1 min-w-0">
               <span
                 class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
-                style="color: #F97316;">Observability &middot; Monitoring</span
+                style="color: #F97316;"
+                >Observabilidad &middot; Monitorización</span
               >
               <h2
                 class="text-base font-bold leading-tight"
                 style="color: #0A2540;"
               >
-                Observability Stack Setup Guide
+                Guía de Configuración del Stack de Observabilidad
               </h2>
             </div>
           </div>
@@ -876,8 +858,8 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="text-sm leading-relaxed mb-5 flex-1"
             style="color: #64748b;"
           >
-            Production observability with Prometheus, Grafana and CloudWatch.
-            Alert rules, dashboard templates and escalation runbooks.
+            Observabilidad en producción con Prometheus, Grafana y CloudWatch.
+            Reglas de alertas, plantillas de dashboards y runbooks de escalado.
           </p>
           <div class="flex flex-wrap gap-2 mb-5">
             {
@@ -885,9 +867,9 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 'Prometheus',
                 'Grafana',
                 'CloudWatch',
-                'Alert Rules',
+                'Reglas de Alerta',
                 'Dashboards',
-                'Escalation',
+                'Escalado',
               ].map((tag) => (
                 <span
                   class="text-xs font-medium px-2.5 py-1 rounded-full"
@@ -918,16 +900,16 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 ></path>
               </svg>
               <span
-                ><strong style="color: #0A2540;">Setup guide + templates</strong
-                > &middot; PDF &middot; Free</span
+                ><strong style="color: #0A2540;">Guía + plantillas</strong> &middot;
+                PDF &middot; Gratis</span
               >
             </div>
             <span class="text-xs font-medium" style="color: #94A3B8;"
-              >518 downloads</span
+              >518 descargas</span
             >
           </div>
           <button
-            data-resource="Observability Stack Setup Guide"
+            data-resource="Guía de Configuración del Stack de Observabilidad"
             class="resource-download-btn inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl w-full transition-all hover:opacity-90"
             style="background: linear-gradient(135deg, #F97316 0%, #C2570B 100%); color: white; box-shadow: 0 2px 8px rgba(249,115,22,0.3);"
           >
@@ -943,26 +925,25 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path></svg
             >
-            Download Free
+            Descargar Gratis
           </button>
         </div>
       </div>
 
-      <!-- ─── ARCHITECTURE BLUEPRINTS ──────────────────────────────────────── -->
-      <div id="arch-section" class="mb-10 mt-4">
+      <!-- ─── BLUEPRINTS DE ARQUITECTURA ────────────────────────────────── -->
+      <div class="mb-10 mt-4">
         <div class="flex items-center gap-3 mb-6">
           <div class="h-px flex-1" style="background: #e2e8f0;"></div>
           <span
             class="text-xs font-bold uppercase tracking-wider px-3"
-            style="color: #94A3B8;">Architecture Blueprints</span
+            style="color: #94A3B8;">Blueprints de Arquitectura</span
           >
           <div class="h-px flex-1" style="background: #e2e8f0;"></div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <!-- AWS Landing Zone Blueprint -->
           <div
-            class="resource-card bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
-            data-category="Architecture"
+            class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
             style="border: 1px solid #e2e8f0; border-left: 4px solid #FF9900; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
           >
             <div class="flex items-center gap-4 mb-5">
@@ -986,13 +967,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               <div class="flex-1 min-w-0">
                 <span
                   class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
-                  style="color: #FF9900;">Architecture &middot; AWS</span
+                  style="color: #FF9900;">Arquitectura &middot; AWS</span
                 >
                 <h2
                   class="text-base font-bold leading-tight"
                   style="color: #0A2540;"
                 >
-                  AWS Landing Zone Blueprint
+                  Blueprint AWS Landing Zone
                 </h2>
               </div>
             </div>
@@ -1000,9 +981,9 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               class="text-sm leading-relaxed mb-5 flex-1"
               style="color: #64748b;"
             >
-              Multi-account AWS strategy with Security Account, Shared Services
-              and workload OUs. SCPs, GuardDuty and centralized CloudTrail
-              across all accounts.
+              Estrategia AWS multi-cuenta con Security Account, Shared Services
+              y OUs de workload. SCPs, GuardDuty y CloudTrail centralizado en
+              todas las cuentas.
             </p>
             <a
               href="/architectures/aws-landing-zone"
@@ -1020,14 +1001,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                   stroke-width="2"
                   d="M9 5l7 7-7 7"></path></svg
               >
-              View Architecture
+              Ver Arquitectura
             </a>
           </div>
 
           <!-- EKS Production Blueprint -->
           <div
-            class="resource-card bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
-            data-category="Architecture"
+            class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
             style="border: 1px solid #e2e8f0; border-left: 4px solid #326CE5; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
           >
             <div class="flex items-center gap-4 mb-5">
@@ -1051,13 +1031,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               <div class="flex-1 min-w-0">
                 <span
                   class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
-                  style="color: #326CE5;">Architecture &middot; Kubernetes</span
+                  style="color: #326CE5;">Arquitectura &middot; Kubernetes</span
                 >
                 <h2
                   class="text-base font-bold leading-tight"
                   style="color: #0A2540;"
                 >
-                  EKS Production Blueprint
+                  Blueprint EKS Producción
                 </h2>
               </div>
             </div>
@@ -1065,8 +1045,8 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               class="text-sm leading-relaxed mb-5 flex-1"
               style="color: #64748b;"
             >
-              Production-grade EKS with managed node groups, ArgoCD GitOps,
-              External Secrets Operator, HPA and CloudWatch Container Insights.
+              EKS de nivel producción con managed node groups, GitOps ArgoCD,
+              External Secrets Operator, HPA y CloudWatch Container Insights.
             </p>
             <a
               href="/architectures/eks-production-platform"
@@ -1084,14 +1064,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                   stroke-width="2"
                   d="M9 5l7 7-7 7"></path></svg
               >
-              View Architecture
+              Ver Arquitectura
             </a>
           </div>
 
           <!-- GitOps Platform Blueprint -->
           <div
-            class="resource-card bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
-            data-category="Architecture"
+            class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
             style="border: 1px solid #e2e8f0; border-left: 4px solid #FF6C37; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
           >
             <div class="flex items-center gap-4 mb-5">
@@ -1115,13 +1094,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               <div class="flex-1 min-w-0">
                 <span
                   class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
-                  style="color: #FF6C37;">Architecture &middot; GitOps</span
+                  style="color: #FF6C37;">Arquitectura &middot; GitOps</span
                 >
                 <h2
                   class="text-base font-bold leading-tight"
                   style="color: #0A2540;"
                 >
-                  GitOps Platform Blueprint
+                  Blueprint Plataforma GitOps
                 </h2>
               </div>
             </div>
@@ -1129,9 +1108,9 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               class="text-sm leading-relaxed mb-5 flex-1"
               style="color: #64748b;"
             >
-              Automated delivery with GitHub Actions CI, ArgoCD CD and OIDC
-              authentication. Git as the single source of truth for all
-              deployments.
+              Entrega automatizada con GitHub Actions CI, ArgoCD CD y
+              autenticación OIDC. Git como única fuente de verdad para todos los
+              despliegues.
             </p>
             <a
               href="/architectures/gitops-platform"
@@ -1149,14 +1128,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                   stroke-width="2"
                   d="M9 5l7 7-7 7"></path></svg
               >
-              View Architecture
+              Ver Arquitectura
             </a>
           </div>
 
           <!-- Observability Blueprint -->
           <div
-            class="resource-card bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
-            data-category="Architecture"
+            class="bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
             style="border: 1px solid #e2e8f0; border-left: 4px solid #F97316; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08);"
           >
             <div class="flex items-center gap-4 mb-5">
@@ -1181,13 +1159,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                 <span
                   class="text-xs font-bold uppercase tracking-wider mb-0.5 block"
                   style="color: #F97316;"
-                  >Architecture &middot; Observability</span
+                  >Arquitectura &middot; Observabilidad</span
                 >
                 <h2
                   class="text-base font-bold leading-tight"
                   style="color: #0A2540;"
                 >
-                  Observability Blueprint
+                  Blueprint Observabilidad
                 </h2>
               </div>
             </div>
@@ -1195,9 +1173,9 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
               class="text-sm leading-relaxed mb-5 flex-1"
               style="color: #64748b;"
             >
-              Prometheus + Grafana + Fluent Bit + CloudWatch. Alert rules,
-              dashboard templates and escalation runbooks for production
-              workloads.
+              Prometheus + Grafana + Fluent Bit + CloudWatch. Reglas de alerta,
+              plantillas de dashboards y runbooks de escalado para workloads en
+              producción.
             </p>
             <a
               href="/architectures/observability-platform"
@@ -1215,13 +1193,13 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
                   stroke-width="2"
                   d="M9 5l7 7-7 7"></path></svg
               >
-              View Architecture
+              Ver Arquitectura
             </a>
           </div>
         </div>
       </div>
 
-      <!-- ─── DOWNLOAD FORM ─────────────────────────────────────────────── -->
+      <!-- ─── FORMULARIO DE DESCARGA ──────────────────────────────────────── -->
       <div
         id="download-form-section"
         class="max-w-xl mx-auto rounded-2xl p-10 text-center"
@@ -1251,11 +1229,11 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
           style="color: #0A2540;"
           id="form-resource-title"
         >
-          Select a resource above to download
+          Selecciona un recurso arriba para descargar
         </h3>
         <p class="text-sm mb-7" style="color: #64748b;">
-          Enter your work email and we will send it to your inbox. No spam, no
-          drip campaigns.
+          Introduce tu email de trabajo y te lo enviaremos a tu bandeja de
+          entrada. Sin spam, sin campañas de email.
         </p>
 
         <form id="resource-form" class="space-y-3">
@@ -1268,7 +1246,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             type="hidden"
             name="subject"
             id="form-subject"
-            value="Resource Download - LRA Cloud Ops"
+            value="Descarga de Recurso - LRA Cloud Ops"
           />
           <input type="hidden" name="from_name" value="LRA Cloud Operations" />
           <input
@@ -1281,7 +1259,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             type="email"
             name="email"
             required
-            placeholder="you@company.com"
+            placeholder="tu@empresa.com"
             class="w-full px-4 py-3.5 text-sm rounded-xl outline-none transition-all"
             style="background: #F8FAFC; color: #111827; border: 1px solid #e2e8f0;"
             onfocus="this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.2)'; this.style.borderColor='#93b8ff';"
@@ -1293,7 +1271,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
             class="w-full text-sm font-bold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-px active:scale-[0.98]"
             style="background: #1E6FFF; color: white; box-shadow: 0 4px 16px rgba(30,111,255,0.4); opacity: 0.5; cursor: not-allowed;"
           >
-            Send me the resource &rarr;
+            Enviarme el recurso &rarr;
           </button>
         </form>
 
@@ -1303,13 +1281,6 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
         >
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ─── NEWSLETTER ──────────────────────────────────────────────────── -->
-  <section class="py-16" style="background: #F8FAFC;">
-    <div class="max-w-2xl mx-auto px-6">
-      <NewsletterCTA />
     </div>
   </section>
 
@@ -1325,21 +1296,21 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
         class="text-3xl sm:text-4xl font-extrabold text-white mb-4"
         style="letter-spacing: -0.02em;"
       >
-        Need a production architecture review?
+        ¿Necesitas una revisión de arquitectura de producción?
       </h2>
       <p
         class="text-base mb-8 max-w-xl mx-auto"
         style="color: rgba(147,184,255,0.8);"
       >
-        Schedule a free 30-minute call. We will review your current setup and
-        outline a concrete roadmap.
+        Agenda una llamada gratuita de 30 minutos. Revisaremos tu setup actual y
+        definiremos una hoja de ruta concreta.
       </p>
       <a
-        href="/contact"
+        href="/es/contacto"
         class="inline-flex items-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]"
         style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 24px rgba(30,111,255,0.4);"
       >
-        Schedule free consultation
+        Agendar consulta gratuita
         <svg
           class="w-4 h-4"
           fill="none"
@@ -1356,37 +1327,6 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
     </div>
   </section>
 </Layout>
-
-<script>
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.resource-filter-btn')
-  const resourceCards = document.querySelectorAll<HTMLElement>('.resource-card')
-  const archSection = document.getElementById('arch-section')
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter || 'All'
-
-      filterBtns.forEach((b) => {
-        const isActive = b.dataset.filter === filter
-        b.style.background = isActive ? '#1E6FFF' : 'white'
-        b.style.color = isActive ? 'white' : '#64748b'
-        b.style.borderColor = isActive ? '#1E6FFF' : '#e2e8f0'
-        b.style.boxShadow = isActive ? '0 2px 8px rgba(30,111,255,0.3)' : 'none'
-      })
-
-      resourceCards.forEach((card) => {
-        const cats = (card.dataset.category || '').split(' ')
-        const show = filter === 'All' || cats.includes(filter)
-        card.style.display = show ? '' : 'none'
-      })
-
-      if (archSection) {
-        archSection.style.display =
-          filter === 'All' || filter === 'Architecture' ? '' : 'none'
-      }
-    })
-  })
-</script>
 
 <script>
   const buttons = document.querySelectorAll(
@@ -1415,7 +1355,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
       const resource = btn.dataset.resource ?? ''
       if (formTitle) formTitle.textContent = resource
       if (formSubject)
-        formSubject.value = `Resource Download: ${resource} - LRA Cloud Ops`
+        formSubject.value = `Descarga de Recurso: ${resource} - LRA Cloud Ops`
       if (formHidden) formHidden.value = resource
       if (submitBtn) {
         submitBtn.disabled = false
@@ -1423,9 +1363,6 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
         submitBtn.style.cursor = 'pointer'
       }
       formSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      if (typeof window !== 'undefined' && (window as any).cf) {
-        ;(window as any).cf.track('resource_download', { resource })
-      }
     })
   })
 
@@ -1433,7 +1370,7 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
     e.preventDefault()
     if (!submitBtn || !statusEl) return
     const original = submitBtn.textContent
-    submitBtn.textContent = 'Sending...'
+    submitBtn.textContent = 'Enviando...'
     submitBtn.disabled = true
 
     try {
@@ -1445,20 +1382,20 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
       const data = await res.json()
       if (data.success) {
         statusEl.textContent =
-          "Check your inbox! We'll send the resource shortly."
+          '¡Revisa tu bandeja de entrada! Te enviaremos el recurso en breve.'
         statusEl.style.cssText =
           'display:block; background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 12px 16px;'
         form.reset()
-        submitBtn.textContent = 'Sent ✓'
+        submitBtn.textContent = 'Enviado ✓'
       } else {
-        statusEl.textContent = 'Something went wrong. Please try again.'
+        statusEl.textContent = 'Algo salió mal. Por favor, inténtalo de nuevo.'
         statusEl.style.cssText =
           'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
         submitBtn.textContent = original
         submitBtn.disabled = false
       }
     } catch {
-      statusEl.textContent = 'Connection error. Please try again.'
+      statusEl.textContent = 'Error de conexión. Por favor, inténtalo de nuevo.'
       statusEl.style.cssText =
         'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
       submitBtn.textContent = original

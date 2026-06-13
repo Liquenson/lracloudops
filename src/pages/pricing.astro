@@ -1,51 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What is included in the initial assessment?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'A review of your current architecture, infrastructure, delivery processes and observability setup. We identify gaps and outline a concrete approach — at no charge and before any commitment.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can scopes be adjusted after the engagement starts?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. We define the initial scope clearly, but if requirements change during the engagement we discuss adjustments transparently. No surprise invoices.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you work with teams that have no existing cloud infrastructure?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Greenfield is our preferred starting point. We provision everything as code from day one — no legacy constraints, no manual configurations to unwind.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the typical delivery timeline for an implementation?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Most implementation engagements deliver a production-ready environment in 4–8 weeks depending on scope. Complex multi-account or regulated environments take longer.',
-      },
-    },
-  ],
-}
 ---
 
 <Layout
-  titulo="Pricing | DevOps Consulting & Platform Engineering | LRA Cloud Operations"
-  descripcion="Fixed-scope DevOps and cloud infrastructure engagements with clear deliverables. Advisory from €400, full implementation from €3,000, ongoing retainer from €800/mo."
-  keywords="DevOps consulting pricing Spain, Kubernetes implementation cost, AWS infrastructure pricing Europe, platform engineering rates, Terraform implementation price, cloud consulting fees"
-  schema={faqSchema}
+  titulo="Precios · Proyectos Cloud e Infraestructura sin sorpresas"
+  descripcion="Proyectos DevOps y cloud con alcance fijo y entregables claros. Asesoría desde €400, implementación completa desde €3.000, retainer mensual desde €800/mes."
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
@@ -60,35 +19,55 @@ const faqSchema = {
     >
     </div>
     <div
-      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-10 sm:py-14 text-center"
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
     >
       <span
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
       >
-        Engagement Models
+        Precios
       </span>
       <h1
         class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
         style="letter-spacing: -0.02em;"
       >
-        Engagement Models.<br />Real Value.
+        Precios transparentes.<br />Sin sorpresas.
       </h1>
       <p
         class="text-lg leading-relaxed max-w-2xl mx-auto"
         style="color: rgba(147,184,255,0.8);"
       >
-        Fixed-scope engagements with clear deliverables from day one. No hidden
-        fees, no ambiguous statements of work.
+        Proyectos con alcance fijo y entregables claros desde el primer día. Sin
+        costes ocultos, sin ambigüedades.
       </p>
     </div>
   </section>
 
-  <!-- PRICING TIERS -->
-  <section class="py-20 bg-white" aria-labelledby="pricing-heading">
+  <!-- TIERS -->
+  <section class="py-20 bg-white" aria-labelledby="precios-heading">
     <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span
+          class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4"
+          style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+        >
+          Modalidades
+        </span>
+        <h2
+          id="precios-heading"
+          class="text-3xl sm:text-4xl font-bold mb-4"
+          style="color: #0A2540;"
+        >
+          Elige tu modalidad
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
+          Cada proyecto incluye una evaluación técnica inicial. Definimos el
+          alcance antes de cualquier compromiso.
+        </p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-        <!-- Tier 1: Advisory -->
+        <!-- Tier 1: Asesoría -->
         <div
           class="rounded-2xl p-8 flex flex-col"
           style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
@@ -114,30 +93,30 @@ const faqSchema = {
               </svg>
             </div>
             <h3 class="text-xl font-bold mb-2" style="color: #0A2540;">
-              Advisory
+              Asesoría
             </h3>
             <div
               class="text-3xl font-extrabold mb-1"
               style="color: #0A2540; letter-spacing: -0.03em;"
             >
-              from <span style="color: #1E6FFF;">€400</span>
+              desde <span style="color: #1E6FFF;">€400</span>
             </div>
-            <p class="text-sm" style="color: #64748b;">Per engagement</p>
+            <p class="text-sm" style="color: #64748b;">Por proyecto</p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-            Ideal for teams evaluating their cloud strategy or needing expert
-            guidance before committing to implementation.
+            Ideal para equipos que evalúan su estrategia cloud o necesitan
+            orientación experta antes de implementar.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
             {
               [
-                'Infrastructure audit',
-                'Architecture recommendations',
-                '1–2 working sessions',
-                'Technical report',
-                'Gap analysis & roadmap',
+                'Auditoría de infraestructura',
+                'Recomendaciones de arquitectura',
+                '1–2 sesiones de trabajo',
+                'Informe técnico',
+                'Análisis de brechas y hoja de ruta',
               ].map((item) => (
                 <li
                   class="flex items-center gap-2.5 text-sm"
@@ -164,15 +143,15 @@ const faqSchema = {
           </ul>
 
           <a
-            href="/contact"
+            href="/es/contacto"
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:opacity-90 block"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
           >
-            Get started
+            Empezar
           </a>
         </div>
 
-        <!-- Tier 2: Implementation (MOST POPULAR) -->
+        <!-- Tier 2: Implementación (MÁS POPULAR) -->
         <div
           class="rounded-2xl p-8 flex flex-col relative"
           style="background: #0A2540; border: 2px solid #1E6FFF; box-shadow: 0 8px 40px rgba(30,111,255,0.25);"
@@ -182,7 +161,7 @@ const faqSchema = {
               class="text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap"
               style="background: #1E6FFF; color: white; box-shadow: 0 2px 8px rgba(30,111,255,0.4);"
             >
-              MOST POPULAR
+              MÁS POPULAR
             </span>
           </div>
 
@@ -206,15 +185,15 @@ const faqSchema = {
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold mb-2 text-white">Implementation</h3>
+            <h3 class="text-xl font-bold mb-2 text-white">Implementación</h3>
             <div
               class="text-3xl font-extrabold mb-1 text-white"
               style="letter-spacing: -0.03em;"
             >
-              from <span style="color: #93b8ff;">€8,000</span>
+              desde <span style="color: #93b8ff;">€8.000</span>
             </div>
             <p class="text-sm" style="color: rgba(147,184,255,0.6);">
-              Typical: €8,000–25,000 depending on scope
+              Proyecto típico: €8.000–25.000 según alcance
             </p>
           </div>
 
@@ -222,19 +201,19 @@ const faqSchema = {
             class="text-sm leading-relaxed mb-6"
             style="color: rgba(147,184,255,0.8);"
           >
-            Ideal for companies building their cloud platform from scratch or
-            modernizing legacy infrastructure.
+            Ideal para empresas que construyen su plataforma cloud desde cero o
+            modernizan infraestructura legacy.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
             {
               [
-                'End-to-end AWS infrastructure with Terraform',
-                'Full CI/CD pipeline automation',
-                'Kubernetes or ECS Fargate deployment',
-                'Prometheus + Grafana observability',
-                'Complete technical documentation',
-                '30-day post-delivery support',
+                'Infraestructura AWS completa con Terraform',
+                'Automatización CI/CD end-to-end',
+                'Despliegue en Kubernetes o ECS Fargate',
+                'Observabilidad con Prometheus + Grafana',
+                'Documentación técnica completa',
+                '30 días de soporte post-entrega',
               ].map((item) => (
                 <li
                   class="flex items-center gap-2.5 text-sm"
@@ -261,11 +240,11 @@ const faqSchema = {
           </ul>
 
           <a
-            href="/contact"
+            href="/es/contacto"
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-px block text-white"
             style="background: #1E6FFF; box-shadow: 0 4px 16px rgba(30,111,255,0.4);"
           >
-            Start implementation
+            Iniciar implementación
           </a>
         </div>
 
@@ -301,25 +280,25 @@ const faqSchema = {
               class="text-3xl font-extrabold mb-1"
               style="color: #0A2540; letter-spacing: -0.03em;"
             >
-              from <span style="color: #1E6FFF;">€800</span>
+              desde <span style="color: #1E6FFF;">€800</span>
             </div>
-            <p class="text-sm" style="color: #64748b;">Per month</p>
+            <p class="text-sm" style="color: #64748b;">Por mes</p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-            Ideal for teams needing ongoing DevOps expertise without hiring a
-            full-time engineer.
+            Ideal para equipos que necesitan experiencia DevOps continua sin
+            contratar un ingeniero a tiempo completo.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
             {
               [
-                '24/7 monitoring with proactive alerts',
-                'Security patches and updates',
-                'Priority technical support',
-                'Monthly infrastructure report',
-                'Cost optimization reviews',
-                'On-demand engineering hours',
+                'Monitorización 24/7 con alertas proactivas',
+                'Parches de seguridad y actualizaciones',
+                'Soporte técnico prioritario',
+                'Informe mensual de infraestructura',
+                'Revisiones de optimización de costes',
+                'Horas de ingeniería bajo demanda',
               ].map((item) => (
                 <li
                   class="flex items-center gap-2.5 text-sm"
@@ -346,16 +325,16 @@ const faqSchema = {
           </ul>
 
           <a
-            href="/contact"
+            href="/es/contacto"
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:opacity-90 block"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
           >
-            Start retainer
+            Contratar retainer
           </a>
         </div>
       </div>
 
-      <!-- Hourly banner -->
+      <!-- Banner tarifa -->
       <div
         class="mt-10 rounded-2xl px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
         style="background: #F8FAFC; border: 1px solid #e2e8f0;"
@@ -369,187 +348,64 @@ const faqSchema = {
               class="w-2 h-2 rounded-full"
               style="background: #1E6FFF;"
               aria-hidden="true"></span>
-            <strong style="color: #0A2540;">Hourly rate:</strong> €50–70/h
+            <strong style="color: #0A2540;">Tarifa por hora:</strong> €50–70/h
           </span>
           <span class="flex items-center gap-2">
             <span
               class="w-2 h-2 rounded-full"
               style="background: #1E6FFF;"
               aria-hidden="true"></span>
-            Custom scopes available
+            Alcances personalizados disponibles
           </span>
           <span class="flex items-center gap-2">
             <span
               class="w-2 h-2 rounded-full"
               style="background: #10B981;"
               aria-hidden="true"></span>
-            Response within 24 hours
+            Respuesta en 24 horas
           </span>
         </div>
         <a
-          href="/contact"
+          href="/es/contacto"
           class="text-sm font-semibold px-5 py-2.5 rounded-xl flex-shrink-0 transition-all hover:opacity-90"
           style="background: #0A2540; color: white;"
         >
-          Discuss your scope →
+          Hablar de tu proyecto →
         </a>
-      </div>
-
-      <!-- Why engagement vs. hiring -->
-      <div
-        class="mb-16 rounded-2xl overflow-hidden"
-        style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
-      >
-        <div class="px-7 py-5" style="background: #0A2540;">
-          <h3 class="text-base font-bold text-white">
-            Why engagement vs. hiring full-time?
-          </h3>
-          <p class="text-sm mt-1" style="color: rgba(147,184,255,0.7);">
-            A direct comparison across cost, time-to-start and accountability.
-          </p>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr style="border-bottom: 1px solid #e2e8f0;">
-                <th
-                  class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider"
-                  style="color: #94a3b8; background: #f8fafc;"></th>
-                <th
-                  class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider"
-                  style="color: #1E6FFF; background: #EEF4FF;">LRA Cloud Ops</th
-                >
-                <th
-                  class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider"
-                  style="color: #64748b; background: #f8fafc;"
-                  >DevOps FTE (Spain)</th
-                >
-                <th
-                  class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider"
-                  style="color: #64748b; background: #f8fafc;"
-                  >Big Consultancy</th
-                >
-              </tr>
-            </thead>
-            <tbody>
-              {
-                [
-                  {
-                    label: 'Cost',
-                    lra: '€8K–25K/project',
-                    fte: '€45K–70K/year + benefits',
-                    big: '€150K–400K/project',
-                  },
-                  {
-                    label: 'Start time',
-                    lra: '1–2 weeks',
-                    fte: '2–4 months hiring',
-                    big: '3–6 months',
-                  },
-                  {
-                    label: 'Senior access',
-                    lra: 'Direct',
-                    fte: 'Depends on hire',
-                    big: 'Via account manager',
-                  },
-                  {
-                    label: 'Accountability',
-                    lra: 'Full ownership',
-                    fte: 'Internal politics',
-                    big: 'Diluted',
-                  },
-                  {
-                    label: 'Flexibility',
-                    lra: 'Scope-based',
-                    fte: 'Fixed headcount',
-                    big: 'Contract lock-in',
-                  },
-                ].map(({ label, lra, fte, big }, i) => (
-                  <tr
-                    style={
-                      i % 2 === 0
-                        ? 'background: white;'
-                        : 'background: #fafbfc;'
-                    }
-                  >
-                    <td
-                      class="px-6 py-3.5 text-xs font-bold"
-                      style="color: #0A2540;"
-                    >
-                      {label}
-                    </td>
-                    <td
-                      class="px-6 py-3.5 text-xs font-semibold"
-                      style="color: #1E6FFF; background: rgba(238,244,255,0.5);"
-                    >
-                      {lra}
-                    </td>
-                    <td class="px-6 py-3.5 text-xs" style="color: #64748b;">
-                      {fte}
-                    </td>
-                    <td class="px-6 py-3.5 text-xs" style="color: #64748b;">
-                      {big}
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section
-    class="py-20 border-t border-gray-100"
-    style="background: #F8FAFC;"
-    aria-labelledby="faq-heading"
-  >
+  <!-- FAQ empresarial -->
+  <section class="py-20 border-t border-gray-100" style="background: #F8FAFC;">
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2
-          id="faq-heading"
-          class="text-3xl font-bold mb-4"
-          style="color: #0A2540;"
-        >
-          Common questions
+        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
+          Preguntas frecuentes
         </h2>
       </div>
       <div class="space-y-4">
         {
           [
             {
-              q: 'What is included in the initial assessment?',
-              a: 'A review of your current architecture, infrastructure, delivery processes and observability setup. We identify gaps and outline a concrete approach — at no charge and before any commitment.',
+              q: '¿Cómo gestionáis nuestras credenciales AWS?',
+              a: 'Nunca usamos claves de acceso estáticas. Toda la automatización utiliza federación OIDC — tokens temporales acotados al mínimo de permisos requeridos. Vuestras credenciales nunca salen de vuestra cuenta.',
             },
             {
-              q: 'Can scopes be adjusted after the engagement starts?',
-              a: 'Yes. We define the initial scope clearly, but if requirements change during the engagement we discuss adjustments transparently. No surprise invoices.',
+              q: '¿Podéis firmar un NDA antes de la llamada inicial?',
+              a: 'Sí. Firmamos NDAs habitualmente antes de cualquier discusión técnica. Contactadnos y enviaremos nuestro NDA estándar en menos de 24 horas.',
             },
             {
-              q: 'Do you work with teams that have no existing cloud infrastructure?',
-              a: 'Yes. Greenfield is our preferred starting point. We provision everything as code from day one — no legacy constraints, no manual configurations to unwind.',
+              q: '¿Qué pasa después del soporte de 30 días?',
+              a: 'Sois propietarios de todo — código, infraestructura, documentación. Ofrecemos contratos de retainer opcionales para soporte continuo, pero no hay lock-in.',
             },
             {
-              q: 'What is the typical delivery timeline for an implementation?',
-              a: 'Most implementation engagements deliver a production-ready environment in 4–8 weeks depending on scope. Complex multi-account or regulated environments take longer.',
+              q: '¿Podemos hablar con clientes anteriores?',
+              a: 'Podemos facilitar referencias previa solicitud tras una llamada inicial. La confidencialidad del cliente nos impide publicar nombres públicamente.',
             },
             {
-              q: 'How do you handle our AWS credentials?',
-              a: 'We operate on a strict zero static keys policy. All automation uses OIDC federation with temporary tokens scoped to minimum required permissions — typically 15-minute expiry. Your long-lived credentials never leave your account.',
-            },
-            {
-              q: 'Can you sign an NDA before the initial call?',
-              a: 'Yes, always. We routinely sign NDAs before any technical discussion. Send us an email and we will have our standard NDA back to you within 24 hours.',
-            },
-            {
-              q: 'What happens to our infrastructure after the engagement?',
-              a: 'You own 100% of everything — code, modules, pipelines, documentation. We use your repositories and your AWS accounts. At delivery, we perform a structured handoff with no residual access retained.',
-            },
-            {
-              q: 'Can we speak with previous clients as references?',
-              a: 'Yes, upon request after an initial call. We maintain confidentiality publicly but can arrange reference calls with previous clients who have agreed to this.',
+              q: '¿Trabajáis con equipos sin infraestructura cloud existente?',
+              a: 'Sí. Greenfield es nuestro punto de partida preferido. Aprovisionamos todo como código desde el primer día — sin restricciones legacy ni configuraciones manuales que deshacer.',
             },
           ].map(({ q, a }) => (
             <div
@@ -573,7 +429,7 @@ const faqSchema = {
   <section
     class="relative overflow-hidden"
     style="background: linear-gradient(90deg, #1D4ED8 0%, #2563EB 55%, #60A5FA 100%);"
-    aria-labelledby="pricing-cta-heading"
+    aria-labelledby="precios-cta-heading"
   >
     <div
       class="absolute inset-0 pointer-events-none"
@@ -582,25 +438,25 @@ const faqSchema = {
     </div>
     <div class="relative max-w-4xl mx-auto px-6 py-20 text-center">
       <h2
-        id="pricing-cta-heading"
+        id="precios-cta-heading"
         class="text-4xl font-extrabold text-white mb-5"
         style="letter-spacing: -0.025em;"
       >
-        Ready to start?
+        ¿Listo para empezar?
       </h2>
       <p
         class="text-lg mb-8 max-w-xl mx-auto"
         style="color: rgba(255,255,255,0.8);"
       >
-        Describe your project and we will outline the right engagement model. No
-        sales process, no deck — just a technical conversation.
+        Cuéntanos tu proyecto y definiremos la modalidad más adecuada. Sin
+        proceso de ventas, sin presentaciones — solo una conversación técnica.
       </p>
       <a
-        href="/contact"
+        href="/es/contacto"
         class="inline-flex items-center gap-2 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 hover:-translate-y-px shadow-xl"
         style="background: white; color: #1D4ED8;"
       >
-        Start a conversation
+        Iniciar conversación
         <svg
           class="w-4 h-4"
           fill="none"

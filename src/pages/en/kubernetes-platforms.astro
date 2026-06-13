@@ -1,0 +1,255 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Kubernetes Platforms · EKS & GitOps Engineering"
+  descripcion="Production-grade EKS clusters and bare-metal Kubernetes with Terraform, GitOps delivery via ArgoCD, and full observability. Kubernetes that engineers trust and operators can maintain."
+>
+  <!-- Hero -->
+  <section
+    style="background: linear-gradient(135deg, #0A2540 0%, #0d2f50 100%); padding: 100px 24px 80px;"
+  >
+    <div class="max-w-4xl mx-auto text-center">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8"
+        style="background: rgba(30,111,255,0.15); color: #60A5FA; border: 1px solid rgba(30,111,255,0.25);"
+      >
+        Service · Kubernetes Platforms
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+        Kubernetes that runs in production,<br />not just in demos.
+      </h1>
+      <p
+        class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
+        style="color: rgba(148,163,184,0.9);"
+      >
+        Production-grade EKS on AWS and bare-metal Kubernetes with Terraform, GitOps delivery
+        via ArgoCD, full observability stack, and multi-tenant platform
+        capabilities — from provisioning to Day 2 operations.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+          style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
+        >
+          Build my Kubernetes platform
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
+        </a>
+        <a
+          href="/solutions/kubernetes-adoption"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:bg-white/10"
+          style="color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);"
+        >
+          Kubernetes adoption path
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key points -->
+  <section style="background: #F8FAFC; padding: 80px 24px;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
+          Everything a production Kubernetes platform needs
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          A running cluster is the start. Platform engineering is what makes it
+          reliable, scalable, and maintainable.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {
+          [
+            {
+              title: 'Terraform-provisioned EKS + bare-metal kubeadm',
+              desc: 'Managed node groups with IRSA for pod-level AWS access, private API endpoints, and cluster add-ons (CoreDNS, VPC CNI, EBS CSI) all managed as code. Bare-metal clusters via kubeadm with Vagrant/VirtualBox for reproducible environments.',
+              icon: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+            },
+            {
+              title: 'GitOps with ArgoCD',
+              desc: 'Application delivery driven by Git. Auto-sync with self-heal and pruning enabled. Drift detected and reconciled automatically. Rollbacks via git revert, not manual state manipulation.',
+              icon: 'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+            },
+            {
+              title: 'Full observability from day one',
+              desc: 'kube-prometheus-stack for metrics, Loki for structured log aggregation, Jaeger for distributed tracing. Pre-built Grafana dashboards for cluster health, workload saturation, and SLO tracking.',
+              icon: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+            },
+            {
+              title: 'Shared Helm library & security policies',
+              desc: 'Standard Helm library charts enforce resource requests/limits, liveness probes, PodDisruptionBudgets, and NetworkPolicies across every workload. OPA Gatekeeper for policy enforcement.',
+              icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+            },
+          ].map(({ title, desc, icon }) => (
+            <div
+              class="bg-white rounded-2xl p-7"
+              style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04);"
+            >
+              <div
+                class="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style="background: #EEF4FF;"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  style="color: #1E6FFF;"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: #64748B;">
+                {desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms where we operate -->
+  <section class="py-12 border-t" style="border-color: rgba(30,111,255,0.2); background: #0A2540;" aria-label="Platforms where we operate">
+    <div class="max-w-5xl mx-auto px-6">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-8" style="color: #64748b;">Platforms where we operate</p>
+      <div class="flex items-center gap-10 flex-wrap">
+        <div class="flex items-center gap-3 group cursor-default">
+          <div class="w-10 h-10 flex items-center justify-center rounded-xl" style="background: rgba(50,108,229,0.15); border: 1px solid rgba(50,108,229,0.3);">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #326CE5;" aria-hidden="true"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <span class="text-sm font-semibold" style="color: rgba(255,255,255,0.75);">Kubernetes</span>
+        </div>
+        <div class="flex items-center gap-3 group cursor-default">
+          <div class="w-10 h-10 flex items-center justify-center rounded-xl" style="background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.25);">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #FF9900;" aria-hidden="true"><path d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"/></svg>
+          </div>
+          <span class="text-sm font-semibold" style="color: rgba(255,255,255,0.75);">AWS</span>
+        </div>
+        <div class="flex items-center gap-3 group cursor-default">
+          <div class="w-10 h-10 flex items-center justify-center rounded-xl" style="background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.3);">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #60A5FA;" aria-hidden="true"><path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/></svg>
+          </div>
+          <span class="text-sm font-semibold" style="color: rgba(255,255,255,0.75);">On-Premise</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540; padding: 80px 24px;">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        Ready for a production-grade Kubernetes platform?
+      </h2>
+      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">
+        Schedule a platform assessment. We'll review your current cluster setup
+        and design the platform layer that makes it reliable.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+        style="background: #1E6FFF; box-shadow: 0 4px 24px rgba(30,111,255,0.45);"
+      >
+        Schedule platform assessment
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
+      </a>
+    </div>
+  </section>
+
+  <!-- Real Implementation -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="section-label">Real Implementations</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">Three Kubernetes implementations. One methodology.</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">Bare metal. AWS EKS. KinD reference platform. All with ArgoCD GitOps.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-bold" style="color: #0A2540;">k8s-on-premise</h3>
+            <span class="text-xs px-2 py-1 rounded-full font-semibold" style="background: #FEF9C3; color: #854D0E;">In Development</span>
+          </div>
+          <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
+            <li>• Kubernetes v1.31.14 on bare metal via kubeadm</li>
+            <li>• 1 master + 2 workers — ~20 min from vagrant up</li>
+            <li>• Calico v3.27 CNI · NGINX Ingress · containerd v2.2.1</li>
+            <li>• ArgoCD GitOps — auto-sync + prune + selfHeal</li>
+            <li>• 18-phase roadmap — Phase 3 complete</li>
+          </ul>
+          <div class="flex gap-2">
+            <a href="/projects/k8s-on-premise" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/k8s-on-premise" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-bold" style="color: #0A2540;">gitops-stack</h3>
+            <span class="text-xs px-2 py-1 rounded-full font-semibold" style="background: #F0FDF4; color: #15803D;">Production</span>
+          </div>
+          <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
+            <li>• AWS EKS with managed node groups and IRSA</li>
+            <li>• Jenkins CI → Docker build → ECR push → kubectl deploy</li>
+            <li>• Ansible playbooks for node configuration — no SSH keys</li>
+            <li>• CloudWatch + CloudTrail for full audit trail</li>
+            <li>• git push to production in under 8 minutes</li>
+          </ul>
+          <div class="flex gap-2">
+            <a href="/projects/gitops-stack" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/gitops-stack" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-bold" style="color: #0A2540;">k8s-devops-platform</h3>
+            <span class="text-xs px-2 py-1 rounded-full font-semibold" style="background: #F3F4F6; color: #4B5563;">Reference</span>
+          </div>
+          <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
+            <li>• KinD (Kubernetes in Docker) — local dev mirrors production</li>
+            <li>• ArgoCD GitOps auto-sync + prune + selfHeal</li>
+            <li>• Helm Charts with per-environment values</li>
+            <li>• Prometheus + Grafana + Alertmanager from day one</li>
+            <li>• Zero manual kubectl apply in production</li>
+          </ul>
+          <div class="flex gap-2">
+            <a href="/projects/k8s-devops-platform" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/k8s-devops-platform" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
