@@ -670,6 +670,93 @@ import { Image } from 'astro:assets'
     </div>
   </section>
 
+  <!-- CÓMO TRABAJAMOS -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span
+          class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4"
+          style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+        >
+          Metodología
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">
+          Cómo trabajamos.
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
+          Cada engagement sigue el mismo proceso — desde la comprensión del estado
+          actual hasta la operación en producción con observabilidad completa.
+        </p>
+      </div>
+
+      <div class="relative">
+        <div
+          class="absolute left-6 sm:left-8 top-0 bottom-0 w-px hidden sm:block"
+          style="background: linear-gradient(180deg, #1E6FFF 0%, #c3d9ff 100%);"
+          aria-hidden="true"
+        ></div>
+
+        <div class="space-y-8">
+          {[
+            {
+              step: '01',
+              title: 'Assessment',
+              desc: 'Evaluación inicial de la infraestructura actual — qué está en producción, cómo se aprovisiona, dónde están los riesgos. Sin proponer soluciones antes de entender el problema.',
+              color: '#1E6FFF',
+            },
+            {
+              step: '02',
+              title: 'Architecture',
+              desc: 'Diseño de la arquitectura objetivo basado en los hallazgos. Definición de módulos Terraform, estrategia de namespaces, modelo de entrega GitOps y límites de seguridad.',
+              color: '#2563EB',
+            },
+            {
+              step: '03',
+              title: 'Implementation',
+              desc: 'Implementación con infraestructura como código desde el primer recurso. Cada cambio en Git. Revisiones de código, pipelines CI/CD y documentación como parte de la entrega.',
+              color: '#7C3AED',
+            },
+            {
+              step: '04',
+              title: 'Validation',
+              desc: 'Testing, revisión de seguridad, load testing y verificación de la estrategia de recuperación ante desastres antes del primer tráfico de producción.',
+              color: '#059669',
+            },
+            {
+              step: '05',
+              title: 'Operations',
+              desc: 'Puesta en producción con observabilidad completa — Prometheus, Grafana y alertas configuradas antes de que llegue el primer usuario. Runbooks para los escenarios operacionales comunes.',
+              color: '#D97706',
+            },
+            {
+              step: '06',
+              title: 'Continuous Improvement',
+              desc: 'Revisiones periódicas de postura de seguridad, costes cloud y evolución del roadmap técnico. La plataforma mejora con cada iteración, no solo en el lanzamiento inicial.',
+              color: '#DC2626',
+            },
+          ].map(({ step, title, desc, color }, i) => (
+            <div class="relative flex gap-8 sm:gap-12 items-start">
+              <div class="flex-shrink-0 relative z-10">
+                <div
+                  class="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center font-bold text-white text-sm sm:text-base shadow-lg"
+                  style={`background: ${color};`}
+                >
+                  {step}
+                </div>
+              </div>
+              <div
+                class="flex-1 pb-8 border-b border-gray-100 last:border-0"
+              >
+                <h3 class="text-lg font-bold mb-2" style="color: #0A2540;">{title}</h3>
+                <p class="text-sm leading-relaxed" style="color: #64748b;">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
     <div
       class="absolute inset-0 pointer-events-none"
