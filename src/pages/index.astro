@@ -388,6 +388,65 @@ const professionalServiceSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 1B. BANDA DE CREDENCIALES — Certificaciones y señales de confianza   -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    style="background: white; border-bottom: 1px solid #E2E8F0; padding: 12px 0;"
+    aria-label="Certificaciones del equipo y señales de confianza"
+  >
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #F5F0FF; color: #7B42BC; border: 1px solid #D6B9F5;"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+            ></path></svg
+          >
+          HashiCorp Certified
+        </span>
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #EFF8FF; color: #049FD9; border: 1px solid #BAE6FD;"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+            ></path></svg
+          >
+          Cisco Cybersecurity
+        </span>
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #FFF5F5; color: #EE3124; border: 1px solid #FCA5A5;"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path></svg
+          >
+          Fortinet Certified ×2
+        </span>
+        <a
+          href="/certificaciones"
+          class="text-xs font-semibold transition-colors hover:opacity-80"
+          style="color: #1E6FFF;">Ver todas las credenciales →</a
+        >
+        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
+        <span class="text-xs font-medium" style="color: #64748b;"
+          >Solo credenciales OIDC · Sin claves AWS estáticas</span
+        >
+        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
+        <span class="text-xs font-medium" style="color: #64748b;"
+          >NDA disponible · Conforme con GDPR</span
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- 2. TECNOLOGÍAS                                                       -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section
@@ -625,55 +684,71 @@ const professionalServiceSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 4. SOLUCIONES                                                        -->
+  <!-- 4. SERVICIOS                                                          -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white" aria-labelledby="solutions-heading">
-    <div class="max-w-7xl mx-auto px-6">
+  <section
+    style="background: #F8FAFC; border-top: 1px solid #E5E7EB;"
+    aria-labelledby="services-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6 py-24">
       <div class="text-center mb-16 animate-fade-up">
-        <span class="section-label">Soluciones</span>
+        <span class="section-label">Servicios</span>
         <h2
-          id="solutions-heading"
+          id="services-heading"
           class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
           style="color: #0F172A; letter-spacing: -0.025em;"
         >
-          Cuatro disciplinas de plataforma.<br />Un modelo operativo.
+          Lo que construimos y operamos
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Cada capa reduce la superficie operativa que gestionan tus equipos.
-          Juntas forman una plataforma de entrega repetible.
+          Seis disciplinas de ingeniería. Un modelo operativo de plataforma
+          unificado, diseñado para fiabilidad en producción.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           [
             {
               icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
               title: 'Infraestructura Cloud',
+              href: '/cloud-infrastructure',
               desc: 'Entornos AWS codificados con networking definido, límites de seguridad y políticas de acceso. Módulos Terraform auditables, versionados y reproducibles en múltiples cuentas.',
-              tags: ['AWS', 'VPC', 'EKS', 'RDS'],
             },
             {
               icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
-              title: 'Platform Engineering',
-              desc: 'Clusters Kubernetes operados como plataformas internas. Entrega GitOps a través de ArgoCD. Los equipos despliegan sin abrir tickets de infraestructura.',
-              tags: ['Kubernetes', 'ArgoCD', 'Helm'],
+              title: 'Plataformas Kubernetes',
+              href: '/kubernetes-platforms',
+              desc: 'Clusters EKS de producción operados como plataformas internas. Entrega GitOps vía ArgoCD. Los equipos de desarrollo despliegan sin abrir tickets de infraestructura.',
             },
             {
               icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
               title: 'DevOps Automation',
+              href: '/devops-automation',
               desc: 'Pipelines end-to-end que aplican tests, escaneos de seguridad y quality gates antes de llegar al cluster. Cada release es trazable. Cada rollback requiere un solo comando.',
-              tags: ['GitHub Actions', 'Jenkins', 'OIDC'],
+            },
+            {
+              icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+              title: 'Platform Engineering',
+              href: '/platform-engineering',
+              desc: 'Construcción de plataformas internas de desarrollo que reducen la carga cognitiva y aceleran la entrega de los equipos de ingeniería, desde golden paths hasta portales de autoservicio.',
             },
             {
               icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-              title: 'Observability',
-              desc: 'Instrumentado desde el primer día, no después del primer incidente. Métricas Prometheus, logs estructurados y umbrales de alerta configurados antes de que el primer usuario llegue a producción.',
-              tags: ['Prometheus', 'Grafana', 'SRE'],
+              title: 'Observability & SRE',
+              href: '/observability',
+              desc: 'Métricas Prometheus, dashboards Grafana y alertas configuradas antes del go-live. SLOs definidos. Sabes qué está fallando antes de que se abra un ticket.',
             },
-          ].map(({ icon, title, desc, tags }, i) => (
+            {
+              icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+              title: 'Seguridad y Cumplimiento',
+              href: '/servicios',
+              desc: 'Autenticación OIDC, IAM de mínimo privilegio, aislamiento de red y límites de cumplimiento aplicados a nivel de infraestructura — no añadidos después del despliegue.',
+            },
+          ].map(({ icon, title, desc, href }, i) => (
             <div
-              class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-400'][i]}`}
+              class={`bg-white rounded-2xl p-8 flex flex-col card-lift animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-100', 'delay-200', 'delay-300'][i]}`}
+              style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
             >
               <div
                 class="w-12 h-12 flex items-center justify-center rounded-xl mb-6 flex-shrink-0"
@@ -699,18 +774,13 @@ const professionalServiceSchema = {
                 {title}
               </h3>
               <p
-                class="text-sm leading-relaxed flex-1 mb-5"
+                class="text-sm leading-relaxed flex-1 mb-6"
                 style="color: #64748B;"
               >
                 {desc}
               </p>
-              <div class="flex flex-wrap gap-1.5 mb-5">
-                {tags.map((tag) => (
-                  <span class="stack-tag">{tag}</span>
-                ))}
-              </div>
               <a
-                href="/servicios"
+                href={href}
                 class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto"
                 style="color: #2563EB;"
               >
@@ -735,11 +805,11 @@ const professionalServiceSchema = {
         }
       </div>
 
-      <div class="text-center mt-12 animate-fade-up">
+      <div class="text-center mt-12">
         <a
           href="/servicios"
-          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50"
-          style="color: #0F172A; border-color: #E5E7EB;"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
+          style="color: #0F172A; border-color: #D1D5DB; background: white;"
         >
           Ver todas las soluciones
           <svg
@@ -988,33 +1058,27 @@ const professionalServiceSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 6. POR QUÉ ELEGIRNOS                                                -->
+  <!-- 4B. POR LOS NÚMEROS                                                  -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section
-    class="py-24"
-    style="background: #F8FAFC;"
-    aria-labelledby="why-heading"
-  >
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 animate-fade-up">
-        <span class="section-label">Por qué elegirnos</span>
+  <section class="bg-white" aria-labelledby="metrics-heading">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-14 animate-fade-up">
+        <span class="section-label">Por los números</span>
         <h2
-          id="why-heading"
-          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          id="metrics-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-4"
           style="color: #0F172A; letter-spacing: -0.025em;"
         >
-          Platform engineering<br />reduce el riesgo operacional.
+          Fiabilidad de la plataforma a escala
         </h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          La fiabilidad, la velocidad de entrega y la observabilidad son
-          propiedades de la plataforma — no soluciones de emergencia aplicadas
-          durante incidentes.
+        <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">
+          Métricas reales de producción de la infraestructura que diseñamos,
+          construimos y operamos.
         </p>
       </div>
 
-      <!-- Métricas principales -->
       <div
-        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up mb-16"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up"
         style="background: #E5E7EB;"
       >
         {
@@ -1043,8 +1107,35 @@ const professionalServiceSchema = {
           ))
         }
       </div>
+    </div>
+  </section>
 
-      <!-- Propuestas de valor — 6 principios de ingeniería -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 6. POR QUÉ ELEGIRNOS                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 border-t border-gray-100"
+    style="background: #F8FAFC;"
+    aria-labelledby="why-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Por qué elegirnos</span>
+        <h2
+          id="why-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
+          Platform engineering<br />reduce el riesgo operacional.
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          La fiabilidad, la velocidad de entrega y la observabilidad son
+          propiedades de la plataforma — no soluciones de emergencia aplicadas
+          durante incidentes.
+        </p>
+      </div>
+
+      <!-- 6 principios de ingeniería -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           [
