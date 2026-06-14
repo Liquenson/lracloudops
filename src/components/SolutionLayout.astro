@@ -24,6 +24,11 @@ interface Outcome {
   detail: string
 }
 
+interface RelatedSolution {
+  href: string
+  label: string
+}
+
 interface Props {
   titulo: string
   descripcion: string
@@ -41,6 +46,7 @@ interface Props {
   ctaH2: string
   ctaSubtitle: string
   backLabel?: string
+  relatedSolutions?: RelatedSolution[]
 }
 
 const {
@@ -58,6 +64,7 @@ const {
   outcomes,
   ctaH2,
   ctaSubtitle,
+  relatedSolutions,
 } = Astro.props
 
 const lang = getLangFromUrl(Astro.url)
@@ -74,10 +81,11 @@ const t = {
   howWeImpl:      isES ? 'Cómo lo implementamos.'            : 'How we implement it.',
   outcomes:       isES ? 'Resultados operativos'             : 'Operational outcomes',
   whatChanges:    isES ? 'Qué cambia al completar la entrega.' : 'What changes when this is delivered.',
-  bookReview:     isES ? 'Reservar revisión técnica'         : 'Book a technical review',
-  allSolutions:   isES ? 'Todas las soluciones'              : 'All solutions',
-  contactHref:    isES ? '/contacto'                         : '/contact',
-  servicesHref:   isES ? '/servicios'                        : '/services',
+  bookReview:       isES ? 'Reservar revisión técnica'         : 'Book a technical review',
+  allSolutions:     isES ? 'Todas las soluciones'              : 'All solutions',
+  contactHref:      isES ? '/contacto'                         : '/contact',
+  servicesHref:     isES ? '/servicios'                        : '/services',
+  relatedSolLabel:  isES ? 'Soluciones relacionadas'           : 'Related solutions',
 }
 ---
 
@@ -272,8 +280,42 @@ const t = {
     </div>
   </section>
 
-  <!-- Injected slot content (platforms strip, real implementation sections, etc.) -->
+  <!-- Injected slot content (flow diagrams, real implementation sections, etc.) -->
   <slot />
+
+  <!-- Related Solutions internal linking -->
+  {relatedSolutions && relatedSolutions.length > 0 && (
+    <section class="py-12 bg-white border-t border-gray-100">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-2xl" style="background: #EEF4FF; border: 1px solid #c3d9ff;">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #1E6FFF;">{t.relatedSolLabel}</p>
+            <div class="flex flex-wrap gap-3">
+              {relatedSolutions.map(({ href, label }) => (
+                <a
+                  href={href}
+                  class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
+                  style="color: #0A2540;"
+                >
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #1E6FFF;" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <a
+            href={t.servicesHref}
+            class="text-xs font-semibold whitespace-nowrap transition-opacity hover:opacity-70"
+            style="color: #64748B;"
+          >
+            {t.allSolutions} →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- CTA -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
