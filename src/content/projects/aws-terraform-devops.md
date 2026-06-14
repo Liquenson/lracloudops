@@ -171,3 +171,13 @@ terraform output
 - SonarCloud gate blocks any deployment below 80% code coverage
 - RDS Multi-AZ failover tested and verified under 60 seconds
 - Same Terraform modules reused across multiple client environments
+
+---
+
+## Key Learnings
+
+**What worked:** Designing the 6 Terraform modules before writing a single resource block — the modular boundary decisions (VPC, EKS, RDS, ECR, ALB, security_groups) proved stable throughout the entire project and required no structural rework. OIDC for CI authentication eliminated the long-lived credentials problem entirely.
+
+**What we learned:** Dual CI (GitHub Actions + Jenkins) adds integration surface. The Jenkins pipeline required additional IAM instance profile configuration that wasn't needed for OIDC-based GitHub Actions — worth documenting early rather than discovering during the first deploy.
+
+**What we'd improve:** Earlier Terratest or `terraform test` integration would have caught drift between module interface changes and consumer code faster than manual validation.

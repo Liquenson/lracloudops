@@ -118,3 +118,13 @@ kubectl port-forward svc/grafana 3000:3000 -n monitoring
 **Why Helm + per-environment values:** A single Helm Chart with separate values files for dev, staging and production. Promotes consistency across environments while allowing environment-specific configuration.
 
 **Why full observability from day one:** Prometheus, Grafana and Alertmanager are deployed as part of the initial platform — not added later. SLIs and alerting thresholds are defined before the first workload reaches the cluster.
+
+---
+
+## Key Learnings
+
+**What worked:** Using KinD made the local/production parity near-perfect — the same ArgoCD ApplicationSet syncing to a KinD cluster locally is structurally identical to the production EKS setup. This eliminated entire categories of "works locally but not in prod" failures.
+
+**What we learned:** HPA requires metrics-server to be installed before the first workload, not after. Deferring it creates a gap where scaling behavior is undefined — add it to the cluster bootstrap, not the application deployment.
+
+**What we'd improve:** Deploying the kube-prometheus-stack via ArgoCD Application from day one rather than as a manual Helm release would make the observability layer itself subject to GitOps reconciliation and drift detection.
