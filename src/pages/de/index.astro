@@ -1,4 +1,5 @@
 ---
+import TechIcon from '../../components/TechIcon.astro'
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import { getTranslations } from '../../i18n/index'
@@ -121,25 +122,57 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="max-w-7xl mx-auto px-6 py-16">
       <p class="text-center text-[11px] font-bold uppercase tracking-widest mb-12" style="color: #94A3B8;">{t.tech?.section_label}</p>
       <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-5 gap-5">
-        {[
-          { name: 'AWS', svgPath: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
-          { name: 'Terraform', svgPath: 'M12 2L2 7.5v9L12 21l10-4.5v-9z M2 7.5l10 5m0 0l10-5m-10 5v9' },
-          { name: 'Kubernetes', svgPath: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
-          { name: 'Docker', svgPath: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10' },
-          { name: 'GitHub Actions', svgPath: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
-          { name: 'Prometheus', svgPath: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
-          { name: 'Grafana', svgPath: 'M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z' },
-          { name: 'ArgoCD', svgPath: 'M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9' },
-          { name: 'Helm', svgPath: 'M12 3a9 9 0 100 18A9 9 0 0012 3zm0 0v3m0 12v3m9-9h-3M3 12h3m12.364-6.364l-2.121 2.121M8.757 15.243l-2.121 2.121m0-14.728l2.121 2.121M15.243 15.243l2.121 2.121M12 9a3 3 0 100 6 3 3 0 000-6z' },
-          { name: 'Ansible', svgPath: 'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
-        ].map(({ name, svgPath }) => (
-          <div class="flex flex-col items-center gap-3 group cursor-default" title={name}>
-            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white transition-all group-hover:shadow-md" style="border: 1px solid #E5E7EB;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7" style="color: rgba(15,23,42,0.45);" aria-hidden="true"><path d={svgPath} /></svg>
+        {
+          [
+            { name: 'AWS', path: 'M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z' },
+            { name: 'Terraform', slug: 'terraform' },
+            { name: 'Kubernetes', slug: 'kubernetes' },
+            { name: 'Docker', slug: 'docker' },
+            { name: 'GitHub Actions', slug: 'githubactions' },
+            { name: 'Prometheus', slug: 'prometheus' },
+            { name: 'Grafana', slug: 'grafana' },
+            { name: 'ArgoCD', slug: 'argo' },
+            { name: 'Helm', slug: 'helm' },
+            { name: 'Ansible', slug: 'ansible' },
+            { name: 'Jenkins', slug: 'jenkins' },
+            { name: 'Linux', slug: 'linux' },
+          ].map(({ name, slug, path }) => (
+            <div
+              class="flex flex-col items-center gap-3 group cursor-default"
+              title={name}
+            >
+              <div
+                class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white transition-all group-hover:shadow-md group-hover:border-blue-200"
+                style="border: 1px solid #E5E7EB;"
+              >
+                {slug && (
+                  <TechIcon slug={slug} class="w-7 h-7" style="color: #1E6FFF;" />
+                )}
+                {path && (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-7 h-7"
+                    style="color: #1E6FFF;"
+                    aria-hidden="true"
+                  >
+                    <path d={path} />
+                  </svg>
+                )}
+              </div>
+              <span
+                class="text-[11px] font-semibold text-center leading-tight"
+                style="color: #64748B;"
+              >
+                {name}
+              </span>
             </div>
-            <span class="text-[11px] font-semibold text-center leading-tight" style="color: #64748B;">{name}</span>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>

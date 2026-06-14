@@ -1,0 +1,59 @@
+---
+import {
+  siTerraform,
+  siKubernetes,
+  siDocker,
+  siGithubactions,
+  siArgo,
+  siHelm,
+  siJenkins,
+  siAnsible,
+  siPrometheus,
+  siGrafana,
+  siSonarqubecloud,
+  siContainerd,
+  siVagrant,
+  siLinux,
+  siGnubash,
+} from 'simple-icons';
+
+const icons = {
+  terraform: siTerraform,
+  kubernetes: siKubernetes,
+  docker: siDocker,
+  githubactions: siGithubactions,
+  argo: siArgo,
+  helm: siHelm,
+  jenkins: siJenkins,
+  ansible: siAnsible,
+  prometheus: siPrometheus,
+  grafana: siGrafana,
+  sonarcloud: siSonarqubecloud,
+  containerd: siContainerd,
+  vagrant: siVagrant,
+  linux: siLinux,
+  gnubash: siGnubash,
+} as const;
+
+interface Props {
+  slug: string;
+  class?: string;
+  style?: string;
+}
+
+const { slug, class: className = 'w-8 h-8', style } = Astro.props;
+const icon = (icons as Record<string, { path: string; title: string }>)[slug];
+---
+
+{icon && (
+  <svg
+    class={className}
+    style={style}
+    role="img"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-label={icon.title}
+  >
+    <path d={icon.path} />
+  </svg>
+)}
