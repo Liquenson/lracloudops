@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import { getLangFromUrl } from '../i18n/index'
 
 interface Challenge {
   title: string
@@ -58,6 +59,26 @@ const {
   ctaH2,
   ctaSubtitle,
 } = Astro.props
+
+const lang = getLangFromUrl(Astro.url)
+const isES = lang === 'es'
+
+const t = {
+  challenge:    isES ? 'El desafío'                         : 'The challenge',
+  problemH2:   isES ? 'Lo que le cuesta el problema.'       : 'What the problem costs you.',
+  problemDesc: isES
+    ? 'La mayoría de los problemas de infraestructura no son causados por las herramientas elegidas. Son causados por cómo se aprovisiona y gestiona la infraestructura a lo largo del tiempo.'
+    : 'Most infrastructure problems are not caused by the tools chosen. They are caused by how infrastructure is provisioned and managed over time.',
+  archApproach:   isES ? 'Enfoque de arquitectura'           : 'Architecture approach',
+  implMethod:     isES ? 'Metodología de implementación'     : 'Implementation methodology',
+  howWeImpl:      isES ? 'Cómo lo implementamos.'            : 'How we implement it.',
+  outcomes:       isES ? 'Resultados operativos'             : 'Operational outcomes',
+  whatChanges:    isES ? 'Qué cambia al completar la entrega.' : 'What changes when this is delivered.',
+  bookReview:     isES ? 'Reservar revisión técnica'         : 'Book a technical review',
+  allSolutions:   isES ? 'Todas las soluciones'              : 'All solutions',
+  contactHref:    isES ? '/contacto'                         : '/contact',
+  servicesHref:   isES ? '/servicios'                        : '/services',
+}
 ---
 
 <Layout titulo={titulo} descripcion={descripcion} schema={schema}>
@@ -101,16 +122,15 @@ const {
   <section class="bg-white py-20">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-14">
-        <span class="section-label mb-4">The challenge</span>
+        <span class="section-label mb-4">{t.challenge}</span>
         <h2
           class="text-3xl sm:text-4xl font-bold mt-4 mb-4"
           style="color: #0A2540;"
         >
-          What the problem costs you.
+          {t.problemH2}
         </h2>
         <p class="text-base max-w-2xl mx-auto" style="color: #64748b;">
-          Most infrastructure problems are not caused by the tools chosen. They
-          are caused by how infrastructure is provisioned and managed over time.
+          {t.problemDesc}
         </p>
       </div>
       <div class="grid sm:grid-cols-2 gap-6">
@@ -134,7 +154,7 @@ const {
   <section class="py-20" style="background: #f8fafc;">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-14">
-        <span class="section-label mb-4">Architecture approach</span>
+        <span class="section-label mb-4">{t.archApproach}</span>
         <h2
           class="text-3xl sm:text-4xl font-bold mt-4 mb-4"
           style="color: #0A2540;"
@@ -185,12 +205,12 @@ const {
   <section class="bg-white py-20">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-14">
-        <span class="section-label mb-4">Implementation methodology</span>
+        <span class="section-label mb-4">{t.implMethod}</span>
         <h2
           class="text-3xl sm:text-4xl font-bold mt-4 mb-4"
           style="color: #0A2540;"
         >
-          How we implement it.
+          {t.howWeImpl}
         </h2>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -218,13 +238,13 @@ const {
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-14">
         <span class="section-label mb-4" style="background: white;"
-          >Operational outcomes</span
+          >{t.outcomes}</span
         >
         <h2
           class="text-3xl sm:text-4xl font-bold mt-4 mb-4"
           style="color: #0A2540;"
         >
-          What changes when this is delivered.
+          {t.whatChanges}
         </h2>
       </div>
       <div class="grid sm:grid-cols-2 gap-6">
@@ -274,11 +294,11 @@ const {
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="/contact"
+          href={t.contactHref}
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02]"
           style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
         >
-          Book a technical review
+          {t.bookReview}
           <svg
             class="w-4 h-4"
             fill="none"
@@ -292,11 +312,11 @@ const {
           >
         </a>
         <a
-          href="/services"
+          href={t.servicesHref}
           class="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
           style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.25);"
         >
-          All solutions
+          {t.allSolutions}
         </a>
       </div>
     </div>

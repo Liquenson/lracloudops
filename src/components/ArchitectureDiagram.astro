@@ -1,10 +1,14 @@
 ---
+import { getLangFromUrl } from '../i18n/index'
+
 interface Props {
   title: string
   description: string
   archId: string
 }
 const { title, description, archId } = Astro.props
+const lang = getLangFromUrl(Astro.url)
+const isES = lang === 'es'
 ---
 
 <div
@@ -21,14 +25,14 @@ const { title, description, archId } = Astro.props
         class="text-xs font-bold uppercase tracking-wider mb-0.5"
         style="color: #1E6FFF;"
       >
-        Architecture Diagram
+        {isES ? 'Diagrama de Arquitectura' : 'Architecture Diagram'}
       </p>
       <h3 class="text-sm font-semibold" style="color: #0A2540;">{title}</h3>
     </div>
     <div class="flex items-center gap-2">
       <button
         id={`zoom-btn-${archId}`}
-        aria-label="View fullscreen"
+        aria-label={isES ? 'Ver pantalla completa' : 'View fullscreen'}
         class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all hover:opacity-80"
         style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
       >
@@ -44,11 +48,11 @@ const { title, description, archId } = Astro.props
             d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 0h-4m4 0l-5-5"
           ></path></svg
         >
-        Zoom
+        {isES ? 'Ampliar' : 'Zoom'}
       </button>
       <button
         id={`dl-btn-${archId}`}
-        aria-label="Download SVG"
+        aria-label={isES ? 'Descargar SVG' : 'Download SVG'}
         class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all hover:opacity-80"
         style="background: #F8FAFC; color: #64748b; border: 1px solid #e2e8f0;"
       >
@@ -64,7 +68,7 @@ const { title, description, archId } = Astro.props
             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
           ></path></svg
         >
-        Download SVG
+        {isES ? 'Descargar SVG' : 'Download SVG'}
       </button>
     </div>
   </div>
