@@ -1,15 +1,32 @@
 ---
+import { getLangFromUrl } from '../i18n/index'
+
 interface Props {
   title?: string
   subtitle?: string
   darkBackground?: boolean
 }
 
+const lang = getLangFromUrl(Astro.url)
+const isES = lang === 'es'
+
 const {
-  title = 'DevOps Engineering Newsletter',
-  subtitle = 'Monthly insights on cloud infrastructure, Kubernetes and platform engineering. No spam, unsubscribe anytime.',
+  title = isES
+    ? 'Newsletter de Ingeniería DevOps'
+    : 'DevOps Engineering Newsletter',
+  subtitle = isES
+    ? 'Artículos mensuales sobre infraestructura cloud, Kubernetes e ingeniería de plataforma. Sin spam, cancela cuando quieras.'
+    : 'Monthly insights on cloud infrastructure, Kubernetes and platform engineering. No spam, unsubscribe anytime.',
   darkBackground = false,
 } = Astro.props
+
+const placeholder   = isES ? 'tu@empresa.com'                              : 'you@company.com'
+const subscribeBtn  = isES ? 'Suscribirse →'                               : 'Subscribe →'
+const subscribingTx = isES ? 'Suscribiendo...'                             : 'Subscribing...'
+const subscribedMsg = isES ? '¡Suscrito! Recibirás nuestro próximo número.' : 'Subscribed! You will receive our next issue.'
+const subscribedBtn = isES ? 'Suscrito ✓'                                  : 'Subscribed ✓'
+const errorMsg      = isES ? 'Error al suscribirse. Por favor intenta de nuevo.' : 'Error subscribing. Please try again.'
+const connErrorMsg  = isES ? 'Error de conexión. Por favor intenta de nuevo.'    : 'Connection error. Please try again.'
 
 const bgStyle = darkBackground
   ? 'background: #0A2540;'
@@ -53,7 +70,7 @@ const inputStyle = darkBackground
       type="email"
       name="email"
       required
-      placeholder="you@company.com"
+      placeholder={placeholder}
       class="flex-1 px-4 py-3 text-sm rounded-xl outline-none"
       style={inputStyle}
     />
@@ -62,47 +79,47 @@ const inputStyle = darkBackground
       class="newsletter-cta-btn px-6 py-3 text-sm font-semibold text-white rounded-xl transition-all hover:opacity-90 flex-shrink-0"
       style="background: #1E6FFF; box-shadow: 0 4px 14px rgba(30,111,255,0.4);"
     >
-      Subscribe →
+      {subscribeBtn}
     </button>
   </form>
   <div class="newsletter-cta-status hidden mt-4 text-sm rounded-xl py-2.5 px-4 max-w-md mx-auto"></div>
 </div>
 
-<script>
-  document.querySelectorAll<HTMLElement>('.newsletter-cta-widget').forEach((widget) => {
-    const form = widget.querySelector<HTMLFormElement>('.newsletter-cta-form')
-    const btn = widget.querySelector<HTMLButtonElement>('.newsletter-cta-btn')
-    const status = widget.querySelector<HTMLDivElement>('.newsletter-cta-status')
+<script define:vars={{ subscribingTx, subscribedMsg, subscribedBtn, errorMsg, connErrorMsg }}>
+  document.querySelectorAll('.newsletter-cta-widget').forEach((widget) => {
+    const form   = widget.querySelector('.newsletter-cta-form')
+    const btn    = widget.querySelector('.newsletter-cta-btn')
+    const status = widget.querySelector('.newsletter-cta-status')
     if (!form || !btn || !status) return
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault()
       const original = btn.textContent
-      btn.textContent = 'Subscribing...'
+      btn.textContent = subscribingTx
       btn.disabled = true
 
       try {
-        const res = await fetch('https://api.web3forms.com/submit', {
+        const res  = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(Object.fromEntries(new FormData(form))),
         })
         const data = await res.json()
         if (data.success) {
-          status.textContent = 'Subscribed! You will receive our next issue.'
+          status.textContent = subscribedMsg
           status.style.cssText =
             'display:block; background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 12px 16px;'
           form.reset()
-          btn.textContent = 'Subscribed ✓'
+          btn.textContent = subscribedBtn
         } else {
-          status.textContent = 'Error subscribing. Please try again.'
+          status.textContent = errorMsg
           status.style.cssText =
             'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
           btn.textContent = original
           btn.disabled = false
         }
       } catch {
-        status.textContent = 'Connection error. Please try again.'
+        status.textContent = connErrorMsg
         status.style.cssText =
           'display:block; background: rgba(239,68,68,0.1); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px;'
         btn.textContent = original
