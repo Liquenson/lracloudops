@@ -8,6 +8,23 @@ featured: false
 github: "https://github.com/lra-cloud-ops/linux-fleet-manager"
 cicd: false
 draft: false
+
+categoria_es: "Automatización DevOps"
+madurez_es: "Producción"
+descripcion_es: "Herramienta Bash para gestión masiva de servidores Linux — despliegue, configuración y mantenimiento a escala de infraestructura. Operaciones vía SSH, validadas con ShellCheck, scripts idempotentes siguiendo estándares de ingeniería Red Hat."
+metricas_es:
+  - label: "SSH — sin agentes"
+    value: "Interfaz"
+  - label: "ShellCheck obligatorio"
+    value: "Validación"
+  - label: "Idempotente — seguro re-ejecutar"
+    value: "Scripts"
+  - label: "Ingeniería Red Hat"
+    value: "Estándares"
+highlights_es:
+  - "Gestión masiva de servidores vía SSH — sin agentes ni daemons requeridos"
+  - "Validación CI con ShellCheck — cada script linteado antes del despliegue"
+  - "Scripts idempotentes — seguros para ejecutar múltiples veces sin efectos secundarios"
 stack:
   - "Bash"
   - "SSH"

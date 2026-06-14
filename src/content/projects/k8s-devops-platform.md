@@ -8,6 +8,23 @@ featured: false
 github: "https://github.com/lra-cloud-ops/k8s-devops-platform"
 cicd: false
 draft: false
+
+categoria_es: "Kubernetes y GitOps"
+madurez_es: "Referencia"
+descripcion_es: "Plataforma Kubernetes con entrega GitOps vía ArgoCD. Despliegues declarativos, automatizados y versionados usando KinD para desarrollo local. Helm Charts, Prometheus, Grafana y stack de observabilidad con Alertmanager."
+metricas_es:
+  - label: "GitOps — auto-sync ArgoCD"
+    value: "Modelo de entrega"
+  - label: "KinD refleja producción"
+    value: "Desarrollo local"
+  - label: "Prometheus + Grafana"
+    value: "Observabilidad"
+  - label: "Declarativo — Helm + ArgoCD"
+    value: "Despliegues"
+highlights_es:
+  - "GitOps con ArgoCD — declarativo, versionado y reconciliado automáticamente"
+  - "KinD (Kubernetes en Docker) para desarrollo local que refleja producción"
+  - "Helm Charts con valores por entorno — dev, staging, producción"
 stack:
   - "Kubernetes"
   - "ArgoCD"

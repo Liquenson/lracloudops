@@ -9,6 +9,23 @@ github: "https://github.com/lra-cloud-ops/aws-devops-agent"
 cicd: false
 draft: false
 
+categoria_es: "IA y Automatización Cloud"
+madurez_es: "En Desarrollo"
+descripcion_es: "Agente CLI con IA para gestionar 25+ servicios de AWS en lenguaje natural. Claude Sonnet como capa de razonamiento, boto3 como capa de ejecución — consulta infraestructura, despliega workloads y gestiona recursos sin salir de la terminal."
+metricas_es:
+  - label: "25+ soportados"
+    value: "Servicios AWS"
+  - label: "CLI en lenguaje natural"
+    value: "Interfaz"
+  - label: "Claude Sonnet"
+    value: "Modelo de IA"
+  - label: "boto3"
+    value: "Capa de ejecución"
+highlights_es:
+  - "Lenguaje natural → API de AWS — describe lo que necesitas, el agente lo ejecuta"
+  - "Claude Sonnet como capa de razonamiento — interpreta la intención, selecciona la llamada boto3 correcta"
+  - "25+ servicios AWS soportados — EC2, S3, EKS, RDS, IAM, CloudWatch y más"
+
 stack:
   - "Python"
   - "Claude Sonnet"

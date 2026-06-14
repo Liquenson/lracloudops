@@ -9,6 +9,23 @@ github: "https://github.com/lra-cloud-ops/aws-terraform-devops"
 cicd: true
 draft: false
 
+categoria_es: "Infraestructura Cloud"
+madurez_es: "Producción"
+descripcion_es: "Infraestructura AWS lista para producción con Terraform. Arquitectura escalable con EKS, RDS Multi-AZ, VPC y pipelines CI/CD automatizados con GitHub Actions y Jenkins. Gestión de estado remoto y gates de cobertura con SonarCloud."
+metricas_es:
+  - label: "Modular — reutilizable"
+    value: "Módulos Terraform"
+  - label: "Dual — GitHub Actions + Jenkins"
+    value: "Pipelines CI/CD"
+  - label: "RDS Multi-AZ"
+    value: "Base de datos"
+  - label: "SonarCloud obligatorio"
+    value: "Gate de cobertura"
+highlights_es:
+  - "Terraform modular — VPC, EKS, RDS, IAM como módulos reutilizables independientes"
+  - "CI/CD dual — GitHub Actions para builds cloud, Jenkins para on-premise"
+  - "RDS PostgreSQL 15 Multi-AZ con failover automático"
+
 stack:
   - "Terraform"
   - "AWS EKS"

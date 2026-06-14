@@ -3,7 +3,7 @@ import TechIcon from '../components/TechIcon.astro'
 import Layout from '../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 
-const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+const recentPosts = (await getCollection('esBlog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
   .slice(0, 3)
 
@@ -490,7 +490,13 @@ const professionalServiceSchema = {
 
       {displayProjects.length > 0 ? (
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {displayProjects.map((project, i) => (
+          {displayProjects.map((project, i) => {
+            const cat = project.data.categoria_es ?? project.data.categoria;
+            const desc = project.data.descripcion_es ?? project.data.descripcion;
+            const mad = project.data.madurez_es ?? project.data.madurez;
+            const mets = project.data.metricas_es ?? project.data.metricas;
+            const highs = project.data.highlights_es ?? project.data.highlights;
+            return (
             <div
               class={`bg-white rounded-2xl p-8 animate-fade-up ${(['delay-100', 'delay-200', 'delay-300', 'delay-400'])[i] ?? ''}`}
               style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
@@ -501,7 +507,7 @@ const professionalServiceSchema = {
                     class="text-xs font-semibold uppercase tracking-widest mb-1 block"
                     style="color: #94a3b8;"
                   >
-                    {project.data.categoria}
+                    {cat}
                   </span>
                   <h3 class="text-lg font-bold" style="color: #0A2540;">
                     {project.data.titulo}
@@ -511,17 +517,17 @@ const professionalServiceSchema = {
                   class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-3"
                   style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;"
                 >
-                  {project.data.madurez}
+                  {mad}
                 </span>
               </div>
 
               <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-                {project.data.descripcion}
+                {desc}
               </p>
 
-              {project.data.metricas && project.data.metricas.length > 0 && (
+              {mets && mets.length > 0 && (
                 <div class="grid grid-cols-2 gap-3 mb-6">
-                  {project.data.metricas.map((m) => (
+                  {mets.map((m) => (
                     <div
                       class="rounded-xl p-3"
                       style="background: #f8fafc; border: 1px solid #e2e8f0;"
@@ -543,9 +549,9 @@ const professionalServiceSchema = {
                 </div>
               )}
 
-              {project.data.highlights && project.data.highlights.length > 0 && (
+              {highs && highs.length > 0 && (
                 <ul class="space-y-2 mb-6">
-                  {project.data.highlights.slice(0, 3).map((h) => (
+                  {highs.slice(0, 3).map((h) => (
                     <li class="flex items-center gap-2.5 text-xs" style="color: #64748b;">
                       <svg
                         class="w-3.5 h-3.5 flex-shrink-0"
@@ -585,7 +591,7 @@ const professionalServiceSchema = {
                   </span>
                 )}
                 <a
-                  href={`/es/projects/${project.id}`}
+                  href={`/projects/${project.id}`}
                   class="inline-flex items-center gap-1 text-xs font-semibold"
                   style="color: #2563EB;"
                 >
@@ -596,7 +602,8 @@ const professionalServiceSchema = {
                 </a>
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       ) : (
         <p class="text-[#64748b] text-lg text-center py-12">Próximamente nuevos proyectos.</p>
@@ -613,440 +620,6 @@ const professionalServiceSchema = {
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 3. CASOS DE USO                                                      -->
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white" aria-labelledby="case-studies-heading">
-    <div class="max-w-7xl mx-auto px-6">
-      <div
-        class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14"
-      >
-        <div class="animate-fade-up">
-          <span class="section-label">Casos de Uso</span>
-          <h2
-            id="case-studies-heading"
-            class="text-4xl sm:text-5xl font-bold mt-5"
-            style="color: #0F172A; letter-spacing: -0.025em;"
-          >
-            Workloads de producción.<br />Resultados documentados.
-          </h2>
-        </div>
-        <a
-          href="/proyectos"
-          class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors animate-fade"
-          style="color: #2563EB;"
-        >
-          Ver todos los proyectos
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </a>
-      </div>
-
-      <!-- Tarjeta destacada -->
-      <article
-        class="card card-accent mb-6 p-8 animate-fade-up"
-        style="border-left: 3px solid #2563EB;"
-        aria-label="Caso de uso: Migración de Plataforma Sanitaria"
-      >
-        <div class="flex flex-col lg:flex-row gap-10">
-          <div class="flex-1">
-            <div class="flex items-center flex-wrap gap-3 mb-6">
-              <span
-                class="text-xs font-bold px-3 py-1.5 rounded-full"
-                style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
-                >Producción</span
-              >
-              <span
-                class="flex items-center gap-1.5 text-xs"
-                style="color: #64748B;"
-              >
-                <span
-                  class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"
-                  aria-hidden="true"></span>
-                CI/CD activo
-              </span>
-              <span class="text-xs font-bold" style="color: #2563EB;"
-                >Cloud & IaC</span
-              >
-            </div>
-
-            <h3 class="text-2xl font-bold mb-3" style="color: #0F172A;">
-              Migración de Plataforma Sanitaria
-            </h3>
-            <p class="text-base leading-relaxed mb-2" style="color: #64748B;">
-              Una plataforma SaaS sanitaria con infraestructura improvisada:
-              base de datos en zona única, despliegues manuales, sin gestión de
-              estado. La reemplazamos por un entorno AWS gestionado con
-              Terraform — EKS 1.31 con HPA, RDS PostgreSQL 15 Multi-AZ, estado
-              remoto en S3 con locking DynamoDB y un pipeline CI/CD dual con
-              cobertura SonarCloud ≥ 80%.
-            </p>
-
-            <div class="flex flex-wrap gap-6 my-6">
-              {
-                [
-                  { value: '80%', label: 'Despliegues más rápidos' },
-                  { value: '6', label: 'Módulos Terraform' },
-                  { value: '17', label: 'Tests automatizados' },
-                ].map(({ value, label }) => (
-                  <div>
-                    <div
-                      class="text-2xl font-extrabold"
-                      style="color: #2563EB; letter-spacing: -0.04em;"
-                    >
-                      {value}
-                    </div>
-                    <div class="text-xs mt-0.5" style="color: #64748B;">
-                      {label}
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 mb-7">
-              {
-                [
-                  'Terraform 1.9.8',
-                  'AWS EKS 1.31',
-                  'RDS PostgreSQL 15',
-                  'Flask 3.0.3',
-                  'GitHub Actions',
-                  'Jenkins',
-                  'Helm',
-                  'SonarCloud',
-                ].map((tag) => <span class="stack-tag">{tag}</span>)
-              }
-            </div>
-
-            <div class="flex items-center gap-5">
-              <a
-                href="https://github.com/lra-cloud-ops/aws-terraform-devops"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-70"
-                style="color: #0F172A;"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                  ></path>
-                </svg>
-                Ver en GitHub
-              </a>
-              <a
-                href="/projects/aws-terraform-devops"
-                class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
-                style="color: #2563EB;"
-              >
-                Caso de uso completo
-                <svg
-                  class="w-3.5 h-3.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Panel de arquitectura -->
-          <aside
-            class="lg:w-60 flex-shrink-0 rounded-2xl p-6 flex flex-col"
-            style="background: #0B1220; min-height: 220px;"
-            aria-label="Arquitectura AWS utilizada"
-          >
-            <div
-              class="text-[10px] font-bold uppercase tracking-widest mb-5"
-              style="color: rgba(148,163,184,0.7);"
-            >
-              Arquitectura AWS
-            </div>
-            <div class="space-y-3 flex-1">
-              {
-                [
-                  'CloudFront CDN',
-                  'ALB Load Balancer',
-                  'EKS 1.31 + HPA',
-                  'RDS PostgreSQL 15 Multi-AZ',
-                  'S3 + ECR',
-                ].map((label) => (
-                  <div class="flex items-center gap-2.5">
-                    <span
-                      class="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-emerald-400"
-                      aria-hidden="true"
-                    />
-                    <span
-                      class="text-xs"
-                      style="color: rgba(255,255,255,0.55);"
-                    >
-                      {label}
-                    </span>
-                  </div>
-                ))
-              }
-            </div>
-            <div
-              class="mt-5 pt-4 text-xs font-mono"
-              style="border-top: 1px solid rgba(255,255,255,0.06); color: rgba(148,163,184,0.45);"
-            >
-              6 módulos Terraform &middot; GitOps activo
-            </div>
-          </aside>
-        </div>
-      </article>
-
-      <!-- Dos columnas -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <article
-          class="card card-accent p-7 flex flex-col animate-fade-up delay-100"
-          aria-label="Caso de uso: GitOps Stack — CI/CD Platform"
-        >
-          <div class="flex items-start justify-between mb-5">
-            <div
-              class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0"
-              style="background: #EFF6FF;"
-              aria-hidden="true"
-            >
-              <svg
-                class="w-5 h-5"
-                style="color: #2563EB;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                ></path>
-              </svg>
-            </div>
-            <span
-              class="text-xs font-bold px-2.5 py-1.5 rounded-full"
-              style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
-              >Producción</span
-            >
-          </div>
-          <p
-            class="text-xs font-bold uppercase tracking-wider mb-1.5"
-            style="color: #2563EB;"
-          >
-            DevOps & GitOps
-          </p>
-          <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">
-            GitOps Stack — CI/CD Platform
-          </h3>
-          <p
-            class="text-sm leading-relaxed flex-1 mb-5"
-            style="color: #64748B;"
-          >
-            Pipeline CI/CD dual con Jenkins y GitHub Actions sobre EKS gestionado por Terraform.
-            ArgoCD como controlador de entrega GitOps. Monitorización con CloudWatch y auditoría
-            completa con CloudTrail. Ansible para gestión de configuración.
-          </p>
-          <div class="flex gap-5 mb-5">
-            {
-              [
-                { value: '2', label: 'Pipelines CI/CD' },
-                { value: '100%', label: 'Cobertura IaC' },
-              ].map(({ value, label }) => (
-                <div>
-                  <div
-                    class="text-xl font-extrabold"
-                    style="color: #2563EB; letter-spacing: -0.04em;"
-                  >
-                    {value}
-                  </div>
-                  <div class="text-xs mt-0.5" style="color: #64748B;">
-                    {label}
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-          <div class="flex flex-wrap gap-1.5 mb-5">
-            {
-              [
-                'EKS',
-                'Terraform',
-                'Jenkins',
-                'GitHub Actions',
-                'ArgoCD',
-                'Ansible',
-                'CloudWatch',
-              ].map((tag) => <span class="stack-tag">{tag}</span>)
-            }
-          </div>
-          <div
-            class="flex items-center justify-between pt-4 border-t border-gray-100"
-          >
-            <a
-              href="https://github.com/lra-cloud-ops/gitops-stack"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
-              style="color: #0F172A;"
-            >
-              <svg
-                class="w-3.5 h-3.5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                ></path>
-              </svg>
-              Ver en GitHub
-            </a>
-            <a
-              href="/projects/gitops-stack"
-              class="text-xs font-semibold"
-              style="color: #2563EB;">Caso de uso &rarr;</a
-            >
-          </div>
-        </article>
-
-        <article
-          class="card card-accent p-7 flex flex-col animate-fade-up delay-200"
-          aria-label="Caso de uso: Plataforma Kubernetes GitOps"
-        >
-          <div class="flex items-start justify-between mb-5">
-            <div
-              class="w-11 h-11 flex items-center justify-center rounded-xl flex-shrink-0"
-              style="background: #EFF6FF;"
-              aria-hidden="true"
-            >
-              <svg
-                class="w-5 h-5"
-                style="color: #2563EB;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
-                ></path>
-              </svg>
-            </div>
-            <span
-              class="text-xs font-bold px-2.5 py-1.5 rounded-full"
-              style="background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE;"
-              >Demo / Referencia</span
-            >
-          </div>
-          <p
-            class="text-xs font-bold uppercase tracking-wider mb-1.5"
-            style="color: #2563EB;"
-          >
-            Kubernetes & GitOps
-          </p>
-          <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">
-            Plataforma Kubernetes GitOps
-          </h3>
-          <p
-            class="text-sm leading-relaxed flex-1 mb-5"
-            style="color: #64748B;"
-          >
-            Plataforma de referencia para equipos que evalúan la adopción de
-            GitOps. Cluster Kubernetes de tres nodos con ArgoCD como controlador
-            de entrega, overlays Kustomize para promoción de entornos y HPA
-            configurado para comportamiento de autoscaling similar a producción.
-          </p>
-          <div class="flex gap-5 mb-5">
-            {
-              [
-                { value: 'GitOps', label: 'Modelo de entrega' },
-                { value: '0', label: 'Despliegues manuales' },
-              ].map(({ value, label }) => (
-                <div>
-                  <div
-                    class="text-xl font-extrabold"
-                    style="color: #2563EB; letter-spacing: -0.04em;"
-                  >
-                    {value}
-                  </div>
-                  <div class="text-xs mt-0.5" style="color: #64748B;">
-                    {label}
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-          <div class="flex flex-wrap gap-1.5 mb-5">
-            {
-              ['Kubernetes 1.29', 'ArgoCD', 'KinD', 'Kustomize', 'Helm'].map(
-                (tag) => <span class="stack-tag">{tag}</span>
-              )
-            }
-          </div>
-          <div
-            class="flex items-center justify-between pt-4 border-t border-gray-100"
-          >
-            <a
-              href="https://github.com/lra-cloud-ops/k8s-devops-platform"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
-              style="color: #0F172A;"
-            >
-              <svg
-                class="w-3.5 h-3.5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                ></path>
-              </svg>
-              Ver en GitHub
-            </a>
-            <a
-              href="/projects/k8s-devops-platform"
-              class="text-xs font-semibold"
-              style="color: #2563EB;">Caso de uso &rarr;</a
-            >
-          </div>
-        </article>
       </div>
     </div>
   </section>

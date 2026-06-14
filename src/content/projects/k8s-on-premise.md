@@ -9,6 +9,23 @@ github: "https://github.com/lra-cloud-ops/k8s-on-premise"
 cicd: false
 draft: false
 
+categoria_es: "Kubernetes y GitOps"
+madurez_es: "En Desarrollo"
+descripcion_es: "Cluster Kubernetes de nivel producción en bare metal usando kubeadm, Vagrant y VirtualBox. Aprovisionamiento automatizado, CNI Calico, GitOps con ArgoCD e Ingress NGINX — totalmente reproducible desde un único comando."
+metricas_es:
+  - label: "1 master + 2 workers"
+    value: "Topología del cluster"
+  - label: "~20 min automatizado"
+    value: "Tiempo de aprovisionamiento"
+  - label: "3 de 18"
+    value: "Fases completas"
+  - label: "vagrant up"
+    value: "Método de despliegue"
+highlights_es:
+  - "Cluster completo desde cero con un solo comando: vagrant up"
+  - "ArgoCD GitOps — auto-sync + prune + selfHeal habilitados"
+  - "Ingress NGINX con NodePort — app demo expuesta en el cluster"
+
 stack:
   - "Kubernetes v1.31.14"
   - "ArgoCD"
