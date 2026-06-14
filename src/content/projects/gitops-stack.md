@@ -9,6 +9,23 @@ github: "https://github.com/lra-cloud-ops/gitops-stack"
 cicd: true
 draft: false
 
+categoria_es: "GitOps y CI/CD"
+madurez_es: "Producción"
+descripcion_es: "Pipeline GitOps de producción desplegado en AWS EKS. Docker, Kubernetes, Jenkins CI, infraestructura Terraform, gestión de configuración con Ansible, observabilidad CloudWatch — ciclo de vida DevOps completo desde el commit hasta producción."
+metricas_es:
+  - label: "Build → Test → Deploy"
+    value: "Etapas del pipeline"
+  - label: "100% Terraform IaC"
+    value: "Infraestructura"
+  - label: "IAM — sin credenciales estáticas"
+    value: "Identidad"
+  - label: "CloudWatch + CloudTrail"
+    value: "Observabilidad"
+highlights_es:
+  - "Pipeline GitOps completo — el commit dispara build, test y deploy automatizados a EKS"
+  - "Módulos Terraform para VPC, cluster EKS, roles IAM y grupos de logs CloudWatch"
+  - "Playbooks Ansible para configuración de nodos — idempotentes, versionados"
+
 stack:
   - "AWS EKS"
   - "Terraform"

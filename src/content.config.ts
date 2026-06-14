@@ -55,6 +55,18 @@ const projects = defineCollection({
         })
       )
       .optional(),
+    categoria_es: z.string().optional(),
+    descripcion_es: z.string().optional(),
+    madurez_es: z.string().optional(),
+    metricas_es: z
+      .array(
+        z.object({
+          label: z.string(),
+          value: z.string(),
+        })
+      )
+      .optional(),
+    highlights_es: z.array(z.string()).optional(),
   }),
 })
 
