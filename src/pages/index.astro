@@ -74,9 +74,10 @@ const professionalServiceSchema = {
           style="background: rgba(37,99,235,0.15); border: 1px solid rgba(96,165,250,0.3); color: #93C5FD;"
         >
           <span
-            class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0 animate-pulse-soft"
+            class="w-2 h-2 rounded-full flex-shrink-0 animate-pulse-soft"
+            style="background: #60A5FA;"
             aria-hidden="true"></span>
-          Infraestructura Cloud &middot; Platform Engineering
+          Platform Engineering &middot; AWS &middot; Kubernetes
         </div>
 
         <h1
@@ -97,77 +98,75 @@ const professionalServiceSchema = {
           arquitectura improvisada, sin cambios sin trazabilidad.
         </p>
 
-        <div class="flex flex-wrap gap-4 mb-12">
+        <div class="flex flex-wrap gap-4 mb-6">
           <a
             href="/contacto"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.45);"
           >
             Solicitar revisión de infraestructura
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </a>
           <a
-            href="/servicios"
+            href="/proyectos"
             class="inline-flex items-center gap-2.5 text-sm font-semibold px-7 py-4 rounded-xl border transition-all hover:bg-white/10"
             style="color: rgba(148,163,184,0.9); border-color: rgba(148,163,184,0.25);"
           >
-            Ver cómo trabajamos
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"></path>
+            Ver casos de estudio
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </a>
         </div>
 
-        <!-- Métricas hero -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <p style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 1rem;">
+          Infraestructura de producción en salud, fintech y plataformas cloud en España y LATAM
+        </p>
+
+        <!-- Franja de sectores -->
+        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.25rem;" role="list" aria-label="Industrias atendidas">
+          {[
+            { label: 'Salud', path: 'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z' },
+            { label: 'Fintech', path: 'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z' },
+            { label: 'SaaS', path: 'M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z' },
+            { label: 'Enterprise', path: 'M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z' },
+          ].map(({ label, path }) => (
+            <span
+              role="listitem"
+              style="display:inline-flex; align-items:center; gap:0.375rem; font-size:0.7rem; font-weight:500; color:rgba(148,163,184,0.8); background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:100px; padding:0.3rem 0.75rem;"
+            >
+              <svg style="width:0.875rem; height:0.875rem; flex-shrink:0; color:rgba(96,165,250,0.8);" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={path} />
+              </svg>
+              {label}
+            </span>
+          ))}
+        </div>
+
+        <!-- Indicadores de confianza -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
           {
-            [
-              { value: '6+', label: 'Proyectos Open Source' },
-              { value: '4+', label: 'Años en Producción' },
-              { value: '100%', label: 'Infraestructura como código' },
-              { value: '25+', label: 'Servicios AWS' },
-            ].map(({ value, label }) => (
-              <div
-                class="text-center px-3 py-4 rounded-xl"
-                style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
-              >
-                <div
-                  class="text-xl sm:text-2xl font-extrabold text-white mb-1"
-                  style="letter-spacing: -0.03em;"
-                >
-                  {value}
-                </div>
-                <div
-                  class="text-[10px] font-semibold uppercase tracking-wider"
-                  style="color: rgba(148,163,184,0.55);"
-                >
-                  {label}
-                </div>
-              </div>
+            ['Respuesta en 24h', 'Sin contratos de permanencia'].map((item) => (
+              <span class="flex items-center gap-1.5 text-xs font-medium" style="color: rgba(148,163,184,0.65);">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </span>
             ))
           }
+          <a
+            href="/assessment"
+            class="flex items-center gap-1.5 text-xs font-medium transition-colors hover:opacity-80"
+            style="color: rgba(148,163,184,0.65);"
+          >
+            <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Assessment DevOps gratuito
+          </a>
         </div>
       </div>
 
@@ -383,6 +382,65 @@ const professionalServiceSchema = {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 1B. BANDA DE CREDENCIALES — Certificaciones y señales de confianza   -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    style="background: white; border-bottom: 1px solid #E2E8F0; padding: 12px 0;"
+    aria-label="Certificaciones del equipo y señales de confianza"
+  >
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #F5F0FF; color: #7B42BC; border: 1px solid #D6B9F5;"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+            ></path></svg
+          >
+          HashiCorp Certified
+        </span>
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #EFF8FF; color: #049FD9; border: 1px solid #BAE6FD;"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+            ></path></svg
+          >
+          Cisco Cybersecurity
+        </span>
+        <span
+          class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full"
+          style="background: #FFF5F5; color: #EE3124; border: 1px solid #FCA5A5;"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path></svg
+          >
+          Fortinet Certified ×2
+        </span>
+        <a
+          href="/certificaciones"
+          class="text-xs font-semibold transition-colors hover:opacity-80"
+          style="color: #1E6FFF;">Ver todas las credenciales →</a
+        >
+        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
+        <span class="text-xs font-medium" style="color: #64748b;"
+          >Solo credenciales OIDC · Sin claves AWS estáticas</span
+        >
+        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
+        <span class="text-xs font-medium" style="color: #64748b;"
+          >NDA disponible · Conforme con GDPR</span
+        >
       </div>
     </div>
   </section>
@@ -625,55 +683,71 @@ const professionalServiceSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 4. SOLUCIONES                                                        -->
+  <!-- 4. SERVICIOS                                                          -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white" aria-labelledby="solutions-heading">
-    <div class="max-w-7xl mx-auto px-6">
+  <section
+    style="background: #F8FAFC; border-top: 1px solid #E5E7EB;"
+    aria-labelledby="services-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6 py-24">
       <div class="text-center mb-16 animate-fade-up">
-        <span class="section-label">Soluciones</span>
+        <span class="section-label">Servicios</span>
         <h2
-          id="solutions-heading"
+          id="services-heading"
           class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
           style="color: #0F172A; letter-spacing: -0.025em;"
         >
-          Cuatro disciplinas de plataforma.<br />Un modelo operativo.
+          Lo que construimos y operamos
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Cada capa reduce la superficie operativa que gestionan tus equipos.
-          Juntas forman una plataforma de entrega repetible.
+          Seis disciplinas de ingeniería. Un modelo operativo de plataforma
+          unificado, diseñado para fiabilidad en producción.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           [
             {
               icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
               title: 'Infraestructura Cloud',
+              href: '/cloud-infrastructure',
               desc: 'Entornos AWS codificados con networking definido, límites de seguridad y políticas de acceso. Módulos Terraform auditables, versionados y reproducibles en múltiples cuentas.',
-              tags: ['AWS', 'VPC', 'EKS', 'RDS'],
             },
             {
               icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2',
-              title: 'Platform Engineering',
-              desc: 'Clusters Kubernetes operados como plataformas internas. Entrega GitOps a través de ArgoCD. Los equipos despliegan sin abrir tickets de infraestructura.',
-              tags: ['Kubernetes', 'ArgoCD', 'Helm'],
+              title: 'Plataformas Kubernetes',
+              href: '/kubernetes-platforms',
+              desc: 'Clusters EKS de producción operados como plataformas internas. Entrega GitOps vía ArgoCD. Los equipos de desarrollo despliegan sin abrir tickets de infraestructura.',
             },
             {
               icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
               title: 'DevOps Automation',
+              href: '/devops-automation',
               desc: 'Pipelines end-to-end que aplican tests, escaneos de seguridad y quality gates antes de llegar al cluster. Cada release es trazable. Cada rollback requiere un solo comando.',
-              tags: ['GitHub Actions', 'Jenkins', 'OIDC'],
+            },
+            {
+              icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+              title: 'Platform Engineering',
+              href: '/platform-engineering',
+              desc: 'Construcción de plataformas internas de desarrollo que reducen la carga cognitiva y aceleran la entrega de los equipos de ingeniería, desde golden paths hasta portales de autoservicio.',
             },
             {
               icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-              title: 'Observability',
-              desc: 'Instrumentado desde el primer día, no después del primer incidente. Métricas Prometheus, logs estructurados y umbrales de alerta configurados antes de que el primer usuario llegue a producción.',
-              tags: ['Prometheus', 'Grafana', 'SRE'],
+              title: 'Observability & SRE',
+              href: '/observability',
+              desc: 'Métricas Prometheus, dashboards Grafana y alertas configuradas antes del go-live. SLOs definidos. Sabes qué está fallando antes de que se abra un ticket.',
             },
-          ].map(({ icon, title, desc, tags }, i) => (
+            {
+              icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+              title: 'Seguridad y Cumplimiento',
+              href: '/servicios',
+              desc: 'Autenticación OIDC, IAM de mínimo privilegio, aislamiento de red y límites de cumplimiento aplicados a nivel de infraestructura — no añadidos después del despliegue.',
+            },
+          ].map(({ icon, title, desc, href }, i) => (
             <div
-              class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-400'][i]}`}
+              class={`bg-white rounded-2xl p-8 flex flex-col card-lift animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-100', 'delay-200', 'delay-300'][i]}`}
+              style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
             >
               <div
                 class="w-12 h-12 flex items-center justify-center rounded-xl mb-6 flex-shrink-0"
@@ -699,18 +773,13 @@ const professionalServiceSchema = {
                 {title}
               </h3>
               <p
-                class="text-sm leading-relaxed flex-1 mb-5"
+                class="text-sm leading-relaxed flex-1 mb-6"
                 style="color: #64748B;"
               >
                 {desc}
               </p>
-              <div class="flex flex-wrap gap-1.5 mb-5">
-                {tags.map((tag) => (
-                  <span class="stack-tag">{tag}</span>
-                ))}
-              </div>
               <a
-                href="/servicios"
+                href={href}
                 class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto"
                 style="color: #2563EB;"
               >
@@ -735,11 +804,11 @@ const professionalServiceSchema = {
         }
       </div>
 
-      <div class="text-center mt-12 animate-fade-up">
+      <div class="text-center mt-12">
         <a
           href="/servicios"
-          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-gray-50"
-          style="color: #0F172A; border-color: #E5E7EB;"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
+          style="color: #0F172A; border-color: #D1D5DB; background: white;"
         >
           Ver todas las soluciones
           <svg
@@ -988,33 +1057,27 @@ const professionalServiceSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 6. POR QUÉ ELEGIRNOS                                                -->
+  <!-- 4B. POR LOS NÚMEROS                                                  -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section
-    class="py-24"
-    style="background: #F8FAFC;"
-    aria-labelledby="why-heading"
-  >
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 animate-fade-up">
-        <span class="section-label">Por qué elegirnos</span>
+  <section class="bg-white" aria-labelledby="metrics-heading">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-14 animate-fade-up">
+        <span class="section-label">Por los números</span>
         <h2
-          id="why-heading"
-          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          id="metrics-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-4"
           style="color: #0F172A; letter-spacing: -0.025em;"
         >
-          Platform engineering<br />reduce el riesgo operacional.
+          Fiabilidad de la plataforma a escala
         </h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          La fiabilidad, la velocidad de entrega y la observabilidad son
-          propiedades de la plataforma — no soluciones de emergencia aplicadas
-          durante incidentes.
+        <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">
+          Métricas reales de producción de la infraestructura que diseñamos,
+          construimos y operamos.
         </p>
       </div>
 
-      <!-- Métricas principales -->
       <div
-        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up mb-16"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up"
         style="background: #E5E7EB;"
       >
         {
@@ -1043,8 +1106,147 @@ const professionalServiceSchema = {
           ))
         }
       </div>
+    </div>
+  </section>
 
-      <!-- Propuestas de valor — 6 principios de ingeniería -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 5B. CÓMO TRABAJAMOS — Modelo de compromiso                           -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    style="background: #F8FAFC; border-top: 1px solid #E5E7EB;"
+    aria-labelledby="engagement-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6 py-24">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Cómo trabajamos</span>
+        <h2
+          id="engagement-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
+          Del kickoff a producción
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Un enfoque estructurado en seis fases que te lleva desde el
+          descubrimiento inicial hasta una plataforma de producción optimizada
+          y auto-recuperable.
+        </p>
+      </div>
+
+      <div class="relative">
+        <div
+          class="hidden lg:block absolute h-px"
+          aria-hidden="true"
+          style="top: 2.25rem; left: calc(8.33% + 2.25rem); right: calc(8.33% + 2.25rem); background: linear-gradient(90deg, transparent, #BFDBFE 8%, #BFDBFE 92%, transparent);"
+        >
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+          {
+            [
+              {
+                num: '01',
+                title: 'Descubrir',
+                desc: 'Auditamos tu infraestructura actual, identificamos brechas en fiabilidad, seguridad y velocidad de entrega.',
+              },
+              {
+                num: '02',
+                title: 'Diseñar',
+                desc: 'Arquitecturamos la plataforma objetivo: topología de red, configuración del cluster, estructura de pipelines y modelo de observabilidad.',
+              },
+              {
+                num: '03',
+                title: 'Construir',
+                desc: 'Implementamos con módulos Terraform de grado producción, manifiestos Kubernetes y pipelines CI/CD.',
+              },
+              {
+                num: '04',
+                title: 'Automatizar',
+                desc: 'Integramos entrega GitOps, testing automatizado, policy gates y procedimientos de rollback en cada ruta de release.',
+              },
+              {
+                num: '05',
+                title: 'Operar',
+                desc: 'Gestionamos la plataforma en producción con SLOs definidos, procedimientos on-call y runbooks para cada modo de fallo.',
+              },
+              {
+                num: '06',
+                title: 'Optimizar',
+                desc: 'Ajustamos continuamente eficiencia de costes, rendimiento y experiencia del desarrollador a medida que la plataforma madura.',
+              },
+            ].map(({ num, title, desc }, i) => (
+              <div
+                class={`flex flex-col items-center text-center animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-100', 'delay-200', 'delay-300'][i]}`}
+              >
+                <div
+                  class="w-[4.5rem] h-[4.5rem] rounded-full flex items-center justify-center font-black text-white text-sm mb-5 relative z-10"
+                  style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.3);"
+                >
+                  {num}
+                </div>
+                <h3 class="text-base font-bold mb-2" style="color: #0A2540;">
+                  {title}
+                </h3>
+                <p class="text-xs leading-relaxed" style="color: #64748B;">
+                  {desc}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="text-center mt-14">
+        <a
+          href="/contacto"
+          class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
+        >
+          Comenzar tu proyecto
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 6. POR QUÉ ELEGIRNOS                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 border-t border-gray-100"
+    style="background: #F8FAFC;"
+    aria-labelledby="why-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Por qué elegirnos</span>
+        <h2
+          id="why-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
+          Platform engineering<br />reduce el riesgo operacional.
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          La fiabilidad, la velocidad de entrega y la observabilidad son
+          propiedades de la plataforma — no soluciones de emergencia aplicadas
+          durante incidentes.
+        </p>
+      </div>
+
+      <!-- 6 principios de ingeniería -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           [
@@ -1117,15 +1319,371 @@ const professionalServiceSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- 8. BLOG                                                              -->
+  <!-- 7B. INDUSTRIAS                                                        -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-24 bg-white" aria-labelledby="blog-heading">
+  <section
+    class="py-24 bg-white border-t border-gray-100"
+    aria-labelledby="sectors-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Industrias</span>
+        <h2
+          id="sectors-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
+          Industrias a las que servimos
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Experiencia probada en entornos regulados y de alta disponibilidad
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          [
+            {
+              title: 'Salud',
+              desc: 'Infraestructura con conciencia HIPAA y trazabilidad completa',
+              detail:
+                'Disponibilidad Multi-AZ y controles de cumplimiento automatizados. IAM de mínimo privilegio, datos cifrados en reposo y límites de cumplimiento aplicados en el aprovisionamiento. Probado en entornos reales de salud — más de 4 años de operaciones en producción.',
+              icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+            },
+            {
+              title: 'Servicios Financieros',
+              desc: 'Despliegues sin tiempo de inactividad en entornos financieros regulados',
+              detail:
+                'Seguridad de nivel bancario con credenciales solo OIDC e infraestructura inmutable. Trazabilidad completa del commit a producción. Experiencia con plataformas financieras a gran escala — sin intervención manual en la ruta de release.',
+              icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z',
+            },
+            {
+              title: 'Cloud Native SaaS',
+              desc: 'Plataformas escalables que crecen con tu producto',
+              detail:
+                'Entrega GitOps, orquestación Kubernetes y observabilidad completa desde el primer día. HPA, cluster autoscaler y ECS Fargate para cargas de trabajo elásticas. Cada release está versionado y es reversible al instante.',
+              icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
+            },
+            {
+              title: 'Consultoría IT y PYME',
+              desc: 'Consultoría IT integral y gestión de infraestructura',
+              detail:
+                'Arquitectura de red, ciberseguridad y transformación digital para pequeñas y medianas empresas. Entornos Cisco, Fortinet y Windows Server. Más de 8 años sirviendo a PYMEs, call centers, sector legal y salud.',
+              icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+            },
+          ].map(({ title, desc, detail, icon }, i) => (
+            <div
+              class={`bg-white rounded-2xl p-7 card-lift animate-fade-up ${['delay-100', 'delay-200', 'delay-300', 'delay-400'][i]}`}
+              style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+            >
+              <div
+                class="w-11 h-11 flex items-center justify-center rounded-xl mb-5 flex-shrink-0"
+                style="background: #EEF4FF;"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-5 h-5"
+                  style="color: #1E6FFF;"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-base font-bold mb-1" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-sm font-semibold mb-3" style="color: #1E6FFF;">
+                {desc}
+              </p>
+              <p class="text-xs leading-relaxed" style="color: #64748B;">
+                {detail}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 7C. TESTIMONIOS                                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 border-t border-gray-100"
+    style="background: #F8FAFC;"
+    aria-labelledby="testimonials-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Testimonios de Clientes</span>
+        <h2
+          id="testimonials-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
+          La confianza de equipos de ingeniería
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto mb-6" style="color: #64748B;">
+          Resultados reales de proyectos reales de infraestructura
+        </p>
+        <a
+          href="/proyectos"
+          class="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          style="color: #2563EB;"
+        >
+          Ver los casos de estudio completos
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          [
+            {
+              metric: '3 semanas → 45 min de despliegue',
+              quote:
+                'Migraron toda nuestra infraestructura AWS a EKS en 6 semanas con cero tiempo de inactividad. El tiempo de despliegue pasó de 3 semanas a 45 minutos. Los módulos Terraform que entregaron siguen en producción 18 meses después.',
+              role: 'Head of Infrastructure',
+              company: 'Plataforma de Tecnología Sanitaria, España',
+              year: '2024',
+              initial: 'HI',
+            },
+            {
+              metric: '100% despliegues automatizados',
+              quote:
+                'La implementación GitOps con ArgoCD eliminó por completo nuestros errores de despliegue manual. Desde el primer día, cada cambio quedó trazado, versionado y con rollback automático en caso de fallo. Exactamente lo que necesitábamos en un entorno regulado.',
+              role: 'VP of Engineering',
+              company: 'Plataforma de Servicios Financieros, España',
+              year: '2025',
+              initial: 'VP',
+            },
+            {
+              metric: '4 proyectos reutilizando los mismos módulos',
+              quote:
+                'Sus módulos Terraform son de grado producción. Reutilizamos los mismos patrones de arquitectura en 4 proyectos de clientes diferentes con cambios mínimos. El enfoque de credenciales solo OIDC era un requisito de nuestro equipo de seguridad — lo entregaron desde el primer día.',
+              role: 'Senior DevOps Engineer',
+              company: 'Cloud Native SaaS, LATAM',
+              year: '2025',
+              initial: 'SD',
+            },
+          ].map(({ metric, quote, role, company, year, initial }, i) => (
+            <figure
+              class={`flex flex-col p-8 rounded-2xl animate-fade-up bg-white ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+              style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+            >
+              <div class="mb-5">
+                <span
+                  class="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full"
+                  style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;"
+                >
+                  {metric}
+                </span>
+              </div>
+              <div class="flex-1 mb-6">
+                <div class="flex gap-4">
+                  <div
+                    class="w-1 rounded-full flex-shrink-0"
+                    style="background: #1E6FFF;"
+                    aria-hidden="true"
+                  />
+                  <blockquote
+                    class="text-base leading-relaxed italic"
+                    style="color: #334155;"
+                  >
+                    "{quote}"
+                  </blockquote>
+                </div>
+              </div>
+              <figcaption class="pt-5" style="border-top: 1px solid #F1F5F9;">
+                <div class="flex items-center gap-3 mb-2">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center rounded-full text-xs font-bold text-white flex-shrink-0"
+                    style="background: #0A2540;"
+                    aria-hidden="true"
+                  >
+                    {initial}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-semibold" style="color: #0F172A;">
+                      {role}
+                    </div>
+                    <div class="text-xs truncate" style="color: #64748B;">
+                      {company}
+                    </div>
+                  </div>
+                  <span
+                    class="text-xs font-medium flex-shrink-0"
+                    style="color: #94A3B8;"
+                  >
+                    {year}
+                  </span>
+                </div>
+                <p
+                  class="text-[10px]"
+                  style="color: #CBD5E1; padding-left: 52px;"
+                >
+                  Anónimo por solicitud
+                </p>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 8B. PROYECTOS SELECCIONADOS                                           -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 bg-white border-t border-gray-100"
+    aria-labelledby="engagements2-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">Proyectos Seleccionados</span>
+        <h2
+          id="engagements2-heading"
+          class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
+          Resultados en producción.
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Implementaciones de plataforma en sectores regulados. Las métricas
+          reflejan entornos de producción, no benchmarks.
+        </p>
+      </div>
+
+      {displayProjects.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {displayProjects.map((project, i) => {
+            const cat = project.data.categoria_es ?? project.data.categoria;
+            const desc = project.data.descripcion_es ?? project.data.descripcion;
+            const mad = project.data.madurez_es ?? project.data.madurez;
+            const mets = project.data.metricas_es ?? project.data.metricas;
+            const highs = project.data.highlights_es ?? project.data.highlights;
+            return (
+            <div
+              class={`bg-white rounded-2xl p-8 animate-fade-up ${(['delay-100', 'delay-200', 'delay-300', 'delay-400'])[i] ?? ''}`}
+              style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+            >
+              <div class="flex items-start justify-between mb-5">
+                <div>
+                  <span class="text-xs font-semibold uppercase tracking-widest mb-1 block" style="color: #94a3b8;">
+                    {cat}
+                  </span>
+                  <h3 class="text-lg font-bold" style="color: #0A2540;">
+                    {project.data.titulo}
+                  </h3>
+                </div>
+                <span
+                  class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-3"
+                  style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;"
+                >
+                  {mad}
+                </span>
+              </div>
+              <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">{desc}</p>
+              {mets && mets.length > 0 && (
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                  {mets.map((m) => (
+                    <div class="rounded-xl p-3" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                      <div class="text-base font-bold mb-0.5" style="color: #0A2540;">{m.value}</div>
+                      <div class="text-xs" style="color: #64748b;">{m.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {project.data.stack.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mb-5">
+                  {project.data.stack.map((tag) => (
+                    <span class="stack-tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+              {highs && highs.length > 0 && (
+                <ul class="space-y-2 mb-6">
+                  {highs.slice(0, 3).map((h) => (
+                    <li class="flex items-center gap-2.5 text-xs" style="color: #64748b;">
+                      <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                {project.data.github ? (
+                  <a href={project.data.github} target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
+                    style="color: #64748B;">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                    </svg>
+                    GitHub
+                  </a>
+                ) : (
+                  <span class="flex items-center gap-1.5 text-xs" style="color: #CBD5E1;">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    Repositorio privado
+                  </span>
+                )}
+                <a href={`/projects/${project.id}`} class="inline-flex items-center gap-1 text-xs font-semibold" style="color: #2563EB;">
+                  Ver caso completo
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          );
+          })}
+        </div>
+      ) : (
+        <p class="text-[#64748b] text-lg text-center py-12">Próximamente nuevos proyectos.</p>
+      )}
+
+      <div class="text-center mt-12">
+        <a
+          href="/proyectos"
+          class="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          style="color: #2563EB;"
+        >
+          Ver todas las implementaciones
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 8. RECURSOS TÉCNICOS / BLOG                                          -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 border-t border-gray-100"
+    style="background: #F8FAFC;"
+    aria-labelledby="blog-heading"
+  >
     <div class="max-w-7xl mx-auto px-6">
       <div
         class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14"
       >
         <div class="animate-fade-up">
-          <span class="section-label">Blog Técnico</span>
+          <span class="section-label">Recursos Técnicos</span>
           <h2
             id="blog-heading"
             class="text-4xl sm:text-5xl font-bold mt-5"
@@ -1161,34 +1719,36 @@ const professionalServiceSchema = {
           recentPosts.length > 0
             ? recentPosts.map((post, i) => (
                 <article
-                  class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+                  class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+                  style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
                 >
-                  <div class="flex flex-wrap gap-1.5 mb-4">
-                    {post.data.tags?.slice(0, 2).map((tag: string) => (
-                      <span class="stack-tag">{tag}</span>
-                    ))}
+                  <div class="flex items-center gap-2 mb-4">
+                    {post.data.tags?.[0] && (
+                      <span
+                        class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                        style="background: #EEF4FF; color: #1E6FFF;"
+                      >
+                        {post.data.tags[0]}
+                      </span>
+                    )}
+                    {post.data.tags?.[1] && (
+                      <span class="text-xs font-medium" style="color: #94A3B8;">
+                        {post.data.tags[1]}
+                      </span>
+                    )}
                   </div>
                   <h3
                     class="text-base font-bold mb-3 flex-1"
                     style="color: #0F172A; line-height: 1.4;"
                   >
-                    <a
-                      href={`/blog/${post.id}`}
-                      class="hover:text-blue-600 transition-colors"
-                    >
+                    <a href={`/blog/${post.id}`} class="hover:text-blue-600 transition-colors">
                       {post.data.titulo}
                     </a>
                   </h3>
-                  <p
-                    class="text-sm leading-relaxed mb-5"
-                    style="color: #64748B;"
-                  >
-                    {post.data.descripcion?.slice(0, 110)}
-                    {post.data.descripcion && post.data.descripcion.length > 110
-                      ? '…'
-                      : ''}
+                  <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">
+                    {post.data.descripcion}
                   </p>
-                  <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                  <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
                     <time class="text-xs" style="color: #94A3B8;">
                       {new Date(post.data.fecha).toLocaleDateString('es-ES', {
                         month: 'short',
@@ -1198,11 +1758,14 @@ const professionalServiceSchema = {
                     </time>
                     <a
                       href={`/blog/${post.id}`}
-                      class="text-xs font-semibold"
+                      class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70"
                       style="color: #2563EB;"
                       aria-label={`Leer: ${post.data.titulo}`}
                     >
-                      Leer más &rarr;
+                      Leer más
+                      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
                     </a>
                   </div>
                 </article>
@@ -1210,61 +1773,259 @@ const professionalServiceSchema = {
             : [
                 {
                   title: 'GitOps con ArgoCD: patrones de producción',
-                  tags: ['GitOps', 'ArgoCD'],
+                  category: 'GitOps',
+                  tag: 'ArgoCD',
                   date: 'Jun 2026',
                   desc: 'Cómo implementar workflows GitOps con ArgoCD para despliegues sin tiempo de inactividad en Kubernetes.',
-                  href: '/es/blog',
+                  href: '/blog',
                 },
                 {
                   title: 'Checklist de Kubernetes para Producción',
-                  tags: ['Kubernetes', 'SRE'],
+                  category: 'Kubernetes',
+                  tag: 'SRE',
                   date: 'May 2026',
                   desc: 'Todo lo necesario antes del go-live: seguridad, autoscaling, observabilidad y recuperación ante desastres.',
-                  href: '/es/blog',
+                  href: '/blog',
                 },
                 {
                   title: 'Patrones Enterprise con Terraform',
-                  tags: ['Terraform', 'IaC'],
+                  category: 'Terraform',
+                  tag: 'IaC',
                   date: 'Abr 2026',
                   desc: 'Terraform modular para infraestructura AWS multi-entorno y multi-cuenta a escala.',
-                  href: '/es/blog',
+                  href: '/blog',
                 },
-              ].map(({ title, tags, date, desc, href }, i) => (
+              ].map(({ title, category, tag, date, desc, href }, i) => (
                 <article
-                  class={`card card-accent flex flex-col p-7 animate-fade-up ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+                  class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100', 'delay-200', 'delay-300'][i]}`}
+                  style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
                 >
-                  <div class="flex flex-wrap gap-1.5 mb-4">
-                    {tags.map((t) => (
-                      <span class="stack-tag">{t}</span>
-                    ))}
+                  <div class="flex items-center gap-2 mb-4">
+                    <span
+                      class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                      style="background: #EEF4FF; color: #1E6FFF;"
+                    >
+                      {category}
+                    </span>
+                    <span class="text-xs font-medium" style="color: #94A3B8;">{tag}</span>
                   </div>
-                  <h3
-                    class="text-base font-bold mb-3 flex-1"
-                    style="color: #0F172A; line-height: 1.4;"
-                  >
+                  <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">
                     {title}
                   </h3>
-                  <p
-                    class="text-sm leading-relaxed mb-5"
-                    style="color: #64748B;"
-                  >
-                    {desc}
-                  </p>
-                  <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span class="text-xs" style="color: #94A3B8;">
-                      {date}
-                    </span>
+                  <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">{desc}</p>
+                  <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
+                    <span class="text-xs" style="color: #94A3B8;">{date}</span>
                     <a
                       href={href}
-                      class="text-xs font-semibold"
+                      class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70"
                       style="color: #2563EB;"
                     >
-                      Leer más &rarr;
+                      Leer más
+                      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
                     </a>
                   </div>
                 </article>
               ))
         }
+      </div>
+
+      <div class="text-center mt-12 animate-fade-up flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white"
+          style="color: #0F172A; border-color: #E5E7EB; background: white;"
+        >
+          Ver todos los artículos
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+        <a
+          href="/recursos"
+          class="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          style="color: #2563EB;"
+        >
+          Guías técnicas y recursos
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 9B. CHECKLIST AWS — Recurso gratuito                                  -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden" aria-labelledby="checklist-heading">
+    <div class="py-20 px-6" style="background: #0A2540;">
+      <div
+        class="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 28px 28px;"
+      >
+      </div>
+
+      <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
+        <span
+          class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
+          style="background: rgba(30,111,255,0.2); color: #93C5FD; border: 1px solid rgba(96,165,250,0.3);"
+        >
+          Recurso gratuito
+        </span>
+        <h2
+          id="checklist-heading"
+          class="text-3xl sm:text-4xl font-extrabold text-white mb-4"
+          style="letter-spacing: -0.025em;"
+        >
+          Checklist de Preparación para Producción en AWS
+        </h2>
+        <p class="text-base mb-2 max-w-xl mx-auto" style="color: rgba(148,163,184,0.8);">
+          47 verificaciones de seguridad, fiabilidad, rendimiento y optimización
+          de costes. Usado por nuestro equipo en cada proyecto antes del go-live.
+        </p>
+        <p class="text-sm mb-8" style="color: rgba(148,163,184,0.5);">
+          Enviado a tu bandeja de entrada. Sin spam, sin campañas de goteo.
+        </p>
+
+        <form
+          id="checklist-form"
+          class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+        >
+          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+          <input type="hidden" name="subject" value="Checklist Download - LRA Cloud Ops" />
+          <input type="hidden" name="from_name" value="LRA Cloud Operations" />
+          <input type="hidden" name="checklist_request" value="AWS Production Readiness Checklist" />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="tu@empresa.com"
+            class="flex-1 px-4 py-3.5 text-sm rounded-xl outline-none transition-all"
+            style="background: white; color: #111827; border: 1px solid rgba(255,255,255,0.1);"
+            onfocus="this.style.boxShadow='0 0 0 3px rgba(96,165,250,0.3)';"
+            onblur="this.style.boxShadow='none';"
+          />
+          <button
+            type="submit"
+            id="checklist-btn"
+            class="text-sm font-bold px-6 py-3.5 rounded-xl flex-shrink-0 transition-all hover:-translate-y-px active:scale-[0.98]"
+            style="background: #1E6FFF; color: white; box-shadow: 0 4px 16px rgba(30,111,255,0.4);"
+          >
+            Descargar gratis &rarr;
+          </button>
+        </form>
+        <div id="checklist-status" class="hidden text-sm mt-4 px-4 py-2 rounded-lg inline-block"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- 9C. COMUNIDAD — Canales sociales                                      -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="social-heading">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-12 animate-fade-up">
+        <span class="section-label">Comunidad</span>
+        <h2 id="social-heading" class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">
+          Sigue nuestro recorrido de ingeniería
+        </h2>
+        <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">
+          Proyectos reales. Infraestructura real. Resultados reales.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a
+          href="https://www.instagram.com/lracloudops/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white rounded-2xl p-7 flex flex-col card-lift animate-fade-up delay-100"
+          style="border-left: 4px solid #E1306C; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06); text-decoration: none;"
+        >
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #FFF0F5;" aria-hidden="true">
+              <svg class="w-6 h-6" style="color: #E1306C;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-bold" style="color: #0F172A;">@lracloudops</div>
+              <div class="text-xs" style="color: #94A3B8;">9,598 seguidores</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">
+            Consejos de platform engineering y diagramas de arquitectura
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors" style="color: #E1306C;">
+            Seguir en Instagram
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white rounded-2xl p-7 flex flex-col card-lift animate-fade-up delay-200"
+          style="border-left: 4px solid #0A66C2; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06); text-decoration: none;"
+        >
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EFF6FF;" aria-hidden="true">
+              <svg class="w-6 h-6" style="color: #0A66C2;" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-bold" style="color: #0F172A;">Ruben Alexis Liquenson</div>
+              <div class="text-xs" style="color: #94A3B8;">518 conexiones</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">
+            Insights DevOps y actualizaciones de infraestructura cloud
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors" style="color: #0A66C2;">
+            Conectar en LinkedIn
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        </a>
+
+        <a
+          href="https://github.com/lra-cloud-ops"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white rounded-2xl p-7 flex flex-col card-lift animate-fade-up delay-300"
+          style="border-left: 4px solid #0A2540; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06); text-decoration: none;"
+        >
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #F1F5F9;" aria-hidden="true">
+              <svg class="w-6 h-6" style="color: #0A2540;" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-bold" style="color: #0F172A;">github.com/lra-cloud-ops</div>
+              <div class="text-xs" style="color: #94A3B8;">10+ repositorios</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">
+            Herramientas DevOps open source y plantillas de infraestructura
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors" style="color: #0A2540;">
+            Ver en GitHub
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -1273,67 +2034,86 @@ const professionalServiceSchema = {
   <!-- 9. CTA FINAL                                                         -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section class="relative overflow-hidden" aria-labelledby="cta-heading">
-    <div
-      class="py-24 px-6 relative"
-      style="background: linear-gradient(90deg, #1D4ED8 0%, #2563EB 55%, #60A5FA 100%);"
-    >
+    <div class="py-28 px-6 relative" style="background: #0A2540;">
       <div
         class="absolute inset-0 pointer-events-none"
         aria-hidden="true"
-        style="background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 28px 28px;"
+        style="background-image: radial-gradient(circle, rgba(96,165,250,0.07) 1px, transparent 1px); background-size: 28px 28px;"
+      >
+      </div>
+      <div
+        class="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.25) 0%, transparent 60%);"
+      >
+      </div>
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px pointer-events-none"
+        aria-hidden="true"
+        style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.35), transparent);"
       >
       </div>
 
-      <div class="relative max-w-4xl mx-auto text-center animate-fade-up">
+      <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
+        <span
+          class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8"
+          style="background: rgba(30,111,255,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);"
+        >
+          Empezar
+        </span>
+
         <h2
           id="cta-heading"
           class="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white mb-6"
           style="letter-spacing: -0.03em; line-height: 1.06;"
         >
-          Comienza con una<br />revisión de infraestructura.
+          ¿Listo para modernizar<br />tu infraestructura?
         </h2>
+
         <p
-          class="text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
-          style="color: rgba(255,255,255,0.8);"
+          class="text-xl mb-10 max-w-xl mx-auto leading-relaxed"
+          style="color: rgba(148,163,184,0.8);"
         >
-          Trae tu arquitectura actual. Identificamos brechas en resiliencia,
-          automatización de entrega y observabilidad — y trazamos un camino
-          concreto.
+          Agenda una consulta gratuita de 30 minutos. Revisaremos tu
+          configuración actual y propondremos una hoja de ruta concreta.
         </p>
+
         <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
           <a
             href="/contacto"
             class="inline-flex items-center gap-2.5 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 hover:-translate-y-px active:scale-[0.98] shadow-xl"
             style="background: white; color: #1D4ED8;"
           >
-            Reservar revisión técnica
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            Agendar Consulta
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </a>
           <a
             href="/proyectos"
             class="inline-flex items-center gap-2 text-base font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
-            style="color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.3);"
+            style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.25);"
           >
             Ver nuestro trabajo
           </a>
         </div>
 
-        <!-- Indicadores de confianza -->
+        <a
+          href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80 mb-8"
+          style="color: rgba(148,163,184,0.55);"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+          </svg>
+          Síguenos en LinkedIn para actualizaciones de ingeniería
+        </a>
+
         <div
           class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
-          style="color: rgba(255,255,255,0.6);"
+          style="color: rgba(255,255,255,0.5);"
         >
           {
             [
@@ -1344,7 +2124,7 @@ const professionalServiceSchema = {
               <span class="flex items-center gap-2 text-sm">
                 <svg
                   class="w-4 h-4 flex-shrink-0"
-                  style="color: rgba(255,255,255,0.8);"
+                  style="color: #60A5FA;"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -1366,3 +2146,40 @@ const professionalServiceSchema = {
     </div>
   </section>
 </Layout>
+
+<script>
+  const form = document.getElementById('checklist-form') as HTMLFormElement | null
+  const btn = document.getElementById('checklist-btn') as HTMLButtonElement | null
+  const statusEl = document.getElementById('checklist-status') as HTMLDivElement | null
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!btn || !statusEl) return
+    btn.textContent = 'Enviando...'
+    btn.disabled = true
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      })
+      const data = await res.json()
+      if (data.success) {
+        statusEl.textContent = '¡Suscrito! Te enviaremos el checklist a tu bandeja de entrada en breve.'
+        statusEl.style.cssText = 'display:inline-block; background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.3);'
+        form.reset()
+      } else {
+        statusEl.textContent = 'Algo salió mal. Por favor, inténtalo de nuevo.'
+        statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+      }
+    } catch {
+      statusEl.textContent = 'Error de conexión. Por favor, inténtalo de nuevo.'
+      statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+    }
+
+    btn.textContent = 'Descargar gratis →'
+    btn.disabled = false
+    statusEl.classList.remove('hidden')
+  })
+</script>
