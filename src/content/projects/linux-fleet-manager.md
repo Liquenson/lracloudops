@@ -51,3 +51,13 @@ The tool covers the three core fleet management workflows: deploy (push artifact
 **Why idempotent scripts:** Running a script twice should produce the same result as running it once. This makes re-runs safe after failures and enables fleet-wide operations without tracking per-host state.
 
 **Why Red Hat engineering standards:** `set -euo pipefail` stops execution on any error. Centralized variables prevent duplication. Numbered step logging makes output readable. These patterns come from decades of enterprise Linux operations.
+
+---
+
+## Key Learnings
+
+**What worked:** ShellCheck in CI eliminated an entire class of subtle Bash issues (unquoted variables, missing error handling) before they ever reached a server. The zero-false-positive policy on ShellCheck warnings kept the signal-to-noise ratio high.
+
+**What we learned:** CSV and JSON output formats require consistent field ordering from the start — retrofitting output format consistency after building all the collection modules required touching every function. Design the output contract before the collection logic.
+
+**What we'd improve:** Adding a `--dry-run` flag from the beginning rather than after the fact — operators consistently asked for it before running fleet-wide operations on production servers.

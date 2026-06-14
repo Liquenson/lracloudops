@@ -156,3 +156,13 @@ kubectl get pods -n production
 - Zero SSH keys — all node access via SSM Session Manager
 - Complete audit trail from every commit to every Kubernetes pod
 - Pipeline runs in under 8 minutes from push to production deployment
+
+---
+
+## Key Learnings
+
+**What worked:** Replacing SSH key distribution with SSM Session Manager was the single highest-leverage security decision — it eliminated an entire class of credential management problems and made the audit trail complete.
+
+**What we learned:** Jenkins inside a private VPC requires careful security group planning before the first pipeline run. Leaving this to Day 2 operations meant two rounds of security group edits; designing it upfront would have been cleaner.
+
+**What we'd improve:** Integrating Ansible Vault for secrets management from the beginning rather than using environment variables — would make the credential lifecycle cleaner across ECS task roles and EC2 instance profiles.

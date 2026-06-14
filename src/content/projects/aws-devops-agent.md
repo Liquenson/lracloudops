@@ -139,3 +139,13 @@ EC2, S3, EKS, ECS, RDS, Lambda, IAM, CloudWatch, CloudTrail, VPC, Route53, Cloud
 - [ ] Read-only mode for audit/compliance use cases
 - [ ] Output formats: JSON, table, markdown
 - [ ] Integration with AWS Cost Explorer for cost analysis
+
+---
+
+## Key Learnings
+
+**What worked:** Claude's function-calling interface maps cleanly to boto3 — the agent reliably routes natural language queries to the correct AWS API without false positives or hallucinated resource names. Providing explicit tool schemas with required parameter validation caught ~80% of ambiguous inputs before boto3 calls were made.
+
+**What we learned:** LLM-assisted infrastructure tooling needs explicit read-only vs. write-action separation from day one. Users naturally phrase destructive operations in casual language; the agent needs guardrails that don't rely on the model's judgment alone.
+
+**What we'd improve:** Integrating AWS Cost Explorer from the start would have made cost-awareness a first-class feature — operators consistently ask "what will this cost?" alongside "how do I do this?" and the agent currently has no cost context.

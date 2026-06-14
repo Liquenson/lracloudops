@@ -187,3 +187,13 @@ k8s-on-premise/
 **Why ArgoCD from phase 3:** GitOps delivery is not an afterthought. The demo app is managed by ArgoCD from the beginning — any commit to the repo triggers an automatic sync to the cluster. This mirrors production GitOps workflows.
 
 **Why Red Hat engineering standards:** Every script uses `set -euo pipefail`, centralized variables, numbered step logging and semantic commits. The cluster is built to be audited, not just run.
+
+---
+
+## Key Learnings
+
+**What worked:** The idempotent provisioning model (`vagrant destroy && vagrant up` → clean cluster every time) turned out to be the most valuable design decision — it made the 18-phase roadmap iterative rather than fragile. Destroying and rebuilding to test a new phase takes 20 minutes, not a day.
+
+**What we learned:** Bare metal requires more upfront networking decisions than managed Kubernetes — the Calico CNI choice and the pod CIDR range need to be decided before `kubeadm init`, not after. Getting this wrong requires a full cluster rebuild.
+
+**What we'd improve:** Earlier Prometheus/Grafana integration (Phase 6) would have surfaced resource constraints on the VirtualBox VMs sooner — RAM allocation per node was tuned by trial and error rather than metric-driven decisions.
