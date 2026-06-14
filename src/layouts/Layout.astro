@@ -633,7 +633,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
               aria-expanded="false"
               class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isSolutionsActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
             >
-              Solutions
+              {lang === 'es' ? 'Soluciones' : 'Solutions'}
               <svg
                 data-dropdown-chevron
                 class="w-3.5 h-3.5 transition-transform duration-200"
@@ -727,7 +727,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
               aria-expanded="false"
               class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isIndustriesActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
             >
-              Industries
+              {lang === 'es' ? 'Industrias' : 'Industries'}
               <svg
                 data-dropdown-chevron
                 class="w-3.5 h-3.5 transition-transform duration-200"
@@ -821,7 +821,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
               aria-expanded="false"
               class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isResourcesActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
             >
-              Resources
+              {lang === 'es' ? 'Recursos' : 'Resources'}
               <svg
                 data-dropdown-chevron
                 class="w-3.5 h-3.5 transition-transform duration-200"
@@ -1154,7 +1154,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
       >
         <span
           class="text-[10px] font-bold uppercase tracking-widest"
-          style="color:#2563EB;">Navigation</span
+          style="color:#2563EB;">{lang === 'es' ? 'Navegación' : 'Navigation'}</span
         >
       </div>
 
@@ -1238,7 +1238,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
             aria-expanded="false"
             class="flex items-center justify-between w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
           >
-            <span>Solutions</span>
+            <span>{lang === 'es' ? 'Soluciones' : 'Solutions'}</span>
             <svg
               data-accordion-chevron
               class="w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0"
@@ -1300,7 +1300,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
             aria-expanded="false"
             class="flex items-center justify-between w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
           >
-            <span>Industries</span>
+            <span>{lang === 'es' ? 'Industrias' : 'Industries'}</span>
             <svg
               data-accordion-chevron
               class="w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0"
@@ -1362,7 +1362,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
             aria-expanded="false"
             class="flex items-center justify-between w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
           >
-            <span>Resources</span>
+            <span>{lang === 'es' ? 'Recursos' : 'Resources'}</span>
             <svg
               data-accordion-chevron
               class="w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0"
