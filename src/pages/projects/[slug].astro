@@ -27,12 +27,12 @@ const {
   arquitectura,
 } = project.data
 
-const titulo_es = (project.data as any).titulo_es
-const descripcion_es = (project.data as any).descripcion_es
-const highlights_es = (project.data as any).highlights_es
-const madurez_es = (project.data as any).madurez_es
-const categoria_es = (project.data as any).categoria_es
-const metricas_es = (project.data as any).metricas_es
+const titulo_es = project.data.titulo_es
+const descripcion_es = project.data.descripcion_es
+const highlights_es = project.data.highlights_es
+const madurez_es = project.data.madurez_es
+const categoria_es = project.data.categoria_es
+const metricas_es = project.data.metricas_es
 
 const displayTitle = titulo_es ?? titulo
 const displayDescription = descripcion_es ?? descripcion
