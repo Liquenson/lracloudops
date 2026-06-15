@@ -24,6 +24,9 @@ const currentPath = Astro.url.pathname
 const lang = getLangFromUrl(Astro.url)
 const canonicalURL = new URL(currentPath, 'https://lracloudops.com')
 const finalOgImage = ogImage ?? 'https://lracloudops.com/og-image.png'
+const isFallbackOnlyPath = /^\/(solutions|industries)\//.test(currentPath)
+const isMinorLocale = !['es', 'en'].includes(lang)
+const shouldNoindex = isMinorLocale && isFallbackOnlyPath
 
 // Compute alternate URLs for all 9 locales
 const localeUrls = Object.fromEntries(
@@ -532,7 +535,10 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{titulo} | LRA Cloud Ops</title>
     <meta name="description" content={descripcion} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    {shouldNoindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-image-preview:large" />
+    }
     <meta
       name="keywords"
       content={keywords ??
