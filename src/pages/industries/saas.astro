@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Infraestructura Cloud para SaaS — LRA Cloud Operations"
+  descripcion="Infraestructura cloud nativa multi-tenant para empresas SaaS. Plataformas Kubernetes escalables, aislamiento de tenants, provisión automatizada y observabilidad de coste por tenant en AWS."
+>
+  <!-- Hero -->
+  <section
+    style="background: linear-gradient(135deg, #0A2540 0%, #0d2f50 100%); padding: 100px 24px 80px;"
+  >
+    <div class="max-w-4xl mx-auto text-center">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8"
+        style="background: rgba(30,111,255,0.15); color: #60A5FA; border: 1px solid rgba(30,111,255,0.25);"
+      >
+        Industria · SaaS
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+        Infraestructura que crece<br />con tu base de clientes.
+      </h1>
+      <p
+        class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
+        style="color: rgba(148,163,184,0.9);"
+      >
+        Plataformas cloud nativas para empresas SaaS — aislamiento multi-tenant,
+        provisión automatizada de tenants, escalado elástico y visibilidad de
+        costes por cliente desde el primer día.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+          style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
+        >
+          Diseñar nuestra plataforma SaaS
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
+        </a>
+        <a
+          href="/kubernetes-platforms"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:bg-white/10"
+          style="color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);"
+        >
+          Plataformas Kubernetes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key points -->
+  <section style="background: #F8FAFC; padding: 80px 24px;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
+          Capacidades de plataforma para SaaS a escala
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          De diez tenants a diez mil — infraestructura que no requiere
+          reescrituras de ingeniería a medida que creces.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {
+          [
+            {
+              title: 'Patrones de aislamiento multi-tenant',
+              desc: 'Arquitecturas namespace-per-tenant o cluster-per-tenant con Kubernetes Network Policies, RBAC y resource quotas aplicados a nivel de plataforma. El Tenant A no puede impactar al Tenant B.',
+              icon: 'M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z',
+            },
+            {
+              title: 'Provisión automatizada de tenants',
+              desc: 'Onboarding de nuevos tenants mediante módulos Terraform o Crossplane — schemas de base de datos, namespaces, roles IAM y registros DNS provisionados automáticamente en menos de 5 minutos.',
+              icon: 'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99',
+            },
+            {
+              title: 'Autoescalado elástico para picos de demanda',
+              desc: 'KEDA para autoescalado orientado a eventos, HPA para escalado de pods y Karpenter para provisión de nodos. Gestiona picos de tráfico 10x sin pre-warming ni intervención manual.',
+              icon: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+            },
+            {
+              title: 'Visibilidad de costes por tenant',
+              desc: 'AWS Cost Allocation Tags y estrategia de etiquetado de recursos Kubernetes para atribución de costes por tenant. Sabe exactamente cuánto cuesta cada cliente antes de fijar tu precio.',
+              icon: 'M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z',
+            },
+          ].map(({ title, desc, icon }) => (
+            <div
+              class="bg-white rounded-2xl p-7"
+              style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04);"
+            >
+              <div
+                class="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style="background: #EEF4FF;"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  style="color: #1E6FFF;"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: #64748B;">
+                {desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540; padding: 80px 24px;">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        ¿Tu plataforma SaaS está lista para escalar?
+      </h2>
+      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">
+        Agenda una sesión de diseño. Evaluamos tu arquitectura multi-tenant
+        actual e identificamos los cuellos de botella antes de que te limiten.
+      </p>
+      <a
+        href="/contacto"
+        class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+        style="background: #1E6FFF; box-shadow: 0 4px 24px rgba(30,111,255,0.45);"
+      >
+        Diseñar arquitectura multi-tenant
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
+      </a>
+    </div>
+  </section>
+
+  <!-- Vélo en práctica -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest" style="color: #1E6FFF;">Vélo en práctica</span>
+            <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">k8s-on-premise — Plataforma Kubernetes multi-tenant</h2>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-4" style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE;">En Desarrollo</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">Cluster Kubernetes bare metal con aislamiento por namespace, Network Policies Cilium, RBAC granular y entrega GitOps con ArgoCD. Diseñado para múltiples workloads con prioridades y requisitos de recursos distintos.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          {['Kubernetes','Cilium','ArgoCD','RBAC','Kustomize','Prometheus','Grafana','Vault'].map(t => (
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #F1F5F9; color: #475569;">{t}</span>
+          ))}
+        </div>
+        <div class="flex gap-3">
+          <a href="/proyectos/k8s-on-premise" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Leer caso de uso →</a>
+          <a href="https://github.com/lra-cloud-ops/k8s-on-premise" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
