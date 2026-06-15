@@ -55,6 +55,7 @@ const projects = defineCollection({
         })
       )
       .optional(),
+    titulo_es: z.string().optional(),
     categoria_es: z.string().optional(),
     descripcion_es: z.string().optional(),
     madurez_es: z.string().optional(),
