@@ -26,6 +26,19 @@ highlights_es:
   - "CI/CD dual — GitHub Actions para builds cloud, Jenkins para on-premise"
   - "RDS PostgreSQL 15 Multi-AZ con failover automático"
 
+flow_steps:
+  - label: "GitHub Actions"
+    sublabel: "CI/CD"
+    icon: "githubactions"
+  - label: "Terraform"
+    sublabel: "IaC"
+    icon: "terraform"
+  - label: "AWS EKS"
+    sublabel: "Kubernetes"
+    icon: "kubernetes"
+  - label: "RDS"
+    sublabel: "Multi-AZ"
+
 stack:
   - "Terraform"
   - "AWS EKS"

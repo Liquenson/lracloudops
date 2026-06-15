@@ -25,6 +25,21 @@ highlights_es:
   - "GitOps con ArgoCD — declarativo, versionado y reconciliado automáticamente"
   - "KinD (Kubernetes en Docker) para desarrollo local que refleja producción"
   - "Helm Charts con valores por entorno — dev, staging, producción"
+
+flow_steps:
+  - label: "KinD"
+    sublabel: "Local K8s"
+    icon: "kubernetes"
+  - label: "Helm"
+    sublabel: "Packaging"
+    icon: "helm"
+  - label: "ArgoCD"
+    sublabel: "GitOps"
+    icon: "argo"
+  - label: "Prometheus"
+    sublabel: "Observability"
+    icon: "prometheus"
+
 stack:
   - "Kubernetes"
   - "ArgoCD"

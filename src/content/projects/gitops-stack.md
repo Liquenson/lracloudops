@@ -26,6 +26,20 @@ highlights_es:
   - "Módulos Terraform para VPC, cluster EKS, roles IAM y grupos de logs CloudWatch"
   - "Playbooks Ansible para configuración de nodos — idempotentes, versionados"
 
+flow_steps:
+  - label: "Jenkins"
+    sublabel: "CI Pipeline"
+    icon: "jenkins"
+  - label: "Terraform"
+    sublabel: "IaC"
+    icon: "terraform"
+  - label: "EKS"
+    sublabel: "Kubernetes"
+    icon: "kubernetes"
+  - label: "ArgoCD"
+    sublabel: "GitOps"
+    icon: "argo"
+
 stack:
   - "AWS EKS"
   - "Terraform"

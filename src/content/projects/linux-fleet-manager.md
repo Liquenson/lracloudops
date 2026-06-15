@@ -25,6 +25,19 @@ highlights_es:
   - "Gestión masiva de servidores vía SSH — sin agentes ni daemons requeridos"
   - "Validación CI con ShellCheck — cada script linteado antes del despliegue"
   - "Scripts idempotentes — seguros para ejecutar múltiples veces sin efectos secundarios"
+
+flow_steps:
+  - label: "Bash"
+    sublabel: "Automation"
+    icon: "gnubash"
+  - label: "SSH"
+    sublabel: "Agentless"
+  - label: "ShellCheck"
+    sublabel: "Linting"
+  - label: "Linux"
+    sublabel: "Fleet"
+    icon: "linux"
+
 stack:
   - "Bash"
   - "SSH"
