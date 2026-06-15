@@ -68,6 +68,15 @@ const projects = defineCollection({
       )
       .optional(),
     highlights_es: z.array(z.string()).optional(),
+    flow_steps: z
+      .array(
+        z.object({
+          label: z.string(),
+          sublabel: z.string().optional(),
+          icon: z.string().optional(),
+        })
+      )
+      .optional(),
   }),
 })
 

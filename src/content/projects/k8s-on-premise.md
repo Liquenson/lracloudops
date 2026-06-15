@@ -26,6 +26,19 @@ highlights_es:
   - "ArgoCD GitOps — auto-sync + prune + selfHeal habilitados"
   - "Ingress NGINX con NodePort — app demo expuesta en el cluster"
 
+flow_steps:
+  - label: "Vagrant"
+    sublabel: "VM provisioning"
+    icon: "vagrant"
+  - label: "kubeadm"
+    sublabel: "Cluster init"
+    icon: "kubernetes"
+  - label: "Calico"
+    sublabel: "CNI"
+  - label: "ArgoCD"
+    sublabel: "GitOps"
+    icon: "argo"
+
 stack:
   - "Kubernetes v1.31.14"
   - "ArgoCD"

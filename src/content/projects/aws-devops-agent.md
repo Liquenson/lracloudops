@@ -26,6 +26,17 @@ highlights_es:
   - "Claude Sonnet como capa de razonamiento — interpreta la intención, selecciona la llamada boto3 correcta"
   - "25+ servicios AWS soportados — EC2, S3, EKS, RDS, IAM, CloudWatch y más"
 
+flow_steps:
+  - label: "CLI"
+    sublabel: "Terminal"
+    icon: "gnubash"
+  - label: "Claude Sonnet"
+    sublabel: "Reasoning"
+  - label: "boto3"
+    sublabel: "Python SDK"
+  - label: "AWS"
+    sublabel: "25+ services"
+
 stack:
   - "Python"
   - "Claude Sonnet"
