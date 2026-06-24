@@ -203,6 +203,24 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
+                for="contact-company"
+                class="block text-xs font-semibold uppercase tracking-wider mb-2"
+                style="color: #94a3b8;">Company <span style="color: #cbd5e1; font-weight:400;">(optional)</span></label
+              >
+              <input
+                id="contact-company"
+                type="text"
+                name="company"
+                placeholder="Your company or startup"
+                class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200"
+                style="color: #111827; border-color: #e2e8f0; background: #fafbfc;"
+                onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
+                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
+              />
+            </div>
+
+            <div>
+              <label
                 for="contact-company-size"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
                 style="color: #94a3b8;">Company Size</label
@@ -244,36 +262,28 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-challenge"
+                for="contact-service"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
-                style="color: #94a3b8;">Primary Challenge</label
+                style="color: #94a3b8;">Service of Interest</label
               >
               <div class="relative">
                 <select
-                  id="contact-challenge"
-                  name="primary_challenge"
+                  id="contact-service"
+                  name="service_interest"
                   class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 appearance-none"
                   style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
                   onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
                   onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
                 >
-                  <option value="">Select your main challenge</option>
-                  <option value="kubernetes-aws"
-                    >We need Kubernetes on AWS</option
-                  >
-                  <option value="automate-deployments"
-                    >We need to automate our deployments</option
-                  >
-                  <option value="infrastructure-as-code"
-                    >We need infrastructure as code</option
-                  >
-                  <option value="observability"
-                    >We need better observability</option
-                  >
-                  <option value="reduce-aws-costs"
-                    >We need to reduce AWS costs</option
-                  >
-                  <option value="other">Other</option>
+                  <option value="">Select a service</option>
+                  <option value="Cloud Infrastructure">Cloud Infrastructure</option>
+                  <option value="Kubernetes">Kubernetes</option>
+                  <option value="CI/CD">CI/CD</option>
+                  <option value="GitOps">GitOps</option>
+                  <option value="Observability">Observability</option>
+                  <option value="Terraform IaC">Terraform IaC</option>
+                  <option value="Platform Engineering">Platform Engineering</option>
+                  <option value="Other">Other</option>
                 </select>
                 <div
                   class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
@@ -397,6 +407,20 @@ import Layout from '../../layouts/Layout.astro'
                 onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
                 onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
               ></textarea>
+            </div>
+
+            <div class="flex items-start gap-3 pt-1">
+              <input
+                type="checkbox"
+                id="en-gdpr"
+                name="gdpr_consent"
+                required
+                class="mt-0.5 w-4 h-4 rounded flex-shrink-0"
+                style="accent-color: #1E6FFF; cursor: pointer;"
+              />
+              <label for="en-gdpr" class="text-xs leading-relaxed" style="color: #64748b; cursor: pointer;">
+                I accept the <a href="/en/privacy-policy" class="underline" style="color: #1E6FFF;">privacy policy</a> and consent to the processing of my data to handle my enquiry.
+              </label>
             </div>
 
             <div

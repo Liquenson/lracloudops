@@ -1,6 +1,6 @@
 ---
 titulo: "k8s-on-premise"
-descripcion: "Production-grade Kubernetes cluster on bare metal using kubeadm, Vagrant and VirtualBox. Automated provisioning, Calico CNI, ArgoCD GitOps and NGINX Ingress — fully reproducible from a single command."
+descripcion: "Full Kubernetes cluster from zero in ~20 minutes with a single command: vagrant up. kubeadm + Calico CNI + ArgoCD GitOps + NGINX Ingress on bare metal. Idempotent provisioning — destroy and rebuild anytime, no cloud dependency."
 fecha: 2026-06-11
 categoria: "Kubernetes & GitOps"
 madurez: "In Development"
@@ -11,20 +11,20 @@ draft: false
 
 categoria_es: "Kubernetes y GitOps"
 madurez_es: "En Desarrollo"
-descripcion_es: "Cluster Kubernetes de nivel producción en bare metal usando kubeadm, Vagrant y VirtualBox. Aprovisionamiento automatizado, CNI Calico, GitOps con ArgoCD e Ingress NGINX — totalmente reproducible desde un único comando."
+descripcion_es: "Cluster Kubernetes completo desde cero en ~20 minutos con un único comando: vagrant up. kubeadm + CNI Calico + GitOps ArgoCD + Ingress NGINX sobre bare metal. Aprovisionamiento idempotente — destruye y reconstruye cuando quieras, sin dependencia de cloud."
 metricas_es:
-  - label: "1 master + 2 workers"
-    value: "Topología del cluster"
-  - label: "~20 min automatizado"
-    value: "Tiempo de aprovisionamiento"
-  - label: "3 de 18"
-    value: "Fases completas"
-  - label: "vagrant up"
-    value: "Método de despliegue"
+  - label: "cluster completo desde cero"
+    value: "~20 min"
+  - label: "comando para cluster operativo"
+    value: "1 (vagrant up)"
+  - label: "dependencia de cloud"
+    value: "0"
+  - label: "fases completadas de 18"
+    value: "3"
 highlights_es:
-  - "Cluster completo desde cero con un solo comando: vagrant up"
-  - "ArgoCD GitOps — auto-sync + prune + selfHeal habilitados"
-  - "Ingress NGINX con NodePort — app demo expuesta en el cluster"
+  - "Cluster Kubernetes completo desde cero en ~20 minutos — un solo comando: vagrant up, cero dependencia de cloud"
+  - "Aprovisionamiento idempotente — vagrant destroy && vagrant up siempre produce un cluster limpio"
+  - "ArgoCD GitOps — auto-sync + prune + selfHeal habilitados desde la fase 3"
 
 flow_steps:
   - label: "Vagrant"
@@ -50,20 +50,20 @@ stack:
   - "VirtualBox"
 
 metricas:
-  - label: "Cluster topology"
-    value: "1 master + 2 workers"
-  - label: "Provisioning time"
-    value: "~20 min automated"
-  - label: "Phases complete"
-    value: "3 of 18"
-  - label: "Deploy method"
-    value: "vagrant up"
+  - label: "full cluster from scratch"
+    value: "~20 min"
+  - label: "command to working cluster"
+    value: "1 (vagrant up)"
+  - label: "cloud dependency"
+    value: "0"
+  - label: "phases complete of 18"
+    value: "3"
 
 highlights:
-  - "Full cluster from scratch with a single command: vagrant up"
-  - "ArgoCD GitOps — auto-sync + prune + selfHeal enabled"
+  - "Full Kubernetes cluster from zero in ~20 minutes — single command: vagrant up, zero cloud dependency"
+  - "Idempotent provisioning — vagrant destroy && vagrant up always produces a clean cluster"
+  - "ArgoCD GitOps — auto-sync + prune + selfHeal enabled from phase 3"
   - "NGINX Ingress with NodePort — demo app exposed on cluster"
-  - "Idempotent scripts — worker.sh resets state before joining"
   - "Roadmap covers 18 phases: storage, observability, security, CI/CD"
   - "Built following Red Hat engineering standards — set -euo pipefail throughout"
 ---

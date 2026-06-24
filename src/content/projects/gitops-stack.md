@@ -1,6 +1,6 @@
 ---
 titulo: "gitops-stack"
-descripcion: "Production-grade GitOps pipeline deployed on AWS EKS. Docker, Kubernetes, Jenkins CI, Terraform infrastructure, Ansible configuration management, CloudWatch observability — full DevOps lifecycle from commit to production."
+descripcion: "Manual kubectl apply commands left no traceability and caused drift. After: zero manual deploys in production, every change tracked in Git, commit to production in under 8 minutes. GitOps pipeline on AWS EKS with Terraform + Jenkins + Ansible + CloudWatch."
 fecha: 2026-06-11
 categoria: "GitOps & CI/CD"
 madurez: "Production"
@@ -11,20 +11,20 @@ draft: false
 
 categoria_es: "GitOps y CI/CD"
 madurez_es: "Producción"
-descripcion_es: "Pipeline GitOps de producción desplegado en AWS EKS. Docker, Kubernetes, Jenkins CI, infraestructura Terraform, gestión de configuración con Ansible, observabilidad CloudWatch — ciclo de vida DevOps completo desde el commit hasta producción."
+descripcion_es: "kubectl apply manuales sin trazabilidad → cero deploys manuales en producción, cada cambio en Git. Pipeline GitOps sobre AWS EKS con Terraform + Jenkins + Ansible + CloudWatch. Commit a producción en menos de 8 minutos."
 metricas_es:
-  - label: "Build → Test → Deploy"
-    value: "Etapas del pipeline"
-  - label: "100% Terraform IaC"
-    value: "Infraestructura"
-  - label: "IAM — sin credenciales estáticas"
-    value: "Identidad"
-  - label: "CloudWatch + CloudTrail"
-    value: "Observabilidad"
+  - label: "deploys manuales en producción"
+    value: "0"
+  - label: "commit a producción"
+    value: "<8 min"
+  - label: "infraestructura como código"
+    value: "100% IaC"
+  - label: "credenciales AWS estáticas"
+    value: "0"
 highlights_es:
-  - "Pipeline GitOps completo — el commit dispara build, test y deploy automatizados a EKS"
+  - "Cero deploys manuales en producción — cada cambio en Git, commit a producción en menos de 8 minutos"
+  - "Eliminado todo el drift de kubectl apply — pipeline GitOps completo de commit a EKS"
   - "Módulos Terraform para VPC, cluster EKS, roles IAM y grupos de logs CloudWatch"
-  - "Playbooks Ansible para configuración de nodos — idempotentes, versionados"
 
 flow_steps:
   - label: "Jenkins"
@@ -51,20 +51,20 @@ stack:
   - "AWS IAM"
 
 metricas:
-  - label: "Pipeline stages"
-    value: "Build → Test → Deploy"
-  - label: "Infrastructure"
-    value: "100% Terraform IaC"
-  - label: "Identity"
-    value: "IAM — zero static credentials"
-  - label: "Observability"
-    value: "CloudWatch + CloudTrail"
+  - label: "manual deploys in production"
+    value: "0"
+  - label: "commit to production"
+    value: "<8 min"
+  - label: "infrastructure as code"
+    value: "100% IaC"
+  - label: "static AWS credentials"
+    value: "0"
 
 highlights:
-  - "Full GitOps pipeline — commit triggers automated build, test and deploy to EKS"
+  - "Zero manual deploys in production — every change tracked in Git, commit to production in under 8 minutes"
+  - "Eliminated all kubectl apply drift — full GitOps pipeline: commit triggers automated build, test and deploy to EKS"
   - "Terraform modules for VPC, EKS cluster, IAM roles and CloudWatch log groups"
   - "Ansible playbooks for node configuration — idempotent, version-controlled"
-  - "Jenkins CI with declarative pipeline — Docker build, push to ECR, deploy to EKS"
   - "AWS Systems Manager (SSM) for automated node configuration — no SSH keys"
   - "CloudTrail audit trail — every API call logged and queryable"
 ---

@@ -4,14 +4,13 @@ import Layout from '../layouts/Layout.astro'
 
 <Layout
   titulo="Arquitecturas de Referencia e Implementaciones de Plataforma"
-  descripcion="Entornos AWS de producción, implementaciones de platform engineering y arquitecturas de referencia GitOps. Workloads reales, resultados documentados."
+  descripcion="Entornos AWS de producción, implementaciones de platform engineering y arquitecturas GitOps. Workloads reales, resultados documentados: pipeline de 45 min, cero deploys manuales, cluster K8s en 20 min."
 >
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
     <div
       class="absolute inset-0 pointer-events-none opacity-40"
       style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
-    >
-    </div>
+    ></div>
     <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
       <div class="max-w-3xl">
         <span
@@ -46,7 +45,8 @@ import Layout from '../layouts/Layout.astro'
               nombre: 'AWS Terraform DevOps Platform',
               madurez: 'Producción',
               categoria: 'Infraestructura Cloud',
-              desc: 'Entorno AWS de producción: EKS 1.31 con HPA, RDS PostgreSQL 15 Multi-AZ, 6 módulos Terraform. Pipeline dual GitHub Actions + Jenkins.',
+              desc: 'Despliegues manuales de 3 semanas → pipeline automatizado de 45 minutos. Infraestructura AWS con Terraform modular: EKS 1.31 + RDS PostgreSQL 15 Multi-AZ + CI/CD dual (GitHub Actions + Jenkins) + gates SonarCloud. 100% automatizado, cero downtime.',
+              impacto: { valor: '45 min', label: 'despliegue (antes: 3 semanas)' },
               slug: 'aws-terraform-devops',
               github: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
             },
@@ -54,7 +54,8 @@ import Layout from '../layouts/Layout.astro'
               nombre: 'GitOps Stack — CI/CD Platform',
               madurez: 'Producción',
               categoria: 'DevOps & GitOps',
-              desc: 'Pipeline CI/CD dual Jenkins + GitHub Actions sobre EKS con Terraform. Monitorización CloudWatch + CloudTrail. Ansible para configuración. ArgoCD para entrega GitOps.',
+              desc: 'kubectl apply manuales sin trazabilidad → cero deploys manuales en producción, cada cambio en Git. Pipeline GitOps sobre AWS EKS con Terraform + Jenkins + Ansible + CloudWatch. Commit a producción en menos de 8 minutos.',
+              impacto: { valor: '0', label: 'deploys manuales en producción' },
               slug: 'gitops-stack',
               github: 'https://github.com/lra-cloud-ops/gitops-stack',
             },
@@ -62,7 +63,8 @@ import Layout from '../layouts/Layout.astro'
               nombre: 'Kubernetes On-Premise',
               madurez: 'En desarrollo',
               categoria: 'Kubernetes & Platform Engineering',
-              desc: 'Cluster Kubernetes bare-metal: v1.31.14 con kubeadm, ArgoCD, Helm v3.21.0, Calico v3.27.0, NGINX Ingress, containerd. 18 fases de madurez operacional.',
+              desc: 'Cluster Kubernetes completo desde cero en ~20 minutos con un único comando: vagrant up. kubeadm + CNI Calico + GitOps ArgoCD + Ingress NGINX sobre bare metal. Aprovisionamiento idempotente, cero dependencia de cloud.',
+              impacto: { valor: '~20 min', label: 'cluster completo desde cero' },
               slug: 'k8s-on-premise',
               github: 'https://github.com/lra-cloud-ops/k8s-on-premise',
             },
@@ -70,7 +72,8 @@ import Layout from '../layouts/Layout.astro'
               nombre: 'Linux Fleet Manager',
               madurez: 'Producción',
               categoria: 'SRE & Automatización',
-              desc: 'Framework Bash enterprise para gestión de flota Linux. set -euo pipefail, detección TTY, SSH BatchMode. CI ShellCheck en 3 plataformas.',
+              desc: 'Gestión de flotas a escala sin agentes — solo SSH, cero agentes en hosts objetivo. 100% de scripts validados con ShellCheck en CI (Ubuntu, macOS, Windows). Diseño idempotente: operaciones de flota seguras para re-ejecutar sin efectos secundarios.',
+              impacto: { valor: '0', label: 'agentes requeridos en hosts' },
               slug: 'linux-fleet-manager',
               github: 'https://github.com/lra-cloud-ops/linux-fleet-manager',
             },
@@ -78,7 +81,8 @@ import Layout from '../layouts/Layout.astro'
               nombre: 'Kubernetes GitOps Platform',
               madurez: 'Referencia',
               categoria: 'Kubernetes & GitOps',
-              desc: 'Arquitectura GitOps de referencia: cluster KinD de 3 nodos con ArgoCD como controlador de entrega. Manifiestos Kubernetes como fuente de verdad.',
+              desc: 'Cero kubectl apply manuales en producción. ArgoCD entrega cada despliegue declarativamente desde Git — drifts corregidos automáticamente. KinD refleja producción exactamente, eliminando fallos de paridad local/producción. Prometheus + Grafana desde el día uno.',
+              impacto: { valor: '0', label: 'kubectl apply manuales en producción' },
               slug: 'k8s-devops-platform',
               github: 'https://github.com/lra-cloud-ops/k8s-devops-platform',
             },
@@ -86,14 +90,17 @@ import Layout from '../layouts/Layout.astro'
               nombre: 'AWS DevOps Agent',
               madurez: 'En desarrollo',
               categoria: 'IA + Cloud Operations',
-              desc: 'Agente CLI con Claude Sonnet 4.6 y 31 herramientas boto3 para gestión de infraestructura AWS en lenguaje natural.',
+              desc: 'Gestiona 25+ servicios AWS en lenguaje natural desde tu terminal — cero sintaxis AWS CLI a memorizar. Claude Sonnet mapea la intención a la llamada boto3 correcta automáticamente. Consulta, despliega y gestiona recursos sin salir de la terminal.',
+              impacto: { valor: '25+', label: 'servicios AWS en lenguaje natural' },
               slug: 'aws-devops-agent',
               github: 'https://github.com/lra-cloud-ops/aws-devops-agent',
             },
           ].map((p) => (
             <div
-              class="bg-white rounded-2xl flex flex-col"
-              style="border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+              class="bg-white rounded-2xl flex flex-col group hover:-translate-y-1 transition-all duration-200"
+              style="border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07); transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;"
+              onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.10)'; this.style.borderColor='rgba(30,111,255,0.2)';"
+              onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.07)'; this.style.borderColor='#e8eef4';"
             >
               <div
                 class="h-1 rounded-t-2xl"
@@ -126,7 +133,8 @@ import Layout from '../layouts/Layout.astro'
                     {p.madurez}
                   </span>
                 </div>
-                <h2 class="text-base font-bold mb-2" style="color: #0A2540;">
+
+                <h2 class="text-base font-bold mb-2 group-hover:text-blue-700 transition-colors" style="color: #0A2540;">
                   {p.nombre}
                 </h2>
                 <p
@@ -135,10 +143,20 @@ import Layout from '../layouts/Layout.astro'
                 >
                   {p.desc}
                 </p>
+
+                <!-- Impact metric chip -->
+                <div
+                  class="flex items-baseline gap-2 mb-4 px-4 py-3 rounded-xl"
+                  style="background: #EEF4FF; border: 1px solid #c3d9ff;"
+                >
+                  <span class="text-2xl font-black" style="color: #1E6FFF; letter-spacing: -0.04em;">{p.impacto.valor}</span>
+                  <span class="text-xs font-medium" style="color: #3b5bdb;">{p.impacto.label}</span>
+                </div>
+
                 <div class="flex items-center gap-2 pt-4 border-t border-gray-100">
                   <a
                     href={`/projects/${p.slug}`}
-                    class="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg"
+                    class="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg transition-all hover:-translate-y-px"
                     style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
                   >
                     Ver detalle →
@@ -148,14 +166,11 @@ import Layout from '../layouts/Layout.astro'
                       href={p.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200"
+                      class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 hover:border-gray-300 transition-colors"
                       style="color: #64748b;"
+                      aria-label={`${p.nombre} en GitHub`}
                     >
-                      <svg
-                        class="w-4 h-4"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path
                           fill-rule="evenodd"
                           clip-rule="evenodd"
