@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const guides = [
+  {
+    slug: 'gitops-standards',
+    titulo: 'Estándares GitOps',
+    desc: 'Flujos de trabajo GitOps con ArgoCD y GitHub Actions. Estructura de repositorios, estrategias de branching y procesos de aprobación para pipelines de producción.',
+    stack: ['ArgoCD', 'GitHub Actions', 'Helm', 'OIDC'],
+    iconPath: 'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+    color: '#FF6C37',
+  },
+  {
+    slug: 'kubernetes-production',
+    titulo: 'Kubernetes en Producción',
+    desc: 'Guía de hardening y operaciones para clústeres Kubernetes en producción. Resource limits, network policies, RBAC, monitorización y gestión de secretos.',
+    stack: ['Kubernetes', 'Prometheus', 'External Secrets', 'RBAC'],
+    iconPath: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+    color: '#326CE5',
+  },
+  {
+    slug: 'terraform-standards',
+    titulo: 'Estándares Terraform',
+    desc: 'Patrones de módulos Terraform probados en proyectos reales de AWS. Estructura de repositorios, gestión de estado remoto, CI/CD con OIDC y convenciones de naming.',
+    stack: ['Terraform', 'AWS', 'GitHub Actions', 'S3 Backend'],
+    iconPath: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
+    color: '#7B3F9E',
+  },
+]
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  name: 'Documentación Técnica — LRA Cloud Ops',
+  description: 'Estándares de ingeniería aplicados en cada engagement: Terraform, GitOps y Kubernetes en producción.',
+  publisher: { '@id': 'https://lracloudops.com/#organization' },
+  inLanguage: 'es-ES',
+}
+---
+
+<Layout
+  titulo="Documentación Técnica"
+  descripcion="Estándares de ingeniería que aplicamos en cada proyecto. Patrones de Terraform, flujos GitOps y guías de Kubernetes basados en despliegues reales en entornos de producción."
+  keywords="documentación DevOps, estándares Terraform, guía GitOps, Kubernetes producción, ingeniería cloud"
+  schema={schema}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+    ></div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.15) 0%, transparent 65%);"
+    ></div>
+
+    <div class="relative max-w-5xl mx-auto px-5 sm:px-6 py-20 sm:py-24 text-center">
+      <div class="flex items-center justify-center gap-2 mb-6 text-xs" style="color: rgba(147,184,255,0.5);">
+        <a href="/" style="color: rgba(147,184,255,0.5);" class="hover:text-white transition-colors">Inicio</a>
+        <span>/</span>
+        <span style="color: rgba(147,184,255,0.9);">Documentación</span>
+      </div>
+      <span
+        class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
+        style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
+      >
+        Estándares Técnicos
+      </span>
+      <h1
+        class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
+        style="letter-spacing: -0.02em;"
+      >
+        Documentación Técnica
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-8" style="color: rgba(147,184,255,0.8);">
+        Estándares de ingeniería que aplicamos en cada proyecto. Basados en despliegues reales en entornos de healthcare, fintech y SaaS.
+      </p>
+      <div
+        class="inline-flex items-center gap-2 text-xs px-4 py-2 rounded-full"
+        style="background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.25); color: rgba(255,200,100,0.9);"
+      >
+        <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Guías técnicas disponibles en inglés · Technical guides available in English
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCS GRID -->
+  <section class="max-w-5xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {guides.map(({ slug, titulo, desc, stack, iconPath, color }) => (
+        <a
+          href={`/en/docs/${slug}`}
+          class="group flex flex-col rounded-2xl border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+          style="background: white; border-color: rgba(15,23,42,0.08);"
+        >
+          <div class="p-6 flex-1">
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
+              style={`background: ${color}18; flex-shrink:0;`}
+            >
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={`color:${color};`} aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={iconPath} />
+              </svg>
+            </div>
+            <h2 class="text-base font-bold mb-2" style="color:#0A2540;">{titulo}</h2>
+            <p class="text-sm leading-relaxed mb-4" style="color:#64748b;">{desc}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {stack.map((t) => (
+                <span
+                  class="text-[11px] font-medium px-2 py-0.5 rounded-full"
+                  style="background:#EEF4FF; color:#2563EB;"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div
+            class="px-6 py-3 flex items-center gap-1.5 text-xs font-semibold border-t transition-colors group-hover:text-blue-700"
+            style="border-color: rgba(15,23,42,0.06); color:#2563EB;"
+          >
+            Leer guía
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-5xl mx-auto px-5 sm:px-6 pb-20">
+    <div
+      class="rounded-2xl p-8 sm:p-12 text-center"
+      style="background: linear-gradient(135deg, #0A2540 0%, #0D3060 100%);"
+    >
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+        ¿Aplicamos estos estándares en tu infraestructura?
+      </h2>
+      <p class="text-base mb-8 max-w-xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Cada proyecto que entregamos sigue estas guías como línea base. Cuéntanos tu caso y diseñamos la solución.
+      </p>
+      <a
+        href="/contacto"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3 rounded-xl transition-all hover:-translate-y-px"
+        style="background:#2563EB; box-shadow:0 4px 14px rgba(37,99,235,0.4);"
+      >
+        Agendar consulta
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</Layout>
