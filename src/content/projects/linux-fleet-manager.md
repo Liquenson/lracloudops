@@ -1,6 +1,6 @@
 ---
 titulo: "linux-fleet-manager"
-descripcion: "Bash automation tool for mass Linux server management — deploy, configuration and maintenance at infrastructure scale. SSH-based operations, ShellCheck validated, idempotent scripts following Red Hat engineering standards."
+descripcion: "Agentless fleet management at scale — SSH only, zero agents required on target hosts. 100% of scripts ShellCheck-validated in CI across Ubuntu, macOS and Windows Git Bash. Idempotent design makes fleet-wide operations safe to re-run on any host without side effects."
 fecha: 2026-06-13
 categoria: "DevOps Automation"
 madurez: "Production"
@@ -11,20 +11,20 @@ draft: false
 
 categoria_es: "Automatización DevOps"
 madurez_es: "Producción"
-descripcion_es: "Herramienta Bash para gestión masiva de servidores Linux — despliegue, configuración y mantenimiento a escala de infraestructura. Operaciones vía SSH, validadas con ShellCheck, scripts idempotentes siguiendo estándares de ingeniería Red Hat."
+descripcion_es: "Gestión de flotas a escala sin agentes — solo SSH, cero agentes en hosts objetivo. 100% de scripts validados con ShellCheck en CI en Ubuntu, macOS y Windows Git Bash. Diseño idempotente: las operaciones de flota son seguras para re-ejecutar en cualquier host sin efectos secundarios."
 metricas_es:
-  - label: "SSH — sin agentes"
-    value: "Interfaz"
-  - label: "ShellCheck obligatorio"
-    value: "Validación"
-  - label: "Idempotente — seguro re-ejecutar"
-    value: "Scripts"
-  - label: "Ingeniería Red Hat"
-    value: "Estándares"
+  - label: "agentes requeridos en hosts objetivo"
+    value: "0"
+  - label: "scripts validados con ShellCheck en CI"
+    value: "100%"
+  - label: "plataformas CI (Ubuntu, macOS, Windows)"
+    value: "3 OS"
+  - label: "re-ejecución segura en cualquier host"
+    value: "Idempotente"
 highlights_es:
-  - "Gestión masiva de servidores vía SSH — sin agentes ni daemons requeridos"
-  - "Validación CI con ShellCheck — cada script linteado antes del despliegue"
-  - "Scripts idempotentes — seguros para ejecutar múltiples veces sin efectos secundarios"
+  - "Cero agentes requeridos en hosts objetivo — solo SSH, gestión de flotas sin agentes a escala"
+  - "100% de scripts validados con ShellCheck en CI en Ubuntu, macOS y Windows Git Bash"
+  - "Scripts idempotentes — seguros para re-ejecutar en cualquier host sin efectos secundarios"
 
 flow_steps:
   - label: "Bash"
@@ -45,20 +45,20 @@ stack:
   - "Linux"
   - "CI/CD"
 metricas:
-  - label: "Interface"
-    value: "SSH — no agents required"
-  - label: "Validation"
-    value: "ShellCheck enforced"
-  - label: "Scripts"
-    value: "Idempotent — safe to re-run"
-  - label: "Standards"
-    value: "Red Hat engineering"
+  - label: "agents required on target hosts"
+    value: "0"
+  - label: "scripts ShellCheck-validated in CI"
+    value: "100%"
+  - label: "CI platforms (Ubuntu, macOS, Windows)"
+    value: "3 OS"
+  - label: "safe to re-run on any host"
+    value: "Idempotent"
 highlights:
-  - "Mass server management via SSH — no agents or daemons required"
-  - "ShellCheck CI validation — every script linted before deployment"
-  - "Idempotent scripts — safe to run multiple times without side effects"
+  - "Zero agents required on target hosts — SSH only, agentless fleet management at scale"
+  - "100% of scripts ShellCheck-validated in CI across Ubuntu, macOS and Windows Git Bash"
+  - "Idempotent scripts — safe to re-run on any host multiple times without side effects"
   - "Red Hat engineering standards — set -euo pipefail throughout"
-  - "Covers deploy, configuration and maintenance workflows at scale"
+  - "Covers deploy, configuration and maintenance workflows at infrastructure scale"
 ---
 
 ## Overview

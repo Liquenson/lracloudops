@@ -1,6 +1,6 @@
 ---
 titulo: "k8s-devops-platform"
-descripcion: "Kubernetes platform with GitOps delivery via ArgoCD. Declarative, automated and versioned deployments using KinD for local development. Helm Charts, Prometheus, Grafana and Alertmanager observability stack."
+descripcion: "Zero manual kubectl applies in production. ArgoCD delivers every deployment declaratively from Git — drifts auto-corrected without human intervention. KinD mirrors production exactly so 'works locally, fails in prod' failures are eliminated. Prometheus + Grafana observability from day one."
 fecha: 2026-06-13
 categoria: "Kubernetes & GitOps"
 madurez: "Reference"
@@ -11,20 +11,20 @@ draft: false
 
 categoria_es: "Kubernetes y GitOps"
 madurez_es: "Referencia"
-descripcion_es: "Plataforma Kubernetes con entrega GitOps vía ArgoCD. Despliegues declarativos, automatizados y versionados usando KinD para desarrollo local. Helm Charts, Prometheus, Grafana y stack de observabilidad con Alertmanager."
+descripcion_es: "Cero kubectl apply manuales en producción. ArgoCD entrega cada despliegue declarativamente desde Git — los drifts se corrigen automáticamente. KinD refleja producción exactamente: los fallos 'funciona en local pero no en prod' son eliminados. Observabilidad Prometheus + Grafana desde el día uno."
 metricas_es:
-  - label: "GitOps — auto-sync ArgoCD"
-    value: "Modelo de entrega"
-  - label: "KinD refleja producción"
-    value: "Desarrollo local"
-  - label: "Prometheus + Grafana"
-    value: "Observabilidad"
-  - label: "Declarativo — Helm + ArgoCD"
-    value: "Despliegues"
+  - label: "kubectl apply manuales en producción"
+    value: "0"
+  - label: "despliegues reconciliados por GitOps"
+    value: "100%"
+  - label: "paridad entorno local/producción (KinD)"
+    value: "Exacta"
+  - label: "detección y corrección de drift"
+    value: "Auto-heal"
 highlights_es:
+  - "Cero kubectl apply manuales en producción — ArgoCD auto-sync + prune + selfHeal en cada cambio"
+  - "KinD refleja producción exactamente — elimina los fallos de paridad local/producción"
   - "GitOps con ArgoCD — declarativo, versionado y reconciliado automáticamente"
-  - "KinD (Kubernetes en Docker) para desarrollo local que refleja producción"
-  - "Helm Charts con valores por entorno — dev, staging, producción"
 
 flow_steps:
   - label: "KinD"
@@ -49,20 +49,20 @@ stack:
   - "Grafana"
   - "Alertmanager"
 metricas:
-  - label: "Delivery model"
-    value: "GitOps — ArgoCD auto-sync"
-  - label: "Local dev"
-    value: "KinD mirrors production"
-  - label: "Observability"
-    value: "Prometheus + Grafana"
-  - label: "Deployments"
-    value: "Declarative — Helm + ArgoCD"
+  - label: "manual kubectl applies in production"
+    value: "0"
+  - label: "GitOps-reconciled deployments"
+    value: "100%"
+  - label: "local/production environment parity (KinD)"
+    value: "Exact"
+  - label: "drift detection & correction"
+    value: "Auto-heal"
 highlights:
+  - "Zero manual kubectl applies in production — ArgoCD auto-sync + prune + selfHeal on every change"
+  - "KinD mirrors production exactly — eliminates 'works locally but fails in prod' failures"
   - "GitOps with ArgoCD — declarative, versioned and automatically reconciled"
-  - "KinD (Kubernetes in Docker) for local development that mirrors production"
   - "Helm Charts with per-environment values — dev, staging, production"
   - "Full observability — Prometheus metrics, Grafana dashboards, Alertmanager routing"
-  - "Zero manual kubectl apply in production — ArgoCD auto-sync + prune + selfHeal"
 ---
 
 ## Overview
