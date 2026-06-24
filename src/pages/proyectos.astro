@@ -60,15 +60,6 @@ import Layout from '../layouts/Layout.astro'
               github: 'https://github.com/lra-cloud-ops/gitops-stack',
             },
             {
-              nombre: 'Kubernetes On-Premise',
-              madurez: 'En desarrollo',
-              categoria: 'Kubernetes & Platform Engineering',
-              desc: 'Cluster Kubernetes completo desde cero en ~20 minutos con un único comando: vagrant up. kubeadm + CNI Calico + GitOps ArgoCD + Ingress NGINX sobre bare metal. Aprovisionamiento idempotente, cero dependencia de cloud.',
-              impacto: { valor: '~20 min', label: 'cluster completo desde cero' },
-              slug: 'k8s-on-premise',
-              github: 'https://github.com/lra-cloud-ops/k8s-on-premise',
-            },
-            {
               nombre: 'Linux Fleet Manager',
               madurez: 'Producción',
               categoria: 'SRE & Automatización',
@@ -85,15 +76,6 @@ import Layout from '../layouts/Layout.astro'
               impacto: { valor: '0', label: 'kubectl apply manuales en producción' },
               slug: 'k8s-devops-platform',
               github: 'https://github.com/lra-cloud-ops/k8s-devops-platform',
-            },
-            {
-              nombre: 'AWS DevOps Agent',
-              madurez: 'En desarrollo',
-              categoria: 'IA + Cloud Operations',
-              desc: 'Gestiona 25+ servicios AWS en lenguaje natural desde tu terminal — cero sintaxis AWS CLI a memorizar. Claude Sonnet mapea la intención a la llamada boto3 correcta automáticamente. Consulta, despliega y gestiona recursos sin salir de la terminal.',
-              impacto: { valor: '25+', label: 'servicios AWS en lenguaje natural' },
-              slug: 'aws-devops-agent',
-              github: 'https://github.com/lra-cloud-ops/aws-devops-agent',
             },
           ].map((p) => (
             <div

@@ -7,7 +7,7 @@ madurez: "In Development"
 featured: false
 github: "https://github.com/lra-cloud-ops/k8s-on-premise"
 cicd: false
-draft: false
+draft: true
 
 categoria_es: "Kubernetes y GitOps"
 madurez_es: "En Desarrollo"
