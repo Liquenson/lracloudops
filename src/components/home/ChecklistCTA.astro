@@ -1,0 +1,87 @@
+---
+interface Props { lang: 'es' | 'en' }
+const { lang } = Astro.props
+
+const badge = lang === 'es' ? 'Recurso gratuito' : 'Free resource'
+const heading = lang === 'es' ? 'Checklist de Preparación para Producción en AWS' : 'AWS Production Readiness Checklist'
+const subtext = lang === 'es'
+  ? '47 verificaciones de seguridad, fiabilidad, rendimiento y optimización de costes. Usado por nuestro equipo en cada proyecto antes del go-live.'
+  : '47 checks across security, reliability, performance and cost optimization. Used by our team on every engagement before go-live.'
+const disclaimer = lang === 'es' ? 'Enviado a tu bandeja de entrada. Sin spam, sin campañas de goteo.' : 'Sent to your inbox. No spam, no drip campaigns.'
+const placeholder = lang === 'es' ? 'tu@empresa.com' : 'you@company.com'
+const btnText = lang === 'es' ? 'Descargar gratis →' : 'Download free →'
+---
+
+<section class="relative overflow-hidden" aria-labelledby="checklist-heading">
+  <div class="py-20 px-6" style="background: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 28px 28px;"></div>
+
+    <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
+      <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93C5FD; border: 1px solid rgba(96,165,250,0.3);">{badge}</span>
+      <h2 id="checklist-heading" class="text-3xl sm:text-4xl font-extrabold text-white mb-4" style="letter-spacing: -0.025em;">{heading}</h2>
+      <p class="text-base mb-2 max-w-xl mx-auto" style="color: rgba(148,163,184,0.8);">{subtext}</p>
+      <p class="text-sm mb-8" style="color: rgba(148,163,184,0.5);">{disclaimer}</p>
+
+      <form id="checklist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+        <input type="hidden" name="subject" value="Checklist Download - LRA Cloud Ops" />
+        <input type="hidden" name="from_name" value="LRA Cloud Operations" />
+        <input type="hidden" name="checklist_request" value="AWS Production Readiness Checklist" />
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder={placeholder}
+          class="flex-1 px-4 py-3.5 text-sm rounded-xl outline-none transition-all"
+          style="background: white; color: #111827; border: 1px solid rgba(255,255,255,0.1);"
+          onfocus="this.style.boxShadow='0 0 0 3px rgba(96,165,250,0.3)';"
+          onblur="this.style.boxShadow='none';"
+        />
+        <button type="submit" id="checklist-btn" class="text-sm font-bold px-6 py-3.5 rounded-xl flex-shrink-0 transition-all hover:-translate-y-px active:scale-[0.98]" style="background: #1E6FFF; color: white; box-shadow: 0 4px 16px rgba(30,111,255,0.4);">
+          {btnText}
+        </button>
+      </form>
+      <div id="checklist-status" class="hidden text-sm mt-4 px-4 py-2 rounded-lg inline-block"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('checklist-form') as HTMLFormElement | null
+  const btn = document.getElementById('checklist-btn') as HTMLButtonElement | null
+  const statusEl = document.getElementById('checklist-status') as HTMLDivElement | null
+  const isEs = document.documentElement.lang !== 'en'
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!btn || !statusEl) return
+    btn.textContent = isEs ? 'Enviando...' : 'Sending...'
+    btn.disabled = true
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      })
+      const data = await res.json()
+      if (data.success) {
+        statusEl.textContent = isEs
+          ? '¡Suscrito! Te enviaremos el checklist a tu bandeja de entrada en breve.'
+          : 'Subscribed! We will send the checklist to your inbox shortly.'
+        statusEl.style.cssText = 'display:inline-block; background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.3);'
+        form.reset()
+      } else {
+        statusEl.textContent = isEs ? 'Algo salió mal. Por favor, inténtalo de nuevo.' : 'Something went wrong. Please try again.'
+        statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+      }
+    } catch {
+      statusEl.textContent = isEs ? 'Error de conexión. Por favor, inténtalo de nuevo.' : 'Connection error. Please try again.'
+      statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+    }
+
+    btn.textContent = isEs ? 'Descargar gratis →' : 'Download free →'
+    btn.disabled = false
+    statusEl.classList.remove('hidden')
+  })
+</script>

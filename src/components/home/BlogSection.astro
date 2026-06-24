@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content'
+
+interface Props { lang: 'es' | 'en' }
+const { lang } = Astro.props
+
+const recentPosts = (await getCollection(lang === 'es' ? 'esBlog' : 'blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
+  .slice(0, 3)
+
+const badge = lang === 'es' ? 'Recursos Técnicos' : 'Technical Resources'
+const heading = lang === 'es' ? 'Notas de ingeniería.' : 'Engineering notes.'
+const allArticles = lang === 'es' ? 'Todos los artículos' : 'All articles'
+const blogHref = lang === 'es' ? '/blog' : '/blog'
+const viewAll = lang === 'es' ? 'Ver todos los artículos' : 'View all articles'
+const resourcesText = lang === 'es' ? 'Guías técnicas y recursos' : 'Technical guides & resources'
+const readMore = lang === 'es' ? 'Leer más' : 'Read more'
+const locale = lang === 'es' ? 'es-ES' : 'en-US'
+
+const esPlaceholders = [
+  { title: 'GitOps con ArgoCD: patrones de producción', category: 'GitOps', tag: 'ArgoCD', date: 'Jun 2026', desc: 'Cómo implementar workflows GitOps con ArgoCD para despliegues sin tiempo de inactividad en Kubernetes.', href: '/blog' },
+  { title: 'Checklist de Kubernetes para Producción', category: 'Kubernetes', tag: 'SRE', date: 'May 2026', desc: 'Todo lo necesario antes del go-live: seguridad, autoscaling, observabilidad y recuperación ante desastres.', href: '/blog' },
+  { title: 'Patrones Enterprise con Terraform', category: 'Terraform', tag: 'IaC', date: 'Abr 2026', desc: 'Terraform modular para infraestructura AWS multi-entorno y multi-cuenta a escala.', href: '/blog' },
+]
+
+const enPlaceholders = [
+  { title: 'GitOps with ArgoCD: Production patterns', category: 'GitOps', tag: 'ArgoCD', date: 'Jun 2026', desc: 'How to implement GitOps workflows with ArgoCD for zero-downtime deployments in Kubernetes.', href: '/blog' },
+  { title: 'Kubernetes Production Checklist', category: 'Kubernetes', tag: 'SRE', date: 'May 2026', desc: 'Everything you need before going live: security, autoscaling, observability and disaster recovery.', href: '/blog' },
+  { title: 'Terraform Enterprise Patterns', category: 'Terraform', tag: 'IaC', date: 'Apr 2026', desc: 'Modular Terraform for multi-environment, multi-account AWS infrastructure at scale.', href: '/blog' },
+]
+
+const placeholders = lang === 'es' ? esPlaceholders : enPlaceholders
+const delays = ['delay-100', 'delay-200', 'delay-300']
+
+const readLabel = lang === 'es' ? (title: string) => `Leer: ${title}` : (title: string) => `Read: ${title}`
+---
+
+<section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="blog-heading">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+      <div class="animate-fade-up">
+        <span class="section-label">{badge}</span>
+        <h2 id="blog-heading" class="text-4xl sm:text-5xl font-bold mt-5" style="color: #0F172A; letter-spacing: -0.025em;">{heading}</h2>
+      </div>
+      <a href={blogHref} class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors animate-fade" style="color: #2563EB;">
+        {allArticles}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {recentPosts.length > 0
+        ? recentPosts.map((post, i) => (
+          <article class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${delays[i]}`} style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+            <div class="flex items-center gap-2 mb-4">
+              {post.data.tags?.[0] && <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF;">{post.data.tags[0]}</span>}
+              {post.data.tags?.[1] && <span class="text-xs font-medium" style="color: #94A3B8;">{post.data.tags[1]}</span>}
+            </div>
+            <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">
+              <a href={`/blog/${post.id}`} class="hover:text-blue-600 transition-colors">{post.data.titulo}</a>
+            </h3>
+            <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">{post.data.descripcion}</p>
+            <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
+              <time class="text-xs" style="color: #94A3B8;">{new Date(post.data.fecha).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+              <a href={`/blog/${post.id}`} class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70" style="color: #2563EB;" aria-label={readLabel(post.data.titulo)}>
+                {readMore}
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            </div>
+          </article>
+        ))
+        : placeholders.map(({ title, category, tag, date, desc, href }, i) => (
+          <article class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${delays[i]}`} style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF;">{category}</span>
+              <span class="text-xs font-medium" style="color: #94A3B8;">{tag}</span>
+            </div>
+            <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">{title}</h3>
+            <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">{desc}</p>
+            <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
+              <span class="text-xs" style="color: #94A3B8;">{date}</span>
+              <a href={href} class="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:opacity-70" style="color: #2563EB;">
+                {readMore}
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="text-center mt-12 animate-fade-up flex flex-wrap items-center justify-center gap-4">
+      <a href={blogHref} class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white" style="color: #0F172A; border-color: #E5E7EB; background: white;">
+        {viewAll}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      </a>
+      <a href="/resources" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+        {resourcesText}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
