@@ -7,34 +7,42 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is included in the initial assessment?',
+      name: 'What is included in the initial technical assessment?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A review of your current architecture, infrastructure, delivery processes and observability setup. We identify gaps and outline a concrete approach — at no charge and before any commitment.',
+        text: 'A review of your current architecture, delivery processes and observability setup. We identify gaps and outline a concrete approach — at no charge and before any commitment.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Can scopes be adjusted after the engagement starts?',
+      name: 'Can we start with Starter and scale to Professional?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. We define the initial scope clearly, but if requirements change during the engagement we discuss adjustments transparently. No surprise invoices.',
+        text: 'Yes. Starter is a natural entry point. If you proceed to implementation after the audit, the Starter cost is credited toward the Professional plan. You do not pay twice for the same work.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Do you work with teams that have no existing cloud infrastructure?',
+      name: 'What is the typical delivery timeline for a full implementation?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Greenfield is our preferred starting point. We provision everything as code from day one — no legacy constraints, no manual configurations to unwind.',
+        text: 'Most Professional engagements deliver a production-ready environment in 4–6 weeks. Regulated environments (Healthcare, Fintech) or multi-account setups may require 8–12 weeks depending on scope.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is the typical delivery timeline for an implementation?',
+      name: 'How do you handle our AWS credentials?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Most implementation engagements deliver a production-ready environment in 4–8 weeks depending on scope. Complex multi-account or regulated environments take longer.',
+        text: 'Strict zero static keys policy. All automation uses OIDC federation with temporary tokens scoped to minimum required permissions — typically 15-minute expiry. Your long-lived credentials never leave your account.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can you sign an NDA before the initial call?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, always. We routinely sign NDAs before any technical discussion. Contact us and we will have our standard NDA back to you within 24 hours.',
       },
     },
   ],
@@ -42,9 +50,9 @@ const faqSchema = {
 ---
 
 <Layout
-  titulo="Pricing | DevOps Consulting & Platform Engineering | LRA Cloud Operations"
-  descripcion="Fixed-scope DevOps and cloud infrastructure engagements with clear deliverables. Advisory from €400, full implementation from €3,000, ongoing retainer from €800/mo."
-  keywords="DevOps consulting pricing Spain, Kubernetes implementation cost, AWS infrastructure pricing Europe, platform engineering rates, Terraform implementation price, cloud consulting fees"
+  titulo="Pricing | DevOps & Cloud Infrastructure Engagement Models"
+  descripcion="Engagement models for cloud infrastructure, Kubernetes and DevOps automation. Starter from €1,500, Professional from €3,500/mo, Enterprise custom."
+  keywords="DevOps consulting pricing, Kubernetes implementation cost, AWS infrastructure pricing Europe, platform engineering rates, Terraform implementation, cloud consulting fees"
   schema={faqSchema}
 >
   <!-- HERO -->
@@ -52,16 +60,12 @@ const faqSchema = {
     <div
       class="absolute inset-0 pointer-events-none opacity-40"
       style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
-    >
-    </div>
+    ></div>
     <div
       class="absolute inset-0 pointer-events-none"
       style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
-    >
-    </div>
-    <div
-      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-10 sm:py-14 text-center"
-    >
+    ></div>
+    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
       <span
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
@@ -72,107 +76,85 @@ const faqSchema = {
         class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
         style="letter-spacing: -0.02em;"
       >
-        Engagement Models.<br />Real Value.
+        Transparent pricing.<br />No surprises.
       </h1>
-      <p
-        class="text-lg leading-relaxed max-w-2xl mx-auto"
-        style="color: rgba(147,184,255,0.8);"
-      >
-        Fixed-scope engagements with clear deliverables from day one. No hidden
-        fees, no ambiguous statements of work.
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Clear deliverables from day one. No hidden fees, no ambiguous statements of work.
+        Free technical assessment included in every engagement.
       </p>
     </div>
   </section>
 
-  <!-- PRICING TIERS -->
+  <!-- PLANS -->
   <section class="py-20 bg-white" aria-labelledby="pricing-heading">
     <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span
+          class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4"
+          style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+        >
+          Plans
+        </span>
+        <h2 id="pricing-heading" class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">
+          Choose your plan
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
+          Every engagement starts with a technical assessment. We define scope before any financial commitment.
+        </p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-        <!-- Tier 1: Advisory -->
+
+        <!-- Plan 1: Starter -->
         <div
           class="rounded-2xl p-8 flex flex-col"
           style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
         >
           <div class="mb-6">
-            <div
-              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
-              style="background: #EEF4FF;"
-            >
-              <svg
-                class="w-5 h-5"
-                style="color: #1E6FFF;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                ></path>
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: #EEF4FF;">
+              <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" style="color: #0A2540;">
-              Advisory
-            </h3>
-            <div
-              class="text-3xl font-extrabold mb-1"
-              style="color: #0A2540; letter-spacing: -0.03em;"
-            >
-              from <span style="color: #1E6FFF;">€400</span>
+            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #94a3b8;">For SMBs &amp; startups</div>
+            <h3 class="text-2xl font-bold mb-2" style="color: #0A2540;">Starter</h3>
+            <div class="text-3xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.03em;">
+              from <span style="color: #1E6FFF;">€1,500</span>
             </div>
-            <p class="text-sm" style="color: #64748b;">Per engagement</p>
+            <p class="text-sm" style="color: #64748b;">Per project · Delivered in 5 business days</p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-            Ideal for teams evaluating their cloud strategy or needing expert
-            guidance before committing to implementation.
+            Ideal for teams that want to understand their current infrastructure and receive an expert action plan before committing to full implementation.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {
-              [
-                'Infrastructure audit',
-                'Architecture recommendations',
-                '1–2 working sessions',
-                'Technical report',
-                'Gap analysis & roadmap',
-              ].map((item) => (
-                <li
-                  class="flex items-center gap-2.5 text-sm"
-                  style="color: #334155;"
-                >
-                  <svg
-                    class="w-4 h-4 flex-shrink-0"
-                    style="color: #1E6FFF;"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))
-            }
+            {[
+              'Current infrastructure audit',
+              'Recommendations report',
+              '2-hour consulting session',
+              'Prioritised roadmap',
+              'Delivered in 5 business days',
+            ].map((item) => (
+              <li class="flex items-center gap-2.5 text-sm" style="color: #334155;">
+                <svg class="w-4 h-4 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
           </ul>
 
           <a
-            href="/contact"
+            href="/en/contact"
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:opacity-90 block"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
           >
-            Get started
+            Request audit
           </a>
         </div>
 
-        <!-- Tier 2: Implementation (MOST POPULAR) -->
+        <!-- Plan 2: Professional (RECOMMENDED) -->
         <div
           class="rounded-2xl p-8 flex flex-col relative"
           style="background: #0A2540; border: 2px solid #1E6FFF; box-shadow: 0 8px 40px rgba(30,111,255,0.25);"
@@ -182,228 +164,140 @@ const faqSchema = {
               class="text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap"
               style="background: #1E6FFF; color: white; box-shadow: 0 2px 8px rgba(30,111,255,0.4);"
             >
-              MOST POPULAR
+              RECOMMENDED
             </span>
           </div>
 
           <div class="mb-6">
-            <div
-              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
-              style="background: rgba(30,111,255,0.2);"
-            >
-              <svg
-                class="w-5 h-5"
-                style="color: #93b8ff;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
-                ></path>
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: rgba(30,111,255,0.2);">
+              <svg class="w-5 h-5" style="color: #93b8ff;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold mb-2 text-white">Implementation</h3>
-            <div
-              class="text-3xl font-extrabold mb-1 text-white"
-              style="letter-spacing: -0.03em;"
-            >
-              from <span style="color: #93b8ff;">€8,000</span>
+            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: rgba(147,184,255,0.5);">For growing companies</div>
+            <h3 class="text-2xl font-bold mb-2 text-white">Professional</h3>
+            <div class="text-3xl font-extrabold mb-1 text-white" style="letter-spacing: -0.03em;">
+              from <span style="color: #93b8ff;">€3,500</span>
             </div>
-            <p class="text-sm" style="color: rgba(147,184,255,0.6);">
-              Typical: €8,000–25,000 depending on scope
-            </p>
+            <p class="text-sm" style="color: rgba(147,184,255,0.6);">Per month · Implementation + support</p>
           </div>
 
-          <p
-            class="text-sm leading-relaxed mb-6"
-            style="color: rgba(147,184,255,0.8);"
-          >
-            Ideal for companies building their cloud platform from scratch or
-            modernizing legacy infrastructure.
+          <p class="text-sm leading-relaxed mb-6" style="color: rgba(147,184,255,0.8);">
+            Full cloud infrastructure implementation with ongoing support. Ideal for companies scaling their platform and needing a solid foundation from day one.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {
-              [
-                'End-to-end AWS infrastructure with Terraform',
-                'Full CI/CD pipeline automation',
-                'Kubernetes or ECS Fargate deployment',
-                'Prometheus + Grafana observability',
-                'Complete technical documentation',
-                '30-day post-delivery support',
-              ].map((item) => (
-                <li
-                  class="flex items-center gap-2.5 text-sm"
-                  style="color: rgba(147,184,255,0.9);"
-                >
-                  <svg
-                    class="w-4 h-4 flex-shrink-0"
-                    style="color: #93b8ff;"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))
-            }
+            {[
+              'Everything in Starter',
+              'Full implementation (IaC, CI/CD, K8s)',
+              'Observability configured (Prometheus + Grafana)',
+              '30-day post-delivery support included',
+              'Complete technical documentation',
+            ].map((item) => (
+              <li class="flex items-center gap-2.5 text-sm" style="color: rgba(147,184,255,0.9);">
+                <svg class="w-4 h-4 flex-shrink-0" style="color: #93b8ff;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
           </ul>
 
           <a
-            href="/contact"
+            href="/en/contact"
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-px block text-white"
             style="background: #1E6FFF; box-shadow: 0 4px 16px rgba(30,111,255,0.4);"
           >
-            Start implementation
+            Schedule a call
           </a>
         </div>
 
-        <!-- Tier 3: Retainer -->
+        <!-- Plan 3: Enterprise -->
         <div
           class="rounded-2xl p-8 flex flex-col"
           style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
         >
           <div class="mb-6">
-            <div
-              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
-              style="background: #EEF4FF;"
-            >
-              <svg
-                class="w-5 h-5"
-                style="color: #1E6FFF;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                ></path>
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: #EEF4FF;">
+              <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" style="color: #0A2540;">
-              Retainer
-            </h3>
-            <div
-              class="text-3xl font-extrabold mb-1"
-              style="color: #0A2540; letter-spacing: -0.03em;"
-            >
-              from <span style="color: #1E6FFF;">€800</span>
+            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #94a3b8;">Healthcare · Fintech · Enterprise</div>
+            <h3 class="text-2xl font-bold mb-2" style="color: #0A2540;">Enterprise</h3>
+            <div class="text-3xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.03em;">
+              <span style="color: #1E6FFF;">Custom</span>
             </div>
-            <p class="text-sm" style="color: #64748b;">Per month</p>
+            <p class="text-sm" style="color: #64748b;">Tailored quote · NDA available</p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-            Ideal for teams needing ongoing DevOps expertise without hiring a
-            full-time engineer.
+            For organisations with compliance requirements, guaranteed SLAs and engineering teams needing on-call support and continuous security reviews.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {
-              [
-                '24/7 monitoring with proactive alerts',
-                'Security patches and updates',
-                'Priority technical support',
-                'Monthly infrastructure report',
-                'Cost optimization reviews',
-                'On-demand engineering hours',
-              ].map((item) => (
-                <li
-                  class="flex items-center gap-2.5 text-sm"
-                  style="color: #334155;"
-                >
-                  <svg
-                    class="w-4 h-4 flex-shrink-0"
-                    style="color: #1E6FFF;"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))
-            }
+            {[
+              'Everything in Professional',
+              'Guaranteed SLA by contract',
+              'On-call support',
+              'Security & compliance reviews',
+              'NDA available',
+              'Weekly progress check-ins',
+            ].map((item) => (
+              <li class="flex items-center gap-2.5 text-sm" style="color: #334155;">
+                <svg class="w-4 h-4 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
           </ul>
 
           <a
-            href="/contact"
+            href="/en/contact"
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:opacity-90 block"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
           >
-            Start retainer
+            Contact team
           </a>
         </div>
       </div>
 
-      <!-- Hourly banner -->
+      <!-- Info banner -->
       <div
         class="mt-10 rounded-2xl px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
         style="background: #F8FAFC; border: 1px solid #e2e8f0;"
       >
-        <div
-          class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm"
-          style="color: #64748b;"
-        >
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm" style="color: #64748b;">
           <span class="flex items-center gap-2">
-            <span
-              class="w-2 h-2 rounded-full"
-              style="background: #1E6FFF;"
-              aria-hidden="true"></span>
-            <strong style="color: #0A2540;">Hourly rate:</strong> €50–70/h
+            <span class="w-2 h-2 rounded-full" style="background: #1E6FFF;" aria-hidden="true"></span>
+            <strong style="color: #0A2540;">Initial assessment:</strong> always free
           </span>
           <span class="flex items-center gap-2">
-            <span
-              class="w-2 h-2 rounded-full"
-              style="background: #1E6FFF;"
-              aria-hidden="true"></span>
+            <span class="w-2 h-2 rounded-full" style="background: #1E6FFF;" aria-hidden="true"></span>
             Custom scopes available
           </span>
           <span class="flex items-center gap-2">
-            <span
-              class="w-2 h-2 rounded-full"
-              style="background: #10B981;"
-              aria-hidden="true"></span>
+            <span class="w-2 h-2 rounded-full" style="background: #10B981;" aria-hidden="true"></span>
             Response within 24 hours
           </span>
         </div>
         <a
-          href="/contact"
+          href="/en/contact"
           class="text-sm font-semibold px-5 py-2.5 rounded-xl flex-shrink-0 transition-all hover:opacity-90"
           style="background: #0A2540; color: white;"
         >
-          Discuss your scope →
+          Discuss your project →
         </a>
       </div>
 
-      <!-- Why engagement vs. hiring -->
+      <!-- Comparison table -->
       <div
-        class="mb-16 rounded-2xl overflow-hidden"
+        class="mt-16 rounded-2xl overflow-hidden"
         style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
       >
         <div class="px-7 py-5" style="background: #0A2540;">
-          <h3 class="text-base font-bold text-white">
-            Why engagement vs. hiring full-time?
-          </h3>
+          <h3 class="text-base font-bold text-white">Why engage vs. hiring full-time?</h3>
           <p class="text-sm mt-1" style="color: rgba(147,184,255,0.7);">
             A direct comparison across cost, time-to-start and accountability.
           </p>
@@ -412,87 +306,27 @@ const faqSchema = {
           <table class="w-full text-sm">
             <thead>
               <tr style="border-bottom: 1px solid #e2e8f0;">
-                <th
-                  class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider"
-                  style="color: #94a3b8; background: #f8fafc;"></th>
-                <th
-                  class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider"
-                  style="color: #1E6FFF; background: #EEF4FF;">LRA Cloud Ops</th
-                >
-                <th
-                  class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider"
-                  style="color: #64748b; background: #f8fafc;"
-                  >DevOps FTE (Spain)</th
-                >
-                <th
-                  class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider"
-                  style="color: #64748b; background: #f8fafc;"
-                  >Big Consultancy</th
-                >
+                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #94a3b8; background: #f8fafc;"></th>
+                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #1E6FFF; background: #EEF4FF;">LRA Cloud Ops</th>
+                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #64748b; background: #f8fafc;">DevOps FTE (EU)</th>
+                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #64748b; background: #f8fafc;">Big Consultancy</th>
               </tr>
             </thead>
             <tbody>
-              {
-                [
-                  {
-                    label: 'Cost',
-                    lra: '€8K–25K/project',
-                    fte: '€45K–70K/year + benefits',
-                    big: '€150K–400K/project',
-                  },
-                  {
-                    label: 'Start time',
-                    lra: '1–2 weeks',
-                    fte: '2–4 months hiring',
-                    big: '3–6 months',
-                  },
-                  {
-                    label: 'Senior access',
-                    lra: 'Direct',
-                    fte: 'Depends on hire',
-                    big: 'Via account manager',
-                  },
-                  {
-                    label: 'Accountability',
-                    lra: 'Full ownership',
-                    fte: 'Internal politics',
-                    big: 'Diluted',
-                  },
-                  {
-                    label: 'Flexibility',
-                    lra: 'Scope-based',
-                    fte: 'Fixed headcount',
-                    big: 'Contract lock-in',
-                  },
-                ].map(({ label, lra, fte, big }, i) => (
-                  <tr
-                    style={
-                      i % 2 === 0
-                        ? 'background: white;'
-                        : 'background: #fafbfc;'
-                    }
-                  >
-                    <td
-                      class="px-6 py-3.5 text-xs font-bold"
-                      style="color: #0A2540;"
-                    >
-                      {label}
-                    </td>
-                    <td
-                      class="px-6 py-3.5 text-xs font-semibold"
-                      style="color: #1E6FFF; background: rgba(238,244,255,0.5);"
-                    >
-                      {lra}
-                    </td>
-                    <td class="px-6 py-3.5 text-xs" style="color: #64748b;">
-                      {fte}
-                    </td>
-                    <td class="px-6 py-3.5 text-xs" style="color: #64748b;">
-                      {big}
-                    </td>
-                  </tr>
-                ))
-              }
+              {[
+                { label: 'Cost', lra: 'from €1,500/project', fte: '€45K–70K/year + benefits', big: '€150K–400K/project' },
+                { label: 'Start time', lra: '1–2 weeks', fte: '2–4 months hiring', big: '3–6 months' },
+                { label: 'Senior access', lra: 'Direct', fte: 'Depends on hire', big: 'Via account manager' },
+                { label: 'Accountability', lra: 'Full ownership', fte: 'Internal politics', big: 'Diluted' },
+                { label: 'Flexibility', lra: 'Scope-based', fte: 'Fixed headcount', big: 'Contract lock-in' },
+              ].map(({ label, lra, fte, big }, i) => (
+                <tr style={i % 2 === 0 ? 'background: white;' : 'background: #fafbfc;'}>
+                  <td class="px-6 py-3.5 text-xs font-bold" style="color: #0A2540;">{label}</td>
+                  <td class="px-6 py-3.5 text-xs font-semibold" style="color: #1E6FFF; background: rgba(238,244,255,0.5);">{lra}</td>
+                  <td class="px-6 py-3.5 text-xs" style="color: #64748b;">{fte}</td>
+                  <td class="px-6 py-3.5 text-xs" style="color: #64748b;">{big}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -508,63 +342,41 @@ const faqSchema = {
   >
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2
-          id="faq-heading"
-          class="text-3xl font-bold mb-4"
-          style="color: #0A2540;"
-        >
-          Common questions
-        </h2>
+        <h2 id="faq-heading" class="text-3xl font-bold mb-4" style="color: #0A2540;">Common questions</h2>
+        <p class="text-base" style="color: #64748b;">What we get asked before engagements start.</p>
       </div>
       <div class="space-y-4">
-        {
-          [
-            {
-              q: 'What is included in the initial assessment?',
-              a: 'A review of your current architecture, infrastructure, delivery processes and observability setup. We identify gaps and outline a concrete approach — at no charge and before any commitment.',
-            },
-            {
-              q: 'Can scopes be adjusted after the engagement starts?',
-              a: 'Yes. We define the initial scope clearly, but if requirements change during the engagement we discuss adjustments transparently. No surprise invoices.',
-            },
-            {
-              q: 'Do you work with teams that have no existing cloud infrastructure?',
-              a: 'Yes. Greenfield is our preferred starting point. We provision everything as code from day one — no legacy constraints, no manual configurations to unwind.',
-            },
-            {
-              q: 'What is the typical delivery timeline for an implementation?',
-              a: 'Most implementation engagements deliver a production-ready environment in 4–8 weeks depending on scope. Complex multi-account or regulated environments take longer.',
-            },
-            {
-              q: 'How do you handle our AWS credentials?',
-              a: 'We operate on a strict zero static keys policy. All automation uses OIDC federation with temporary tokens scoped to minimum required permissions — typically 15-minute expiry. Your long-lived credentials never leave your account.',
-            },
-            {
-              q: 'Can you sign an NDA before the initial call?',
-              a: 'Yes, always. We routinely sign NDAs before any technical discussion. Send us an email and we will have our standard NDA back to you within 24 hours.',
-            },
-            {
-              q: 'What happens to our infrastructure after the engagement?',
-              a: 'You own 100% of everything — code, modules, pipelines, documentation. We use your repositories and your AWS accounts. At delivery, we perform a structured handoff with no residual access retained.',
-            },
-            {
-              q: 'Can we speak with previous clients as references?',
-              a: 'Yes, upon request after an initial call. We maintain confidentiality publicly but can arrange reference calls with previous clients who have agreed to this.',
-            },
-          ].map(({ q, a }) => (
-            <div
-              class="bg-white rounded-2xl p-6"
-              style="border: 1px solid #e2e8f0;"
-            >
-              <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">
-                {q}
-              </h3>
-              <p class="text-sm leading-relaxed" style="color: #64748b;">
-                {a}
-              </p>
-            </div>
-          ))
-        }
+        {[
+          {
+            q: 'What is included in the initial technical assessment?',
+            a: 'A review of your current architecture, delivery processes and observability setup. We identify gaps and outline a concrete approach — at no charge and before any commitment.',
+          },
+          {
+            q: 'Can we start with Starter and scale to Professional?',
+            a: 'Yes. Starter is a natural entry point. If you proceed to implementation after the audit, the Starter cost is credited toward the Professional plan. You do not pay twice for the same work.',
+          },
+          {
+            q: 'What is the typical delivery timeline for a full implementation?',
+            a: 'Most Professional engagements deliver a production-ready environment in 4–6 weeks. Regulated environments (Healthcare, Fintech) or multi-account setups may require 8–12 weeks depending on scope.',
+          },
+          {
+            q: 'How do you handle our AWS credentials?',
+            a: 'Strict zero static keys policy. All automation uses OIDC federation with temporary tokens scoped to minimum required permissions — typically 15-minute expiry. Your long-lived credentials never leave your account.',
+          },
+          {
+            q: 'Can you sign an NDA before the initial call?',
+            a: 'Yes, always. We routinely sign NDAs before any technical discussion. Contact us and we will have our standard NDA back to you within 24 hours.',
+          },
+          {
+            q: 'What happens to our infrastructure after the engagement?',
+            a: 'You own 100% of everything — code, modules, pipelines, documentation. We use your repositories and your AWS accounts. At delivery we perform a structured handoff with no residual access retained.',
+          },
+        ].map(({ q, a }) => (
+          <div class="bg-white rounded-2xl p-6" style="border: 1px solid #e2e8f0;">
+            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{q}</h3>
+            <p class="text-sm leading-relaxed" style="color: #64748b;">{a}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -578,8 +390,7 @@ const faqSchema = {
     <div
       class="absolute inset-0 pointer-events-none"
       style="background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 28px 28px;"
-    >
-    </div>
+    ></div>
     <div class="relative max-w-4xl mx-auto px-6 py-20 text-center">
       <h2
         id="pricing-cta-heading"
@@ -588,31 +399,18 @@ const faqSchema = {
       >
         Ready to start?
       </h2>
-      <p
-        class="text-lg mb-8 max-w-xl mx-auto"
-        style="color: rgba(255,255,255,0.8);"
-      >
-        Describe your project and we will outline the right engagement model. No
-        sales process, no deck — just a technical conversation.
+      <p class="text-lg mb-8 max-w-xl mx-auto" style="color: rgba(255,255,255,0.8);">
+        Describe your project and we will outline the right engagement model.
+        No sales process, no deck — just a technical conversation.
       </p>
       <a
-        href="/contact"
+        href="/en/contact"
         class="inline-flex items-center gap-2 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 hover:-translate-y-px shadow-xl"
         style="background: white; color: #1D4ED8;"
       >
         Start a conversation
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </a>
     </div>

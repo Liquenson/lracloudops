@@ -1,31 +1,76 @@
 ---
 import Layout from '../layouts/Layout.astro'
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué incluye la evaluación técnica inicial?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Una revisión de tu arquitectura actual, procesos de entrega y configuración de observabilidad. Identificamos brechas y planteamos un enfoque concreto — sin cargo y antes de ningún compromiso.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Podemos empezar con Starter y escalar a Professional?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí. El Starter es un punto de entrada natural. Tras la auditoría, si decides continuar con la implementación, el coste del Starter se descuenta del plan Professional.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cuánto tarda una implementación completa?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La mayoría de implementaciones Professional entregan un entorno listo para producción en 4–6 semanas. Entornos regulados (Healthcare, Fintech) o multi-cuenta pueden requerir 8–12 semanas.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo gestionáis nuestras credenciales AWS?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Política estricta: cero claves estáticas. Toda la automatización usa federación OIDC — tokens temporales de 15 minutos acotados al mínimo de permisos requeridos. Vuestras credenciales nunca salen de vuestra cuenta.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Podéis firmar un NDA antes de la llamada inicial?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí, siempre. Firmamos NDAs antes de cualquier discusión técnica. Contactadnos y os enviamos nuestro NDA estándar en menos de 24 horas.',
+      },
+    },
+  ],
+}
 ---
 
 <Layout
-  titulo="Precios · Proyectos Cloud e Infraestructura sin sorpresas"
-  descripcion="Proyectos DevOps y cloud con alcance fijo y entregables claros. Asesoría desde €400, implementación completa desde €3.000, retainer mensual desde €800/mes."
+  titulo="Precios · Proyectos Cloud DevOps sin sorpresas"
+  descripcion="Modalidades de contratación para infraestructura cloud, Kubernetes y automatización DevOps. Starter desde €1.500, Professional desde €3.500/mes, Enterprise a medida."
+  keywords="precios consultoría DevOps, coste infraestructura cloud, Kubernetes implementación precio, AWS Terraform tarifa, platform engineering España"
+  schema={faqSchema}
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
     <div
       class="absolute inset-0 pointer-events-none opacity-40"
       style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
-    >
-    </div>
+    ></div>
     <div
       class="absolute inset-0 pointer-events-none"
       style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
-    >
-    </div>
-    <div
-      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
-    >
+    ></div>
+    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
       <span
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
       >
-        Precios
+        Modalidades de contratación
       </span>
       <h1
         class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
@@ -33,17 +78,14 @@ import Layout from '../layouts/Layout.astro'
       >
         Precios transparentes.<br />Sin sorpresas.
       </h1>
-      <p
-        class="text-lg leading-relaxed max-w-2xl mx-auto"
-        style="color: rgba(147,184,255,0.8);"
-      >
-        Proyectos con alcance fijo y entregables claros desde el primer día. Sin
-        costes ocultos, sin ambigüedades.
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color: rgba(147,184,255,0.8);">
+        Entregables claros desde el primer día. Sin costes ocultos, sin alcances ambiguos.
+        Evaluación técnica inicial sin cargo en todas las modalidades.
       </p>
     </div>
   </section>
 
-  <!-- TIERS -->
+  <!-- PLANES -->
   <section class="py-20 bg-white" aria-labelledby="precios-heading">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
@@ -51,95 +93,56 @@ import Layout from '../layouts/Layout.astro'
           class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4"
           style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
         >
-          Modalidades
+          Planes
         </span>
-        <h2
-          id="precios-heading"
-          class="text-3xl sm:text-4xl font-bold mb-4"
-          style="color: #0A2540;"
-        >
-          Elige tu modalidad
+        <h2 id="precios-heading" class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">
+          Elige tu plan
         </h2>
         <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
-          Cada proyecto incluye una evaluación técnica inicial. Definimos el
-          alcance antes de cualquier compromiso.
+          Cada proyecto comienza con una evaluación técnica. Definimos el alcance antes de cualquier compromiso económico.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-        <!-- Tier 1: Asesoría -->
+
+        <!-- Plan 1: Starter -->
         <div
           class="rounded-2xl p-8 flex flex-col"
           style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
         >
           <div class="mb-6">
-            <div
-              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
-              style="background: #EEF4FF;"
-            >
-              <svg
-                class="w-5 h-5"
-                style="color: #1E6FFF;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                ></path>
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: #EEF4FF;">
+              <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" style="color: #0A2540;">
-              Asesoría
-            </h3>
-            <div
-              class="text-3xl font-extrabold mb-1"
-              style="color: #0A2540; letter-spacing: -0.03em;"
-            >
-              desde <span style="color: #1E6FFF;">€400</span>
+            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #94a3b8;">Para PYMEs y startups</div>
+            <h3 class="text-2xl font-bold mb-2" style="color: #0A2540;">Starter</h3>
+            <div class="text-3xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.03em;">
+              desde <span style="color: #1E6FFF;">€1.500</span>
             </div>
-            <p class="text-sm" style="color: #64748b;">Por proyecto</p>
+            <p class="text-sm" style="color: #64748b;">Por proyecto · Entrega en 5 días hábiles</p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-            Ideal para equipos que evalúan su estrategia cloud o necesitan
-            orientación experta antes de implementar.
+            Ideal para equipos que quieren entender su infraestructura actual y recibir un plan de acción experto antes de invertir en implementación.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {
-              [
-                'Auditoría de infraestructura',
-                'Recomendaciones de arquitectura',
-                '1–2 sesiones de trabajo',
-                'Informe técnico',
-                'Análisis de brechas y hoja de ruta',
-              ].map((item) => (
-                <li
-                  class="flex items-center gap-2.5 text-sm"
-                  style="color: #334155;"
-                >
-                  <svg
-                    class="w-4 h-4 flex-shrink-0"
-                    style="color: #1E6FFF;"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))
-            }
+            {[
+              'Auditoría de infraestructura actual',
+              'Informe de recomendaciones',
+              'Sesión de consultoría de 2 horas',
+              'Hoja de ruta priorizada',
+              'Entrega en 5 días hábiles',
+            ].map((item) => (
+              <li class="flex items-center gap-2.5 text-sm" style="color: #334155;">
+                <svg class="w-4 h-4 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
           </ul>
 
           <a
@@ -147,11 +150,11 @@ import Layout from '../layouts/Layout.astro'
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:opacity-90 block"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
           >
-            Empezar
+            Solicitar auditoría
           </a>
         </div>
 
-        <!-- Tier 2: Implementación (MÁS POPULAR) -->
+        <!-- Plan 2: Professional (RECOMENDADO) -->
         <div
           class="rounded-2xl p-8 flex flex-col relative"
           style="background: #0A2540; border: 2px solid #1E6FFF; box-shadow: 0 8px 40px rgba(30,111,255,0.25);"
@@ -161,82 +164,43 @@ import Layout from '../layouts/Layout.astro'
               class="text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap"
               style="background: #1E6FFF; color: white; box-shadow: 0 2px 8px rgba(30,111,255,0.4);"
             >
-              MÁS POPULAR
+              RECOMENDADO
             </span>
           </div>
 
           <div class="mb-6">
-            <div
-              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
-              style="background: rgba(30,111,255,0.2);"
-            >
-              <svg
-                class="w-5 h-5"
-                style="color: #93b8ff;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
-                ></path>
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: rgba(30,111,255,0.2);">
+              <svg class="w-5 h-5" style="color: #93b8ff;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold mb-2 text-white">Implementación</h3>
-            <div
-              class="text-3xl font-extrabold mb-1 text-white"
-              style="letter-spacing: -0.03em;"
-            >
-              desde <span style="color: #93b8ff;">€8.000</span>
+            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: rgba(147,184,255,0.5);">Para empresas en crecimiento</div>
+            <h3 class="text-2xl font-bold mb-2 text-white">Professional</h3>
+            <div class="text-3xl font-extrabold mb-1 text-white" style="letter-spacing: -0.03em;">
+              desde <span style="color: #93b8ff;">€3.500</span>
             </div>
-            <p class="text-sm" style="color: rgba(147,184,255,0.6);">
-              Proyecto típico: €8.000–25.000 según alcance
-            </p>
+            <p class="text-sm" style="color: rgba(147,184,255,0.6);">Por mes · Implementación + soporte</p>
           </div>
 
-          <p
-            class="text-sm leading-relaxed mb-6"
-            style="color: rgba(147,184,255,0.8);"
-          >
-            Ideal para empresas que construyen su plataforma cloud desde cero o
-            modernizan infraestructura legacy.
+          <p class="text-sm leading-relaxed mb-6" style="color: rgba(147,184,255,0.8);">
+            Implementación completa de infraestructura cloud con soporte continuado. Ideal para empresas que escalan y necesitan una plataforma sólida desde el día uno.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {
-              [
-                'Infraestructura AWS completa con Terraform',
-                'Automatización CI/CD end-to-end',
-                'Despliegue en Kubernetes o ECS Fargate',
-                'Observabilidad con Prometheus + Grafana',
-                'Documentación técnica completa',
-                '30 días de soporte post-entrega',
-              ].map((item) => (
-                <li
-                  class="flex items-center gap-2.5 text-sm"
-                  style="color: rgba(147,184,255,0.9);"
-                >
-                  <svg
-                    class="w-4 h-4 flex-shrink-0"
-                    style="color: #93b8ff;"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))
-            }
+            {[
+              'Todo lo incluido en Starter',
+              'Implementación completa (IaC, CI/CD, K8s)',
+              'Observabilidad configurada (Prometheus + Grafana)',
+              'Soporte 30 días post-entrega incluido',
+              'Documentación técnica completa',
+            ].map((item) => (
+              <li class="flex items-center gap-2.5 text-sm" style="color: rgba(147,184,255,0.9);">
+                <svg class="w-4 h-4 flex-shrink-0" style="color: #93b8ff;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
           </ul>
 
           <a
@@ -244,84 +208,49 @@ import Layout from '../layouts/Layout.astro'
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-px block text-white"
             style="background: #1E6FFF; box-shadow: 0 4px 16px rgba(30,111,255,0.4);"
           >
-            Iniciar implementación
+            Agendar consulta
           </a>
         </div>
 
-        <!-- Tier 3: Retainer -->
+        <!-- Plan 3: Enterprise -->
         <div
           class="rounded-2xl p-8 flex flex-col"
           style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
         >
           <div class="mb-6">
-            <div
-              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
-              style="background: #EEF4FF;"
-            >
-              <svg
-                class="w-5 h-5"
-                style="color: #1E6FFF;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                ></path>
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: #EEF4FF;">
+              <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" style="color: #0A2540;">
-              Retainer
-            </h3>
-            <div
-              class="text-3xl font-extrabold mb-1"
-              style="color: #0A2540; letter-spacing: -0.03em;"
-            >
-              desde <span style="color: #1E6FFF;">€800</span>
+            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #94a3b8;">Healthcare · Fintech · Enterprise</div>
+            <h3 class="text-2xl font-bold mb-2" style="color: #0A2540;">Enterprise</h3>
+            <div class="text-3xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.03em;">
+              <span style="color: #1E6FFF;">A medida</span>
             </div>
-            <p class="text-sm" style="color: #64748b;">Por mes</p>
+            <p class="text-sm" style="color: #64748b;">Presupuesto personalizado · NDA disponible</p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-            Ideal para equipos que necesitan experiencia DevOps continua sin
-            contratar un ingeniero a tiempo completo.
+            Para organizaciones con requisitos de compliance, SLAs garantizados y equipos de ingeniería que necesitan soporte on-call y revisiones de seguridad continuas.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {
-              [
-                'Monitorización 24/7 con alertas proactivas',
-                'Parches de seguridad y actualizaciones',
-                'Soporte técnico prioritario',
-                'Informe mensual de infraestructura',
-                'Revisiones de optimización de costes',
-                'Horas de ingeniería bajo demanda',
-              ].map((item) => (
-                <li
-                  class="flex items-center gap-2.5 text-sm"
-                  style="color: #334155;"
-                >
-                  <svg
-                    class="w-4 h-4 flex-shrink-0"
-                    style="color: #1E6FFF;"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))
-            }
+            {[
+              'Todo lo incluido en Professional',
+              'SLA garantizado por contrato',
+              'On-call support',
+              'Revisiones de seguridad y compliance',
+              'NDA disponible',
+              'Reuniones semanales de seguimiento',
+            ].map((item) => (
+              <li class="flex items-center gap-2.5 text-sm" style="color: #334155;">
+                <svg class="w-4 h-4 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
           </ul>
 
           <a
@@ -329,39 +258,27 @@ import Layout from '../layouts/Layout.astro'
             class="w-full text-center text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:opacity-90 block"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
           >
-            Contratar retainer
+            Contactar equipo
           </a>
         </div>
       </div>
 
-      <!-- Banner tarifa -->
+      <!-- Banner info -->
       <div
         class="mt-10 rounded-2xl px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
         style="background: #F8FAFC; border: 1px solid #e2e8f0;"
       >
-        <div
-          class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm"
-          style="color: #64748b;"
-        >
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm" style="color: #64748b;">
           <span class="flex items-center gap-2">
-            <span
-              class="w-2 h-2 rounded-full"
-              style="background: #1E6FFF;"
-              aria-hidden="true"></span>
-            <strong style="color: #0A2540;">Tarifa por hora:</strong> €50–70/h
+            <span class="w-2 h-2 rounded-full" style="background: #1E6FFF;" aria-hidden="true"></span>
+            <strong style="color: #0A2540;">Evaluación inicial:</strong> siempre sin cargo
           </span>
           <span class="flex items-center gap-2">
-            <span
-              class="w-2 h-2 rounded-full"
-              style="background: #1E6FFF;"
-              aria-hidden="true"></span>
+            <span class="w-2 h-2 rounded-full" style="background: #1E6FFF;" aria-hidden="true"></span>
             Alcances personalizados disponibles
           </span>
           <span class="flex items-center gap-2">
-            <span
-              class="w-2 h-2 rounded-full"
-              style="background: #10B981;"
-              aria-hidden="true"></span>
+            <span class="w-2 h-2 rounded-full" style="background: #10B981;" aria-hidden="true"></span>
             Respuesta en 24 horas
           </span>
         </div>
@@ -376,51 +293,43 @@ import Layout from '../layouts/Layout.astro'
     </div>
   </section>
 
-  <!-- FAQ empresarial -->
-  <section class="py-20 border-t border-gray-100" style="background: #F8FAFC;">
+  <!-- FAQ -->
+  <section class="py-20 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="faq-heading">
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
+        <h2 id="faq-heading" class="text-3xl font-bold mb-4" style="color: #0A2540;">
           Preguntas frecuentes
         </h2>
+        <p class="text-base" style="color: #64748b;">Lo que nos preguntan antes de empezar.</p>
       </div>
       <div class="space-y-4">
-        {
-          [
-            {
-              q: '¿Cómo gestionáis nuestras credenciales AWS?',
-              a: 'Nunca usamos claves de acceso estáticas. Toda la automatización utiliza federación OIDC — tokens temporales acotados al mínimo de permisos requeridos. Vuestras credenciales nunca salen de vuestra cuenta.',
-            },
-            {
-              q: '¿Podéis firmar un NDA antes de la llamada inicial?',
-              a: 'Sí. Firmamos NDAs habitualmente antes de cualquier discusión técnica. Contactadnos y enviaremos nuestro NDA estándar en menos de 24 horas.',
-            },
-            {
-              q: '¿Qué pasa después del soporte de 30 días?',
-              a: 'Sois propietarios de todo — código, infraestructura, documentación. Ofrecemos contratos de retainer opcionales para soporte continuo, pero no hay lock-in.',
-            },
-            {
-              q: '¿Podemos hablar con clientes anteriores?',
-              a: 'Podemos facilitar referencias previa solicitud tras una llamada inicial. La confidencialidad del cliente nos impide publicar nombres públicamente.',
-            },
-            {
-              q: '¿Trabajáis con equipos sin infraestructura cloud existente?',
-              a: 'Sí. Greenfield es nuestro punto de partida preferido. Aprovisionamos todo como código desde el primer día — sin restricciones legacy ni configuraciones manuales que deshacer.',
-            },
-          ].map(({ q, a }) => (
-            <div
-              class="bg-white rounded-2xl p-6"
-              style="border: 1px solid #e2e8f0;"
-            >
-              <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">
-                {q}
-              </h3>
-              <p class="text-sm leading-relaxed" style="color: #64748b;">
-                {a}
-              </p>
-            </div>
-          ))
-        }
+        {[
+          {
+            q: '¿Qué incluye la evaluación técnica inicial?',
+            a: 'Una revisión de tu arquitectura actual, procesos de entrega y configuración de observabilidad. Identificamos brechas y planteamos un enfoque concreto — sin cargo y antes de ningún compromiso económico.',
+          },
+          {
+            q: '¿Podemos empezar con Starter y escalar a Professional?',
+            a: 'Sí. El Starter es un punto de entrada natural. Tras la auditoría, si decides continuar con la implementación, el coste del Starter se descuenta del plan Professional. No pagas dos veces lo mismo.',
+          },
+          {
+            q: '¿Cuánto tarda una implementación completa?',
+            a: 'La mayoría de implementaciones Professional entregan un entorno listo para producción en 4–6 semanas. Entornos regulados (Healthcare, Fintech) o multi-cuenta pueden requerir 8–12 semanas según el alcance.',
+          },
+          {
+            q: '¿Cómo gestionáis nuestras credenciales AWS?',
+            a: 'Política estricta: cero claves estáticas. Toda la automatización usa federación OIDC con tokens temporales acotados al mínimo de permisos requeridos. Vuestras credenciales nunca salen de vuestra cuenta.',
+          },
+          {
+            q: '¿Podéis firmar un NDA antes de la llamada inicial?',
+            a: 'Sí, siempre. Firmamos NDAs antes de cualquier discusión técnica. Contactadnos y os enviamos nuestro NDA estándar en menos de 24 horas.',
+          },
+        ].map(({ q, a }) => (
+          <div class="bg-white rounded-2xl p-6" style="border: 1px solid #e2e8f0;">
+            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{q}</h3>
+            <p class="text-sm leading-relaxed" style="color: #64748b;">{a}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -434,8 +343,7 @@ import Layout from '../layouts/Layout.astro'
     <div
       class="absolute inset-0 pointer-events-none"
       style="background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 28px 28px;"
-    >
-    </div>
+    ></div>
     <div class="relative max-w-4xl mx-auto px-6 py-20 text-center">
       <h2
         id="precios-cta-heading"
@@ -444,12 +352,9 @@ import Layout from '../layouts/Layout.astro'
       >
         ¿Listo para empezar?
       </h2>
-      <p
-        class="text-lg mb-8 max-w-xl mx-auto"
-        style="color: rgba(255,255,255,0.8);"
-      >
-        Cuéntanos tu proyecto y definiremos la modalidad más adecuada. Sin
-        proceso de ventas, sin presentaciones — solo una conversación técnica.
+      <p class="text-lg mb-8 max-w-xl mx-auto" style="color: rgba(255,255,255,0.8);">
+        Cuéntanos tu proyecto y definiremos la modalidad más adecuada.
+        Sin proceso de ventas, sin presentaciones — solo una conversación técnica.
       </p>
       <a
         href="/contacto"
@@ -457,18 +362,8 @@ import Layout from '../layouts/Layout.astro'
         style="background: white; color: #1D4ED8;"
       >
         Iniciar conversación
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </a>
     </div>
