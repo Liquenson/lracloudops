@@ -374,14 +374,14 @@ import { Image } from 'astro:assets'
                 <ul class="space-y-2.5">
                   {
                     [
-                      'Plataformas de entrega continua en AWS EKS con GitOps — diseño, implementación y operaciones.',
-                      'Pipeline CI/CD end-to-end: Jenkins → Docker → ECR → Kubernetes. Rolling updates con cero tiempo de inactividad.',
-                      'Infraestructura Multi-AZ con Terraform modular: VPC, EKS, ECR, RDS, S3, IAM, CloudWatch — estado remoto en S3 con workspaces DEV/PROD separados.',
-                      'Configuración automatizada de nodos EKS con Ansible y AWS SSM — hardening SSH, reglas de firewall, dnf-automatic, agente CloudWatch.',
-                      'Entrega GitOps con ArgoCD y Helm. Ficheros de valores por entorno. Sin apply manual, sin configuration drift.',
-                      'Observabilidad con Prometheus, Grafana y CloudWatch Container Insights. Alertas configuradas antes del primer despliegue.',
-                      'IAM como código en Terraform. Políticas de mínimo privilegio. Sin credenciales compartidas.',
-                      'Análisis estático con SonarQube en CI. Quality gate aplicado en cada pull request.',
+                      'Diseño y mantengo plataformas de entrega continua sobre AWS EKS siguiendo el patrón GitOps, con infraestructura completamente definida como código y configuración automatizada de nodos.',
+                      'Pipeline CI/CD end-to-end con Jenkins + Docker + ECR + Kubernetes, desde el commit hasta el despliegue en producción con rolling update sin downtime.',
+                      'Infraestructura multi-AZ en AWS con Terraform modular: VPC, EKS, ECR, RDS, S3, IAM, CloudWatch — backend remoto en S3 y entornos separados DEV/PROD.',
+                      'Configuración automática de nodos EKS via Ansible + AWS SSM — hardening SSH, firewalld, dnf-automatic y agente CloudWatch.',
+                      'Despliegues GitOps con ArgoCD y Helm Charts con values separados por entorno. Sin apply manual, sin configuration drift.',
+                      'Observabilidad con Prometheus + Grafana y métricas de infraestructura en CloudWatch Container Insights.',
+                      'IAM como código en Terraform — usuarios, grupos y políticas con mínimo privilegio.',
+                      'Análisis estático de código con SonarQube integrado en el pipeline de CI.',
                     ].map((bullet) => (
                       <li
                         class="flex items-start gap-3 text-sm leading-relaxed"
@@ -497,13 +497,14 @@ import { Image } from 'astro:assets'
                 <ul class="space-y-2.5">
                   {
                     [
-                      'Pipeline CI/CD end-to-end: Jenkins → Maven → SonarQube → Ansible → Kubernetes. Quality gates aplicados en cada build.',
-                      'Infraestructura AWS Multi-AZ con Terraform: VPC, EC2, RDS, EFS, S3, CloudFront, Route 53, ELB — entornos DEV, TEST y PROD.',
-                      'IAM con roles, políticas, grupos de seguridad y ACLs en un entorno sanitario regulado.',
-                      'Kubernetes con Helm Charts para despliegue, versionado y rollback.',
-                      'Ansible para gestión de configuración y parcheo de seguridad automatizado.',
-                      'Prometheus y Grafana con alertas proactivas.',
-                      'Automatización Bash para tareas operativas.',
+                      'Pipeline CI/CD end-to-end con Jenkins + Maven + SonarQube + Ansible + Kubernetes, reduciendo el tiempo de despliegue y garantizando calidad de código en cada entrega.',
+                      'Infraestructura multi-AZ altamente disponible en AWS con Terraform: VPC, EC2, RDS, EFS, S3, CloudFront, Route 53, ELB — entornos DEV, TEST y PROD.',
+                      'IAM con roles, políticas, grupos de seguridad y ACLs siguiendo el principio de mínimo privilegio en entorno regulado del sector salud.',
+                      'Kubernetes con Helm Charts para despliegue, versionado y rollback de aplicaciones en producción.',
+                      'Ansible para gestión de configuración y aprovisionamiento de servidores, incluyendo parcheo de seguridad automatizado.',
+                      'Prometheus + Grafana con alertas proactivas, reduciendo el tiempo de detección de incidencias.',
+                      'Colaboración transversal con equipos de Desarrollo, QA y Producción — gestión de incidencias en Jira.',
+                      'Automatización de tareas operativas recurrentes mediante scripts Bash.',
                     ].map((bullet) => (
                       <li
                         class="flex items-start gap-3 text-sm leading-relaxed"
@@ -618,12 +619,12 @@ import { Image } from 'astro:assets'
                 <ul class="space-y-2.5">
                   {
                     [
-                      'RHEL, CentOS, Ubuntu, Debian y Alpine Linux en producción.',
-                      'VMware vSphere: aprovisionamiento, snapshots y optimización de recursos.',
-                      'Scripting Bash para automatización de tareas operativas.',
-                      'Gestión de LVM en entornos de disponibilidad 24/7.',
-                      'Gestión de accesos de usuarios y grupos con ACLs en entorno financiero regulado.',
-                      'Diagnóstico y resolución de incidentes Unix/Linux dentro de los SLA.',
+                      'RHEL, CentOS, Ubuntu, Debian y Alpine Linux en producción — resolución de incidencias mediante procedimientos de diagnóstico estandarizados.',
+                      'VMware vSphere: aprovisionamiento, snapshots y optimización de recursos de clústeres de máquinas virtuales.',
+                      'Scripts Bash para automatización de tareas operativas: instalación de paquetes, gestión de usuarios, rotación de logs y backups.',
+                      'Almacenamiento LVM — creación de volúmenes, extensión en caliente, snapshots — en entornos de disponibilidad 24/7.',
+                      'Gestión de usuarios, grupos, permisos y ACLs con mínimo privilegio en entorno financiero regulado.',
+                      'Diagnóstico y resolución de incidencias Unix/Linux manteniendo SLAs de disponibilidad en producción.',
                     ].map((bullet) => (
                       <li
                         class="flex items-start gap-3 text-sm leading-relaxed"
