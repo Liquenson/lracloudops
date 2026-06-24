@@ -1,0 +1,48 @@
+---
+interface Props { lang: 'es' | 'en' }
+const { lang } = Astro.props
+
+const esIndustries = [
+  { title: 'Salud', desc: 'Infraestructura con conciencia HIPAA y trazabilidad completa', detail: 'Disponibilidad Multi-AZ y controles de cumplimiento automatizados. IAM de mínimo privilegio, datos cifrados en reposo y límites de cumplimiento aplicados en el aprovisionamiento. Probado en entornos reales de salud — más de 4 años de operaciones en producción.', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+  { title: 'Servicios Financieros', desc: 'Despliegues sin tiempo de inactividad en entornos financieros regulados', detail: 'Seguridad de nivel bancario con credenciales solo OIDC e infraestructura inmutable. Trazabilidad completa del commit a producción. Experiencia con plataformas financieras a gran escala — sin intervención manual en la ruta de release.', icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z' },
+  { title: 'Cloud Native SaaS', desc: 'Plataformas escalables que crecen con tu producto', detail: 'Entrega GitOps, orquestación Kubernetes y observabilidad completa desde el primer día. HPA, cluster autoscaler y ECS Fargate para cargas de trabajo elásticas. Cada release está versionado y es reversible al instante.', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
+  { title: 'Consultoría IT y PYME', desc: 'Consultoría IT integral y gestión de infraestructura', detail: 'Arquitectura de red, ciberseguridad y transformación digital para pequeñas y medianas empresas. Entornos Cisco, Fortinet y Windows Server. Más de 8 años sirviendo a PYMEs, call centers, sector legal y salud.', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+]
+
+const enIndustries = [
+  { title: 'Healthcare', desc: 'HIPAA-aware infrastructure with full audit trails', detail: 'Multi-AZ availability and automated compliance controls. IAM least-privilege, encrypted data at rest and compliance boundaries enforced at provisioning. Proven in real healthcare environments — 4+ years production operations.', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+  { title: 'Financial Services', desc: 'Zero-downtime deployments in regulated financial environments', detail: 'Banking-grade security with OIDC-only credentials and immutable infrastructure. Full audit trail from commit to production. Experience with large-scale financial platforms — no manual intervention in the release path.', icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z' },
+  { title: 'Cloud Native SaaS', desc: 'Scalable platforms that grow with your product', detail: 'GitOps-driven delivery, Kubernetes orchestration and full observability from day one. HPA, cluster autoscaler and ECS Fargate for elastic workloads. Every release is versioned and instantly reversible.', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
+  { title: 'IT Consulting & SMB', desc: 'Comprehensive IT consulting and infrastructure management', detail: 'Network architecture, cybersecurity and digital transformation for small and medium businesses. Cisco, Fortinet and Windows Server environments. 8+ years serving SMBs, call centers, legal sector and healthcare.', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+]
+
+const industries = lang === 'es' ? esIndustries : enIndustries
+const badge = lang === 'es' ? 'Industrias' : 'Industries'
+const heading = lang === 'es' ? 'Industrias a las que servimos' : 'Industries we serve'
+const subtext = lang === 'es' ? 'Experiencia probada en entornos regulados y de alta disponibilidad' : 'Proven experience in regulated and high-availability environments'
+const delays = ['delay-100', 'delay-200', 'delay-300', 'delay-400']
+---
+
+<section class="py-24 bg-white border-t border-gray-100" aria-labelledby="sectors-heading">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 animate-fade-up">
+      <span class="section-label">{badge}</span>
+      <h2 id="sectors-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">{heading}</h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">{subtext}</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {industries.map(({ title, desc, detail, icon }, i) => (
+        <div class={`bg-white rounded-2xl p-7 card-lift animate-fade-up ${delays[i]}`} style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+          <div class="w-11 h-11 flex items-center justify-center rounded-xl mb-5 flex-shrink-0" style="background: #EEF4FF;" aria-hidden="true">
+            <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold mb-1" style="color: #0A2540;">{title}</h3>
+          <p class="text-sm font-semibold mb-3" style="color: #1E6FFF;">{desc}</p>
+          <p class="text-xs leading-relaxed" style="color: #64748B;">{detail}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

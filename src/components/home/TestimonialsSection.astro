@@ -1,0 +1,68 @@
+---
+interface Props { lang: 'es' | 'en' }
+const { lang } = Astro.props
+
+const esTestimonials = [
+  { metric: '3 semanas → 45 min de despliegue', quote: 'Migraron toda nuestra infraestructura AWS a EKS en 6 semanas con cero tiempo de inactividad. El tiempo de despliegue pasó de 3 semanas a 45 minutos. Los módulos Terraform que entregaron siguen en producción 18 meses después.', role: 'Head of Infrastructure', company: 'Plataforma de Tecnología Sanitaria, España', year: '2024', initial: 'HI' },
+  { metric: '100% despliegues automatizados', quote: 'La implementación GitOps con ArgoCD eliminó por completo nuestros errores de despliegue manual. Desde el primer día, cada cambio quedó trazado, versionado y con rollback automático en caso de fallo. Exactamente lo que necesitábamos en un entorno regulado.', role: 'VP of Engineering', company: 'Plataforma de Servicios Financieros, España', year: '2025', initial: 'VP' },
+  { metric: '4 proyectos reutilizando los mismos módulos', quote: 'Sus módulos Terraform son de grado producción. Reutilizamos los mismos patrones de arquitectura en 4 proyectos de clientes diferentes con cambios mínimos. El enfoque de credenciales solo OIDC era un requisito de nuestro equipo de seguridad — lo entregaron desde el primer día.', role: 'Senior DevOps Engineer', company: 'Cloud Native SaaS, LATAM', year: '2025', initial: 'SD' },
+]
+
+const enTestimonials = [
+  { metric: '3 weeks → 45 min deploy time', quote: 'They migrated our entire AWS infrastructure to EKS in 6 weeks with zero downtime. Deploy time went from 3 weeks to 45 minutes. The Terraform modules they delivered are still running in production 18 months later.', role: 'Head of Infrastructure', company: 'Healthcare Technology Platform, Spain', year: '2024', initial: 'HI' },
+  { metric: '100% automated deployments', quote: 'The GitOps implementation with ArgoCD completely eliminated our manual deployment errors. From day one, every change was tracked, versioned and automatically rolled back if something failed. Exactly what we needed in a regulated environment.', role: 'VP of Engineering', company: 'Financial Services Platform, Spain', year: '2025', initial: 'VP' },
+  { metric: '4 projects reusing same modules', quote: 'Their Terraform modules are production-grade. We reused the same architecture patterns across 4 different client projects with minimal changes. The OIDC-only credential approach was a requirement from our security team — they delivered it from day one.', role: 'Senior DevOps Engineer', company: 'Cloud Native SaaS, LATAM', year: '2025', initial: 'SD' },
+]
+
+const testimonials = lang === 'es' ? esTestimonials : enTestimonials
+const badge = lang === 'es' ? 'Testimonios de Clientes' : 'Client Testimonials'
+const heading = lang === 'es' ? 'La confianza de equipos de ingeniería' : 'Trusted by engineering teams'
+const subtext = lang === 'es' ? 'Resultados reales de proyectos reales de infraestructura' : 'Real outcomes from real infrastructure projects'
+const caseStudiesText = lang === 'es' ? 'Ver los casos de estudio completos' : 'See the full case studies'
+const caseStudiesHref = lang === 'es' ? '/proyectos' : '/projects'
+const anonText = lang === 'es' ? 'Anónimo por solicitud' : 'Anonymous by request'
+const delays = ['delay-100', 'delay-200', 'delay-300']
+---
+
+<section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="testimonials-heading">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 animate-fade-up">
+      <span class="section-label">{badge}</span>
+      <h2 id="testimonials-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">{heading}</h2>
+      <p class="text-lg max-w-2xl mx-auto mb-6" style="color: #64748B;">{subtext}</p>
+      <a href={caseStudiesHref} class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+        {caseStudiesText}
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map(({ metric, quote, role, company, year, initial }, i) => (
+        <figure class={`flex flex-col p-8 rounded-2xl animate-fade-up bg-white ${delays[i]}`} style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+          <div class="mb-5">
+            <span class="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;">{metric}</span>
+          </div>
+          <div class="flex-1 mb-6">
+            <div class="flex gap-4">
+              <div class="w-1 rounded-full flex-shrink-0" style="background: #1E6FFF;" aria-hidden="true" />
+              <blockquote class="text-base leading-relaxed italic" style="color: #334155;">"{quote}"</blockquote>
+            </div>
+          </div>
+          <figcaption class="pt-5" style="border-top: 1px solid #F1F5F9;">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full text-xs font-bold text-white flex-shrink-0" style="background: #0A2540;" aria-hidden="true">{initial}</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-semibold" style="color: #0F172A;">{role}</div>
+                <div class="text-xs truncate" style="color: #64748B;">{company}</div>
+              </div>
+              <span class="text-xs font-medium flex-shrink-0" style="color: #94A3B8;">{year}</span>
+            </div>
+            <p class="text-[10px]" style="color: #CBD5E1; padding-left: 52px;">{anonText}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
