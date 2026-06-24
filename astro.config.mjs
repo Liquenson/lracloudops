@@ -7,19 +7,12 @@ export default defineConfig({
 
   i18n: {
     defaultLocale: 'es',
-    locales: ['es', 'en', 'de', 'fr', 'it', 'pt-br', 'ja', 'ko', 'zh-cn'],
+    locales: ['es', 'en'],
     routing: {
       prefixDefaultLocale: false,
     },
     fallback: {
       'en': 'es',
-      'de': 'es',
-      'fr': 'es',
-      'it': 'es',
-      'pt-br': 'es',
-      'ja': 'es',
-      'ko': 'es',
-      'zh-cn': 'es',
     },
   },
 
@@ -67,13 +60,6 @@ export default defineConfig({
         locales: {
           es: 'es-ES',
           en: 'en-US',
-          de: 'de-DE',
-          fr: 'fr-FR',
-          it: 'it-IT',
-          'pt-br': 'pt-BR',
-          ja: 'ja-JP',
-          ko: 'ko-KR',
-          'zh-cn': 'zh-CN',
         },
       },
     }),
