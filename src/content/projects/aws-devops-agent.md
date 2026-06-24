@@ -7,7 +7,7 @@ madurez: "In Development"
 featured: true
 github: "https://github.com/lra-cloud-ops/aws-devops-agent"
 cicd: false
-draft: false
+draft: true
 
 categoria_es: "IA y Automatización Cloud"
 madurez_es: "En Desarrollo"
