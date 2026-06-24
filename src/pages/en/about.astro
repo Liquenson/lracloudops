@@ -551,14 +551,14 @@ import { Image } from 'astro:assets'
                 <ul class="space-y-2.5">
                   {
                     [
-                      'Continuous delivery platforms on AWS EKS with GitOps — design, implementation and operations.',
-                      'End-to-end CI/CD pipeline: Jenkins → Docker → ECR → Kubernetes. Rolling updates with zero downtime.',
-                      'Multi-AZ infrastructure with modular Terraform: VPC, EKS, ECR, RDS, S3, IAM, CloudWatch — remote state on S3 with separate DEV/PROD workspaces.',
-                      'Automated EKS node configuration via Ansible and AWS SSM — SSH hardening, firewall rules, dnf-automatic, CloudWatch agent.',
-                      'GitOps delivery with ArgoCD and Helm. Per-environment values files. No manual apply, no configuration drift.',
-                      'Observability with Prometheus, Grafana and CloudWatch Container Insights. Alerting configured before first deployment.',
-                      'IAM as code in Terraform. Least-privilege policies. No shared credentials.',
-                      'Static analysis with SonarQube in CI. Coverage gate enforced on every pull request.',
+                      'Design and maintain continuous delivery platforms on AWS EKS following the GitOps pattern — infrastructure fully defined as code with automated node configuration.',
+                      'End-to-end CI/CD pipeline with Jenkins + Docker + ECR + Kubernetes — from commit to production deployment with rolling updates and zero downtime.',
+                      'Multi-AZ infrastructure on AWS with modular Terraform: VPC, EKS, ECR, RDS, S3, IAM, CloudWatch — remote backend on S3 with separate DEV/PROD environments.',
+                      'Automated EKS node configuration via Ansible + AWS SSM — SSH hardening, firewalld, dnf-automatic and CloudWatch agent.',
+                      'GitOps deployments with ArgoCD and Helm Charts with per-environment values files. No manual apply, no configuration drift.',
+                      'Observability with Prometheus + Grafana and infrastructure metrics via CloudWatch Container Insights.',
+                      'Centralized identity management with IAM as code in Terraform — users, groups and least-privilege policies.',
+                      'Static code analysis with SonarQube integrated into the CI pipeline.',
                     ].map((bullet) => (
                       <li
                         class="flex items-start gap-3 text-sm leading-relaxed"
@@ -674,13 +674,14 @@ import { Image } from 'astro:assets'
                 <ul class="space-y-2.5">
                   {
                     [
-                      'End-to-end CI/CD pipeline: Jenkins → Maven → SonarQube → Ansible → Kubernetes. Quality gates enforced on every build.',
-                      'Multi-AZ AWS infrastructure with Terraform: VPC, EC2, RDS, EFS, S3, CloudFront, Route 53, ELB — DEV, TEST and PROD environments.',
-                      'IAM with roles, policies, security groups and ACLs in a regulated healthcare environment.',
-                      'Kubernetes with Helm Charts for deployment, versioning and rollback.',
-                      'Ansible for configuration management and automated security patching.',
-                      'Prometheus and Grafana with proactive alerting.',
-                      'Bash automation for operational tasks.',
+                      'End-to-end CI/CD pipeline with Jenkins + Maven + SonarQube + Ansible + Kubernetes — reducing deployment time and enforcing code quality on every delivery.',
+                      'Highly available multi-AZ infrastructure on AWS with Terraform: VPC, EC2, RDS, EFS, S3, CloudFront, Route 53, ELB — DEV, TEST and PROD environments.',
+                      'IAM with roles, policies, security groups and ACLs following least-privilege principles in a regulated healthcare environment.',
+                      'Kubernetes with Helm Charts for deployment, versioning and rollback of production applications.',
+                      'Ansible for configuration management and server provisioning, including automated security patching.',
+                      'Prometheus + Grafana with proactive alerting, reducing incident detection time.',
+                      'Cross-functional collaboration with Development, QA and Production teams — incident management in Jira.',
+                      'Automation of recurring operational tasks via Bash scripts.',
                     ].map((bullet) => (
                       <li
                         class="flex items-start gap-3 text-sm leading-relaxed"
@@ -795,12 +796,12 @@ import { Image } from 'astro:assets'
                 <ul class="space-y-2.5">
                   {
                     [
-                      'RHEL, CentOS, Ubuntu, Debian and Alpine Linux in production.',
-                      'VMware vSphere: provisioning, snapshots and resource optimization.',
-                      'Bash scripting for operational task automation.',
-                      'LVM management in 24/7 availability environments.',
-                      'User and group access management with ACLs in a regulated financial environment.',
-                      'Unix/Linux incident diagnosis and resolution within SLA constraints.',
+                      'RHEL, CentOS, Ubuntu, Debian and Alpine Linux in production — incident resolution via standardized diagnostic procedures.',
+                      'VMware vSphere: provisioning, snapshots and resource optimization of virtual machine clusters.',
+                      'Bash scripts for operational task automation: package installation, user management, log rotation and backups.',
+                      'LVM storage management — volume creation, online extension, snapshots — in 24/7 availability environments.',
+                      'User, group, permission and ACL management following least-privilege principles in a regulated financial environment.',
+                      'Unix/Linux incident diagnosis and resolution maintaining availability SLAs in production.',
                     ].map((bullet) => (
                       <li
                         class="flex items-start gap-3 text-sm leading-relaxed"
