@@ -4,7 +4,12 @@ interface Env {
   ANTHROPIC_API_KEY: string
 }
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
+interface CloudflareContext {
+  request: Request
+  env: Env
+}
+
+export const onRequestPost = async (context: CloudflareContext): Promise<Response> => {
   const { request, env } = context
   const apiKey = env.ANTHROPIC_API_KEY
 

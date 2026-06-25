@@ -16,7 +16,6 @@
     "test:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^14.0.0",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
@@ -30,9 +29,11 @@
     "vite": "^7"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@playwright/test": "^1.60.0",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
-    "simple-icons": "^16.23.0"
+    "simple-icons": "^16.23.0",
+    "typescript": "^6.0.3"
   }
 }
