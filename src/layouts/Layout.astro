@@ -82,6 +82,7 @@ const websiteSchema = {
       ? <meta name="robots" content="noindex, nofollow" />
       : <meta name="robots" content="index, follow, max-image-preview:large" />}
     <meta name="keywords" content={keywords ?? 'cloud infrastructure, platform engineering, DevOps consulting, AWS, Kubernetes, Terraform, GitOps, ArgoCD, Infrastructure as Code, SRE, CI/CD automation'} />
+    <meta name="google-site-verification" content="PLACEHOLDER_GSC_CODE" />
     <link rel="canonical" href={canonicalURL.href} />
     {hreflangTags.map(({ locale, href }) => <link rel="alternate" hreflang={locale} href={href} />)}
     <link rel="alternate" hreflang="x-default" href="https://lracloudops.com/" />
