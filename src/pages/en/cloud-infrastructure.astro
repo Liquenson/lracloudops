@@ -158,35 +158,59 @@ const schema = {
   ctaSubtitle="Bring your current AWS environment. We assess reproducibility, security posture and state management — and outline a concrete path to codified infrastructure."
 >
   <!-- Platforms where we operate -->
-  <section class="py-12 border-t" style="border-color: rgba(30,111,255,0.2); background: #0A2540;" aria-label="Platforms where we operate">
+  <section class="py-16 border-t" style="border-color: rgba(30,111,255,0.2); background: #0A2540;" aria-label="Platforms where we operate">
     <div class="max-w-5xl mx-auto px-6">
-      <p class="text-xs font-semibold uppercase tracking-widest mb-8" style="color: #64748b;">Platforms where we operate</p>
-      <div class="flex items-center gap-10 flex-wrap">
-        <div class="flex items-center gap-3 group cursor-default">
-          <div class="w-10 h-10 flex items-center justify-center rounded-xl" style="background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.25);">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #FF9900;" aria-hidden="true"><path d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"/></svg>
+      <p class="text-xs font-semibold uppercase tracking-widest mb-10" style="color: #64748b;">Clouds we operate</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- AWS -->
+        <div class="rounded-2xl p-6" style="background: rgba(255,153,0,0.07); border: 1px solid rgba(255,153,0,0.2);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.25);">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #FF9900;" aria-hidden="true"><path d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"/></svg>
+            </div>
+            <div>
+              <span class="text-sm font-bold block" style="color: rgba(255,255,255,0.95);">Amazon Web Services</span>
+              <span class="text-xs" style="color: rgba(255,153,0,0.8);">Ruben Liquenson · Lead Specialist</span>
+            </div>
           </div>
-          <div>
-            <span class="text-sm font-semibold block" style="color: rgba(255,255,255,0.9);">AWS</span>
-            <span class="text-xs" style="color: rgba(255,255,255,0.45);">Ruben Liquenson</span>
+          <div class="flex flex-wrap gap-1.5">
+            {['EKS', 'EC2', 'RDS', 'S3', 'CloudFront', 'IAM', 'CloudWatch', 'Lambda'].map((s) => (
+              <span class="text-xs px-2 py-0.5 rounded-full" style="background: rgba(255,153,0,0.12); color: rgba(255,153,0,0.9); border: 1px solid rgba(255,153,0,0.2);">{s}</span>
+            ))}
           </div>
         </div>
-        <div class="flex items-center gap-3 group cursor-default">
-          <div class="w-10 h-10 flex items-center justify-center rounded-xl" style="background: rgba(0,120,212,0.15); border: 1px solid rgba(0,120,212,0.3);">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #0078D4;" aria-hidden="true"><path d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
+        <!-- Azure -->
+        <div class="rounded-2xl p-6" style="background: rgba(0,120,212,0.07); border: 1px solid rgba(0,120,212,0.2);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: rgba(0,120,212,0.15); border: 1px solid rgba(0,120,212,0.3);">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #0078D4;" aria-hidden="true"><path d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
+            </div>
+            <div>
+              <span class="text-sm font-bold block" style="color: rgba(255,255,255,0.95);">Microsoft Azure</span>
+              <span class="text-xs" style="color: rgba(0,180,255,0.8);">Kelvin Osaigbovo · Azure Specialist</span>
+            </div>
           </div>
-          <div>
-            <span class="text-sm font-semibold block" style="color: rgba(255,255,255,0.9);">Microsoft Azure</span>
-            <span class="text-xs" style="color: rgba(255,255,255,0.45);">Kelvin Osaigbovo</span>
+          <div class="flex flex-wrap gap-1.5">
+            {['AKS', 'Azure DevOps', 'Azure Monitor', 'Key Vault', 'Azure AD', 'App Service'].map((s) => (
+              <span class="text-xs px-2 py-0.5 rounded-full" style="background: rgba(0,120,212,0.12); color: rgba(0,180,255,0.9); border: 1px solid rgba(0,120,212,0.25);">{s}</span>
+            ))}
           </div>
         </div>
-        <div class="flex items-center gap-3 group cursor-default">
-          <div class="w-10 h-10 flex items-center justify-center rounded-xl" style="background: rgba(66,133,244,0.15); border: 1px solid rgba(66,133,244,0.3);">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #4285F4;" aria-hidden="true"><path d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a12.83 12.83 0 014.5 9 12.83 12.83 0 01-4.5 9M12 3a12.83 12.83 0 00-4.5 9 12.83 12.83 0 004.5 9"/></svg>
+        <!-- GCP -->
+        <div class="rounded-2xl p-6" style="background: rgba(66,133,244,0.07); border: 1px solid rgba(66,133,244,0.2);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: rgba(66,133,244,0.15); border: 1px solid rgba(66,133,244,0.3);">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #4285F4;" aria-hidden="true"><path d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a12.83 12.83 0 014.5 9 12.83 12.83 0 01-4.5 9M12 3a12.83 12.83 0 00-4.5 9 12.83 12.83 0 004.5 9"/></svg>
+            </div>
+            <div>
+              <span class="text-sm font-bold block" style="color: rgba(255,255,255,0.95);">Google Cloud Platform</span>
+              <span class="text-xs" style="color: rgba(66,133,244,0.9);">LRA Team</span>
+            </div>
           </div>
-          <div>
-            <span class="text-sm font-semibold block" style="color: rgba(255,255,255,0.9);">Google Cloud</span>
-            <span class="text-xs" style="color: rgba(255,255,255,0.45);">LRA Team</span>
+          <div class="flex flex-wrap gap-1.5">
+            {['GKE', 'Cloud Run', 'Cloud Build', 'BigQuery', 'Cloud Storage', 'IAM'].map((s) => (
+              <span class="text-xs px-2 py-0.5 rounded-full" style="background: rgba(66,133,244,0.12); color: rgba(100,165,255,0.9); border: 1px solid rgba(66,133,244,0.25);">{s}</span>
+            ))}
           </div>
         </div>
       </div>
