@@ -291,46 +291,6 @@ const faqSchema = {
         </a>
       </div>
 
-      <!-- Comparison table -->
-      <div
-        class="mt-16 rounded-2xl overflow-hidden"
-        style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
-      >
-        <div class="px-7 py-5" style="background: #0A2540;">
-          <h3 class="text-base font-bold text-white">Why engage vs. hiring full-time?</h3>
-          <p class="text-sm mt-1" style="color: rgba(147,184,255,0.7);">
-            A direct comparison across cost, time-to-start and accountability.
-          </p>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr style="border-bottom: 1px solid #e2e8f0;">
-                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #94a3b8; background: #f8fafc;"></th>
-                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #1E6FFF; background: #EEF4FF;">LRA Cloud Ops</th>
-                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #64748b; background: #f8fafc;">DevOps FTE (EU)</th>
-                <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider" style="color: #64748b; background: #f8fafc;">Big Consultancy</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { label: 'Cost', lra: 'from €1,500/project', fte: '€45K–70K/year + benefits', big: '€150K–400K/project' },
-                { label: 'Start time', lra: '1–2 weeks', fte: '2–4 months hiring', big: '3–6 months' },
-                { label: 'Senior access', lra: 'Direct', fte: 'Depends on hire', big: 'Via account manager' },
-                { label: 'Accountability', lra: 'Full ownership', fte: 'Internal politics', big: 'Diluted' },
-                { label: 'Flexibility', lra: 'Scope-based', fte: 'Fixed headcount', big: 'Contract lock-in' },
-              ].map(({ label, lra, fte, big }, i) => (
-                <tr style={i % 2 === 0 ? 'background: white;' : 'background: #fafbfc;'}>
-                  <td class="px-6 py-3.5 text-xs font-bold" style="color: #0A2540;">{label}</td>
-                  <td class="px-6 py-3.5 text-xs font-semibold" style="color: #1E6FFF; background: rgba(238,244,255,0.5);">{lra}</td>
-                  <td class="px-6 py-3.5 text-xs" style="color: #64748b;">{fte}</td>
-                  <td class="px-6 py-3.5 text-xs" style="color: #64748b;">{big}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -366,10 +326,6 @@ const faqSchema = {
           {
             q: 'Can you sign an NDA before the initial call?',
             a: 'Yes, always. We routinely sign NDAs before any technical discussion. Contact us and we will have our standard NDA back to you within 24 hours.',
-          },
-          {
-            q: 'What happens to our infrastructure after the engagement?',
-            a: 'You own 100% of everything — code, modules, pipelines, documentation. We use your repositories and your AWS accounts. At delivery we perform a structured handoff with no residual access retained.',
           },
         ].map(({ q, a }) => (
           <div class="bg-white rounded-2xl p-6" style="border: 1px solid #e2e8f0;">

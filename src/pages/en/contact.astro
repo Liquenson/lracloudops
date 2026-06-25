@@ -6,7 +6,6 @@ import Layout from '../../layouts/Layout.astro'
   titulo="Contact"
   descripcion="Contact LRA Cloud Operations about your cloud infrastructure, platform engineering or DevOps project. Initial assessment included."
 >
-  <!-- HERO -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
     <div
       class="absolute inset-0 pointer-events-none opacity-40"
@@ -35,109 +34,9 @@ import Layout from '../../layouts/Layout.astro'
     </div>
   </section>
 
-  <!-- BOOKING WIDGET -->
-  <section class="bg-white border-b border-gray-100 py-10">
-    <div class="max-w-5xl mx-auto px-6">
-      <div
-        class="rounded-2xl px-8 py-7 flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between"
-        style="background: #EEF4FF; border: 1px solid #c3d9ff;"
-      >
-        <div>
-          <div
-            class="text-xs font-bold uppercase tracking-wider mb-1"
-            style="color: #1E6FFF;"
-          >
-            Prefer to talk directly?
-          </div>
-          <h2 class="text-lg font-bold mb-1" style="color: #0A2540;">
-            Schedule a free 30-min consultation
-          </h2>
-          <p class="text-sm" style="color: #64748b;">
-            No sales deck, no commitment — just a technical conversation about
-            your infrastructure.
-          </p>
-        </div>
-        <a
-          href="https://cal.com/ruben-alexis-h6qkjk/devops-consultation"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-6 py-3.5 rounded-xl flex-shrink-0 transition-all hover:-translate-y-px active:scale-[0.98]"
-          style="background: #1E6FFF; box-shadow: 0 4px 16px rgba(30,111,255,0.35);"
-        >
-          Book a call
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST SIGNALS -->
-  <section
-    style="background: #F8FAFC; border-bottom: 1px solid #E2E8F0;"
-    class="py-10"
-  >
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {
-          [
-            {
-              icon: '🔒',
-              title: 'NDA available before first call',
-              desc: 'Signed before any technical discussion',
-            },
-            {
-              icon: '⚡',
-              title: 'Response within 24 hours',
-              desc: 'Weekdays · Monday to Friday',
-            },
-            {
-              icon: '✓',
-              title: 'OIDC-only credentials',
-              desc: 'We never store your AWS keys',
-            },
-            {
-              icon: '📋',
-              title: 'Free initial assessment',
-              desc: 'Architecture review at no charge',
-            },
-          ].map(({ icon, title, desc }) => (
-            <div
-              class="rounded-xl p-4"
-              style="background: white; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
-            >
-              <div class="text-xl mb-2" aria-hidden="true">
-                {icon}
-              </div>
-              <div class="text-xs font-semibold mb-1" style="color: #0A2540;">
-                {title}
-              </div>
-              <div class="text-xs leading-relaxed" style="color: #64748b;">
-                {desc}
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- FORM + INFO -->
   <section class="bg-white py-16">
     <div class="max-w-5xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
-        <!-- Contact form -->
         <div>
           <h2 class="text-2xl font-bold mb-2" style="color: #0A2540;">
             Send us a message
@@ -146,7 +45,7 @@ import Layout from '../../layouts/Layout.astro'
             We respond within 24 hours · Initial assessment at no charge.
           </p>
 
-          <form id="contact-form" class="space-y-5">
+          <form id="en-contact-form" class="space-y-5">
             <input
               type="hidden"
               name="access_key"
@@ -155,7 +54,7 @@ import Layout from '../../layouts/Layout.astro'
             <input
               type="hidden"
               name="subject"
-              value="New engagement inquiry — lracloudops.com"
+              value="New inquiry from lracloudops.com/en"
             />
             <input
               type="hidden"
@@ -165,12 +64,10 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-name"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
                 style="color: #94a3b8;">Full name</label
               >
               <input
-                id="contact-name"
                 type="text"
                 name="name"
                 required
@@ -184,12 +81,10 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-email"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
                 style="color: #94a3b8;">Business email</label
               >
               <input
-                id="contact-email"
                 type="email"
                 name="email"
                 required
@@ -203,12 +98,10 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-company"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
                 style="color: #94a3b8;">Company <span style="color: #cbd5e1; font-weight:400;">(optional)</span></label
               >
               <input
-                id="contact-company"
                 type="text"
                 name="company"
                 placeholder="Your company or startup"
@@ -221,40 +114,26 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-company-size"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
-                style="color: #94a3b8;">Company Size</label
+                style="color: #94a3b8;">Team size</label
               >
               <div class="relative">
                 <select
-                  id="contact-company-size"
-                  name="company_size"
+                  name="team_size"
                   class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 appearance-none"
                   style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
                   onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
                   onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
                 >
-                  <option value="">Select company size</option>
-                  <option value="1-10">1–10 employees</option>
-                  <option value="11-50">11–50 employees</option>
-                  <option value="51-200">51–200 employees</option>
-                  <option value="200+">200+ employees</option>
+                  <option value="">Select a range</option>
+                  <option value="1-10">1 – 10 people</option>
+                  <option value="11-50">11 – 50 people</option>
+                  <option value="51-200">51 – 200 people</option>
+                  <option value="200+">More than 200 people</option>
                 </select>
-                <div
-                  class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    style="color: #64748b;"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"></path>
+                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </div>
               </div>
@@ -262,18 +141,16 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-service"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
-                style="color: #94a3b8;">Service of Interest</label
+                style="color: #94a3b8;">Service of interest</label
               >
               <div class="relative">
                 <select
-                  id="contact-service"
                   name="service_interest"
-                  class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 appearance-none"
+                  class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none appearance-none"
                   style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
-                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)'; this.style.background='white';"
-                  onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)';"
+                  onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';"
                 >
                   <option value="">Select a service</option>
                   <option value="Cloud Infrastructure">Cloud Infrastructure</option>
@@ -285,21 +162,9 @@ import Layout from '../../layouts/Layout.astro'
                   <option value="Platform Engineering">Platform Engineering</option>
                   <option value="Other">Other</option>
                 </select>
-                <div
-                  class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    style="color: #64748b;"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"></path>
+                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </div>
               </div>
@@ -307,13 +172,11 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-budget"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
                 style="color: #94a3b8;">Estimated scope</label
               >
               <div class="relative">
                 <select
-                  id="contact-budget"
                   name="budget"
                   class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 appearance-none"
                   style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
@@ -321,10 +184,10 @@ import Layout from '../../layouts/Layout.astro'
                   onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'; this.style.background='#fafbfc';"
                 >
                   <option value="">Select a range</option>
-                  <option value="Under $5,000">Under $5,000</option>
-                  <option value="$5,000 – $15,000">$5,000 – $15,000</option>
-                  <option value="$15,000 – $50,000">$15,000 – $50,000</option>
-                  <option value="Over $50,000">Over $50,000</option>
+                  <option value="Under €5,000">Under €5,000</option>
+                  <option value="€5,000 – €15,000">€5,000 – €15,000</option>
+                  <option value="€15,000 – €50,000">€15,000 – €50,000</option>
+                  <option value="Over €50,000">Over €50,000</option>
                   <option value="To be defined">To be defined</option>
                 </select>
                 <div
@@ -349,13 +212,11 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-timeline"
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
                 style="color: #94a3b8;">Timeline</label
               >
               <div class="relative">
                 <select
-                  id="contact-timeline"
                   name="timeline"
                   class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all duration-200 appearance-none"
                   style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
@@ -366,9 +227,7 @@ import Layout from '../../layouts/Layout.astro'
                   <option value="This week">This week</option>
                   <option value="This month">This month</option>
                   <option value="Next quarter">Next quarter</option>
-                  <option value="No specific deadline"
-                    >No specific deadline</option
-                  >
+                  <option value="No specific deadline">No specific deadline</option>
                 </select>
                 <div
                   class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
@@ -392,12 +251,54 @@ import Layout from '../../layouts/Layout.astro'
 
             <div>
               <label
-                for="contact-message"
+                class="block text-xs font-semibold uppercase tracking-wider mb-2"
+                style="color: #94a3b8;">Project type</label
+              >
+              <div class="relative">
+                <select
+                  name="engagement_type"
+                  class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none appearance-none"
+                  style="color: #111827; background-color: #fafbfc; cursor: pointer; border-color: #e2e8f0;"
+                  onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)';"
+                  onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';"
+                >
+                  <option value="">Select an option</option>
+                  <option value="Cloud Infrastructure">Cloud Infrastructure</option>
+                  <option value="Platform Engineering">Platform Engineering</option>
+                  <option value="DevOps Automation">DevOps Automation</option>
+                  <option value="CI/CD Pipeline">CI/CD Pipeline</option>
+                  <option value="Kubernetes / EKS">Kubernetes / EKS</option>
+                  <option value="Terraform IaC">Terraform IaC</option>
+                  <option value="Observability">Observability</option>
+                  <option value="Infrastructure Review">Infrastructure Review</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div
+                  class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    style="color: #64748b;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
                 style="color: #94a3b8;">Message</label
               >
               <textarea
-                id="contact-message"
                 name="message"
                 required
                 rows="5"
@@ -419,50 +320,32 @@ import Layout from '../../layouts/Layout.astro'
                 style="accent-color: #1E6FFF; cursor: pointer;"
               />
               <label for="en-gdpr" class="text-xs leading-relaxed" style="color: #64748b; cursor: pointer;">
-                I accept the <a href="/en/privacy-policy" class="underline" style="color: #1E6FFF;">privacy policy</a> and consent to the processing of my data to handle my enquiry.
+                I accept the <a href="/en/privacy" class="underline" style="color: #1E6FFF;">privacy policy</a> and consent to the processing of my data to handle my enquiry.
               </label>
             </div>
 
-            <div
-              class="cf-turnstile"
-              data-sitekey="0x4AAAAAADdu7unfdfZeg_dX"
-              data-theme="light"
-            >
-            </div>
-            <script
-              src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-              async
-              defer></script>
-
             <button
               type="submit"
-              id="btn-submit"
-              class="w-full text-sm font-semibold text-white py-4 rounded-xl transition-all duration-200 hover:-translate-y-px active:scale-[0.99]"
-              style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 16px rgba(30,111,255,0.35), 0 1px 3px rgba(30,111,255,0.2);"
+              id="en-btn-submit"
+              class="w-full text-sm font-semibold text-white py-4 rounded-xl transition-all duration-200 hover:-translate-y-px"
+              style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 16px rgba(30,111,255,0.35);"
             >
               Send message
             </button>
 
-            <p class="text-xs text-center" style="color: #94a3b8;">
-              🔒 Your information is confidential. We respond within 24 hours.
-              No spam, ever.
-            </p>
-
             <div
-              id="form-status"
+              id="en-form-status"
               class="hidden text-sm text-center py-3 rounded-xl"
             >
             </div>
           </form>
         </div>
 
-        <!-- Contact info -->
         <div class="flex flex-col gap-8">
           <div>
             <h2 class="text-2xl font-bold mb-6" style="color: #0A2540;">
               Other ways to reach us
             </h2>
-
             <div class="space-y-4">
               <a
                 href="mailto:info@lracloudops.com"
@@ -547,41 +430,6 @@ import Layout from '../../layouts/Layout.astro'
               </a>
 
               <a
-                href="https://www.instagram.com/lracloudops/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 group hover:-translate-y-1"
-                style="background: #fafbfc; border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
-                onmouseenter="this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 8px 24px rgba(10,37,64,0.08)'; this.style.borderColor='rgba(225,48,108,0.2)';"
-                onmouseleave="this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04)'; this.style.borderColor='#e8eef4';"
-              >
-                <div
-                  class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style="background: #FFF0F5;"
-                >
-                  <svg class="w-5 h-5" style="color: #E1306C;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-                  </svg>
-                </div>
-                <div>
-                  <div
-                    class="text-xs font-semibold uppercase tracking-wider mb-1"
-                    style="color: #94a3b8;"
-                  >
-                    Instagram
-                  </div>
-                  <div
-                    class="text-sm font-medium group-hover:text-[#E1306C] transition-colors"
-                    style="color: #0A2540;"
-                  >
-                    @lracloudops · Platform engineering content
-                  </div>
-                </div>
-              </a>
-
-              <a
                 href="https://github.com/lra-cloud-ops"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -622,38 +470,9 @@ import Layout from '../../layouts/Layout.astro'
                   </div>
                 </div>
               </a>
-
-              <div
-                class="flex items-center gap-3 px-4 py-3 rounded-xl"
-                style="background: #F0FDF4; border: 1px solid #BBF7D0;"
-              >
-                <svg
-                  class="w-4 h-4 flex-shrink-0"
-                  style="color: #15803D;"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <div>
-                  <div class="text-xs font-semibold" style="color: #15803D;">
-                    Available for calls
-                  </div>
-                  <div class="text-xs" style="color: #166534;">
-                    Mon–Fri · 9:00–18:00 CET
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
-          <!-- What we can do -->
           <div
             class="rounded-2xl p-6"
             style="background: #EEF4FF; border: 1px solid #c3d9ff;"
@@ -668,7 +487,7 @@ import Layout from '../../layouts/Layout.astro'
                   'Implement infrastructure with Terraform',
                   'Configure end-to-end CI/CD pipelines',
                   'Migrate to Kubernetes / ECS Fargate',
-                  'Optimize AWS costs and rightsizing',
+                  'Optimize AWS costs',
                   'Configure observability with Prometheus + Grafana',
                 ].map((item) => (
                   <li
@@ -695,8 +514,6 @@ import Layout from '../../layouts/Layout.astro'
               }
             </ul>
           </div>
-
-          <!-- Response time -->
           <div
             class="rounded-2xl p-5 flex items-start gap-4"
             style="background: white; border: 1px solid #e2e8f0;"
@@ -724,8 +541,8 @@ import Layout from '../../layouts/Layout.astro'
                 Response within 24 hours
               </p>
               <p class="text-xs" style="color: #64748b;">
-                Every inquiry receives an initial assessment at no charge. We
-                will outline a concrete approach before any commitment is made.
+                Every inquiry receives an initial assessment at no charge.
+                We will outline a concrete approach before any commitment is made.
               </p>
             </div>
           </div>
@@ -736,16 +553,15 @@ import Layout from '../../layouts/Layout.astro'
 </Layout>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement
-  const btn = document.getElementById('btn-submit') as HTMLButtonElement
-  const status = document.getElementById('form-status') as HTMLDivElement
+  const form = document.getElementById('en-contact-form') as HTMLFormElement
+  const btn = document.getElementById('en-btn-submit') as HTMLButtonElement
+  const status = document.getElementById('en-form-status') as HTMLDivElement
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
     btn.textContent = 'Sending...'
     btn.disabled = true
     btn.style.opacity = '0.8'
-    status.classList.add('hidden')
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -755,13 +571,13 @@ import Layout from '../../layouts/Layout.astro'
       })
       const data = await res.json()
       if (data.success) {
-        status.textContent = 'Message sent. We will respond within 24 hours.'
+        status.textContent =
+          'Message sent. We will respond within 24 hours.'
         status.style.cssText =
           'display:block; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;'
         form.reset()
       } else {
-        status.textContent =
-          'There was an error sending your message. Please try again.'
+        status.textContent = 'Error sending message. Please try again.'
         status.style.cssText =
           'display:block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;'
       }
