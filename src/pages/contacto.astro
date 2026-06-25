@@ -45,22 +45,11 @@ import Layout from '../layouts/Layout.astro'
             Respondemos en menos de 24 horas · Evaluación inicial sin cargo.
           </p>
 
-          <form id="es-contact-form" class="space-y-5">
-            <input
-              type="hidden"
-              name="access_key"
-              value="e8aaab4e-270c-4163-bb76-6a8dfc247485"
-            />
-            <input
-              type="hidden"
-              name="subject"
-              value="Nueva consulta desde lracloudops.com/es"
-            />
-            <input
-              type="hidden"
-              name="from_name"
-              value="LRA Cloud Operations"
-            />
+          <form id="es-contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+            <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+            <input type="hidden" name="subject" value="Nuevo contacto — LRA Cloud Ops" />
+            <input type="hidden" name="from_name" value="LRA Cloud Operations" />
+            <input type="hidden" name="redirect" value="https://lracloudops.com/gracias" />
 
             <div>
               <label
@@ -581,25 +570,24 @@ import Layout from '../layouts/Layout.astro'
       })
       const data = await res.json()
       if (data.success) {
-        status.textContent =
-          'Mensaje enviado. Te respondemos en menos de 24 horas.'
-        status.style.cssText =
-          'display:block; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;'
-        form.reset()
+        window.location.href = '/gracias'
       } else {
         status.textContent = 'Error al enviar. Por favor intenta de nuevo.'
         status.style.cssText =
           'display:block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;'
+        btn.textContent = 'Enviar mensaje'
+        btn.disabled = false
+        btn.style.opacity = '1'
+        status.classList.remove('hidden')
       }
     } catch {
       status.textContent = 'Error de conexión. Por favor intenta de nuevo.'
       status.style.cssText =
         'display:block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;'
+      btn.textContent = 'Enviar mensaje'
+      btn.disabled = false
+      btn.style.opacity = '1'
+      status.classList.remove('hidden')
     }
-
-    btn.textContent = 'Enviar mensaje'
-    btn.disabled = false
-    btn.style.opacity = '1'
-    status.classList.remove('hidden')
   })
 </script>

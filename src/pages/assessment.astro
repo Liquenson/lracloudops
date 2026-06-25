@@ -500,9 +500,7 @@ import Layout from '../layouts/Layout.astro'
           body: fd,
         })
         if (res.ok) {
-          emailForm.style.display = 'none'
-          const ok = document.getElementById('email-success')
-          if (ok) ok.style.display = 'block'
+          window.location.href = '/gracias'
         }
       } catch {}
     })
