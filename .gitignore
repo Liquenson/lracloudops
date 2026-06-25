@@ -30,3 +30,5 @@ Thumbs.db
 INFORME_*.md
 AUDIT_*.md
 SAAS_*.md
+.env.local
+.wrangler/

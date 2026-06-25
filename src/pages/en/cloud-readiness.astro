@@ -290,40 +290,33 @@ import Layout from '../../layouts/Layout.astro'
       </a>
     </div>
     <button onclick="location.reload()" class="text-sm font-medium hover:opacity-70 transition-opacity" style="color:#64748b;">← Retake assessment</button>`
+
+    // Email capture setup (runs after innerHTML is injected, r is in scope here)
+    const subjEl = document.getElementById('assessment-subject') as HTMLInputElement
+    const scoreEl2 = document.getElementById('assessment-score-field') as HTMLInputElement
+    const levelEl = document.getElementById('assessment-level-field') as HTMLInputElement
+    if (subjEl)
+      subjEl.value = `Cloud Readiness Assessment — Score ${score}/${maxScore} (${r.title})`
+    if (scoreEl2) scoreEl2.value = String(score)
+    if (levelEl) levelEl.value = r.title
+    const emailForm = document.getElementById('assessment-email-form') as HTMLFormElement
+    emailForm?.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const fd = new FormData(emailForm)
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: fd,
+        })
+        if (res.ok) {
+          emailForm.style.display = 'none'
+          const ok = document.getElementById('email-success')
+          if (ok) ok.style.display = 'block'
+        }
+      } catch {}
+    })
   }
 
-  // Email capture setup
-  const subjEl = document.getElementById(
-    'assessment-subject'
-  ) as HTMLInputElement
-  const scoreEl2 = document.getElementById(
-    'assessment-score-field'
-  ) as HTMLInputElement
-  const levelEl = document.getElementById(
-    'assessment-level-field'
-  ) as HTMLInputElement
-  if (subjEl)
-    subjEl.value = `Cloud Readiness Assessment — Score ${score}/${maxScore} (${r.title})`
-  if (scoreEl2) scoreEl2.value = String(score)
-  if (levelEl) levelEl.value = r.title
-  const emailForm = document.getElementById(
-    'assessment-email-form'
-  ) as HTMLFormElement
-  emailForm?.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    const fd = new FormData(emailForm)
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: fd,
-      })
-      if (res.ok) {
-        emailForm.style.display = 'none'
-        const ok = document.getElementById('email-success')
-        if (ok) ok.style.display = 'block'
-      }
-    } catch {}
-  })
   ;(window as any).selectAnswer = selectAnswer
   render()
 
