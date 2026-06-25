@@ -1444,6 +1444,94 @@ import Layout from '../layouts/Layout.astro'
       </div>
     </div>
   </section>
+
+  <!-- ─── HERRAMIENTAS RECOMENDADAS ───────────────────────────────────────── -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+          Stack Recomendado
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Herramientas recomendadas</h2>
+        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">Las herramientas que usamos en cada proyecto de producción. Selección basada en experiencia real, no en patrocinios.</p>
+      </div>
+
+      {[
+        {
+          category: 'Infraestructura como Código',
+          color: '#7B42BC',
+          tools: [
+            { name: 'Terraform', desc: 'IaC multi-cloud líder del mercado. Módulos reutilizables, state remoto y plan/apply en CI.', url: 'https://terraform.io' },
+            { name: 'Terragrunt', desc: 'Wrapper de Terraform que elimina el boilerplate y gestiona dependencias entre módulos.', url: 'https://terragrunt.gruntwork.io' },
+            { name: 'Pulumi', desc: 'IaC con lenguajes reales (Python, TypeScript, Go). Ideal cuando Terraform no encaja.', url: 'https://pulumi.com' },
+          ],
+        },
+        {
+          category: 'Kubernetes',
+          color: '#326CE5',
+          tools: [
+            { name: 'ArgoCD', desc: 'Controlador GitOps para Kubernetes. Reconcilia el estado del clúster con Git automáticamente.', url: 'https://argoproj.github.io/cd' },
+            { name: 'Helm', desc: 'Gestor de paquetes para Kubernetes. Charts versionados, values por entorno, rollback en segundos.', url: 'https://helm.sh' },
+            { name: 'Kustomize', desc: 'Personalización de manifests sin plantillas. Integrado en kubectl desde v1.14.', url: 'https://kustomize.io' },
+            { name: 'k9s', desc: 'Terminal UI para gestionar clústeres Kubernetes. Imprescindible para operaciones diarias.', url: 'https://k9scli.io' },
+          ],
+        },
+        {
+          category: 'Observabilidad',
+          color: '#E6522C',
+          tools: [
+            { name: 'Prometheus', desc: 'Sistema de monitorización y alertas de facto en Kubernetes. Pull-based, TSDB incorporado.', url: 'https://prometheus.io' },
+            { name: 'Grafana', desc: 'Dashboards de observabilidad. Soporta Prometheus, Loki, CloudWatch y 50+ data sources.', url: 'https://grafana.com' },
+            { name: 'Loki', desc: 'Agregación de logs ligera y económica. Se integra nativamente con Grafana y Prometheus.', url: 'https://grafana.com/oss/loki' },
+          ],
+        },
+        {
+          category: 'CI/CD',
+          color: '#24292E',
+          tools: [
+            { name: 'GitHub Actions', desc: 'Pipelines como código directamente en el repositorio. Ideal para proyectos en GitHub.', url: 'https://github.com/features/actions' },
+            { name: 'Jenkins', desc: 'Automatización CI/CD battle-tested. Plugins para cualquier stack, desplegado on-prem o en AWS.', url: 'https://jenkins.io' },
+            { name: 'ArgoCD', desc: 'El mismo ArgoCD actúa como CD: deploy continuo desde Git sin push al clúster.', url: 'https://argoproj.github.io/cd' },
+          ],
+        },
+        {
+          category: 'Seguridad',
+          color: '#DC2626',
+          tools: [
+            { name: 'Trivy', desc: 'Scanner de vulnerabilidades para imágenes, filesystems, repos y config de Kubernetes.', url: 'https://trivy.dev' },
+            { name: 'Falco', desc: 'Detección de amenazas en runtime para Kubernetes. Alertas en tiempo real sobre comportamiento anómalo.', url: 'https://falco.org' },
+            { name: 'Checkov', desc: 'Análisis estático de IaC (Terraform, CloudFormation, Helm). Detecta misconfigs antes del apply.', url: 'https://checkov.io' },
+          ],
+        },
+      ].map(({ category, color, tools }) => (
+        <div class="mb-12">
+          <div class="flex items-center gap-2 mb-5">
+            <span class="w-3 h-3 rounded-full flex-shrink-0" style={`background: ${color};`}></span>
+            <h3 class="text-base font-bold uppercase tracking-wider" style={`color: ${color};`}>{category}</h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {tools.map(({ name, desc, url }) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block bg-white rounded-xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+              >
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-bold" style="color: #0A2540;">{name}</span>
+                  <svg class="w-3.5 h-3.5 opacity-40 group-hover:opacity-70 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </div>
+                <p class="text-xs leading-relaxed" style="color: #64748b;">{desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 </Layout>
 
 <script>

@@ -3,19 +3,19 @@ interface Props { lang: 'es' | 'en' }
 const { lang } = Astro.props
 
 const metrics = lang === 'es' ? [
-  { value: '6+', label: 'Proyectos Open Source', sub: 'github.com/lra-cloud-ops' },
-  { value: '18', label: 'Fases Roadmap K8s', sub: 'Plataforma k8s-on-premise' },
-  { value: '100%', label: 'Infraestructura como código', sub: 'Cero cambios manuales' },
-  { value: '25+', label: 'Servicios AWS', sub: 'Vía aws-devops-agent' },
   { value: '4+', label: 'Años en Producción', sub: 'Entornos reales' },
-  { value: '24h', label: 'Tiempo de Respuesta', sub: 'SLA de soporte' },
+  { value: '3', label: 'Clouds Soportados', sub: 'AWS · Azure · GCP' },
+  { value: '4+', label: 'Proyectos Open Source', sub: 'github.com/lra-cloud-ops' },
+  { value: '100%', label: 'Infraestructura como código', sub: 'Cero cambios manuales' },
+  { value: '0', label: 'Deploys manuales', sub: 'GitOps con ArgoCD' },
+  { value: '45min', label: 'Tiempo de despliegue', sub: 'Antes: 3 semanas' },
 ] : [
-  { value: '6+', label: 'Open Source Projects', sub: 'github.com/lra-cloud-ops' },
-  { value: '18', label: 'K8s Roadmap Phases', sub: 'k8s-on-premise platform' },
-  { value: '100%', label: 'Infrastructure as Code', sub: 'Zero manual changes' },
-  { value: '25+', label: 'AWS Services', sub: 'Via aws-devops-agent' },
   { value: '4+', label: 'Years in Production', sub: 'Real environments' },
-  { value: '24h', label: 'Response Time', sub: 'Support SLA' },
+  { value: '3', label: 'Clouds Supported', sub: 'AWS · Azure · GCP' },
+  { value: '4+', label: 'Open Source Projects', sub: 'github.com/lra-cloud-ops' },
+  { value: '100%', label: 'Infrastructure as Code', sub: 'Zero manual changes' },
+  { value: '0', label: 'Manual deploys', sub: 'GitOps with ArgoCD' },
+  { value: '45min', label: 'Deploy time', sub: 'Before: 3 weeks' },
 ]
 
 const badge = lang === 'es' ? 'Por los números' : 'By the numbers'
