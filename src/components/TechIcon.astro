@@ -37,6 +37,12 @@ const icons = {
   gnubash: siGnubash,
 } as const
 
+const customIcons: Record<string, string> = {
+  microsoftazure: `<svg class="w-full h-full" viewBox="0 0 59.438 47.5" xmlns="http://www.w3.org/2000/svg"><path d="M0 47.5L20.625 0h11.25L14.063 28.125 35.313 47.5z" fill="#0072C6"/><path d="M20.625 0h18.75l-6.563 19.688L59.438 47.5H35.313L14.063 28.125z" fill="#0072C6" opacity=".7"/></svg>`,
+  googlecloud: `<svg class="w-full h-full" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M30.2 12h-12l-6 10.4 6 10.4h12l6-10.4z" fill="#EA4335"/><path d="M12.2 22.4L6.2 12H0l6 10.4z" fill="#4285F4"/><path d="M0 36l6-10.4-6-10.4v20.8z" fill="#34A853" opacity=".5"/><path d="M6.2 36h6l6-10.4-6-10.4z" fill="#34A853"/><path d="M36.2 12h6l6 10.4-6 10.4z" fill="#FBBC05"/><path d="M42.2 22.4L48 12v24.8z" fill="#EA4335" opacity=".5"/><path d="M48 36l-6-10.4 6-10.4V36z" fill="#EA4335"/><path d="M42.2 36h-6l-6-10.4 6-10.4z" fill="#4285F4"/></svg>`,
+  claudesonnet: `<svg class="w-full h-full" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#CC785C"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="8" font-family="sans-serif">AI</text></svg>`,
+}
+
 interface Props {
   slug: string
   class?: string
@@ -45,10 +51,15 @@ interface Props {
 
 const { slug, class: className = 'w-8 h-8', style } = Astro.props
 const icon = (icons as Record<string, { path: string; title: string }>)[slug]
+const customSvg = customIcons[slug]
 ---
 
 {
-  icon && (
+  customSvg ? (
+    <span class={`inline-flex ${className}`}>
+      <Fragment set:html={customSvg} />
+    </span>
+  ) : icon ? (
     <svg
       class={className}
       style={style}
@@ -59,5 +70,5 @@ const icon = (icons as Record<string, { path: string; title: string }>)[slug]
     >
       <path d={icon.path} />
     </svg>
-  )
+  ) : null
 }
