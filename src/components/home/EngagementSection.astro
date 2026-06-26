@@ -1,62 +1,162 @@
 ---
-interface Props { lang: 'es' | 'en' }
+interface Props {
+  lang: 'es' | 'en'
+}
 const { lang } = Astro.props
 
 const esSteps = [
-  { num: '01', title: 'Descubrir', desc: 'Auditamos tu infraestructura actual, identificamos brechas en fiabilidad, seguridad y velocidad de entrega.' },
-  { num: '02', title: 'Diseñar', desc: 'Arquitecturamos la plataforma objetivo: topología de red, configuración del cluster, estructura de pipelines y modelo de observabilidad.' },
-  { num: '03', title: 'Construir', desc: 'Implementamos con módulos Terraform de grado producción, manifiestos Kubernetes y pipelines CI/CD.' },
-  { num: '04', title: 'Automatizar', desc: 'Integramos entrega GitOps, testing automatizado, policy gates y procedimientos de rollback en cada ruta de release.' },
-  { num: '05', title: 'Operar', desc: 'Gestionamos la plataforma en producción con SLOs definidos, procedimientos on-call y runbooks para cada modo de fallo.' },
-  { num: '06', title: 'Optimizar', desc: 'Ajustamos continuamente eficiencia de costes, rendimiento y experiencia del desarrollador a medida que la plataforma madura.' },
+  {
+    num: '01',
+    title: 'Descubrir',
+    desc: 'Auditamos tu infraestructura actual, identificamos brechas en fiabilidad, seguridad y velocidad de entrega.',
+  },
+  {
+    num: '02',
+    title: 'Diseñar',
+    desc: 'Arquitecturamos la plataforma objetivo: topología de red, configuración del cluster, estructura de pipelines y modelo de observabilidad.',
+  },
+  {
+    num: '03',
+    title: 'Construir',
+    desc: 'Implementamos con módulos Terraform de grado producción, manifiestos Kubernetes y pipelines CI/CD.',
+  },
+  {
+    num: '04',
+    title: 'Automatizar',
+    desc: 'Integramos entrega GitOps, testing automatizado, policy gates y procedimientos de rollback en cada ruta de release.',
+  },
+  {
+    num: '05',
+    title: 'Operar',
+    desc: 'Gestionamos la plataforma en producción con SLOs definidos, procedimientos on-call y runbooks para cada modo de fallo.',
+  },
+  {
+    num: '06',
+    title: 'Optimizar',
+    desc: 'Ajustamos continuamente eficiencia de costes, rendimiento y experiencia del desarrollador a medida que la plataforma madura.',
+  },
 ]
 
 const enSteps = [
-  { num: '01', title: 'Discover', desc: 'Audit your current infrastructure, identify gaps in reliability, security and delivery velocity.' },
-  { num: '02', title: 'Design', desc: 'Architect the target platform: network topology, cluster config, pipeline structure and observability model.' },
-  { num: '03', title: 'Build', desc: 'Implement with production-grade Terraform modules, Kubernetes manifests and CI/CD pipelines.' },
-  { num: '04', title: 'Automate', desc: 'Wire GitOps delivery, automated testing, policy gates and rollback procedures into every release path.' },
-  { num: '05', title: 'Operate', desc: 'Run the platform in production with defined SLOs, on-call procedures and runbooks for every failure mode.' },
-  { num: '06', title: 'Optimize', desc: 'Continuously tune for cost efficiency, performance and developer experience as your platform matures.' },
+  {
+    num: '01',
+    title: 'Discover',
+    desc: 'Audit your current infrastructure, identify gaps in reliability, security and delivery velocity.',
+  },
+  {
+    num: '02',
+    title: 'Design',
+    desc: 'Architect the target platform: network topology, cluster config, pipeline structure and observability model.',
+  },
+  {
+    num: '03',
+    title: 'Build',
+    desc: 'Implement with production-grade Terraform modules, Kubernetes manifests and CI/CD pipelines.',
+  },
+  {
+    num: '04',
+    title: 'Automate',
+    desc: 'Wire GitOps delivery, automated testing, policy gates and rollback procedures into every release path.',
+  },
+  {
+    num: '05',
+    title: 'Operate',
+    desc: 'Run the platform in production with defined SLOs, on-call procedures and runbooks for every failure mode.',
+  },
+  {
+    num: '06',
+    title: 'Optimize',
+    desc: 'Continuously tune for cost efficiency, performance and developer experience as your platform matures.',
+  },
 ]
 
 const steps = lang === 'es' ? esSteps : enSteps
 const badge = lang === 'es' ? 'Cómo trabajamos' : 'How we work'
-const heading = lang === 'es' ? 'Del kickoff a producción' : 'From kickoff to production'
-const subtext = lang === 'es'
-  ? 'Un enfoque estructurado en seis fases que te lleva desde el descubrimiento inicial hasta una plataforma de producción optimizada y auto-recuperable.'
-  : 'A structured six-phase approach that takes you from initial discovery to an optimized, self-healing production platform.'
+const heading =
+  lang === 'es' ? 'Del kickoff a producción' : 'From kickoff to production'
+const subtext =
+  lang === 'es'
+    ? 'Un enfoque estructurado en seis fases que te lleva desde el descubrimiento inicial hasta una plataforma de producción optimizada y auto-recuperable.'
+    : 'A structured six-phase approach that takes you from initial discovery to an optimized, self-healing production platform.'
 const ctaText = lang === 'es' ? 'Comenzar tu proyecto' : 'Start your engagement'
 const ctaHref = lang === 'es' ? '/contacto' : '/contact'
-const delays = ['delay-100', 'delay-200', 'delay-300', 'delay-100', 'delay-200', 'delay-300']
+const delays = [
+  'delay-100',
+  'delay-200',
+  'delay-300',
+  'delay-100',
+  'delay-200',
+  'delay-300',
+]
 ---
 
-<section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="engagement-heading">
+<section
+  style="background: #F8FAFC; border-top: 1px solid #E5E7EB;"
+  aria-labelledby="engagement-heading"
+>
   <div class="max-w-7xl mx-auto px-6 py-24">
     <div class="text-center mb-16 animate-fade-up">
       <span class="section-label">{badge}</span>
-      <h2 id="engagement-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">{heading}</h2>
+      <h2
+        id="engagement-heading"
+        class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
+        style="color: #0F172A; letter-spacing: -0.025em;"
+      >
+        {heading}
+      </h2>
       <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">{subtext}</p>
     </div>
 
     <div class="relative">
-      <div class="hidden lg:block absolute h-px" aria-hidden="true" style="top: 2.25rem; left: calc(8.33% + 2.25rem); right: calc(8.33% + 2.25rem); background: linear-gradient(90deg, transparent, #BFDBFE 8%, #BFDBFE 92%, transparent);"></div>
+      <div
+        class="hidden lg:block absolute h-px"
+        aria-hidden="true"
+        style="top: 2.25rem; left: calc(8.33% + 2.25rem); right: calc(8.33% + 2.25rem); background: linear-gradient(90deg, transparent, #BFDBFE 8%, #BFDBFE 92%, transparent);"
+      >
+      </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
-        {steps.map(({ num, title, desc }, i) => (
-          <div class={`flex flex-col items-center text-center animate-fade-up ${delays[i]}`}>
-            <div class="w-[4.5rem] h-[4.5rem] rounded-full flex items-center justify-center font-black text-white text-sm mb-5 relative z-10" style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.3);">{num}</div>
-            <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{title}</h3>
-            <p class="text-xs leading-relaxed" style="color: #64748B;">{desc}</p>
-          </div>
-        ))}
+        {
+          steps.map(({ num, title, desc }, i) => (
+            <div
+              class={`flex flex-col items-center text-center animate-fade-up ${delays[i]}`}
+            >
+              <div
+                class="w-[4.5rem] h-[4.5rem] rounded-full flex items-center justify-center font-black text-white text-sm mb-5 relative z-10"
+                style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.3);"
+              >
+                {num}
+              </div>
+              <h3 class="text-base font-bold mb-2" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-xs leading-relaxed" style="color: #64748B;">
+                {desc}
+              </p>
+            </div>
+          ))
+        }
       </div>
     </div>
 
     <div class="text-center mt-14">
-      <a href={ctaHref} class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]" style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);">
+      <a
+        href={ctaHref}
+        class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+        style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
+      >
         {ctaText}
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
         </svg>
       </a>
     </div>

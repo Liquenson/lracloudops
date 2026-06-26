@@ -1331,113 +1331,330 @@ import Layout from '../layouts/Layout.astro'
   <section class="py-20 bg-white border-t border-gray-100">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-12">
-        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">Herramientas</span>
-        <h2 class="text-3xl font-bold mb-3" style="color: #0A2540;">Herramientas recomendadas</h2>
-        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">Las herramientas que usamos en cada proyecto. Evaluadas en producción.</p>
+        <span
+          class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4"
+          style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+          >Herramientas</span
+        >
+        <h2 class="text-3xl font-bold mb-3" style="color: #0A2540;">
+          Herramientas recomendadas
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
+          Las herramientas que usamos en cada proyecto. Evaluadas en producción.
+        </p>
       </div>
       <div class="space-y-10">
         <!-- IaC -->
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wider mb-4" style="color: #7B42BC;">Infraestructura como Código</h3>
+          <h3
+            class="text-sm font-bold uppercase tracking-wider mb-4"
+            style="color: #7B42BC;"
+          >
+            Infraestructura como Código
+          </h3>
           <div class="grid sm:grid-cols-3 gap-4">
-            <a href="https://terraform.io" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(123,66,188,0.1); color: #7B42BC; border: 1px solid rgba(123,66,188,0.2);">IaC</span>
+            <a
+              href="https://terraform.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(123,66,188,0.1); color: #7B42BC; border: 1px solid rgba(123,66,188,0.2);"
+                >IaC</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Terraform</h4>
-              <p class="text-sm" style="color: #64748b;">Infraestructura como código multi-cloud. Estándar de la industria.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Infraestructura como código multi-cloud. Estándar de la
+                industria.
+              </p>
             </a>
-            <a href="https://terragrunt.gruntwork.io" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(123,66,188,0.1); color: #7B42BC; border: 1px solid rgba(123,66,188,0.2);">IaC</span>
+            <a
+              href="https://terragrunt.gruntwork.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(123,66,188,0.1); color: #7B42BC; border: 1px solid rgba(123,66,188,0.2);"
+                >IaC</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Terragrunt</h4>
-              <p class="text-sm" style="color: #64748b;">Wrapper de Terraform para módulos DRY y remote state.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Wrapper de Terraform para módulos DRY y remote state.
+              </p>
             </a>
-            <a href="https://pulumi.com" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(123,66,188,0.1); color: #7B42BC; border: 1px solid rgba(123,66,188,0.2);">IaC</span>
+            <a
+              href="https://pulumi.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(123,66,188,0.1); color: #7B42BC; border: 1px solid rgba(123,66,188,0.2);"
+                >IaC</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Pulumi</h4>
-              <p class="text-sm" style="color: #64748b;">IaC con lenguajes reales: Python, TypeScript, Go.</p>
+              <p class="text-sm" style="color: #64748b;">
+                IaC con lenguajes reales: Python, TypeScript, Go.
+              </p>
             </a>
           </div>
         </div>
         <!-- Kubernetes -->
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wider mb-4" style="color: #1E6FFF;">Kubernetes</h3>
+          <h3
+            class="text-sm font-bold uppercase tracking-wider mb-4"
+            style="color: #1E6FFF;"
+          >
+            Kubernetes
+          </h3>
           <div class="grid sm:grid-cols-4 gap-4">
-            <a href="https://argoproj.github.io/cd/" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(30,111,255,0.08); color: #1E6FFF; border: 1px solid rgba(30,111,255,0.2);">K8s</span>
+            <a
+              href="https://argoproj.github.io/cd/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(30,111,255,0.08); color: #1E6FFF; border: 1px solid rgba(30,111,255,0.2);"
+                >K8s</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">ArgoCD</h4>
-              <p class="text-sm" style="color: #64748b;">GitOps para Kubernetes. Sincronización continua desde Git.</p>
+              <p class="text-sm" style="color: #64748b;">
+                GitOps para Kubernetes. Sincronización continua desde Git.
+              </p>
             </a>
-            <a href="https://helm.sh" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(30,111,255,0.08); color: #1E6FFF; border: 1px solid rgba(30,111,255,0.2);">K8s</span>
+            <a
+              href="https://helm.sh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(30,111,255,0.08); color: #1E6FFF; border: 1px solid rgba(30,111,255,0.2);"
+                >K8s</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Helm</h4>
-              <p class="text-sm" style="color: #64748b;">Package manager para Kubernetes. Charts reutilizables.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Package manager para Kubernetes. Charts reutilizables.
+              </p>
             </a>
-            <a href="https://kustomize.io" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(30,111,255,0.08); color: #1E6FFF; border: 1px solid rgba(30,111,255,0.2);">K8s</span>
+            <a
+              href="https://kustomize.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(30,111,255,0.08); color: #1E6FFF; border: 1px solid rgba(30,111,255,0.2);"
+                >K8s</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Kustomize</h4>
-              <p class="text-sm" style="color: #64748b;">Overlays nativos de Kubernetes sin plantillas.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Overlays nativos de Kubernetes sin plantillas.
+              </p>
             </a>
-            <a href="https://k9scli.io" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(30,111,255,0.08); color: #1E6FFF; border: 1px solid rgba(30,111,255,0.2);">K8s</span>
+            <a
+              href="https://k9scli.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(30,111,255,0.08); color: #1E6FFF; border: 1px solid rgba(30,111,255,0.2);"
+                >K8s</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">k9s</h4>
-              <p class="text-sm" style="color: #64748b;">UI de terminal para gestionar clústeres Kubernetes.</p>
+              <p class="text-sm" style="color: #64748b;">
+                UI de terminal para gestionar clústeres Kubernetes.
+              </p>
             </a>
           </div>
         </div>
         <!-- Observabilidad -->
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wider mb-4" style="color: #F97316;">Observabilidad</h3>
+          <h3
+            class="text-sm font-bold uppercase tracking-wider mb-4"
+            style="color: #F97316;"
+          >
+            Observabilidad
+          </h3>
           <div class="grid sm:grid-cols-3 gap-4">
-            <a href="https://prometheus.io" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(249,115,22,0.1); color: #F97316; border: 1px solid rgba(249,115,22,0.2);">Observabilidad</span>
+            <a
+              href="https://prometheus.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(249,115,22,0.1); color: #F97316; border: 1px solid rgba(249,115,22,0.2);"
+                >Observabilidad</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Prometheus</h4>
-              <p class="text-sm" style="color: #64748b;">Métricas y alertas para cloud-native. Estándar CNCF.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Métricas y alertas para cloud-native. Estándar CNCF.
+              </p>
             </a>
-            <a href="https://grafana.com" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(249,115,22,0.1); color: #F97316; border: 1px solid rgba(249,115,22,0.2);">Observabilidad</span>
+            <a
+              href="https://grafana.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(249,115,22,0.1); color: #F97316; border: 1px solid rgba(249,115,22,0.2);"
+                >Observabilidad</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Grafana</h4>
-              <p class="text-sm" style="color: #64748b;">Dashboards de observabilidad con 100+ fuentes de datos.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Dashboards de observabilidad con 100+ fuentes de datos.
+              </p>
             </a>
-            <a href="https://grafana.com/oss/loki/" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(249,115,22,0.1); color: #F97316; border: 1px solid rgba(249,115,22,0.2);">Observabilidad</span>
+            <a
+              href="https://grafana.com/oss/loki/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(249,115,22,0.1); color: #F97316; border: 1px solid rgba(249,115,22,0.2);"
+                >Observabilidad</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Loki</h4>
-              <p class="text-sm" style="color: #64748b;">Agregación de logs diseñada para Kubernetes.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Agregación de logs diseñada para Kubernetes.
+              </p>
             </a>
           </div>
         </div>
         <!-- CI/CD -->
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wider mb-4" style="color: #10B981;">CI/CD</h3>
+          <h3
+            class="text-sm font-bold uppercase tracking-wider mb-4"
+            style="color: #10B981;"
+          >
+            CI/CD
+          </h3>
           <div class="grid sm:grid-cols-2 gap-4">
-            <a href="https://github.com/features/actions" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(16,185,129,0.1); color: #10B981; border: 1px solid rgba(16,185,129,0.2);">CI/CD</span>
-              <h4 class="font-bold mb-1" style="color: #0A2540;">GitHub Actions</h4>
-              <p class="text-sm" style="color: #64748b;">CI/CD nativo de GitHub. OIDC con AWS, sin credenciales estáticas.</p>
+            <a
+              href="https://github.com/features/actions"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(16,185,129,0.1); color: #10B981; border: 1px solid rgba(16,185,129,0.2);"
+                >CI/CD</span
+              >
+              <h4 class="font-bold mb-1" style="color: #0A2540;">
+                GitHub Actions
+              </h4>
+              <p class="text-sm" style="color: #64748b;">
+                CI/CD nativo de GitHub. OIDC con AWS, sin credenciales
+                estáticas.
+              </p>
             </a>
-            <a href="https://jenkins.io" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(16,185,129,0.1); color: #10B981; border: 1px solid rgba(16,185,129,0.2);">CI/CD</span>
+            <a
+              href="https://jenkins.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(16,185,129,0.1); color: #10B981; border: 1px solid rgba(16,185,129,0.2);"
+                >CI/CD</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Jenkins</h4>
-              <p class="text-sm" style="color: #64748b;">Servidor de automatización open source. Pipeline as code.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Servidor de automatización open source. Pipeline as code.
+              </p>
             </a>
           </div>
         </div>
         <!-- Seguridad -->
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wider mb-4" style="color: #DC2626;">Seguridad</h3>
+          <h3
+            class="text-sm font-bold uppercase tracking-wider mb-4"
+            style="color: #DC2626;"
+          >
+            Seguridad
+          </h3>
           <div class="grid sm:grid-cols-3 gap-4">
-            <a href="https://trivy.dev" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(220,38,38,0.1); color: #DC2626; border: 1px solid rgba(220,38,38,0.2);">Seguridad</span>
+            <a
+              href="https://trivy.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(220,38,38,0.1); color: #DC2626; border: 1px solid rgba(220,38,38,0.2);"
+                >Seguridad</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Trivy</h4>
-              <p class="text-sm" style="color: #64748b;">Escáner de vulnerabilidades para imágenes, IaC y código.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Escáner de vulnerabilidades para imágenes, IaC y código.
+              </p>
             </a>
-            <a href="https://falco.org" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(220,38,38,0.1); color: #DC2626; border: 1px solid rgba(220,38,38,0.2);">Seguridad</span>
+            <a
+              href="https://falco.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(220,38,38,0.1); color: #DC2626; border: 1px solid rgba(220,38,38,0.2);"
+                >Seguridad</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Falco</h4>
-              <p class="text-sm" style="color: #64748b;">Detección de amenazas en tiempo de ejecución para Kubernetes.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Detección de amenazas en tiempo de ejecución para Kubernetes.
+              </p>
             </a>
-            <a href="https://www.checkov.io" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow" style="border-radius: 16px;">
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style="background: rgba(220,38,38,0.1); color: #DC2626; border: 1px solid rgba(220,38,38,0.2);">Seguridad</span>
+            <a
+              href="https://www.checkov.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow"
+              style="border-radius: 16px;"
+            >
+              <span
+                class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+                style="background: rgba(220,38,38,0.1); color: #DC2626; border: 1px solid rgba(220,38,38,0.2);"
+                >Seguridad</span
+              >
               <h4 class="font-bold mb-1" style="color: #0A2540;">Checkov</h4>
-              <p class="text-sm" style="color: #64748b;">Análisis estático de seguridad para Terraform y Kubernetes.</p>
+              <p class="text-sm" style="color: #64748b;">
+                Análisis estático de seguridad para Terraform y Kubernetes.
+              </p>
             </a>
           </div>
         </div>
@@ -1449,87 +1666,183 @@ import Layout from '../layouts/Layout.astro'
   <section class="py-20 bg-white border-t border-gray-100">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-14">
-        <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+        <span
+          class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4"
+          style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+        >
           Stack Recomendado
         </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">Herramientas recomendadas</h2>
-        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">Las herramientas que usamos en cada proyecto de producción. Selección basada en experiencia real, no en patrocinios.</p>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">
+          Herramientas recomendadas
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
+          Las herramientas que usamos en cada proyecto de producción. Selección
+          basada en experiencia real, no en patrocinios.
+        </p>
       </div>
 
-      {[
-        {
-          category: 'Infraestructura como Código',
-          color: '#7B42BC',
-          tools: [
-            { name: 'Terraform', desc: 'IaC multi-cloud líder del mercado. Módulos reutilizables, state remoto y plan/apply en CI.', url: 'https://terraform.io' },
-            { name: 'Terragrunt', desc: 'Wrapper de Terraform que elimina el boilerplate y gestiona dependencias entre módulos.', url: 'https://terragrunt.gruntwork.io' },
-            { name: 'Pulumi', desc: 'IaC con lenguajes reales (Python, TypeScript, Go). Ideal cuando Terraform no encaja.', url: 'https://pulumi.com' },
-          ],
-        },
-        {
-          category: 'Kubernetes',
-          color: '#326CE5',
-          tools: [
-            { name: 'ArgoCD', desc: 'Controlador GitOps para Kubernetes. Reconcilia el estado del clúster con Git automáticamente.', url: 'https://argoproj.github.io/cd' },
-            { name: 'Helm', desc: 'Gestor de paquetes para Kubernetes. Charts versionados, values por entorno, rollback en segundos.', url: 'https://helm.sh' },
-            { name: 'Kustomize', desc: 'Personalización de manifests sin plantillas. Integrado en kubectl desde v1.14.', url: 'https://kustomize.io' },
-            { name: 'k9s', desc: 'Terminal UI para gestionar clústeres Kubernetes. Imprescindible para operaciones diarias.', url: 'https://k9scli.io' },
-          ],
-        },
-        {
-          category: 'Observabilidad',
-          color: '#E6522C',
-          tools: [
-            { name: 'Prometheus', desc: 'Sistema de monitorización y alertas de facto en Kubernetes. Pull-based, TSDB incorporado.', url: 'https://prometheus.io' },
-            { name: 'Grafana', desc: 'Dashboards de observabilidad. Soporta Prometheus, Loki, CloudWatch y 50+ data sources.', url: 'https://grafana.com' },
-            { name: 'Loki', desc: 'Agregación de logs ligera y económica. Se integra nativamente con Grafana y Prometheus.', url: 'https://grafana.com/oss/loki' },
-          ],
-        },
-        {
-          category: 'CI/CD',
-          color: '#24292E',
-          tools: [
-            { name: 'GitHub Actions', desc: 'Pipelines como código directamente en el repositorio. Ideal para proyectos en GitHub.', url: 'https://github.com/features/actions' },
-            { name: 'Jenkins', desc: 'Automatización CI/CD battle-tested. Plugins para cualquier stack, desplegado on-prem o en AWS.', url: 'https://jenkins.io' },
-            { name: 'ArgoCD', desc: 'El mismo ArgoCD actúa como CD: deploy continuo desde Git sin push al clúster.', url: 'https://argoproj.github.io/cd' },
-          ],
-        },
-        {
-          category: 'Seguridad',
-          color: '#DC2626',
-          tools: [
-            { name: 'Trivy', desc: 'Scanner de vulnerabilidades para imágenes, filesystems, repos y config de Kubernetes.', url: 'https://trivy.dev' },
-            { name: 'Falco', desc: 'Detección de amenazas en runtime para Kubernetes. Alertas en tiempo real sobre comportamiento anómalo.', url: 'https://falco.org' },
-            { name: 'Checkov', desc: 'Análisis estático de IaC (Terraform, CloudFormation, Helm). Detecta misconfigs antes del apply.', url: 'https://checkov.io' },
-          ],
-        },
-      ].map(({ category, color, tools }) => (
-        <div class="mb-12">
-          <div class="flex items-center gap-2 mb-5">
-            <span class="w-3 h-3 rounded-full flex-shrink-0" style={`background: ${color};`}></span>
-            <h3 class="text-base font-bold uppercase tracking-wider" style={`color: ${color};`}>{category}</h3>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {tools.map(({ name, desc, url }) => (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group block bg-white rounded-xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
-                style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+      {
+        [
+          {
+            category: 'Infraestructura como Código',
+            color: '#7B42BC',
+            tools: [
+              {
+                name: 'Terraform',
+                desc: 'IaC multi-cloud líder del mercado. Módulos reutilizables, state remoto y plan/apply en CI.',
+                url: 'https://terraform.io',
+              },
+              {
+                name: 'Terragrunt',
+                desc: 'Wrapper de Terraform que elimina el boilerplate y gestiona dependencias entre módulos.',
+                url: 'https://terragrunt.gruntwork.io',
+              },
+              {
+                name: 'Pulumi',
+                desc: 'IaC con lenguajes reales (Python, TypeScript, Go). Ideal cuando Terraform no encaja.',
+                url: 'https://pulumi.com',
+              },
+            ],
+          },
+          {
+            category: 'Kubernetes',
+            color: '#326CE5',
+            tools: [
+              {
+                name: 'ArgoCD',
+                desc: 'Controlador GitOps para Kubernetes. Reconcilia el estado del clúster con Git automáticamente.',
+                url: 'https://argoproj.github.io/cd',
+              },
+              {
+                name: 'Helm',
+                desc: 'Gestor de paquetes para Kubernetes. Charts versionados, values por entorno, rollback en segundos.',
+                url: 'https://helm.sh',
+              },
+              {
+                name: 'Kustomize',
+                desc: 'Personalización de manifests sin plantillas. Integrado en kubectl desde v1.14.',
+                url: 'https://kustomize.io',
+              },
+              {
+                name: 'k9s',
+                desc: 'Terminal UI para gestionar clústeres Kubernetes. Imprescindible para operaciones diarias.',
+                url: 'https://k9scli.io',
+              },
+            ],
+          },
+          {
+            category: 'Observabilidad',
+            color: '#E6522C',
+            tools: [
+              {
+                name: 'Prometheus',
+                desc: 'Sistema de monitorización y alertas de facto en Kubernetes. Pull-based, TSDB incorporado.',
+                url: 'https://prometheus.io',
+              },
+              {
+                name: 'Grafana',
+                desc: 'Dashboards de observabilidad. Soporta Prometheus, Loki, CloudWatch y 50+ data sources.',
+                url: 'https://grafana.com',
+              },
+              {
+                name: 'Loki',
+                desc: 'Agregación de logs ligera y económica. Se integra nativamente con Grafana y Prometheus.',
+                url: 'https://grafana.com/oss/loki',
+              },
+            ],
+          },
+          {
+            category: 'CI/CD',
+            color: '#24292E',
+            tools: [
+              {
+                name: 'GitHub Actions',
+                desc: 'Pipelines como código directamente en el repositorio. Ideal para proyectos en GitHub.',
+                url: 'https://github.com/features/actions',
+              },
+              {
+                name: 'Jenkins',
+                desc: 'Automatización CI/CD battle-tested. Plugins para cualquier stack, desplegado on-prem o en AWS.',
+                url: 'https://jenkins.io',
+              },
+              {
+                name: 'ArgoCD',
+                desc: 'El mismo ArgoCD actúa como CD: deploy continuo desde Git sin push al clúster.',
+                url: 'https://argoproj.github.io/cd',
+              },
+            ],
+          },
+          {
+            category: 'Seguridad',
+            color: '#DC2626',
+            tools: [
+              {
+                name: 'Trivy',
+                desc: 'Scanner de vulnerabilidades para imágenes, filesystems, repos y config de Kubernetes.',
+                url: 'https://trivy.dev',
+              },
+              {
+                name: 'Falco',
+                desc: 'Detección de amenazas en runtime para Kubernetes. Alertas en tiempo real sobre comportamiento anómalo.',
+                url: 'https://falco.org',
+              },
+              {
+                name: 'Checkov',
+                desc: 'Análisis estático de IaC (Terraform, CloudFormation, Helm). Detecta misconfigs antes del apply.',
+                url: 'https://checkov.io',
+              },
+            ],
+          },
+        ].map(({ category, color, tools }) => (
+          <div class="mb-12">
+            <div class="flex items-center gap-2 mb-5">
+              <span
+                class="w-3 h-3 rounded-full flex-shrink-0"
+                style={`background: ${color};`}
+              />
+              <h3
+                class="text-base font-bold uppercase tracking-wider"
+                style={`color: ${color};`}
               >
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-bold" style="color: #0A2540;">{name}</span>
-                  <svg class="w-3.5 h-3.5 opacity-40 group-hover:opacity-70 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                </div>
-                <p class="text-xs leading-relaxed" style="color: #64748b;">{desc}</p>
-              </a>
-            ))}
+                {category}
+              </h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {tools.map(({ name, desc, url }) => (
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group block bg-white rounded-xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                  style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-bold" style="color: #0A2540;">
+                      {name}
+                    </span>
+                    <svg
+                      class="w-3.5 h-3.5 opacity-40 group-hover:opacity-70 transition-opacity"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </div>
+                  <p class="text-xs leading-relaxed" style="color: #64748b;">
+                    {desc}
+                  </p>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </section>
 </Layout>

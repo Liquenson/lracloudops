@@ -8,7 +8,7 @@ export const defaultLocale: Locale = 'es'
 export const localeList = Object.keys(languages) as Locale[]
 
 export const regions = {
-  'Americas': ['es', 'en'],
+  Americas: ['es', 'en'],
 } as const
 
 export function getLangFromUrl(url: URL): Locale {
@@ -53,7 +53,11 @@ export function getAlternateUrl(url: URL, targetLocale: Locale): string {
 
   if (targetLocale === 'en' && fromEs && ES_TO_EN_SLUG[firstSlug]) {
     translatedFirst = ES_TO_EN_SLUG[firstSlug]
-  } else if (targetLocale === defaultLocale && fromEn && EN_TO_ES_SLUG[firstSlug]) {
+  } else if (
+    targetLocale === defaultLocale &&
+    fromEn &&
+    EN_TO_ES_SLUG[firstSlug]
+  ) {
     translatedFirst = EN_TO_ES_SLUG[firstSlug]
   }
 
@@ -64,16 +68,11 @@ export function getAlternateUrl(url: URL, targetLocale: Locale): string {
   return path ? `/${targetLocale}/${path}` : `/${targetLocale}/`
 }
 
-export function getHreflangTags(url: URL): Array<{ locale: string; href: string }> {
+export function getHreflangTags(
+  url: URL
+): Array<{ locale: string; href: string }> {
   return localeList.map((locale) => ({
     locale,
     href: `https://lracloudops.com${getAlternateUrl(url, locale)}`,
   }))
-}
-
-/** Kept for backward compatibility */
-export function useTranslations(lang: 'en' | 'es') {
-  return function t(key: string): string {
-    return key
-  }
 }
