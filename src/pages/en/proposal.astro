@@ -1,0 +1,433 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Generate Your Technical Proposal · AI-Powered · Free"
+  descripcion="Describe your project and receive a technical proposal in seconds with scope, architecture, timeline and indicative budget."
+  keywords="DevOps technical proposal, cloud budget, Terraform Kubernetes proposal, AI proposal generator"
+>
+  <!-- ── HERO ── -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0A2540;"
+    aria-labelledby="prop-hero-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-bold tracking-widest uppercase"
+        style="background: rgba(30,111,255,0.2); border: 1px solid rgba(96,165,250,0.35); color: #93C5FD;"
+      >
+        <span
+          class="w-2 h-2 rounded-full flex-shrink-0"
+          style="background: #60A5FA; animation: pulse 2s infinite;"
+          aria-hidden="true"></span>
+        AI-Powered · Free
+      </div>
+      <h1
+        id="prop-hero-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
+        style="letter-spacing: -0.035em;"
+      >
+        Generate your technical proposal
+      </h1>
+      <p
+        class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
+        style="color: rgba(147,184,255,0.85);"
+      >
+        Describe your project and receive a technical proposal in seconds with
+        scope, architecture, timeline and indicative budget.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── FORM + RESULTS ── -->
+  <section class="bg-white py-16" aria-label="Proposal generator">
+    <div class="max-w-3xl mx-auto px-6">
+      <form id="prop-form" class="space-y-6" novalidate>
+        <div>
+          <label
+            for="prop-requirements"
+            class="block text-sm font-semibold mb-2"
+            style="color: #0F172A;"
+          >
+            What do you need to build or improve?
+            <span class="font-normal text-xs ml-1" style="color: #64748B;"
+              >(required)</span
+            >
+          </label>
+          <textarea
+            id="prop-requirements"
+            name="requirements"
+            rows="6"
+            placeholder="Example: We need to migrate our monolithic Node.js app to microservices on Kubernetes in AWS. We currently have ~50k active users, deploy manually to EC2 and have no CI/CD. We want to automate deployments, improve availability and reduce costs."
+            class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
+            style="border-color: #E2E8F0; color: #0F172A;"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label
+              for="prop-sector"
+              class="block text-sm font-semibold mb-2"
+              style="color: #0F172A;">Sector</label
+            >
+            <select
+              id="prop-sector"
+              class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
+              style="border-color: #E2E8F0; color: #0F172A;"
+            >
+              <option value="Healthcare">Healthcare</option>
+              <option value="Fintech">Fintech / Banking</option>
+              <option value="SaaS" selected>SaaS / Software</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label
+              for="prop-urgency"
+              class="block text-sm font-semibold mb-2"
+              style="color: #0F172A;">Urgency</label
+            >
+            <select
+              id="prop-urgency"
+              class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
+              style="border-color: #E2E8F0; color: #0F172A;"
+            >
+              <option value="Immediate">Immediate</option>
+              <option value="1-3 months" selected>1–3 months</option>
+              <option value="3-6 months">3–6 months</option>
+              <option value="Exploring">Just exploring</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label
+            for="prop-email"
+            class="block text-sm font-semibold mb-2"
+            style="color: #0F172A;"
+          >
+            Your email <span class="font-normal" style="color: #64748B;"
+              >(optional — to receive the full proposal)</span
+            >
+          </label>
+          <input
+            id="prop-email"
+            type="email"
+            placeholder="name@company.com"
+            class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
+            style="border-color: #E2E8F0; color: #0F172A;"
+          />
+        </div>
+
+        <button
+          type="submit"
+          id="prop-submit"
+          class="w-full inline-flex items-center justify-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.01]"
+          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.4);"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            ></path>
+          </svg>
+          <span id="prop-btn-text">Generate proposal →</span>
+        </button>
+        <p id="prop-error" class="hidden text-sm text-red-600 text-center"></p>
+      </form>
+
+      <!-- Loading -->
+      <div id="prop-loading" class="hidden text-center py-16">
+        <div
+          class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
+          style="background: #EEF4FF; border: 1px solid #c3d9ff;"
+        >
+          <svg
+            class="w-5 h-5 animate-spin"
+            style="color: #2563EB;"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          <span class="text-sm font-medium" style="color: #1D4ED8;"
+            >Generating your proposal...</span
+          >
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="prop-results" class="hidden mt-10 space-y-6">
+        <div class="rounded-2xl p-8" style="background: #0A2540;">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-widest mb-2"
+                style="color: #93C5FD;"
+              >
+                Recommended plan
+              </p>
+              <div
+                id="prop-plan"
+                class="text-3xl font-extrabold text-white mb-1"
+              >
+              </div>
+              <div
+                id="prop-price"
+                class="text-xl font-bold"
+                style="color: #60A5FA;"
+              >
+              </div>
+            </div>
+            <div class="text-right">
+              <p
+                class="text-xs font-semibold uppercase tracking-widest mb-1"
+                style="color: #93C5FD;"
+              >
+                Timeline
+              </p>
+              <div id="prop-timeline" class="text-2xl font-bold text-white">
+              </div>
+            </div>
+          </div>
+          <p
+            id="prop-summary"
+            class="mt-5 text-sm leading-relaxed"
+            style="color: rgba(147,184,255,0.85);"
+          >
+          </p>
+        </div>
+
+        <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
+          <h2 class="text-base font-bold mb-3" style="color: #0F172A;">
+            Proposed architecture
+          </h2>
+          <p
+            id="prop-architecture"
+            class="text-sm leading-relaxed"
+            style="color: #64748B;"
+          >
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
+            <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
+              Deliverables
+            </h2>
+            <ul id="prop-scope" class="space-y-2"></ul>
+          </div>
+          <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
+            <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
+              Tech stack
+            </h2>
+            <div id="prop-stack" class="flex flex-wrap gap-2"></div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
+          <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
+            Project phases
+          </h2>
+          <div id="prop-phases" class="space-y-4"></div>
+        </div>
+
+        <div
+          class="rounded-2xl p-6"
+          style="background: #FFFBEB; border: 1px solid #FDE68A;"
+        >
+          <h2 class="text-base font-bold mb-3" style="color: #92400E;">
+            Identified risks
+          </h2>
+          <ul id="prop-risks" class="space-y-2"></ul>
+        </div>
+
+        <div
+          class="rounded-2xl p-6"
+          style="background: #F0FDF4; border: 1px solid #BBF7D0;"
+        >
+          <h2 class="text-base font-bold mb-2" style="color: #15803D;">
+            Next steps
+          </h2>
+          <p
+            id="prop-nextsteps"
+            class="text-sm leading-relaxed"
+            style="color: #166534;"
+          >
+          </p>
+        </div>
+
+        <div class="text-center pt-4 pb-2">
+          <p class="text-base font-semibold mb-4" style="color: #0F172A;">
+            Schedule a consultation to validate this proposal
+          </p>
+          <a
+            href="/en/contact"
+            class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
+            style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
+          >
+            Schedule consultation →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('prop-form') as HTMLFormElement
+  const loading = document.getElementById('prop-loading')!
+  const results = document.getElementById('prop-results')!
+  const errorEl = document.getElementById('prop-error')!
+  const btnText = document.getElementById('prop-btn-text')!
+  const submitBtn = document.getElementById('prop-submit') as HTMLButtonElement
+
+  function setText(id: string, val: unknown) {
+    const el = document.getElementById(id)
+    if (el) el.textContent = typeof val === 'string' ? val : ''
+  }
+
+  function renderList(id: string, items: unknown[], color = '#64748B') {
+    const el = document.getElementById(id)!
+    const arr = items.filter((x): x is string => typeof x === 'string')
+    el.innerHTML = arr
+      .map(
+        (item) =>
+          `<li class="flex gap-2.5 text-sm" style="color:${color};">
+          <span style="margin-top:2px; flex-shrink:0;">•</span><span>${item}</span>
+        </li>`
+      )
+      .join('')
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    errorEl.classList.add('hidden')
+    const req = (
+      document.getElementById('prop-requirements') as HTMLTextAreaElement
+    ).value
+    const sector = (document.getElementById('prop-sector') as HTMLSelectElement)
+      .value
+    const urgency = (
+      document.getElementById('prop-urgency') as HTMLSelectElement
+    ).value
+
+    if (req.trim().length < 10) {
+      errorEl.textContent = 'Please describe your project in more detail.'
+      errorEl.classList.remove('hidden')
+      return
+    }
+
+    form.classList.add('hidden')
+    loading.classList.remove('hidden')
+    submitBtn.disabled = true
+    btnText.textContent = 'Generating...'
+
+    try {
+      const res = await fetch('/api/proposal-generator', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          requirements: `Sector: ${sector}\nUrgency: ${urgency}\n\n${req}`,
+        }),
+      })
+      const json = (await res.json()) as {
+        proposal?: Record<string, unknown>
+        error?: string
+      }
+      if (json.error) throw new Error(json.error)
+      const p = json.proposal ?? {}
+
+      setText('prop-plan', p.plan_recommended)
+      setText('prop-price', p.price_range)
+      setText('prop-timeline', p.timeline)
+      setText('prop-summary', p.summary)
+      setText('prop-architecture', p.architecture)
+      setText('prop-nextsteps', p.next_steps)
+
+      renderList('prop-scope', Array.isArray(p.scope) ? p.scope : [])
+      renderList('prop-risks', Array.isArray(p.risks) ? p.risks : [], '#92400E')
+
+      const stackEl = document.getElementById('prop-stack')!
+      const stack = Array.isArray(p.tech_stack)
+        ? (p.tech_stack as string[])
+        : []
+      stackEl.innerHTML = stack
+        .map(
+          (t) =>
+            `<span class="text-xs font-semibold px-2.5 py-1 rounded-lg" style="background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;">${t}</span>`
+        )
+        .join('')
+
+      interface Phase {
+        name: string
+        duration: string
+        deliverables: string[]
+      }
+      const phasesEl = document.getElementById('prop-phases')!
+      const phases = Array.isArray(p.phases) ? (p.phases as Phase[]) : []
+      phasesEl.innerHTML = phases
+        .map(
+          (ph, i) =>
+            `<div class="flex gap-4">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0" style="background:#2563EB;">${i + 1}</div>
+            <div>
+              <div class="text-sm font-bold" style="color:#0F172A;">${ph.name} <span class="font-normal" style="color:#94A3B8;">· ${ph.duration}</span></div>
+              <ul class="mt-1 space-y-0.5">
+                ${(ph.deliverables ?? []).map((d: string) => `<li class="text-xs" style="color:#64748B;">• ${d}</li>`).join('')}
+              </ul>
+            </div>
+          </div>`
+        )
+        .join('')
+
+      loading.classList.add('hidden')
+      results.classList.remove('hidden')
+    } catch (err) {
+      loading.classList.add('hidden')
+      form.classList.remove('hidden')
+      submitBtn.disabled = false
+      btnText.textContent = 'Generate proposal →'
+      errorEl.textContent =
+        err instanceof Error
+          ? err.message
+          : 'Error generating the proposal. Please try again.'
+      errorEl.classList.remove('hidden')
+    }
+  })
+</script>
