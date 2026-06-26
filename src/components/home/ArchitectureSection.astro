@@ -2,43 +2,51 @@
 interface Props { lang: 'es' | 'en' }
 const { lang } = Astro.props
 
+const clouds = lang === 'es' ? [
+  { short: 'AWS', sub: 'EKS · Multi-AZ · SLA 99,99%', specialist: 'Esp: Ruben', color: '#FF9900' },
+  { short: 'Azure', sub: 'AKS · Azure DevOps · HA', specialist: 'Esp: Kelvin', color: '#0078D4' },
+  { short: 'GCP', sub: 'GKE · Cloud Run · Global', specialist: 'Equipo LRA', color: '#4285F4' },
+] : [
+  { short: 'AWS', sub: 'EKS · Multi-AZ · SLA 99.99%', specialist: 'Spec: Ruben', color: '#FF9900' },
+  { short: 'Azure', sub: 'AKS · Azure DevOps · HA', specialist: 'Spec: Kelvin', color: '#0078D4' },
+  { short: 'GCP', sub: 'GKE · Cloud Run · Global', specialist: 'LRA Team', color: '#4285F4' },
+]
+
 const layers = lang === 'es' ? [
-  { label: 'AWS', sub: 'Proveedor cloud · Multi-AZ · SLA 99,99%', color: '#FF9900', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
-  { label: 'Terraform', sub: 'Infraestructura como código · Modular', color: '#7B42BC', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
-  { label: 'Kubernetes (EKS)', sub: 'Orquestación de contenedores · HPA · Auto-scaling', color: '#326CE5', icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2' },
+  { label: 'Terraform', sub: 'Infraestructura como código · Modular · Multi-cloud', color: '#7B42BC', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+  { label: 'Kubernetes (EKS · AKS · GKE)', sub: 'Orquestación de contenedores · HPA · Auto-scaling', color: '#326CE5', icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2' },
   { label: 'ArgoCD', sub: 'GitOps · Entrega continua · Detección de drift', color: '#EF7B4D', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
   { label: 'Aplicaciones', sub: 'Flask · Python · Claude Sonnet · boto3', color: '#10B981', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
   { label: 'Prometheus + Grafana', sub: 'Observabilidad · Alertas · Dashboards en tiempo real', color: '#E5421E', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
 ] : [
-  { label: 'AWS', sub: 'EKS · RDS Multi-AZ · ECR · CloudTrail · IAM OIDC', color: '#FF9900', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
-  { label: 'Terraform', sub: 'Modular IaC · S3 Remote State · DynamoDB Lock · Multi-env', color: '#7B42BC', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
-  { label: 'Kubernetes v1.31', sub: 'EKS Production · Bare Metal (kubeadm) · Calico v3.27 · NGINX Ingress', color: '#326CE5', icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2' },
+  { label: 'Terraform', sub: 'Modular IaC · S3 Remote State · DynamoDB Lock · Multi-cloud', color: '#7B42BC', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+  { label: 'Kubernetes v1.31', sub: 'EKS/AKS/GKE Production · Bare Metal (kubeadm) · Calico v3.27 · NGINX Ingress', color: '#326CE5', icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2' },
   { label: 'ArgoCD + Jenkins', sub: 'GitOps Auto-sync · Dual CI/CD · SonarCloud Gate · Ansible Config', color: '#EF7B4D', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
-  { label: 'Flask · Python · Claude AI', sub: 'Docker · boto3 · Anthropic API · 25+ AWS Services', color: '#2563EB', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
-  { label: 'CloudWatch + Prometheus', sub: 'CloudTrail Audit · Grafana · Alertmanager · SSM Session Manager', color: '#E5421E', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+  { label: 'Flask · Python · Claude AI', sub: 'Docker · boto3 · Anthropic API · 25+ Cloud Services', color: '#2563EB', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+  { label: 'CloudWatch + Prometheus', sub: 'CloudTrail Audit · Grafana · Alertmanager · Azure Monitor', color: '#E5421E', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
 ]
 
 const benefits = lang === 'es' ? [
+  { title: 'Multi-cloud por diseño', desc: 'Soportamos AWS (EKS, RDS, IAM OIDC), Azure (AKS, Azure DevOps) y GCP (GKE, Cloud Run) con Terraform modular que abstrae las diferencias de proveedor. Sin vendor lock-in.', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
   { title: 'Infraestructura inmutable', desc: 'Cada cambio pasa por Terraform y Git. Los servidores no se configuran manualmente. Los entornos no son únicos. Todo es reproducible.', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
   { title: 'Modelo de entrega GitOps', desc: 'ArgoCD usa Git como única fuente de verdad para el estado del cluster. El drift se detecta y reconcilia automáticamente — sin kubectl apply manual en producción.', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
   { title: 'Instrumentado desde el primer día', desc: 'Prometheus y Grafana forman parte del despliegue inicial, no de un proyecto posterior. Los umbrales de alerta se configuran antes de que el primer usuario llegue a producción.', icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' },
-  { title: 'Diseñado para el fallo', desc: 'HPA responde a presión de CPU y memoria. RDS es Multi-AZ con failover automático. Los fallos de componentes quedan aislados antes de afectar a los usuarios.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
 ] : [
+  { title: 'Multi-cloud by design', desc: 'We support AWS (EKS, RDS, IAM OIDC), Azure (AKS, Azure DevOps) and GCP (GKE, Cloud Run) with modular Terraform that abstracts provider differences. No vendor lock-in.', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
   { title: 'Immutable infrastructure', desc: 'Every change goes through Terraform and Git. The aws-terraform-devops modules deploy VPC, EKS and RDS with zero manual operations. Remote state in S3 with DynamoDB locking prevents conflicts.', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
   { title: 'GitOps delivery model', desc: 'ArgoCD uses Git as the single source of truth — k8s-on-premise has auto-sync enabled from Phase 3. gitops-stack uses Jenkins CI with GitHub for full pipeline automation.', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
   { title: 'Instrumented from day one', desc: 'gitops-stack includes CloudWatch and CloudTrail from first deploy. k8s-on-premise roadmap: Prometheus (Phase 6) and Grafana (Phase 7) before first production workload.', icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' },
-  { title: 'Designed for failure', desc: 'RDS Multi-AZ with automatic failover in aws-terraform-devops. Calico CNI network policies in k8s-on-premise. HPA in the kubernetes roadmap — reliability built in, not bolted on.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
 ]
 
 const ariaLabel = lang === 'es'
-  ? 'Capas de arquitectura: AWS, Terraform, Kubernetes EKS, ArgoCD, Aplicaciones, Prometheus y Grafana'
-  : 'Architecture layers: AWS, Terraform, Kubernetes v1.31, ArgoCD + Jenkins, Flask Python Claude AI, CloudWatch + Prometheus'
+  ? 'Capas de arquitectura: Nubes (AWS, Azure, GCP), Terraform, Kubernetes, ArgoCD, Aplicaciones, Prometheus y Grafana'
+  : 'Architecture layers: Clouds (AWS, Azure, GCP), Terraform, Kubernetes, ArgoCD, Apps, CloudWatch + Prometheus'
 const badge = lang === 'es' ? 'Arquitectura de Plataforma' : 'Platform Architecture'
-const heading = lang === 'es' ? 'La plataforma, capa por capa.' : 'The platform stack,\nlayer by layer.'
 const sub = lang === 'es'
-  ? 'Seis capas que forman un modelo operativo de infraestructura auditable y reproducible. Cada una está versionada y es recuperable.'
-  : 'Six layers that form an auditable, repeatable infrastructure operating model. Each one is version-controlled and recoverable.'
+  ? 'Arquitectura multi-cloud con AWS, Azure y GCP. Terraform modular, GitOps con ArgoCD y observabilidad desde el día uno.'
+  : 'Multi-cloud architecture across AWS, Azure and GCP. Modular Terraform, GitOps with ArgoCD and observability from day one.'
 const benefitsTitle = lang === 'es' ? 'Por qué funciona este modelo' : 'What makes this model work'
+const cloudLabel = lang === 'es' ? 'Proveedor cloud' : 'Cloud provider'
 ---
 
 <section class="py-24 relative overflow-hidden" style="background: #0B1220;" aria-labelledby="architecture-heading">
@@ -57,6 +65,29 @@ const benefitsTitle = lang === 'es' ? 'Por qué funciona este modelo' : 'What ma
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div class="animate-fade-left" role="img" aria-label={ariaLabel}>
         <div class="space-y-0">
+
+          <!-- Cloud providers row -->
+          <div>
+            <div class="p-3 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+              <div class="text-[10px] font-bold uppercase tracking-widest mb-2.5" style="color: rgba(148,163,184,0.45);">{cloudLabel}</div>
+              <div class="grid grid-cols-3 gap-2">
+                {clouds.map(({ short, sub: cloudSub, specialist, color }) => (
+                  <div class="rounded-lg p-2.5" style={`background: ${color}14; border: 1px solid ${color}33;`}>
+                    <div class="text-xs font-bold mb-0.5" style={`color: ${color};`}>{short}</div>
+                    <div class="text-[10px] leading-tight" style="color: rgba(148,163,184,0.6);">{cloudSub}</div>
+                    <div class="text-[9px] mt-1 font-medium" style="color: rgba(148,163,184,0.4);">{specialist}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="flex justify-start ml-9 my-1" aria-hidden="true">
+              <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
+                <path d="M8 0 L8 14 M4 10 L8 14 L12 10" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Remaining layers -->
           {layers.map(({ label, sub: sublabel, color, icon }, i, arr) => (
             <div>
               <div class="flex items-center gap-4 p-4 rounded-xl transition-all hover:-translate-x-1 cursor-default" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">

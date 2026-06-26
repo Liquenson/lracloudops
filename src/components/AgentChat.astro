@@ -230,10 +230,10 @@
 <script>
   ;(function () {
     const API = '/api/advisor'
-    const CAL = 'https://cal.com/ruben-alexis-h6qkjk/30min'
     const MAX = 10
 
     const lang = document.documentElement.lang === 'en' ? 'en' : 'es'
+    const CAL = lang === 'en' ? '/en/contact' : '/contacto'
 
     const WELCOME_ES = [
       '¡Hola! Soy el DevOps Advisor de LRA Cloud Operations. Puedo ayudarte con:',
@@ -366,8 +366,6 @@
           ctaWrap.style.cssText = 'margin-top:10px;'
           const cta = document.createElement('a')
           cta.href = CAL
-          cta.target = '_blank'
-          cta.rel = 'noopener noreferrer'
           cta.textContent = lang === 'en' ? 'Schedule free consultation →' : 'Agendar consulta gratuita →'
           cta.style.cssText = 'display:inline-block;background:#0A2540;color:white;font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;text-decoration:none;letter-spacing:0.01em;transition:background 0.2s;'
           cta.addEventListener('mouseenter', () => { cta.style.background = '#1E6FFF' })

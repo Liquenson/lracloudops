@@ -1,0 +1,180 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Migración a Azure — LRA Cloud Operations"
+  descripcion="Migra tu infraestructura a Microsoft Azure con AKS, Azure DevOps y Terraform modular. Especialista: Kelvin Osaigbovo. Alta disponibilidad y gobierno desde el primer día."
+>
+  <!-- Hero -->
+  <section
+    style="background: linear-gradient(135deg, #0A2540 0%, #0d2447 100%); padding: 100px 24px 80px;"
+  >
+    <div class="max-w-4xl mx-auto text-center">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8"
+        style="background: rgba(0,120,212,0.2); color: #60A5FA; border: 1px solid rgba(0,120,212,0.35);"
+      >
+        Solución · Migración a Azure
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+        De on-premise o AWS<br />a Microsoft Azure automatizado.
+      </h1>
+      <p
+        class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
+        style="color: rgba(148,163,184,0.9);"
+      >
+        Migración a Azure con AKS, Azure DevOps, Terraform modular e integración
+        con el ecosistema Microsoft. Alta disponibilidad, seguridad y gobierno
+        sin configuración manual.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+          style="background: #0078D4; box-shadow: 0 4px 20px rgba(0,120,212,0.4);"
+        >
+          Iniciar migración a Azure
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
+        </a>
+        <a
+          href="/proyectos"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:bg-white/10"
+          style="color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);"
+        >
+          Ver casos de uso
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Especialista -->
+  <section style="background: #EEF4FF; padding: 40px 24px;">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-4 p-5 rounded-2xl" style="background: white; border: 1px solid rgba(0,120,212,0.15); box-shadow: 0 2px 12px rgba(0,120,212,0.08);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(0,120,212,0.1); border: 1px solid rgba(0,120,212,0.2);">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #0078D4;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        </div>
+        <div>
+          <div class="text-xs font-bold uppercase tracking-widest mb-1" style="color: #0078D4;">Especialista Azure en LRA</div>
+          <div class="font-semibold" style="color: #0A2540;">Kelvin Osaigbovo — DevOps Engineer · Azure Specialist</div>
+          <div class="text-sm mt-0.5" style="color: #64748B;">Especializado en AKS, Azure DevOps, Azure Monitor y migración de workloads al ecosistema Microsoft.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key points -->
+  <section style="background: #F8FAFC; padding: 80px 24px;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
+          Infraestructura Azure lista para producción
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          No solo migramos recursos — entregamos una plataforma completa con
+          gobierno, seguridad y observabilidad integrados en el ecosistema Microsoft.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {
+          [
+            {
+              title: 'Terraform modular para Azure',
+              desc: 'Cada recurso Azure en módulos Terraform reutilizables: AKS, Azure SQL, Key Vault, VNet, NSG. Estado remoto en Azure Blob Storage con locking. Sin ClickOps en producción, nunca.',
+              icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+            },
+            {
+              title: 'AKS en producción con RBAC y AGIC',
+              desc: 'Clusters AKS con Azure CNI, RBAC integrado con Azure AD, Application Gateway Ingress Controller y cluster autoscaler. Nodos en zonas de disponibilidad para alta disponibilidad real.',
+              icon: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+            },
+            {
+              title: 'Azure DevOps y pipelines CI/CD',
+              desc: 'Pipelines YAML en Azure DevOps con stages de build, test y deploy. Integración con Azure Container Registry, escaneo de imágenes y quality gates. Deploy automático en AKS vía ArgoCD.',
+              icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+            },
+            {
+              title: 'Seguridad y secretos con Key Vault',
+              desc: 'Credenciales y secretos en Azure Key Vault con rotación automática. Managed Identities para acceso sin credenciales estáticas. Microsoft Defender for Cloud para postura de seguridad continua.',
+              icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
+            },
+          ].map(({ title, desc, icon }) => (
+            <div
+              class="bg-white rounded-2xl p-7"
+              style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04);"
+            >
+              <div
+                class="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style="background: rgba(0,120,212,0.08);"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  style="color: #0078D4;"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: #64748B;">
+                {desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540; padding: 80px 24px;">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        ¿Listo para migrar a Microsoft Azure?
+      </h2>
+      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">
+        Agenda una revisión de arquitectura de 30 minutos. Evaluamos tu estado
+        actual y trazamos un plan de migración a Azure concreto.
+      </p>
+      <a
+        href="/contacto"
+        class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+        style="background: #0078D4; box-shadow: 0 4px 24px rgba(0,120,212,0.45);"
+      >
+        Agendar revisión de arquitectura
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
+      </a>
+    </div>
+  </section>
+</Layout>
