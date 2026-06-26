@@ -363,7 +363,9 @@ import Layout from '../layouts/Layout.astro'
     `
 
     const gateForm = document.getElementById('gate-form') as HTMLFormElement
-    const gateBtn = document.getElementById('gate-submit-btn') as HTMLButtonElement
+    const gateBtn = document.getElementById(
+      'gate-submit-btn'
+    ) as HTMLButtonElement
 
     gateForm.addEventListener('submit', async (e) => {
       e.preventDefault()

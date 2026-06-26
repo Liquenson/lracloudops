@@ -1,6 +1,11 @@
 ---
 import '../styles/global.css'
-import { getLangFromUrl, languages, getAlternateUrl, getHreflangTags } from '../i18n'
+import {
+  getLangFromUrl,
+  languages,
+  getAlternateUrl,
+  getHreflangTags,
+} from '../i18n'
 import AgentChat from '../components/AgentChat.astro'
 import SiteHeader from '../components/layout/SiteHeader.astro'
 import SiteFooter from '../components/layout/SiteFooter.astro'
@@ -14,7 +19,16 @@ interface Props {
   ogImage?: string
 }
 
-const { titulo, descripcion, keywords, schema = null, ogType = 'website', ogImage } = Astro.props
+const {
+  titulo,
+  descripcion,
+  keywords,
+  schema = null,
+  ogType = 'website',
+  ogImage,
+} = Astro.props
+const gaId = import.meta.env.PUBLIC_GA_ID ?? ''
+const cfBeacon = import.meta.env.PUBLIC_CF_BEACON ?? ''
 const currentPath = Astro.url.pathname
 const lang = getLangFromUrl(Astro.url)
 const canonicalURL = new URL(currentPath, 'https://lracloudops.com')
@@ -24,48 +38,119 @@ const isMinorLocale = !['es', 'en'].includes(lang)
 const shouldNoindex = isMinorLocale && isFallbackOnlyPath
 
 const localeUrls = Object.fromEntries(
-  Object.keys(languages).map((l) => [l, 'https://lracloudops.com' + getAlternateUrl(Astro.url, l as keyof typeof languages)])
+  Object.keys(languages).map((l) => [
+    l,
+    'https://lracloudops.com' +
+      getAlternateUrl(Astro.url, l as keyof typeof languages),
+  ])
 ) as Record<keyof typeof languages, string>
 const hreflangTags = getHreflangTags(Astro.url)
 
 const segments = currentPath.split('/').filter(Boolean)
 const pathLabels: Record<string, string> = {
-  services: 'Solutions', projects: 'Case Studies', about: 'About', contact: 'Contact', blog: 'Blog',
-  'cloud-infrastructure': 'Cloud Infrastructure', 'platform-engineering': 'Platform Engineering',
-  'devops-automation': 'DevOps Automation', observability: 'Observability', pricing: 'Pricing',
-  resources: 'Resources', solutions: 'Solutions', industries: 'Industries', 'open-source': 'Open Source',
-  'kubernetes-platforms': 'Kubernetes Platforms', es: 'ES', servicios: 'Soluciones',
-  proyectos: 'Casos de uso', nosotros: 'Nosotros', contacto: 'Contacto',
+  services: 'Solutions',
+  projects: 'Case Studies',
+  about: 'About',
+  contact: 'Contact',
+  blog: 'Blog',
+  'cloud-infrastructure': 'Cloud Infrastructure',
+  'platform-engineering': 'Platform Engineering',
+  'devops-automation': 'DevOps Automation',
+  observability: 'Observability',
+  pricing: 'Pricing',
+  resources: 'Resources',
+  solutions: 'Solutions',
+  industries: 'Industries',
+  'open-source': 'Open Source',
+  'kubernetes-platforms': 'Kubernetes Platforms',
+  es: 'ES',
+  servicios: 'Soluciones',
+  proyectos: 'Casos de uso',
+  nosotros: 'Nosotros',
+  contacto: 'Contacto',
 }
 const breadcrumbItems = [
-  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://lracloudops.com' },
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Home',
+    item: 'https://lracloudops.com',
+  },
   ...segments.map((seg, i) => {
     const url = 'https://lracloudops.com/' + segments.slice(0, i + 1).join('/')
-    const name = i === segments.length - 1 && !pathLabels[seg] ? titulo : (pathLabels[seg] ?? seg)
+    const name =
+      i === segments.length - 1 && !pathLabels[seg]
+        ? titulo
+        : (pathLabels[seg] ?? seg)
     return { '@type': 'ListItem', position: i + 2, name, item: url }
   }),
 ]
-const breadcrumbSchema = segments.length > 0
-  ? { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: breadcrumbItems }
-  : null
+const breadcrumbSchema =
+  segments.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbItems,
+      }
+    : null
 
 const organizationSchema = {
-  '@context': 'https://schema.org', '@type': 'Organization',
-  '@id': 'https://lracloudops.com/#organization', name: 'LRA Cloud Ops',
-  url: 'https://lracloudops.com', logo: 'https://lracloudops.com/logo.svg',
-  email: 'info@lracloudops.com', foundingDate: '2021', numberOfEmployees: '1',
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://lracloudops.com/#organization',
+  name: 'LRA Cloud Ops',
+  url: 'https://lracloudops.com',
+  logo: 'https://lracloudops.com/logo.svg',
+  email: 'info@lracloudops.com',
+  foundingDate: '2021',
+  numberOfEmployees: {
+    '@type': 'QuantitativeValue',
+    minValue: 1,
+    maxValue: 10,
+  },
   areaServed: ['ES', 'US', 'LATAM', 'EU'],
-  serviceType: ['DevOps Consulting', 'Cloud Infrastructure', 'Kubernetes', 'Platform Engineering'],
+  serviceType: [
+    'DevOps Consulting',
+    'Cloud Infrastructure',
+    'Kubernetes',
+    'Platform Engineering',
+  ],
   priceRange: '€€€',
-  description: 'Cloud infrastructure, Kubernetes platforms, DevOps automation and AWS platform engineering.',
-  knowsAbout: ['DevOps Engineering', 'Cloud Infrastructure', 'Kubernetes', 'Platform Engineering', 'GitOps', 'Terraform', 'AWS', 'CI/CD Automation', 'Observability', 'SRE'],
-  hasCredential: ['HashiCorp Certified Terraform Associate', 'Cisco Introduction to Cybersecurity', 'Microsoft Azure Fundamentals', 'Fortinet Certified Associate Cybersecurity', 'ITIL 4 Foundation'],
-  sameAs: ['https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/', 'https://github.com/lra-cloud-ops', 'https://www.instagram.com/lracloudops/'],
+  description:
+    'Cloud infrastructure, Kubernetes platforms, DevOps automation and AWS platform engineering.',
+  knowsAbout: [
+    'DevOps Engineering',
+    'Cloud Infrastructure',
+    'Kubernetes',
+    'Platform Engineering',
+    'GitOps',
+    'Terraform',
+    'AWS',
+    'CI/CD Automation',
+    'Observability',
+    'SRE',
+  ],
+  hasCredential: [
+    'HashiCorp Certified Terraform Associate',
+    'Cisco Introduction to Cybersecurity',
+    'Microsoft Azure Fundamentals',
+    'Fortinet Certified Associate Cybersecurity',
+    'ITIL 4 Foundation',
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/',
+    'https://github.com/lra-cloud-ops',
+    'https://www.instagram.com/lracloudops/',
+  ],
 }
 const websiteSchema = {
-  '@context': 'https://schema.org', '@type': 'WebSite',
-  '@id': 'https://lracloudops.com/#website', url: 'https://lracloudops.com',
-  name: 'LRA Cloud Ops', description: 'Cloud infrastructure, Kubernetes platforms and DevOps automation.',
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://lracloudops.com/#website',
+  url: 'https://lracloudops.com',
+  name: 'LRA Cloud Ops',
+  description:
+    'Cloud infrastructure, Kubernetes platforms and DevOps automation.',
   publisher: { '@id': 'https://lracloudops.com/#organization' },
   inLanguage: lang === 'es' ? 'es-ES' : 'en-US',
 }
@@ -78,25 +163,57 @@ const websiteSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{titulo} | LRA Cloud Ops</title>
     <meta name="description" content={descripcion} />
-    {shouldNoindex
-      ? <meta name="robots" content="noindex, nofollow" />
-      : <meta name="robots" content="index, follow, max-image-preview:large" />}
-    <meta name="keywords" content={keywords ?? 'cloud infrastructure, platform engineering, DevOps consulting, AWS, Kubernetes, Terraform, GitOps, ArgoCD, Infrastructure as Code, SRE, CI/CD automation'} />
-    <meta name="google-site-verification" content="h_3sw-ylqW7stWL6yMH3HZ7tZNTOQB7c_xuhoO9k4f4" />
+    {
+      shouldNoindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+      )
+    }
+    <meta
+      name="keywords"
+      content={keywords ??
+        'cloud infrastructure, platform engineering, DevOps consulting, AWS, Kubernetes, Terraform, GitOps, ArgoCD, Infrastructure as Code, SRE, CI/CD automation'}
+    />
+    <meta
+      name="google-site-verification"
+      content="h_3sw-ylqW7stWL6yMH3HZ7tZNTOQB7c_xuhoO9k4f4"
+    />
     <link rel="canonical" href={canonicalURL.href} />
-    {hreflangTags.map(({ locale, href }) => <link rel="alternate" hreflang={locale} href={href} />)}
-    <link rel="alternate" hreflang="x-default" href="https://lracloudops.com/" />
+    {
+      hreflangTags.map(({ locale, href }) => (
+        <link rel="alternate" hreflang={locale} href={href} />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://lracloudops.com/"
+    />
     <meta property="og:title" content={`${titulo} | LRA Cloud Ops`} />
     <meta property="og:description" content={descripcion} />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="LRA Cloud Ops" />
-    <meta property="og:locale" content={{ es: 'es_ES', en: 'en_US' }[lang] ?? 'es_ES'} />
+    <meta
+      property="og:locale"
+      content={{ es: 'es_ES', en: 'en_US' }[lang] ?? 'es_ES'}
+    />
     <meta property="og:image" content={finalOgImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:see_also" content="https://www.instagram.com/lracloudops/" />
-    {ogType === 'article' && <meta property="article:publisher" content="https://lracloudops.com" />}
+    {
+      lang === 'es' ? (
+        <meta property="og:locale:alternate" content="en_US" />
+      ) : (
+        <meta property="og:locale:alternate" content="es_ES" />
+      )
+    }
+    {
+      ogType === 'article' && (
+        <meta property="article:publisher" content="https://lracloudops.com" />
+      )
+    }
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lracloudops" />
     <meta name="twitter:creator" content="@lracloudops" />
@@ -110,29 +227,95 @@ const websiteSchema = {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#0A2540" />
-    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
-    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JES91JND3F" is:inline></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JES91JND3F');
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(organizationSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
+    />
+    {
+      breadcrumbSchema && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(breadcrumbSchema)}
+        />
+      )
+    }
+    {
+      schema && (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      )
+    }
+    {
+      gaId && (
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+          is:inline
+        />
+      )
+    }
+    <script define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      if (gaId) gtag('config', gaId)
     </script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a8c0d563c81a41a795b463ef2d94bcc5"}'></script>
+    {
+      cfBeacon && (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${cfBeacon}"}`}
+          is:inline
+        />
+      )
+    }
   </head>
 
   <body class="bg-white text-gray-900 antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded focus:outline-none focus:shadow-lg"
+    >
+      {lang === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
+    </a>
+
     <!-- Announcement bar -->
-    <div id="announcement-bar" style="min-height: 40px; background: #0A2540; border-bottom: 1px solid rgba(30,111,255,0.2); display: flex; align-items: center; justify-content: center; position: relative; padding: 6px 48px;">
-      <a href={lang === 'es' ? '/contacto' : '/en/contact'} class="flex items-center gap-2 transition-opacity hover:opacity-80 text-center" style="font-size: 13px; color: rgba(255,255,255,0.9); text-decoration: none;">
-        <span class="sm:hidden">{lang === 'es' ? 'Nuevos proyectos · 24h' : 'New engagements · 24h'}</span>
-        <span class="hidden sm:inline">{lang === 'es' ? 'Aceptando nuevos proyectos · Respuesta en 24 horas' : 'Now accepting new engagements · Response within 24 hours'}</span>
-        <span style="color: #1E6FFF; font-weight: 700; font-size: 15px;">→</span>
+    <div
+      id="announcement-bar"
+      style="min-height: 40px; background: #0A2540; border-bottom: 1px solid rgba(30,111,255,0.2); display: flex; align-items: center; justify-content: center; position: relative; padding: 6px 48px;"
+    >
+      <a
+        href={lang === 'es' ? '/contacto' : '/en/contact'}
+        class="flex items-center gap-2 transition-opacity hover:opacity-80 text-center"
+        style="font-size: 13px; color: rgba(255,255,255,0.9); text-decoration: none;"
+      >
+        <span class="sm:hidden"
+          >{
+            lang === 'es' ? 'Nuevos proyectos · 24h' : 'New engagements · 24h'
+          }</span
+        >
+        <span class="hidden sm:inline"
+          >{
+            lang === 'es'
+              ? 'Aceptando nuevos proyectos · Respuesta en 24 horas'
+              : 'Now accepting new engagements · Response within 24 hours'
+          }</span
+        >
+        <span style="color: #1E6FFF; font-weight: 700; font-size: 15px;">→</span
+        >
       </a>
-      <button id="announcement-close" aria-label={lang === 'es' ? 'Cerrar anuncio' : 'Dismiss announcement'} style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 20px; line-height: 1; padding: 4px 8px;">×</button>
+      <button
+        id="announcement-close"
+        aria-label={lang === 'es' ? 'Cerrar anuncio' : 'Dismiss announcement'}
+        style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 20px; line-height: 1; padding: 4px 8px;"
+        >×</button
+      >
     </div>
 
     <SiteHeader />
@@ -144,14 +327,18 @@ const websiteSchema = {
     <SiteFooter />
 
     <script>
-      ;(window as any).cfTrack = function(event: string, props: Record<string, unknown> = {}) {
+      ;(window as any).cfTrack = function (
+        event: string,
+        props: Record<string, unknown> = {}
+      ) {
         if ((window as any).cf) (window as any).cf.track(event, props)
       }
     </script>
     <script>
       const bar = document.getElementById('announcement-bar')
       const closeBtn = document.getElementById('announcement-close')
-      if (bar && localStorage.getItem('announcement-dismissed') === '1') bar.style.display = 'none'
+      if (bar && localStorage.getItem('announcement-dismissed') === '1')
+        bar.style.display = 'none'
       closeBtn?.addEventListener('click', () => {
         if (bar) bar.style.display = 'none'
         localStorage.setItem('announcement-dismissed', '1')
@@ -159,10 +346,18 @@ const websiteSchema = {
     </script>
     <script>
       const scrollObserver = new IntersectionObserver(
-        (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible') }) },
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible')
+          })
+        },
         { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
       )
-      document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade, .line-draw').forEach((el) => scrollObserver.observe(el))
+      document
+        .querySelectorAll(
+          '.animate-fade-up, .animate-fade-left, .animate-fade, .line-draw'
+        )
+        .forEach((el) => scrollObserver.observe(el))
     </script>
     <script>
       function animateCounter(el: Element) {
@@ -179,10 +374,19 @@ const websiteSchema = {
         requestAnimationFrame(step)
       }
       const counterObserver = new IntersectionObserver(
-        (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { animateCounter(entry.target); counterObserver.unobserve(entry.target) } }) },
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target)
+              counterObserver.unobserve(entry.target)
+            }
+          })
+        },
         { threshold: 0.5 }
       )
-      document.querySelectorAll('.counter-value').forEach((el) => counterObserver.observe(el))
+      document
+        .querySelectorAll('.counter-value')
+        .forEach((el) => counterObserver.observe(el))
     </script>
 
     <AgentChat />

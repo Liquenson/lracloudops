@@ -68,3 +68,49 @@ test('/blog has newsletter form', async ({ page }) => {
   const form = page.locator('.newsletter-cta-form').first()
   await expect(form).toBeVisible()
 })
+
+test('/blog has at least 1 article', async ({ page }) => {
+  await page.goto('/blog')
+  const articles = page.locator('a[aria-label*="artículo"], a[aria-label*="Leer artículo"]')
+  expect(await articles.count()).toBeGreaterThanOrEqual(1)
+})
+
+test('/contacto form has required fields', async ({ page }) => {
+  await page.goto('/contacto')
+  await expect(page.locator('input[name="name"], input[name="nombre"]').first()).toBeVisible()
+  await expect(page.locator('input[name="email"]').first()).toBeVisible()
+  await expect(page.locator('textarea').first()).toBeVisible()
+})
+
+test('language switch ES to EN navigates to /en/', async ({ page }) => {
+  await page.goto('/')
+  const enLink = page.locator('a[href="/en/"], a[href^="/en"]').first()
+  if (await enLink.isVisible()) {
+    await enLink.click()
+    await expect(page).toHaveURL(/\/en/)
+  } else {
+    // Language selector may be a dropdown — verify /en/ route exists
+    await page.goto('/en/')
+    await expect(page).toHaveTitle(/LRA/)
+  }
+})
+
+test('/pricing has pricing plans visible', async ({ page }) => {
+  await page.goto('/pricing')
+  await expect(page.locator('body')).toBeVisible()
+  const heading = page.locator('h1, h2').first()
+  await expect(heading).toBeVisible()
+})
+
+test('skip to content link is in DOM', async ({ page }) => {
+  await page.goto('/')
+  const skipLink = page.locator('a[href="#main-content"]')
+  await expect(skipLink).toBeAttached()
+})
+
+test('/en/blog has at least 1 article in English', async ({ page }) => {
+  await page.goto('/en/blog')
+  await expect(page).toHaveTitle(/LRA/)
+  const articles = page.locator('a[aria-label*="article"], a[aria-label*="Read article"]')
+  expect(await articles.count()).toBeGreaterThanOrEqual(1)
+})

@@ -158,59 +158,184 @@ const schema = {
   ctaSubtitle="Bring your current AWS environment. We assess reproducibility, security posture and state management — and outline a concrete path to codified infrastructure."
 >
   <!-- Platforms where we operate -->
-  <section class="py-16 border-t" style="border-color: rgba(30,111,255,0.2); background: #0A2540;" aria-label="Platforms where we operate">
+  <section
+    class="py-16 border-t"
+    style="border-color: rgba(30,111,255,0.2); background: #0A2540;"
+    aria-label="Platforms where we operate"
+  >
     <div class="max-w-5xl mx-auto px-6">
-      <p class="text-xs font-semibold uppercase tracking-widest mb-10" style="color: #64748b;">Clouds we operate</p>
+      <p
+        class="text-xs font-semibold uppercase tracking-widest mb-10"
+        style="color: #64748b;"
+      >
+        Clouds we operate
+      </p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <!-- AWS -->
-        <div class="rounded-2xl p-6" style="background: rgba(255,153,0,0.07); border: 1px solid rgba(255,153,0,0.2);">
+        <div
+          class="rounded-2xl p-6"
+          style="background: rgba(255,153,0,0.07); border: 1px solid rgba(255,153,0,0.2);"
+        >
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.25);">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #FF9900;" aria-hidden="true"><path d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"/></svg>
+            <div
+              class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0"
+              style="background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.25);"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="color: #FF9900;"
+                aria-hidden="true"
+                ><path d="M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6"
+                ></path></svg
+              >
             </div>
             <div>
-              <span class="text-sm font-bold block" style="color: rgba(255,255,255,0.95);">Amazon Web Services</span>
-              <span class="text-xs" style="color: rgba(255,153,0,0.8);">Ruben Liquenson · Lead Specialist</span>
+              <span
+                class="text-sm font-bold block"
+                style="color: rgba(255,255,255,0.95);">Amazon Web Services</span
+              >
+              <span class="text-xs" style="color: rgba(255,153,0,0.8);"
+                >Ruben Liquenson · Lead Specialist</span
+              >
             </div>
           </div>
           <div class="flex flex-wrap gap-1.5">
-            {['EKS', 'EC2', 'RDS', 'S3', 'CloudFront', 'IAM', 'CloudWatch', 'Lambda'].map((s) => (
-              <span class="text-xs px-2 py-0.5 rounded-full" style="background: rgba(255,153,0,0.12); color: rgba(255,153,0,0.9); border: 1px solid rgba(255,153,0,0.2);">{s}</span>
-            ))}
+            {
+              [
+                'EKS',
+                'EC2',
+                'RDS',
+                'S3',
+                'CloudFront',
+                'IAM',
+                'CloudWatch',
+                'Lambda',
+              ].map((s) => (
+                <span
+                  class="text-xs px-2 py-0.5 rounded-full"
+                  style="background: rgba(255,153,0,0.12); color: rgba(255,153,0,0.9); border: 1px solid rgba(255,153,0,0.2);"
+                >
+                  {s}
+                </span>
+              ))
+            }
           </div>
         </div>
         <!-- Azure -->
-        <div class="rounded-2xl p-6" style="background: rgba(0,120,212,0.07); border: 1px solid rgba(0,120,212,0.2);">
+        <div
+          class="rounded-2xl p-6"
+          style="background: rgba(0,120,212,0.07); border: 1px solid rgba(0,120,212,0.2);"
+        >
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: rgba(0,120,212,0.15); border: 1px solid rgba(0,120,212,0.3);">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #0078D4;" aria-hidden="true"><path d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
+            <div
+              class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0"
+              style="background: rgba(0,120,212,0.15); border: 1px solid rgba(0,120,212,0.3);"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="color: #0078D4;"
+                aria-hidden="true"
+                ><path
+                  d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+                ></path></svg
+              >
             </div>
             <div>
-              <span class="text-sm font-bold block" style="color: rgba(255,255,255,0.95);">Microsoft Azure</span>
-              <span class="text-xs" style="color: rgba(0,180,255,0.8);">Kelvin Osaigbovo · Azure Specialist</span>
+              <span
+                class="text-sm font-bold block"
+                style="color: rgba(255,255,255,0.95);">Microsoft Azure</span
+              >
+              <span class="text-xs" style="color: rgba(0,180,255,0.8);"
+                >Kelvin Osaigbovo · Azure Specialist</span
+              >
             </div>
           </div>
           <div class="flex flex-wrap gap-1.5">
-            {['AKS', 'Azure DevOps', 'Azure Monitor', 'Key Vault', 'Azure AD', 'App Service'].map((s) => (
-              <span class="text-xs px-2 py-0.5 rounded-full" style="background: rgba(0,120,212,0.12); color: rgba(0,180,255,0.9); border: 1px solid rgba(0,120,212,0.25);">{s}</span>
-            ))}
+            {
+              [
+                'AKS',
+                'Azure DevOps',
+                'Azure Monitor',
+                'Key Vault',
+                'Azure AD',
+                'App Service',
+              ].map((s) => (
+                <span
+                  class="text-xs px-2 py-0.5 rounded-full"
+                  style="background: rgba(0,120,212,0.12); color: rgba(0,180,255,0.9); border: 1px solid rgba(0,120,212,0.25);"
+                >
+                  {s}
+                </span>
+              ))
+            }
           </div>
         </div>
         <!-- GCP -->
-        <div class="rounded-2xl p-6" style="background: rgba(66,133,244,0.07); border: 1px solid rgba(66,133,244,0.2);">
+        <div
+          class="rounded-2xl p-6"
+          style="background: rgba(66,133,244,0.07); border: 1px solid rgba(66,133,244,0.2);"
+        >
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style="background: rgba(66,133,244,0.15); border: 1px solid rgba(66,133,244,0.3);">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #4285F4;" aria-hidden="true"><path d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a12.83 12.83 0 014.5 9 12.83 12.83 0 01-4.5 9M12 3a12.83 12.83 0 00-4.5 9 12.83 12.83 0 004.5 9"/></svg>
+            <div
+              class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0"
+              style="background: rgba(66,133,244,0.15); border: 1px solid rgba(66,133,244,0.3);"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="color: #4285F4;"
+                aria-hidden="true"
+                ><path
+                  d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a12.83 12.83 0 014.5 9 12.83 12.83 0 01-4.5 9M12 3a12.83 12.83 0 00-4.5 9 12.83 12.83 0 004.5 9"
+                ></path></svg
+              >
             </div>
             <div>
-              <span class="text-sm font-bold block" style="color: rgba(255,255,255,0.95);">Google Cloud Platform</span>
-              <span class="text-xs" style="color: rgba(66,133,244,0.9);">LRA Team</span>
+              <span
+                class="text-sm font-bold block"
+                style="color: rgba(255,255,255,0.95);"
+                >Google Cloud Platform</span
+              >
+              <span class="text-xs" style="color: rgba(66,133,244,0.9);"
+                >LRA Team</span
+              >
             </div>
           </div>
           <div class="flex flex-wrap gap-1.5">
-            {['GKE', 'Cloud Run', 'Cloud Build', 'BigQuery', 'Cloud Storage', 'IAM'].map((s) => (
-              <span class="text-xs px-2 py-0.5 rounded-full" style="background: rgba(66,133,244,0.12); color: rgba(100,165,255,0.9); border: 1px solid rgba(66,133,244,0.25);">{s}</span>
-            ))}
+            {
+              [
+                'GKE',
+                'Cloud Run',
+                'Cloud Build',
+                'BigQuery',
+                'Cloud Storage',
+                'IAM',
+              ].map((s) => (
+                <span
+                  class="text-xs px-2 py-0.5 rounded-full"
+                  style="background: rgba(66,133,244,0.12); color: rgba(100,165,255,0.9); border: 1px solid rgba(66,133,244,0.25);"
+                >
+                  {s}
+                </span>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -222,12 +347,25 @@ const schema = {
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-12">
         <span class="section-label">Real Implementation</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">aws-terraform-devops</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">Production AWS infrastructure with modular Terraform — deployed and running.</p>
+        <h2
+          class="text-3xl sm:text-4xl font-bold mt-5 mb-4"
+          style="color: #0F172A; letter-spacing: -0.025em;"
+        >
+          aws-terraform-devops
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          Production AWS infrastructure with modular Terraform — deployed and
+          running.
+        </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
-          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">Infrastructure Stack</h3>
+        <div
+          class="bg-white rounded-2xl p-7"
+          style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);"
+        >
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">
+            Infrastructure Stack
+          </h3>
           <ul class="space-y-2 text-sm" style="color: #64748B;">
             <li>• VPC with public + private subnets, IGW, NAT Gateway</li>
             <li>• EKS cluster — managed node groups, IRSA</li>
@@ -236,8 +374,13 @@ const schema = {
             <li>• IAM OIDC — zero static credentials</li>
           </ul>
         </div>
-        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
-          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">Terraform Modules</h3>
+        <div
+          class="bg-white rounded-2xl p-7"
+          style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);"
+        >
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">
+            Terraform Modules
+          </h3>
           <ul class="space-y-2 text-sm" style="color: #64748B;">
             <li>• <code>modules/vpc</code> — networking layer</li>
             <li>• <code>modules/eks</code> — cluster + node groups</li>
@@ -248,10 +391,20 @@ const schema = {
         </div>
       </div>
       <div class="flex flex-wrap justify-center gap-3 mt-8">
-        <a href="/projects/aws-terraform-devops" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all" style="background: #EEF4FF; color: #1E6FFF;">
+        <a
+          href="/projects/aws-terraform-devops"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all"
+          style="background: #EEF4FF; color: #1E6FFF;"
+        >
           Read case study →
         </a>
-        <a href="https://github.com/lra-cloud-ops/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all" style="background: #F1F5F9; color: #0A2540;">
+        <a
+          href="https://github.com/lra-cloud-ops/aws-terraform-devops"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all"
+          style="background: #F1F5F9; color: #0A2540;"
+        >
           View on GitHub →
         </a>
       </div>

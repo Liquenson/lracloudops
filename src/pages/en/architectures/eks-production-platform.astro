@@ -76,12 +76,19 @@ import ArchitectureDiagram from '../../../components/ArchitectureDiagram.astro'
               deployments — no kubectl apply in CI/CD.
             </p>
             <p class="text-base leading-relaxed mb-4" style="color: #64748b;">
-              <strong style="color: #0A2540;">Live implementations:</strong>{' '}
-              <a href="/projects/aws-terraform-devops" style="color: #1E6FFF;">aws-terraform-devops</a> deploys
-              Flask on EKS with RDS PostgreSQL 15 Multi-AZ, dual GitHub Actions and Jenkins pipelines, and
-              S3+DynamoDB remote state. <a href="/projects/gitops-stack" style="color: #1E6FFF;">gitops-stack</a>{' '}
-              runs a full Build→Test→Deploy pipeline with Jenkins CI, Ansible node configuration and
-              CloudWatch + CloudTrail observability — zero SSH keys, zero static credentials.
+              <strong style="color: #0A2540;">Live implementations:</strong>{
+                ' '
+              }
+              <a href="/projects/aws-terraform-devops" style="color: #1E6FFF;"
+                >aws-terraform-devops</a
+              > deploys Flask on EKS with RDS PostgreSQL 15 Multi-AZ, dual GitHub
+              Actions and Jenkins pipelines, and S3+DynamoDB remote state. <a
+                href="/projects/gitops-stack"
+                style="color: #1E6FFF;">gitops-stack</a
+              >{' '}
+              runs a full Build→Test→Deploy pipeline with Jenkins CI, Ansible node
+              configuration and CloudWatch + CloudTrail observability — zero SSH keys,
+              zero static credentials.
             </p>
             <p class="text-base leading-relaxed" style="color: #64748b;">
               External Secrets Operator synchronizes secrets from AWS Secrets

@@ -60,12 +60,16 @@ const faqSchema = {
     <div
       class="absolute inset-0 pointer-events-none opacity-40"
       style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
-    ></div>
+    >
+    </div>
     <div
       class="absolute inset-0 pointer-events-none"
       style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
-    ></div>
-    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
       <span
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
@@ -78,9 +82,12 @@ const faqSchema = {
       >
         Precios transparentes.<br />Sin sorpresas.
       </h1>
-      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color: rgba(147,184,255,0.8);">
-        Entregables claros desde el primer día. Sin costes ocultos, sin alcances ambiguos.
-        Evaluación técnica inicial sin cargo en todas las modalidades.
+      <p
+        class="text-lg leading-relaxed max-w-2xl mx-auto"
+        style="color: rgba(147,184,255,0.8);"
+      >
+        Entregables claros desde el primer día. Sin costes ocultos, sin alcances
+        ambiguos. Evaluación técnica inicial sin cargo en todas las modalidades.
       </p>
     </div>
   </section>
@@ -95,54 +102,102 @@ const faqSchema = {
         >
           Planes
         </span>
-        <h2 id="precios-heading" class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">
+        <h2
+          id="precios-heading"
+          class="text-3xl sm:text-4xl font-bold mb-4"
+          style="color: #0A2540;"
+        >
           Elige tu plan
         </h2>
         <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
-          Cada proyecto comienza con una evaluación técnica. Definimos el alcance antes de cualquier compromiso económico.
+          Cada proyecto comienza con una evaluación técnica. Definimos el
+          alcance antes de cualquier compromiso económico.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-
         <!-- Plan 1: Starter -->
         <div
           class="rounded-2xl p-8 flex flex-col"
           style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
         >
           <div class="mb-6">
-            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: #EEF4FF;">
-              <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
+              style="background: #EEF4FF;"
+            >
+              <svg
+                class="w-5 h-5"
+                style="color: #1E6FFF;"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                ></path>
               </svg>
             </div>
-            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #94a3b8;">Para PYMEs y startups</div>
-            <h3 class="text-2xl font-bold mb-2" style="color: #0A2540;">Starter</h3>
-            <div class="text-3xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.03em;">
+            <div
+              class="text-xs font-bold uppercase tracking-widest mb-2"
+              style="color: #94a3b8;"
+            >
+              Para PYMEs y startups
+            </div>
+            <h3 class="text-2xl font-bold mb-2" style="color: #0A2540;">
+              Starter
+            </h3>
+            <div
+              class="text-3xl font-extrabold mb-1"
+              style="color: #0A2540; letter-spacing: -0.03em;"
+            >
               desde <span style="color: #1E6FFF;">€1.500</span>
             </div>
-            <p class="text-sm" style="color: #64748b;">Por proyecto · Entrega en 5 días hábiles</p>
+            <p class="text-sm" style="color: #64748b;">
+              Por proyecto · Entrega en 5 días hábiles
+            </p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-            Ideal para equipos que quieren entender su infraestructura actual y recibir un plan de acción experto antes de invertir en implementación.
+            Ideal para equipos que quieren entender su infraestructura actual y
+            recibir un plan de acción experto antes de invertir en
+            implementación.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {[
-              'Auditoría de infraestructura actual',
-              'Informe de recomendaciones',
-              'Sesión de consultoría de 2 horas',
-              'Hoja de ruta priorizada',
-              'Entrega en 5 días hábiles',
-            ].map((item) => (
-              <li class="flex items-center gap-2.5 text-sm" style="color: #334155;">
-                <svg class="w-4 h-4 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {item}
-              </li>
-            ))}
+            {
+              [
+                'Auditoría de infraestructura actual',
+                'Informe de recomendaciones',
+                'Sesión de consultoría de 2 horas',
+                'Hoja de ruta priorizada',
+                'Entrega en 5 días hábiles',
+              ].map((item) => (
+                <li
+                  class="flex items-center gap-2.5 text-sm"
+                  style="color: #334155;"
+                >
+                  <svg
+                    class="w-4 h-4 flex-shrink-0"
+                    style="color: #1E6FFF;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {item}
+                </li>
+              ))
+            }
           </ul>
 
           <a
@@ -169,38 +224,83 @@ const faqSchema = {
           </div>
 
           <div class="mb-6">
-            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: rgba(30,111,255,0.2);">
-              <svg class="w-5 h-5" style="color: #93b8ff;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
+              style="background: rgba(30,111,255,0.2);"
+            >
+              <svg
+                class="w-5 h-5"
+                style="color: #93b8ff;"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
+                ></path>
               </svg>
             </div>
-            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: rgba(147,184,255,0.5);">Para empresas en crecimiento</div>
+            <div
+              class="text-xs font-bold uppercase tracking-widest mb-2"
+              style="color: rgba(147,184,255,0.5);"
+            >
+              Para empresas en crecimiento
+            </div>
             <h3 class="text-2xl font-bold mb-2 text-white">Professional</h3>
-            <div class="text-3xl font-extrabold mb-1 text-white" style="letter-spacing: -0.03em;">
+            <div
+              class="text-3xl font-extrabold mb-1 text-white"
+              style="letter-spacing: -0.03em;"
+            >
               desde <span style="color: #93b8ff;">€3.500</span>
             </div>
-            <p class="text-sm" style="color: rgba(147,184,255,0.6);">Por mes · Implementación + soporte</p>
+            <p class="text-sm" style="color: rgba(147,184,255,0.6);">
+              Por mes · Implementación + soporte
+            </p>
           </div>
 
-          <p class="text-sm leading-relaxed mb-6" style="color: rgba(147,184,255,0.8);">
-            Implementación completa de infraestructura cloud con soporte continuado. Ideal para empresas que escalan y necesitan una plataforma sólida desde el día uno.
+          <p
+            class="text-sm leading-relaxed mb-6"
+            style="color: rgba(147,184,255,0.8);"
+          >
+            Implementación completa de infraestructura cloud con soporte
+            continuado. Ideal para empresas que escalan y necesitan una
+            plataforma sólida desde el día uno.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {[
-              'Todo lo incluido en Starter',
-              'Implementación completa (IaC, CI/CD, K8s)',
-              'Observabilidad configurada (Prometheus + Grafana)',
-              'Soporte 30 días post-entrega incluido',
-              'Documentación técnica completa',
-            ].map((item) => (
-              <li class="flex items-center gap-2.5 text-sm" style="color: rgba(147,184,255,0.9);">
-                <svg class="w-4 h-4 flex-shrink-0" style="color: #93b8ff;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {item}
-              </li>
-            ))}
+            {
+              [
+                'Todo lo incluido en Starter',
+                'Implementación completa (IaC, CI/CD, K8s)',
+                'Observabilidad configurada (Prometheus + Grafana)',
+                'Soporte 30 días post-entrega incluido',
+                'Documentación técnica completa',
+              ].map((item) => (
+                <li
+                  class="flex items-center gap-2.5 text-sm"
+                  style="color: rgba(147,184,255,0.9);"
+                >
+                  <svg
+                    class="w-4 h-4 flex-shrink-0"
+                    style="color: #93b8ff;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {item}
+                </li>
+              ))
+            }
           </ul>
 
           <a
@@ -218,39 +318,83 @@ const faqSchema = {
           style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 16px rgba(10,37,64,0.06);"
         >
           <div class="mb-6">
-            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-5" style="background: #EEF4FF;">
-              <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-xl mb-5"
+              style="background: #EEF4FF;"
+            >
+              <svg
+                class="w-5 h-5"
+                style="color: #1E6FFF;"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
               </svg>
             </div>
-            <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #94a3b8;">Healthcare · Fintech · Enterprise</div>
-            <h3 class="text-2xl font-bold mb-2" style="color: #0A2540;">Enterprise</h3>
-            <div class="text-3xl font-extrabold mb-1" style="color: #0A2540; letter-spacing: -0.03em;">
+            <div
+              class="text-xs font-bold uppercase tracking-widest mb-2"
+              style="color: #94a3b8;"
+            >
+              Healthcare · Fintech · Enterprise
+            </div>
+            <h3 class="text-2xl font-bold mb-2" style="color: #0A2540;">
+              Enterprise
+            </h3>
+            <div
+              class="text-3xl font-extrabold mb-1"
+              style="color: #0A2540; letter-spacing: -0.03em;"
+            >
               <span style="color: #1E6FFF;">A medida</span>
             </div>
-            <p class="text-sm" style="color: #64748b;">Presupuesto personalizado · NDA disponible</p>
+            <p class="text-sm" style="color: #64748b;">
+              Presupuesto personalizado · NDA disponible
+            </p>
           </div>
 
           <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">
-            Para organizaciones con requisitos de compliance, SLAs garantizados y equipos de ingeniería que necesitan soporte on-call y revisiones de seguridad continuas.
+            Para organizaciones con requisitos de compliance, SLAs garantizados
+            y equipos de ingeniería que necesitan soporte on-call y revisiones
+            de seguridad continuas.
           </p>
 
           <ul class="space-y-3 mb-8 flex-1">
-            {[
-              'Todo lo incluido en Professional',
-              'SLA garantizado por contrato',
-              'On-call support',
-              'Revisiones de seguridad y compliance',
-              'NDA disponible',
-              'Reuniones semanales de seguimiento',
-            ].map((item) => (
-              <li class="flex items-center gap-2.5 text-sm" style="color: #334155;">
-                <svg class="w-4 h-4 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {item}
-              </li>
-            ))}
+            {
+              [
+                'Todo lo incluido en Professional',
+                'SLA garantizado por contrato',
+                'On-call support',
+                'Revisiones de seguridad y compliance',
+                'NDA disponible',
+                'Reuniones semanales de seguimiento',
+              ].map((item) => (
+                <li
+                  class="flex items-center gap-2.5 text-sm"
+                  style="color: #334155;"
+                >
+                  <svg
+                    class="w-4 h-4 flex-shrink-0"
+                    style="color: #1E6FFF;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {item}
+                </li>
+              ))
+            }
           </ul>
 
           <a
@@ -268,17 +412,30 @@ const faqSchema = {
         class="mt-10 rounded-2xl px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
         style="background: #F8FAFC; border: 1px solid #e2e8f0;"
       >
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm" style="color: #64748b;">
+        <div
+          class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm"
+          style="color: #64748b;"
+        >
           <span class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full" style="background: #1E6FFF;" aria-hidden="true"></span>
-            <strong style="color: #0A2540;">Evaluación inicial:</strong> siempre sin cargo
+            <span
+              class="w-2 h-2 rounded-full"
+              style="background: #1E6FFF;"
+              aria-hidden="true"></span>
+            <strong style="color: #0A2540;">Evaluación inicial:</strong> siempre sin
+            cargo
           </span>
           <span class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full" style="background: #1E6FFF;" aria-hidden="true"></span>
+            <span
+              class="w-2 h-2 rounded-full"
+              style="background: #1E6FFF;"
+              aria-hidden="true"></span>
             Alcances personalizados disponibles
           </span>
           <span class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full" style="background: #10B981;" aria-hidden="true"></span>
+            <span
+              class="w-2 h-2 rounded-full"
+              style="background: #10B981;"
+              aria-hidden="true"></span>
             Respuesta en 24 horas
           </span>
         </div>
@@ -294,42 +451,61 @@ const faqSchema = {
   </section>
 
   <!-- FAQ -->
-  <section class="py-20 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="faq-heading">
+  <section
+    class="py-20 border-t border-gray-100"
+    style="background: #F8FAFC;"
+    aria-labelledby="faq-heading"
+  >
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 id="faq-heading" class="text-3xl font-bold mb-4" style="color: #0A2540;">
+        <h2
+          id="faq-heading"
+          class="text-3xl font-bold mb-4"
+          style="color: #0A2540;"
+        >
           Preguntas frecuentes
         </h2>
-        <p class="text-base" style="color: #64748b;">Lo que nos preguntan antes de empezar.</p>
+        <p class="text-base" style="color: #64748b;">
+          Lo que nos preguntan antes de empezar.
+        </p>
       </div>
       <div class="space-y-4">
-        {[
-          {
-            q: '¿Qué incluye la evaluación técnica inicial?',
-            a: 'Una revisión de tu arquitectura actual, procesos de entrega y configuración de observabilidad. Identificamos brechas y planteamos un enfoque concreto — sin cargo y antes de ningún compromiso económico.',
-          },
-          {
-            q: '¿Podemos empezar con Starter y escalar a Professional?',
-            a: 'Sí. El Starter es un punto de entrada natural. Tras la auditoría, si decides continuar con la implementación, el coste del Starter se descuenta del plan Professional. No pagas dos veces lo mismo.',
-          },
-          {
-            q: '¿Cuánto tarda una implementación completa?',
-            a: 'La mayoría de implementaciones Professional entregan un entorno listo para producción en 4–6 semanas. Entornos regulados (Healthcare, Fintech) o multi-cuenta pueden requerir 8–12 semanas según el alcance.',
-          },
-          {
-            q: '¿Cómo gestionáis nuestras credenciales AWS?',
-            a: 'Política estricta: cero claves estáticas. Toda la automatización usa federación OIDC con tokens temporales acotados al mínimo de permisos requeridos. Vuestras credenciales nunca salen de vuestra cuenta.',
-          },
-          {
-            q: '¿Podéis firmar un NDA antes de la llamada inicial?',
-            a: 'Sí, siempre. Firmamos NDAs antes de cualquier discusión técnica. Contactadnos y os enviamos nuestro NDA estándar en menos de 24 horas.',
-          },
-        ].map(({ q, a }) => (
-          <div class="bg-white rounded-2xl p-6" style="border: 1px solid #e2e8f0;">
-            <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">{q}</h3>
-            <p class="text-sm leading-relaxed" style="color: #64748b;">{a}</p>
-          </div>
-        ))}
+        {
+          [
+            {
+              q: '¿Qué incluye la evaluación técnica inicial?',
+              a: 'Una revisión de tu arquitectura actual, procesos de entrega y configuración de observabilidad. Identificamos brechas y planteamos un enfoque concreto — sin cargo y antes de ningún compromiso económico.',
+            },
+            {
+              q: '¿Podemos empezar con Starter y escalar a Professional?',
+              a: 'Sí. El Starter es un punto de entrada natural. Tras la auditoría, si decides continuar con la implementación, el coste del Starter se descuenta del plan Professional. No pagas dos veces lo mismo.',
+            },
+            {
+              q: '¿Cuánto tarda una implementación completa?',
+              a: 'La mayoría de implementaciones Professional entregan un entorno listo para producción en 4–6 semanas. Entornos regulados (Healthcare, Fintech) o multi-cuenta pueden requerir 8–12 semanas según el alcance.',
+            },
+            {
+              q: '¿Cómo gestionáis nuestras credenciales AWS?',
+              a: 'Política estricta: cero claves estáticas. Toda la automatización usa federación OIDC con tokens temporales acotados al mínimo de permisos requeridos. Vuestras credenciales nunca salen de vuestra cuenta.',
+            },
+            {
+              q: '¿Podéis firmar un NDA antes de la llamada inicial?',
+              a: 'Sí, siempre. Firmamos NDAs antes de cualquier discusión técnica. Contactadnos y os enviamos nuestro NDA estándar en menos de 24 horas.',
+            },
+          ].map(({ q, a }) => (
+            <div
+              class="bg-white rounded-2xl p-6"
+              style="border: 1px solid #e2e8f0;"
+            >
+              <h3 class="text-sm font-bold mb-2" style="color: #0A2540;">
+                {q}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: #64748b;">
+                {a}
+              </p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -343,7 +519,8 @@ const faqSchema = {
     <div
       class="absolute inset-0 pointer-events-none"
       style="background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 28px 28px;"
-    ></div>
+    >
+    </div>
     <div class="relative max-w-4xl mx-auto px-6 py-20 text-center">
       <h2
         id="precios-cta-heading"
@@ -352,9 +529,12 @@ const faqSchema = {
       >
         ¿Listo para empezar?
       </h2>
-      <p class="text-lg mb-8 max-w-xl mx-auto" style="color: rgba(255,255,255,0.8);">
-        Cuéntanos tu proyecto y definiremos la modalidad más adecuada.
-        Sin proceso de ventas, sin presentaciones — solo una conversación técnica.
+      <p
+        class="text-lg mb-8 max-w-xl mx-auto"
+        style="color: rgba(255,255,255,0.8);"
+      >
+        Cuéntanos tu proyecto y definiremos la modalidad más adecuada. Sin
+        proceso de ventas, sin presentaciones — solo una conversación técnica.
       </p>
       <a
         href="/contacto"
@@ -362,8 +542,18 @@ const faqSchema = {
         style="background: white; color: #1D4ED8;"
       >
         Iniciar conversación
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
         </svg>
       </a>
     </div>

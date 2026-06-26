@@ -1,46 +1,95 @@
 ---
-interface Props { lang: 'es' | 'en' }
+interface Props {
+  lang: 'es' | 'en'
+}
 const { lang } = Astro.props
 
-const metrics = lang === 'es' ? [
-  { value: '4+', label: 'Años en Producción', sub: 'Entornos reales' },
-  { value: '3', label: 'Clouds Soportados', sub: 'AWS · Azure · GCP' },
-  { value: '4+', label: 'Proyectos Open Source', sub: 'github.com/lra-cloud-ops' },
-  { value: '100%', label: 'Infraestructura como código', sub: 'Cero cambios manuales' },
-  { value: '0', label: 'Deploys manuales', sub: 'GitOps con ArgoCD' },
-  { value: '45min', label: 'Tiempo de despliegue', sub: 'Antes: 3 semanas' },
-] : [
-  { value: '4+', label: 'Years in Production', sub: 'Real environments' },
-  { value: '3', label: 'Clouds Supported', sub: 'AWS · Azure · GCP' },
-  { value: '4+', label: 'Open Source Projects', sub: 'github.com/lra-cloud-ops' },
-  { value: '100%', label: 'Infrastructure as Code', sub: 'Zero manual changes' },
-  { value: '0', label: 'Manual deploys', sub: 'GitOps with ArgoCD' },
-  { value: '45min', label: 'Deploy time', sub: 'Before: 3 weeks' },
-]
+const metrics =
+  lang === 'es'
+    ? [
+        { value: '4+', label: 'Años en Producción', sub: 'Entornos reales' },
+        { value: '3', label: 'Clouds Soportados', sub: 'AWS · Azure · GCP' },
+        {
+          value: '4+',
+          label: 'Proyectos Open Source',
+          sub: 'github.com/lra-cloud-ops',
+        },
+        {
+          value: '100%',
+          label: 'Infraestructura como código',
+          sub: 'Cero cambios manuales',
+        },
+        { value: '0', label: 'Deploys manuales', sub: 'GitOps con ArgoCD' },
+        {
+          value: '45min',
+          label: 'Tiempo de despliegue',
+          sub: 'Antes: 3 semanas',
+        },
+      ]
+    : [
+        { value: '4+', label: 'Years in Production', sub: 'Real environments' },
+        { value: '3', label: 'Clouds Supported', sub: 'AWS · Azure · GCP' },
+        {
+          value: '4+',
+          label: 'Open Source Projects',
+          sub: 'github.com/lra-cloud-ops',
+        },
+        {
+          value: '100%',
+          label: 'Infrastructure as Code',
+          sub: 'Zero manual changes',
+        },
+        { value: '0', label: 'Manual deploys', sub: 'GitOps with ArgoCD' },
+        { value: '45min', label: 'Deploy time', sub: 'Before: 3 weeks' },
+      ]
 
 const badge = lang === 'es' ? 'Por los números' : 'By the numbers'
-const heading = lang === 'es' ? 'Fiabilidad de la plataforma a escala' : 'Platform reliability at scale'
-const subtext = lang === 'es'
-  ? 'Métricas reales de producción de la infraestructura que diseñamos, construimos y operamos.'
-  : 'Real production metrics from infrastructure we design, build and operate.'
+const heading =
+  lang === 'es'
+    ? 'Fiabilidad de la plataforma a escala'
+    : 'Platform reliability at scale'
+const subtext =
+  lang === 'es'
+    ? 'Métricas reales de producción de la infraestructura que diseñamos, construimos y operamos.'
+    : 'Real production metrics from infrastructure we design, build and operate.'
 ---
 
 <section class="bg-white" aria-labelledby="metrics-heading">
   <div class="max-w-7xl mx-auto px-6 py-20">
     <div class="text-center mb-14 animate-fade-up">
       <span class="section-label">{badge}</span>
-      <h2 id="metrics-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">{heading}</h2>
+      <h2
+        id="metrics-heading"
+        class="text-4xl sm:text-5xl font-bold mt-5 mb-4"
+        style="color: #0F172A; letter-spacing: -0.025em;"
+      >
+        {heading}
+      </h2>
       <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">{subtext}</p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up" style="background: #E5E7EB;">
-      {metrics.map(({ value, label, sub }) => (
-        <div class="flex flex-col items-center justify-center text-center px-6 py-12 bg-white hover:bg-blue-50 transition-colors cursor-default">
-          <div class="text-3xl sm:text-4xl font-black mb-2 leading-none" style="color: #1E6FFF; letter-spacing: -0.04em;">{value}</div>
-          <div class="text-sm font-bold mb-1" style="color: #0A2540;">{label}</div>
-          <div class="text-xs" style="color: #94A3B8;">{sub}</div>
-        </div>
-      ))}
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up"
+      style="background: #E5E7EB;"
+    >
+      {
+        metrics.map(({ value, label, sub }) => (
+          <div class="flex flex-col items-center justify-center text-center px-6 py-12 bg-white hover:bg-blue-50 transition-colors cursor-default">
+            <div
+              class="text-3xl sm:text-4xl font-black mb-2 leading-none"
+              style="color: #1E6FFF; letter-spacing: -0.04em;"
+            >
+              {value}
+            </div>
+            <div class="text-sm font-bold mb-1" style="color: #0A2540;">
+              {label}
+            </div>
+            <div class="text-xs" style="color: #94A3B8;">
+              {sub}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

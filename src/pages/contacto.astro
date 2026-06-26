@@ -45,11 +45,32 @@ import Layout from '../layouts/Layout.astro'
             Respondemos en menos de 24 horas · Evaluación inicial sin cargo.
           </p>
 
-          <form id="es-contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-            <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
-            <input type="hidden" name="subject" value="Nuevo contacto — LRA Cloud Ops" />
-            <input type="hidden" name="from_name" value="LRA Cloud Operations" />
-            <input type="hidden" name="redirect" value="https://lracloudops.com/gracias" />
+          <form
+            id="es-contact-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="space-y-5"
+          >
+            <input
+              type="hidden"
+              name="access_key"
+              value="e8aaab4e-270c-4163-bb76-6a8dfc247485"
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="Nuevo contacto — LRA Cloud Ops"
+            />
+            <input
+              type="hidden"
+              name="from_name"
+              value="LRA Cloud Operations"
+            />
+            <input
+              type="hidden"
+              name="redirect"
+              value="https://lracloudops.com/gracias"
+            />
 
             <div>
               <label
@@ -88,7 +109,10 @@ import Layout from '../layouts/Layout.astro'
             <div>
               <label
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
-                style="color: #94a3b8;">Empresa <span style="color: #cbd5e1; font-weight:400;">(opcional)</span></label
+                style="color: #94a3b8;"
+                >Empresa <span style="color: #cbd5e1; font-weight:400;"
+                  >(opcional)</span
+                ></label
               >
               <input
                 type="text"
@@ -120,9 +144,21 @@ import Layout from '../layouts/Layout.astro'
                   <option value="51-200">51 – 200 personas</option>
                   <option value="200+">Más de 200 personas</option>
                 </select>
-                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <div
+                  class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    style="color: #64748b;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </div>
               </div>
@@ -142,18 +178,34 @@ import Layout from '../layouts/Layout.astro'
                   onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';"
                 >
                   <option value="">Selecciona un servicio</option>
-                  <option value="Infraestructura Cloud">Infraestructura Cloud</option>
+                  <option value="Infraestructura Cloud"
+                    >Infraestructura Cloud</option
+                  >
                   <option value="Kubernetes">Kubernetes</option>
                   <option value="CI/CD">CI/CD</option>
                   <option value="GitOps">GitOps</option>
                   <option value="Observabilidad">Observabilidad</option>
                   <option value="Terraform IaC">Terraform IaC</option>
-                  <option value="Platform Engineering">Platform Engineering</option>
+                  <option value="Platform Engineering"
+                    >Platform Engineering</option
+                  >
                   <option value="Otro">Otro</option>
                 </select>
-                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <div
+                  class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    style="color: #64748b;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </div>
               </div>
@@ -318,8 +370,16 @@ import Layout from '../layouts/Layout.astro'
                 class="mt-0.5 w-4 h-4 rounded flex-shrink-0"
                 style="accent-color: #1E6FFF; cursor: pointer;"
               />
-              <label for="es-gdpr" class="text-xs leading-relaxed" style="color: #64748b; cursor: pointer;">
-                Acepto la <a href="/privacy" class="underline" style="color: #1E6FFF;">política de privacidad</a> y consiento el tratamiento de mis datos para gestionar mi consulta.
+              <label
+                for="es-gdpr"
+                class="text-xs leading-relaxed"
+                style="color: #64748b; cursor: pointer;"
+              >
+                Acepto la <a
+                  href="/privacy"
+                  class="underline"
+                  style="color: #1E6FFF;">política de privacidad</a
+                > y consiento el tratamiento de mis datos para gestionar mi consulta.
               </label>
             </div>
 

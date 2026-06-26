@@ -45,11 +45,32 @@ import Layout from '../../layouts/Layout.astro'
             We respond within 24 hours · Initial assessment at no charge.
           </p>
 
-          <form id="en-contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-            <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
-            <input type="hidden" name="subject" value="New contact — LRA Cloud Ops" />
-            <input type="hidden" name="from_name" value="LRA Cloud Operations" />
-            <input type="hidden" name="redirect" value="https://lracloudops.com/en/thank-you" />
+          <form
+            id="en-contact-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="space-y-5"
+          >
+            <input
+              type="hidden"
+              name="access_key"
+              value="e8aaab4e-270c-4163-bb76-6a8dfc247485"
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="New contact — LRA Cloud Ops"
+            />
+            <input
+              type="hidden"
+              name="from_name"
+              value="LRA Cloud Operations"
+            />
+            <input
+              type="hidden"
+              name="redirect"
+              value="https://lracloudops.com/en/thank-you"
+            />
 
             <div>
               <label
@@ -88,7 +109,10 @@ import Layout from '../../layouts/Layout.astro'
             <div>
               <label
                 class="block text-xs font-semibold uppercase tracking-wider mb-2"
-                style="color: #94a3b8;">Company <span style="color: #cbd5e1; font-weight:400;">(optional)</span></label
+                style="color: #94a3b8;"
+                >Company <span style="color: #cbd5e1; font-weight:400;"
+                  >(optional)</span
+                ></label
               >
               <input
                 type="text"
@@ -120,9 +144,21 @@ import Layout from '../../layouts/Layout.astro'
                   <option value="51-200">51 – 200 people</option>
                   <option value="200+">More than 200 people</option>
                 </select>
-                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <div
+                  class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    style="color: #64748b;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </div>
               </div>
@@ -142,18 +178,34 @@ import Layout from '../../layouts/Layout.astro'
                   onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';"
                 >
                   <option value="">Select a service</option>
-                  <option value="Cloud Infrastructure">Cloud Infrastructure</option>
+                  <option value="Cloud Infrastructure"
+                    >Cloud Infrastructure</option
+                  >
                   <option value="Kubernetes">Kubernetes</option>
                   <option value="CI/CD">CI/CD</option>
                   <option value="GitOps">GitOps</option>
                   <option value="Observability">Observability</option>
                   <option value="Terraform IaC">Terraform IaC</option>
-                  <option value="Platform Engineering">Platform Engineering</option>
+                  <option value="Platform Engineering"
+                    >Platform Engineering</option
+                  >
                   <option value="Other">Other</option>
                 </select>
-                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                  <svg class="w-4 h-4" style="color: #64748b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <div
+                  class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    style="color: #64748b;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </div>
               </div>
@@ -216,7 +268,9 @@ import Layout from '../../layouts/Layout.astro'
                   <option value="This week">This week</option>
                   <option value="This month">This month</option>
                   <option value="Next quarter">Next quarter</option>
-                  <option value="No specific deadline">No specific deadline</option>
+                  <option value="No specific deadline"
+                    >No specific deadline</option
+                  >
                 </select>
                 <div
                   class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
@@ -252,14 +306,20 @@ import Layout from '../../layouts/Layout.astro'
                   onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';"
                 >
                   <option value="">Select an option</option>
-                  <option value="Cloud Infrastructure">Cloud Infrastructure</option>
-                  <option value="Platform Engineering">Platform Engineering</option>
+                  <option value="Cloud Infrastructure"
+                    >Cloud Infrastructure</option
+                  >
+                  <option value="Platform Engineering"
+                    >Platform Engineering</option
+                  >
                   <option value="DevOps Automation">DevOps Automation</option>
                   <option value="CI/CD Pipeline">CI/CD Pipeline</option>
                   <option value="Kubernetes / EKS">Kubernetes / EKS</option>
                   <option value="Terraform IaC">Terraform IaC</option>
                   <option value="Observability">Observability</option>
-                  <option value="Infrastructure Review">Infrastructure Review</option>
+                  <option value="Infrastructure Review"
+                    >Infrastructure Review</option
+                  >
                   <option value="Other">Other</option>
                 </select>
                 <div
@@ -308,8 +368,16 @@ import Layout from '../../layouts/Layout.astro'
                 class="mt-0.5 w-4 h-4 rounded flex-shrink-0"
                 style="accent-color: #1E6FFF; cursor: pointer;"
               />
-              <label for="en-gdpr" class="text-xs leading-relaxed" style="color: #64748b; cursor: pointer;">
-                I accept the <a href="/en/privacy" class="underline" style="color: #1E6FFF;">privacy policy</a> and consent to the processing of my data to handle my enquiry.
+              <label
+                for="en-gdpr"
+                class="text-xs leading-relaxed"
+                style="color: #64748b; cursor: pointer;"
+              >
+                I accept the <a
+                  href="/en/privacy"
+                  class="underline"
+                  style="color: #1E6FFF;">privacy policy</a
+                > and consent to the processing of my data to handle my enquiry.
               </label>
             </div>
 
@@ -530,8 +598,8 @@ import Layout from '../../layouts/Layout.astro'
                 Response within 24 hours
               </p>
               <p class="text-xs" style="color: #64748b;">
-                Every inquiry receives an initial assessment at no charge.
-                We will outline a concrete approach before any commitment is made.
+                Every inquiry receives an initial assessment at no charge. We
+                will outline a concrete approach before any commitment is made.
               </p>
             </div>
           </div>
