@@ -76,3 +76,9 @@ jobs:
             --head $BRANCH
 
           echo "PR creado para rama $BRANCH"
+
+          PR_NUMBER=$(gh pr list --head $BRANCH --json number -q '.[0].number')
+          if [ -n "$PR_NUMBER" ]; then
+            gh pr merge $PR_NUMBER --auto --squash
+            echo "Auto-merge activado en PR #$PR_NUMBER"
+          fi
