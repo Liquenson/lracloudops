@@ -25,6 +25,11 @@ const metrics =
           label: 'Tiempo de despliegue',
           sub: 'Antes: 3 semanas',
         },
+        {
+          value: '24/7',
+          label: 'DevOps Advisor IA',
+          sub: 'Powered by Claude Sonnet',
+        },
       ]
     : [
         { value: '4+', label: 'Years in Production', sub: 'Real environments' },
@@ -41,6 +46,11 @@ const metrics =
         },
         { value: '0', label: 'Manual deploys', sub: 'GitOps with ArgoCD' },
         { value: '45min', label: 'Deploy time', sub: 'Before: 3 weeks' },
+        {
+          value: '24/7',
+          label: 'DevOps Advisor AI',
+          sub: 'Powered by Claude Sonnet',
+        },
       ]
 
 const badge = lang === 'es' ? 'Por los números' : 'By the numbers'
@@ -69,7 +79,7 @@ const subtext =
     </div>
 
     <div
-      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up"
+      class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-px rounded-2xl overflow-hidden animate-fade-up"
       style="background: #E5E7EB;"
     >
       {
