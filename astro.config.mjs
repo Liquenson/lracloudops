@@ -1,6 +1,6 @@
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config'
+import tailwindcss from '@tailwindcss/vite'
+import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   site: 'https://lracloudops.com',
@@ -28,13 +28,17 @@ export default defineConfig({
         if (path === '/') {
           item.priority = 1.0
         } else if (
-          /^\/(servicios|pricing|assessment)\/?$/.test(path) ||
-          /^\/en\/(services|pricing|assessment)\/?$/.test(path)
+          /^\/(servicios|pricing|assessment|ai-devops)\/?$/.test(path) ||
+          /^\/en\/(services|pricing|assessment|ai-devops)\/?$/.test(path)
         ) {
           item.priority = 0.9
         } else if (
-          /^\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(path) ||
-          /^\/en\/(about|contact|certifications|projects|blog|resources)\/?$/.test(path)
+          /^\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(
+            path
+          ) ||
+          /^\/en\/(about|contact|certifications|projects|blog|resources)\/?$/.test(
+            path
+          )
         ) {
           item.priority = 0.8
         } else if (
@@ -61,4 +65,4 @@ export default defineConfig({
       },
     }),
   ],
-});
+})
