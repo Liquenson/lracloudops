@@ -1,0 +1,185 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Calculadora ROI DevOps · Calcula tu ahorro con automatización"
+  descripcion="Calcula el ROI de automatizar tus despliegues con LRA Cloud Operations. Introduce tus datos y ve cuánto puedes ahorrar al mes y al año."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(147,184,255,0.18) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"></div>
+    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center">
+      <span class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);">
+        Calculadora ROI
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6" style="letter-spacing: -0.02em;">
+        ¿Cuánto cuesta <em class="not-italic" style="color: #93b8ff;">no</em> automatizar?
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-4" style="color: rgba(147,184,255,0.8);">
+        Introduce los datos de tu equipo y descubre el coste real de los despliegues manuales y el ahorro potencial con automatización DevOps.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALCULADORA -->
+  <section class="py-20" style="background: #F8FAFC;">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+        <!-- INPUTS -->
+        <div class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 8px 32px rgba(10,37,64,0.08); border-radius: 16px;">
+          <h2 class="text-xl font-bold mb-6" style="color: #0A2540;">Tu situación actual</h2>
+
+          <div class="space-y-7">
+            <!-- Deploys por mes -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-sm font-semibold" style="color: #0A2540;">Deploys por mes</label>
+                <span id="label-deploys" class="text-sm font-bold tabular-nums" style="color: #1E6FFF;">20</span>
+              </div>
+              <input id="input-deploys" type="range" min="1" max="100" value="20" class="w-full h-2 rounded-full appearance-none cursor-pointer" style="accent-color: #1E6FFF;" />
+              <div class="flex justify-between text-xs mt-1" style="color: #94a3b8;"><span>1</span><span>100</span></div>
+            </div>
+
+            <!-- Horas por deploy -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-sm font-semibold" style="color: #0A2540;">Horas por deploy</label>
+                <span id="label-hours" class="text-sm font-bold tabular-nums" style="color: #1E6FFF;">4h</span>
+              </div>
+              <input id="input-hours" type="range" min="1" max="72" value="4" class="w-full h-2 rounded-full appearance-none cursor-pointer" style="accent-color: #1E6FFF;" />
+              <div class="flex justify-between text-xs mt-1" style="color: #94a3b8;"><span>1h</span><span>72h</span></div>
+            </div>
+
+            <!-- Coste hora -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-sm font-semibold" style="color: #0A2540;">Coste hora del equipo (€)</label>
+                <span id="label-rate" class="text-sm font-bold tabular-nums" style="color: #1E6FFF;">50€/h</span>
+              </div>
+              <input id="input-rate" type="number" min="10" max="500" value="50" class="w-full px-4 py-3 rounded-xl text-sm font-semibold" style="border: 1px solid #e2e8f0; color: #0A2540; outline: none;" />
+            </div>
+
+            <!-- Ingenieros -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-sm font-semibold" style="color: #0A2540;">Ingenieros involucrados</label>
+                <span id="label-engineers" class="text-sm font-bold tabular-nums" style="color: #1E6FFF;">2</span>
+              </div>
+              <input id="input-engineers" type="range" min="1" max="10" value="2" class="w-full h-2 rounded-full appearance-none cursor-pointer" style="accent-color: #1E6FFF;" />
+              <div class="flex justify-between text-xs mt-1" style="color: #94a3b8;"><span>1</span><span>10</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULTADOS -->
+        <div class="space-y-5">
+          <!-- Tabla comparativa -->
+          <div class="bg-white rounded-2xl p-8" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 8px 32px rgba(10,37,64,0.08); border-radius: 16px;">
+            <h2 class="text-xl font-bold mb-6" style="color: #0A2540;">Ahora vs Con LRA</h2>
+            <div class="overflow-hidden rounded-xl" style="border: 1px solid #e2e8f0;">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr style="background: #F8FAFC;">
+                    <th class="px-4 py-3 text-left font-semibold" style="color: #64748b;">Métrica</th>
+                    <th class="px-4 py-3 text-right font-semibold" style="color: #DC2626;">Ahora</th>
+                    <th class="px-4 py-3 text-right font-semibold" style="color: #16a34a;">Con LRA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-top: 1px solid #f1f5f9;">
+                    <td class="px-4 py-3" style="color: #64748b;">Horas/mes en deploys</td>
+                    <td id="row-hours-now" class="px-4 py-3 text-right font-bold tabular-nums" style="color: #0A2540;">—</td>
+                    <td id="row-hours-lra" class="px-4 py-3 text-right font-bold tabular-nums" style="color: #16a34a;">—</td>
+                  </tr>
+                  <tr style="border-top: 1px solid #f1f5f9;">
+                    <td class="px-4 py-3" style="color: #64748b;">Coste mensual</td>
+                    <td id="row-cost-now" class="px-4 py-3 text-right font-bold tabular-nums" style="color: #DC2626;">—</td>
+                    <td id="row-cost-lra" class="px-4 py-3 text-right font-bold tabular-nums" style="color: #16a34a;">—</td>
+                  </tr>
+                  <tr style="border-top: 1px solid #f1f5f9; background: #F0FDF4;">
+                    <td class="px-4 py-3 font-semibold" style="color: #0A2540;">Ahorro mensual</td>
+                    <td class="px-4 py-3"></td>
+                    <td id="row-saving-month" class="px-4 py-3 text-right font-extrabold tabular-nums text-base" style="color: #16a34a;">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Cards de métricas clave -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white rounded-2xl p-6 text-center" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
+              <div id="metric-annual" class="text-3xl font-black mb-1" style="color: #16a34a; letter-spacing: -0.04em;">—</div>
+              <div class="text-xs font-semibold" style="color: #64748b;">Ahorro anual</div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);">
+              <div id="metric-roi" class="text-3xl font-black mb-1" style="color: #1E6FFF; letter-spacing: -0.04em;">—</div>
+              <div class="text-xs font-semibold" style="color: #64748b;">ROI estimado</div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="rounded-2xl p-6 text-center" style="background: linear-gradient(135deg, #0A2540 0%, #1a3a60 100%);">
+            <p class="text-sm mb-4" style="color: rgba(147,184,255,0.85);">¿Quieres estos ahorros en tu equipo? Hablemos.</p>
+            <a
+              href="/contacto"
+              class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-6 py-3 rounded-xl transition-all hover:scale-[1.02]"
+              style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
+            >
+              Solicitar consulta gratuita
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nota metodología -->
+      <p class="text-center text-xs mt-8" style="color: #94a3b8;">
+        * Estimación basada en reducción media del 85% en horas de deploy con automatización CI/CD completa. ROI calculado sobre plan Starter (€1.500). Resultados reales pueden variar.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function fmt(n: number) {
+    return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n)
+  }
+
+  function calc() {
+    const deploys = parseInt((document.getElementById('input-deploys') as HTMLInputElement).value) || 20
+    const hours = parseInt((document.getElementById('input-hours') as HTMLInputElement).value) || 4
+    const rate = parseFloat((document.getElementById('input-rate') as HTMLInputElement).value) || 50
+    const engineers = parseInt((document.getElementById('input-engineers') as HTMLInputElement).value) || 2
+
+    ;(document.getElementById('label-deploys') as HTMLElement).textContent = String(deploys)
+    ;(document.getElementById('label-hours') as HTMLElement).textContent = hours + 'h'
+    ;(document.getElementById('label-rate') as HTMLElement).textContent = rate + '€/h'
+    ;(document.getElementById('label-engineers') as HTMLElement).textContent = String(engineers)
+
+    const totalHoursNow = deploys * hours * engineers
+    const costNow = totalHoursNow * rate
+    const costLRA = costNow * 0.15
+    const hoursLRA = totalHoursNow * 0.15
+    const savingMonth = costNow - costLRA
+    const savingYear = savingMonth * 12
+    const roi = Math.round((savingYear / 1500) * 100)
+
+    ;(document.getElementById('row-hours-now') as HTMLElement).textContent = totalHoursNow + 'h'
+    ;(document.getElementById('row-hours-lra') as HTMLElement).textContent = Math.round(hoursLRA) + 'h'
+    ;(document.getElementById('row-cost-now') as HTMLElement).textContent = fmt(costNow)
+    ;(document.getElementById('row-cost-lra') as HTMLElement).textContent = fmt(costLRA)
+    ;(document.getElementById('row-saving-month') as HTMLElement).textContent = fmt(savingMonth)
+    ;(document.getElementById('metric-annual') as HTMLElement).textContent = fmt(savingYear)
+    ;(document.getElementById('metric-roi') as HTMLElement).textContent = roi + 'x'
+  }
+
+  document.getElementById('input-deploys')?.addEventListener('input', calc)
+  document.getElementById('input-hours')?.addEventListener('input', calc)
+  document.getElementById('input-rate')?.addEventListener('input', calc)
+  document.getElementById('input-engineers')?.addEventListener('input', calc)
+  calc()
+</script>

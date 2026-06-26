@@ -80,6 +80,7 @@ const currentLangInfo = languages[lang] ?? languages['en']
             { label: 'Checklist AWS', href: '/checklist' },
             { label: 'Casos de uso', href: '/proyectos' },
             { label: 'Open Source', href: '/open-source' },
+            { label: 'Calculadora ROI', href: '/roi-calculator' },
             { label: 'Seguridad', href: '/security' },
           ] : [
             { label: 'Blog', href: '/en/blog' },
@@ -89,6 +90,7 @@ const currentLangInfo = languages[lang] ?? languages['en']
             { label: 'AWS Checklist', href: '/en/checklist' },
             { label: 'Case Studies', href: '/en/projects' },
             { label: 'Open Source', href: '/en/open-source' },
+            { label: 'ROI Calculator', href: '/en/roi-calculator' },
             { label: 'Security', href: '/en/security' },
           ]).map(({ label, href }) => (
             <li><a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">{label}</a></li>
