@@ -51,9 +51,7 @@ export const onRequestOptions = async (): Promise<Response> => {
   return new Response(null, { status: 204, headers: CORS_HEADERS })
 }
 
-export const onRequestPost = async (
-  context: CloudflareContext
-): Promise<Response> => {
+export const onRequestPost = async (context: CloudflareContext): Promise<Response> => {
   const { request, env } = context
 
   const apiKey = env.ANTHROPIC_API_KEY
@@ -67,10 +65,7 @@ export const onRequestPost = async (
   let description: string
   let monthly_spend: string
   try {
-    const body = (await request.json()) as {
-      description: string
-      monthly_spend: string
-    }
+    const body = (await request.json()) as { description: string; monthly_spend: string }
     description = body.description ?? ''
     monthly_spend = body.monthly_spend ?? 'desconocido'
   } catch {
@@ -103,14 +98,8 @@ export const onRequestPost = async (
   if (!response.ok) {
     const err = await response.text()
     return new Response(
-      JSON.stringify({
-        error: `Anthropic error: ${response.status}`,
-        detail: err,
-      }),
-      {
-        status: 502,
-        headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
-      }
+      JSON.stringify({ error: `Anthropic error: ${response.status}`, detail: err }),
+      { status: 502, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS } }
     )
   }
 
@@ -120,9 +109,7 @@ export const onRequestPost = async (
   let analysis: Record<string, unknown>
   try {
     const jsonMatch = text.match(/\{[\s\S]*\}/)
-    analysis = jsonMatch
-      ? (JSON.parse(jsonMatch[0]) as Record<string, unknown>)
-      : { summary: text }
+    analysis = jsonMatch ? (JSON.parse(jsonMatch[0]) as Record<string, unknown>) : { summary: text }
   } catch {
     analysis = { summary: text }
   }
