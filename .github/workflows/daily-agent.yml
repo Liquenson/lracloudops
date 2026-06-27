@@ -28,10 +28,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify secrets
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "❌ ANTHROPIC_API_KEY not set — check GitHub Settings → Secrets → Actions"
+            exit 1
+          fi
+          echo "✅ Secrets verified (key prefix: ${ANTHROPIC_API_KEY:0:12}...)"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
       - name: Run maintenance agent
         run: node scripts/daily-agent.mjs
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.AGENT_GITHUB_TOKEN }}
 
       - name: Auto-fix Prettier
         run: npx prettier --write "src/**/*.{astro,ts,css}" || true
