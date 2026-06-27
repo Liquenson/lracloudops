@@ -1,0 +1,330 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Documentation Agent · Technical Documentation Generator · AI-Powered · Free"
+  descripcion="Generate professional README, ADR, Runbooks, SOPs, Postmortems and API documentation in seconds. Production-ready Markdown."
+>
+  <!-- HERO -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0A2540;"
+    aria-labelledby="doc-hero-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-bold tracking-widest uppercase"
+        style="background: rgba(37,99,235,0.25); border: 1px solid rgba(96,165,250,0.35); color: #93C5FD;"
+      >
+        <span
+          class="w-2 h-2 rounded-full flex-shrink-0"
+          style="background: #60A5FA; animation: pulse 2s infinite;"
+          aria-hidden="true"></span>
+        AI-Powered · README · ADR · Runbook · SOP
+      </div>
+      <h1
+        id="doc-hero-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
+        style="letter-spacing: -0.035em;"
+      >
+        Documentation Agent
+      </h1>
+      <p
+        class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
+        style="color: rgba(147,184,255,0.85);"
+      >
+        Generate professional technical documentation in seconds. README, ADR,
+        Runbooks, SOPs, Postmortems and more — Markdown ready to use.
+      </p>
+    </div>
+  </section>
+
+  <!-- FORM + RESULTS -->
+  <section class="bg-white py-16" aria-label="Documentation generation form">
+    <div class="max-w-3xl mx-auto px-6">
+      <form id="doc-form" class="space-y-6" novalidate>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label
+              for="doc-type"
+              class="block text-sm font-semibold mb-2"
+              style="color: #0F172A;">Document type</label
+            >
+            <select
+              id="doc-type"
+              class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
+              style="border-color: #E2E8F0; color: #0F172A;"
+            >
+              <option value="README" selected>README.md</option>
+              <option value="ADR">ADR (Architecture Decision Record)</option>
+              <option value="Runbook">Operational Runbook</option>
+              <option value="SOP">SOP (Standard Operating Procedure)</option>
+              <option value="Postmortem">Postmortem / RCA</option>
+              <option value="API Docs">API Documentation</option>
+            </select>
+          </div>
+          <div>
+            <label
+              for="doc-stack"
+              class="block text-sm font-semibold mb-2"
+              style="color: #0F172A;"
+            >
+              Tech stack
+              <span class="font-normal text-xs ml-1" style="color: #64748B;"
+                >(optional)</span
+              >
+            </label>
+            <input
+              id="doc-stack"
+              type="text"
+              placeholder="E.g.: Terraform, EKS, ArgoCD, Helm"
+              class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none focus:ring-2"
+              style="border-color: #E2E8F0; color: #0F172A;"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            for="doc-description"
+            class="block text-sm font-semibold mb-2"
+            style="color: #0F172A;"
+          >
+            Describe your project or process
+            <span class="font-normal text-xs ml-1" style="color: #64748B;"
+              >(required)</span
+            >
+          </label>
+          <textarea
+            id="doc-description"
+            rows="7"
+            placeholder="Example (README): JWT authentication microservice in FastAPI. Deployed on EKS with Helm. Has endpoints for login, refresh token and logout. Uses Redis for token blacklist and PostgreSQL for users. Tests run with pytest + testcontainers..."
+            class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
+            style="border-color: #E2E8F0; color: #0F172A;"></textarea>
+        </div>
+        <button
+          type="submit"
+          id="doc-submit"
+          class="w-full inline-flex items-center justify-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.01]"
+          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.4);"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            ></path>
+          </svg>
+          <span id="doc-btn-text">Generate documentation →</span>
+        </button>
+        <p id="doc-error" class="hidden text-sm text-red-600 text-center"></p>
+      </form>
+
+      <!-- Loading -->
+      <div id="doc-loading" class="hidden text-center py-16">
+        <div
+          class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
+          style="background: #EEF4FF; border: 1px solid #93C5FD;"
+        >
+          <svg
+            class="w-5 h-5 animate-spin"
+            style="color: #2563EB;"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          <span class="text-sm font-medium" style="color: #2563EB;"
+            >Generating documentation...</span
+          >
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="doc-results" class="hidden mt-10 space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-base font-bold" style="color: #0F172A;">
+            Generated document
+          </h2>
+          <div class="flex gap-2">
+            <button
+              id="doc-copy"
+              class="flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg transition-all"
+              style="background: #EEF4FF; color: #2563EB; border: 1px solid #BFDBFE;"
+            >
+              <svg
+                class="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                ></path>
+              </svg>
+              <span id="copy-label">Copy Markdown</span>
+            </button>
+            <button
+              id="doc-download"
+              class="flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg transition-all"
+              style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
+            >
+              <svg
+                class="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                ></path>
+              </svg>
+              Download .md
+            </button>
+          </div>
+        </div>
+        <pre
+          id="doc-content"
+          class="rounded-2xl p-6 overflow-auto text-xs leading-relaxed"
+          style="background: #0F172A; color: #E2E8F0; max-height: 600px; white-space: pre-wrap; font-family: 'JetBrains Mono', monospace;">
+        </pre>
+        <div class="text-center pt-4">
+          <p class="text-sm font-semibold mb-3" style="color: #0F172A;">
+            Want us to document your entire project?
+          </p>
+          <a
+            href="/en/contact"
+            class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
+            style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
+          >
+            Talk to LRA →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('doc-form') as HTMLFormElement
+  const loading = document.getElementById('doc-loading')!
+  const results = document.getElementById('doc-results')!
+  const errorEl = document.getElementById('doc-error')!
+  const btnText = document.getElementById('doc-btn-text')!
+  const submitBtn = document.getElementById('doc-submit') as HTMLButtonElement
+  const contentEl = document.getElementById('doc-content')!
+
+  let generatedDoc = ''
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    errorEl.classList.add('hidden')
+    const desc = (
+      document.getElementById('doc-description') as HTMLTextAreaElement
+    ).value
+    const type = (document.getElementById('doc-type') as HTMLSelectElement)
+      .value
+    const stack = (document.getElementById('doc-stack') as HTMLInputElement)
+      .value
+
+    if (desc.trim().length < 20) {
+      errorEl.textContent =
+        'Please describe your project in more detail (minimum 20 characters).'
+      errorEl.classList.remove('hidden')
+      return
+    }
+
+    form.classList.add('hidden')
+    loading.classList.remove('hidden')
+    submitBtn.disabled = true
+    btnText.textContent = 'Generating...'
+
+    try {
+      const res = await fetch('/api/documentation-agent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          doc_type: type,
+          project_description: desc,
+          tech_stack: stack,
+        }),
+      })
+      const json = (await res.json()) as { document?: string; error?: string }
+      if (json.error) throw new Error(json.error)
+      generatedDoc = json.document ?? ''
+      contentEl.textContent = generatedDoc
+
+      loading.classList.add('hidden')
+      results.classList.remove('hidden')
+    } catch (err) {
+      loading.classList.add('hidden')
+      form.classList.remove('hidden')
+      submitBtn.disabled = false
+      btnText.textContent = 'Generate documentation →'
+      errorEl.textContent =
+        err instanceof Error
+          ? err.message
+          : 'Error generating. Please try again.'
+      errorEl.classList.remove('hidden')
+    }
+  })
+
+  document.getElementById('doc-copy')!.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(generatedDoc)
+    const label = document.getElementById('copy-label')!
+    label.textContent = 'Copied!'
+    setTimeout(() => {
+      label.textContent = 'Copy Markdown'
+    }, 2000)
+  })
+
+  document.getElementById('doc-download')!.addEventListener('click', () => {
+    const type = (document.getElementById('doc-type') as HTMLSelectElement)
+      .value
+    const filename = type.toLowerCase().replace(/\s+/g, '-') + '.md'
+    const blob = new Blob([generatedDoc], { type: 'text/markdown' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = filename
+    a.click()
+    URL.revokeObjectURL(url)
+  })
+</script>
