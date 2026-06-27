@@ -65,7 +65,7 @@ const subtext =
 ---
 
 <section
-  style="background: var(--color-gray-50); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);"
+  style="background: #F8F9FA; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB;"
   aria-labelledby="metrics-heading"
 >
   <div class="max-w-7xl mx-auto px-6 py-16">
@@ -88,21 +88,19 @@ const subtext =
 
     <div
       class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 animate-fade-up"
-      style="border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden;"
+      style="border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; background: #FFFFFF;"
     >
       {
         metrics.map(({ value, label, sub }, idx) => (
           <div
-            class="flex flex-col items-center justify-center text-center px-5 py-10 cursor-default transition-colors hover:bg-white"
+            class="flex flex-col items-center justify-center text-center px-5 py-10 cursor-default transition-colors hover:bg-gray-50"
             style={
-              idx < metrics.length - 1
-                ? 'border-right: 1px solid var(--color-border);'
-                : ''
+              idx < metrics.length - 1 ? 'border-right: 1px solid #E5E7EB;' : ''
             }
           >
             <div
               class="font-black mb-1.5 leading-none"
-              style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--color-primary); letter-spacing: -0.04em;"
+              style="font-family:'Red Hat Display',system-ui,sans-serif; font-size: clamp(1.75rem, 3vw, 2.5rem); color: #1E6FFF; letter-spacing: -0.04em;"
             >
               {value}
             </div>
@@ -112,7 +110,7 @@ const subtext =
             >
               {label}
             </div>
-            <div class="text-xs" style="color: var(--color-text-muted);">
+            <div class="text-xs" style="color: #9CA3AF;">
               {sub}
             </div>
           </div>
