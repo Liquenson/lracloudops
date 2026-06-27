@@ -13,6 +13,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const LOG_PATH = path.join(__dirname, 'agent-log.json')
 
+// ── Secret validation — fail loud so GitHub Actions marks the run red ────────
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY?.trim()
+if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY === 'undefined') {
+  console.error('❌ ANTHROPIC_API_KEY is not set or empty')
+  console.error('Set it in GitHub Settings → Secrets → Actions → ANTHROPIC_API_KEY')
+  process.exit(1)
+}
+console.log('✅ ANTHROPIC_API_KEY present:', ANTHROPIC_API_KEY.slice(0, 12) + '...')
+
 // ── Topic rotation (deterministic by day-of-year) ──────────────────────────
 const TOPICS = [
   { en: 'Kubernetes Resource Management and HPA', es: 'Gestión de recursos en Kubernetes y HPA', tags: ['Kubernetes', 'DevOps', 'Cloud'] },
@@ -50,7 +59,7 @@ function todayISO() {
 
 // ── Anthropic API call ──────────────────────────────────────────────────────
 async function callClaude(systemPrompt, userPrompt) {
-  const apiKey = process.env.ANTHROPIC_API_KEY
+  const apiKey = ANTHROPIC_API_KEY
   if (!apiKey) throw new Error('ANTHROPIC_API_KEY not set')
 
   const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -132,12 +141,6 @@ async function main() {
   console.log(`[daily-agent] Date: ${today}`)
   console.log(`[daily-agent] Topic EN: ${topic.en}`)
   console.log(`[daily-agent] Topic ES: ${topic.es}`)
-
-  if (!process.env.ANTHROPIC_API_KEY) {
-    console.warn('[daily-agent] ⚠ ANTHROPIC_API_KEY not set — skipping generation')
-    updateLog({ date: today, status: 'skipped', reason: 'no API key', topic: topic.en })
-    process.exit(0)
-  }
 
   try {
     console.log('[daily-agent] Generating EN post...')
