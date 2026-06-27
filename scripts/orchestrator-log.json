@@ -1,5 +1,67 @@
 [
   {
+    "date": "2026-06-27T16:07:57.618Z",
+    "task": "full",
+    "checks": {
+      "build": {
+        "status": "ok",
+        "pages": 149
+      },
+      "links": {
+        "broken": 105,
+        "links": [
+          {
+            "file": "pages/terms.astro",
+            "href": "/es"
+          },
+          {
+            "file": "pages/resources.astro",
+            "href": "/architectures/aws-landing-zone"
+          },
+          {
+            "file": "pages/resources.astro",
+            "href": "/architectures/eks-production-platform"
+          },
+          {
+            "file": "pages/resources.astro",
+            "href": "/architectures/gitops-platform"
+          },
+          {
+            "file": "pages/resources.astro",
+            "href": "/architectures/observability-platform"
+          }
+        ]
+      },
+      "parity": {
+        "missingEN": [
+          "servicios.astro",
+          "proyectos.astro",
+          "nosotros.astro",
+          "metodologia.astro",
+          "gracias.astro",
+          "contacto.astro"
+        ],
+        "missingES": [
+          "thank-you.astro",
+          "services.astro",
+          "projects.astro",
+          "methodology.astro",
+          "contact.astro",
+          "assessments.astro",
+          "about.astro"
+        ]
+      },
+      "placeholders": {
+        "count": 0
+      }
+    },
+    "status": "success",
+    "autoFix": [
+      "prettier: auto-fixed",
+      "build: OK - 149 páginas"
+    ]
+  },
+  {
     "date": "2026-06-27T15:13:15.525Z",
     "task": "full",
     "checks": {
