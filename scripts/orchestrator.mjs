@@ -3,22 +3,11 @@ import path from 'path'
 import { execSync } from 'child_process'
 import { glob } from 'glob'
 
-// ── Global error handlers — ensure crashes are visible in CI ─────────────────
-process.on('uncaughtException', (e) => {
-  console.error('[orchestrator] Uncaught exception:', e.message)
-  process.exit(1)
-})
-process.on('unhandledRejection', (e) => {
-  console.error('[orchestrator] Unhandled rejection:', e)
-  process.exit(1)
-})
-
 const TASK = process.env.TASK || 'full'
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY?.trim()
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
 
 console.log(`🤖 LRA Orchestrator — Tarea: ${TASK}`)
 console.log(`📅 ${new Date().toISOString()}`)
-console.log(`🔑 API key present: ${!!ANTHROPIC_API_KEY}`)
 
 async function autoFix() {
   const fixes = []
@@ -195,66 +184,45 @@ Responde SOLO con el JSON, sin markdown.`
 }
 
 async function run() {
-  console.log('[orchestrator] Starting run...')
-  console.log('[orchestrator] Task:', TASK)
-  console.log('[orchestrator] API key present:', !!ANTHROPIC_API_KEY)
-
   const results = {
     date: new Date().toISOString(),
     task: TASK,
     checks: {},
-    status: 'running',
   }
 
-  // Write initial log entry immediately so we always have a record
+  results.autoFix = await autoFix()
+
+  if (TASK === 'full' || TASK === 'health-check') {
+    results.checks.build = await checkBuild()
+    results.checks.links = await checkInternalLinks()
+    results.checks.parity = await checkESENParity()
+    results.checks.placeholders = await checkPlaceholders()
+  }
+
+  if (TASK === 'weekly-audit') {
+    results.checks.build = await checkBuild()
+    results.checks.links = await checkInternalLinks()
+    results.checks.parity = await checkESENParity()
+    results.checks.placeholders = await checkPlaceholders()
+    results.audit = await weeklyAudit(results.checks)
+  }
+
   const logPath = 'scripts/orchestrator-log.json'
-  const saveLog = () => {
+  let logs = []
+  if (fs.existsSync(logPath)) {
     try {
-      let logs = []
-      if (fs.existsSync(logPath)) {
-        try { logs = JSON.parse(fs.readFileSync(logPath, 'utf8')) } catch {}
-      }
-      logs.unshift(results)
-      logs = logs.slice(0, 90)
-      fs.writeFileSync(logPath, JSON.stringify(logs, null, 2))
-    } catch (e) {
-      console.error('[orchestrator] Failed to write log:', e.message)
-    }
+      logs = JSON.parse(fs.readFileSync(logPath, 'utf8'))
+    } catch {}
   }
+  logs.unshift(results)
+  logs = logs.slice(0, 90)
+  fs.writeFileSync(logPath, JSON.stringify(logs, null, 2))
 
-  try {
-    results.autoFix = await autoFix()
-    console.log('[orchestrator] autoFix done')
-
-    if (TASK === 'full' || TASK === 'health-check') {
-      results.checks.build = await checkBuild()
-      results.checks.links = await checkInternalLinks()
-      results.checks.parity = await checkESENParity()
-      results.checks.placeholders = await checkPlaceholders()
-    }
-
-    if (TASK === 'weekly-audit') {
-      results.checks.build = await checkBuild()
-      results.checks.links = await checkInternalLinks()
-      results.checks.parity = await checkESENParity()
-      results.checks.placeholders = await checkPlaceholders()
-      results.audit = await weeklyAudit(results.checks)
-    }
-
-    results.status = 'success'
-  } catch (e) {
-    results.status = 'error'
-    results.error = e.message
-    console.error('[orchestrator] Run error:', e.message)
-  } finally {
-    saveLog()
-  }
-
-  console.log('✅ Orquestador completado — status:', results.status)
+  console.log('✅ Orquestador completado')
   return results
 }
 
 run().catch((e) => {
-  console.error('[orchestrator] Fatal error:', e.message)
+  console.error('Error:', e.message)
   process.exit(1)
 })
