@@ -1,0 +1,51 @@
+name: Weekly Sync
+on:
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  weekly:
+    name: Weekly Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.AGENT_GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - name: Weekly audit
+        run: node scripts/orchestrator.mjs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TASK: weekly-audit
+      - run: npm run build
+      - name: Commit and PR
+        env:
+          GH_TOKEN: ${{ secrets.AGENT_GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "LRA Weekly Agent"
+          git config --global user.email "agent@lracloudops.com"
+          BRANCH="agent/weekly-$(date +%Y-%m-%d)"
+          git checkout -b $BRANCH
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "chore(weekly): sync and audit $(date +%Y-%m-%d)"
+          git push origin $BRANCH
+          gh pr create \
+            --title "📊 Weekly sync $(date +%Y-%m-%d)" \
+            --body "Weekly automated audit and sync." \
+            --base main \
+            --head $BRANCH
+          PR=$(gh pr list --head $BRANCH --json number -q '.[0].number')
+          [ -n "$PR" ] && gh pr merge $PR --auto --squash

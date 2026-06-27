@@ -1,0 +1,548 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const agents = [
+  {
+    num: '01',
+    name: 'DevOps Advisor',
+    desc: 'Chat flotante 24/7 con contexto de producción',
+    status: 'Activo',
+    href: '/',
+    iconPath:
+      'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z',
+  },
+  {
+    num: '02',
+    name: 'Multi-Agent Orchestrator',
+    desc: 'Delega a agentes especializados según el contexto',
+    status: 'Activo',
+    href: '/api/multi-advisor',
+    iconPath:
+      'M13 10V3L4 14h7v7l9-11h-7z',
+  },
+  {
+    num: '03',
+    name: 'Infrastructure Review',
+    desc: 'Auditoría de arquitectura cloud con IA',
+    status: 'Activo',
+    href: '/infrastructure-review',
+    iconPath:
+      'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    num: '04',
+    name: 'Proposal Generator',
+    desc: 'Propuestas técnicas automáticas en segundos',
+    status: 'Activo',
+    href: '/proposal',
+    iconPath:
+      'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
+  },
+  {
+    num: '05',
+    name: 'Cost Optimizer',
+    desc: 'Optimización de costes cloud con IA',
+    status: 'Activo',
+    href: '/cost-optimizer',
+    iconPath:
+      'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    num: '06',
+    name: 'Learning Agent',
+    desc: 'Profesor virtual de DevOps y cloud',
+    status: 'Activo',
+    href: '/learn',
+    iconPath:
+      'M12 14l9-5-9-5-9 5 9 5zm0 7v-4m0 0l-3.536-1.768M12 17l3.536-1.768',
+  },
+  {
+    num: '07',
+    name: 'Daily Maintenance',
+    desc: 'Blog automático y mantenimiento diario 9am UTC',
+    status: 'Activo',
+    href: null,
+    iconPath:
+      'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    num: '08',
+    name: 'Security Agent',
+    desc: 'Auditoría de seguridad cloud con IA',
+    status: 'Activo',
+    href: '/security-audit',
+    iconPath:
+      'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
+  },
+  {
+    num: '09',
+    name: 'AWS Architect',
+    desc: 'Diseño de arquitecturas AWS con Well-Architected',
+    status: 'Activo',
+    href: '/aws-architect',
+    iconPath:
+      'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
+  },
+  {
+    num: '10',
+    name: 'Incident Response',
+    desc: 'Diagnóstico y resolución de incidencias cloud',
+    status: 'Activo',
+    href: '/incident-response',
+    iconPath:
+      'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
+  },
+  {
+    num: '11',
+    name: 'Documentation Agent',
+    desc: 'Genera README, ADR, Runbooks y SOPs',
+    status: 'Activo',
+    href: '/documentation',
+    iconPath:
+      'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+  },
+  {
+    num: '12',
+    name: 'DevOps Interview',
+    desc: 'Entrevistas técnicas con IA y feedback inmediato',
+    status: 'Activo',
+    href: '/interview',
+    iconPath:
+      'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+  {
+    num: '13',
+    name: 'Resume Review',
+    desc: 'Optimización de CV DevOps para ATS',
+    status: 'Activo',
+    href: '/resume-review',
+    iconPath:
+      'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',
+  },
+  {
+    num: '14',
+    name: 'AI AWS CLI Agent',
+    desc: 'Comandos AWS CLI desde lenguaje natural',
+    status: 'Activo',
+    href: '/aws-cli',
+    iconPath:
+      'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
+  },
+  {
+    num: '15',
+    name: 'Orchestrator Agent',
+    desc: 'Mantenimiento autónomo 3 veces al día',
+    status: 'Activo',
+    href: null,
+    iconPath:
+      'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+]
+
+const systemAgents = [
+  {
+    name: 'LRA Orchestrator',
+    schedule: '3× al día (9am, 3pm, 9pm UTC)',
+    desc: 'Health check completo: build, links, paridad ES/EN',
+  },
+  {
+    name: 'Health Check',
+    schedule: 'Cada 6 horas',
+    desc: 'Verifica build y TypeScript sin errores',
+  },
+  {
+    name: 'Weekly Sync',
+    schedule: 'Lunes 8am UTC',
+    desc: 'Auditoría semanal con informe de puntuación',
+  },
+  {
+    name: 'Daily Blog',
+    schedule: 'Diario 9am UTC',
+    desc: 'Nuevo artículo técnico en ES y EN automáticamente',
+  },
+]
+---
+
+<Layout
+  titulo="LRA AI Agents · Ecosistema Autónomo de IA"
+  descripcion="15 agentes de IA que trabajan continuamente para mantener, mejorar y escalar la plataforma LRA Cloud Operations. DevOps Advisor, orquestación multi-agente y automatización autónoma."
+  keywords="LRA AI agents, agentes IA DevOps, automatización autónoma, multi-agente IA, Claude Sonnet DevOps, orchestrator agent, infraestructura autónoma"
+>
+  <!-- ── HERO ── -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0a0a0a;"
+    aria-labelledby="agents-hero-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.06) 1px, transparent 1px); background-size: 32px 32px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.15) 0%, transparent 60%);"
+    >
+    </div>
+
+    <div
+      class="relative max-w-5xl mx-auto px-5 sm:px-6 py-24 sm:py-32 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-8"
+        style="background: rgba(30,111,255,0.12); border: 1px solid rgba(96,165,250,0.25); color: #93C5FD;"
+      >
+        <span
+          class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0 animate-pulse"
+          aria-hidden="true"></span>
+        15 Agentes · Sistema Autónomo
+      </div>
+
+      <h1
+        id="agents-hero-heading"
+        class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-6"
+        style="letter-spacing: -0.04em; line-height: 1.05;"
+      >
+        LRA AI Agents
+      </h1>
+
+      <p
+        class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-10"
+        style="color: rgba(147,184,255,0.8);"
+      >
+        Ecosistema de agentes de IA que trabajan de forma continua para
+        mantener y mejorar la plataforma. Desde consultoría 24/7 hasta
+        orquestación autónoma.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button
+          onclick="document.getElementById('lra-chat-toggle')?.click()"
+          class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+          style="background: #2563EB; box-shadow: 0 4px 24px rgba(37,99,235,0.5);"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+            ></path>
+          </svg>
+          Hablar con el DevOps Advisor
+        </button>
+        <a
+          href="#agentes"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
+          style="color: rgba(147,184,255,0.9); border-color: rgba(147,184,255,0.2);"
+        >
+          Ver todos los agentes
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MÉTRICAS ── -->
+  <section
+    style="background: #0f0f0f; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);"
+    aria-label="Métricas del sistema"
+  >
+    <div class="max-w-5xl mx-auto px-6 py-14">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          [
+            { value: '15', label: 'Agentes activos', sub: 'en producción' },
+            {
+              value: '24/7',
+              label: 'Disponibilidad',
+              sub: 'sin interrupción',
+            },
+            {
+              value: '3×/día',
+              label: 'Orquestación autónoma',
+              sub: 'mantenimiento automático',
+            },
+            {
+              value: '0',
+              label: 'Intervenciones manuales',
+              sub: 'en mantenimiento rutinario',
+            },
+          ].map(({ value, label, sub }) => (
+            <div class="text-center">
+              <div
+                class="text-4xl sm:text-5xl font-extrabold mb-2"
+                style="color: #1E6FFF; letter-spacing: -0.04em;"
+              >
+                {value}
+              </div>
+              <div class="text-sm font-medium text-white mb-1">{label}</div>
+              <div class="text-xs" style="color: rgba(147,184,255,0.5);">
+                {sub}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GRID DE AGENTES ── -->
+  <section
+    id="agentes"
+    style="background: #0a0a0a;"
+    aria-labelledby="agents-grid-heading"
+  >
+    <div class="max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="text-center mb-16">
+        <span
+          class="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-widest"
+          style="background: rgba(30,111,255,0.15); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);"
+          >Ecosistema</span
+        >
+        <h2
+          id="agents-grid-heading"
+          class="text-3xl sm:text-4xl font-extrabold text-white mb-4"
+          style="letter-spacing: -0.03em;"
+        >
+          Los 15 agentes de LRA
+        </h2>
+        <p class="text-lg max-w-xl mx-auto" style="color: rgba(147,184,255,0.7);">
+          Cada agente tiene una especialidad concreta y trabaja de forma
+          coordinada con el resto del sistema.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {
+          agents.map(({ num, name, desc, status, href, iconPath }) => (
+            <div
+              class="rounded-2xl p-6 flex flex-col gap-4 group transition-all"
+              style="background: #141414; border: 1px solid rgba(255,255,255,0.07);"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0"
+                    style="background: rgba(37,99,235,0.15);"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      class="w-5 h-5"
+                      style="color: #60A5FA;"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d={iconPath}
+                      />
+                    </svg>
+                  </div>
+                  <span
+                    class="text-xs font-mono"
+                    style="color: rgba(96,165,250,0.5);"
+                  >
+                    {num}
+                  </span>
+                </div>
+                <span
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
+                  style="background: rgba(16,185,129,0.12); color: #34D399; border: 1px solid rgba(16,185,129,0.2);"
+                >
+                  <span
+                    class="w-1 h-1 rounded-full bg-emerald-400 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  {status}
+                </span>
+              </div>
+
+              <div class="flex-1">
+                <h3 class="text-base font-bold text-white mb-1.5">{name}</h3>
+                <p
+                  class="text-sm leading-relaxed"
+                  style="color: rgba(147,184,255,0.65);"
+                >
+                  {desc}
+                </p>
+              </div>
+
+              {href ? (
+                <a
+                  href={href}
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors mt-auto"
+                  style="color: #60A5FA;"
+                >
+                  Abrir agente
+                  <svg
+                    class="w-3 h-3"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              ) : (
+                <span
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto"
+                  style="color: rgba(96,165,250,0.4);"
+                >
+                  <svg
+                    class="w-3 h-3"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065zM15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  GitHub Actions
+                </span>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AGENTES DE SISTEMA ── -->
+  <section
+    style="background: #0f0f0f; border-top: 1px solid rgba(255,255,255,0.06);"
+    aria-labelledby="system-agents-heading"
+  >
+    <div class="max-w-6xl mx-auto px-6 py-20 sm:py-24">
+      <div class="text-center mb-14">
+        <span
+          class="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-widest"
+          style="background: rgba(30,111,255,0.15); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);"
+          >Workflows autónomos</span
+        >
+        <h2
+          id="system-agents-heading"
+          class="text-3xl sm:text-4xl font-extrabold text-white mb-4"
+          style="letter-spacing: -0.03em;"
+        >
+          Agentes de sistema
+        </h2>
+        <p class="text-lg max-w-xl mx-auto" style="color: rgba(147,184,255,0.7);">
+          Procesos automáticos que corren en GitHub Actions sin intervención
+          humana.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {
+          systemAgents.map(({ name, schedule, desc }) => (
+            <div
+              class="rounded-2xl p-6"
+              style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);"
+            >
+              <div
+                class="w-2 h-2 rounded-full bg-emerald-400 mb-4"
+                aria-hidden="true"
+              />
+              <h3 class="text-sm font-bold text-white mb-1">{name}</h3>
+              <p
+                class="text-xs font-mono mb-3"
+                style="color: rgba(96,165,250,0.7);"
+              >
+                {schedule}
+              </p>
+              <p class="text-xs leading-relaxed" style="color: rgba(147,184,255,0.6);">
+                {desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.06);"
+    aria-labelledby="agents-cta-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 70% 60% at 50% 120%, rgba(30,111,255,0.18) 0%, transparent 65%);"
+    >
+    </div>
+    <div class="relative max-w-3xl mx-auto px-6 py-24 text-center">
+      <h2
+        id="agents-cta-heading"
+        class="text-3xl sm:text-4xl font-extrabold text-white mb-5"
+        style="letter-spacing: -0.03em;"
+      >
+        Habla con el DevOps Advisor ahora
+      </h2>
+      <p
+        class="text-lg mb-8 max-w-xl mx-auto"
+        style="color: rgba(147,184,255,0.75);"
+      >
+        El agente más accesible del ecosistema. Disponible 24/7 para responder
+        cualquier pregunta sobre cloud, Kubernetes o infraestructura.
+      </p>
+      <button
+        onclick="document.getElementById('lra-chat-toggle')?.click()"
+        class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-8 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+        style="background: #2563EB; box-shadow: 0 4px 24px rgba(37,99,235,0.5);"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+          ></path>
+        </svg>
+        Abrir DevOps Advisor · IA
+      </button>
+    </div>
+  </section>
+</Layout>
