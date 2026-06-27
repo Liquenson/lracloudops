@@ -43,7 +43,7 @@ jobs:
           git config --global user.name "LRA Agent"
           git config --global user.email "agent@lracloudops.com"
 
-          BRANCH="agent/daily-$(date +%Y-%m-%d)"
+          BRANCH="agent/daily-$(date +%Y-%m-%d-%H%M)"
           git checkout -b $BRANCH
           git add -A
 
