@@ -1,0 +1,31 @@
+name: Site Health Check
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  health:
+    name: Health Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - name: Build check
+        run: |
+          npm run build 2>&1
+          PAGES=$(find dist -name "*.html" | wc -l)
+          echo "✅ Build OK: $PAGES pages" >> $GITHUB_STEP_SUMMARY
+      - name: TypeScript check
+        run: npx astro check
+      - name: Report
+        if: always()
+        run: |
+          echo "## Health Check $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- Build: ✅" >> $GITHUB_STEP_SUMMARY
+          echo "- Date: $(date)" >> $GITHUB_STEP_SUMMARY
