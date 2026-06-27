@@ -52,7 +52,9 @@ export const onRequestOptions = async (): Promise<Response> => {
   return new Response(null, { status: 204, headers: CORS_HEADERS })
 }
 
-export const onRequestPost = async (context: CloudflareContext): Promise<Response> => {
+export const onRequestPost = async (
+  context: CloudflareContext
+): Promise<Response> => {
   const { request, env } = context
 
   const apiKey = env.ANTHROPIC_API_KEY
@@ -65,7 +67,10 @@ export const onRequestPost = async (context: CloudflareContext): Promise<Respons
 
   let architecture: string
   try {
-    const body = (await request.json()) as { architecture: string; lang: string }
+    const body = (await request.json()) as {
+      architecture: string
+      lang: string
+    }
     architecture = body.architecture ?? ''
   } catch {
     return new Response(JSON.stringify({ error: 'Invalid request body' }), {
@@ -77,9 +82,13 @@ export const onRequestPost = async (context: CloudflareContext): Promise<Respons
   if (!architecture || architecture.trim().length < 20) {
     return new Response(
       JSON.stringify({
-        error: 'Descripción demasiado corta. Proporciona más detalles sobre tu infraestructura.',
+        error:
+          'Descripción demasiado corta. Proporciona más detalles sobre tu infraestructura.',
       }),
-      { status: 400, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS } }
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+      }
     )
   }
 
@@ -106,8 +115,14 @@ export const onRequestPost = async (context: CloudflareContext): Promise<Respons
   if (!response.ok) {
     const err = await response.text()
     return new Response(
-      JSON.stringify({ error: `Anthropic error: ${response.status}`, detail: err }),
-      { status: 502, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS } }
+      JSON.stringify({
+        error: `Anthropic error: ${response.status}`,
+        detail: err,
+      }),
+      {
+        status: 502,
+        headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+      }
     )
   }
 
@@ -117,7 +132,9 @@ export const onRequestPost = async (context: CloudflareContext): Promise<Respons
   let review: Record<string, unknown>
   try {
     const jsonMatch = text.match(/\{[\s\S]*\}/)
-    review = jsonMatch ? (JSON.parse(jsonMatch[0]) as Record<string, unknown>) : { summary: text }
+    review = jsonMatch
+      ? (JSON.parse(jsonMatch[0]) as Record<string, unknown>)
+      : { summary: text }
   } catch {
     review = { summary: text }
   }
