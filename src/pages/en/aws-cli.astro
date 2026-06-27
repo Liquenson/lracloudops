@@ -1,0 +1,353 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="AWS CLI Agent · Natural Language to AWS Commands · AI-Powered · Free"
+  descripcion="Convert natural language to precise AWS CLI commands. EC2, S3, IAM, EKS, RDS, CloudWatch and more. With security warnings and cost estimation."
+>
+  <!-- HERO -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0A2540;"
+    aria-labelledby="cli-hero-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-bold tracking-widest uppercase"
+        style="background: rgba(37,99,235,0.25); border: 1px solid rgba(96,165,250,0.35); color: #93C5FD;"
+      >
+        <span
+          class="w-2 h-2 rounded-full flex-shrink-0"
+          style="background: #60A5FA; animation: pulse 2s infinite;"
+          aria-hidden="true"></span>
+        AI-Powered · AWS CLI · EC2 · S3 · IAM · EKS
+      </div>
+      <h1
+        id="cli-hero-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
+        style="letter-spacing: -0.035em;"
+      >
+        AWS CLI Agent
+      </h1>
+      <p
+        class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
+        style="color: rgba(147,184,255,0.85);"
+      >
+        Describe what you want to do in AWS and get the exact CLI commands, with
+        security warnings and cost estimation.
+      </p>
+    </div>
+  </section>
+
+  <!-- CHAT -->
+  <section class="bg-white py-16" aria-label="AWS CLI Agent chat">
+    <div class="max-w-3xl mx-auto px-6">
+      <!-- Suggestions -->
+      <div id="cli-suggestions" class="mb-6">
+        <p
+          class="text-xs font-semibold uppercase tracking-wider mb-3"
+          style="color: #64748B;"
+        >
+          Try asking:
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {
+            [
+              'List all my EC2 instances in us-east-1',
+              'Create a private S3 bucket with versioning',
+              'Get logs from a pod in EKS',
+              'Create an IAM role for Lambda',
+              'Show active CloudWatch alarms',
+              'Take a snapshot of an RDS instance',
+            ].map((s) => (
+              <button
+                class="cli-suggestion text-xs px-3 py-1.5 rounded-full border transition-all hover:scale-[1.02]"
+                style="border-color: #DBEAFE; color: #2563EB; background: #EEF4FF;"
+                data-text={s}
+              >
+                {s}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Chat history -->
+      <div
+        id="cli-history"
+        class="mb-4 space-y-4 max-h-[600px] overflow-y-auto rounded-2xl p-4"
+        style="background: #F8FAFF; border: 1px solid #DBEAFE; display: none;"
+      >
+      </div>
+
+      <!-- Loading -->
+      <div id="cli-loading" class="hidden text-center py-6">
+        <div
+          class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
+          style="background: #EEF4FF; border: 1px solid #93C5FD;"
+        >
+          <svg
+            class="w-5 h-5 animate-spin"
+            style="color: #2563EB;"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          <span class="text-sm font-medium" style="color: #2563EB;"
+            >Generating commands...</span
+          >
+        </div>
+      </div>
+
+      <!-- Input -->
+      <form id="cli-form" class="space-y-3">
+        <div class="flex gap-3">
+          <textarea
+            id="cli-input"
+            rows="2"
+            placeholder="Describe what you want to do in AWS..."
+            class="flex-1 px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
+            style="border-color: #E2E8F0; color: #0F172A;"></textarea>
+          <button
+            type="submit"
+            id="cli-submit"
+            class="flex-shrink-0 inline-flex items-center justify-center text-white w-12 h-12 rounded-xl self-start mt-0.5 transition-all hover:scale-[1.05]"
+            style="background: #2563EB; box-shadow: 0 4px 16px rgba(37,99,235,0.4);"
+            aria-label="Send"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            </svg>
+          </button>
+        </div>
+        <p id="cli-error" class="hidden text-sm text-red-600"></p>
+      </form>
+
+      <!-- Disclaimer -->
+      <p class="mt-4 text-xs text-center" style="color: #94A3B8;">
+        Always review commands before running them. Destructive commands require
+        explicit confirmation.
+      </p>
+
+      <!-- CTA -->
+      <div
+        class="text-center mt-10 pt-6"
+        style="border-top: 1px solid #E5E7EB;"
+      >
+        <p class="text-sm font-semibold mb-3" style="color: #0F172A;">
+          Need help with your AWS infrastructure?
+        </p>
+        <a
+          href="/en/contact"
+          class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-6 py-3.5 rounded-xl transition-all hover:scale-[1.02]"
+          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
+        >
+          Talk to LRA →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  interface CliCommand {
+    tool: string
+    command: string
+    description: string
+    warning?: string | null
+  }
+
+  interface CliResult {
+    intent?: string
+    commands?: CliCommand[]
+    prerequisites?: string[]
+    estimated_cost?: string | null
+    security_notes?: string[]
+    summary?: string
+  }
+
+  interface Message {
+    role: string
+    content: string
+  }
+
+  const form = document.getElementById('cli-form') as HTMLFormElement
+  const input = document.getElementById('cli-input') as HTMLTextAreaElement
+  const historyEl = document.getElementById('cli-history')!
+  const loadingEl = document.getElementById('cli-loading')!
+  const errorEl = document.getElementById('cli-error')!
+  const suggestionsEl = document.getElementById('cli-suggestions')!
+
+  let messages: Message[] = []
+
+  function toolColor(tool: string): string {
+    if (tool === 'aws') return '#F97316'
+    if (tool === 'kubectl') return '#2563EB'
+    if (tool === 'eksctl') return '#7C3AED'
+    return '#16A34A'
+  }
+
+  function renderResult(userText: string, result: CliResult): void {
+    historyEl.style.display = 'block'
+    suggestionsEl.classList.add('hidden')
+
+    const userBubble = document.createElement('div')
+    userBubble.className = 'flex justify-end'
+    userBubble.innerHTML = `<div class="max-w-[80%] text-sm px-4 py-3 rounded-2xl" style="background:#2563EB; color:white;">${userText}</div>`
+    historyEl.appendChild(userBubble)
+
+    const aiBubble = document.createElement('div')
+    aiBubble.className = 'space-y-3'
+
+    if (result.intent) {
+      aiBubble.innerHTML += `<p class="text-sm font-semibold" style="color:#0F172A;">${result.intent}</p>`
+    }
+
+    const commands = Array.isArray(result.commands) ? result.commands : []
+    commands.forEach((cmd) => {
+      const color = toolColor(cmd.tool)
+      const warnHtml = cmd.warning
+        ? `<div class="mt-2 text-xs px-2 py-1.5 rounded-lg" style="background:#FEF3C7; color:#92400E;">⚠ ${cmd.warning}</div>`
+        : ''
+      aiBubble.innerHTML += `
+        <div class="rounded-xl overflow-hidden" style="border: 1px solid #E5E7EB;">
+          <div class="flex items-center justify-between px-3 py-2" style="background:#1E293B;">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:${color}20; color:${color}; border:1px solid ${color}40;">${cmd.tool}</span>
+            <button
+              class="cli-copy text-xs px-2 py-1 rounded" style="background:rgba(255,255,255,0.1); color:#CBD5E1;"
+              data-cmd="${cmd.command.replace(/"/g, '&quot;')}"
+            >Copy</button>
+          </div>
+          <pre class="text-xs px-4 py-3 overflow-x-auto" style="background:#0F172A; color:#93C5FD; margin:0;">${cmd.command}</pre>
+          <div class="px-3 py-2" style="background:#F8FAFF;">
+            <p class="text-xs" style="color:#475569;">${cmd.description}</p>
+            ${warnHtml}
+          </div>
+        </div>`
+    })
+
+    const prerequisites = Array.isArray(result.prerequisites)
+      ? result.prerequisites
+      : []
+    if (prerequisites.length > 0) {
+      aiBubble.innerHTML += `<div class="rounded-xl p-3" style="background:#EEF4FF; border:1px solid #BFDBFE;">
+        <p class="text-xs font-bold mb-1.5" style="color:#1E40AF;">Prerequisites</p>
+        ${prerequisites.map((p) => `<p class="text-xs" style="color:#3B82F6;">· ${p}</p>`).join('')}
+      </div>`
+    }
+
+    const secNotes = Array.isArray(result.security_notes)
+      ? result.security_notes
+      : []
+    if (secNotes.length > 0) {
+      aiBubble.innerHTML += `<div class="rounded-xl p-3" style="background:#F0FDF4; border:1px solid #BBF7D0;">
+        <p class="text-xs font-bold mb-1.5" style="color:#15803D;">Security</p>
+        ${secNotes.map((n) => `<p class="text-xs" style="color:#16A34A;">✓ ${n}</p>`).join('')}
+      </div>`
+    }
+
+    if (result.estimated_cost) {
+      aiBubble.innerHTML += `<p class="text-xs" style="color:#64748B;">💰 Estimated cost: ${result.estimated_cost}</p>`
+    }
+
+    historyEl.appendChild(aiBubble)
+    historyEl.scrollTop = historyEl.scrollHeight
+
+    historyEl.querySelectorAll('.cli-copy').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cmd = (btn as HTMLElement).dataset.cmd ?? ''
+        navigator.clipboard.writeText(cmd).catch(() => {})
+        btn.textContent = '✓ Copied'
+        setTimeout(() => (btn.textContent = 'Copy'), 2000)
+      })
+    })
+  }
+
+  async function sendMessage(text: string): Promise<void> {
+    errorEl.classList.add('hidden')
+    messages.push({ role: 'user', content: text })
+    loadingEl.classList.remove('hidden')
+
+    try {
+      const res = await fetch('/api/aws-cli-agent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages }),
+      })
+      const json = (await res.json()) as { result?: CliResult; error?: string }
+      if (json.error) throw new Error(json.error)
+
+      const result = json.result ?? {}
+      messages.push({ role: 'assistant', content: JSON.stringify(result) })
+      loadingEl.classList.add('hidden')
+      renderResult(text, result)
+    } catch (err) {
+      loadingEl.classList.add('hidden')
+      errorEl.textContent =
+        err instanceof Error
+          ? err.message
+          : 'Error generating commands. Please try again.'
+      errorEl.classList.remove('hidden')
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const text = input.value.trim()
+    if (!text) return
+    input.value = ''
+    await sendMessage(text)
+  })
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      form.dispatchEvent(new Event('submit'))
+    }
+  })
+
+  document
+    .querySelectorAll<HTMLButtonElement>('.cli-suggestion')
+    .forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const text = btn.dataset.text ?? ''
+        input.value = text
+        input.focus()
+      })
+    })
+</script>

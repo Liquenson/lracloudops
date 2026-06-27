@@ -38,15 +38,20 @@ export const onRequestOptions = async (): Promise<Response> => {
   return new Response(null, { status: 204, headers: CORS_HEADERS })
 }
 
-export const onRequestPost = async (context: CloudflareContext): Promise<Response> => {
+export const onRequestPost = async (
+  context: CloudflareContext
+): Promise<Response> => {
   const { request, env } = context
 
   const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown'
   if (isRateLimited(ip)) {
-    return new Response(JSON.stringify({ error: 'Rate limit exceeded. Try again later.' }), {
-      status: 429,
-      headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
-    })
+    return new Response(
+      JSON.stringify({ error: 'Rate limit exceeded. Try again later.' }),
+      {
+        status: 429,
+        headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+      }
+    )
   }
 
   const apiKey = env.ANTHROPIC_API_KEY
@@ -59,7 +64,9 @@ export const onRequestPost = async (context: CloudflareContext): Promise<Respons
 
   let messages: { role: string; content: string }[]
   try {
-    const body = (await request.json()) as { messages: { role: string; content: string }[] }
+    const body = (await request.json()) as {
+      messages: { role: string; content: string }[]
+    }
     messages = body.messages ?? []
   } catch {
     return new Response(JSON.stringify({ error: 'Invalid request body' }), {
@@ -85,14 +92,23 @@ export const onRequestPost = async (context: CloudflareContext): Promise<Respons
 
   if (!response.ok) {
     const err = await response.text()
-    return new Response(JSON.stringify({ error: `Anthropic error: ${response.status}`, detail: err }), {
-      status: 502,
-      headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
-    })
+    return new Response(
+      JSON.stringify({
+        error: `Anthropic error: ${response.status}`,
+        detail: err,
+      }),
+      {
+        status: 502,
+        headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+      }
+    )
   }
 
   const data = (await response.json()) as { content: { text: string }[] }
-  return new Response(JSON.stringify({ message: data.content?.[0]?.text ?? '' }), {
-    headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
-  })
+  return new Response(
+    JSON.stringify({ message: data.content?.[0]?.text ?? '' }),
+    {
+      headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+    }
+  )
 }
