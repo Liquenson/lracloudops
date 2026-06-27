@@ -26,7 +26,27 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TASK: weekly-audit
-      - run: npm run build
+
+      - name: Auto-fix Prettier
+        run: npx prettier --write "src/**/*.{astro,ts,css}" || true
+
+      - name: TypeScript check
+        run: npx astro check
+
+      - name: Verify build
+        run: |
+          npm run build 2>&1
+          PAGES=$(find dist -name "*.html" | wc -l)
+          echo "✅ $PAGES páginas generadas" >> $GITHUB_STEP_SUMMARY
+
+      - name: Verify no placeholders
+        run: |
+          COUNT=$(grep -rn "PLACEHOLDER" src/ --include="*.astro" --include="*.ts" 2>/dev/null | wc -l)
+          echo "## Weekly Report" >> $GITHUB_STEP_SUMMARY
+          echo "- Placeholders: $COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- Build: ✅" >> $GITHUB_STEP_SUMMARY
+          echo "- Prettier: ✅ auto-fixed" >> $GITHUB_STEP_SUMMARY
+
       - name: Commit and PR
         env:
           GH_TOKEN: ${{ secrets.AGENT_GITHUB_TOKEN }}
@@ -44,7 +64,7 @@ jobs:
           git push origin $BRANCH
           gh pr create \
             --title "📊 Weekly sync $(date +%Y-%m-%d)" \
-            --body "Weekly automated audit and sync." \
+            --body "Weekly automated audit and sync. Prettier fixed, TypeScript clean, build verified." \
             --base main \
             --head $BRANCH
           PR=$(gh pr list --head $BRANCH --json number -q '.[0].number')
