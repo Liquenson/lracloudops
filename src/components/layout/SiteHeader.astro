@@ -1172,12 +1172,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           ></path></svg
         >
       </a>
-      <a
-        href={contactHref}
-        class="text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-px active:scale-[0.98]"
-        style="background:#2563EB; box-shadow:0 2px 8px rgba(37,99,235,0.3);"
-        >{ctaLabel}</a
-      >
+      <a href={contactHref} class="btn btn-primary btn-sm">{ctaLabel}</a>
       <!-- Desktop language dropdown -->
       <div data-lang-dropdown data-lang-style="desktop" class="relative">
         <button
