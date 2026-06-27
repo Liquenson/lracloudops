@@ -4,5 +4,11 @@
     "status": "skipped",
     "reason": "no API key",
     "topic": "Kubernetes Networking with Cilium"
+  },
+  {
+    "date": "2026-06-27",
+    "status": "skipped",
+    "reason": "no API key",
+    "topic": "Kubernetes Networking with Cilium"
   }
 ]
