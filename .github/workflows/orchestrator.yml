@@ -39,8 +39,17 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TASK: ${{ github.event.inputs.task || 'full' }}
 
-      - name: Build verification
-        run: npm run build
+      - name: Auto-fix Prettier
+        run: npx prettier --write "src/**/*.{astro,ts,css}" || true
+
+      - name: TypeScript check
+        run: npx astro check
+
+      - name: Verify build
+        run: |
+          npm run build 2>&1
+          PAGES=$(find dist -name "*.html" | wc -l)
+          echo "✅ $PAGES páginas generadas" >> $GITHUB_STEP_SUMMARY
 
       - name: Commit and PR if changes
         env:
@@ -59,7 +68,7 @@ jobs:
           git push origin $BRANCH
           gh pr create \
             --title "🤖 Orchestrator: maintenance $(date +%Y-%m-%d-%H%M)" \
-            --body "Automated maintenance by LRA Orchestrator Agent. Build verified." \
+            --body "Automated maintenance by LRA Orchestrator Agent. Prettier fixed, TypeScript clean, build verified." \
             --base main \
             --head $BRANCH
           PR=$(gh pr list --head $BRANCH --json number -q '.[0].number')

@@ -9,6 +9,51 @@ const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
 console.log(`🤖 LRA Orchestrator — Tarea: ${TASK}`)
 console.log(`📅 ${new Date().toISOString()}`)
 
+async function autoFix() {
+  const fixes = []
+
+  try {
+    execSync('npx prettier --write "src/**/*.{astro,ts,css}" 2>/dev/null', {
+      stdio: 'pipe',
+    })
+    fixes.push('prettier: auto-fixed')
+  } catch (e) {
+    fixes.push('prettier: error - ' + e.message.slice(0, 50))
+  }
+
+  const buildResult = await checkBuild()
+  if (buildResult.status === 'error') {
+    fixes.push('build: FAILED - ' + (buildResult.error || '').slice(0, 100))
+  } else {
+    fixes.push('build: OK - ' + buildResult.pages + ' páginas')
+  }
+
+  const commonFixes = [
+    { from: '/politica-de-privacidad', to: '/privacy' },
+    { from: '/terminos-de-uso', to: '/terms' },
+    { from: '/en/politica-de-privacidad', to: '/en/privacy' },
+  ]
+
+  const astroFiles = await glob('src/**/*.astro')
+  let linkFixes = 0
+  for (const file of astroFiles) {
+    let content = fs.readFileSync(file, 'utf8')
+    let modified = false
+    for (const fix of commonFixes) {
+      if (content.includes(`href="${fix.from}"`)) {
+        content = content.replaceAll(`href="${fix.from}"`, `href="${fix.to}"`)
+        modified = true
+        linkFixes++
+      }
+    }
+    if (modified) fs.writeFileSync(file, content)
+  }
+  if (linkFixes > 0) fixes.push(`links: ${linkFixes} links corregidos`)
+
+  console.log('🔧 Auto-fixes aplicados:', fixes)
+  return fixes
+}
+
 async function callClaude(prompt) {
   if (!ANTHROPIC_API_KEY) {
     console.log('⚠ ANTHROPIC_API_KEY not set')
@@ -144,6 +189,8 @@ async function run() {
     task: TASK,
     checks: {},
   }
+
+  results.autoFix = await autoFix()
 
   if (TASK === 'full' || TASK === 'health-check') {
     results.checks.build = await checkBuild()
