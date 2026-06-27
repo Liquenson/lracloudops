@@ -10,57 +10,21 @@ draft: false
 
 ## The Problem with Traditional Kubernetes Networking
 
-Kubernetes networking has always been one of the more complex aspects of running production clusters. By default, most CNI (Container Network Interface) plugins rely heavily on `iptables` to manage traffic routing, load balancing, and network policy enforcement. While `iptables` has served the Linux ecosystem well for decades, it was never designed for the scale and dynamism of modern container workloads. As cluster size grows, the `iptables` ruleset expands linearly, and every packet traversal requires a sequential scan through potentially thousands of rules. The performance degradation is real, measurable, and at scale, it becomes a significant operational bottleneck.
+Kubernetes networking has always been one of the more complex aspects of running production clusters. The default networking model relies heavily on `iptables` — a Linux kernel facility that was never designed to handle the dynamic, high-throughput workloads that modern microservices architectures demand. As your cluster grows, so does the iptables ruleset. A cluster with hundreds of services and thousands of pods can accumulate tens of thousands of iptables rules, each requiring sequential evaluation. This creates a performance bottleneck that gets worse over time and becomes nearly impossible to debug when things go wrong.
 
-Beyond raw performance, traditional CNI plugins offer limited visibility into network traffic. Debugging connectivity issues often means staring at `tcpdump` output or correlating logs across multiple services with no unified picture of what is actually happening at the network layer. Security policies expressed through standard Kubernetes `NetworkPolicy` objects are coarse-grained — they operate at the IP address and port level, which in a dynamic cluster where pod IPs change constantly, leads to fragile and hard-to-maintain security postures.
+Beyond raw performance, traditional CNI plugins offer limited visibility into network traffic. When a pod is misbehaving or a microservice is experiencing latency spikes, your troubleshooting toolkit is often limited to tcpdump, netstat, and a lot of guesswork. You can see that packets are being dropped, but understanding *why* — and which specific workload is responsible — requires correlating data from multiple sources, often with no clear path forward.
 
-This is where **Cilium** enters the picture. Cilium is an open-source CNI plugin that leverages **eBPF (extended Berkeley Packet Filter)** — a revolutionary Linux kernel technology that allows you to run sandboxed programs directly in the kernel without modifying kernel source code or loading kernel modules. Instead of maintaining a sprawling `iptables` ruleset, Cilium compiles network policies and routing decisions into efficient eBPF programs that run in the kernel data path. The result is dramatically better performance, richer observability, and identity-aware security policies that go far beyond what standard Kubernetes networking can offer.
-
----
-
-## Solution: Installing and Configuring Cilium on a Kubernetes Cluster
-
-### Prerequisites
-
-Before installing Cilium, ensure your cluster meets the following requirements:
-
-- Linux kernel **5.4 or later** (5.10+ recommended for full feature support)
-- Kubernetes **1.21+**
-- No existing CNI plugin installed (or an existing plugin you are prepared to replace)
-
-You can verify your kernel version on any node:
-
-```bash
-uname -r
-# Expected output: 5.15.0-91-generic (or similar >= 5.4)
-```
+Security is another pain point. Traditional Kubernetes NetworkPolicy operates at Layer 3 and Layer 4 — IP addresses and ports. In a dynamic cluster environment where pod IPs change constantly, writing meaningful security policies based on IP addresses is an exercise in frustration. What you really want is identity-aware networking: policies that follow your workloads regardless of where they are scheduled.
 
 ---
 
-### Step 1: Install the Cilium CLI
+## Enter Cilium: eBPF-Powered Networking
 
-The Cilium CLI is your primary tool for installing, managing, and troubleshooting Cilium deployments.
+[Cilium](https://cilium.io/) is an open-source CNI plugin that leverages **eBPF** (extended Berkeley Packet Filter) to push networking, security, and observability logic directly into the Linux kernel — without kernel module modifications. eBPF programs run in a sandboxed environment inside the kernel, enabling packet processing at wire speed with dramatically fewer CPU cycles than iptables.
 
-```bash
-# Install the Cilium CLI (Linux/macOS)
-CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
-CLI_ARCH=amd64
+### Installing Cilium on a Kubernetes Cluster
 
-curl -L --fail --remote-name-all \
-  "https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz"
-
-sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
-rm cilium-linux-${CLI_ARCH}.tar.gz
-
-# Verify installation
-cilium version --client
-```
-
----
-
-### Step 2: Install Cilium into Your Cluster
-
-For a standard installation using Helm, which is the recommended approach for production environments:
+The recommended way to install Cilium is via the Cilium CLI or Helm. Here we'll use Helm for production-grade deployments:
 
 ```bash
 # Add the Cilium Helm repository
@@ -69,7 +33,7 @@ helm repo update
 
 # Install Cilium with kube-proxy replacement enabled
 helm install cilium cilium/cilium \
-  --version 1.15.0 \
+  --version 1.15.3 \
   --namespace kube-system \
   --set kubeProxyReplacement=true \
   --set k8sServiceHost=<YOUR_API_SERVER_IP> \
@@ -78,55 +42,41 @@ helm install cilium cilium/cilium \
   --set hubble.ui.enabled=true
 ```
 
-The `kubeProxyReplacement=true` flag is critical — it tells Cilium to take over all functions traditionally handled by `kube-proxy`, eliminating it entirely and replacing DNAT-based service routing with efficient eBPF socket-level load balancing.
+> **Note:** Setting `kubeProxyReplacement=true` tells Cilium to completely replace `kube-proxy`, handling all service load balancing through eBPF maps instead of iptables.
 
----
-
-### Step 3: Verify the Installation
+Verify the installation:
 
 ```bash
-# Check Cilium status across all nodes
+# Install the Cilium CLI
+CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+curl -L --fail --remote-name-all \
+  https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-amd64.tar.gz
+
+tar xzvf cilium-linux-amd64.tar.gz
+sudo mv cilium /usr/local/bin
+
+# Check cluster status
 cilium status --wait
-
-# Run the built-in connectivity test
-cilium connectivity test
-
-# Verify all Cilium pods are running
-kubectl get pods -n kube-system -l k8s-app=cilium
-```
-
-Expected output from `cilium status`:
-
-```
-    /¯¯\
- /¯¯\__/¯¯\    Cilium:             OK
- \__/¯¯\__/    Operator:           OK
- /¯¯\__/¯¯\    Envoy DaemonSet:    OK
- \__/¯¯\__/    Hubble Relay:       OK
-    \__/        ClusterMesh:        disabled
-
-Deployment        cilium-operator    Desired: 2, Ready: 2/2, Available: 2/2
-DaemonSet         cilium             Desired: 3, Ready: 3/3, Available: 3/3
 ```
 
 ---
 
-### Step 4: Define Identity-Aware Network Policies
+## Defining Identity-Aware Network Policies
 
-One of Cilium's most powerful features is **identity-based network policies** using `CiliumNetworkPolicy` CRDs. Rather than relying on volatile pod IP addresses, Cilium assigns a stable cryptographic identity to each workload based on its Kubernetes labels.
+One of Cilium's most powerful features is **CiliumNetworkPolicy**, an extension of the standard Kubernetes NetworkPolicy that supports Layer 7 filtering. Instead of relying on IP addresses, Cilium assigns a cryptographic identity to each workload based on its Kubernetes labels.
 
-Here is a policy that restricts access to a `payments` service so that only pods with the `frontend` role can reach it on port 8080:
+Here's an example policy that restricts a backend API to only accept traffic from a frontend service, and further restricts HTTP methods at Layer 7:
 
 ```yaml
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: allow-frontend-to-payments
+  name: backend-api-policy
   namespace: production
 spec:
   endpointSelector:
     matchLabels:
-      app: payments
+      app: backend-api
   ingress:
     - fromEndpoints:
         - matchLabels:
@@ -137,69 +87,116 @@ spec:
               protocol: TCP
           rules:
             http:
+              - method: "GET"
+                path: "/api/v1/.*"
               - method: "POST"
-                path: "/api/v1/charge"
+                path: "/api/v1/data"
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app: postgres
+      toPorts:
+        - ports:
+            - port: "5432"
+              protocol: TCP
 ```
 
-Notice that this policy enforces at Layer 7 — Cilium understands HTTP semantics and can restrict traffic down to specific HTTP methods and paths. This is not possible with standard `NetworkPolicy` objects.
+This policy ensures that:
+- Only pods labeled `app: frontend` can reach the backend API
+- Only specific HTTP methods and paths are permitted (not just raw TCP)
+- The backend can only make outbound connections to PostgreSQL
 
 ---
 
-### Step 5: Observability with Hubble
+## Observability with Hubble
 
-Hubble is Cilium's built-in observability platform. It provides deep, real-time visibility into network flows without any application instrumentation.
+Cilium ships with **Hubble**, a built-in network observability platform that provides real-time visibility into all network flows across your cluster. Hubble taps into the same eBPF data path as Cilium, giving you zero-overhead observability.
 
 ```bash
-# Access the Hubble UI via port-forward
-kubectl port-forward -n kube-system svc/hubble-ui 12000:80 &
+# Enable the Hubble CLI
+export HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
+curl -L --fail --remote-name-all \
+  https://github.com/cilium/hubble/releases/download/$HUBBLE_VERSION/hubble-linux-amd64.tar.gz
 
-# Or use the Hubble CLI to observe live traffic flows
+tar xzvf hubble-linux-amd64.tar.gz
+sudo mv hubble /usr/local/bin
+
+# Port-forward the Hubble relay
+cilium hubble port-forward &
+
+# Observe live network flows
 hubble observe --namespace production --follow
 
-# Filter flows for a specific pod
+# Filter for dropped packets only
 hubble observe \
   --namespace production \
-  --pod payments \
   --verdict DROPPED \
+  --follow
+
+# Observe flows to/from a specific pod
+hubble observe \
+  --pod production/backend-api-6d8f9b7c4-xk2pq \
   --follow
 ```
 
-You can also query flow metrics directly:
+You can also access the Hubble UI, a rich visual interface for exploring service maps and flow logs:
 
 ```bash
-# Show top talkers in the production namespace
-hubble observe \
-  --namespace production \
-  --output json \
-  | jq '.flow | {src: .source.labels, dst: .destination.labels, verdict: .verdict}'
+# Open the Hubble UI in your browser
+cilium hubble ui
 ```
 
 ---
 
-### Step 6: Enable Encryption with WireGuard
+## Enabling Mutual TLS with Cilium
 
-Cilium supports **transparent pod-to-pod encryption** using WireGuard, requiring zero application changes:
+For zero-trust environments, Cilium supports **transparent mutual TLS (mTLS)** between workloads without requiring any application changes. This is configured through `CiliumNetworkPolicy` combined with a service mesh mode:
+
+```yaml
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: mtls-policy
+  namespace: production
+spec:
+  endpointSelector:
+    matchLabels:
+      app: backend-api
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: frontend
+      authentication:
+        mode: "required"
+```
+
+With this policy applied, Cilium will enforce mutual authentication between the `frontend` and `backend-api` workloads using SPIFFE/SPIRE identities, transparently negotiating TLS at the kernel level.
+
+---
+
+## Performance Tuning: BandwidthManager and Big TCP
+
+Cilium exposes several eBPF-powered performance features through Helm values. For high-throughput workloads, consider enabling the BandwidthManager and Big TCP support:
 
 ```bash
-# Enable WireGuard encryption via Helm upgrade
 helm upgrade cilium cilium/cilium \
   --namespace kube-system \
   --reuse-values \
-  --set encryption.enabled=true \
-  --set encryption.type=wireguard
-
-# Verify encryption is active
-cilium encrypt status
+  --set bandwidthManager.enabled=true \
+  --set bandwidthManager.bbr=true \
+  --set enableIPv6BigTCP=true \
+  --set enableIPv4BigTCP=true
 ```
 
-```
-Encryption:               Wireguard       [NodeEncryption: Disabled, cilium_wg0 (Pubkey: AbC1...xYz=)]
-```
+You can also annotate individual pods to apply egress bandwidth limits using standard Kubernetes annotations:
 
-All pod-to-pod traffic crossing node boundaries is now encrypted automatically using WireGuard, meeting compliance requirements with minimal operational overhead.
-
----
-
-### Terraform Integration for Managed Clusters
-
-If you are provisioning clusters on
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bandwidth-limited-app
+  namespace: production
+  annotations:
+    kubernetes.io/egress-bandwidth: "100M"
+    kubernetes.io/ingress-bandwidth: "200M"
+spec:

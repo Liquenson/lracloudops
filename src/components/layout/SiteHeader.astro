@@ -637,7 +637,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
 <header
   id="site-header"
   class="sticky top-0 z-50 transition-all duration-300"
-  style="background: #FFFFFF; border-bottom: 1px solid #E5E7EB;"
+  style="background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(15,23,42,0.06);"
 >
   <nav
     class="max-w-7xl mx-auto px-5 sm:px-6 h-[66px] flex items-center justify-between gap-4"
@@ -1172,7 +1172,12 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           ></path></svg
         >
       </a>
-      <a href={contactHref} class="btn btn-primary btn-sm">{ctaLabel}</a>
+      <a
+        href={contactHref}
+        class="text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-px active:scale-[0.98]"
+        style="background:#2563EB; box-shadow:0 2px 8px rgba(37,99,235,0.3);"
+        >{ctaLabel}</a
+      >
       <!-- Desktop language dropdown -->
       <div data-lang-dropdown data-lang-style="desktop" class="relative">
         <button
