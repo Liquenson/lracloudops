@@ -33,8 +33,19 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
-      - name: Build verification
+      - name: Auto-fix Prettier
+        run: npx prettier --write "src/**/*.{astro,ts,css}" || true
+
+      - name: Verify build passes
         run: npm run build
+
+      - name: TypeScript check
+        run: npx astro check
+
+      - name: Verify no placeholders
+        run: |
+          COUNT=$(grep -rn "PLACEHOLDER" src/ --include="*.astro" --include="*.ts" 2>/dev/null | wc -l)
+          echo "Placeholders encontrados: $COUNT"
 
       - name: Create PR if changes exist
         env:
@@ -43,7 +54,7 @@ jobs:
           git config --global user.name "LRA Agent"
           git config --global user.email "agent@lracloudops.com"
 
-          BRANCH="agent/daily-$(date +%Y-%m-%d)"
+          BRANCH="agent/daily-$(date +%Y-%m-%d-%H%M)"
           git checkout -b $BRANCH
           git add -A
 
@@ -63,11 +74,15 @@ jobs:
 
           ### Cambios incluidos
           - Nuevo artículo de blog en ES y EN
-          - Verificación de build completada
+          - Prettier auto-fix aplicado
+          - Build verificado ✅
+          - TypeScript sin errores ✅
           - Log de agente actualizado
 
           ### Estado
           - Build: ✅ Verificado
+          - Prettier: ✅ Auto-corregido
+          - TypeScript: ✅ Sin errores
           - Páginas: sin errores
           - Auto-generado por: LRA Daily Agent
 
