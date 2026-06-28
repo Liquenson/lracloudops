@@ -35,28 +35,26 @@ const trustItems =
       ]
 ---
 
-<section class="relative overflow-hidden" aria-labelledby="cta-heading">
-  <div class="py-28 px-6 relative" style="background: var(--color-navy);">
-    <div
-      class="absolute inset-0 pointer-events-none"
-      aria-hidden="true"
-      style="background-image: radial-gradient(circle, rgba(96,165,250,0.07) 1px, transparent 1px); background-size: 28px 28px;"
-    >
-    </div>
-    <div
-      class="absolute inset-0 pointer-events-none"
-      aria-hidden="true"
-      style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.25) 0%, transparent 60%);"
-    >
-    </div>
-    <div
-      class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px pointer-events-none"
-      aria-hidden="true"
-      style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.35), transparent);"
-    >
-    </div>
+<section
+  class="relative overflow-hidden"
+  style="background: var(--surface-3); min-height: 80vh; display: flex; align-items: center;"
+  aria-labelledby="cta-heading"
+>
+  <div
+    class="absolute inset-0 pointer-events-none"
+    aria-hidden="true"
+    style="background-image: radial-gradient(circle, rgba(96,165,250,0.06) 1px, transparent 1px); background-size: 28px 28px;"
+  >
+  </div>
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px pointer-events-none"
+    aria-hidden="true"
+    style="background: linear-gradient(90deg, transparent, rgba(96,165,250,0.25), transparent);"
+  >
+  </div>
 
-    <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
+  <div class="relative w-full px-6 py-16">
+    <div class="max-w-3xl mx-auto text-center animate-fade-up">
       <span
         class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8"
         style="background: rgba(30,111,255,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);"
@@ -65,8 +63,7 @@ const trustItems =
 
       <h2
         id="cta-heading"
-        class="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white mb-6"
-        style="letter-spacing: -0.03em; line-height: 1.06;"
+        style="font-family: var(--font-display); font-size: var(--type-display); font-weight: 900; color: #FFFFFF; margin-bottom: var(--gap-lg); letter-spacing: -0.03em; line-height: 1.06;"
       >
         {
           lang === 'es' ? (
@@ -86,13 +83,15 @@ const trustItems =
       </h2>
 
       <p
-        class="text-xl mb-10 max-w-xl mx-auto leading-relaxed"
-        style="color: rgba(148,163,184,0.8);"
+        style="font-size: var(--type-body-lg); color: var(--on-surface-3-muted); margin-bottom: var(--gap-2xl); max-width: 36rem; margin-inline: auto; line-height: 1.7;"
       >
         {subtext}
       </p>
 
-      <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+      <div
+        class="flex flex-wrap items-center justify-center gap-4"
+        style="margin-bottom: var(--gap-lg);"
+      >
         <a href={ctaHref} class="btn btn-primary btn-lg btn-pill">
           {ctaPrimary}
           <svg
@@ -118,8 +117,8 @@ const trustItems =
         href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80 mb-8"
-        style="color: #94A3B8;"
+        class="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-80"
+        style="color: var(--on-surface-3-muted); margin-bottom: var(--gap-xl); display: inline-flex;"
       >
         <svg
           class="w-4 h-4"
@@ -134,12 +133,15 @@ const trustItems =
         {linkedinText}
       </a>
 
-      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      <div
+        class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+        style="margin-top: var(--gap-lg);"
+      >
         {
           trustItems.map((item) => (
             <span
               class="flex items-center gap-2"
-              style="font-size: var(--text-sm); color: rgba(255,255,255,0.6);"
+              style="font-size: var(--type-sm); color: rgba(255,255,255,0.6);"
             >
               <svg
                 class="w-4 h-4 flex-shrink-0"

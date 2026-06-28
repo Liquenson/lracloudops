@@ -106,109 +106,93 @@ const learnMore = lang === 'es' ? 'Saber más' : 'Learn more'
 const allSolutions =
   lang === 'es' ? 'Ver todas las soluciones' : 'View all solutions'
 const allHref = lang === 'es' ? '/servicios' : '/services'
-const delays = [
-  'delay-100',
-  'delay-200',
-  'delay-300',
-  'delay-100',
-  'delay-200',
-  'delay-300',
-]
 ---
 
 <section
-  style="background: var(--color-white); border-top: 1px solid var(--color-gray-200);"
+  style="background: var(--surface-1); border-top: 1px solid var(--color-gray-200);"
   aria-labelledby="services-heading"
 >
-  <div class="max-w-7xl mx-auto px-6 py-24">
-    <div class="text-center mb-16 animate-fade-up">
-      <span class="section-label">{badge}</span>
+  <div
+    class="max-w-7xl mx-auto px-6"
+    style="padding-block: var(--section-gap);"
+  >
+    <div class="text-center mb-14 animate-fade-up">
+      <span class="ds-eyebrow">{badge}</span>
       <h2
         id="services-heading"
-        class="text-4xl sm:text-5xl font-bold mt-5 mb-5"
-        style="color: var(--color-gray-900); letter-spacing: -0.025em;"
+        style="margin-top: var(--gap-sm); font-family: var(--font-display); font-size: var(--type-h2); font-weight: 800; color: var(--color-gray-900); letter-spacing: -0.025em; margin-bottom: var(--gap-sm);"
       >
         {heading}
       </h2>
       <p
-        class="text-lg max-w-2xl mx-auto"
-        style="color: var(--color-gray-600);"
+        style="font-size: var(--type-body-lg); color: var(--color-gray-600); max-width: 40rem; margin-inline: auto;"
       >
         {subtext}
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 animate-fade-up"
+      style="gap: var(--gap-2xl);"
+    >
       {
-        services.map(({ icon, title, desc, href, aiBadge }, i) => (
-          <div
-            class={`group flex flex-col p-8 rounded-[var(--radius-md)] transition-all duration-200 animate-fade-up ${delays[i]}`}
-            style="cursor: default;"
-          >
-            <div class="flex items-start justify-between mb-6">
-              <div
-                class="w-12 h-12 flex items-center justify-center rounded-[var(--radius-md)] flex-shrink-0 transition-colors duration-200"
-                style="background: var(--color-primary-light);"
-                aria-hidden="true"
-              >
-                <svg
-                  class="w-6 h-6 transition-colors duration-200"
-                  style="color: var(--color-primary);"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d={icon}
-                  />
-                </svg>
-              </div>
-              {aiBadge && (
-                <span class="badge badge-blue flex-shrink-0">{aiBadge}</span>
-              )}
-            </div>
-            <h3
-              class="text-lg font-bold mb-3"
-              style="color: var(--color-gray-900);"
-            >
-              {title}
-            </h3>
-            <p
-              class="text-sm leading-relaxed flex-1 mb-6"
-              style="color: var(--color-gray-600);"
-            >
-              {desc}
-            </p>
-            <a
-              href={href}
-              class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto"
-              style="color: var(--color-primary);"
-            >
-              {learnMore}
+        services.map(({ icon, title, desc, href, aiBadge }) => (
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">
               <svg
-                class="w-3.5 h-3.5"
+                class="w-6 h-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  stroke-width="1.5"
+                  d={icon}
                 />
               </svg>
-            </a>
+            </div>
+            <div>
+              <div
+                class="flex items-center gap-2 mb-2"
+                style="flex-wrap: wrap;"
+              >
+                <h3 style="font-size: var(--type-h4); font-weight: 700; color: var(--color-gray-900);">
+                  {title}
+                </h3>
+                {aiBadge && <span class="badge badge-blue">{aiBadge}</span>}
+              </div>
+              <p style="font-size: var(--type-sm); line-height: 1.7; color: var(--color-gray-600); margin-bottom: var(--gap-sm);">
+                {desc}
+              </p>
+              <a
+                href={href}
+                style="font-size: var(--type-sm); font-weight: 600; color: var(--color-primary); display: inline-flex; align-items: center; gap: 0.375rem; transition: opacity var(--transition);"
+              >
+                {learnMore}
+                <svg
+                  class="w-3.5 h-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         ))
       }
     </div>
 
-    <div class="text-center mt-12">
+    <div class="text-center" style="margin-top: var(--gap-2xl);">
       <a href={allHref} class="btn btn-secondary">
         {allSolutions}
         <svg
