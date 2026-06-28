@@ -1,4 +1,4 @@
-# LRA Cloud Operations
+﻿# LRA Cloud Operations
 
 [![Deploy](https://img.shields.io/github/deployments/Liquenson/lracloudops/production?label=deploy&logo=cloudflare&logoColor=white)](https://lracloudops.com)
 [![Astro](https://img.shields.io/badge/Astro-6.2-FF5D01?logo=astro&logoColor=white)](https://astro.build)
@@ -96,7 +96,7 @@ npx wrangler pages deploy dist/
 
 | Ingeniero | Rol | Especialización |
 |---|---|---|
-| Ruben Alexis Liquenson | DevOps · Cloud Engineer | AWS · EKS · Terraform · GitOps |
+| Ruben Liquenson | DevOps · Cloud Engineer | AWS · EKS · Terraform · GitOps |
 | Kelvin Osaigbovo | DevOps · Platform Engineer | AWS · Azure · Kubernetes · CI/CD |
 | Wesley Osaigbovo | DevOps · Cloud Engineer | AWS · Terraform · ArgoCD · BBVA |
 | Darwin Pochet | Project Management | IT · Redes · Ciberseguridad · Fortinet |
