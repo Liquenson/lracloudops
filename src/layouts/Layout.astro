@@ -2217,18 +2217,18 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
               if (c) c.style.transform = ''
             }
           })
-          menu.style.opacity = '1'
-          menu.style.pointerEvents = 'auto'
-          menu.style.transform = 'translateY(0)'
-          btn.setAttribute('aria-expanded', 'true')
+          menu!.style.opacity = '1'
+          menu!.style.pointerEvents = 'auto'
+          menu!.style.transform = 'translateY(0)'
+          btn!.setAttribute('aria-expanded', 'true')
           if (chevron) chevron.style.transform = 'rotate(180deg)'
         }
 
         function closeThis() {
-          menu.style.opacity = '0'
-          menu.style.pointerEvents = 'none'
-          menu.style.transform = 'translateY(-8px)'
-          btn.setAttribute('aria-expanded', 'false')
+          menu!.style.opacity = '0'
+          menu!.style.pointerEvents = 'none'
+          menu!.style.transform = 'translateY(-8px)'
+          btn!.setAttribute('aria-expanded', 'false')
           if (chevron) chevron.style.transform = ''
         }
 
