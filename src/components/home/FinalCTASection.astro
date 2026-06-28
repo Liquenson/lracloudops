@@ -36,8 +36,8 @@ const trustItems =
 ---
 
 <section
-  class="relative overflow-hidden"
-  style="background: var(--surface-3); min-height: 80vh; display: flex; align-items: center;"
+  class="relative overflow-hidden rh-surface-navy"
+  style="min-height: 85vh; display: flex; align-items: center;"
   aria-labelledby="cta-heading"
 >
   <div
@@ -53,8 +53,8 @@ const trustItems =
   >
   </div>
 
-  <div class="relative w-full px-6 py-16">
-    <div class="max-w-3xl mx-auto text-center animate-fade-up">
+  <div class="relative w-full px-6 py-20">
+    <div class="max-w-[600px] mx-auto text-center animate-fade-up">
       <span
         class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8"
         style="background: rgba(30,111,255,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);"
@@ -63,7 +63,7 @@ const trustItems =
 
       <h2
         id="cta-heading"
-        style="font-family: var(--font-display); font-size: var(--type-display); font-weight: 900; color: #FFFFFF; margin-bottom: var(--gap-lg); letter-spacing: -0.03em; line-height: 1.06;"
+        style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: #FFFFFF; margin-bottom: var(--gap-lg); letter-spacing: -0.03em; line-height: 1.06;"
       >
         {
           lang === 'es' ? (
@@ -83,7 +83,7 @@ const trustItems =
       </h2>
 
       <p
-        style="font-size: var(--type-body-lg); color: var(--on-surface-3-muted); margin-bottom: var(--gap-2xl); max-width: 36rem; margin-inline: auto; line-height: 1.7;"
+        style="font-size: var(--type-body-lg); color: #94A3B8; margin-bottom: var(--gap-2xl); max-width: 36rem; margin-inline: auto; line-height: 1.7;"
       >
         {subtext}
       </p>
@@ -118,7 +118,7 @@ const trustItems =
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-80"
-        style="color: var(--on-surface-3-muted); margin-bottom: var(--gap-xl); display: inline-flex;"
+        style="color: rgba(255,255,255,0.45); margin-bottom: var(--gap-xl); display: inline-flex;"
       >
         <svg
           class="w-4 h-4"
@@ -134,18 +134,18 @@ const trustItems =
       </a>
 
       <div
-        class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
-        style="margin-top: var(--gap-lg);"
+        class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+        style="margin-top: var(--gap-md);"
       >
         {
           trustItems.map((item) => (
             <span
-              class="flex items-center gap-2"
-              style="font-size: var(--type-sm); color: rgba(255,255,255,0.6);"
+              class="flex items-center gap-1.5"
+              style="font-size: 0.875rem; color: rgba(255,255,255,0.5);"
             >
               <svg
-                class="w-4 h-4 flex-shrink-0"
-                style="color: #60A5FA;"
+                class="w-3.5 h-3.5 flex-shrink-0"
+                style="color: #93C5FD;"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
