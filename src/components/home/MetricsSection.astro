@@ -68,10 +68,7 @@ const subtext =
   style="background: var(--surface-2); border-top: 1px solid var(--color-gray-200); border-bottom: 1px solid var(--color-gray-200);"
   aria-labelledby="metrics-heading"
 >
-  <div
-    class="max-w-7xl mx-auto px-6"
-    style="padding-block: var(--gap-xl);"
-  >
+  <div class="max-w-7xl mx-auto px-6" style="padding-block: var(--gap-xl);">
     <div class="text-center mb-8 animate-fade-up">
       <span class="ds-eyebrow">{badge}</span>
       <h2
@@ -92,9 +89,7 @@ const subtext =
         metrics.map(({ value, label, sub }) => (
           <div class="stat-strip-item">
             <div class="metric-value">{value}</div>
-            <div
-              style="font-size: var(--type-sm); font-weight: 600; color: var(--color-gray-800); font-family: var(--font-display); margin-top: 0.25rem;"
-            >
+            <div style="font-size: var(--type-sm); font-weight: 600; color: var(--color-gray-800); font-family: var(--font-display); margin-top: 0.25rem;">
               {label}
             </div>
             <div class="metric-label">{sub}</div>

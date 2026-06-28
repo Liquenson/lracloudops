@@ -1167,14 +1167,26 @@ hr {
 }
 
 /* === SURFACE HELPERS === */
-.surface-1 { background: var(--surface-1); }
-.surface-2 { background: var(--surface-2); }
-.surface-3 { background: var(--surface-3); }
-.surface-4 { background: var(--surface-4); }
+.surface-1 {
+  background: var(--surface-1);
+}
+.surface-2 {
+  background: var(--surface-2);
+}
+.surface-3 {
+  background: var(--surface-3);
+}
+.surface-4 {
+  background: var(--surface-4);
+}
 
 /* === SECTION WRAPPERS === */
-.section-wrapper { padding-block: var(--section-gap); }
-.section-wrapper-sm { padding-block: var(--section-gap-sm); }
+.section-wrapper {
+  padding-block: var(--section-gap);
+}
+.section-wrapper-sm {
+  padding-block: var(--section-gap-sm);
+}
 
 /* === FEATURE LIST === */
 .feature-list {
@@ -1197,7 +1209,9 @@ hr {
   border-radius: var(--radius-md);
   color: var(--color-primary);
   flex-shrink: 0;
-  transition: background var(--transition), color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition);
 }
 .surface-3 .feature-icon {
   background: rgba(30, 111, 255, 0.15);
@@ -1222,7 +1236,9 @@ hr {
   border-right: 1px solid var(--color-gray-200);
   text-align: center;
 }
-.stat-strip-item:last-child { border-right: none; }
+.stat-strip-item:last-child {
+  border-right: none;
+}
 
 /* === CHIP === */
 .chip {
@@ -1257,7 +1273,9 @@ hr {
   border: none;
   background: transparent;
 }
-.editorial-card:hover .editorial-card__title { color: var(--color-primary); }
+.editorial-card:hover .editorial-card__title {
+  color: var(--color-primary);
+}
 .editorial-card__category {
   font-size: var(--type-caption);
   font-weight: 700;
@@ -1316,8 +1334,15 @@ hr {
   font-size: var(--type-sm);
   flex-shrink: 0;
 }
-.testimonial__name { font-weight: 600; font-size: var(--type-sm); color: var(--color-gray-900); }
-.testimonial__role { font-size: var(--type-xs); color: var(--color-gray-500); }
+.testimonial__name {
+  font-weight: 600;
+  font-size: var(--type-sm);
+  color: var(--color-gray-900);
+}
+.testimonial__role {
+  font-size: var(--type-xs);
+  color: var(--color-gray-500);
+}
 
 /* === SECTION DIVIDER === */
 .section-divider {

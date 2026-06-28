@@ -245,19 +245,29 @@ const navCols = [
               {colHeading}
             </h3>
             <ul class="space-y-3">
-              {links.map(({ label, href, external }: { label: string; href: string; external?: boolean }) => (
-                <li>
-                  <a
-                    href={href}
-                    target={external ? '_blank' : undefined}
-                    rel={external ? 'noopener noreferrer' : undefined}
-                    class="text-sm transition-colors hover:text-white"
-                    style="color: #94A3B8;"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
+              {links.map(
+                ({
+                  label,
+                  href,
+                  external,
+                }: {
+                  label: string
+                  href: string
+                  external?: boolean
+                }) => (
+                  <li>
+                    <a
+                      href={href}
+                      target={external ? '_blank' : undefined}
+                      rel={external ? 'noopener noreferrer' : undefined}
+                      class="text-sm transition-colors hover:text-white"
+                      style="color: #94A3B8;"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         ))

@@ -72,7 +72,10 @@ const subtext =
   style="background: var(--surface-1); border-top: 1px solid var(--color-gray-200);"
   aria-labelledby="sectors-heading"
 >
-  <div class="max-w-7xl mx-auto px-6" style="padding-block: var(--section-gap);">
+  <div
+    class="max-w-7xl mx-auto px-6"
+    style="padding-block: var(--section-gap);"
+  >
     <div class="text-center mb-14 animate-fade-up">
       <span class="ds-eyebrow">{badge}</span>
       <h2
@@ -91,9 +94,7 @@ const subtext =
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {
         industries.map(({ title, desc, icon, chips }, i) => (
-          <div
-            class={`card p-6 animate-fade-up delay-${(i + 1) * 100}`}
-          >
+          <div class={`card p-6 animate-fade-up delay-${(i + 1) * 100}`}>
             <div
               class="w-10 h-10 flex items-center justify-center rounded-lg mb-4 flex-shrink-0"
               style="background: var(--color-primary-light);"

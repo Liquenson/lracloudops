@@ -112,7 +112,10 @@ const allHref = lang === 'es' ? '/servicios' : '/services'
   style="background: var(--surface-1); border-top: 1px solid var(--color-gray-200);"
   aria-labelledby="services-heading"
 >
-  <div class="max-w-7xl mx-auto px-6" style="padding-block: var(--section-gap);">
+  <div
+    class="max-w-7xl mx-auto px-6"
+    style="padding-block: var(--section-gap);"
+  >
     <div class="text-center mb-14 animate-fade-up">
       <span class="ds-eyebrow">{badge}</span>
       <h2
@@ -155,18 +158,12 @@ const allHref = lang === 'es' ? '/servicios' : '/services'
                 class="flex items-center gap-2 mb-2"
                 style="flex-wrap: wrap;"
               >
-                <h3
-                  style="font-size: var(--type-h4); font-weight: 700; color: var(--color-gray-900);"
-                >
+                <h3 style="font-size: var(--type-h4); font-weight: 700; color: var(--color-gray-900);">
                   {title}
                 </h3>
-                {aiBadge && (
-                  <span class="badge badge-blue">{aiBadge}</span>
-                )}
+                {aiBadge && <span class="badge badge-blue">{aiBadge}</span>}
               </div>
-              <p
-                style="font-size: var(--type-sm); line-height: 1.7; color: var(--color-gray-600); margin-bottom: var(--gap-sm);"
-              >
+              <p style="font-size: var(--type-sm); line-height: 1.7; color: var(--color-gray-600); margin-bottom: var(--gap-sm);">
                 {desc}
               </p>
               <a
