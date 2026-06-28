@@ -36,7 +36,7 @@ const trustItems =
 ---
 
 <section class="relative overflow-hidden" aria-labelledby="cta-heading">
-  <div class="py-28 px-6 relative" style="background: #0A2540;">
+  <div class="py-28 px-6 relative" style="background: var(--color-navy);">
     <div
       class="absolute inset-0 pointer-events-none"
       aria-hidden="true"
@@ -93,11 +93,7 @@ const trustItems =
       </p>
 
       <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
-        <a
-          href={ctaHref}
-          class="inline-flex items-center gap-2.5 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 hover:-translate-y-px active:scale-[0.98] shadow-xl"
-          style="background: white; color: #1D4ED8;"
-        >
+        <a href={ctaHref} class="btn btn-primary btn-lg btn-pill">
           {ctaPrimary}
           <svg
             class="w-5 h-5"
@@ -113,11 +109,7 @@ const trustItems =
               d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
-        <a
-          href={projectsHref}
-          class="inline-flex items-center gap-2 text-base font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10"
-          style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.25);"
-        >
+        <a href={projectsHref} class="btn btn-outline-white btn-lg btn-pill">
           {ctaSecondary}
         </a>
       </div>
@@ -142,13 +134,13 @@ const trustItems =
         {linkedinText}
       </a>
 
-      <div
-        class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
-        style="color: #94A3B8;"
-      >
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
         {
           trustItems.map((item) => (
-            <span class="flex items-center gap-2 text-sm">
+            <span
+              class="flex items-center gap-2"
+              style="font-size: var(--text-sm); color: rgba(255,255,255,0.6);"
+            >
               <svg
                 class="w-4 h-4 flex-shrink-0"
                 style="color: #60A5FA;"

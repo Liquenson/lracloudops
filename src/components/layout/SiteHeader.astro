@@ -523,7 +523,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
 <header
   id="site-header"
   class="sticky top-0 z-50 transition-all duration-300"
-  style="background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(15,23,42,0.06);"
+  style="background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-gray-200);"
 >
   <nav
     class="max-w-7xl mx-auto px-5 sm:px-6 h-[66px] flex items-center justify-between gap-4"
@@ -553,7 +553,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
       <!-- Home -->
       <a
         href={lang === 'en' ? '/en/' : '/'}
-        class={`relative text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 ${isHomeActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+        class={`relative text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 ${isHomeActive ? 'text-[#0F172A] font-semibold' : 'text-[#495057] hover:text-[#1e6fff] hover:bg-[#eef4ff]'}`}
         aria-current={isHomeActive ? 'page' : undefined}
       >
         {lang === 'es' ? 'Inicio' : 'Home'}
@@ -573,7 +573,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           data-dropdown-btn
           aria-haspopup="true"
           aria-expanded="false"
-          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isServicesActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isServicesActive ? 'text-[#0F172A] font-semibold' : 'text-[#495057] hover:text-[#1e6fff] hover:bg-[#eef4ff]'}`}
         >
           {lang === 'es' ? 'Servicios' : 'Services'}
           <svg
@@ -603,7 +603,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           role="menu"
           aria-label="Services submenu"
           class="absolute top-full left-0 mt-2 w-80 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
-          style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+          style="background: var(--color-white); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-md); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
         >
           <div class="p-2">
             {
@@ -664,7 +664,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           data-dropdown-btn
           aria-haspopup="true"
           aria-expanded="false"
-          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isSolutionsActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isSolutionsActive ? 'text-[#0F172A] font-semibold' : 'text-[#495057] hover:text-[#1e6fff] hover:bg-[#eef4ff]'}`}
         >
           {lang === 'es' ? 'Soluciones' : 'Solutions'}
           <svg
@@ -694,7 +694,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           role="menu"
           aria-label="Solutions submenu"
           class="absolute top-full left-0 mt-2 w-72 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
-          style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+          style="background: var(--color-white); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-md); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
         >
           <div class="p-2">
             {
@@ -755,7 +755,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           data-dropdown-btn
           aria-haspopup="true"
           aria-expanded="false"
-          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isIndustriesActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isIndustriesActive ? 'text-[#0F172A] font-semibold' : 'text-[#495057] hover:text-[#1e6fff] hover:bg-[#eef4ff]'}`}
         >
           {lang === 'es' ? 'Industrias' : 'Industries'}
           <svg
@@ -785,7 +785,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           role="menu"
           aria-label="Industries submenu"
           class="absolute top-full left-0 mt-2 w-64 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
-          style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+          style="background: var(--color-white); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-md); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
         >
           <div class="p-2">
             {
@@ -846,7 +846,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           data-dropdown-btn
           aria-haspopup="true"
           aria-expanded="false"
-          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isResourcesActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isResourcesActive ? 'text-[#0F172A] font-semibold' : 'text-[#495057] hover:text-[#1e6fff] hover:bg-[#eef4ff]'}`}
         >
           {lang === 'es' ? 'Recursos' : 'Resources'}
           <svg
@@ -876,7 +876,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           role="menu"
           aria-label="Resources submenu"
           class="absolute top-full left-0 mt-2 w-64 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
-          style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+          style="background: var(--color-white); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-md); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
         >
           <div class="p-2">
             {
@@ -937,7 +937,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           data-dropdown-btn
           aria-haspopup="true"
           aria-expanded="false"
-          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isAboutActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+          class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isAboutActive ? 'text-[#0F172A] font-semibold' : 'text-[#495057] hover:text-[#1e6fff] hover:bg-[#eef4ff]'}`}
         >
           {lang === 'es' ? 'Nosotros' : 'About'}
           <svg
@@ -967,7 +967,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           role="menu"
           aria-label="About submenu"
           class="absolute top-full left-0 mt-2 w-64 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
-          style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+          style="background: var(--color-white); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-md); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
         >
           <div class="p-2">
             {

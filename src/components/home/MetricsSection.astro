@@ -65,7 +65,7 @@ const subtext =
 ---
 
 <section
-  style="background: var(--color-gray-50); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);"
+  style="background: var(--color-gray-50); border-top: 1px solid var(--color-gray-200); border-bottom: 1px solid var(--color-gray-200);"
   aria-labelledby="metrics-heading"
 >
   <div class="max-w-7xl mx-auto px-6 py-16">
@@ -74,47 +74,37 @@ const subtext =
       <h2
         id="metrics-heading"
         class="text-4xl sm:text-5xl font-bold mt-4 mb-3"
-        style="color: #0F172A; letter-spacing: -0.025em; font-family: var(--font-display);"
+        style="color: var(--color-gray-900); letter-spacing: -0.025em; font-family: var(--font-display);"
       >
         {heading}
       </h2>
-      <p
-        class="text-lg max-w-xl mx-auto"
-        style="color: var(--color-text-subtle);"
-      >
+      <p class="text-lg max-w-xl mx-auto" style="color: var(--color-gray-600);">
         {subtext}
       </p>
     </div>
 
     <div
       class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 animate-fade-up"
-      style="border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden;"
+      style="border: 1px solid var(--color-gray-200); border-radius: var(--radius-md); overflow: hidden; background: var(--color-white);"
     >
       {
         metrics.map(({ value, label, sub }, idx) => (
           <div
-            class="flex flex-col items-center justify-center text-center px-5 py-10 cursor-default transition-colors hover:bg-white"
+            class="flex flex-col items-center justify-center text-center px-5 py-10 cursor-default transition-colors hover:bg-gray-50"
             style={
               idx < metrics.length - 1
-                ? 'border-right: 1px solid var(--color-border);'
+                ? 'border-right: 1px solid var(--color-gray-200);'
                 : ''
             }
           >
-            <div
-              class="font-black mb-1.5 leading-none"
-              style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--color-primary); letter-spacing: -0.04em;"
-            >
-              {value}
-            </div>
+            <div class="metric-value mb-1.5">{value}</div>
             <div
               class="text-sm font-semibold mb-1"
-              style="color: #0A2540; font-family: var(--font-display);"
+              style="color: var(--color-gray-800); font-family: var(--font-display);"
             >
               {label}
             </div>
-            <div class="text-xs" style="color: var(--color-text-muted);">
-              {sub}
-            </div>
+            <div class="metric-label">{sub}</div>
           </div>
         ))
       }
