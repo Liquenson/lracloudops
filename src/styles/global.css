@@ -799,6 +799,11 @@ code:not(pre code) {
   );
   background-size: 40px 40px;
 }
+.hero-gradient h1,
+.hero-gradient h2,
+.hero-gradient h3 {
+  color: #ffffff;
+}
 
 /* === ANIMATIONS === */
 @keyframes terminal-cursor {
