@@ -1,0 +1,173 @@
+---
+import SolutionLayout from '../../components/SolutionLayout.astro'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://lracloudops.com/observability#service',
+  name: 'Observabilidad · Prometheus · Grafana',
+  serviceType: 'Observability',
+  description:
+    'Instrumentación desde el día uno, no tras el primer incidente. Métricas Prometheus, logs estructurados y umbrales de alerta configurados antes de que el primer usuario llegue a producción.',
+  url: 'https://lracloudops.com/observability',
+  provider: { '@id': 'https://lracloudops.com/#organization' },
+  areaServed: 'Worldwide',
+  inLanguage: 'es-ES',
+}
+---
+
+<SolutionLayout
+  titulo="Observabilidad · Prometheus, Grafana y SRE"
+  descripcion="Instrumentación desde el día uno, no tras el primer incidente. Métricas Prometheus, logs estructurados y umbrales de alerta configurados antes de que el primer usuario llegue a producción."
+  badgeLabel="04 · Observability"
+  h1="Sabes qué está fallando antes de que abran un ticket."
+  heroSubtitle="La observabilidad añadida después del primer incidente está diseñada para el incidente que ya ocurrió. La observabilidad diseñada desde el inicio cubre los incidentes que aún no han ocurrido. La diferencia es cuándo se definen los SLIs — antes de la primera carga de usuario, no después."
+  schema={schema}
+  sectionNumber="04"
+  challenges={[
+    {
+      title: 'Observabilidad añadida retroactivamente',
+      desc: 'El stack de monitorización se añade tras el primer incidente de producción. Las alertas se configuran para los síntomas del incidente pasado, no para los futuros.',
+    },
+    {
+      title: 'Métricas sin contexto de negocio',
+      desc: 'CPU y memoria son necesarias pero no suficientes. Sin métricas de latencia, tasa de errores y saturación específicas de cada servicio, es imposible correlacionar el estado del sistema con el impacto en usuarios.',
+    },
+    {
+      title: 'Logs sin estructura',
+      desc: 'Los logs en texto libre requieren búsqueda de texto completo para extraer información. Durante un incidente, buscar en logs no estructurados consume tiempo que debería destinarse a la remediación.',
+    },
+    {
+      title: 'Alertas que no apuntan a una acción',
+      desc: 'Una alerta que dice "CPU al 80%" no indica qué hacer. Una alerta que dice "Latencia p99 del servicio de pagos > 2s durante 5 minutos" apunta directamente a una acción.',
+    },
+  ]}
+  archTitle="El stack de observabilidad que desplegamos."
+  archSubtitle="Métricas, logs y alertas configurados como código. Dashboards listos el día del primer despliegue."
+  layers={[
+    {
+      layer: 'Recolección de Métricas',
+      tools: 'Prometheus · kube-state-metrics · node-exporter · custom metrics',
+      desc: 'Prometheus scrapeando métricas de todos los componentes del clúster, los nodos y los servicios de aplicación. Métricas personalizadas de la aplicación expuestas en el endpoint /metrics.',
+    },
+    {
+      layer: 'Visualización',
+      tools: 'Grafana · Dashboards como código · Annotations',
+      desc: 'Dashboards Grafana definidos como JSON y gestionados en Git. Dashboards para infraestructura (nodos, pods, red) y servicios de aplicación (latencia, tasa de errores, throughput) listos en el día uno.',
+    },
+    {
+      layer: 'Alerting',
+      tools: 'Alertmanager · PagerDuty · Slack · Escalation policies',
+      desc: 'Alertas definidas en Prometheus alerting rules con umbrales basados en SLIs del servicio. Alertmanager enruta por severidad — crítico a PagerDuty, warning a Slack.',
+    },
+    {
+      layer: 'Logs Estructurados',
+      tools: 'JSON logging · Fluent Bit · CloudWatch Logs Insights',
+      desc: 'Aplicaciones configuradas para logs JSON estructurados. Fluent Bit para recolección y envío a CloudWatch Logs. Queries de CloudWatch Logs Insights predefinidas para patrones de error comunes.',
+    },
+    {
+      layer: 'Métricas AWS Nativas',
+      tools: 'CloudWatch · Container Insights · RDS Enhanced Monitoring',
+      desc: 'CloudWatch Container Insights para métricas de EKS y ECS. RDS Enhanced Monitoring para métricas de base de datos. Alertas de coste para detectar derivas de gasto antes de que impacten en el presupuesto.',
+    },
+    {
+      layer: 'SLIs y SLOs',
+      tools: 'Error budget · Availability targets · Latency budgets',
+      desc: 'SLIs definidos antes del primer despliegue: disponibilidad del servicio, latencia p50/p95/p99, tasa de errores. SLO calculado como disponibilidad objetivo mensual con alerta cuando el error budget se agota.',
+    },
+  ]}
+  steps={[
+    {
+      step: '01',
+      title: 'Definición de SLIs',
+      desc: 'Identificamos las métricas que miden directamente la experiencia del usuario: disponibilidad, latencia, tasa de errores. Los SLIs se definen antes de la instrumentación.',
+    },
+    {
+      step: '02',
+      title: 'Instrumentación de aplicaciones',
+      desc: 'Añadimos endpoints /metrics a los servicios. Configuramos logs estructurados en JSON. Verificamos que las métricas críticas están expuestas correctamente.',
+    },
+    {
+      step: '03',
+      title: 'Deploy del stack de observabilidad',
+      desc: 'Prometheus, Grafana y Alertmanager desplegados via Helm. Dashboards y reglas de alerta aplicados como código.',
+    },
+    {
+      step: '04',
+      title: 'Configuración de alertas y runbooks',
+      desc: 'Alertas configuradas para los SLIs definidos. Cada alerta tiene un runbook que describe el diagnóstico y la remediación — antes de que ocurra el primer incidente.',
+    },
+  ]}
+  outcomes={[
+    {
+      metric: 'Dashboards listos en día 1',
+      detail: 'antes de la primera carga de usuario',
+    },
+    {
+      metric: 'Alertas accionables',
+      detail: 'no solo "CPU alta" — qué servicio, qué impacto',
+    },
+    {
+      metric: 'MTTD reducido',
+      detail: 'tiempo de detección de incidentes en minutos, no horas',
+    },
+    {
+      metric: 'Logs estructurados',
+      detail: 'queries predefinidas para patrones de error comunes',
+    },
+    {
+      metric: 'SLOs definidos',
+      detail: 'disponibilidad y latencia medidos continuamente',
+    },
+    {
+      metric: 'Observabilidad como código',
+      detail: 'dashboards y alertas en Git, no en la UI de Grafana',
+    },
+  ]}
+  ctaH2="Instrumenta tu plataforma desde el inicio."
+  ctaSubtitle="Trae tus servicios actuales y los requisitos de observabilidad de tu equipo. Diseñamos el stack que permite detectar incidentes antes de que los usuarios los reporten."
+  backLabel="Volver a Soluciones"
+  relatedSolutions={[
+    { href: '/cloud-infrastructure', label: 'Infraestructura Cloud' },
+    { href: '/platform-engineering', label: 'Platform Engineering' },
+    { href: '/kubernetes-platforms', label: 'Plataformas Kubernetes' },
+  ]}
+>
+  <!-- Flujo de observabilidad -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <span class="section-label">Flujo de observabilidad</span>
+        <h2 class="text-2xl font-bold mt-4" style="color: #0A2540;">De métricas a alertas proactivas.</h2>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-0" role="img" aria-label="Flujo de observabilidad: Prometheus → Grafana → Alertmanager → Respuesta">
+        {[
+          { label: 'Prometheus', sub: 'Scraping · métricas', color: '#E5421E', icon: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z' },
+          { label: 'Grafana', sub: 'Dashboards · SLOs', color: '#F46800', icon: 'M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605' },
+          { label: 'Alertmanager', sub: 'Reglas por severidad', color: '#1E6FFF', icon: 'M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M10.5 8.25h3l-3 4.5h3' },
+          { label: 'Respuesta proactiva', sub: 'Antes del primer ticket', color: '#10B981', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
+        ].map(({ label, sub, color, icon }, i, arr) => (
+          <div class="flex items-center">
+            <div class="flex flex-col items-center text-center px-6 py-5 rounded-2xl min-w-[130px]" style={`background: ${color}12; border: 1.5px solid ${color}30;`}>
+              <div class="w-10 h-10 flex items-center justify-center rounded-xl mb-3" style={`background: ${color}20;`} aria-hidden="true">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={`color: ${color};`}>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
+                </svg>
+              </div>
+              <div class="text-sm font-bold mb-0.5" style={`color: ${color};`}>{label}</div>
+              <div class="text-xs" style="color: #64748B;">{sub}</div>
+            </div>
+            {i < arr.length - 1 && (
+              <div class="flex items-center px-2" aria-hidden="true">
+                <div class="h-px w-8 sm:w-12" style="background: #CBD5E1;"></div>
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #CBD5E1;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</SolutionLayout>

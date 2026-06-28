@@ -6,20 +6,13 @@ export default defineConfig({
   site: 'https://lracloudops.com',
 
   i18n: {
-    defaultLocale: 'es',
-    locales: ['es', 'en', 'de', 'fr', 'it', 'pt-br', 'ja', 'ko', 'zh-cn'],
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
     routing: {
       prefixDefaultLocale: false,
     },
     fallback: {
-      'en': 'es',
-      'de': 'es',
-      'fr': 'es',
-      'it': 'es',
-      'pt-br': 'es',
-      'ja': 'es',
-      'ko': 'es',
-      'zh-cn': 'es',
+      es: 'en',
     },
   },
 
@@ -38,13 +31,13 @@ export default defineConfig({
         if (path === '/') {
           item.priority = 1.0
         } else if (
-          /^\/(servicios|pricing|assessment)\/?$/.test(path) ||
-          /^\/en\/(services|pricing|assessment)\/?$/.test(path)
+          /^\/(services|pricing|assessment)\/?$/.test(path) ||
+          /^\/es\/(servicios|pricing|assessment)\/?$/.test(path)
         ) {
           item.priority = 0.9
         } else if (
-          /^\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(path) ||
-          /^\/en\/(about|contact|certifications|projects|blog|resources)\/?$/.test(path)
+          /^\/(about|contact|certifications|projects|blog|resources)\/?$/.test(path) ||
+          /^\/es\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(path)
         ) {
           item.priority = 0.8
         } else if (
@@ -56,24 +49,17 @@ export default defineConfig({
           item.priority = 0.7
         } else if (
           /^\/(security|privacy|terms)\/?$/.test(path) ||
-          /^\/en\/(security|privacy|terms)\/?$/.test(path)
+          /^\/es\/(security|privacy|terms)\/?$/.test(path)
         ) {
           item.priority = 0.5
         }
         return item
       },
       i18n: {
-        defaultLocale: 'es',
+        defaultLocale: 'en',
         locales: {
-          es: 'es-ES',
           en: 'en-US',
-          de: 'de-DE',
-          fr: 'fr-FR',
-          it: 'it-IT',
-          'pt-br': 'pt-BR',
-          ja: 'ja-JP',
-          ko: 'ko-KR',
-          'zh-cn': 'zh-CN',
+          es: 'es-ES',
         },
       },
     }),

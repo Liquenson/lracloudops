@@ -1,0 +1,306 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Learning Agent · Aprende DevOps y Cloud con IA · Gratis"
+  descripcion="Aprende Kubernetes, Terraform, AWS, Docker y GitOps con un profesor de IA experto. Explicaciones progresivas, ejemplos reales y ejercicios prácticos."
+  keywords="aprender DevOps, curso Kubernetes IA, aprender Terraform, AWS tutorial, aprender cloud computing"
+>
+  <!-- ── HERO ── -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0A2540;"
+    aria-labelledby="learn-hero-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-16 sm:py-20 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-xs font-bold tracking-widest uppercase"
+        style="background: rgba(30,111,255,0.2); border: 1px solid rgba(96,165,250,0.35); color: #93C5FD;"
+      >
+        <span
+          class="w-2 h-2 rounded-full flex-shrink-0"
+          style="background: #60A5FA; animation: pulse 2s infinite;"
+          aria-hidden="true"></span>
+        AI Profesor · Gratis · Siempre disponible
+      </div>
+      <h1
+        id="learn-hero-heading"
+        class="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight"
+        style="letter-spacing: -0.035em;"
+      >
+        Learning Agent
+      </h1>
+      <p
+        class="text-lg leading-relaxed max-w-2xl mx-auto"
+        style="color: rgba(147,184,255,0.85);"
+      >
+        Tu profesor personal de DevOps y Cloud. Pregunta lo que quieras sobre
+        Kubernetes, Terraform, AWS, Docker, GitOps, CI/CD y más.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── QUICK TOPICS ── -->
+  <section
+    class="py-6 border-b"
+    style="background: #0f172a; border-color: rgba(255,255,255,0.07);"
+  >
+    <div class="max-w-3xl mx-auto px-6">
+      <p
+        class="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
+        style="color: rgba(147,184,255,0.5);"
+      >
+        Temas populares
+      </p>
+      <div class="flex flex-wrap justify-center gap-2" id="quick-topics">
+        {
+          [
+            '¿Qué es Kubernetes?',
+            'Terraform vs Pulumi',
+            'Docker para principiantes',
+            'CI/CD con GitHub Actions',
+            'IAM en AWS explicado',
+            'GitOps con ArgoCD',
+            'Prometheus y Grafana',
+            'EKS vs ECS',
+          ].map((topic) => (
+            <button
+              type="button"
+              class="quick-topic text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"
+              style="background: rgba(30,111,255,0.15); color: #93C5FD; border: 1px solid rgba(96,165,250,0.2);"
+            >
+              {topic}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CHAT ── -->
+  <section class="bg-white py-8" aria-label="Chat de aprendizaje">
+    <div class="max-w-3xl mx-auto px-6 flex flex-col" style="height: 520px;">
+      <!-- Messages -->
+      <div
+        id="chat-messages"
+        class="flex-1 overflow-y-auto space-y-4 pb-4"
+        aria-live="polite"
+        aria-label="Mensajes del chat"
+      >
+        <!-- Welcome message -->
+        <div class="flex gap-3">
+          <div
+            class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold text-white"
+            style="background: #2563EB;"
+            aria-hidden="true"
+          >
+            AI
+          </div>
+          <div
+            class="rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed max-w-[85%]"
+            style="background: #EEF4FF; color: #0F172A;"
+          >
+            ¡Hola! Soy tu profesor de DevOps y Cloud. Puedo enseñarte desde los
+            conceptos básicos hasta arquitecturas avanzadas.<br /><br />
+            ¿Por dónde quieres empezar? Puedes preguntarme sobre Kubernetes, Terraform,
+            AWS, Docker, CI/CD, GitOps o cualquier otra tecnología de infraestructura.
+          </div>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="border-t pt-4" style="border-color: #E5E7EB;">
+        <form id="chat-form" class="flex gap-3" novalidate>
+          <input
+            id="chat-input"
+            type="text"
+            placeholder="¿Qué quieres aprender hoy?"
+            class="flex-1 px-4 py-3 rounded-xl text-sm border focus:outline-none focus:ring-2"
+            style="border-color: #E2E8F0; color: #0F172A;"
+            autocomplete="off"
+          />
+          <button
+            type="submit"
+            id="chat-submit"
+            class="inline-flex items-center justify-center w-12 h-12 rounded-xl text-white flex-shrink-0 transition-all hover:scale-105 active:scale-95"
+            style="background: #2563EB; box-shadow: 0 2px 12px rgba(37,99,235,0.4);"
+            aria-label="Enviar mensaje"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            </svg>
+          </button>
+        </form>
+        <p class="text-xs mt-2 text-center" style="color: #94A3B8;">
+          Máximo 300 palabras por respuesta · Responde en tu idioma
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT CAN YOU LEARN ── -->
+  <section class="py-16" style="background: #F8FAFC;">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-center mb-10" style="color: #0F172A;">
+        ¿Qué puedes aprender?
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {
+          [
+            { icon: '🐳', title: 'Docker', desc: 'Contenedores y registros' },
+            { icon: '⚙️', title: 'Kubernetes', desc: 'Básico a avanzado' },
+            { icon: '🏗️', title: 'Terraform', desc: 'IaC en AWS/Azure/GCP' },
+            { icon: '☁️', title: 'AWS', desc: 'EC2, EKS, S3, IAM, RDS' },
+            { icon: '🔄', title: 'CI/CD', desc: 'GitHub Actions, Jenkins' },
+            {
+              icon: '🔍',
+              title: 'Observabilidad',
+              desc: 'Prometheus, Grafana',
+            },
+          ].map((item) => (
+            <div
+              class="rounded-2xl p-5 text-center"
+              style="background: white; border: 1px solid #E5E7EB;"
+            >
+              <div class="text-3xl mb-2">{item.icon}</div>
+              <div class="text-sm font-bold mb-1" style="color: #0F172A;">
+                {item.title}
+              </div>
+              <div class="text-xs" style="color: #64748B;">
+                {item.desc}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const chatForm = document.getElementById('chat-form') as HTMLFormElement
+  const chatInput = document.getElementById('chat-input') as HTMLInputElement
+  const chatMessages = document.getElementById('chat-messages')!
+  const chatSubmit = document.getElementById('chat-submit') as HTMLButtonElement
+
+  const conversationHistory: { role: string; content: string }[] = []
+
+  function addMessage(role: 'user' | 'assistant', text: string) {
+    const isUser = role === 'user'
+    const wrapper = document.createElement('div')
+    wrapper.className = `flex gap-3 ${isUser ? 'justify-end' : ''}`
+    wrapper.innerHTML = isUser
+      ? `<div class="rounded-2xl rounded-tr-sm px-4 py-3 text-sm leading-relaxed max-w-[85%]"
+          style="background: #2563EB; color: white;">${escapeHtml(text)}</div>`
+      : `<div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold text-white"
+          style="background: #2563EB;" aria-hidden="true">AI</div>
+        <div class="rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed max-w-[85%]"
+          style="background: #EEF4FF; color: #0F172A;">${escapeHtml(text).replace(/\n/g, '<br>')}</div>`
+    chatMessages.appendChild(wrapper)
+    chatMessages.scrollTop = chatMessages.scrollHeight
+  }
+
+  function addTypingIndicator() {
+    const el = document.createElement('div')
+    el.id = 'typing-indicator'
+    el.className = 'flex gap-3'
+    el.innerHTML = `<div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold text-white"
+        style="background: #2563EB;" aria-hidden="true">AI</div>
+      <div class="rounded-2xl rounded-tl-sm px-4 py-3 text-sm" style="background: #EEF4FF; color: #64748B;">
+        <span class="inline-flex gap-1">
+          <span style="animation: bounce 1s infinite 0ms">●</span>
+          <span style="animation: bounce 1s infinite 150ms">●</span>
+          <span style="animation: bounce 1s infinite 300ms">●</span>
+        </span>
+      </div>`
+    chatMessages.appendChild(el)
+    chatMessages.scrollTop = chatMessages.scrollHeight
+    return el
+  }
+
+  function escapeHtml(str: string): string {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+  }
+
+  async function sendMessage(text: string) {
+    chatSubmit.disabled = true
+    addMessage('user', text)
+    conversationHistory.push({ role: 'user', content: text })
+
+    const typing = addTypingIndicator()
+
+    try {
+      const res = await fetch('/api/learning-agent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: conversationHistory }),
+      })
+      const json = (await res.json()) as { message?: string; error?: string }
+      const reply =
+        json.message ??
+        'Lo siento, no pude generar una respuesta. Intenta de nuevo.'
+      conversationHistory.push({ role: 'assistant', content: reply })
+      typing.remove()
+      addMessage('assistant', reply)
+    } catch {
+      typing.remove()
+      addMessage(
+        'assistant',
+        'Error de conexión. Verifica tu conexión a internet e intenta de nuevo.'
+      )
+    } finally {
+      chatSubmit.disabled = false
+    }
+  }
+
+  chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const text = chatInput.value.trim()
+    if (!text) return
+    chatInput.value = ''
+    await sendMessage(text)
+  })
+
+  // Quick topics
+  document.querySelectorAll('.quick-topic').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const topic = (btn as HTMLElement).textContent?.trim() ?? ''
+      chatInput.value = topic
+      chatInput.focus()
+    })
+  })
+</script>
+
+<style>
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+</style>

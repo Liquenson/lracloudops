@@ -25,7 +25,7 @@ const lang = getLangFromUrl(Astro.url)
 const canonicalURL = new URL(currentPath, 'https://lracloudops.com')
 const finalOgImage = ogImage ?? 'https://lracloudops.com/og-image.png'
 const isFallbackOnlyPath = /^\/(solutions|industries)\//.test(currentPath)
-const isMinorLocale = !['es', 'en'].includes(lang)
+const isMinorLocale = false
 const shouldNoindex = isMinorLocale && isFallbackOnlyPath
 
 // Compute alternate URLs for all 9 locales
@@ -153,7 +153,7 @@ const websiteSchema = {
   inLanguage: lang === 'es' ? 'es-ES' : 'en-US',
 }
 
-const contactHref = lang === 'es' ? '/contacto' : (lang === 'en' ? '/en/contact' : '/contacto')
+const contactHref = lang === 'es' ? '/es/contacto' : '/contact'
 const ctaLabel = lang === 'es' ? 'Agendar consulta' : 'Schedule Consultation'
 const skipLabel =
   lang === 'es' ? 'Ir al contenido principal' : 'Skip to main content'
@@ -240,14 +240,14 @@ const industriesItems: NavItem[] = [
       'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z',
   },
   {
-    href: '/industries/fintech',
+    href: '/es/industries/fintech',
     label: 'Fintech',
     desc: 'Secure, scalable financial platforms',
     iconPath:
       'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z',
   },
   {
-    href: '/industries/saas',
+    href: '/es/industries/saas',
     label: 'SaaS',
     desc: 'Multi-tenant cloud-native platforms',
     iconPath:
@@ -332,35 +332,35 @@ const aboutItems: NavItem[] = [
 // ES-locale nav items (P0-2: navbar i18n)
 const esServicesItems: NavItem[] = [
   {
-    href: '/cloud-infrastructure',
+    href: '/es/cloud-infrastructure',
     label: 'Infraestructura Cloud',
     desc: 'Entornos AWS, multi-cloud e híbridos',
     iconPath:
       'M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z',
   },
   {
-    href: '/kubernetes-platforms',
+    href: '/es/kubernetes-platforms',
     label: 'Plataformas Kubernetes',
     desc: 'Clusters EKS, GKE y autogestionados',
     iconPath:
       'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
   },
   {
-    href: '/devops-automation',
+    href: '/es/devops-automation',
     label: 'Automatización DevOps',
     desc: 'Pipelines CI/CD y automatización de flujos',
     iconPath:
       'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99',
   },
   {
-    href: '/platform-engineering',
+    href: '/es/platform-engineering',
     label: 'Ingeniería de Plataforma',
     desc: 'Plataformas internas para desarrolladores y herramientas',
     iconPath:
       'M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122',
   },
   {
-    href: '/observability',
+    href: '/es/observability',
     label: 'Observabilidad y SRE',
     desc: 'Monitorización, alertas e ingeniería de fiabilidad',
     iconPath:
@@ -369,27 +369,27 @@ const esServicesItems: NavItem[] = [
 ]
 const esSolutionsItems: NavItem[] = [
   {
-    href: '/solutions/aws-modernization',
+    href: '/es/solutions/aws-modernization',
     label: 'Modernización AWS',
     desc: 'Migra y moderniza tus workloads de AWS',
     iconPath:
       'M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
-    href: '/solutions/kubernetes-adoption',
+    href: '/es/solutions/kubernetes-adoption',
     label: 'Adopción de Kubernetes',
     desc: 'Orquestación de contenedores a escala empresarial',
     iconPath:
       'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
   },
   {
-    href: '/solutions/cicd-transformation',
+    href: '/es/solutions/cicd-transformation',
     label: 'Transformación CI/CD',
     desc: 'Acelera la entrega con pipelines automatizados',
     iconPath: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
   },
   {
-    href: '/solutions/gitops',
+    href: '/es/solutions/gitops',
     label: 'Implementación GitOps',
     desc: 'Operaciones de infraestructura dirigidas por Git',
     iconPath:
@@ -398,21 +398,21 @@ const esSolutionsItems: NavItem[] = [
 ]
 const esIndustriesItems: NavItem[] = [
   {
-    href: '/industries/healthcare',
+    href: '/es/industries/healthcare',
     label: 'Salud',
     desc: 'Infraestructura cloud conforme con HIPAA',
     iconPath:
       'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z',
   },
   {
-    href: '/industries/fintech',
+    href: '/es/industries/fintech',
     label: 'Fintech',
     desc: 'Plataformas financieras seguras y escalables',
     iconPath:
       'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z',
   },
   {
-    href: '/industries/saas',
+    href: '/es/industries/saas',
     label: 'SaaS',
     desc: 'Plataformas cloud-native multi-tenant',
     iconPath:
@@ -421,35 +421,35 @@ const esIndustriesItems: NavItem[] = [
 ]
 const esResourcesItems: NavItem[] = [
   {
-    href: '/blog',
+    href: '/es/blog',
     label: 'Blog',
     desc: 'Artículos y tutoriales de ingeniería cloud',
     iconPath:
       'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
   },
   {
-    href: '/resources',
+    href: '/es/resources',
     label: 'Guías y Recursos',
     desc: 'Guías técnicas y buenas prácticas',
     iconPath:
       'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
   },
   {
-    href: '/docs',
+    href: '/es/docs',
     label: 'Documentación',
     desc: 'Estándares de ingeniería y guías técnicas',
     iconPath:
       'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
   },
   {
-    href: '/architectures',
+    href: '/es/architectures',
     label: 'Centro de Arquitectura',
     desc: 'Patrones y diagramas de arquitectura de referencia',
     iconPath:
       'M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z',
   },
   {
-    href: '/assessments',
+    href: '/es/assessments',
     label: 'Herramientas de Evaluación',
     desc: 'Evalúa tu madurez DevOps y cloud',
     iconPath:
@@ -458,14 +458,14 @@ const esResourcesItems: NavItem[] = [
 ]
 const esAboutItems: NavItem[] = [
   {
-    href: '/nosotros',
+    href: '/es/nosotros',
     label: 'Nuestro Equipo',
     desc: 'Ingenieros de plataforma y arquitectos cloud',
     iconPath:
       'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
   },
   {
-    href: '/certifications',
+    href: '/es/certifications',
     label: 'Certificaciones',
     desc: 'Credenciales verificadas y distintivos de experiencia',
     iconPath:
@@ -479,14 +479,14 @@ const esAboutItems: NavItem[] = [
       'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
   },
   {
-    href: '/why-lra',
+    href: '/es/why-lra',
     label: 'Por qué LRA',
     desc: 'El caso de lo especializado frente a lo generalista',
     iconPath:
       'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
-    href: '/metodologia',
+    href: '/es/metodologia',
     label: 'Metodología',
     desc: 'Nuestro proceso de ingeniería en 6 fases y estándares',
     iconPath:
@@ -504,7 +504,7 @@ const activeAboutItems = lang === 'es' ? esAboutItems : aboutItems
 const isServicesActive =
   servicesItems.some(
     (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
-  ) || currentPath.startsWith('/en/services') || currentPath.startsWith('/servicios')
+  ) || currentPath.startsWith('/services') || currentPath.startsWith('/es/servicios')
 const isSolutionsActive = solutionsItems.some(
   (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
 )
@@ -515,21 +515,21 @@ const isResourcesActive = resourcesItems.some(
   (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
 )
 const isAboutActive =
-  currentPath === '/nosotros' ||
-  currentPath === '/en/about' ||
+  currentPath === '/about' ||
   currentPath === '/certifications' ||
-  currentPath === '/en/certifications' ||
   currentPath === '/open-source' ||
-  currentPath === '/en/open-source' ||
   currentPath === '/why-lra' ||
-  currentPath === '/en/why-lra' ||
-  currentPath === '/metodologia' ||
-  currentPath === '/en/methodology'
-const isHomeActive = currentPath === '/' || currentPath === '/en/'
+  currentPath === '/methodology' ||
+  currentPath === '/es/nosotros' ||
+  currentPath === '/es/certifications' ||
+  currentPath === '/es/open-source' ||
+  currentPath === '/es/why-lra' ||
+  currentPath === '/es/metodologia'
+const isHomeActive = currentPath === '/' || currentPath === '/es/'
 ---
 
 <!doctype html>
-<html lang={lang === 'zh-cn' ? 'zh-Hans' : lang}>
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -555,7 +555,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="LRA Cloud Ops" />
-    <meta property="og:locale" content={{ es: 'es_ES', en: 'en_US', de: 'de_DE', fr: 'fr_FR', it: 'it_IT', 'pt-br': 'pt_BR', ja: 'ja_JP', ko: 'ko_KR', 'zh-cn': 'zh_CN' }[lang] ?? 'es_ES'} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
     <meta property="og:image" content={finalOgImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -670,7 +670,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
       >
         <!-- Logo -->
         <a
-          href={lang === 'en' ? '/en/' : '/'}
+          href={lang === 'es' ? '/es/' : '/'}
           class="flex items-center gap-2 flex-shrink-0 z-50"
           aria-label="LRA Cloud Ops — Home"
         >
@@ -694,7 +694,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
         <div class="hidden lg:flex items-center gap-0.5">
           <!-- Home -->
           <a
-            href={lang === 'en' ? '/en/' : '/'}
+            href={lang === 'es' ? '/es/' : '/'}
             class={`relative text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 ${isHomeActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
             aria-current={isHomeActive ? 'page' : undefined}
           >
@@ -1129,8 +1129,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
                   activeAboutItems.map(({ href, label, desc, iconPath }) => {
                     const esHref =
                       href === '/about' ? '/nosotros' : href === '/methodology' ? '/metodologia' : href
-                    const enHref =
-                      href === '/about' ? '/en/about' : href === '/methodology' ? '/en/methodology' : `/en${href}`
+                    const enHref = href
                     const resolvedHref = lang === 'es' ? esHref : lang === 'en' ? enHref : href
                     const active =
                       currentPath === resolvedHref || currentPath === href
@@ -1340,7 +1339,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
       <nav class="flex-1 overflow-y-auto">
         <!-- Home -->
         <a
-          href={lang === 'en' ? '/en/' : '/'}
+          href={lang === 'es' ? '/es/' : '/'}
           class={`flex items-center gap-3 px-5 py-3.5 text-sm font-medium border-b border-gray-50 transition-colors ${isHomeActive ? 'text-blue-600 bg-blue-50/50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
           aria-current={isHomeActive ? 'page' : undefined}
         >
@@ -1629,7 +1628,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
                   const esHref =
                     href === '/about' ? '/nosotros' : href === '/methodology' ? '/metodologia' : href
                   const enHref =
-                    href === '/about' ? '/en/about' : href === '/methodology' ? '/en/methodology' : `/en${href}`
+                    href === '/about' ? '/about' : href === '/methodology' ? '/methodology' : `/en${href}`
                   const resolvedHref = lang === 'es' ? esHref : lang === 'en' ? enHref : href
                   const active =
                     currentPath === resolvedHref || currentPath === href
@@ -1821,7 +1820,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
           <!-- Brand -->
           <div class="col-span-2 md:col-span-1">
             <a
-              href={lang === 'en' ? '/en/' : '/'}
+              href={lang === 'es' ? '/es/' : '/'}
               class="inline-block mb-5"
               aria-label="LRA Cloud Ops — Home"
             >
@@ -1939,19 +1938,19 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
             </h3>
             <ul class="space-y-3">
               {(lang === 'es' ? [
-                { label: 'Infraestructura Cloud', href: '/cloud-infrastructure' },
-                { label: 'Plataformas Kubernetes', href: '/kubernetes-platforms' },
-                { label: 'Automatización DevOps', href: '/devops-automation' },
-                { label: 'Ingeniería de Plataforma', href: '/platform-engineering' },
-                { label: 'Observabilidad & SRE', href: '/observability' },
-                { label: 'Modelos de engagement', href: '/pricing' },
+                { label: 'Infraestructura Cloud', href: '/es/cloud-infrastructure' },
+                { label: 'Plataformas Kubernetes', href: '/es/kubernetes-platforms' },
+                { label: 'Automatización DevOps', href: '/es/devops-automation' },
+                { label: 'Ingeniería de Plataforma', href: '/es/platform-engineering' },
+                { label: 'Observabilidad & SRE', href: '/es/observability' },
+                { label: 'Modelos de engagement', href: '/es/pricing' },
               ] : [
-                { label: 'Cloud Infrastructure', href: '/en/cloud-infrastructure' },
-                { label: 'Kubernetes Platforms', href: '/en/kubernetes-platforms' },
-                { label: 'DevOps Automation', href: '/en/devops-automation' },
-                { label: 'Platform Engineering', href: '/en/platform-engineering' },
-                { label: 'Observability & SRE', href: '/en/observability' },
-                { label: 'Engagement Models', href: '/en/pricing' },
+                { label: 'Cloud Infrastructure', href: '/cloud-infrastructure' },
+                { label: 'Kubernetes Platforms', href: '/kubernetes-platforms' },
+                { label: 'DevOps Automation', href: '/devops-automation' },
+                { label: 'Platform Engineering', href: '/platform-engineering' },
+                { label: 'Observability & SRE', href: '/observability' },
+                { label: 'Engagement Models', href: '/pricing' },
               ]).map(({ label, href }) => (
                 <li>
                   <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
@@ -1969,21 +1968,21 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
             </h3>
             <ul class="space-y-3">
               {(lang === 'es' ? [
-                { label: 'Blog', href: '/blog' },
-                { label: 'Documentación', href: '/en/docs' },
-                { label: 'Centro de Arquitectura', href: '/en/architectures' },
-                { label: 'Herramientas de evaluación', href: '/assessment' },
-                { label: 'Casos de uso', href: '/proyectos' },
-                { label: 'Open Source', href: '/open-source' },
-                { label: 'Seguridad', href: '/security' },
+                { label: 'Blog', href: '/es/blog' },
+                { label: 'Documentación', href: '/es/docs' },
+                { label: 'Centro de Arquitectura', href: '/es/architectures' },
+                { label: 'Herramientas de evaluación', href: '/es/assessment' },
+                { label: 'Casos de uso', href: '/es/proyectos' },
+                { label: 'Open Source', href: '/es/open-source' },
+                { label: 'Seguridad', href: '/es/security' },
               ] : [
-                { label: 'Blog', href: '/en/blog' },
-                { label: 'Documentation', href: '/en/docs' },
-                { label: 'Architecture Center', href: '/en/architectures' },
-                { label: 'Assessment Tools', href: '/en/assessments' },
-                { label: 'Case Studies', href: '/en/projects' },
-                { label: 'Open Source', href: '/en/open-source' },
-                { label: 'Security', href: '/en/security' },
+                { label: 'Blog', href: '/es/blog' },
+                { label: 'Documentation', href: '/docs' },
+                { label: 'Architecture Center', href: '/architectures' },
+                { label: 'Assessment Tools', href: '/assessments' },
+                { label: 'Case Studies', href: '/projects' },
+                { label: 'Open Source', href: '/es/open-source' },
+                { label: 'Security', href: '/security' },
               ]).map(({ label, href }) => (
                 <li>
                   <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
@@ -2001,18 +2000,18 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
             </h3>
             <ul class="space-y-3">
               {(lang === 'es' ? [
-                { label: 'Nosotros', href: '/nosotros' },
-                { label: 'Certificaciones', href: '/certifications' },
-                { label: '¿Por qué LRA?', href: '/why-lra' },
-                { label: 'Contacto', href: '/contacto' },
-                { label: 'Privacidad', href: '/privacy' },
+                { label: 'Nosotros', href: '/es/nosotros' },
+                { label: 'Certificaciones', href: '/es/certifications' },
+                { label: '¿Por qué LRA?', href: '/es/why-lra' },
+                { label: 'Contacto', href: '/es/contacto' },
+                { label: 'Privacidad', href: '/es/privacy' },
                 { label: 'GitHub', href: 'https://github.com/lra-cloud-ops', external: true },
               ] : ([
-                { label: 'About', href: '/en/about' },
-                { label: 'Certifications', href: '/en/certifications' },
-                { label: 'Why LRA', href: '/en/why-lra' },
-                { label: 'Contact', href: '/en/contact' },
-                { label: 'Privacy', href: '/en/privacy' },
+                { label: 'About', href: '/about' },
+                { label: 'Certifications', href: '/certifications' },
+                { label: 'Why LRA', href: '/why-lra' },
+                { label: 'Contact', href: '/contact' },
+                { label: 'Privacy', href: '/privacy' },
                 { label: 'GitHub', href: 'https://github.com/lra-cloud-ops', external: true },
               ] as { label: string; href: string; external?: boolean }[])
               ).map(({ label, href, external }) => (
@@ -2044,13 +2043,13 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
                 : '© 2026 LRA Cloud Operations · MIT License · Built with Astro + Cloudflare · EU-based consultancy'}
             </span>
             <a
-              href={lang === 'en' ? '/en/privacy' : '/privacy'}
+              href={lang === 'en' ? '/privacy' : '/privacy'}
               class="text-xs transition-colors hover:text-white"
               style="color:rgba(148,163,184,0.35);"
               >{lang === 'es' ? 'Privacidad' : 'Privacy Policy'}</a
             >
             <a
-              href={lang === 'en' ? '/en/terms' : '/terms'}
+              href={lang === 'en' ? '/terms' : '/terms'}
               class="text-xs transition-colors hover:text-white"
               style="color:rgba(148,163,184,0.35);"
               >{lang === 'es' ? 'Términos' : 'Terms of Service'}</a

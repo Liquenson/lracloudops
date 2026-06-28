@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Learning Agent · Aprende DevOps y Cloud con IA · Gratis"
-  descripcion="Aprende Kubernetes, Terraform, AWS, Docker y GitOps con un profesor de IA experto. Explicaciones progresivas, ejemplos reales y ejercicios prácticos."
-  keywords="aprender DevOps, curso Kubernetes IA, aprender Terraform, AWS tutorial, aprender cloud computing"
+  titulo="Learning Agent · Learn DevOps and Cloud with AI · Free"
+  descripcion="Learn Kubernetes, Terraform, AWS, Docker and GitOps with an expert AI teacher. Progressive explanations, real examples and practical exercises."
+  keywords="learn DevOps, Kubernetes AI course, learn Terraform, AWS tutorial, learn cloud computing"
 >
   <!-- ── HERO ── -->
   <section
@@ -30,7 +30,7 @@ import Layout from '../layouts/Layout.astro'
           class="w-2 h-2 rounded-full flex-shrink-0"
           style="background: #60A5FA; animation: pulse 2s infinite;"
           aria-hidden="true"></span>
-        AI Profesor · Gratis · Siempre disponible
+        AI Teacher · Free · Always available
       </div>
       <h1
         id="learn-hero-heading"
@@ -43,8 +43,8 @@ import Layout from '../layouts/Layout.astro'
         class="text-lg leading-relaxed max-w-2xl mx-auto"
         style="color: rgba(147,184,255,0.85);"
       >
-        Tu profesor personal de DevOps y Cloud. Pregunta lo que quieras sobre
-        Kubernetes, Terraform, AWS, Docker, GitOps, CI/CD y más.
+        Your personal DevOps and Cloud teacher. Ask anything about Kubernetes,
+        Terraform, AWS, Docker, GitOps, CI/CD and more.
       </p>
     </div>
   </section>
@@ -59,18 +59,18 @@ import Layout from '../layouts/Layout.astro'
         class="text-xs font-semibold uppercase tracking-widest mb-3 text-center"
         style="color: rgba(147,184,255,0.5);"
       >
-        Temas populares
+        Popular topics
       </p>
       <div class="flex flex-wrap justify-center gap-2" id="quick-topics">
         {
           [
-            '¿Qué es Kubernetes?',
+            'What is Kubernetes?',
             'Terraform vs Pulumi',
-            'Docker para principiantes',
-            'CI/CD con GitHub Actions',
-            'IAM en AWS explicado',
-            'GitOps con ArgoCD',
-            'Prometheus y Grafana',
+            'Docker for beginners',
+            'CI/CD with GitHub Actions',
+            'AWS IAM explained',
+            'GitOps with ArgoCD',
+            'Prometheus & Grafana',
             'EKS vs ECS',
           ].map((topic) => (
             <button
@@ -87,14 +87,14 @@ import Layout from '../layouts/Layout.astro'
   </section>
 
   <!-- ── CHAT ── -->
-  <section class="bg-white py-8" aria-label="Chat de aprendizaje">
+  <section class="bg-white py-8" aria-label="Learning chat">
     <div class="max-w-3xl mx-auto px-6 flex flex-col" style="height: 520px;">
       <!-- Messages -->
       <div
         id="chat-messages"
         class="flex-1 overflow-y-auto space-y-4 pb-4"
         aria-live="polite"
-        aria-label="Mensajes del chat"
+        aria-label="Chat messages"
       >
         <!-- Welcome message -->
         <div class="flex gap-3">
@@ -109,10 +109,10 @@ import Layout from '../layouts/Layout.astro'
             class="rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed max-w-[85%]"
             style="background: #EEF4FF; color: #0F172A;"
           >
-            ¡Hola! Soy tu profesor de DevOps y Cloud. Puedo enseñarte desde los
-            conceptos básicos hasta arquitecturas avanzadas.<br /><br />
-            ¿Por dónde quieres empezar? Puedes preguntarme sobre Kubernetes, Terraform,
-            AWS, Docker, CI/CD, GitOps o cualquier otra tecnología de infraestructura.
+            Hello! I'm your DevOps and Cloud teacher. I can teach you everything
+            from basic concepts to advanced architectures.<br /><br />
+            Where do you want to start? Ask me about Kubernetes, Terraform, AWS, Docker,
+            CI/CD, GitOps or any other infrastructure technology.
           </div>
         </div>
       </div>
@@ -123,7 +123,7 @@ import Layout from '../layouts/Layout.astro'
           <input
             id="chat-input"
             type="text"
-            placeholder="¿Qué quieres aprender hoy?"
+            placeholder="What do you want to learn today?"
             class="flex-1 px-4 py-3 rounded-xl text-sm border focus:outline-none focus:ring-2"
             style="border-color: #E2E8F0; color: #0F172A;"
             autocomplete="off"
@@ -133,7 +133,7 @@ import Layout from '../layouts/Layout.astro'
             id="chat-submit"
             class="inline-flex items-center justify-center w-12 h-12 rounded-xl text-white flex-shrink-0 transition-all hover:scale-105 active:scale-95"
             style="background: #2563EB; box-shadow: 0 2px 12px rgba(37,99,235,0.4);"
-            aria-label="Enviar mensaje"
+            aria-label="Send message"
           >
             <svg
               class="w-5 h-5"
@@ -151,7 +151,7 @@ import Layout from '../layouts/Layout.astro'
           </button>
         </form>
         <p class="text-xs mt-2 text-center" style="color: #94A3B8;">
-          Máximo 300 palabras por respuesta · Responde en tu idioma
+          Max 300 words per response · Responds in your language
         </p>
       </div>
     </div>
@@ -161,21 +161,17 @@ import Layout from '../layouts/Layout.astro'
   <section class="py-16" style="background: #F8FAFC;">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-bold text-center mb-10" style="color: #0F172A;">
-        ¿Qué puedes aprender?
+        What can you learn?
       </h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {
           [
-            { icon: '🐳', title: 'Docker', desc: 'Contenedores y registros' },
-            { icon: '⚙️', title: 'Kubernetes', desc: 'Básico a avanzado' },
-            { icon: '🏗️', title: 'Terraform', desc: 'IaC en AWS/Azure/GCP' },
+            { icon: '🐳', title: 'Docker', desc: 'Containers & registries' },
+            { icon: '⚙️', title: 'Kubernetes', desc: 'Basic to advanced' },
+            { icon: '🏗️', title: 'Terraform', desc: 'IaC on AWS/Azure/GCP' },
             { icon: '☁️', title: 'AWS', desc: 'EC2, EKS, S3, IAM, RDS' },
             { icon: '🔄', title: 'CI/CD', desc: 'GitHub Actions, Jenkins' },
-            {
-              icon: '🔍',
-              title: 'Observabilidad',
-              desc: 'Prometheus, Grafana',
-            },
+            { icon: '🔍', title: 'Observability', desc: 'Prometheus, Grafana' },
           ].map((item) => (
             <div
               class="rounded-2xl p-5 text-center"
@@ -260,7 +256,7 @@ import Layout from '../layouts/Layout.astro'
       const json = (await res.json()) as { message?: string; error?: string }
       const reply =
         json.message ??
-        'Lo siento, no pude generar una respuesta. Intenta de nuevo.'
+        "Sorry, I couldn't generate a response. Please try again."
       conversationHistory.push({ role: 'assistant', content: reply })
       typing.remove()
       addMessage('assistant', reply)
@@ -268,7 +264,7 @@ import Layout from '../layouts/Layout.astro'
       typing.remove()
       addMessage(
         'assistant',
-        'Error de conexión. Verifica tu conexión a internet e intenta de nuevo.'
+        'Connection error. Check your internet connection and try again.'
       )
     } finally {
       chatSubmit.disabled = false

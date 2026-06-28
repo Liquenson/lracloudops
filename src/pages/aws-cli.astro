@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="AWS CLI Agent · Lenguaje Natural a Comandos AWS · AI-Powered · Gratis"
-  descripcion="Convierte lenguaje natural en comandos AWS CLI precisos. EC2, S3, IAM, EKS, RDS, CloudWatch y más. Con advertencias de seguridad y estimación de costos."
+  titulo="AWS CLI Agent · Natural Language to AWS Commands · AI-Powered · Free"
+  descripcion="Convert natural language to precise AWS CLI commands. EC2, S3, IAM, EKS, RDS, CloudWatch and more. With security warnings and cost estimation."
 >
   <!-- HERO -->
   <section
@@ -48,8 +48,8 @@ import Layout from '../layouts/Layout.astro'
         class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
         style="color: rgba(147,184,255,0.85);"
       >
-        Describe lo que quieres hacer en AWS y obtendrás los comandos CLI
-        exactos, con advertencias de seguridad y estimación de costos.
+        Describe what you want to do in AWS and get the exact CLI commands, with
+        security warnings and cost estimation.
       </p>
     </div>
   </section>
@@ -63,17 +63,17 @@ import Layout from '../layouts/Layout.astro'
           class="text-xs font-semibold uppercase tracking-wider mb-3"
           style="color: #64748B;"
         >
-          Prueba con:
+          Try asking:
         </p>
         <div class="flex flex-wrap gap-2">
           {
             [
-              'Listar todas mis instancias EC2 en us-east-1',
-              'Crear un bucket S3 privado con versioning',
-              'Obtener logs de un pod en EKS',
-              'Crear un rol IAM para Lambda',
-              'Ver alarmas de CloudWatch activas',
-              'Hacer snapshot de una instancia RDS',
+              'List all my EC2 instances in us-east-1',
+              'Create a private S3 bucket with versioning',
+              'Get logs from a pod in EKS',
+              'Create an IAM role for Lambda',
+              'Show active CloudWatch alarms',
+              'Take a snapshot of an RDS instance',
             ].map((s) => (
               <button
                 class="cli-suggestion text-xs px-3 py-1.5 rounded-full border transition-all hover:scale-[1.02]"
@@ -120,7 +120,7 @@ import Layout from '../layouts/Layout.astro'
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
           </svg>
           <span class="text-sm font-medium" style="color: #2563EB;"
-            >Generando comandos...</span
+            >Generating commands...</span
           >
         </div>
       </div>
@@ -131,7 +131,7 @@ import Layout from '../layouts/Layout.astro'
           <textarea
             id="cli-input"
             rows="2"
-            placeholder="Describe lo que quieres hacer en AWS..."
+            placeholder="Describe what you want to do in AWS..."
             class="flex-1 px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
             style="border-color: #E2E8F0; color: #0F172A;"></textarea>
           <button
@@ -139,7 +139,7 @@ import Layout from '../layouts/Layout.astro'
             id="cli-submit"
             class="flex-shrink-0 inline-flex items-center justify-center text-white w-12 h-12 rounded-xl self-start mt-0.5 transition-all hover:scale-[1.05]"
             style="background: #2563EB; box-shadow: 0 4px 16px rgba(37,99,235,0.4);"
-            aria-label="Enviar"
+            aria-label="Send"
           >
             <svg
               class="w-5 h-5"
@@ -160,8 +160,8 @@ import Layout from '../layouts/Layout.astro'
 
       <!-- Disclaimer -->
       <p class="mt-4 text-xs text-center" style="color: #94A3B8;">
-        Revisa siempre los comandos antes de ejecutarlos. Los comandos
-        destructivos requieren confirmación explícita.
+        Always review commands before running them. Destructive commands require
+        explicit confirmation.
       </p>
 
       <!-- CTA -->
@@ -170,14 +170,14 @@ import Layout from '../layouts/Layout.astro'
         style="border-top: 1px solid #E5E7EB;"
       >
         <p class="text-sm font-semibold mb-3" style="color: #0F172A;">
-          ¿Necesitas ayuda con tu infraestructura AWS?
+          Need help with your AWS infrastructure?
         </p>
         <a
-          href="/contacto"
+          href="/en/contact"
           class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-6 py-3.5 rounded-xl transition-all hover:scale-[1.02]"
           style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
         >
-          Hablar con LRA →
+          Talk to LRA →
         </a>
       </div>
     </div>
@@ -251,7 +251,7 @@ import Layout from '../layouts/Layout.astro'
             <button
               class="cli-copy text-xs px-2 py-1 rounded" style="background:rgba(255,255,255,0.1); color:#CBD5E1;"
               data-cmd="${cmd.command.replace(/"/g, '&quot;')}"
-            >Copiar</button>
+            >Copy</button>
           </div>
           <pre class="text-xs px-4 py-3 overflow-x-auto" style="background:#0F172A; color:#93C5FD; margin:0;">${cmd.command}</pre>
           <div class="px-3 py-2" style="background:#F8FAFF;">
@@ -266,7 +266,7 @@ import Layout from '../layouts/Layout.astro'
       : []
     if (prerequisites.length > 0) {
       aiBubble.innerHTML += `<div class="rounded-xl p-3" style="background:#EEF4FF; border:1px solid #BFDBFE;">
-        <p class="text-xs font-bold mb-1.5" style="color:#1E40AF;">Prerequisitos</p>
+        <p class="text-xs font-bold mb-1.5" style="color:#1E40AF;">Prerequisites</p>
         ${prerequisites.map((p) => `<p class="text-xs" style="color:#3B82F6;">· ${p}</p>`).join('')}
       </div>`
     }
@@ -276,13 +276,13 @@ import Layout from '../layouts/Layout.astro'
       : []
     if (secNotes.length > 0) {
       aiBubble.innerHTML += `<div class="rounded-xl p-3" style="background:#F0FDF4; border:1px solid #BBF7D0;">
-        <p class="text-xs font-bold mb-1.5" style="color:#15803D;">Seguridad</p>
+        <p class="text-xs font-bold mb-1.5" style="color:#15803D;">Security</p>
         ${secNotes.map((n) => `<p class="text-xs" style="color:#16A34A;">✓ ${n}</p>`).join('')}
       </div>`
     }
 
     if (result.estimated_cost) {
-      aiBubble.innerHTML += `<p class="text-xs" style="color:#64748B;">💰 Costo estimado: ${result.estimated_cost}</p>`
+      aiBubble.innerHTML += `<p class="text-xs" style="color:#64748B;">💰 Estimated cost: ${result.estimated_cost}</p>`
     }
 
     historyEl.appendChild(aiBubble)
@@ -292,8 +292,8 @@ import Layout from '../layouts/Layout.astro'
       btn.addEventListener('click', () => {
         const cmd = (btn as HTMLElement).dataset.cmd ?? ''
         navigator.clipboard.writeText(cmd).catch(() => {})
-        btn.textContent = '✓ Copiado'
-        setTimeout(() => (btn.textContent = 'Copiar'), 2000)
+        btn.textContent = '✓ Copied'
+        setTimeout(() => (btn.textContent = 'Copy'), 2000)
       })
     })
   }
@@ -321,7 +321,7 @@ import Layout from '../layouts/Layout.astro'
       errorEl.textContent =
         err instanceof Error
           ? err.message
-          : 'Error generando comandos. Intenta de nuevo.'
+          : 'Error generating commands. Please try again.'
       errorEl.classList.remove('hidden')
     }
   }

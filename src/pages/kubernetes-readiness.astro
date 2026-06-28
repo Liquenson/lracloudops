@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Evaluación de Preparación Kubernetes | LRA Cloud Operations"
-  descripcion="8 preguntas para evaluar si tu equipo y aplicación están listos para ejecutar Kubernetes en producción."
-  keywords="evaluación preparación Kubernetes, K8s producción, adopción EKS, madurez Kubernetes, orquestación de contenedores"
+  titulo="Kubernetes Readiness Assessment | LRA Cloud Operations"
+  descripcion="8-question assessment to evaluate if your team and application are ready to run Kubernetes in production. Get a personalized adoption roadmap."
+  keywords="Kubernetes readiness assessment, K8s production readiness, EKS adoption, Kubernetes maturity, container orchestration readiness"
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
@@ -26,22 +26,22 @@ import Layout from '../layouts/Layout.astro'
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
       >
-        Herramienta Gratuita
+        Free Tool
       </span>
       <h1
         class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
         style="letter-spacing: -0.02em;"
       >
-        Evaluación de Preparación Kubernetes
+        Kubernetes Readiness Assessment
       </h1>
       <p
         class="text-lg leading-relaxed max-w-2xl mx-auto mb-4"
         style="color: rgba(147,184,255,0.8);"
       >
-        ¿Está tu equipo listo para ejecutar Kubernetes en producción?
+        Is your team ready to run Kubernetes in production?
       </p>
       <p class="text-sm font-medium" style="color: rgba(147,184,255,0.6);">
-        8 preguntas &middot; 5 minutos &middot; Informe personalizado gratuito
+        8 questions &middot; 5 minutes &middot; Free personalized report
       </p>
     </div>
   </section>
@@ -54,12 +54,12 @@ import Layout from '../layouts/Layout.astro'
           <span
             class="text-xs font-semibold"
             style="color: #64748b;"
-            id="progress-label">Pregunta 1 de 8</span
+            id="progress-label">Question 1 of 8</span
           >
           <span
             class="text-xs font-semibold"
             style="color: #326CE5;"
-            id="score-display">Puntuación: 0 / 24</span
+            id="score-display">Score: 0 / 24</span
           >
         </div>
         <div
@@ -85,75 +85,75 @@ import Layout from '../layouts/Layout.astro'
   const CAL = 'https://cal.com/ruben-alexis-h6qkjk/30min'
   const questions = [
     {
-      q: '¿Cuál es tu experiencia actual con contenedores?',
+      q: 'What is your current container experience?',
       options: [
-        { label: 'Sin contenedores', pts: 0 },
-        { label: 'Docker solo para desarrollo local', pts: 1 },
-        { label: 'Docker en producción', pts: 2 },
-        { label: 'Docker Compose o Swarm en producción', pts: 3 },
+        { label: 'No containers at all', pts: 0 },
+        { label: 'Docker for local development only', pts: 1 },
+        { label: 'Docker in production', pts: 2 },
+        { label: 'Docker Compose or Swarm in production', pts: 3 },
       ],
     },
     {
-      q: '¿Cómo gestionas actualmente los despliegues?',
+      q: 'How do you currently manage application deployments?',
       options: [
-        { label: 'Despliegues SSH manuales', pts: 0 },
-        { label: 'Scripts o Ansible', pts: 1 },
-        { label: 'CI/CD básico con Docker', pts: 2 },
-        { label: 'GitOps o despliegues basados en Helm', pts: 3 },
+        { label: 'Manual SSH deployments', pts: 0 },
+        { label: 'Scripts or Ansible', pts: 1 },
+        { label: 'Basic CI/CD with Docker', pts: 2 },
+        { label: 'GitOps or Helm-based deployments', pts: 3 },
       ],
     },
     {
-      q: '¿Entiende tu equipo los conceptos de Kubernetes?',
+      q: 'Does your team understand Kubernetes concepts?',
       options: [
-        { label: 'Sin conocimiento de Kubernetes', pts: 0 },
-        { label: 'Familiarizado con conceptos básicos', pts: 1 },
-        { label: 'Experiencia práctica con kubectl y manifests', pts: 2 },
-        { label: 'Experiencia con Helm, RBAC y networking', pts: 3 },
+        { label: 'No Kubernetes knowledge', pts: 0 },
+        { label: 'Familiar with basic concepts', pts: 1 },
+        { label: 'Hands-on with kubectl and manifests', pts: 2 },
+        { label: 'Experienced with Helm, RBAC and networking', pts: 3 },
       ],
     },
     {
-      q: '¿Cómo gestionas la configuración de la aplicación?',
+      q: 'How do you handle application configuration?',
       options: [
-        { label: 'Valores hardcodeados', pts: 0 },
-        { label: 'Archivos de entorno', pts: 1 },
-        { label: 'ConfigMaps y Secrets básicos', pts: 2 },
-        { label: 'External Secrets Operator o integración con Vault', pts: 3 },
+        { label: 'Hardcoded values', pts: 0 },
+        { label: 'Environment files', pts: 1 },
+        { label: 'ConfigMaps and basic Secrets', pts: 2 },
+        { label: 'External Secrets Operator or Vault integration', pts: 3 },
       ],
     },
     {
-      q: '¿Cuál es tu complejidad de red?',
+      q: 'What is your networking complexity?',
       options: [
-        { label: 'Servicio único, sin routing necesario', pts: 0 },
-        { label: 'Routing HTTP básico', pts: 1 },
-        { label: 'Múltiples servicios con balanceo de carga', pts: 2 },
-        { label: 'Multi-cluster, requisitos de service mesh', pts: 3 },
+        { label: 'Single service, no routing needed', pts: 0 },
+        { label: 'Basic HTTP routing', pts: 1 },
+        { label: 'Multiple services with load balancing', pts: 2 },
+        { label: 'Multi-cluster, service mesh requirements', pts: 3 },
       ],
     },
     {
-      q: '¿Cómo gestionas los requisitos de recursos?',
+      q: 'How do you manage resource requirements?',
       options: [
-        { label: 'Sin gestión de recursos', pts: 0 },
-        { label: 'Solo estimaciones aproximadas', pts: 1 },
-        { label: 'Límites básicos de CPU y memoria definidos', pts: 2 },
-        { label: 'Requests/limits adecuados, VPA o KEDA configurado', pts: 3 },
+        { label: 'No resource management', pts: 0 },
+        { label: 'Rough estimates only', pts: 1 },
+        { label: 'Basic CPU and memory limits defined', pts: 2 },
+        { label: 'Proper requests/limits, VPA or KEDA configured', pts: 3 },
       ],
     },
     {
-      q: '¿Cuáles son tus requisitos de disponibilidad?',
+      q: 'What are your availability requirements?',
       options: [
-        { label: 'Downtime aceptable', pts: 0 },
-        { label: 'Disponibilidad best effort', pts: 1 },
-        { label: 'Objetivo SLA 99,9%', pts: 2 },
-        { label: '99,95%+ con Multi-AZ y failover automático', pts: 3 },
+        { label: 'Downtime acceptable', pts: 0 },
+        { label: 'Best effort availability', pts: 1 },
+        { label: '99.9% SLA target', pts: 2 },
+        { label: '99.95%+ with multi-AZ and automated failover', pts: 3 },
       ],
     },
     {
-      q: '¿Cómo planeas gestionar la seguridad?',
+      q: 'How do you plan to handle security?',
       options: [
-        { label: 'Aún no considerado', pts: 0 },
-        { label: 'RBAC básico', pts: 1 },
-        { label: 'NetworkPolicies y SecurityContexts', pts: 2 },
-        { label: 'Políticas OPA/Kyverno, pod security standards', pts: 3 },
+        { label: 'Not considered yet', pts: 0 },
+        { label: 'Basic RBAC', pts: 1 },
+        { label: 'NetworkPolicies and SecurityContexts', pts: 2 },
+        { label: 'OPA/Kyverno policies, pod security standards', pts: 3 },
       ],
     },
   ]
@@ -161,36 +161,36 @@ import Layout from '../layouts/Layout.astro'
   const results = [
     {
       range: [0, 8],
-      title: 'No preparado — Empezar con Docker',
-      desc: 'Enfócate primero en contenedorizar tu aplicación. Kubernetes añade complejidad operativa — domina Docker antes de pasar a orquestación.',
-      cta: 'Empezar con nuestra implementación Docker + CI/CD',
+      title: 'Not Ready — Start with Docker',
+      desc: 'Focus on containerizing your application first. Kubernetes adds operational complexity — master Docker before moving to orchestration.',
+      cta: 'Start with our Docker + CI/CD implementation',
       color: '#DC2626',
       bg: '#FEF2F2',
       border: '#FECACA',
     },
     {
       range: [9, 16],
-      title: 'Fase de aprendizaje — Buen progreso',
-      desc: 'Tienes la base. Empieza con un servicio Kubernetes gestionado como EKS y workloads simples antes de añadir complejidad.',
-      cta: 'Obtener una hoja de ruta de adopción Kubernetes',
+      title: 'Learning Phase — Good progress',
+      desc: 'You have the foundation. Start with a managed Kubernetes service like EKS and simple workloads before adding complexity.',
+      cta: 'Get a Kubernetes adoption roadmap',
       color: '#D97706',
       bg: '#FFFBEB',
       border: '#FDE68A',
     },
     {
       range: [17, 22],
-      title: 'Casi preparado — Refina tu enfoque',
-      desc: 'Base sólida. Aborda seguridad y gestión de recursos antes de producción. Considera GitOps para automatización de despliegues.',
-      cta: 'Programar una revisión de arquitectura Kubernetes',
+      title: 'Nearly Ready — Refine your approach',
+      desc: 'Strong foundation. Address security and resource management before production. Consider GitOps for deployment automation.',
+      cta: 'Schedule a Kubernetes architecture review',
       color: '#326CE5',
       bg: '#EEF4FF',
       border: '#C7D7FD',
     },
     {
       range: [23, 24],
-      title: 'Listo para Kubernetes — Nivel producción',
-      desc: 'Tu equipo y aplicación están listos para Kubernetes en producción. Hablemos de GitOps avanzado, service mesh y multi-cluster.',
-      cta: 'Hablar con nuestros especialistas en Kubernetes',
+      title: 'Kubernetes Ready — Production grade',
+      desc: "Your team and application are ready for production Kubernetes. Let's discuss advanced topics like GitOps, service mesh and multi-cluster.",
+      cta: 'Talk to our Kubernetes specialists',
       color: '#059669',
       bg: '#F0FDF4',
       border: '#BBF7D0',
@@ -204,14 +204,14 @@ import Layout from '../layouts/Layout.astro'
 
   function render() {
     const el = (id: string) => document.getElementById(id)!
-    el('progress-label').textContent = `Pregunta ${current + 1} de ${total}`
-    el('score-display').textContent = `Puntuación: ${score} / ${maxScore}`
+    el('progress-label').textContent = `Question ${current + 1} of ${total}`
+    el('score-display').textContent = `Score: ${score} / ${maxScore}`
     ;(el('progress-bar') as HTMLElement).style.width =
       `${(current / total) * 100}%`
     const q = questions[current]
     el('question-container').innerHTML = `
     <div class="bg-white rounded-2xl p-8" style="border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(10,37,64,0.04),0 4px 16px rgba(10,37,64,0.06);">
-      <p class="text-xs font-bold uppercase tracking-wider mb-3" style="color:#326CE5;">Pregunta ${current + 1} de ${total}</p>
+      <p class="text-xs font-bold uppercase tracking-wider mb-3" style="color:#326CE5;">Question ${current + 1} of ${total}</p>
       <h2 class="text-xl font-bold mb-7" style="color:#0A2540;letter-spacing:-0.01em;">${q.q}</h2>
       <div class="space-y-3">${q.options
         .map(
@@ -241,8 +241,8 @@ import Layout from '../layouts/Layout.astro'
   function showResult() {
     const el = (id: string) => document.getElementById(id)!
     ;(el('progress-bar') as HTMLElement).style.width = '100%'
-    el('progress-label').textContent = 'Evaluación completada'
-    el('score-display').textContent = `Puntuación final: ${score} / ${maxScore}`
+    el('progress-label').textContent = 'Assessment complete'
+    el('score-display').textContent = `Final score: ${score} / ${maxScore}`
     const r =
       results.find((x) => score >= x.range[0] && score <= x.range[1]) ??
       results[0]
@@ -251,7 +251,7 @@ import Layout from '../layouts/Layout.astro'
     el('result-container').classList.remove('hidden')
     if (typeof window !== 'undefined' && (window as any).cf) {
       ;(window as any).cf.track('assessment_completed', {
-        type: 'kubernetes-readiness-es',
+        type: 'kubernetes-readiness',
         score,
       })
     }
@@ -266,21 +266,21 @@ import Layout from '../layouts/Layout.astro'
       </div>
 
       <div id="email-capture" style="margin: 1.5rem 0; padding: 1.5rem; background: #EEF4FF; border-radius: 12px; border: 1px solid #C7D7FD;">
-        <p style="font-weight: 600; color: #0A2540; margin-bottom: 0.5rem;">Recibe tu plan de acción personalizado por email</p>
-        <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 1rem;">Te enviaremos una hoja de ruta detallada basada en tu puntuación. Sin spam.</p>
+        <p style="font-weight: 600; color: #0A2540; margin-bottom: 0.5rem;">Get your personalized action plan by email</p>
+        <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 1rem;">We\'ll send you a detailed roadmap based on your score. No spam.</p>
         <form id="assessment-email-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
           <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485">
           <input type="hidden" name="subject" id="assessment-subject">
           <input type="hidden" name="assessment_score" id="assessment-score-field">
           <input type="hidden" name="assessment_level" id="assessment-level-field">
-          <input type="email" name="email" placeholder="tu@empresa.com" required
+          <input type="email" name="email" placeholder="your@email.com" required
             style="flex: 1; min-width: 200px; padding: 0.75rem 1rem; border: 1px solid #C7D7FD; border-radius: 8px; font-size: 0.875rem;">
           <button type="submit"
             style="padding: 0.75rem 1.5rem; background: #1E6FFF; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
-            Enviarme mi plan →
+            Send my plan →
           </button>
         </form>
-        <p id="email-success" style="display:none; color: #16a34a; font-size: 0.875rem; margin-top: 0.75rem;">✓ ¡Revisa tu bandeja de entrada! Te enviaremos tu plan en 24 horas.</p>
+        <p id="email-success" style="display:none; color: #16a34a; font-size: 0.875rem; margin-top: 0.75rem;">✓ Check your inbox! We\'ll send your plan within 24 hours.</p>
       </div>
 
       <a href="${CAL}" target="_blank" rel="noopener noreferrer"
@@ -289,42 +289,41 @@ import Layout from '../layouts/Layout.astro'
         ${r.cta} →
       </a>
     </div>
-    <button onclick="location.reload()" class="text-sm font-medium hover:opacity-70 transition-opacity" style="color:#64748b;">← Repetir evaluación</button>`
-
-    // Email capture setup
-    const subjEl = document.getElementById(
-      'assessment-subject'
-    ) as HTMLInputElement
-    const scoreEl2 = document.getElementById(
-      'assessment-score-field'
-    ) as HTMLInputElement
-    const levelEl = document.getElementById(
-      'assessment-level-field'
-    ) as HTMLInputElement
-    if (subjEl)
-      subjEl.value = `Evaluación Preparación Kubernetes — Puntuación ${score}/${maxScore} (${r.title})`
-    if (scoreEl2) scoreEl2.value = String(score)
-    if (levelEl) levelEl.value = r.title
-    const emailForm = document.getElementById(
-      'assessment-email-form'
-    ) as HTMLFormElement
-    emailForm?.addEventListener('submit', async (e) => {
-      e.preventDefault()
-      const fd = new FormData(emailForm)
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: fd,
-        })
-        if (res.ok) {
-          emailForm.style.display = 'none'
-          const ok = document.getElementById('email-success')
-          if (ok) ok.style.display = 'block'
-        }
-      } catch {}
-    })
+    <button onclick="location.reload()" class="text-sm font-medium hover:opacity-70 transition-opacity" style="color:#64748b;">← Retake assessment</button>`
   }
 
+  // Email capture setup
+  const subjEl = document.getElementById(
+    'assessment-subject'
+  ) as HTMLInputElement
+  const scoreEl2 = document.getElementById(
+    'assessment-score-field'
+  ) as HTMLInputElement
+  const levelEl = document.getElementById(
+    'assessment-level-field'
+  ) as HTMLInputElement
+  if (subjEl)
+    subjEl.value = `Kubernetes Readiness Assessment — Score ${score}/${maxScore} (${r.title})`
+  if (scoreEl2) scoreEl2.value = String(score)
+  if (levelEl) levelEl.value = r.title
+  const emailForm = document.getElementById(
+    'assessment-email-form'
+  ) as HTMLFormElement
+  emailForm?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const fd = new FormData(emailForm)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: fd,
+      })
+      if (res.ok) {
+        emailForm.style.display = 'none'
+        const ok = document.getElementById('email-success')
+        if (ok) ok.style.display = 'block'
+      }
+    } catch {}
+  })
   ;(window as any).selectAnswer = selectAnswer
   render()
 </script>

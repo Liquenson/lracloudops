@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Infrastructure Review Agent · Auditoría Automática de Infraestructura Cloud"
-  descripcion="Describe tu infraestructura actual y recibe un informe técnico automatizado con puntuaciones de seguridad, costes, disponibilidad y escalabilidad."
-  keywords="auditoría infraestructura cloud, revisión arquitectura AWS, análisis seguridad cloud, infrastructure review, DevOps audit"
+  titulo="Infrastructure Review Agent · Automated Cloud Infrastructure Audit"
+  descripcion="Describe your current infrastructure and receive an automated technical report with security, cost, availability, and scalability scores."
+  keywords="cloud infrastructure audit, AWS architecture review, cloud security analysis, infrastructure review, DevOps audit"
 >
   <!-- ── HERO ── -->
   <section
@@ -36,7 +36,7 @@ import Layout from '../layouts/Layout.astro'
           class="w-2 h-2 rounded-full flex-shrink-0"
           style="background: #60A5FA; animation: pulse 2s infinite;"
           aria-hidden="true"></span>
-        AI-Powered · Gratis
+        AI-Powered · Free
       </div>
       <h1
         id="ir-hero-heading"
@@ -49,15 +49,14 @@ import Layout from '../layouts/Layout.astro'
         class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-4"
         style="color: rgba(147,184,255,0.85);"
       >
-        Describe tu infraestructura actual y recibe un informe técnico
-        automatizado con puntuaciones de seguridad, costes, disponibilidad y
-        escalabilidad.
+        Describe your current infrastructure and receive an automated technical
+        report with security, cost, availability, and scalability scores.
       </p>
     </div>
   </section>
 
   <!-- ── FORM + RESULTS ── -->
-  <section class="bg-white py-16" aria-label="Formulario de análisis">
+  <section class="bg-white py-16" aria-label="Analysis form">
     <div class="max-w-3xl mx-auto px-6">
       <!-- Form -->
       <form id="ir-form" class="space-y-6" novalidate>
@@ -67,13 +66,13 @@ import Layout from '../layouts/Layout.astro'
             class="block text-sm font-semibold mb-2"
             style="color: #0F172A;"
           >
-            Cloud principal
+            Primary cloud
           </label>
           <select
             id="ir-cloud"
             name="cloud"
             class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none focus:ring-2"
-            style="border-color: #E2E8F0; color: #0F172A; focus-ring-color: #2563EB;"
+            style="border-color: #E2E8F0; color: #0F172A;"
           >
             <option value="AWS">Amazon Web Services (AWS)</option>
             <option value="Azure">Microsoft Azure</option>
@@ -88,16 +87,16 @@ import Layout from '../layouts/Layout.astro'
             class="block text-sm font-semibold mb-2"
             style="color: #0F172A;"
           >
-            Describe tu infraestructura
+            Describe your infrastructure
             <span class="font-normal ml-1" style="color: #64748B;"
-              >(mínimo 20 caracteres)</span
+              >(minimum 20 characters)</span
             >
           </label>
           <textarea
             id="ir-architecture"
             name="architecture"
             rows="8"
-            placeholder="Ejemplo: Tenemos una aplicación web en AWS con 3 instancias EC2 t3.medium detrás de un ALB, una base de datos RDS PostgreSQL Multi-AZ, almacenamiento en S3 y CloudFront. Usamos ECS para microservicios, IAM con roles básicos y GitHub Actions para CI/CD. El gasto mensual es de ~2.000€..."
+            placeholder="Example: We have a web app on AWS with 3 t3.medium EC2 instances behind an ALB, a Multi-AZ RDS PostgreSQL database, S3 storage and CloudFront. We use ECS for microservices, basic IAM roles and GitHub Actions for CI/CD. Monthly spend is ~$2,000..."
             class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
             style="border-color: #E2E8F0; color: #0F172A;"></textarea>
         </div>
@@ -122,7 +121,7 @@ import Layout from '../layouts/Layout.astro'
               d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
             ></path>
           </svg>
-          <span id="ir-btn-text">Analizar infraestructura →</span>
+          <span id="ir-btn-text">Analyze infrastructure →</span>
         </button>
 
         <p id="ir-error" class="hidden text-sm text-red-600 text-center"></p>
@@ -153,7 +152,7 @@ import Layout from '../layouts/Layout.astro'
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
           </svg>
           <span class="text-sm font-medium" style="color: #1D4ED8;"
-            >Analizando tu infraestructura...</span
+            >Analyzing your infrastructure...</span
           >
         </div>
       </div>
@@ -169,7 +168,7 @@ import Layout from '../layouts/Layout.astro'
             class="text-sm font-semibold uppercase tracking-widest mb-2"
             style="color: #93C5FD;"
           >
-            Puntuación global
+            Overall score
           </p>
           <div
             id="ir-overall"
@@ -190,7 +189,7 @@ import Layout from '../layouts/Layout.astro'
         <!-- Score bars -->
         <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
           <h2 class="text-base font-bold mb-5" style="color: #0F172A;">
-            Puntuaciones por área
+            Scores by area
           </h2>
           <div id="ir-scores" class="space-y-4"></div>
         </div>
@@ -219,7 +218,7 @@ import Layout from '../layouts/Layout.astro'
                 d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
               ></path>
             </svg>
-            Problemas críticos
+            Critical issues
           </h2>
           <ul id="ir-critical" class="space-y-2"></ul>
         </div>
@@ -227,7 +226,7 @@ import Layout from '../layouts/Layout.astro'
         <!-- Recommendations -->
         <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
           <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
-            Recomendaciones priorizadas
+            Prioritized recommendations
           </h2>
           <ul id="ir-recommendations" class="space-y-2"></ul>
         </div>
@@ -262,14 +261,14 @@ import Layout from '../layouts/Layout.astro'
         <!-- CTA -->
         <div class="text-center pt-4 pb-2">
           <p class="text-base font-semibold mb-4" style="color: #0F172A;">
-            ¿Quieres que implementemos estas mejoras?
+            Want us to implement these improvements?
           </p>
           <a
-            href="/contacto"
+            href="/en/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
           >
-            Hablar con el equipo →
+            Talk to the team →
           </a>
         </div>
       </div>
@@ -294,11 +293,11 @@ import Layout from '../layouts/Layout.astro'
 
   function renderScores(scores: Record<string, number>) {
     const labels: Record<string, string> = {
-      security: 'Seguridad',
-      cost: 'Costes',
-      availability: 'Disponibilidad',
-      automation: 'Automatización',
-      scalability: 'Escalabilidad',
+      security: 'Security',
+      cost: 'Cost',
+      availability: 'Availability',
+      automation: 'Automation',
+      scalability: 'Scalability',
     }
     const container = document.getElementById('ir-scores')!
     container.innerHTML = Object.entries(scores)
@@ -344,7 +343,7 @@ import Layout from '../layouts/Layout.astro'
 
     if (arch.trim().length < 20) {
       errorEl.textContent =
-        'Por favor, describe tu infraestructura con más detalle (mínimo 20 caracteres).'
+        'Please describe your infrastructure in more detail (minimum 20 characters).'
       errorEl.classList.remove('hidden')
       return
     }
@@ -353,7 +352,7 @@ import Layout from '../layouts/Layout.astro'
     loading.classList.remove('hidden')
     results.classList.add('hidden')
     submitBtn.disabled = true
-    btnText.textContent = 'Analizando...'
+    btnText.textContent = 'Analyzing...'
 
     try {
       const res = await fetch('/api/infrastructure-review', {
@@ -361,7 +360,7 @@ import Layout from '../layouts/Layout.astro'
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           architecture: `Cloud: ${cloud}\n\n${arch}`,
-          lang: 'es',
+          lang: 'en',
         }),
       })
       const json = (await res.json()) as {
@@ -372,20 +371,17 @@ import Layout from '../layouts/Layout.astro'
       if (json.error) throw new Error(json.error)
       const r = json.review ?? {}
 
-      // Overall score
       const overall = typeof r.overall === 'number' ? r.overall : 0
       document.getElementById('ir-overall')!.textContent = String(overall)
       const overallEl = document.getElementById('ir-overall')!
       ;(overallEl as HTMLElement).style.color = scoreColor(overall)
-      const summaryEl = document.getElementById('ir-summary')!
-      summaryEl.textContent = typeof r.summary === 'string' ? r.summary : ''
+      document.getElementById('ir-summary')!.textContent =
+        typeof r.summary === 'string' ? r.summary : ''
 
-      // Scores
       if (r.scores && typeof r.scores === 'object') {
         renderScores(r.scores as Record<string, number>)
       }
 
-      // Critical issues
       const criticalSection = document.getElementById('ir-critical-section')!
       const critical = Array.isArray(r.critical_issues)
         ? (r.critical_issues as string[])
@@ -395,13 +391,11 @@ import Layout from '../layouts/Layout.astro'
         renderList('ir-critical', critical, '#DC2626')
       }
 
-      // Recommendations
       const recs = Array.isArray(r.recommendations)
         ? (r.recommendations as string[])
         : []
       renderList('ir-recommendations', recs)
 
-      // Quick wins
       const qw = Array.isArray(r.quick_wins) ? (r.quick_wins as string[]) : []
       renderList('ir-quickwins', qw, '#15803D')
 
@@ -411,11 +405,11 @@ import Layout from '../layouts/Layout.astro'
       loading.classList.add('hidden')
       form.classList.remove('hidden')
       submitBtn.disabled = false
-      btnText.textContent = 'Analizar infraestructura →'
+      btnText.textContent = 'Analyze infrastructure →'
       errorEl.textContent =
         err instanceof Error
           ? err.message
-          : 'Error procesando la revisión. Intenta de nuevo.'
+          : 'Error processing the review. Please try again.'
       errorEl.classList.remove('hidden')
     }
   })

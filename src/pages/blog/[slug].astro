@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('esBlog')
+  const posts = await getCollection('blog')
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -54,13 +54,12 @@ const relatedProjects = projectLinks[post.id] ?? []
 const _bodyText = (post as any).body ?? ''
 const _wordCount = _bodyText.trim().split(/\s+/).filter(Boolean).length
 const readingTime = Math.max(1, Math.round(_wordCount / 200))
-const publishedLabel = post.data.fecha.toLocaleDateString('es-ES', {
-  day: 'numeric',
+const publishedLabel = post.data.fecha.toLocaleDateString('en-US', {
   month: 'long',
   year: 'numeric',
 })
 
-const postUrl = `https://lracloudops.com/blog/${post.id}`
+const postUrl = `https://lracloudops.com/en/blog/${post.id}`
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
@@ -78,7 +77,7 @@ const articleSchema = {
   publisher: { '@id': 'https://lracloudops.com/#organization' },
   isPartOf: { '@id': 'https://lracloudops.com/#website' },
   keywords: post.data.tags.join(', '),
-  inLanguage: 'es-ES',
+  inLanguage: 'en-US',
   about: post.data.tags.map((tag: string) => ({ '@type': 'Thing', name: tag })),
 }
 ---
@@ -88,7 +87,7 @@ const articleSchema = {
   descripcion={post.data.descripcion}
   schema={articleSchema}
 >
-  <!-- HEADER DEL ARTÍCULO -->
+  <!-- ARTICLE HEADER -->
   <section style="background-color: #0A2540;" class="relative overflow-hidden">
     <div
       class="absolute inset-0 pointer-events-none opacity-40"
@@ -97,7 +96,7 @@ const articleSchema = {
     </div>
     <div class="relative max-w-4xl mx-auto px-6 py-16 sm:py-20">
       <a
-        href="/blog"
+        href="/en/blog"
         class="inline-flex items-center gap-2 text-xs font-medium mb-8 transition-colors"
         style="color: rgba(147,184,255,0.7);"
         onmouseover="this.style.color='rgba(147,184,255,1)'"
@@ -115,7 +114,7 @@ const articleSchema = {
             stroke-width="2"
             d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
-        Blog Técnico
+        Technical Blog
       </a>
       <div class="flex flex-wrap gap-2 mb-5">
         {
@@ -139,12 +138,12 @@ const articleSchema = {
         {post.data.descripcion}
       </p>
       <p class="text-sm font-semibold" style="color: rgba(147,184,255,0.75);">
-        Publicado el {publishedLabel} &middot; {readingTime} min de lectura
+        Published {publishedLabel} &middot; {readingTime} min read
       </p>
     </div>
   </section>
 
-  <!-- CONTENIDO -->
+  <!-- CONTENT -->
   <section class="bg-white py-16">
     <div class="max-w-3xl mx-auto px-6">
       <div
@@ -165,7 +164,7 @@ const articleSchema = {
       <!-- Related projects -->
       {relatedProjects.length > 0 && (
         <div class="mt-12 pt-8 border-t border-gray-100">
-          <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Proyectos relacionados</h3>
+          <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">Related projects</h3>
           <div class="flex flex-wrap gap-3">
             {relatedProjects.map(({ name, slug }) => (
               <a
@@ -186,20 +185,20 @@ const articleSchema = {
       <!-- Related services -->
       <div class="mt-8 pt-8 border-t border-gray-100">
         <h3 class="text-sm font-bold mb-4" style="color: #0A2540;">
-          Servicios relacionados
+          Related Services
         </h3>
         <div class="flex flex-wrap gap-3">
           <a
             href="/cloud-infrastructure"
             class="inline-flex items-center text-sm font-medium px-4 py-2 rounded-xl transition-all hover:opacity-90"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
-            >Infraestructura Cloud →</a
+            >Cloud Infrastructure →</a
           >
           <a
             href="/devops-automation"
             class="inline-flex items-center text-sm font-medium px-4 py-2 rounded-xl transition-all hover:opacity-90"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
-            >Automatización DevOps →</a
+            >DevOps Automation →</a
           >
           <a
             href="/platform-engineering"
@@ -210,13 +209,13 @@ const articleSchema = {
         </div>
       </div>
 
-      <!-- Footer del artículo -->
+      <!-- Article footer -->
       <div class="mt-8 pt-8 border-t border-gray-100">
         <div
           class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
         >
           <a
-            href="/blog"
+            href="/en/blog"
             class="inline-flex items-center gap-2 text-sm font-medium transition-colors"
             style="color: #64748b;"
           >
@@ -232,14 +231,14 @@ const articleSchema = {
                 stroke-width="2"
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            Volver al Blog
+            Back to Blog
           </a>
           <a
-            href="/contacto"
+            href="/contact"
             class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90"
             style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
           >
-            ¿Tienes preguntas? Contáctame
+            Have questions? Get in touch
           </a>
         </div>
       </div>

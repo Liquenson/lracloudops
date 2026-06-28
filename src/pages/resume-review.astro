@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Resume Review Agent · Optimiza tu CV DevOps para ATS · AI-Powered · Gratis"
-  descripcion="Optimiza tu CV de DevOps para ATS. Score ATS, keywords que faltan, mejoras concretas con ejemplos y fit por rol (DevOps, Platform, Cloud, SRE)."
+  titulo="Resume Review Agent · Optimize Your DevOps Resume for ATS · AI-Powered · Free"
+  descripcion="Optimize your DevOps resume for ATS. ATS score, missing keywords, concrete improvements with examples and role fit (DevOps, Platform, Cloud, SRE)."
 >
   <!-- HERO -->
   <section
@@ -35,7 +35,7 @@ import Layout from '../layouts/Layout.astro'
           class="w-2 h-2 rounded-full flex-shrink-0"
           style="background: #60A5FA; animation: pulse 2s infinite;"
           aria-hidden="true"></span>
-        AI-Powered · ATS · Gratis
+        AI-Powered · ATS · Free
       </div>
       <h1
         id="rr-hero-heading"
@@ -48,21 +48,21 @@ import Layout from '../layouts/Layout.astro'
         class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
         style="color: rgba(147,184,255,0.85);"
       >
-        Optimiza tu CV de DevOps para ATS. Score ATS, keywords que faltan y
-        mejoras concretas con ejemplos.
+        Optimize your DevOps resume for ATS. ATS score, missing keywords and
+        concrete improvements with examples.
       </p>
     </div>
   </section>
 
   <!-- FORM + RESULTS -->
-  <section class="bg-white py-16" aria-label="Formulario de revisión de CV">
+  <section class="bg-white py-16" aria-label="Resume review form">
     <div class="max-w-3xl mx-auto px-6">
       <form id="rr-form" class="space-y-6" novalidate>
         <div>
           <label
             for="rr-role"
             class="block text-sm font-semibold mb-2"
-            style="color: #0F172A;">Rol objetivo</label
+            style="color: #0F172A;">Target role</label
           >
           <select
             id="rr-role"
@@ -81,15 +81,15 @@ import Layout from '../layouts/Layout.astro'
             class="block text-sm font-semibold mb-2"
             style="color: #0F172A;"
           >
-            Pega tu CV aquí (texto plano)
+            Paste your resume here (plain text)
             <span class="font-normal text-xs ml-1" style="color: #64748B;"
-              >(requerido)</span
+              >(required)</span
             >
           </label>
           <textarea
             id="rr-cv"
             rows="14"
-            placeholder="Copia y pega el contenido de tu CV en texto plano. Incluye experiencia, skills, educación, proyectos y certificaciones..."
+            placeholder="Copy and paste your resume content as plain text. Include experience, skills, education, projects and certifications..."
             class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
             style="border-color: #E2E8F0; color: #0F172A;"></textarea>
         </div>
@@ -113,7 +113,7 @@ import Layout from '../layouts/Layout.astro'
               d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
             ></path>
           </svg>
-          <span id="rr-btn-text">Analizar mi CV →</span>
+          <span id="rr-btn-text">Analyze my resume →</span>
         </button>
         <p id="rr-error" class="hidden text-sm text-red-600 text-center"></p>
       </form>
@@ -143,14 +143,13 @@ import Layout from '../layouts/Layout.astro'
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
           </svg>
           <span class="text-sm font-medium" style="color: #2563EB;"
-            >Analizando tu CV...</span
+            >Analyzing your resume...</span
           >
         </div>
       </div>
 
       <!-- Results -->
       <div id="rr-results" class="hidden mt-10 space-y-6">
-        <!-- ATS Score + Rating header -->
         <div class="rounded-2xl p-8" style="background: #0A2540;">
           <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
             <div>
@@ -175,7 +174,7 @@ import Layout from '../layouts/Layout.astro'
                 class="text-xs font-semibold uppercase tracking-widest mb-1"
                 style="color: #93C5FD;"
               >
-                Rating global
+                Overall rating
               </p>
               <div
                 id="rr-rating"
@@ -194,82 +193,75 @@ import Layout from '../layouts/Layout.astro'
           </p>
         </div>
 
-        <!-- Strengths -->
         <div
           class="rounded-2xl p-6"
           style="background: #F0FDF4; border: 1px solid #BBF7D0;"
         >
           <h2 class="text-sm font-bold mb-3" style="color: #15803D;">
-            Fortalezas
+            Strengths
           </h2>
           <ul id="rr-strengths" class="space-y-2"></ul>
         </div>
 
-        <!-- Critical issues -->
         <div
           id="rr-issues-section"
           class="hidden rounded-2xl p-6"
           style="background: #FFF5F5; border: 1px solid #FCA5A5;"
         >
           <h2 class="text-sm font-bold mb-3" style="color: #DC2626;">
-            Problemas críticos
+            Critical issues
           </h2>
           <ul id="rr-issues" class="space-y-2"></ul>
         </div>
 
-        <!-- Missing keywords -->
         <div
           id="rr-keywords-section"
           class="hidden rounded-2xl p-6"
           style="border: 1px solid #E5E7EB;"
         >
           <h2 class="text-sm font-bold mb-3" style="color: #0F172A;">
-            Keywords que faltan
+            Missing keywords
           </h2>
           <div id="rr-keywords" class="flex flex-wrap gap-2"></div>
         </div>
 
-        <!-- Improvements -->
         <div
           class="rounded-2xl p-6"
           style="background: #F8FAFF; border: 1px solid #DBEAFE;"
         >
           <h2 class="text-sm font-bold mb-4" style="color: #1E40AF;">
-            Mejoras por sección
+            Improvements by section
           </h2>
           <div id="rr-improvements" class="space-y-4"></div>
         </div>
 
-        <!-- Role fit bars -->
         <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
           <h2 class="text-sm font-bold mb-4" style="color: #0F172A;">
-            Fit por rol
+            Role fit
           </h2>
           <div id="rr-roles" class="space-y-3"></div>
         </div>
 
-        <!-- LinkedIn tips -->
         <div
           class="rounded-2xl p-6"
           style="background: #EEF4FF; border: 1px solid #BFDBFE;"
         >
           <h2 class="text-sm font-bold mb-3" style="color: #1E40AF;">
-            Tips LinkedIn
+            LinkedIn tips
           </h2>
           <ul id="rr-linkedin" class="space-y-2"></ul>
         </div>
 
-        <!-- CTA -->
         <div class="text-center pt-4 pb-2">
           <p class="text-base font-semibold mb-4" style="color: #0F172A;">
-            ¿Buscas trabajo en cloud/DevOps?
+            Looking for cloud/DevOps work?
           </p>
           <a
-            href="/contacto"
+            href="/en/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
           >
-            Hablar con LRA →
+            Talk to LRA →
           </a>
         </div>
       </div>
@@ -307,7 +299,7 @@ import Layout from '../layouts/Layout.astro'
 
     if (cv.trim().length < 50) {
       errorEl.textContent =
-        'Por favor pega tu CV completo (mínimo 50 caracteres).'
+        'Please paste your full resume (minimum 50 characters).'
       errorEl.classList.remove('hidden')
       return
     }
@@ -315,7 +307,7 @@ import Layout from '../layouts/Layout.astro'
     form.classList.add('hidden')
     loading.classList.remove('hidden')
     submitBtn.disabled = true
-    btnText.textContent = 'Analizando...'
+    btnText.textContent = 'Analyzing...'
 
     try {
       const res = await fetch('/api/resume-review', {
@@ -400,11 +392,11 @@ import Layout from '../layouts/Layout.astro'
         r.role_fit && typeof r.role_fit === 'object' ? r.role_fit : {}
       ) as Record<string, number>
       document.getElementById('rr-roles')!.innerHTML = Object.entries(roleFit)
-        .map(([role, pct]) => {
+        .map(([r2, pct]) => {
           const color = atsColor(pct)
           return `<div>
             <div class="flex justify-between text-sm mb-1.5">
-              <span style="color:#0F172A; font-weight:600;">${role}</span>
+              <span style="color:#0F172A; font-weight:600;">${r2}</span>
               <span style="color:${color}; font-weight:700;">${pct}%</span>
             </div>
             <div class="h-2 rounded-full overflow-hidden" style="background:#F1F5F9;">
@@ -430,11 +422,11 @@ import Layout from '../layouts/Layout.astro'
       loading.classList.add('hidden')
       form.classList.remove('hidden')
       submitBtn.disabled = false
-      btnText.textContent = 'Analizar mi CV →'
+      btnText.textContent = 'Analyze my resume →'
       errorEl.textContent =
         err instanceof Error
           ? err.message
-          : 'Error analizando el CV. Intenta de nuevo.'
+          : 'Error analyzing resume. Please try again.'
       errorEl.classList.remove('hidden')
     }
   })

@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Migración a Azure — LRA Cloud Operations"
-  descripcion="Migra tu infraestructura a Microsoft Azure con AKS, Azure DevOps y Terraform modular. Especialista: Kelvin Osaigbovo. Alta disponibilidad y gobierno desde el primer día."
+  titulo="Azure Migration — LRA Cloud Operations"
+  descripcion="Migrate your infrastructure to Microsoft Azure with AKS, Azure DevOps and modular Terraform. Specialist: Kelvin Osaigbovo. High availability and governance from day one."
 >
   <!-- Hero -->
   <section
@@ -15,26 +15,26 @@ import Layout from '../../layouts/Layout.astro'
         class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8"
         style="background: rgba(0,120,212,0.2); color: #60A5FA; border: 1px solid rgba(0,120,212,0.35);"
       >
-        Solución · Migración a Azure
+        Solution · Azure Migration
       </div>
       <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-        De on-premise o AWS<br />a Microsoft Azure automatizado.
+        From on-premise or AWS<br />to automated Microsoft Azure.
       </h1>
       <p
         class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
         style="color: rgba(148,163,184,0.9);"
       >
-        Migración a Azure con AKS, Azure DevOps, Terraform modular e integración
-        con el ecosistema Microsoft. Alta disponibilidad, seguridad y gobierno
-        sin configuración manual.
+        Migration to Azure with AKS, Azure DevOps, modular Terraform and
+        Microsoft ecosystem integration. High availability, security and
+        governance without manual configuration.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="/contacto"
+          href="/en/contact"
           class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
           style="background: #0078D4; box-shadow: 0 4px 20px rgba(0,120,212,0.4);"
         >
-          Iniciar migración a Azure
+          Start Azure migration
           <svg
             class="w-4 h-4"
             fill="none"
@@ -48,17 +48,17 @@ import Layout from '../../layouts/Layout.astro'
           >
         </a>
         <a
-          href="/proyectos"
+          href="/en/projects"
           class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:bg-white/10"
           style="color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);"
         >
-          Ver casos de uso
+          View use cases
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Especialista -->
+  <!-- Specialist -->
   <section style="background: #EEF4FF; padding: 40px 24px;">
     <div class="max-w-4xl mx-auto">
       <div
@@ -88,14 +88,14 @@ import Layout from '../../layouts/Layout.astro'
             class="text-xs font-bold uppercase tracking-widest mb-1"
             style="color: #0078D4;"
           >
-            Especialista Azure en LRA
+            LRA Azure Specialist
           </div>
           <div class="font-semibold" style="color: #0A2540;">
             Kelvin Osaigbovo — DevOps Engineer · Azure Specialist
           </div>
           <div class="text-sm mt-0.5" style="color: #64748B;">
-            Especializado en AKS, Azure DevOps, Azure Monitor y migración de
-            workloads al ecosistema Microsoft.
+            Specialized in AKS, Azure DevOps, Azure Monitor and workload
+            migration to the Microsoft ecosystem.
           </div>
         </div>
       </div>
@@ -107,35 +107,35 @@ import Layout from '../../layouts/Layout.astro'
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
         <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
-          Infraestructura Azure lista para producción
+          Production-ready Azure infrastructure
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          No solo migramos recursos — entregamos una plataforma completa con
-          gobierno, seguridad y observabilidad integrados en el ecosistema
-          Microsoft.
+          We don't just migrate resources — we deliver a complete platform with
+          governance, security and observability built into the Microsoft
+          ecosystem.
         </p>
       </div>
       <div class="grid sm:grid-cols-2 gap-6">
         {
           [
             {
-              title: 'Terraform modular para Azure',
-              desc: 'Cada recurso Azure en módulos Terraform reutilizables: AKS, Azure SQL, Key Vault, VNet, NSG. Estado remoto en Azure Blob Storage con locking. Sin ClickOps en producción, nunca.',
+              title: 'Modular Terraform for Azure',
+              desc: 'Every Azure resource in reusable Terraform modules: AKS, Azure SQL, Key Vault, VNet, NSG. Remote state in Azure Blob Storage with locking. No ClickOps in production, ever.',
               icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
             },
             {
-              title: 'AKS en producción con RBAC y AGIC',
-              desc: 'Clusters AKS con Azure CNI, RBAC integrado con Azure AD, Application Gateway Ingress Controller y cluster autoscaler. Nodos en zonas de disponibilidad para alta disponibilidad real.',
+              title: 'AKS in production with RBAC and AGIC',
+              desc: 'AKS clusters with Azure CNI, Azure AD-integrated RBAC, Application Gateway Ingress Controller and cluster autoscaler. Nodes across availability zones for real high availability.',
               icon: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
             },
             {
-              title: 'Azure DevOps y pipelines CI/CD',
-              desc: 'Pipelines YAML en Azure DevOps con stages de build, test y deploy. Integración con Azure Container Registry, escaneo de imágenes y quality gates. Deploy automático en AKS vía ArgoCD.',
+              title: 'Azure DevOps and CI/CD pipelines',
+              desc: 'YAML pipelines in Azure DevOps with build, test and deploy stages. Integration with Azure Container Registry, image scanning and quality gates. Automatic deploy to AKS via ArgoCD.',
               icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
             },
             {
-              title: 'Seguridad y secretos con Key Vault',
-              desc: 'Credenciales y secretos en Azure Key Vault con rotación automática. Managed Identities para acceso sin credenciales estáticas. Microsoft Defender for Cloud para postura de seguridad continua.',
+              title: 'Security and secrets with Key Vault',
+              desc: 'Credentials and secrets in Azure Key Vault with automatic rotation. Managed Identities for access without static credentials. Microsoft Defender for Cloud for continuous security posture.',
               icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
             },
           ].map(({ title, desc, icon }) => (
@@ -180,18 +180,18 @@ import Layout from '../../layouts/Layout.astro'
   <section style="background: #0A2540; padding: 80px 24px;">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-3xl font-bold text-white mb-4">
-        ¿Listo para migrar a Microsoft Azure?
+        Ready to migrate to Microsoft Azure?
       </h2>
       <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">
-        Agenda una revisión de arquitectura de 30 minutos. Evaluamos tu estado
-        actual y trazamos un plan de migración a Azure concreto.
+        Schedule a 30-minute architecture review. We assess your current state
+        and draw up a concrete Azure migration plan.
       </p>
       <a
-        href="/contacto"
+        href="/en/contact"
         class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
         style="background: #0078D4; box-shadow: 0 4px 24px rgba(0,120,212,0.45);"
       >
-        Agendar revisión de arquitectura
+        Schedule architecture review
         <svg
           class="w-4 h-4"
           fill="none"

@@ -4,8 +4,8 @@ import Layout from '../../layouts/Layout.astro'
 const architectures = [
   {
     slug: 'aws-landing-zone',
-    titulo: 'AWS Landing Zone',
-    desc: 'Estrategia multi-cuenta AWS con cuenta de Seguridad, Servicios Compartidos y cuentas de workload. SCP guardrails, logging centralizado y GuardDuty en todas las cuentas.',
+    title: 'AWS Landing Zone',
+    desc: 'Multi-account AWS strategy with Security Account, Shared Services and workload accounts. SCP guardrails, centralized logging and GuardDuty across all accounts.',
     stack: [
       'AWS Organizations',
       'SCPs',
@@ -13,7 +13,7 @@ const architectures = [
       'GuardDuty',
       'Terraform',
     ],
-    badge: 'Probado en producción',
+    badge: 'Production Tested',
     badgeColor: '#059669',
     badgeBg: '#F0FDF4',
     iconPath: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
@@ -21,10 +21,10 @@ const architectures = [
   },
   {
     slug: 'eks-production-platform',
-    titulo: 'Plataforma EKS en Producción',
-    desc: 'Kubernetes de grado productivo en EKS con managed node groups, GitOps con ArgoCD, External Secrets Operator, HPA y CloudWatch Container Insights.',
+    title: 'EKS Production Platform',
+    desc: 'Production-grade Kubernetes on EKS with managed node groups, ArgoCD GitOps, External Secrets Operator, HPA and CloudWatch Container Insights.',
     stack: ['EKS', 'Terraform', 'ArgoCD', 'Helm', 'Prometheus', 'OIDC'],
-    badge: 'Probado en producción',
+    badge: 'Production Tested',
     badgeColor: '#059669',
     badgeBg: '#F0FDF4',
     iconPath:
@@ -33,10 +33,10 @@ const architectures = [
   },
   {
     slug: 'gitops-platform',
-    titulo: 'Plataforma GitOps',
-    desc: 'Pipeline de entrega automatizado usando Git como fuente única de verdad. GitHub Actions para CI, ArgoCD para CD, OIDC para autenticación sin credenciales de larga duración.',
+    title: 'GitOps Platform',
+    desc: 'Automated delivery pipeline using Git as the single source of truth. GitHub Actions for CI, ArgoCD for CD, OIDC for credential-free authentication throughout.',
     stack: ['ArgoCD', 'Helm', 'GitHub Actions', 'OIDC', 'ECR', 'EKS'],
-    badge: 'Probado en producción',
+    badge: 'Production Tested',
     badgeColor: '#059669',
     badgeBg: '#F0FDF4',
     iconPath:
@@ -45,8 +45,8 @@ const architectures = [
   },
   {
     slug: 'observability-platform',
-    titulo: 'Plataforma de Observabilidad',
-    desc: 'Observabilidad full-stack con métricas Prometheus, reenvío de logs con Fluent Bit, dashboards Grafana y reglas AlertManager. CloudWatch Container Insights para nodos EKS.',
+    title: 'Observability Platform',
+    desc: 'Full-stack observability with Prometheus metrics, Fluent Bit log forwarding, Grafana dashboards and AlertManager rules. CloudWatch Container Insights for EKS nodes.',
     stack: [
       'Prometheus',
       'Grafana',
@@ -54,43 +54,38 @@ const architectures = [
       'Fluent Bit',
       'AlertManager',
     ],
-    badge: 'Probado en producción',
+    badge: 'Production Tested',
     badgeColor: '#059669',
     badgeBg: '#F0FDF4',
     iconPath:
       'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
-    color: '#8B5CF6',
+    color: '#F97316',
   },
   {
     slug: 'platform-engineering-blueprint',
-    titulo: 'Blueprint Platform Engineering',
-    desc: 'Plataforma interna para desarrolladores construida sobre Kubernetes. Self-service de infraestructura, pipelines de CI/CD estandarizados y gestión centralizada de secretos.',
-    stack: ['Kubernetes', 'Backstage', 'Terraform', 'Vault', 'ArgoCD'],
-    badge: 'Referencia',
-    badgeColor: '#2563EB',
-    badgeBg: '#EFF6FF',
+    title: 'Platform Engineering Blueprint',
+    desc: 'Internal Developer Platform pattern for reducing developer cognitive load. Golden paths, self-service infrastructure APIs, reusable CI/CD templates and DORA metrics tracking.',
+    stack: [
+      'IDP',
+      'Terraform Modules',
+      'GitHub Actions',
+      'AWS',
+      'DORA Metrics',
+    ],
+    badge: 'Reference',
+    badgeColor: '#1E6FFF',
+    badgeBg: '#EEF4FF',
     iconPath:
       'M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122',
-    color: '#0A2540',
+    color: '#7B42BC',
   },
 ]
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: 'Centro de Arquitecturas — LRA Cloud Ops',
-  description:
-    'Patrones de arquitectura de referencia para AWS, Kubernetes, GitOps y Observabilidad.',
-  publisher: { '@id': 'https://lracloudops.com/#organization' },
-  inLanguage: 'es-ES',
-}
 ---
 
 <Layout
-  titulo="Centro de Arquitecturas"
-  descripcion="Patrones de arquitectura de referencia probados en producción. AWS multi-cuenta, EKS, GitOps, Observabilidad y Platform Engineering basados en proyectos reales."
-  keywords="arquitectura cloud AWS, arquitectura Kubernetes, GitOps, observabilidad, platform engineering, patrones DevOps"
-  schema={schema}
+  titulo="Reference Architectures | LRA Cloud Operations"
+  descripcion="Production-tested architecture patterns from real AWS, Kubernetes and GitOps deployments. Landing Zone, EKS platform, GitOps pipelines and observability stacks."
+  keywords="AWS reference architecture, EKS production architecture, GitOps platform architecture, Kubernetes architecture patterns, AWS landing zone"
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
@@ -101,102 +96,71 @@ const schema = {
     </div>
     <div
       class="absolute inset-0 pointer-events-none"
-      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.15) 0%, transparent 65%);"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
     >
     </div>
 
     <div
       class="relative max-w-5xl mx-auto px-5 sm:px-6 py-20 sm:py-24 text-center"
     >
-      <div
-        class="flex items-center justify-center gap-2 mb-6 text-xs"
-        style="color: rgba(147,184,255,0.5);"
-      >
-        <a
-          href="/"
-          style="color: rgba(147,184,255,0.5);"
-          class="hover:text-white transition-colors">Inicio</a
-        >
-        <span>/</span>
-        <span style="color: rgba(147,184,255,0.9);">Arquitecturas</span>
-      </div>
       <span
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
       >
-        Centro de Arquitecturas
+        Architecture Center
       </span>
       <h1
         class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
         style="letter-spacing: -0.02em;"
       >
-        Patrones de Arquitectura de Referencia
+        Reference Architectures
       </h1>
       <p
-        class="text-lg leading-relaxed max-w-2xl mx-auto mb-8"
+        class="text-lg leading-relaxed max-w-2xl mx-auto mb-4"
         style="color: rgba(147,184,255,0.8);"
       >
-        Diseños de arquitectura cloud probados en entornos de producción reales.
-        Cada patrón incluye decisiones de diseño, stack tecnológico y
-        consideraciones operativas.
+        Production-tested architecture patterns from real AWS, Kubernetes and
+        GitOps deployments. Each diagram reflects decisions made in production
+        environments.
       </p>
-      <div
-        class="flex items-center justify-center gap-6 text-sm"
-        style="color: rgba(147,184,255,0.6);"
-      >
-        <div class="flex items-center gap-2">
-          <span
-            class="w-2 h-2 rounded-full bg-emerald-400 inline-block"
-            aria-hidden="true"></span>
-          {
-            architectures.filter((a) => a.badge === 'Probado en producción')
-              .length
-          } probados en producción
-        </div>
-        <div class="flex items-center gap-2">
-          <span
-            class="w-2 h-2 rounded-full bg-blue-400 inline-block"
-            aria-hidden="true"></span>
-          {architectures.filter((a) => a.badge === 'Referencia').length} de referencia
-        </div>
-      </div>
+      <p class="text-sm font-medium" style="color: rgba(147,184,255,0.5);">
+        SVG diagrams &middot; Downloadable &middot; Based on real engagements
+      </p>
     </div>
   </section>
 
-  <!-- ARCHITECTURES GRID -->
-  <section class="max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        architectures.map(
-          ({
-            slug,
-            titulo,
-            desc,
-            stack,
-            badge,
-            badgeColor,
-            badgeBg,
-            iconPath,
-            color,
-          }) => (
-            <a
-              href={`/en/architectures/${slug}`}
-              class="group flex flex-col rounded-2xl border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
-              style="background: white; border-color: rgba(15,23,42,0.08);"
-            >
-              <div class="p-6 flex-1">
-                <div class="flex items-start justify-between mb-4">
+  <!-- GRID -->
+  <section class="py-20" style="background: #F8FAFC;">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          architectures.map(
+            ({
+              slug,
+              title,
+              desc,
+              stack,
+              badge,
+              badgeColor,
+              badgeBg,
+              iconPath,
+              color,
+            }) => (
+              <a
+                href={`/architectures/${slug}`}
+                class="group bg-white rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition-all duration-200"
+                style={`border: 1px solid #e2e8f0; border-top: 4px solid ${color}; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 20px rgba(10,37,64,0.08); text-decoration: none;`}
+              >
+                <div class="flex items-start justify-between mb-5">
                   <div
-                    class="w-10 h-10 rounded-xl flex items-center justify-center"
-                    style={`background: ${color}18; flex-shrink:0;`}
+                    class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
+                    style={`background: ${color}; box-shadow: 0 4px 12px rgba(0,0,0,0.15);`}
                   >
                     <svg
-                      class="w-5 h-5"
+                      class="w-6 h-6 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      style={`color:${color};`}
-                      aria-hidden="true"
                     >
                       <path
                         stroke-linecap="round"
@@ -207,92 +171,129 @@ const schema = {
                     </svg>
                   </div>
                   <span
-                    class="text-[11px] font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
-                    style={`background:${badgeBg}; color:${badgeColor};`}
+                    class="text-xs font-semibold px-2.5 py-1 rounded-full"
+                    style={`background: ${badgeBg}; color: ${badgeColor};`}
                   >
                     {badge}
                   </span>
                 </div>
-                <h2 class="text-base font-bold mb-2" style="color:#0A2540;">
-                  {titulo}
+                <h2
+                  class="text-base font-bold mb-3 group-hover:opacity-80 transition-opacity"
+                  style="color: #0A2540;"
+                >
+                  {title}
                 </h2>
-                <p class="text-sm leading-relaxed mb-4" style="color:#64748b;">
+                <p
+                  class="text-sm leading-relaxed flex-1 mb-5"
+                  style="color: #64748b;"
+                >
                   {desc}
                 </p>
-                <div class="flex flex-wrap gap-1.5">
-                  {stack.map((t) => (
+                <div class="flex flex-wrap gap-1.5 mb-5">
+                  {stack.map((tag) => (
                     <span
-                      class="text-[11px] font-medium px-2 py-0.5 rounded-full"
-                      style="background:#EEF4FF; color:#2563EB;"
+                      class="text-xs px-2.5 py-1 rounded-full"
+                      style="background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0;"
                     >
-                      {t}
+                      {tag}
                     </span>
                   ))}
                 </div>
-              </div>
-              <div
-                class="px-6 py-3 flex items-center gap-1.5 text-xs font-semibold border-t transition-colors group-hover:text-blue-700"
-                style="border-color: rgba(15,23,42,0.06); color:#2563EB;"
-              >
-                Ver arquitectura
-                <svg
-                  class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
+                <span
+                  class="text-xs font-bold transition-colors"
+                  style={`color: ${color};`}
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
-            </a>
+                  View architecture →
+                </span>
+              </a>
+            )
           )
-        )
-      }
+        }
+      </div>
+
+      <!-- Info strip -->
+      <div
+        class="mt-12 rounded-2xl p-6 flex items-start gap-4"
+        style="background: white; border: 1px solid #e2e8f0;"
+      >
+        <div
+          class="w-8 h-8 flex items-center justify-center rounded-lg flex-shrink-0"
+          style="background: #EEF4FF;"
+        >
+          <svg
+            class="w-4 h-4"
+            style="color: #1E6FFF;"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold mb-1" style="color: #0A2540;">
+            Based on real production deployments
+          </p>
+          <p class="text-sm leading-relaxed" style="color: #64748b;">
+            These architectures reflect decisions made and validated in
+            healthcare, financial services and SaaS production environments —
+            not textbook theory. Each diagram is downloadable as SVG.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="max-w-5xl mx-auto px-5 sm:px-6 pb-20">
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
     <div
-      class="rounded-2xl p-8 sm:p-12 text-center"
-      style="background: linear-gradient(135deg, #0A2540 0%, #0D3060 100%);"
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.12) 1px, transparent 1px); background-size: 32px 32px;"
     >
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
-        ¿Implementamos una de estas arquitecturas en tu entorno?
+    </div>
+    <div class="relative max-w-3xl mx-auto px-6 py-16 text-center">
+      <h2
+        class="text-2xl sm:text-3xl font-extrabold text-white mb-4"
+        style="letter-spacing: -0.02em;"
+      >
+        Need a custom architecture?
       </h2>
       <p
-        class="text-base mb-8 max-w-xl mx-auto"
+        class="text-sm mb-7 max-w-xl mx-auto"
         style="color: rgba(147,184,255,0.8);"
       >
-        Adaptamos cada patrón a las necesidades específicas de tu organización.
-        Sin plantillas genéricas: infraestructura diseñada para tu caso de uso.
+        Every engagement starts with understanding your constraints. We design
+        architectures around your requirements, not templates.
       </p>
       <a
-        href="/contacto"
-        class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-3 rounded-xl transition-all hover:-translate-y-px"
-        style="background:#2563EB; box-shadow:0 4px 14px rgba(37,99,235,0.4);"
+        href="/contact"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-white px-7 py-3.5 rounded-xl transition-all hover:scale-[1.02]"
+        style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
       >
-        Agendar consulta
+        Schedule a free architecture review
         <svg
           class="w-4 h-4"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
+          ><path
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-        </svg>
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
       </a>
     </div>
   </section>
 </Layout>
+
+<script>
+  if (typeof window !== 'undefined' && (window as any).cf) {
+    ;(window as any).cf.track('architecture_hub_viewed', {})
+  }
+</script>
