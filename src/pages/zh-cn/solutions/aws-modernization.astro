@@ -1,0 +1,70 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="AWS现代化 · 云迁移与优化"
+  descripcion="使用Terraform IaC、ECS Fargate和安全架构进行AWS迁移与现代化。无需手动控制台配置的可复现环境。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          AWS现代化
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          从手动基础设施到云原生，用Terraform驱动。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          我们将遗留工作负载迁移至AWS，采用现代架构：ECS Fargate、RDS PostgreSQL、CloudFront，基础设施100%以代码方式管理。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">迁移评估</h3>
+          <p class="text-sm" style="color: #64748b;">全面分析现有基础设施、应用依赖和迁移风险。包含迁移阶段、工作量估算和预期AWS成本的路线图。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Terraform IaC</h3>
+          <p class="text-sm" style="color: #64748b;">所有AWS基础设施以可复用的Terraform模块定义——VPC、安全组、ECR、RDS、ECS、ALB和CloudFront。状态通过S3和DynamoDB锁管理。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">应用容器化</h3>
+          <p class="text-sm" style="color: #64748b;">使用优化的多阶段Dockerfile将现有应用容器化。镜像存储于ECR，部署至带健康检查和自动扩展的ECS Fargate。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">安全与IAM</h3>
+          <p class="text-sm" style="color: #64748b;">CI/CD流水线采用OIDC，无需长期密钥。Secrets存储于AWS Secrets Manager，而非配置文件。IAM角色在Terraform中定义，可审计。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">RDS与数据层</h3>
+          <p class="text-sm" style="color: #64748b;">PostgreSQL位于私有子网，支持自动备份、生产环境Multi-AZ故障转移和静态加密。通过Flyway在启动时自动运行迁移。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">CloudFront与前端</h3>
+          <p class="text-sm" style="color: #64748b;">静态资产存储于S3，通过OAC方式使用CloudFront分发。自动缓存、SSL/TLS，每次前端部署后通过CI/CD自动失效。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">现代化您的AWS基础设施。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">我们从审查现有架构开始，交付包含阶段和估算的具体现代化计划。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        联系我们
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

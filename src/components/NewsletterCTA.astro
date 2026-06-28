@@ -20,19 +20,13 @@ const {
   darkBackground = false,
 } = Astro.props
 
-const placeholder = isES ? 'tu@empresa.com' : 'you@company.com'
-const subscribeBtn = isES ? 'Suscribirse →' : 'Subscribe →'
-const subscribingTx = isES ? 'Suscribiendo...' : 'Subscribing...'
-const subscribedMsg = isES
-  ? '¡Suscrito! Recibirás nuestro próximo número.'
-  : 'Subscribed! You will receive our next issue.'
-const subscribedBtn = isES ? 'Suscrito ✓' : 'Subscribed ✓'
-const errorMsg = isES
-  ? 'Error al suscribirse. Por favor intenta de nuevo.'
-  : 'Error subscribing. Please try again.'
-const connErrorMsg = isES
-  ? 'Error de conexión. Por favor intenta de nuevo.'
-  : 'Connection error. Please try again.'
+const placeholder   = isES ? 'tu@empresa.com'                              : 'you@company.com'
+const subscribeBtn  = isES ? 'Suscribirse →'                               : 'Subscribe →'
+const subscribingTx = isES ? 'Suscribiendo...'                             : 'Subscribing...'
+const subscribedMsg = isES ? '¡Suscrito! Recibirás nuestro próximo número.' : 'Subscribed! You will receive our next issue.'
+const subscribedBtn = isES ? 'Suscrito ✓'                                  : 'Subscribed ✓'
+const errorMsg      = isES ? 'Error al suscribirse. Por favor intenta de nuevo.' : 'Error subscribing. Please try again.'
+const connErrorMsg  = isES ? 'Error de conexión. Por favor intenta de nuevo.'    : 'Connection error. Please try again.'
 
 const bgStyle = darkBackground
   ? 'background: #0A2540;'
@@ -68,19 +62,9 @@ const inputStyle = darkBackground
   <p class="text-sm mb-8 max-w-md mx-auto" style={subtitleColor}>
     {subtitle}
   </p>
-  <form
-    class="newsletter-cta-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-  >
-    <input
-      type="hidden"
-      name="access_key"
-      value="e8aaab4e-270c-4163-bb76-6a8dfc247485"
-    />
-    <input
-      type="hidden"
-      name="subject"
-      value="Newsletter Subscription - LRA Cloud Ops"
-    />
+  <form class="newsletter-cta-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+    <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+    <input type="hidden" name="subject" value="Newsletter Subscription - LRA Cloud Ops" />
     <input type="hidden" name="from_name" value="LRA Cloud Ops Newsletter" />
     <input
       type="email"
@@ -98,24 +82,13 @@ const inputStyle = darkBackground
       {subscribeBtn}
     </button>
   </form>
-  <div
-    class="newsletter-cta-status hidden mt-4 text-sm rounded-xl py-2.5 px-4 max-w-md mx-auto"
-  >
-  </div>
+  <div class="newsletter-cta-status hidden mt-4 text-sm rounded-xl py-2.5 px-4 max-w-md mx-auto"></div>
 </div>
 
-<script
-  define:vars={{
-    subscribingTx,
-    subscribedMsg,
-    subscribedBtn,
-    errorMsg,
-    connErrorMsg,
-  }}
->
+<script define:vars={{ subscribingTx, subscribedMsg, subscribedBtn, errorMsg, connErrorMsg }}>
   document.querySelectorAll('.newsletter-cta-widget').forEach((widget) => {
-    const form = widget.querySelector('.newsletter-cta-form')
-    const btn = widget.querySelector('.newsletter-cta-btn')
+    const form   = widget.querySelector('.newsletter-cta-form')
+    const btn    = widget.querySelector('.newsletter-cta-btn')
     const status = widget.querySelector('.newsletter-cta-status')
     if (!form || !btn || !status) return
 
@@ -126,7 +99,7 @@ const inputStyle = darkBackground
       btn.disabled = true
 
       try {
-        const res = await fetch('https://api.web3forms.com/submit', {
+        const res  = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(Object.fromEntries(new FormData(form))),

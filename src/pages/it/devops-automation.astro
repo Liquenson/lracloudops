@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Automazione DevOps · Pipeline CI/CD"
+  descripcion="Pipeline CI/CD con GitHub Actions e Jenkins. Quality gate SonarCloud e deployment completamente automatizzati senza interventi manuali."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Automazione DevOps
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Zero deployment manuali. Zero sorprese in produzione.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Sostituiamo i processi manuali con pipeline CI/CD automatizzate con GitHub Actions e Jenkins — con quality gate integrati e deployment tracciabili dall'inizio alla fine.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">GitHub Actions Pipelines</h3>
+          <p class="text-sm" style="color: #64748b;">Pipeline CI/CD complete con GitHub Actions — dal build e test al push Docker e deploy Helm. Ogni modifica viene validata automaticamente prima di raggiungere la produzione.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Integrazione Jenkins</h3>
+          <p class="text-sm" style="color: #64748b;">Pipeline Jenkins come codice con Jenkinsfile. Stage paralleli per build, test e deployment — nessuna orchestrazione manuale. Gli stessi quality gate di GitHub Actions.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Quality Gate SonarCloud</h3>
+          <p class="text-sm" style="color: #64748b;">Analisi automatica della qualità del codice con SonarCloud. Soglie di coverage e security hotspot bloccano i deployment prima che il codice scadente raggiunga la produzione.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Docker & Container Registry</h3>
+          <p class="text-sm" style="color: #64748b;">Build Docker automatico e push su ECR. Multi-stage build per immagini ottimizzate. Scansione delle vulnerabilità dei container nella pipeline prima del deploy.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Automazione Deployment Helm</h3>
+          <p class="text-sm" style="color: #64748b;">Upgrade Helm automatici dopo pipeline riuscite. Meccanismi di rollback e verifica del deployment integrati. Nessun intervento manuale in produzione.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Secrets & Autenticazione OIDC</h3>
+          <p class="text-sm" style="color: #64748b;">GitHub Actions si autentica su AWS via OIDC. Nessuna chiave di accesso statica in nessuno store. Le credenziali vengono emesse per ogni run e scadono automaticamente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Automatizza il tuo processo di deployment.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Analizziamo il tuo processo di rilascio attuale e creiamo un piano per l'automazione CI/CD completa con quality gate enforced.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Contattaci
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

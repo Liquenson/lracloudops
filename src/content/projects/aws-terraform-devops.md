@@ -1,6 +1,6 @@
 ---
 titulo: "aws-terraform-devops"
-descripcion: "Manual deployments took 3 weeks — now 45 minutes with a fully automated pipeline. Production AWS platform with modular Terraform: EKS 1.31 + RDS PostgreSQL 15 Multi-AZ + dual CI/CD (GitHub Actions + Jenkins) + SonarCloud quality gates. 100% automated deployments, zero production downtime."
+descripcion: "Production-ready AWS infrastructure with Terraform. Scalable architecture with EKS, RDS Multi-AZ, VPC and automated CI/CD pipelines using GitHub Actions and Jenkins. Remote state management and SonarCloud coverage gates."
 fecha: 2026-06-11
 categoria: "Cloud Infrastructure"
 madurez: "Production"
@@ -11,20 +11,20 @@ draft: false
 
 categoria_es: "Infraestructura Cloud"
 madurez_es: "Producción"
-descripcion_es: "Despliegues manuales de 3 semanas → pipeline automatizado de 45 minutos. Infraestructura AWS con Terraform modular: EKS 1.31 + RDS PostgreSQL 15 Multi-AZ + CI/CD dual (GitHub Actions + Jenkins) + gates SonarCloud. 100% automatizado, cero downtime en producción."
+descripcion_es: "Infraestructura AWS lista para producción con Terraform. Arquitectura escalable con EKS, RDS Multi-AZ, VPC y pipelines CI/CD automatizados con GitHub Actions y Jenkins. Gestión de estado remoto y gates de cobertura con SonarCloud."
 metricas_es:
-  - label: "despliegue (antes: 3 semanas)"
-    value: "45 min"
-  - label: "despliegues automatizados"
-    value: "100%"
-  - label: "downtime en producción"
-    value: "0"
-  - label: "aprovisionamiento completo"
-    value: "<20 min"
+  - label: "Modular — reutilizable"
+    value: "Módulos Terraform"
+  - label: "Dual — GitHub Actions + Jenkins"
+    value: "Pipelines CI/CD"
+  - label: "RDS Multi-AZ"
+    value: "Base de datos"
+  - label: "SonarCloud obligatorio"
+    value: "Gate de cobertura"
 highlights_es:
-  - "Despliegues automatizados de 45 minutos — antes eran 3 semanas de trabajo manual con GitHub Actions + Jenkins"
-  - "100% despliegues automatizados con cero downtime en producción"
   - "Terraform modular — VPC, EKS, RDS, IAM como módulos reutilizables independientes"
+  - "CI/CD dual — GitHub Actions para builds cloud, Jenkins para on-premise"
+  - "RDS PostgreSQL 15 Multi-AZ con failover automático"
 
 flow_steps:
   - label: "GitHub Actions"
@@ -50,22 +50,22 @@ stack:
   - "Docker"
 
 metricas:
-  - label: "deploy time (was 3 weeks)"
-    value: "45 min"
-  - label: "automated deployments"
-    value: "100%"
-  - label: "production downtime"
-    value: "0"
-  - label: "full infra provisioning"
-    value: "<20 min"
+  - label: "Terraform modules"
+    value: "Modular — reusable"
+  - label: "CI/CD pipelines"
+    value: "Dual — GitHub Actions + Jenkins"
+  - label: "Database"
+    value: "RDS Multi-AZ"
+  - label: "Coverage gate"
+    value: "SonarCloud enforced"
 
 highlights:
-  - "45-minute automated deployments — down from 3 weeks of manual work via dual GitHub Actions + Jenkins pipelines"
-  - "100% automated deployments with zero production downtime since go-live"
   - "Modular Terraform — VPC, EKS, RDS, IAM as independent reusable modules"
   - "Dual CI/CD — GitHub Actions for cloud builds, Jenkins for on-premise"
   - "RDS PostgreSQL 15 Multi-AZ with automated failover"
   - "SonarCloud coverage gate enforced before any deployment"
+  - "Remote state in S3 with DynamoDB locking — no state conflicts"
+  - "Flask application on EKS with Helm — production-grade from day one"
 ---
 
 ## Overview

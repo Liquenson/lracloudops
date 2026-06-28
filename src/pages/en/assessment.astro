@@ -82,11 +82,6 @@ import Layout from '../../layouts/Layout.astro'
         <!-- Injected by JS -->
       </div>
 
-      <!-- Email gate container -->
-      <div id="gate-container" class="hidden">
-        <!-- Injected by JS -->
-      </div>
-
       <!-- Result container -->
       <div id="result-container" class="hidden">
         <!-- Injected by JS -->
@@ -239,7 +234,7 @@ import Layout from '../../layouts/Layout.astro'
   let score = 0
   let answers: number[] = []
 
-  const calUrl = '/en/contact'
+  const calUrl = 'https://cal.com/ruben-alexis-h6qkjk/30min'
 
   function letterOf(i: number) {
     return ['A', 'B', 'C', 'D'][i]
@@ -291,92 +286,9 @@ import Layout from '../../layouts/Layout.astro'
         if (currentQ < questions.length) {
           renderQuestion()
         } else {
-          showEmailGate()
+          showResult()
         }
       })
-    })
-  }
-
-  function showEmailGate() {
-    const qc = document.getElementById('question-container')!
-    const gc = document.getElementById('gate-container')!
-    const pb = document.getElementById('progress-bar') as HTMLDivElement
-    const pl = document.getElementById('progress-label') as HTMLSpanElement
-    const sd = document.getElementById('score-display') as HTMLSpanElement
-
-    qc.classList.add('hidden')
-    gc.classList.remove('hidden')
-    pb.style.width = '95%'
-    pl.textContent = 'Last step'
-    sd.textContent = `Score: ${score} / 30`
-
-    gc.innerHTML = `
-    <div class="rounded-2xl p-8 sm:p-10 animate-fade" style="border: 1px solid #c3d9ff; background: #EEF4FF;">
-      <div class="text-center mb-8">
-        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background: #1E6FFF;">
-          <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-        </div>
-        <h2 class="text-2xl font-extrabold mb-2" style="color: #0A2540; letter-spacing: -0.02em;">Receive your full report by email</h2>
-        <p class="text-sm" style="color: #64748b;">Your score and personalised roadmap straight to your inbox.</p>
-      </div>
-      <form id="gate-form" class="space-y-4">
-        <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
-        <input type="hidden" name="subject" value="DevOps Assessment Report — Score ${score}/30" />
-        <input type="hidden" name="assessment_score" value="${score}" />
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #64748b;">Name</label>
-          <input type="text" name="name" required placeholder="Your name"
-            class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all"
-            style="background: white; border-color: #c3d9ff; color: #111827;"
-            onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)';"
-            onblur="this.style.borderColor='#c3d9ff'; this.style.boxShadow='none';" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #64748b;">Email</label>
-          <input type="email" name="email" required placeholder="you@company.com"
-            class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all"
-            style="background: white; border-color: #c3d9ff; color: #111827;"
-            onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)';"
-            onblur="this.style.borderColor='#c3d9ff'; this.style.boxShadow='none';" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: #64748b;">Company <span style="font-weight:400; text-transform: none;">(optional)</span></label>
-          <input type="text" name="company" placeholder="Your company or startup"
-            class="w-full px-4 py-3.5 text-sm rounded-xl border outline-none transition-all"
-            style="background: white; border-color: #c3d9ff; color: #111827;"
-            onfocus="this.style.borderColor='#1E6FFF'; this.style.boxShadow='0 0 0 3px rgba(30,111,255,0.1)';"
-            onblur="this.style.borderColor='#c3d9ff'; this.style.boxShadow='none';" />
-        </div>
-        <button type="submit" id="gate-submit-btn"
-          class="w-full text-sm font-semibold text-white py-4 rounded-xl transition-all hover:-translate-y-px"
-          style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 16px rgba(30,111,255,0.35);">
-          See my result →
-        </button>
-        <p class="text-xs text-center" style="color: #94a3b8;">No spam. Your DevOps report only.</p>
-      </form>
-    </div>
-    `
-
-    const gateForm = document.getElementById('gate-form') as HTMLFormElement
-    const gateBtn = document.getElementById(
-      'gate-submit-btn'
-    ) as HTMLButtonElement
-
-    gateForm.addEventListener('submit', async (e) => {
-      e.preventDefault()
-      gateBtn.textContent = 'Sending...'
-      gateBtn.disabled = true
-      try {
-        await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(gateForm))),
-        })
-      } catch {}
-      gc.classList.add('hidden')
-      showResult()
     })
   }
 
@@ -499,7 +411,9 @@ import Layout from '../../layouts/Layout.astro'
           body: fd,
         })
         if (res.ok) {
-          window.location.href = '/en/thank-you'
+          emailForm.style.display = 'none'
+          const ok = document.getElementById('email-success')
+          if (ok) ok.style.display = 'block'
         }
       } catch {}
     })

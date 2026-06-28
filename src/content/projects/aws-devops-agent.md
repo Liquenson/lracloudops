@@ -1,30 +1,30 @@
 ---
 titulo: "aws-devops-agent"
-descripcion: "Manage 25+ AWS services in natural language from your terminal — zero AWS CLI syntax to memorize. Claude Sonnet maps intent to the right boto3 call automatically. Query infrastructure, deploy workloads, manage resources and audit costs without leaving the terminal. In active development."
+descripcion: "AI-powered CLI agent for managing 25+ AWS services in natural language. Claude Sonnet as reasoning layer, boto3 as execution layer — query infrastructure, deploy workloads and manage resources without leaving the terminal."
 fecha: 2026-06-11
 categoria: "AI & Cloud Automation"
 madurez: "In Development"
 featured: true
 github: "https://github.com/lra-cloud-ops/aws-devops-agent"
 cicd: false
-draft: true
+draft: false
 
 categoria_es: "IA y Automatización Cloud"
 madurez_es: "En Desarrollo"
-descripcion_es: "Gestiona 25+ servicios AWS en lenguaje natural desde tu terminal — cero sintaxis AWS CLI a memorizar. Claude Sonnet mapea la intención a la llamada boto3 correcta automáticamente. Consulta infraestructura, despliega workloads y gestiona recursos sin salir de la terminal. En desarrollo activo."
+descripcion_es: "Agente CLI con IA para gestionar 25+ servicios de AWS en lenguaje natural. Claude Sonnet como capa de razonamiento, boto3 como capa de ejecución — consulta infraestructura, despliega workloads y gestiona recursos sin salir de la terminal."
 metricas_es:
-  - label: "servicios AWS en lenguaje natural"
-    value: "25+"
-  - label: "sintaxis AWS CLI a memorizar"
-    value: "0"
-  - label: "interfaz de gestión"
-    value: "Terminal CLI"
-  - label: "estado de desarrollo"
-    value: "Activo"
+  - label: "25+ soportados"
+    value: "Servicios AWS"
+  - label: "CLI en lenguaje natural"
+    value: "Interfaz"
+  - label: "Claude Sonnet"
+    value: "Modelo de IA"
+  - label: "boto3"
+    value: "Capa de ejecución"
 highlights_es:
-  - "25+ servicios AWS en lenguaje natural — cero sintaxis AWS CLI a memorizar"
   - "Lenguaje natural → API de AWS — describe lo que necesitas, el agente lo ejecuta"
   - "Claude Sonnet como capa de razonamiento — interpreta la intención, selecciona la llamada boto3 correcta"
+  - "25+ servicios AWS soportados — EC2, S3, EKS, RDS, IAM, CloudWatch y más"
 
 flow_steps:
   - label: "CLI"
@@ -46,19 +46,19 @@ stack:
   - "CLI"
 
 metricas:
-  - label: "AWS services managed in natural language"
-    value: "25+"
-  - label: "AWS CLI syntax to memorize"
-    value: "0"
-  - label: "management interface"
-    value: "Terminal CLI"
-  - label: "development status"
-    value: "Active"
+  - label: "AWS services"
+    value: "25+ supported"
+  - label: "Interface"
+    value: "Natural language CLI"
+  - label: "AI model"
+    value: "Claude Sonnet"
+  - label: "Execution layer"
+    value: "boto3"
 
 highlights:
-  - "25+ AWS services managed in natural language — zero AWS CLI syntax to memorize"
   - "Natural language → AWS API — describe what you need, the agent executes it"
   - "Claude Sonnet as reasoning layer — interprets intent, selects the right boto3 call"
+  - "25+ AWS services supported — EC2, S3, EKS, RDS, IAM, CloudWatch and more"
   - "No GUI required — full AWS operations from the terminal"
   - "Tool-use architecture — Claude decides which boto3 tools to invoke per request"
   - "Designed for DevOps workflows — incidents, audits, deployments in plain English"

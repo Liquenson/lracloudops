@@ -1,11 +1,21 @@
 ---
 import Layout from '../../../layouts/Layout.astro'
-import BlogCard from '../../../components/BlogCard.astro'
 import { getCollection } from 'astro:content'
+import NewsletterCTA from '../../../components/NewsletterCTA.astro'
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf()
 )
+
+const categories = [
+  'All',
+  'AWS',
+  'Kubernetes',
+  'Terraform',
+  'Docker',
+  'CI/CD',
+  'AI+DevOps',
+]
 ---
 
 <Layout
@@ -31,147 +41,208 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
           class="text-4xl sm:text-5xl font-extrabold text-white mb-5"
           style="letter-spacing: -0.02em;"
         >
-          Engineering notes.
+          Technical writing
         </h1>
         <p class="text-lg" style="color: rgba(147,184,255,0.8);">
-          Architecture decisions, implementation strategies and lessons learned
-          in production.
+          Architecture decisions, production incidents and implementation
+          strategies. Not tutorials — documented engineering work.
         </p>
       </div>
     </div>
   </section>
 
+  <!-- POSTS -->
   <section class="bg-white py-16">
     <div class="max-w-4xl mx-auto px-6">
+      <!-- Category filters -->
+      <div class="flex flex-wrap gap-2 mb-10" id="filtros-blog">
+        {
+          categories.map((cat) => (
+            <button
+              data-categoria={cat}
+              class={`filtro-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-200 ${cat === 'All' ? 'filtro-activo' : ''}`}
+              style={
+                cat === 'All'
+                  ? 'background: #0A2540; color: white; border-color: #0A2540; box-shadow: 0 2px 8px rgba(10,37,64,0.2);'
+                  : 'background: white; color: #64748b; border-color: #e2e8f0;'
+              }
+            >
+              {cat}
+            </button>
+          ))
+        }
+      </div>
+
       {
         posts.length === 0 ? (
           <div class="text-center py-20">
             <p class="text-gray-400">Articles coming soon.</p>
           </div>
         ) : (
-          <div class="space-y-4">
+          <div class="space-y-4" id="lista-posts">
             {posts.map((post) => (
-              <BlogCard
-                title={post.data.titulo}
-                description={post.data.descripcion}
-                fecha={post.data.fecha}
-                slug={post.id}
-                tags={post.data.tags}
-                lang="en"
-              />
+              <a
+                href={`/blog/${post.id}`}
+                data-tags={post.data.tags.join(',')}
+                aria-label={`Read article: ${post.data.titulo}`}
+                class="post-card group flex flex-col sm:flex-row sm:items-start justify-between gap-6 p-6 sm:p-7 rounded-2xl transition-all duration-200 block"
+                style="background: white; border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 4px 14px rgba(10,37,64,0.05);"
+                onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.09)'; this.style.borderColor='rgba(30,111,255,0.2)';"
+                onmouseleave="this.style.transform=''; this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04), 0 4px 14px rgba(10,37,64,0.05)'; this.style.borderColor='#e8eef4';"
+              >
+                <div class="flex-1">
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    {post.data.tags.map((tag) => (
+                      <span
+                        class="text-xs font-medium px-2.5 py-1 rounded-full"
+                        style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h2
+                    class="text-lg font-bold mb-2 group-hover:text-[#1E6FFF] transition-colors"
+                    style="color: #0A2540;"
+                  >
+                    {post.data.titulo}
+                  </h2>
+                  <p style="font-size:0.75rem; color:rgba(100,116,139,0.8); margin-bottom:0.5rem;">
+                    By Ruben Alexis Liquenson · {post.data.fecha.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
+                  </p>
+                  <p class="text-sm leading-relaxed" style="color: #64748b;">
+                    {post.data.descripcion}
+                  </p>
+                </div>
+                <div class="flex sm:flex-col items-center sm:items-end gap-4 flex-shrink-0">
+                  <span
+                    class="text-xs whitespace-nowrap"
+                    style="color: #94a3b8;"
+                  >
+                    {post.data.fecha.toLocaleDateString('en-US', {
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric',
+                    })}
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all"
+                    style="color: #1E6FFF;"
+                  >
+                    Read
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </a>
             ))}
           </div>
         )
       }
-    </div>
-  </section>
 
-  <!-- LEAD MAGNET -->
-  <section class="bg-white pb-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <div
-        class="rounded-2xl p-8 sm:p-10"
-        style="background: linear-gradient(135deg, #0A2540 0%, #0f3460 100%); border: 1px solid rgba(30,111,255,0.3);"
-      >
-        <div class="flex flex-col sm:flex-row sm:items-center gap-6">
-          <div class="flex-1">
-            <span
-              class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4"
-              style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);"
-            >
-              Free download
-            </span>
-            <h2
-              class="text-xl sm:text-2xl font-extrabold text-white mb-2"
-              style="letter-spacing: -0.02em;"
-            >
-              AWS Production Checklist — 47 verifications
-            </h2>
-            <p class="text-sm" style="color: rgba(147,184,255,0.8);">
-              The same checklist we run on every project before go-live
-            </p>
-          </div>
-          <form
-            id="en-blog-lead-form"
-            class="flex flex-col sm:flex-row gap-3 flex-shrink-0 w-full sm:w-auto"
-          >
-            <input
-              type="hidden"
-              name="access_key"
-              value="e8aaab4e-270c-4163-bb76-6a8dfc247485"
-            />
-            <input
-              type="hidden"
-              name="subject"
-              value="AWS Checklist Download — lracloudops.com/en/blog"
-            />
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="you@company.com"
-              class="px-4 py-3 text-sm rounded-xl border outline-none transition-all"
-              style="background: rgba(255,255,255,0.08); color: white; border-color: rgba(147,184,255,0.3); min-width: 220px;"
-              onfocus="this.style.borderColor='#1E6FFF'; this.style.background='rgba(255,255,255,0.12)';"
-              onblur="this.style.borderColor='rgba(147,184,255,0.3)'; this.style.background='rgba(255,255,255,0.08)';"
-            />
-            <button
-              type="submit"
-              id="en-blog-lead-btn"
-              class="px-6 py-3 text-sm font-semibold text-white rounded-xl transition-all hover:-translate-y-px flex-shrink-0"
-              style="background: #1E6FFF; box-shadow: 0 4px 16px rgba(30,111,255,0.4);"
-            >
-              Download free
-            </button>
-          </form>
-          <p
-            id="en-blog-lead-success"
-            class="hidden text-sm font-medium"
-            style="color: #86efac;"
-          >
-            ✓ Sent! Check your inbox.
-          </p>
-        </div>
-        <p class="text-xs mt-4" style="color: rgba(147,184,255,0.5);">
-          No spam. You'll receive the checklist only. Unsubscribe anytime.
+      <!-- No results message -->
+      <div id="sin-resultados" class="hidden text-center py-16">
+        <p class="text-sm" style="color: #64748b;">
+          No articles in this category yet.
         </p>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="mt-16">
+        <NewsletterCTA darkBackground={true} />
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 pt-12 border-t border-gray-100 text-center">
+        <p class="text-sm mb-4" style="color: #64748b;">
+          Working on something that should be documented?
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"
+          style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+        >
+          Get in touch
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
 </Layout>
 
 <script>
-  const enBlogForm = document.getElementById(
-    'en-blog-lead-form'
-  ) as HTMLFormElement
-  const enBlogBtn = document.getElementById(
-    'en-blog-lead-btn'
-  ) as HTMLButtonElement
-  const enBlogSuccess = document.getElementById(
-    'en-blog-lead-success'
-  ) as HTMLParagraphElement
+  const botones = document.querySelectorAll<HTMLButtonElement>('.filtro-btn')
+  const tarjetas = document.querySelectorAll<HTMLElement>('.post-card')
+  const sinResultados = document.getElementById('sin-resultados')
 
-  enBlogForm?.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    enBlogBtn.textContent = 'Sending...'
-    enBlogBtn.disabled = true
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(new FormData(enBlogForm))),
-      })
-      const data = await res.json()
-      if (data.success) {
-        enBlogForm.style.display = 'none'
-        enBlogSuccess.classList.remove('hidden')
+  const categoryToTags: Record<string, string[]> = {
+    AWS: ['AWS'],
+    Kubernetes: ['Kubernetes'],
+    Terraform: ['Terraform'],
+    Docker: ['Docker'],
+    'CI/CD': ['CI/CD'],
+    'AI+DevOps': ['AI', 'Claude', 'Agentes'],
+  }
+
+  function filtrar(categoria: string) {
+    let visibles = 0
+
+    tarjetas.forEach((card) => {
+      const tags = (card.dataset.tags || '').split(',')
+      let mostrar = false
+
+      if (categoria === 'All') {
+        mostrar = true
       } else {
-        enBlogBtn.textContent = 'Error — try again'
-        enBlogBtn.disabled = false
+        const tagsObjetivo = categoryToTags[categoria] || [categoria]
+        mostrar = tagsObjetivo.some((t) => tags.includes(t))
       }
-    } catch {
-      enBlogBtn.textContent = 'Error — try again'
-      enBlogBtn.disabled = false
+
+      card.style.display = mostrar ? '' : 'none'
+      if (mostrar) visibles++
+    })
+
+    if (sinResultados) {
+      sinResultados.classList.toggle('hidden', visibles > 0)
     }
+  }
+
+  botones.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.categoria || 'All'
+
+      botones.forEach((b) => {
+        const esActivo = b.dataset.categoria === cat
+        b.style.background = esActivo ? '#0A2540' : 'white'
+        b.style.color = esActivo ? 'white' : '#64748b'
+        b.style.borderColor = esActivo ? '#0A2540' : '#e2e8f0'
+        b.style.boxShadow = esActivo ? '0 2px 8px rgba(10,37,64,0.2)' : 'none'
+      })
+
+      filtrar(cat)
+    })
   })
 </script>
+

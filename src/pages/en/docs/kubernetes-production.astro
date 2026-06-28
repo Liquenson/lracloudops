@@ -16,7 +16,7 @@ import Layout from '../../../layouts/Layout.astro'
       <div class="flex items-center gap-2 text-xs mb-1" style="color: rgba(147,184,255,0.5);">
         <a href="/" style="color: rgba(147,184,255,0.5);" class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <a href="/en/docs" style="color: rgba(147,184,255,0.5);" class="hover:text-white transition-colors">Docs</a>
+        <a href="/docs" style="color: rgba(147,184,255,0.5);" class="hover:text-white transition-colors">Docs</a>
         <span>/</span>
         <span style="color: rgba(147,184,255,0.9);">Kubernetes Production</span>
       </div>
@@ -56,7 +56,7 @@ import Layout from '../../../layouts/Layout.astro'
             <a href={`#${id}`} class="block text-sm py-1.5 px-3 rounded-lg transition-colors hover:bg-white hover:text-[#326CE5]" style="color: #64748b; text-decoration: none;">{label}</a>
           ))}
           <div class="pt-4 mt-4" style="border-top: 1px solid #e2e8f0;">
-            <a href="/en/docs" class="text-xs font-medium hover:opacity-80 transition-opacity" style="color: #64748b;">← All docs</a>
+            <a href="/docs" class="text-xs font-medium hover:opacity-80 transition-opacity" style="color: #64748b;">← All docs</a>
           </div>
         </div>
       </aside>
@@ -228,10 +228,10 @@ spec:
 
           <!-- Navigation footer -->
           <div class="flex items-center justify-between pt-4">
-            <a href="/en/docs/gitops-standards" class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-70" style="color: #64748b;">
+            <a href="/docs/gitops-standards" class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-70" style="color: #64748b;">
               ← GitOps Standards
             </a>
-            <a href="/en/docs" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
+            <a href="/docs" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:opacity-90" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;">
               All docs →
             </a>
           </div>

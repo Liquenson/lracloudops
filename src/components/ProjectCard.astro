@@ -1,194 +1,113 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import FlowDiagram from './FlowDiagram.astro'
+import type { CollectionEntry } from 'astro:content';
+import FlowDiagram from './FlowDiagram.astro';
 
 interface Props {
-  project: CollectionEntry<'projects'>
-  lang: string
+  project: CollectionEntry<'projects'>;
+  lang: string;
 }
-const { project, lang } = Astro.props
-const isEs = lang === 'es'
-const data = project.data
+const { project, lang } = Astro.props;
+const isEs = lang === 'es';
+const data = project.data;
 
-const categoria = isEs ? (data.categoria_es ?? data.categoria) : data.categoria
-const titulo = isEs ? (data.titulo_es ?? data.titulo) : data.titulo
-const descripcion = isEs
-  ? (data.descripcion_es ?? data.descripcion)
-  : data.descripcion
-const madurez = isEs ? (data.madurez_es ?? data.madurez) : data.madurez
-const metricas = isEs ? (data.metricas_es ?? data.metricas) : data.metricas
-const highlights = isEs
-  ? (data.highlights_es ?? data.highlights)
-  : data.highlights
+const categoria = isEs ? (data.categoria_es ?? data.categoria) : data.categoria;
+const titulo = isEs ? (data.titulo_es ?? data.titulo) : data.titulo;
+const descripcion = isEs ? (data.descripcion_es ?? data.descripcion) : data.descripcion;
+const madurez = isEs ? (data.madurez_es ?? data.madurez) : data.madurez;
+const metricas = isEs ? (data.metricas_es ?? data.metricas) : data.metricas;
+const highlights = isEs ? (data.highlights_es ?? data.highlights) : data.highlights;
 
-const caseStudyLabel = isEs ? 'Ver caso completo' : 'Read case study'
-const privateLabel = isEs ? 'Repositorio privado' : 'Private repo'
+const caseStudyLabel = isEs ? 'Ver caso completo' : 'Read case study';
+const privateLabel = isEs ? 'Repositorio privado' : 'Private repo';
 
-const flowSteps = data.flow_steps
+const flowSteps = data.flow_steps;
 ---
 
-<div
-  class="bg-white rounded-2xl flex flex-col overflow-hidden"
-  style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
->
-  {
-    flowSteps && flowSteps.length > 0 && (
-      <div class="px-4 py-5" style="background: #0A2540;">
-        <FlowDiagram steps={flowSteps} size="sm" />
-      </div>
-    )
-  }
+<div class="bg-white rounded-2xl flex flex-col overflow-hidden" style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+
+  {flowSteps && flowSteps.length > 0 && (
+    <div class="px-4 py-5" style="background: #0A2540;">
+      <FlowDiagram steps={flowSteps} size="sm" />
+    </div>
+  )}
 
   <div class="p-8 flex flex-col flex-1">
     <div class="flex items-start justify-between mb-5">
       <div class="flex-1 min-w-0 pr-3">
-        <span
-          class="text-xs font-semibold uppercase tracking-widest mb-1 block"
-          style="color: #94a3b8;"
-        >
+        <span class="text-xs font-semibold uppercase tracking-widest mb-1 block" style="color: #94a3b8;">
           {categoria}
         </span>
         <h3 class="text-lg font-bold" style="color: #0A2540;">{titulo}</h3>
       </div>
-      <span
-        class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
-        style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;"
-      >
+      <span class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">
         {madurez}
       </span>
     </div>
 
-    <p class="text-sm leading-relaxed mb-6 flex-1" style="color: #64748b;">
-      {descripcion}
-    </p>
+    <p class="text-sm leading-relaxed mb-6 flex-1" style="color: #64748b;">{descripcion}</p>
 
-    {
-      metricas && metricas.length > 0 && (
-        <div class="grid grid-cols-2 gap-3 mb-6">
-          {metricas.slice(0, 4).map((m) => (
-            <div
-              class="rounded-xl p-3"
-              style="background: #f8fafc; border: 1px solid #e2e8f0;"
-            >
-              <div class="text-base font-bold mb-0.5" style="color: #0A2540;">
-                {m.value}
-              </div>
-              <div class="text-xs" style="color: #64748b;">
-                {m.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      )
-    }
+    {metricas && metricas.length > 0 && (
+      <div class="grid grid-cols-2 gap-3 mb-6">
+        {metricas.slice(0, 4).map((m) => (
+          <div class="rounded-xl p-3" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+            <div class="text-base font-bold mb-0.5" style="color: #0A2540;">{m.value}</div>
+            <div class="text-xs" style="color: #64748b;">{m.label}</div>
+          </div>
+        ))}
+      </div>
+    )}
 
-    {
-      data.stack.length > 0 && (
-        <div class="flex flex-wrap gap-1.5 mb-5">
-          {data.stack.map((tag) => (
-            <span class="stack-tag">{tag}</span>
-          ))}
-        </div>
-      )
-    }
+    {data.stack.length > 0 && (
+      <div class="flex flex-wrap gap-1.5 mb-5">
+        {data.stack.map((tag) => (
+          <span class="stack-tag">{tag}</span>
+        ))}
+      </div>
+    )}
 
-    {
-      highlights && highlights.length > 0 && (
-        <ul class="space-y-2 mb-6">
-          {highlights.slice(0, 3).map((h) => (
-            <li
-              class="flex items-center gap-2.5 text-xs"
-              style="color: #64748b;"
-            >
-              <svg
-                class="w-3.5 h-3.5 flex-shrink-0"
-                style="color: #1E6FFF;"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              {h}
-            </li>
-          ))}
-        </ul>
-      )
-    }
-
-    <div
-      class="flex items-center justify-between pt-4 mt-auto border-t border-gray-100"
-    >
-      {
-        data.github ? (
-          <a
-            href={data.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
-            style="color: #64748B;"
-          >
-            <svg
-              class="w-3.5 h-3.5"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-              />
+    {highlights && highlights.length > 0 && (
+      <ul class="space-y-2 mb-6">
+        {highlights.slice(0, 3).map((h) => (
+          <li class="flex items-center gap-2.5 text-xs" style="color: #64748b;">
+            <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
-            GitHub
-          </a>
-        ) : (
-          <span
-            class="flex items-center gap-1.5 text-xs"
-            style="color: #CBD5E1;"
-          >
-            <svg
-              class="w-3.5 h-3.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-              />
-            </svg>
-            {privateLabel}
-          </span>
-        )
-      }
+            {h}
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <div class="flex items-center justify-between pt-4 mt-auto border-t border-gray-100">
+      {data.github ? (
+        <a
+          href={data.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
+          style="color: #64748B;"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+          </svg>
+          GitHub
+        </a>
+      ) : (
+        <span class="flex items-center gap-1.5 text-xs" style="color: #CBD5E1;">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          {privateLabel}
+        </span>
+      )}
       <a
         href={`/projects/${project.id}`}
         class="inline-flex items-center gap-1 text-xs font-semibold"
         style="color: #2563EB;"
       >
         {caseStudyLabel}
-        <svg
-          class="w-3 h-3"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </a>
     </div>

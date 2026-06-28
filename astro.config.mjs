@@ -1,15 +1,25 @@
-import { defineConfig } from 'astro/config'
-import tailwindcss from '@tailwindcss/vite'
-import sitemap from '@astrojs/sitemap'
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://lracloudops.com',
 
   i18n: {
     defaultLocale: 'es',
-    locales: ['es', 'en'],
+    locales: ['es', 'en', 'de', 'fr', 'it', 'pt-br', 'ja', 'ko', 'zh-cn'],
     routing: {
       prefixDefaultLocale: false,
+    },
+    fallback: {
+      'en': 'es',
+      'de': 'es',
+      'fr': 'es',
+      'it': 'es',
+      'pt-br': 'es',
+      'ja': 'es',
+      'ko': 'es',
+      'zh-cn': 'es',
     },
   },
 
@@ -28,17 +38,13 @@ export default defineConfig({
         if (path === '/') {
           item.priority = 1.0
         } else if (
-          /^\/(servicios|pricing|assessment|ai-devops)\/?$/.test(path) ||
-          /^\/en\/(services|pricing|assessment|ai-devops)\/?$/.test(path)
+          /^\/(servicios|pricing|assessment)\/?$/.test(path) ||
+          /^\/en\/(services|pricing|assessment)\/?$/.test(path)
         ) {
           item.priority = 0.9
         } else if (
-          /^\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(
-            path
-          ) ||
-          /^\/en\/(about|contact|certifications|projects|blog|resources)\/?$/.test(
-            path
-          )
+          /^\/(nosotros|contacto|certifications|proyectos|blog|resources)\/?$/.test(path) ||
+          /^\/en\/(about|contact|certifications|projects|blog|resources)\/?$/.test(path)
         ) {
           item.priority = 0.8
         } else if (
@@ -61,8 +67,15 @@ export default defineConfig({
         locales: {
           es: 'es-ES',
           en: 'en-US',
+          de: 'de-DE',
+          fr: 'fr-FR',
+          it: 'it-IT',
+          'pt-br': 'pt-BR',
+          ja: 'ja-JP',
+          ko: 'ko-KR',
+          'zh-cn': 'zh-CN',
         },
       },
     }),
   ],
-})
+});

@@ -159,85 +159,38 @@ const schema = {
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-12">
         <span class="section-label">Real Implementations</span>
-        <h2
-          class="text-3xl sm:text-4xl font-bold mt-5 mb-4"
-          style="color: #0F172A; letter-spacing: -0.025em;"
-        >
-          Three automation implementations
-        </h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Cloud CI/CD, GitOps pipeline and fleet management — all in production.
-        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">Three automation implementations</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">Cloud CI/CD, GitOps pipeline and fleet management — all in production.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div
-          class="bg-white rounded-2xl p-7"
-          style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);"
-        >
-          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">
-            aws-terraform-devops — Dual pipeline
-          </h3>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">aws-terraform-devops — Dual pipeline</h3>
           <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
-            <li>
-              • GitHub Actions — OIDC auth, SonarCloud gate, Docker build, ECR
-              push
-            </li>
+            <li>• GitHub Actions — OIDC auth, SonarCloud gate, Docker build, ECR push</li>
             <li>• Jenkins — on-premise builds, same quality gates</li>
             <li>• SonarCloud: 80% coverage threshold blocks every merge</li>
             <li>• Flask on EKS via Helm — deployed by both pipelines</li>
           </ul>
           <div class="flex gap-2">
-            <a
-              href="/projects/aws-terraform-devops"
-              class="text-xs font-semibold px-3 py-1.5 rounded-lg"
-              style="background: #EEF4FF; color: #1E6FFF;">Case study →</a
-            >
-            <a
-              href="https://github.com/lra-cloud-ops/aws-terraform-devops"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-xs font-semibold px-3 py-1.5 rounded-lg"
-              style="background: #F1F5F9; color: #0A2540;">GitHub →</a
-            >
+            <a href="/projects/aws-terraform-devops" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
           </div>
         </div>
-        <div
-          class="bg-white rounded-2xl p-7"
-          style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);"
-        >
-          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">
-            gitops-stack — Full DevOps lifecycle
-          </h3>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">gitops-stack — Full DevOps lifecycle</h3>
           <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
             <li>• Jenkins CI: Build → Test → Deploy to EKS</li>
-            <li>
-              • Ansible for node configuration — idempotent, version-controlled
-            </li>
+            <li>• Ansible for node configuration — idempotent, version-controlled</li>
             <li>• AWS SSM for access — zero SSH keys in the entire stack</li>
             <li>• git push to production in under 8 minutes</li>
           </ul>
           <div class="flex gap-2">
-            <a
-              href="/projects/gitops-stack"
-              class="text-xs font-semibold px-3 py-1.5 rounded-lg"
-              style="background: #EEF4FF; color: #1E6FFF;">Case study →</a
-            >
-            <a
-              href="https://github.com/lra-cloud-ops/gitops-stack"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-xs font-semibold px-3 py-1.5 rounded-lg"
-              style="background: #F1F5F9; color: #0A2540;">GitHub →</a
-            >
+            <a href="/projects/gitops-stack" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/gitops-stack" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
           </div>
         </div>
-        <div
-          class="bg-white rounded-2xl p-7"
-          style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);"
-        >
-          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">
-            linux-fleet-manager — Bash + SSH
-          </h3>
+        <div class="bg-white rounded-2xl p-7" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <h3 class="text-base font-bold mb-3" style="color: #0A2540;">linux-fleet-manager — Bash + SSH</h3>
           <ul class="space-y-2 text-sm mb-4" style="color: #64748B;">
             <li>• Mass server management via SSH — no agents required</li>
             <li>• ShellCheck enforced in CI — every script validated</li>
@@ -245,18 +198,8 @@ const schema = {
             <li>• Red Hat engineering standards — set -euo pipefail</li>
           </ul>
           <div class="flex gap-2">
-            <a
-              href="/projects/linux-fleet-manager"
-              class="text-xs font-semibold px-3 py-1.5 rounded-lg"
-              style="background: #EEF4FF; color: #1E6FFF;">Case study →</a
-            >
-            <a
-              href="https://github.com/lra-cloud-ops/linux-fleet-manager"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-xs font-semibold px-3 py-1.5 rounded-lg"
-              style="background: #F1F5F9; color: #0A2540;">GitHub →</a
-            >
+            <a href="/projects/linux-fleet-manager" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
+            <a href="https://github.com/lra-cloud-ops/linux-fleet-manager" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
           </div>
         </div>
       </div>

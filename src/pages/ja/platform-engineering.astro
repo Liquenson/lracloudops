@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="プラットフォームエンジニアリング · 内部開発者プラットフォーム"
+  descripcion="Kubernetes、GitOps、ポリシーasコードで構築された内部開発者プラットフォーム。運用管理を失わずにデプロイの摩擦を減らすセルフサービスインフラ。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          プラットフォームエンジニアリング
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          エンジニアが自律してデプロイできるプラットフォーム。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          標準化されたデプロイメント、セルフサービスインフラ、Kubernetesアブストラクションで開発チームを強化する内部開発者プラットフォームを構築します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">セルフサービスインフラ</h3>
+          <p class="text-sm" style="color: #64748b;">開発者はOpsチームを待たずに環境やリソースをプロビジョニングできます。標準化されたテンプレートとガードレールで一貫性を確保。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Kubernetesアブストラクション</h3>
+          <p class="text-sm" style="color: #64748b;">開発者はKubernetesの専門知識なしにアプリケーションをデプロイ。HelmチャートとKustomizeオーバーレイがクラスター設定の複雑さを抽象化。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">標準化デプロイパターン</h3>
+          <p class="text-sm" style="color: #64748b;">全チーム・全サービスで統一されたデプロイプロセス。ベストプラクティスを強制しつつ柔軟性を提供するゴールデンパス。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">ArgoCD & GitOpsワークフロー</h3>
+          <p class="text-sm" style="color: #64748b;">プラットフォームの変更はArgoCDで管理。開発者はインフラ変更のPRを作成 — 直接クラスターアクセス不要。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">開発者オンボーディング</h3>
+          <p class="text-sm" style="color: #64748b;">新しい開発者が数週間ではなく数時間で生産性を発揮。文書化されたワークフロー、ローカル開発環境、明確なオーナーシップモデル。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">コスト最適化 & ガバナンス</h3>
+          <p class="text-sm" style="color: #64748b;">リソースタギング、予算アラート、未使用環境の自動クリーンアップ。チームとサービスレベルでのクラウドコストの可視性。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">内部開発者プラットフォームを構築しましょう。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">開発者エクスペリエンスの監査から始め、プラットフォームのロードマップを策定します。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        お問い合わせ
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

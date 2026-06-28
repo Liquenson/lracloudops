@@ -1,0 +1,70 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Transformation CI/CD · Pipelines de déploiement automatisés"
+  descripcion="Remplacez les déploiements manuels fragiles par des pipelines automatisés. Jenkins, GitHub Actions et portes qualité pour des déploiements production reproductibles et sécurisés."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Transformation CI/CD
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Fini les déploiements manuels. Des pipelines automatisés de bout en bout.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Nous remplaçons les processus de déploiement manuels fragiles par des pipelines entièrement automatisés avec Jenkins et GitHub Actions — avec des portes qualité intégrées.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Audit & Conception de pipeline</h3>
+          <p class="text-sm" style="color: #64748b;">Analyse de vos processus de déploiement actuels et identification des goulots d'étranglement, risques et potentiels d'automatisation. Conception d'une architecture de pipeline cible fiable.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Implémentation GitHub Actions</h3>
+          <p class="text-sm" style="color: #64748b;">Pipelines CI/CD complets avec GitHub Actions. Build, test, push Docker et déploiement dans un pipeline automatisé sans étapes manuelles.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Migration Jenkins</h3>
+          <p class="text-sm" style="color: #64748b;">Migration des jobs Jenkins existants vers des pipelines Jenkinsfile modernes en code. Étapes parallèles, bibliothèques partagées et syntaxe déclarative pour une meilleure maintenabilité.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Portes qualité & Tests</h3>
+          <p class="text-sm" style="color: #64748b;">Intégration SonarCloud pour l'analyse automatique de la qualité du code. Les seuils de couverture et les scans de sécurité bloquent de manière fiable les déploiements de mauvais code.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Vérification de déploiement</h3>
+          <p class="text-sm" style="color: #64748b;">Health checks et smoke tests automatiques après chaque déploiement. Mécanismes de rollback déclenchés automatiquement en cas d'échec des vérifications.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Métriques & Visibilité</h3>
+          <p class="text-sm" style="color: #64748b;">Fréquence de déploiement, Lead Time et MTTR comme métriques mesurables. Des tableaux de bord qui rendent visible la progression de la transformation CI/CD.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Transformez votre processus de déploiement.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Nous commençons par un audit de vos pipelines actuels et livrons un plan concret pour une automatisation CI/CD complète.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Nous contacter
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

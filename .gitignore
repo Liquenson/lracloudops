@@ -15,21 +15,10 @@ pnpm-debug.log*
 
 # environment variables
 .env
-.env.local
-.env.*.local
 .env.production
 
 # macOS-specific files
 .DS_Store
-Thumbs.db
 
 # jetbrains setting folder
 .idea/
-
-# Generated audit and report files
-INFORME_*.md
-AUDIT_*.md
-SAAS_*.md
-ESTADO_PROYECTO_*.md
-.env.local
-.wrangler/

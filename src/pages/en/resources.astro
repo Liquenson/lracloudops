@@ -54,30 +54,17 @@ import NewsletterCTA from '../../components/NewsletterCTA.astro'
     <div class="max-w-5xl mx-auto px-6">
       <!-- ─── CATEGORY FILTERS ──────────────────────────────────────────── -->
       <div class="flex flex-wrap gap-2 mb-8" id="resource-filters">
-        {
-          [
-            'All',
-            'Kubernetes',
-            'Terraform',
-            'AWS',
-            'GitOps',
-            'Security',
-            'Observability',
-            'Architecture',
-          ].map((cat) => (
-            <button
-              data-filter={cat}
-              class="resource-filter-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-200"
-              style={
-                cat === 'All'
-                  ? 'background: #1E6FFF; color: white; border-color: #1E6FFF; box-shadow: 0 2px 8px rgba(30,111,255,0.3);'
-                  : 'background: white; color: #64748b; border-color: #e2e8f0;'
-              }
-            >
-              {cat}
-            </button>
-          ))
-        }
+        {['All', 'Kubernetes', 'Terraform', 'AWS', 'GitOps', 'Security', 'Observability', 'Architecture'].map(cat => (
+          <button
+            data-filter={cat}
+            class="resource-filter-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-200"
+            style={cat === 'All'
+              ? 'background: #1E6FFF; color: white; border-color: #1E6FFF; box-shadow: 0 2px 8px rgba(30,111,255,0.3);'
+              : 'background: white; color: #64748b; border-color: #e2e8f0;'}
+          >
+            {cat}
+          </button>
+        ))}
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
         <!-- AWS Production Readiness Checklist -->
@@ -1368,196 +1355,10 @@ import NewsletterCTA from '../../components/NewsletterCTA.astro'
       </a>
     </div>
   </section>
-
-  <!-- ─── RECOMMENDED TOOLS ───────────────────────────────────────────────── -->
-  <section class="py-20 bg-white border-t border-gray-100">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span
-          class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-4"
-          style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
-        >
-          Recommended Stack
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4" style="color: #0A2540;">
-          Recommended tools
-        </h2>
-        <p class="text-base max-w-xl mx-auto" style="color: #64748b;">
-          The tools we use in every production project. Selected based on real
-          experience, not sponsorships.
-        </p>
-      </div>
-
-      {
-        [
-          {
-            category: 'Infrastructure as Code',
-            color: '#7B42BC',
-            tools: [
-              {
-                name: 'Terraform',
-                desc: 'Market-leading multi-cloud IaC. Reusable modules, remote state and plan/apply in CI.',
-                url: 'https://terraform.io',
-              },
-              {
-                name: 'Terragrunt',
-                desc: 'Terraform wrapper that eliminates boilerplate and manages inter-module dependencies.',
-                url: 'https://terragrunt.gruntwork.io',
-              },
-              {
-                name: 'Pulumi',
-                desc: 'IaC with real languages (Python, TypeScript, Go). Ideal when Terraform does not fit.',
-                url: 'https://pulumi.com',
-              },
-            ],
-          },
-          {
-            category: 'Kubernetes',
-            color: '#326CE5',
-            tools: [
-              {
-                name: 'ArgoCD',
-                desc: 'GitOps controller for Kubernetes. Automatically reconciles cluster state with Git.',
-                url: 'https://argoproj.github.io/cd',
-              },
-              {
-                name: 'Helm',
-                desc: 'Kubernetes package manager. Versioned charts, per-environment values, rollback in seconds.',
-                url: 'https://helm.sh',
-              },
-              {
-                name: 'Kustomize',
-                desc: 'Manifest customisation without templates. Built into kubectl since v1.14.',
-                url: 'https://kustomize.io',
-              },
-              {
-                name: 'k9s',
-                desc: 'Terminal UI for managing Kubernetes clusters. Essential for daily operations.',
-                url: 'https://k9scli.io',
-              },
-            ],
-          },
-          {
-            category: 'Observability',
-            color: '#E6522C',
-            tools: [
-              {
-                name: 'Prometheus',
-                desc: 'De-facto monitoring and alerting system in Kubernetes. Pull-based with built-in TSDB.',
-                url: 'https://prometheus.io',
-              },
-              {
-                name: 'Grafana',
-                desc: 'Observability dashboards. Supports Prometheus, Loki, CloudWatch and 50+ data sources.',
-                url: 'https://grafana.com',
-              },
-              {
-                name: 'Loki',
-                desc: 'Lightweight and cost-effective log aggregation. Integrates natively with Grafana.',
-                url: 'https://grafana.com/oss/loki',
-              },
-            ],
-          },
-          {
-            category: 'CI/CD',
-            color: '#24292E',
-            tools: [
-              {
-                name: 'GitHub Actions',
-                desc: 'Pipelines as code directly in the repository. Ideal for GitHub-hosted projects.',
-                url: 'https://github.com/features/actions',
-              },
-              {
-                name: 'Jenkins',
-                desc: 'Battle-tested CI/CD automation. Plugins for any stack, deployed on-prem or on AWS.',
-                url: 'https://jenkins.io',
-              },
-              {
-                name: 'ArgoCD',
-                desc: 'ArgoCD doubles as CD: continuous deployment from Git without pushing to the cluster.',
-                url: 'https://argoproj.github.io/cd',
-              },
-            ],
-          },
-          {
-            category: 'Security',
-            color: '#DC2626',
-            tools: [
-              {
-                name: 'Trivy',
-                desc: 'Vulnerability scanner for images, filesystems, repos and Kubernetes configs.',
-                url: 'https://trivy.dev',
-              },
-              {
-                name: 'Falco',
-                desc: 'Runtime threat detection for Kubernetes. Real-time alerts on anomalous behaviour.',
-                url: 'https://falco.org',
-              },
-              {
-                name: 'Checkov',
-                desc: 'Static analysis for IaC (Terraform, CloudFormation, Helm). Catches misconfigs before apply.',
-                url: 'https://checkov.io',
-              },
-            ],
-          },
-        ].map(({ category, color, tools }) => (
-          <div class="mb-12">
-            <div class="flex items-center gap-2 mb-5">
-              <span
-                class="w-3 h-3 rounded-full flex-shrink-0"
-                style={`background: ${color};`}
-              />
-              <h3
-                class="text-base font-bold uppercase tracking-wider"
-                style={`color: ${color};`}
-              >
-                {category}
-              </h3>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {tools.map(({ name, desc, url }) => (
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="group block bg-white rounded-xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
-                  style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
-                >
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="text-sm font-bold" style="color: #0A2540;">
-                      {name}
-                    </span>
-                    <svg
-                      class="w-3.5 h-3.5 opacity-40 group-hover:opacity-70 transition-opacity"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </div>
-                  <p class="text-xs leading-relaxed" style="color: #64748b;">
-                    {desc}
-                  </p>
-                </a>
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
 </Layout>
 
 <script>
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>(
-    '.resource-filter-btn'
-  )
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.resource-filter-btn')
   const resourceCards = document.querySelectorAll<HTMLElement>('.resource-card')
   const archSection = document.getElementById('arch-section')
 

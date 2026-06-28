@@ -1,0 +1,70 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="GitOps · ArgoCD 자동 동기화 & Git을 유일한 진실의 원천으로"
+  descripcion="수동 kubectl과 terraform apply를 ArgoCD Auto-Sync로 교체. Git이 전체 클러스터 상태의 유일한 진실의 원천이 됩니다."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          GitOps
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Git이 유일한 진실의 원천. 수동 kubectl 종료.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          수동 kubectl apply와 terraform apply를 ArgoCD Auto-Sync로 교체합니다. 클러스터 상태의 모든 변경은 Pull Request를 거칩니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">ArgoCD 설치 & 구성</h3>
+          <p class="text-sm" style="color: #64748b;">auto-sync, prune, self-heal을 갖춘 ArgoCD 설정. 애플리케이션 정의를 코드로 관리 — 대시보드에서의 수동 설정 없음.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">리포지토리 구조</h3>
+          <p class="text-sm" style="color: #64748b;">App-of-Apps 패턴 또는 환경별 리포지토리를 사용한 명확한 GitOps 리포지토리 구조 설계. 애플리케이션 코드와 배포 설정의 명확한 분리.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">PR 기반 배포 워크플로우</h3>
+          <p class="text-sm" style="color: #64748b;">모든 인프라 변경은 리뷰와 승인을 거친 Pull Request를 통해. 머지 후 ArgoCD가 자동 동기화 — 수동 개입 불필요.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">드리프트 감지 & 셀프힐링</h3>
+          <p class="text-sm" style="color: #64748b;">ArgoCD가 원하는 상태와 실제 클러스터 상태의 차이를 자동 감지. Self-heal이 수동 변경을 Git에 정의된 상태로 자동 수정.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">롤백 & 재해 복구</h3>
+          <p class="text-sm" style="color: #64748b;">git revert를 통한 즉각적인 롤백. 전체 클러스터 상태가 Git에 저장 — 장애 후 복구는 단일 ArgoCD sync 명령으로 실행.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">멀티 클러스터 GitOps</h3>
+          <p class="text-sm" style="color: #64748b;">단일 중앙 ArgoCD 인스턴스로 여러 Kubernetes 클러스터 관리. 환경별 오버레이를 사용해 dev, staging, 프로덕션에서 일관된 설정.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">ArgoCD로 GitOps로 마이그레이션하세요.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">현재 배포 프로세스를 분석하고 완전한 GitOps로의 전환 계획을 수립합니다.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        문의하기
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

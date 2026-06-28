@@ -1,5 +1,5 @@
 ---
-// AI Chat Widget — DevOps Advisor powered by Claude
+// AI Chat Widget — DevOps Advisor powered by Cloudflare Worker
 ---
 
 <div
@@ -13,13 +13,13 @@
     aria-expanded="false"
     aria-haspopup="dialog"
     aria-controls="lra-chat-panel"
-    style="height:44px;border-radius:22px;background:#1E6FFF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;box-shadow:0 4px 24px rgba(30,111,255,0.45),0 2px 8px rgba(30,111,255,0.3);transition:transform 0.2s ease,box-shadow 0.2s ease;white-space:nowrap;"
+    style="width:56px;height:56px;border-radius:50%;background:#1E6FFF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(30,111,255,0.45),0 2px 8px rgba(30,111,255,0.3);transition:transform 0.2s ease,box-shadow 0.2s ease;"
   >
     <!-- Chat icon (visible when closed) -->
     <svg
       id="lra-icon-chat"
-      width="18"
-      height="18"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
       stroke="white"
@@ -31,16 +31,11 @@
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
       ></path>
     </svg>
-    <span
-      id="lra-btn-label"
-      style="font-size:13px;font-weight:600;color:white;letter-spacing:0.01em;"
-      >DevOps Advisor · IA</span
-    >
     <!-- X icon (visible when open) -->
     <svg
       id="lra-icon-x"
-      width="18"
-      height="18"
+      width="22"
+      height="22"
       viewBox="0 0 24 24"
       fill="none"
       stroke="white"
@@ -52,11 +47,6 @@
       <line x1="18" y1="6" x2="6" y2="18"></line>
       <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
-    <span
-      id="lra-btn-close-label"
-      style="font-size:13px;font-weight:600;color:white;display:none;"
-      >Cerrar</span
-    >
   </button>
 
   <!-- Chat panel -->
@@ -93,15 +83,10 @@
         </svg>
       </div>
       <div style="flex:1;min-width:0;">
-        <div style="display:flex;align-items:center;gap:6px;">
-          <span
-            style="font-size:14px;font-weight:700;color:white;line-height:1.2;letter-spacing:-0.01em;"
-            >DevOps Advisor</span
-          >
-          <span
-            style="font-size:10px;font-weight:600;color:#60A5FA;background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.25);border-radius:4px;padding:1px 6px;letter-spacing:0.02em;flex-shrink:0;"
-            >Powered by Claude</span
-          >
+        <div
+          style="font-size:14px;font-weight:700;color:white;line-height:1.2;letter-spacing:-0.01em;"
+        >
+          DevOps Advisor
         </div>
         <div
           style="font-size:11px;color:rgba(148,163,184,0.85);display:flex;align-items:center;gap:5px;margin-top:2px;"
@@ -150,7 +135,7 @@
       <input
         id="lra-chat-input"
         type="text"
-        placeholder="Escribe tu pregunta..."
+        placeholder="Ask about infrastructure..."
         maxlength="500"
         aria-label="Type your message"
         autocomplete="off"
@@ -270,45 +255,19 @@
 
 <script>
   ;(function () {
-    const API = '/api/advisor'
-    const MAX = 10
+    const WORKER = 'https://lracloudops-agent.liquenson-cloud.workers.dev'
+    const CAL = 'https://cal.com/ruben-alexis-h6qkjk/30min'
+    const MAX = 20
 
-    const lang = document.documentElement.lang === 'en' ? 'en' : 'es'
-    const CAL = lang === 'en' ? '/en/contact' : '/contacto'
-
-    const WELCOME_ES = [
-      '¡Hola! Soy el DevOps Advisor de LRA Cloud Operations. Puedo ayudarte con:',
-      '- Infraestructura AWS, Azure y Google Cloud',
-      '- Plataformas Kubernetes',
-      '- Automatización CI/CD',
-      '- Optimización de costes cloud',
-      '',
-      '¿En qué reto de infraestructura puedo ayudarte?',
-    ].join('\n')
-
-    const WELCOME_EN = [
+    const WELCOME = [
       "Hi! I'm LRA's DevOps Advisor. I can help you with:",
-      '- AWS, Azure and Google Cloud infrastructure',
-      '- Kubernetes platforms',
+      '- AWS infrastructure design',
+      '- Kubernetes platform setup',
       '- CI/CD automation',
-      '- Cloud cost optimisation',
+      '- Cost optimization',
       '',
       'What infrastructure challenge can I help you with?',
     ].join('\n')
-
-    const WELCOME = lang === 'en' ? WELCOME_EN : WELCOME_ES
-
-    const SUGGESTIONS_ES = [
-      '¿Cuánto cuesta migrar a Kubernetes?',
-      '¿Qué plan me recomiendas?',
-      '¿Cómo funciona GitOps?',
-    ]
-    const SUGGESTIONS_EN = [
-      'How much does migrating to Kubernetes cost?',
-      'Which plan do you recommend?',
-      'How does GitOps work?',
-    ]
-    const SUGGESTIONS = lang === 'en' ? SUGGESTIONS_EN : SUGGESTIONS_ES
 
     interface Msg {
       role: 'user' | 'assistant'
@@ -322,7 +281,6 @@
     let isOpen = false
     let loading = false
     let welcomed = false
-    let suggestionsShown = false
 
     const el = (id: string) => document.getElementById(id)
 
@@ -334,8 +292,6 @@
     const sendBtn = el('lra-chat-send') as HTMLButtonElement | null
     const iconChat = el('lra-icon-chat')
     const iconX = el('lra-icon-x')
-    const btnLabel = el('lra-btn-label')
-    const btnCloseLabel = el('lra-btn-close-label')
 
     if (!toggleBtn || !panel || !messagesEl || !inputEl || !sendBtn) return
 
@@ -358,33 +314,6 @@
         hour: '2-digit',
         minute: '2-digit',
       })
-    }
-
-    function renderSuggestions() {
-      if (suggestionsShown) return
-      suggestionsShown = true
-      const wrap = document.createElement('div')
-      wrap.style.cssText =
-        'display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;margin-bottom:4px;'
-      SUGGESTIONS.forEach((s) => {
-        const chip = document.createElement('button')
-        chip.textContent = s
-        chip.style.cssText =
-          'background:#EEF4FF;color:#1E6FFF;border:1px solid #c3d9ff;border-radius:20px;padding:6px 12px;font-size:12px;font-weight:500;cursor:pointer;transition:background 0.15s;font-family:inherit;'
-        chip.addEventListener('mouseenter', () => {
-          chip.style.background = '#ddeaff'
-        })
-        chip.addEventListener('mouseleave', () => {
-          chip.style.background = '#EEF4FF'
-        })
-        chip.addEventListener('click', () => {
-          inputEl!.value = s
-          sendMsg()
-        })
-        wrap.appendChild(chip)
-      })
-      messagesEl!.appendChild(wrap)
-      messagesEl!.scrollTop = messagesEl!.scrollHeight
     }
 
     function render() {
@@ -417,10 +346,9 @@
           ctaWrap.style.cssText = 'margin-top:10px;'
           const cta = document.createElement('a')
           cta.href = CAL
-          cta.textContent =
-            lang === 'en'
-              ? 'Schedule free consultation →'
-              : 'Agendar consulta gratuita →'
+          cta.target = '_blank'
+          cta.rel = 'noopener noreferrer'
+          cta.textContent = 'Schedule free consultation →'
           cta.style.cssText =
             'display:inline-block;background:#0A2540;color:white;font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;text-decoration:none;letter-spacing:0.01em;transition:background 0.2s;'
           cta.addEventListener('mouseenter', () => {
@@ -448,10 +376,7 @@
     function showTyping() {
       const bubble = document.createElement('div')
       bubble.id = 'lra-typing-anim'
-      bubble.setAttribute(
-        'aria-label',
-        lang === 'en' ? 'Advisor is typing' : 'El asesor está escribiendo'
-      )
+      bubble.setAttribute('aria-label', 'Advisor is typing')
       bubble.style.cssText =
         'display:flex;flex-direction:column;align-items:flex-start;margin-bottom:14px;'
       bubble.innerHTML = `
@@ -479,15 +404,12 @@
       toggleBtn!.setAttribute('aria-expanded', 'true')
       if (iconChat) iconChat.style.display = 'none'
       if (iconX) iconX.style.display = 'block'
-      if (btnLabel) btnLabel.style.display = 'none'
-      if (btnCloseLabel) btnCloseLabel.style.display = 'inline'
 
       if (!welcomed) {
         welcomed = true
         setTimeout(() => {
           agentCount++
           addMsg('assistant', WELCOME)
-          renderSuggestions()
         }, 350)
       }
 
@@ -504,8 +426,6 @@
       toggleBtn!.setAttribute('aria-expanded', 'false')
       if (iconChat) iconChat.style.display = 'block'
       if (iconX) iconX.style.display = 'none'
-      if (btnLabel) btnLabel.style.display = 'inline'
-      if (btnCloseLabel) btnCloseLabel.style.display = 'none'
     }
 
     async function sendMsg() {
@@ -528,7 +448,7 @@
           role: m.role,
           content: m.content,
         }))
-        const res = await fetch(API, {
+        const res = await fetch(WORKER, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ messages }),
@@ -536,15 +456,15 @@
         })
 
         clearTimeout(timeout)
+        console.log('Status:', res.status)
 
         if (!res.ok) {
           hideTyping()
           agentCount++
-          const errMsg =
-            lang === 'en'
-              ? `Service error (HTTP ${res.status}). Please try again in a moment.`
-              : `Error de servicio (HTTP ${res.status}). Por favor inténtalo de nuevo.`
-          addMsg('assistant', errMsg)
+          addMsg(
+            'assistant',
+            `Service error (HTTP ${res.status}). Please try again in a moment.`
+          )
           return
         }
 
@@ -556,38 +476,29 @@
           agentCount++
           addMsg(
             'assistant',
-            lang === 'en'
-              ? 'Service temporarily unavailable. Please try again.'
-              : 'Servicio temporalmente no disponible. Inténtalo de nuevo.'
+            'Service temporarily unavailable. Please try again.'
           )
           return
         }
 
+        console.log('Data:', data)
         const reply: string =
-          data.message ??
-          (lang === 'en'
-            ? "Sorry, I couldn't process your request. Please try again."
-            : 'Lo siento, no pude procesar tu solicitud. Inténtalo de nuevo.')
+          data.text ??
+          "Sorry, I couldn't process your request. Please try again."
         hideTyping()
         agentCount++
         addMsg('assistant', reply)
       } catch (err: any) {
         clearTimeout(timeout)
+        console.error('Worker error:', err)
         hideTyping()
         agentCount++
         if (err?.name === 'AbortError') {
-          addMsg(
-            'assistant',
-            lang === 'en'
-              ? 'Request timed out. Please try again.'
-              : 'La solicitud tardó demasiado. Inténtalo de nuevo.'
-          )
+          addMsg('assistant', 'Request timed out. Please try again.')
         } else {
           addMsg(
             'assistant',
-            lang === 'en'
-              ? 'Connection error. Please check your network and try again.'
-              : 'Error de conexión. Comprueba tu red e inténtalo de nuevo.'
+            'Connection error. Please check your network and try again.'
           )
         }
       } finally {

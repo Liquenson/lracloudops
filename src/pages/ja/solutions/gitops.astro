@@ -1,0 +1,70 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="GitOps · ArgoCD自動同期 & Gitを唯一の真実の源に"
+  descripcion="手動のkubectlとterraform applyをArgoCD Auto-Syncに置き換え。Gitがクラスター状態全体の唯一の真実の源になる。"
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          GitOps
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Gitが唯一の真実の源。手動kubectlはもう終わり。
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          手動のkubectl applyとterraform applyをArgoCD Auto-Syncに置き換えます。クラスター状態の全変更はPull Requestを経由。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">ArgoCD インストール & 設定</h3>
+          <p class="text-sm" style="color: #64748b;">auto-sync、prune、self-healを備えたArgoCD設定。アプリケーション定義をコードとして管理 — ダッシュボードでの手動設定不要。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">リポジトリ構造</h3>
+          <p class="text-sm" style="color: #64748b;">App-of-Appsパターンまたは環境別リポジトリを使用した明確なGitOpsリポジトリ構造設計。アプリケーションコードとデプロイ設定の明確な分離。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">PRベースのデプロイワークフロー</h3>
+          <p class="text-sm" style="color: #64748b;">全インフラ変更はレビューと承認を経たPull Requestを経由。マージ後ArgoCD が自動同期 — 手動介入不要。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">ドリフト検出 & セルフヒーリング</h3>
+          <p class="text-sm" style="color: #64748b;">ArgoCDが望ましい状態と実際のクラスター状態の乖離を自動検出。Self-healが手動変更をGitで定義された状態に自動修正。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">ロールバック & 災害復旧</h3>
+          <p class="text-sm" style="color: #64748b;">git revertによる即時ロールバック。クラスター状態全体がGitに保存 — 障害後の復旧は単一のArgoCD syncコマンドで実行。</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">マルチクラスターGitOps</h3>
+          <p class="text-sm" style="color: #64748b;">単一の中央ArgoCSインスタンスで複数Kubernetesクラスターを管理。環境固有のオーバーレイを使用してdev、staging、本番で一貫した設定。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">ArgoCDでGitOpsに移行しましょう。</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">現在のデプロイプロセスを分析し、完全なGitOpsへの移行計画を作成します。</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        お問い合わせ
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

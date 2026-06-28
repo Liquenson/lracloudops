@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Observability · Prometheus, Grafana & CloudWatch"
+  descripcion="Prometheus, Grafana e Alertmanager per Kubernetes. CloudWatch per i workload AWS. Metriche RED, tracking SLO e alert proattivi per i sistemi in produzione."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Observability
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Visibilità completa sui tuoi sistemi in produzione.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Prometheus, Grafana e Alertmanager per i workload Kubernetes. CloudWatch per AWS. Tracking SLO e alert proattivi che rilevano i problemi prima che raggiungano gli utenti.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Raccolta Metriche Prometheus</h3>
+          <p class="text-sm" style="color: #64748b;">Prometheus con kube-state-metrics e node-exporter per metriche complete di cluster e nodi. Monitoring dei servizi tramite ServiceMonitor e PodMonitor personalizzati.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Dashboard Grafana</h3>
+          <p class="text-sm" style="color: #64748b;">Dashboard preconfigurate per la salute del cluster Kubernetes, performance dei workload e utilizzo delle risorse. Dashboard custom per le metriche RED specifiche dell'applicazione.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Alertmanager & On-Call</h3>
+          <p class="text-sm" style="color: #64748b;">Regole di routing degli alert intelligenti con Alertmanager. Integrazione con PagerDuty, Slack e email. Raggruppamento e inibizione degli alert per ridurre l'alert fatigue.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">CloudWatch per AWS</h3>
+          <p class="text-sm" style="color: #64748b;">Metriche, log e allarmi CloudWatch per i servizi AWS. Monitoraggio dei costi, performance RDS e metriche dei task ECS integrati in un setup di observability unificato.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Tracking SLO & SLI</h3>
+          <p class="text-sm" style="color: #64748b;">Definizione e tracking degli Service Level Objective. Gestione dell'error budget e alert basati su SLO che focalizzano i team sui veri problemi di affidabilità.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Aggregazione dei Log</h3>
+          <p class="text-sm" style="color: #64748b;">Raccolta centralizzata dei log con Loki o CloudWatch Logs. Log strutturati con ID di correlazione per il tracing semplice attraverso i confini dei servizi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Ottieni visibilità completa sui tuoi sistemi.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Installiamo e configuriamo il tuo stack di observability, assicurandoci che tu rilevi i problemi prima che li notino i tuoi utenti.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Contattaci
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,7 +1,3 @@
 src/pages/docs/kubernetes-production.astro
-src/pages/en/docs/kubernetes-production.astro
 src/pages/projects.astro
-src/pages/en/projects.astro
-src/pages/proyectos.astro
 src/pages/services.astro
-src/pages/en/services.astro

@@ -1,0 +1,635 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import { getTranslations } from '../../i18n/index'
+
+const t = await getTranslations('ja')
+const allProjects = await getCollection('projects', ({ data }) => !data.draft)
+const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
+  .slice(0, 3)
+---
+
+<Layout
+  titulo={t.site?.tagline ?? 'Platform Engineering — 動かし続けるインフラのために。'}
+  descripcion={t.hero?.subtitle ?? 'クラウドネイティブなプラットフォームを設計・自動化・運用します。'}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden hero-gradient" aria-labelledby="hero-heading">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(circle, rgba(96,165,250,0.14) 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background: radial-gradient(ellipse 90% 60% at 50% 115%, rgba(37,99,235,0.22) 0%, transparent 65%);"></div>
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+      <div class="animate-fade-left">
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8 text-xs font-semibold" style="background: rgba(37,99,235,0.15); border: 1px solid rgba(96,165,250,0.3); color: #93C5FD;">
+          <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0 animate-pulse-soft" aria-hidden="true"></span>
+          {t.hero?.badge}
+        </div>
+        <h1 id="hero-heading" class="text-[34px] sm:text-[52px] lg:text-[62px] font-extrabold text-white leading-[1.04] mb-7" style="letter-spacing: -0.035em;">
+          {t.hero?.title}<br />{t.hero?.title2}<br />
+          <span style="color: #60A5FA;">{t.hero?.title3}</span>
+        </h1>
+        <p class="text-lg sm:text-xl leading-relaxed mb-8 max-w-[520px]" style="color: rgba(148,163,184,0.85);">{t.hero?.subtitle}</p>
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="/contact" class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]" style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.45);">
+            {t.hero?.cta_primary}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="/projects" class="inline-flex items-center gap-2.5 text-sm font-semibold px-7 py-4 rounded-xl border transition-all hover:bg-white/10" style="color: rgba(148,163,184,0.9); border-color: rgba(148,163,184,0.25);">
+            {t.hero?.cta_secondary}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <p style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem;">{t.hero?.trust}</p>
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          {[t.hero?.response, t.hero?.no_lock].filter(Boolean).map(item => (
+            <span class="flex items-center gap-1.5 text-xs font-medium" style="color: rgba(148,163,184,0.65);">
+              <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div class="relative flex justify-center lg:justify-end animate-fade-up delay-200">
+        <div class="relative w-full max-w-[510px]">
+          <div class="absolute -inset-6 rounded-3xl pointer-events-none" aria-hidden="true" style="background: radial-gradient(ellipse at center, rgba(37,99,235,0.25) 0%, transparent 70%); filter: blur(24px);"></div>
+          <div class="relative rounded-2xl overflow-hidden" style="background: #0d1117; border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 40px 80px rgba(0,0,0,0.55);">
+            <div class="flex items-center gap-2 px-4 py-3.5" style="background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.07);">
+              <div class="w-3 h-3 rounded-full" style="background: #FF5F57;"></div>
+              <div class="w-3 h-3 rounded-full" style="background: #FEBC2E;"></div>
+              <div class="w-3 h-3 rounded-full" style="background: #28C840;"></div>
+              <div class="flex-1 text-center"><span class="text-xs font-mono" style="color: rgba(255,255,255,0.25);">aws-production · main</span></div>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span class="text-xs font-mono" style="color: rgba(255,255,255,0.25);">live</span>
+            </div>
+            <div class="p-5 font-mono text-xs sm:text-sm leading-relaxed space-y-1">
+              <div class="flex items-center gap-2"><span style="color: #79C0FF;">❯</span><span class="text-white">terraform apply --auto-approve</span></div>
+              <div class="mt-2 text-[0.68rem]" style="color: rgba(255,255,255,0.35);">Plan: 14 to add, 0 to change, 0 to destroy.</div>
+              <div class="space-y-0.5 mt-2">
+                {[['aws_vpc.main', '6s'],['aws_eks_cluster.main', '2m 18s'],['aws_rds_cluster.db', '1m 44s'],['module.alb.aws_lb.main', '52s']].map(([res, time]) => (
+                  <div class="text-xs"><span style="color: #3FB950;">✓</span> <span style="color: rgba(255,255,255,0.5);">{res}</span> <span style="color: rgba(255,255,255,0.22);">({time})</span></div>
+                ))}
+              </div>
+              <div class="mt-2.5 text-xs font-semibold" style="color: #3FB950;">Apply complete! Resources: 14 added.</div>
+            </div>
+            <div class="px-5 pb-4 pt-2.5" style="border-top: 1px solid rgba(255,255,255,0.06);">
+              <div class="flex items-center gap-0.5">
+                {['Build', 'Test', 'Security', 'Docker', 'Deploy'].map((step, i) => (
+                  <div class="flex items-center">
+                    <div class="flex items-center gap-1 text-xs font-mono">
+                      <span style="color: #3FB950;">✓</span>
+                      <span style="color: rgba(255,255,255,0.4); font-size: 0.62rem;">{step}</span>
+                    </div>
+                    {i < 4 && <div class="w-4 h-px mx-1" style="background: rgba(63,185,80,0.3);"/>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BADGE STRIP -->
+  <section style="background: white; border-bottom: 1px solid #E2E8F0; padding: 12px 0;" aria-label="認定・信頼シグナル">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+        <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #F5F0FF; color: #7B42BC; border: 1px solid #D6B9F5;">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+          {t.trust?.hashicorp}
+        </span>
+        <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #EFF8FF; color: #049FD9; border: 1px solid #BAE6FD;">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          {t.trust?.cisco}
+        </span>
+        <span class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full" style="background: #FFF5F5; color: #EE3124; border: 1px solid #FCA5A5;">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          {t.trust?.fortinet}
+        </span>
+        <a href="/certifications" class="text-xs font-semibold transition-colors hover:opacity-80" style="color: #1E6FFF;">{t.trust?.view_credentials}</a>
+        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
+        <span class="text-xs font-medium" style="color: #64748b;">{t.trust?.oidc}</span>
+        <span class="hidden sm:block w-px h-4 bg-gray-200" aria-hidden="true"></span>
+        <span class="text-xs font-medium" style="color: #64748b;">{t.trust?.gdpr}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STRIP -->
+  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB;" aria-label="テクノロジー">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <p class="text-center text-[11px] font-bold uppercase tracking-widest mb-12" style="color: #94A3B8;">{t.tech?.section_label}</p>
+      <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-5 gap-5">
+        {[
+          { name: 'AWS', svgPath: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
+          { name: 'Terraform', svgPath: 'M12 2L2 7.5v9L12 21l10-4.5v-9z M2 7.5l10 5m0 0l10-5m-10 5v9' },
+          { name: 'Kubernetes', svgPath: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+          { name: 'Docker', svgPath: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10' },
+          { name: 'GitHub Actions', svgPath: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
+          { name: 'Prometheus', svgPath: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+          { name: 'Grafana', svgPath: 'M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z' },
+          { name: 'ArgoCD', svgPath: 'M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9' },
+          { name: 'Helm', svgPath: 'M12 3a9 9 0 100 18A9 9 0 0012 3zm0 0v3m0 12v3m9-9h-3M3 12h3m12.364-6.364l-2.121 2.121M8.757 15.243l-2.121 2.121m0-14.728l2.121 2.121M15.243 15.243l2.121 2.121M12 9a3 3 0 100 6 3 3 0 000-6z' },
+          { name: 'Ansible', svgPath: 'M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+        ].map(({ name, svgPath }) => (
+          <div class="flex flex-col items-center gap-3 group cursor-default" title={name}>
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white transition-all group-hover:shadow-md" style="border: 1px solid #E5E7EB;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7" style="color: rgba(15,23,42,0.45);" aria-hidden="true"><path d={svgPath} /></svg>
+            </div>
+            <span class="text-[11px] font-semibold text-center leading-tight" style="color: #64748B;">{name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="bg-white" aria-labelledby="metrics-heading">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-14 animate-fade-up">
+        <span class="section-label">{t.metrics?.section_label}</span>
+        <h2 id="metrics-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">{t.metrics?.title}</h2>
+        <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">{t.metrics?.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl overflow-hidden animate-fade-up" style="background: #E5E7EB;">
+        {[
+          { value: t.metrics?.projects_value ?? '4+', label: t.metrics?.projects_label ?? '', sub: t.metrics?.projects_sub ?? '' },
+          { value: t.metrics?.engineers_value ?? '4', label: t.metrics?.engineers_label ?? '', sub: t.metrics?.engineers_sub ?? '' },
+          { value: t.metrics?.iac_value ?? '100%', label: t.metrics?.iac_label ?? '', sub: t.metrics?.iac_sub ?? '' },
+          { value: t.metrics?.years_value ?? '4+', label: t.metrics?.years_label ?? '', sub: t.metrics?.years_sub ?? '' },
+          { value: t.metrics?.tech_value ?? '15+', label: t.metrics?.tech_label ?? '', sub: t.metrics?.tech_sub ?? '' },
+          { value: t.metrics?.response_value ?? '24h', label: t.metrics?.response_label ?? '', sub: t.metrics?.response_sub ?? '' },
+        ].map(({ value, label, sub }) => (
+          <div class="flex flex-col items-center justify-center text-center px-6 py-12 bg-white hover:bg-blue-50 transition-colors cursor-default">
+            <div class="text-3xl sm:text-4xl font-black mb-2 leading-none" style="color: #1E6FFF; letter-spacing: -0.04em;">{value}</div>
+            <div class="text-sm font-bold mb-1" style="color: #0A2540;">{label}</div>
+            <div class="text-xs" style="color: #94A3B8;">{sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="services-heading">
+    <div class="max-w-7xl mx-auto px-6 py-24">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">{t.services?.section_label}</span>
+        <h2 id="services-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">{t.services?.title}</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">{t.services?.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6', title: t.services?.cloud_infra_title ?? '', desc: t.services?.cloud_infra_desc ?? '', href: '/cloud-infrastructure' },
+          { icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2', title: t.services?.kubernetes_title ?? '', desc: t.services?.kubernetes_desc ?? '', href: '/platform-engineering' },
+          { icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15', title: t.services?.devops_title ?? '', desc: t.services?.devops_desc ?? '', href: '/devops-automation' },
+          { icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', title: t.services?.platform_title ?? '', desc: t.services?.platform_desc ?? '', href: '/platform-engineering' },
+          { icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', title: t.services?.observability_title ?? '', desc: t.services?.observability_desc ?? '', href: '/observability' },
+          { icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', title: t.services?.security_title ?? '', desc: t.services?.security_desc ?? '', href: '/services' },
+        ].map(({ icon, title, desc, href }, i) => (
+          <div class={`bg-white rounded-2xl p-8 flex flex-col card-lift animate-fade-up ${['delay-100','delay-200','delay-300','delay-100','delay-200','delay-300'][i]}`} style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6 flex-shrink-0" style="background: #EFF6FF;" aria-hidden="true">
+              <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon}/></svg>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">{title}</h3>
+            <p class="text-sm leading-relaxed flex-1 mb-6" style="color: #64748B;">{desc}</p>
+            <a href={href} class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mt-auto" style="color: #2563EB;">
+              {t.services?.learn_more}
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/services" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white" style="color: #0F172A; border-color: #D1D5DB; background: white;">
+          {t.services?.view_all}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM ARCHITECTURE -->
+  <section class="py-24 relative overflow-hidden" style="background: #0B1220;" aria-labelledby="architecture-heading">
+    <div class="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true" style="background-image: radial-gradient(circle, rgba(96,165,250,0.15) 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5" style="background: rgba(37,99,235,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);">{t.arch?.section_label}</span>
+        <h2 id="architecture-heading" class="text-4xl sm:text-5xl font-bold text-white mt-2 mb-5" style="letter-spacing: -0.025em;">{t.arch?.title}<br />{t.arch?.title2}</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(148,163,184,0.8);">{t.arch?.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-fade-left">
+          <div class="space-y-0">
+            {[
+              { label: 'AWS', sub: 'Cloud Provider · Multi-AZ · 99.99% SLA', color: '#FF9900', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
+              { label: 'Terraform', sub: 'Infrastructure as Code · Modular', color: '#7B42BC', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+              { label: 'Kubernetes (EKS)', sub: 'Container Orchestration · HPA · Auto-scaling', color: '#326CE5', icon: 'M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2' },
+              { label: 'ArgoCD', sub: 'GitOps · Continuous Delivery · Drift detection', color: '#EF7B4D', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
+              { label: 'Applications', sub: 'Flask · Python · Claude Sonnet · boto3', color: '#2563EB', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+              { label: 'Prometheus + Grafana', sub: 'Observability · Alerting · Real-time dashboards', color: '#E5421E', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+            ].map(({ label, sub, color, icon }, i, arr) => (
+              <div>
+                <div class="flex items-center gap-4 p-4 rounded-xl transition-all hover:-translate-x-1 cursor-default" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-xl flex-shrink-0" style={`background: ${color}22; border: 1px solid ${color}44;`} aria-hidden="true">
+                    <svg class="w-5 h-5" style={`color: ${color};`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon}/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-bold text-white">{label}</div>
+                    <div class="text-xs mt-0.5" style="color: rgba(148,163,184,0.6);">{sub}</div>
+                  </div>
+                  <div class="w-2 h-2 rounded-full flex-shrink-0" style={`background: ${color};`} aria-hidden="true"/>
+                </div>
+                {i < arr.length - 1 && <div class="flex justify-start ml-9 my-1" aria-hidden="true"><svg width="16" height="20" viewBox="0 0 16 20" fill="none"><path d="M8 0 L8 14 M4 10 L8 14 L12 10" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="animate-fade-up delay-200">
+          <h3 class="text-2xl font-bold text-white mb-8">{t.arch?.principles_title}</h3>
+          <div class="space-y-6">
+            {[
+              { title: t.arch?.p1_title ?? '', desc: t.arch?.p1_desc ?? '', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
+              { title: t.arch?.p2_title ?? '', desc: t.arch?.p2_desc ?? '', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
+              { title: t.arch?.p3_title ?? '', desc: t.arch?.p3_desc ?? '', icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' },
+              { title: t.arch?.p4_title ?? '', desc: t.arch?.p4_desc ?? '', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+            ].map(({ title, desc, icon }) => (
+              <div class="flex gap-4">
+                <div class="w-9 h-9 flex items-center justify-center rounded-xl flex-shrink-0 mt-0.5" style="background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.3);" aria-hidden="true">
+                  <svg class="w-4 h-4" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon}/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-white mb-1">{title}</div>
+                  <div class="text-sm leading-relaxed" style="color: rgba(148,163,184,0.7);">{desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT MODEL -->
+  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="engagement-heading">
+    <div class="max-w-7xl mx-auto px-6 py-24">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">{t.engagement?.section_label}</span>
+        <h2 id="engagement-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">{t.engagement?.title}</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">{t.engagement?.subtitle}</p>
+      </div>
+      <div class="relative">
+        <div class="hidden lg:block absolute h-px" aria-hidden="true" style="top: 2.25rem; left: calc(8.33% + 2.25rem); right: calc(8.33% + 2.25rem); background: linear-gradient(90deg, transparent, #BFDBFE 8%, #BFDBFE 92%, transparent);"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+          {[
+            { num: '01', title: t.engagement?.s1_title ?? '', desc: t.engagement?.s1_desc ?? '' },
+            { num: '02', title: t.engagement?.s2_title ?? '', desc: t.engagement?.s2_desc ?? '' },
+            { num: '03', title: t.engagement?.s3_title ?? '', desc: t.engagement?.s3_desc ?? '' },
+            { num: '04', title: t.engagement?.s4_title ?? '', desc: t.engagement?.s4_desc ?? '' },
+            { num: '05', title: t.engagement?.s5_title ?? '', desc: t.engagement?.s5_desc ?? '' },
+            { num: '06', title: t.engagement?.s6_title ?? '', desc: t.engagement?.s6_desc ?? '' },
+          ].map(({ num, title, desc }, i) => (
+            <div class={`flex flex-col items-center text-center animate-fade-up ${['delay-100','delay-200','delay-300','delay-100','delay-200','delay-300'][i]}`}>
+              <div class="w-[4.5rem] h-[4.5rem] rounded-full flex items-center justify-center font-black text-white text-sm mb-5 relative z-10" style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.3);">{num}</div>
+              <h3 class="text-base font-bold mb-2" style="color: #0A2540;">{title}</h3>
+              <p class="text-xs leading-relaxed" style="color: #64748B;">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="text-center mt-14">
+        <a href="/contact" class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]" style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);">
+          {t.engagement?.cta}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="case-studies-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+        <div class="animate-fade-up">
+          <span class="section-label">{t.projects?.section_label}</span>
+          <h2 id="case-studies-heading" class="text-4xl sm:text-5xl font-bold mt-5" style="color: #0F172A; letter-spacing: -0.025em;">{t.projects?.title}</h2>
+        </div>
+        <a href="/projects" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors animate-fade" style="color: #2563EB;">
+          {t.projects?.view_all}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      {allProjects.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {allProjects.map((project, i) => (
+            <div class={`bg-white rounded-2xl p-8 animate-fade-up ${(['delay-100','delay-200','delay-300','delay-400'])[i] ?? ''}`} style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+              <div class="flex items-start justify-between mb-5">
+                <h3 class="text-lg font-bold" style="color: #0A2540;">{project.data.titulo}</h3>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-3" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;">{project.data.madurez}</span>
+              </div>
+              <p class="text-sm leading-relaxed mb-6" style="color: #64748b;">{project.data.descripcion}</p>
+              {project.data.stack.length > 0 && <div class="flex flex-wrap gap-1.5 mb-5">{project.data.stack.map(tag => <span class="stack-tag">{tag}</span>)}</div>}
+              <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                {project.data.github ? (
+                  <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold" style="color: #64748B;">GitHub</a>
+                ) : (
+                  <span class="text-xs" style="color: #CBD5E1;">非公開リポジトリ</span>
+                )}
+                <a href={`/projects/${project.id}`} class="text-xs font-semibold" style="color: #2563EB;">{t.projects?.read_cs} →</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-lg py-12" style="color: #64748B;">{t.projects?.coming_soon}</p>
+      )}
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="why-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">{t.why?.section_label}</span>
+        <h2 id="why-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">{t.why?.title}<br />{t.why?.title2}</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">{t.why?.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', title: t.why?.v1_title ?? '', desc: t.why?.v1_desc ?? '' },
+          { icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15', title: t.why?.v2_title ?? '', desc: t.why?.v2_desc ?? '' },
+          { icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z', title: t.why?.v3_title ?? '', desc: t.why?.v3_desc ?? '' },
+        ].map(({ icon, title, desc }, i) => (
+          <div class={`bg-white rounded-2xl p-8 animate-fade-up card-lift ${['delay-100','delay-200','delay-300'][i]}`} style="border: 1px solid #E5E7EB; border-left: 3px solid #2563EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl mb-6" style="background: #EFF6FF;" aria-hidden="true">
+              <svg class="w-5 h-5" style="color: #2563EB;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon}/></svg>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #0F172A;">{title}</h3>
+            <p class="text-sm leading-relaxed" style="color: #64748B;">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="py-24 bg-white border-t border-gray-100" aria-labelledby="industries-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">{t.industries?.section_label}</span>
+        <h2 id="industries-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">{t.industries?.title}</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">{t.industries?.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { title: t.industries?.healthcare_title ?? '', desc: t.industries?.healthcare_desc ?? '', detail: t.industries?.healthcare_detail ?? '', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+          { title: t.industries?.fintech_title ?? '', desc: t.industries?.fintech_desc ?? '', detail: t.industries?.fintech_detail ?? '', icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z' },
+          { title: t.industries?.saas_title ?? '', desc: t.industries?.saas_desc ?? '', detail: t.industries?.saas_detail ?? '', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
+          { title: t.industries?.smb_title ?? '', desc: t.industries?.smb_desc ?? '', detail: t.industries?.smb_detail ?? '', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+        ].map(({ title, desc, detail, icon }, i) => (
+          <div class={`bg-white rounded-2xl p-7 card-lift animate-fade-up ${['delay-100','delay-200','delay-300','delay-400'][i]}`} style="border-left: 4px solid #1E6FFF; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+            <div class="w-11 h-11 flex items-center justify-center rounded-xl mb-5 flex-shrink-0" style="background: #EEF4FF;" aria-hidden="true">
+              <svg class="w-5 h-5" style="color: #1E6FFF;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon}/></svg>
+            </div>
+            <h3 class="text-base font-bold mb-1" style="color: #0A2540;">{title}</h3>
+            <p class="text-sm font-semibold mb-3" style="color: #1E6FFF;">{desc}</p>
+            <p class="text-xs leading-relaxed" style="color: #64748B;">{detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-24 border-t border-gray-100" style="background: #F8FAFC;" aria-labelledby="testimonials-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-up">
+        <span class="section-label">{t.testimonials?.section_label}</span>
+        <h2 id="testimonials-heading" class="text-4xl sm:text-5xl font-bold mt-5 mb-5" style="color: #0F172A; letter-spacing: -0.025em;">{t.testimonials?.title}</h2>
+        <p class="text-lg max-w-2xl mx-auto mb-6" style="color: #64748B;">{t.testimonials?.subtitle}</p>
+        <a href="/projects" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">
+          {t.testimonials?.view_cs}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { metric: t.testimonials?.t1_metric ?? '', quote: t.testimonials?.t1_quote ?? '', role: t.testimonials?.t1_role ?? '', company: t.testimonials?.t1_company ?? '', initial: 'HI' },
+          { metric: t.testimonials?.t2_metric ?? '', quote: t.testimonials?.t2_quote ?? '', role: t.testimonials?.t2_role ?? '', company: t.testimonials?.t2_company ?? '', initial: 'VP' },
+          { metric: t.testimonials?.t3_metric ?? '', quote: t.testimonials?.t3_quote ?? '', role: t.testimonials?.t3_role ?? '', company: t.testimonials?.t3_company ?? '', initial: 'SD' },
+        ].map(({ metric, quote, role, company, initial }, i) => (
+          <figure class={`flex flex-col p-8 rounded-2xl animate-fade-up bg-white ${['delay-100','delay-200','delay-300'][i]}`} style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+            <div class="mb-5">
+              <span class="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full" style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #C7D7FD;">{metric}</span>
+            </div>
+            <div class="flex-1 mb-6">
+              <div class="flex gap-4">
+                <div class="w-1 rounded-full flex-shrink-0" style="background: #1E6FFF;" aria-hidden="true"/>
+                <blockquote class="text-base leading-relaxed italic" style="color: #334155;">"{quote}"</blockquote>
+              </div>
+            </div>
+            <figcaption class="pt-5" style="border-top: 1px solid #F1F5F9;">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full text-xs font-bold text-white flex-shrink-0" style="background: #0A2540;" aria-hidden="true">{initial}</div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-sm font-semibold" style="color: #0F172A;">{role}</div>
+                  <div class="text-xs truncate" style="color: #64748B;">{company}</div>
+                </div>
+              </div>
+              <p class="text-[10px]" style="color: #CBD5E1; padding-left: 52px;">{t.testimonials?.anonymous}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section class="py-24 border-t border-gray-100" style="background: white;" aria-labelledby="blog-heading">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+        <div class="animate-fade-up">
+          <span class="section-label">{t.blog_section?.section_label}</span>
+          <h2 id="blog-heading" class="text-4xl sm:text-5xl font-bold mt-5" style="color: #0F172A; letter-spacing: -0.025em;">{t.blog_section?.title}</h2>
+        </div>
+        <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors animate-fade" style="color: #2563EB;">
+          {t.blog_section?.all_articles}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {recentPosts.length > 0 ? recentPosts.map((post, i) => (
+          <article class={`bg-white rounded-2xl flex flex-col p-7 animate-fade-up card-lift ${['delay-100','delay-200','delay-300'][i]}`} style="border: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+            <div class="flex items-center gap-2 mb-4">
+              {post.data.tags?.[0] && <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background: #EEF4FF; color: #1E6FFF;">{post.data.tags[0]}</span>}
+            </div>
+            <h3 class="text-base font-bold mb-3 flex-1" style="color: #0F172A; line-height: 1.4;">
+              <a href={`/blog/${post.id}`} class="hover:text-blue-600 transition-colors">{post.data.titulo}</a>
+            </h3>
+            <p class="text-sm leading-relaxed mb-5 line-clamp-2" style="color: #64748B;">{post.data.descripcion}</p>
+            <div class="flex items-center justify-between pt-4 mt-auto" style="border-top: 1px solid #F1F5F9;">
+              <time class="text-xs" style="color: #94A3B8;">{new Date(post.data.fecha).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+              <a href={`/blog/${post.id}`} class="inline-flex items-center gap-1 text-xs font-semibold" style="color: #2563EB;">{t.blog_section?.read_more} <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+            </div>
+          </article>
+        )) : (
+          <div class="col-span-3 text-center py-12" style="color: #64748B;">{t.blog_section?.view_all}</div>
+        )}
+      </div>
+      <div class="text-center mt-12 flex flex-wrap items-center justify-center gap-4">
+        <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-xl border transition-all hover:bg-white" style="color: #0F172A; border-color: #E5E7EB; background: white;">{t.blog_section?.view_all}</a>
+        <a href="/resources" class="inline-flex items-center gap-2 text-sm font-semibold transition-colors" style="color: #2563EB;">{t.blog_section?.resources} <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST LEAD MAGNET -->
+  <section class="relative overflow-hidden" aria-labelledby="checklist-heading">
+    <div class="py-20 px-6" style="background: #0A2540;">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
+        <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.2); color: #93C5FD; border: 1px solid rgba(96,165,250,0.3);">{t.checklist?.badge}</span>
+        <h2 id="checklist-heading" class="text-3xl sm:text-4xl font-extrabold text-white mb-4" style="letter-spacing: -0.025em;">{t.checklist?.title}</h2>
+        <p class="text-base mb-2 max-w-xl mx-auto" style="color: rgba(148,163,184,0.8);">{t.checklist?.subtitle}</p>
+        <p class="text-sm mb-8" style="color: rgba(148,163,184,0.5);">{t.checklist?.no_spam}</p>
+        <form id="checklist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485"/>
+          <input type="hidden" name="subject" value="Checklist Download - LRA Cloud Ops"/>
+          <input type="hidden" name="from_name" value="LRA Cloud Operations"/>
+          <input type="hidden" name="checklist_request" value="AWS Production Readiness Checklist"/>
+          <input type="email" name="email" required placeholder="you@company.com" class="flex-1 px-4 py-3.5 text-sm rounded-xl outline-none transition-all" style="background: white; color: #111827; border: 1px solid rgba(255,255,255,0.1);"/>
+          <button type="submit" id="checklist-btn" class="text-sm font-bold px-6 py-3.5 rounded-xl flex-shrink-0 transition-all hover:-translate-y-px" style="background: #1E6FFF; color: white; box-shadow: 0 4px 16px rgba(30,111,255,0.4);" data-sending={t.checklist?.sending} data-success={t.checklist?.success} data-error={t.checklist?.error} data-network={t.checklist?.network}>
+            {t.checklist?.btn}
+          </button>
+        </form>
+        <div id="checklist-status" class="hidden text-sm mt-4 px-4 py-2 rounded-lg inline-block"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY / SOCIAL -->
+  <section style="background: #F8FAFC; border-top: 1px solid #E5E7EB;" aria-labelledby="social-heading">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-12 animate-fade-up">
+        <span class="section-label">{t.community?.section_label}</span>
+        <h2 id="social-heading" class="text-3xl sm:text-4xl font-bold mt-5 mb-4" style="color: #0F172A; letter-spacing: -0.025em;">{t.community?.title}</h2>
+        <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">{t.community?.subtitle}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="https://www.instagram.com/lracloudops/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl p-7 flex flex-col card-lift animate-fade-up delay-100" style="border-left: 4px solid #E1306C; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06); text-decoration: none;">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #FFF0F5;" aria-hidden="true">
+              <svg class="w-6 h-6" style="color: #E1306C;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div>
+              <div class="text-sm font-bold" style="color: #0F172A;">@lracloudops</div>
+              <div class="text-xs" style="color: #94A3B8;">9,598 followers</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">{t.community?.instagram_desc}</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-semibold" style="color: #E1306C;">{t.community?.instagram_cta} <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+        <a href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl p-7 flex flex-col card-lift animate-fade-up delay-200" style="border-left: 4px solid #0A66C2; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06); text-decoration: none;">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #EFF6FF;" aria-hidden="true">
+              <svg class="w-6 h-6" style="color: #0A66C2;" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div>
+              <div class="text-sm font-bold" style="color: #0F172A;">Ruben Alexis Liquenson</div>
+              <div class="text-xs" style="color: #94A3B8;">518 connections</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">{t.community?.linkedin_desc}</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-semibold" style="color: #0A66C2;">{t.community?.linkedin_cta} <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+        <a href="https://github.com/lra-cloud-ops" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl p-7 flex flex-col card-lift animate-fade-up delay-300" style="border-left: 4px solid #0A2540; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06); text-decoration: none;">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background: #F1F5F9;" aria-hidden="true">
+              <svg class="w-6 h-6" style="color: #0A2540;" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </div>
+            <div>
+              <div class="text-sm font-bold" style="color: #0F172A;">github.com/lra-cloud-ops</div>
+              <div class="text-xs" style="color: #94A3B8;">10+ repositories</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">{t.community?.github_desc}</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-semibold" style="color: #0A2540;">{t.community?.github_cta} <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="relative overflow-hidden" aria-labelledby="cta-heading">
+    <div class="py-28 px-6 relative" style="background: #0A2540;">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(circle, rgba(96,165,250,0.07) 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.25) 0%, transparent 60%);"></div>
+      <div class="relative max-w-3xl mx-auto text-center animate-fade-up">
+        <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8" style="background: rgba(30,111,255,0.18); color: #93C5FD; border: 1px solid rgba(96,165,250,0.25);">{t.final_cta?.badge}</span>
+        <h2 id="cta-heading" class="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white mb-6" style="letter-spacing: -0.03em; line-height: 1.06;">{t.final_cta?.title}<br />{t.final_cta?.title2}</h2>
+        <p class="text-xl mb-10 max-w-xl mx-auto leading-relaxed" style="color: rgba(148,163,184,0.8);">{t.final_cta?.subtitle}</p>
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+          <a href="/contact" class="inline-flex items-center gap-2.5 text-base font-bold px-8 py-4 rounded-xl transition-all hover:bg-blue-50 hover:-translate-y-px shadow-xl" style="background: white; color: #1D4ED8;">
+            {t.final_cta?.btn_primary}
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="/projects" class="inline-flex items-center gap-2 text-base font-semibold px-8 py-4 rounded-xl border transition-all hover:bg-white/10" style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.25);">{t.final_cta?.btn_secondary}</a>
+        </div>
+        <a href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:opacity-80 mb-8" style="color: rgba(148,163,184,0.55);">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          {t.final_cta?.linkedin_cta}
+        </a>
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style="color: rgba(255,255,255,0.5);">
+          {[t.final_cta?.trust1, t.final_cta?.trust2, t.final_cta?.trust3].filter(Boolean).map(item => (
+            <span class="flex items-center gap-2 text-sm">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('checklist-form') as HTMLFormElement | null
+  const btn = document.getElementById('checklist-btn') as HTMLButtonElement | null
+  const statusEl = document.getElementById('checklist-status') as HTMLDivElement | null
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!btn || !statusEl) return
+    const sendingText = btn.dataset.sending ?? '送信中...'
+    const successText = btn.dataset.success ?? '登録完了！'
+    const errorText = btn.dataset.error ?? 'エラーが発生しました。'
+    const networkText = btn.dataset.network ?? '接続エラー。'
+    const originalText = btn.textContent ?? ''
+    btn.textContent = sendingText
+    btn.disabled = true
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      })
+      const data = await res.json()
+      if (data.success) {
+        statusEl.textContent = successText
+        statusEl.style.cssText = 'display:inline-block; background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.3);'
+        form.reset()
+      } else {
+        statusEl.textContent = errorText
+        statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+      }
+    } catch {
+      statusEl.textContent = networkText
+      statusEl.style.cssText = 'display:inline-block; background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(248,113,113,0.3);'
+    }
+
+    btn.textContent = originalText
+    btn.disabled = false
+    statusEl.classList.remove('hidden')
+  })
+</script>

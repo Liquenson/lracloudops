@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Observabilidade · Monitoramento em Produção"
+  descripcion="Visibilidade completa com Prometheus, Grafana e Alertmanager. Dashboards, alertas e SLOs que permitem detectar e resolver problemas antes que impactem usuários."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
+          Observabilidade
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5" style="letter-spacing: -0.02em;">
+          Visibilidade completa dos seus sistemas em produção.
+        </h1>
+        <p class="text-lg max-w-2xl" style="color: rgba(147,184,255,0.8);">
+          Implantamos stacks de monitoramento baseadas em Prometheus e Grafana com alertas acionáveis — para que você saiba que algo está errado antes que seus usuários percebam.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Métricas Prometheus</h3>
+          <p class="text-sm" style="color: #64748b;">Coleta de métricas de infraestrutura, aplicação e Kubernetes com Prometheus. Regras de alerta baseadas em dados de séries temporais reais — sem thresholds arbitrários.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Dashboards Grafana</h3>
+          <p class="text-sm" style="color: #64748b;">Dashboards operacionais que mostram o que importa: latência de serviço, taxa de erros, saturação de recursos. Entregues como código, não configurados manualmente.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Roteamento Alertmanager</h3>
+          <p class="text-sm" style="color: #64748b;">Alertas roteados para o canal certo com contexto suficiente para agir. Sem ruído de alerta — apenas notificações acionáveis para a equipe de plantão.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Integração CloudWatch</h3>
+          <p class="text-sm" style="color: #64748b;">Métricas e logs AWS integrados à mesma visão de observabilidade. Fluxos de log CloudWatch processados junto com métricas de infraestrutura.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">SLOs & SLIs</h3>
+          <p class="text-sm" style="color: #64748b;">Service Level Objectives definidos com base em comportamento real do usuário. Error budgets que equilibram velocidade de lançamento com confiabilidade do serviço.</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background: #F8FAFC; border: 1px solid rgba(15,23,42,0.06);">
+          <h3 class="text-base font-bold mb-2" style="color: #0A2540;">Centralização de Logs</h3>
+          <p class="text-sm" style="color: #64748b;">Logs estruturados de todos os serviços e componentes de infraestrutura em uma única plataforma pesquisável. Correlação de eventos entre logs e métricas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540;" class="py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Instale observabilidade real nos seus sistemas.</h2>
+      <p class="text-base mb-8" style="color: rgba(147,184,255,0.8);">Avaliamos seu ambiente atual e entregamos uma stack de monitoramento completa com dashboards e alertas operacionais.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white" style="background: #1E6FFF;">
+        Fale conosco
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

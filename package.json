@@ -22,18 +22,16 @@
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^6.4.6",
-    "tailwindcss": "^4.3.1"
+    "tailwindcss": "^4.3.1",
+    "wrangler": "^4.100.0"
   },
   "overrides": {
     "vite": "^7"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "^1.60.0",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
-    "simple-icons": "^16.23.0",
-    "typescript": "^6.0.3",
-    "wrangler": "^4.105.0"
+    "simple-icons": "^16.23.0"
   }
 }

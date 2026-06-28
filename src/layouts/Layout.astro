@@ -1,14 +1,7 @@
 ---
 import '../styles/global.css'
-import {
-  getLangFromUrl,
-  languages,
-  getAlternateUrl,
-  getHreflangTags,
-} from '../i18n'
+import { getLangFromUrl, languages, regions, getAlternateUrl, getHreflangTags } from '../i18n'
 import AgentChat from '../components/AgentChat.astro'
-import SiteHeader from '../components/layout/SiteHeader.astro'
-import SiteFooter from '../components/layout/SiteFooter.astro'
 
 interface Props {
   titulo: string
@@ -27,8 +20,6 @@ const {
   ogType = 'website',
   ogImage,
 } = Astro.props
-const gaId = import.meta.env.PUBLIC_GA_ID ?? ''
-const cfBeacon = import.meta.env.PUBLIC_CF_BEACON ?? ''
 const currentPath = Astro.url.pathname
 const lang = getLangFromUrl(Astro.url)
 const canonicalURL = new URL(currentPath, 'https://lracloudops.com')
@@ -37,16 +28,19 @@ const isFallbackOnlyPath = /^\/(solutions|industries)\//.test(currentPath)
 const isMinorLocale = !['es', 'en'].includes(lang)
 const shouldNoindex = isMinorLocale && isFallbackOnlyPath
 
+// Compute alternate URLs for all 9 locales
 const localeUrls = Object.fromEntries(
-  Object.keys(languages).map((l) => [
-    l,
-    'https://lracloudops.com' +
-      getAlternateUrl(Astro.url, l as keyof typeof languages),
+  Object.keys(languages).map((locale) => [
+    locale,
+    'https://lracloudops.com' + getAlternateUrl(Astro.url, locale as keyof typeof languages),
   ])
 ) as Record<keyof typeof languages, string>
+const enUrl = localeUrls['en']
+const esUrl = localeUrls['es']
+const currentLangInfo = languages[lang] ?? languages['en']
+const currentLangLabel = currentLangInfo.name
 const hreflangTags = getHreflangTags(Astro.url)
 
-const segments = currentPath.split('/').filter(Boolean)
 const pathLabels: Record<string, string> = {
   services: 'Solutions',
   projects: 'Case Studies',
@@ -61,14 +55,22 @@ const pathLabels: Record<string, string> = {
   resources: 'Resources',
   solutions: 'Solutions',
   industries: 'Industries',
-  'open-source': 'Open Source',
+  'aws-modernization': 'AWS Modernization',
+  'kubernetes-adoption': 'Kubernetes Adoption',
+  'cicd-transformation': 'CI/CD Transformation',
+  gitops: 'GitOps Implementation',
+  healthcare: 'Healthcare',
+  fintech: 'Fintech',
+  saas: 'SaaS',
   'kubernetes-platforms': 'Kubernetes Platforms',
+  'open-source': 'Open Source',
   es: 'ES',
   servicios: 'Soluciones',
   proyectos: 'Casos de uso',
   nosotros: 'Nosotros',
   contacto: 'Contacto',
 }
+const segments = currentPath.split('/').filter(Boolean)
 const breadcrumbItems = [
   {
     '@type': 'ListItem',
@@ -103,11 +105,7 @@ const organizationSchema = {
   logo: 'https://lracloudops.com/logo.svg',
   email: 'info@lracloudops.com',
   foundingDate: '2021',
-  numberOfEmployees: {
-    '@type': 'QuantitativeValue',
-    minValue: 1,
-    maxValue: 10,
-  },
+  numberOfEmployees: '1',
   areaServed: ['ES', 'US', 'LATAM', 'EU'],
   serviceType: [
     'DevOps Consulting',
@@ -154,79 +152,427 @@ const websiteSchema = {
   publisher: { '@id': 'https://lracloudops.com/#organization' },
   inLanguage: lang === 'es' ? 'es-ES' : 'en-US',
 }
+
+const contactHref = lang === 'es' ? '/contacto' : (lang === 'en' ? '/en/contact' : '/contacto')
+const ctaLabel = lang === 'es' ? 'Agendar consulta' : 'Schedule Consultation'
+const skipLabel =
+  lang === 'es' ? 'Ir al contenido principal' : 'Skip to main content'
+
+interface NavItem {
+  href: string
+  label: string
+  desc: string
+  iconPath: string
+}
+
+const servicesItems: NavItem[] = [
+  {
+    href: '/cloud-infrastructure',
+    label: 'Cloud Infrastructure',
+    desc: 'AWS, multi-cloud & hybrid environments',
+    iconPath:
+      'M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z',
+  },
+  {
+    href: '/kubernetes-platforms',
+    label: 'Kubernetes Platforms',
+    desc: 'EKS, GKE & self-managed clusters',
+    iconPath:
+      'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+  },
+  {
+    href: '/devops-automation',
+    label: 'DevOps Automation',
+    desc: 'CI/CD pipelines & workflow automation',
+    iconPath:
+      'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99',
+  },
+  {
+    href: '/platform-engineering',
+    label: 'Platform Engineering',
+    desc: 'Internal developer platforms & tooling',
+    iconPath:
+      'M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122',
+  },
+  {
+    href: '/observability',
+    label: 'Observability & SRE',
+    desc: 'Monitoring, alerting & reliability engineering',
+    iconPath:
+      'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+  },
+]
+const solutionsItems: NavItem[] = [
+  {
+    href: '/solutions/aws-modernization',
+    label: 'AWS Modernization',
+    desc: 'Migrate & modernize your AWS workloads',
+    iconPath:
+      'M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    href: '/solutions/kubernetes-adoption',
+    label: 'Kubernetes Adoption',
+    desc: 'Container orchestration at enterprise scale',
+    iconPath:
+      'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+  },
+  {
+    href: '/solutions/cicd-transformation',
+    label: 'CI/CD Transformation',
+    desc: 'Accelerate delivery with automated pipelines',
+    iconPath: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  },
+  {
+    href: '/solutions/gitops',
+    label: 'GitOps Implementation',
+    desc: 'Git-driven infrastructure operations',
+    iconPath:
+      'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+  },
+]
+const industriesItems: NavItem[] = [
+  {
+    href: '/industries/healthcare',
+    label: 'Healthcare',
+    desc: 'HIPAA-compliant cloud infrastructure',
+    iconPath:
+      'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z',
+  },
+  {
+    href: '/industries/fintech',
+    label: 'Fintech',
+    desc: 'Secure, scalable financial platforms',
+    iconPath:
+      'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z',
+  },
+  {
+    href: '/industries/saas',
+    label: 'SaaS',
+    desc: 'Multi-tenant cloud-native platforms',
+    iconPath:
+      'M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z',
+  },
+]
+const resourcesItems: NavItem[] = [
+  {
+    href: '/blog',
+    label: 'Blog',
+    desc: 'Cloud engineering insights & tutorials',
+    iconPath:
+      'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+  },
+  {
+    href: '/resources',
+    label: 'Guides & Resources',
+    desc: 'Technical guides & best practices',
+    iconPath:
+      'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  },
+  {
+    href: '/docs',
+    label: 'Documentation',
+    desc: 'Engineering standards & technical guides',
+    iconPath:
+      'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  },
+  {
+    href: '/architectures',
+    label: 'Architecture Center',
+    desc: 'Reference architecture patterns & diagrams',
+    iconPath:
+      'M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z',
+  },
+  {
+    href: '/assessments',
+    label: 'Assessment Tools',
+    desc: 'Evaluate your DevOps & cloud maturity',
+    iconPath:
+      'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+  },
+]
+const aboutItems: NavItem[] = [
+  {
+    href: '/about',
+    label: 'Our Team',
+    desc: 'Platform engineers & cloud architects',
+    iconPath:
+      'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+  },
+  {
+    href: '/certifications',
+    label: 'Certifications',
+    desc: 'Verified credentials & expertise badges',
+    iconPath:
+      'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+  },
+  {
+    href: '/open-source',
+    label: 'Open Source',
+    desc: 'Production-grade tools & reference implementations',
+    iconPath:
+      'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+  },
+  {
+    href: '/why-lra',
+    label: 'Why LRA',
+    desc: 'The case for specialized over generalist',
+    iconPath:
+      'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    href: '/methodology',
+    label: 'Methodology',
+    desc: 'Our 6-phase engineering process & standards',
+    iconPath:
+      'M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2',
+  },
+]
+
+// ES-locale nav items (P0-2: navbar i18n)
+const esServicesItems: NavItem[] = [
+  {
+    href: '/cloud-infrastructure',
+    label: 'Infraestructura Cloud',
+    desc: 'Entornos AWS, multi-cloud e híbridos',
+    iconPath:
+      'M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z',
+  },
+  {
+    href: '/kubernetes-platforms',
+    label: 'Plataformas Kubernetes',
+    desc: 'Clusters EKS, GKE y autogestionados',
+    iconPath:
+      'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+  },
+  {
+    href: '/devops-automation',
+    label: 'Automatización DevOps',
+    desc: 'Pipelines CI/CD y automatización de flujos',
+    iconPath:
+      'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99',
+  },
+  {
+    href: '/platform-engineering',
+    label: 'Ingeniería de Plataforma',
+    desc: 'Plataformas internas para desarrolladores y herramientas',
+    iconPath:
+      'M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122',
+  },
+  {
+    href: '/observability',
+    label: 'Observabilidad y SRE',
+    desc: 'Monitorización, alertas e ingeniería de fiabilidad',
+    iconPath:
+      'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+  },
+]
+const esSolutionsItems: NavItem[] = [
+  {
+    href: '/solutions/aws-modernization',
+    label: 'Modernización AWS',
+    desc: 'Migra y moderniza tus workloads de AWS',
+    iconPath:
+      'M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    href: '/solutions/kubernetes-adoption',
+    label: 'Adopción de Kubernetes',
+    desc: 'Orquestación de contenedores a escala empresarial',
+    iconPath:
+      'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+  },
+  {
+    href: '/solutions/cicd-transformation',
+    label: 'Transformación CI/CD',
+    desc: 'Acelera la entrega con pipelines automatizados',
+    iconPath: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  },
+  {
+    href: '/solutions/gitops',
+    label: 'Implementación GitOps',
+    desc: 'Operaciones de infraestructura dirigidas por Git',
+    iconPath:
+      'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+  },
+]
+const esIndustriesItems: NavItem[] = [
+  {
+    href: '/industries/healthcare',
+    label: 'Salud',
+    desc: 'Infraestructura cloud conforme con HIPAA',
+    iconPath:
+      'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z',
+  },
+  {
+    href: '/industries/fintech',
+    label: 'Fintech',
+    desc: 'Plataformas financieras seguras y escalables',
+    iconPath:
+      'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z',
+  },
+  {
+    href: '/industries/saas',
+    label: 'SaaS',
+    desc: 'Plataformas cloud-native multi-tenant',
+    iconPath:
+      'M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z',
+  },
+]
+const esResourcesItems: NavItem[] = [
+  {
+    href: '/blog',
+    label: 'Blog',
+    desc: 'Artículos y tutoriales de ingeniería cloud',
+    iconPath:
+      'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+  },
+  {
+    href: '/resources',
+    label: 'Guías y Recursos',
+    desc: 'Guías técnicas y buenas prácticas',
+    iconPath:
+      'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  },
+  {
+    href: '/docs',
+    label: 'Documentación',
+    desc: 'Estándares de ingeniería y guías técnicas',
+    iconPath:
+      'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  },
+  {
+    href: '/architectures',
+    label: 'Centro de Arquitectura',
+    desc: 'Patrones y diagramas de arquitectura de referencia',
+    iconPath:
+      'M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z',
+  },
+  {
+    href: '/assessments',
+    label: 'Herramientas de Evaluación',
+    desc: 'Evalúa tu madurez DevOps y cloud',
+    iconPath:
+      'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+  },
+]
+const esAboutItems: NavItem[] = [
+  {
+    href: '/nosotros',
+    label: 'Nuestro Equipo',
+    desc: 'Ingenieros de plataforma y arquitectos cloud',
+    iconPath:
+      'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+  },
+  {
+    href: '/certifications',
+    label: 'Certificaciones',
+    desc: 'Credenciales verificadas y distintivos de experiencia',
+    iconPath:
+      'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+  },
+  {
+    href: '/open-source',
+    label: 'Open Source',
+    desc: 'Herramientas de nivel producción e implementaciones de referencia',
+    iconPath:
+      'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+  },
+  {
+    href: '/why-lra',
+    label: 'Por qué LRA',
+    desc: 'El caso de lo especializado frente a lo generalista',
+    iconPath:
+      'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    href: '/metodologia',
+    label: 'Metodología',
+    desc: 'Nuestro proceso de ingeniería en 6 fases y estándares',
+    iconPath:
+      'M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2',
+  },
+]
+
+// Active item arrays based on locale
+const activeServicesItems = lang === 'es' ? esServicesItems : servicesItems
+const activeSolutionsItems = lang === 'es' ? esSolutionsItems : solutionsItems
+const activeIndustriesItems = lang === 'es' ? esIndustriesItems : industriesItems
+const activeResourcesItems = lang === 'es' ? esResourcesItems : resourcesItems
+const activeAboutItems = lang === 'es' ? esAboutItems : aboutItems
+
+const isServicesActive =
+  servicesItems.some(
+    (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
+  ) || currentPath.startsWith('/en/services') || currentPath.startsWith('/servicios')
+const isSolutionsActive = solutionsItems.some(
+  (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
+)
+const isIndustriesActive = industriesItems.some(
+  (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
+)
+const isResourcesActive = resourcesItems.some(
+  (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
+)
+const isAboutActive =
+  currentPath === '/nosotros' ||
+  currentPath === '/en/about' ||
+  currentPath === '/certifications' ||
+  currentPath === '/en/certifications' ||
+  currentPath === '/open-source' ||
+  currentPath === '/en/open-source' ||
+  currentPath === '/why-lra' ||
+  currentPath === '/en/why-lra' ||
+  currentPath === '/metodologia' ||
+  currentPath === '/en/methodology'
+const isHomeActive = currentPath === '/' || currentPath === '/en/'
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang === 'zh-cn' ? 'zh-Hans' : lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{titulo} | LRA Cloud Ops</title>
     <meta name="description" content={descripcion} />
-    {
-      shouldNoindex ? (
-        <meta name="robots" content="noindex, nofollow" />
-      ) : (
-        <meta name="robots" content="index, follow, max-image-preview:large" />
-      )
+    {shouldNoindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-image-preview:large" />
     }
     <meta
       name="keywords"
       content={keywords ??
         'cloud infrastructure, platform engineering, DevOps consulting, AWS, Kubernetes, Terraform, GitOps, ArgoCD, Infrastructure as Code, SRE, CI/CD automation'}
     />
-    <meta name="ai-powered" content="Claude Sonnet by Anthropic" />
-    <meta
-      name="google-site-verification"
-      content="h_3sw-ylqW7stWL6yMH3HZ7tZNTOQB7c_xuhoO9k4f4"
-    />
     <link rel="canonical" href={canonicalURL.href} />
-    {
-      hreflangTags.map(({ locale, href }) => (
-        <link rel="alternate" hreflang={locale} href={href} />
-      ))
-    }
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://lracloudops.com/"
-    />
+    {hreflangTags.map(({ locale, href }) => (
+      <link rel="alternate" hreflang={locale} href={href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href="https://lracloudops.com/" />
+
     <meta property="og:title" content={`${titulo} | LRA Cloud Ops`} />
     <meta property="og:description" content={descripcion} />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="LRA Cloud Ops" />
-    <meta
-      property="og:locale"
-      content={{ es: 'es_ES', en: 'en_US' }[lang] ?? 'es_ES'}
-    />
+    <meta property="og:locale" content={{ es: 'es_ES', en: 'en_US', de: 'de_DE', fr: 'fr_FR', it: 'it_IT', 'pt-br': 'pt_BR', ja: 'ja_JP', ko: 'ko_KR', 'zh-cn': 'zh_CN' }[lang] ?? 'es_ES'} />
     <meta property="og:image" content={finalOgImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    {
-      lang === 'es' ? (
-        <meta property="og:locale:alternate" content="en_US" />
-      ) : (
-        <meta property="og:locale:alternate" content="es_ES" />
-      )
-    }
+    <meta property="og:see_also" content="https://www.instagram.com/lracloudops/" />
     {
       ogType === 'article' && (
         <meta property="article:publisher" content="https://lracloudops.com" />
       )
     }
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lracloudops" />
     <meta name="twitter:creator" content="@lracloudops" />
     <meta name="twitter:title" content={`${titulo} | LRA Cloud Ops`} />
     <meta name="twitter:description" content={descripcion} />
     <meta name="twitter:image" content={finalOgImage} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Red+Hat+Mono:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
+
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -234,6 +580,7 @@ const websiteSchema = {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#0A2540" />
+
     <script
       type="application/ld+json"
       set:html={JSON.stringify(organizationSchema)}
@@ -255,50 +602,29 @@ const websiteSchema = {
         <script type="application/ld+json" set:html={JSON.stringify(schema)} />
       )
     }
-    {
-      gaId && (
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-          is:inline
-        />
-      )
-    }
-    <script define:vars={{ gaId }}>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag('js', new Date())
-      if (gaId) gtag('config', gaId)
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JES91JND3F" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JES91JND3F');
     </script>
-    {
-      cfBeacon && (
-        <script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon={`{"token": "${cfBeacon}"}`}
-          is:inline
-        />
-      )
-    }
+
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "a8c0d563c81a41a795b463ef2d94bcc5"}'></script>
   </head>
 
   <body class="bg-white text-gray-900 antialiased">
-    <a
-      href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded focus:outline-none focus:shadow-lg"
-    >
-      {lang === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
-    </a>
-
     <!-- Announcement bar -->
     <div
       id="announcement-bar"
       style="min-height: 40px; background: #0A2540; border-bottom: 1px solid rgba(30,111,255,0.2); display: flex; align-items: center; justify-content: center; position: relative; padding: 6px 48px;"
     >
       <a
-        href={lang === 'es' ? '/contacto' : '/en/contact'}
+        href={contactHref}
         class="flex items-center gap-2 transition-opacity hover:opacity-80 text-center"
         style="font-size: 13px; color: rgba(255,255,255,0.9); text-decoration: none;"
       >
@@ -325,23 +651,1515 @@ const websiteSchema = {
       >
     </div>
 
-    <SiteHeader />
+    <!-- Skip navigation -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:font-semibold"
+      >{skipLabel}</a
+    >
 
+    <!-- ── STICKY NAVBAR ── -->
+    <header
+      id="site-header"
+      class="sticky top-0 z-50 transition-all duration-300"
+      style="background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(15,23,42,0.06);"
+    >
+      <nav
+        class="max-w-7xl mx-auto px-5 sm:px-6 h-[66px] flex items-center justify-between gap-4"
+        aria-label="Main navigation"
+      >
+        <!-- Logo -->
+        <a
+          href={lang === 'en' ? '/en/' : '/'}
+          class="flex items-center gap-2 flex-shrink-0 z-50"
+          aria-label="LRA Cloud Ops — Home"
+        >
+          <!-- Icono siempre visible -->
+          <img
+            src="/lracloudops-icon.svg"
+            alt="LRA Cloud Ops"
+            width="36"
+            height="36"
+            style="width:36px; height:36px; flex-shrink:0;"
+            loading="eager"
+            aria-hidden="true"
+          />
+          <!-- Texto completo: visible en desktop >1024px -->
+          <span class="logo-text-full" aria-hidden="true">LRA CloudOps</span>
+          <!-- Texto corto: visible en tablet 768px-1024px -->
+          <span class="logo-text-short" aria-hidden="true">LRA</span>
+        </a>
+
+        <!-- ── Desktop Nav ── -->
+        <div class="hidden lg:flex items-center gap-0.5">
+          <!-- Home -->
+          <a
+            href={lang === 'en' ? '/en/' : '/'}
+            class={`relative text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 ${isHomeActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+            aria-current={isHomeActive ? 'page' : undefined}
+          >
+            {lang === 'es' ? 'Inicio' : 'Home'}
+            {
+              isHomeActive && (
+                <span
+                  class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full"
+                  style="background:#2563EB;"
+                />
+              )
+            }
+          </a>
+
+          <!-- Services dropdown -->
+          <div class="relative" data-dropdown="services">
+            <button
+              data-dropdown-btn
+              aria-haspopup="true"
+              aria-expanded="false"
+              class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isServicesActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+            >
+              {lang === 'es' ? 'Servicios' : 'Services'}
+              <svg
+                data-dropdown-chevron
+                class="w-3.5 h-3.5 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+              {
+                isServicesActive && (
+                  <span
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full"
+                    style="background:#2563EB;"
+                  />
+                )
+              }
+            </button>
+            <div
+              data-dropdown-menu
+              role="menu"
+              aria-label="Services submenu"
+              class="absolute top-full left-0 mt-2 w-80 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
+              style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+            >
+              <div class="p-2">
+                {
+                  activeServicesItems.map(({ href, label, desc, iconPath }) => {
+                    const active =
+                      currentPath === href || currentPath.startsWith(href + '/')
+                    return (
+                      <a
+                        href={href}
+                        role="menuitem"
+                        class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors group ${active ? '' : 'hover:bg-gray-50'}`}
+                        style={active ? 'background:#EFF6FF;' : ''}
+                      >
+                        <div
+                          class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                          style={
+                            active
+                              ? 'background:#DBEAFE;'
+                              : 'background:#F1F5F9;'
+                          }
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            style={active ? 'color:#2563EB;' : 'color:#64748B;'}
+                            aria-hidden="true"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="1.5"
+                              d={iconPath}
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <div
+                            class="text-sm font-medium"
+                            style={active ? 'color:#1D4ED8;' : 'color:#0F172A;'}
+                          >
+                            {label}
+                          </div>
+                          <div class="text-xs mt-0.5" style="color:#94A3B8;">
+                            {desc}
+                          </div>
+                        </div>
+                      </a>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Solutions dropdown -->
+          <div class="relative" data-dropdown="solutions">
+            <button
+              data-dropdown-btn
+              aria-haspopup="true"
+              aria-expanded="false"
+              class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isSolutionsActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+            >
+              {lang === 'es' ? 'Soluciones' : 'Solutions'}
+              <svg
+                data-dropdown-chevron
+                class="w-3.5 h-3.5 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+              {
+                isSolutionsActive && (
+                  <span
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full"
+                    style="background:#2563EB;"
+                  />
+                )
+              }
+            </button>
+            <div
+              data-dropdown-menu
+              role="menu"
+              aria-label="Solutions submenu"
+              class="absolute top-full left-0 mt-2 w-72 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
+              style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+            >
+              <div class="p-2">
+                {
+                  activeSolutionsItems.map(({ href, label, desc, iconPath }) => {
+                    const active =
+                      currentPath === href || currentPath.startsWith(href + '/')
+                    return (
+                      <a
+                        href={href}
+                        role="menuitem"
+                        class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
+                        style={active ? 'background:#EFF6FF;' : ''}
+                      >
+                        <div
+                          class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                          style={
+                            active
+                              ? 'background:#DBEAFE;'
+                              : 'background:#F1F5F9;'
+                          }
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            style={active ? 'color:#2563EB;' : 'color:#64748B;'}
+                            aria-hidden="true"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="1.5"
+                              d={iconPath}
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <div
+                            class="text-sm font-medium"
+                            style={active ? 'color:#1D4ED8;' : 'color:#0F172A;'}
+                          >
+                            {label}
+                          </div>
+                          <div class="text-xs mt-0.5" style="color:#94A3B8;">
+                            {desc}
+                          </div>
+                        </div>
+                      </a>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Industries dropdown -->
+          <div class="relative" data-dropdown="industries">
+            <button
+              data-dropdown-btn
+              aria-haspopup="true"
+              aria-expanded="false"
+              class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isIndustriesActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+            >
+              {lang === 'es' ? 'Industrias' : 'Industries'}
+              <svg
+                data-dropdown-chevron
+                class="w-3.5 h-3.5 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+              {
+                isIndustriesActive && (
+                  <span
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full"
+                    style="background:#2563EB;"
+                  />
+                )
+              }
+            </button>
+            <div
+              data-dropdown-menu
+              role="menu"
+              aria-label="Industries submenu"
+              class="absolute top-full left-0 mt-2 w-64 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
+              style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+            >
+              <div class="p-2">
+                {
+                  activeIndustriesItems.map(({ href, label, desc, iconPath }) => {
+                    const active =
+                      currentPath === href || currentPath.startsWith(href + '/')
+                    return (
+                      <a
+                        href={href}
+                        role="menuitem"
+                        class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
+                        style={active ? 'background:#EFF6FF;' : ''}
+                      >
+                        <div
+                          class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                          style={
+                            active
+                              ? 'background:#DBEAFE;'
+                              : 'background:#F1F5F9;'
+                          }
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            style={active ? 'color:#2563EB;' : 'color:#64748B;'}
+                            aria-hidden="true"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="1.5"
+                              d={iconPath}
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <div
+                            class="text-sm font-medium"
+                            style={active ? 'color:#1D4ED8;' : 'color:#0F172A;'}
+                          >
+                            {label}
+                          </div>
+                          <div class="text-xs mt-0.5" style="color:#94A3B8;">
+                            {desc}
+                          </div>
+                        </div>
+                      </a>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Resources dropdown -->
+          <div class="relative" data-dropdown="resources">
+            <button
+              data-dropdown-btn
+              aria-haspopup="true"
+              aria-expanded="false"
+              class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isResourcesActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+            >
+              {lang === 'es' ? 'Recursos' : 'Resources'}
+              <svg
+                data-dropdown-chevron
+                class="w-3.5 h-3.5 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+              {
+                isResourcesActive && (
+                  <span
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full"
+                    style="background:#2563EB;"
+                  />
+                )
+              }
+            </button>
+            <div
+              data-dropdown-menu
+              role="menu"
+              aria-label="Resources submenu"
+              class="absolute top-full left-0 mt-2 w-64 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
+              style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+            >
+              <div class="p-2">
+                {
+                  activeResourcesItems.map(({ href, label, desc, iconPath }) => {
+                    const active =
+                      currentPath === href || currentPath.startsWith(href + '/')
+                    return (
+                      <a
+                        href={href}
+                        role="menuitem"
+                        class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
+                        style={active ? 'background:#EFF6FF;' : ''}
+                      >
+                        <div
+                          class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                          style={
+                            active
+                              ? 'background:#DBEAFE;'
+                              : 'background:#F1F5F9;'
+                          }
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            style={active ? 'color:#2563EB;' : 'color:#64748B;'}
+                            aria-hidden="true"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="1.5"
+                              d={iconPath}
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <div
+                            class="text-sm font-medium"
+                            style={active ? 'color:#1D4ED8;' : 'color:#0F172A;'}
+                          >
+                            {label}
+                          </div>
+                          <div class="text-xs mt-0.5" style="color:#94A3B8;">
+                            {desc}
+                          </div>
+                        </div>
+                      </a>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- About dropdown -->
+          <div class="relative" data-dropdown="about">
+            <button
+              data-dropdown-btn
+              aria-haspopup="true"
+              aria-expanded="false"
+              class={`relative inline-flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${isAboutActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
+            >
+              {lang === 'es' ? 'Nosotros' : 'About'}
+              <svg
+                data-dropdown-chevron
+                class="w-3.5 h-3.5 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+              {
+                isAboutActive && (
+                  <span
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-5 rounded-full"
+                    style="background:#2563EB;"
+                  />
+                )
+              }
+            </button>
+            <div
+              data-dropdown-menu
+              role="menu"
+              aria-label="About submenu"
+              class="absolute top-full left-0 mt-2 w-64 rounded-2xl overflow-hidden opacity-0 pointer-events-none"
+              style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 20px 50px rgba(15,23,42,0.14); transform:translateY(-8px); transition:opacity 0.2s ease,transform 0.2s ease;"
+            >
+              <div class="p-2">
+                {
+                  activeAboutItems.map(({ href, label, desc, iconPath }) => {
+                    const esHref =
+                      href === '/about' ? '/nosotros' : href === '/methodology' ? '/metodologia' : href
+                    const enHref =
+                      href === '/about' ? '/en/about' : href === '/methodology' ? '/en/methodology' : `/en${href}`
+                    const resolvedHref = lang === 'es' ? esHref : lang === 'en' ? enHref : href
+                    const active =
+                      currentPath === resolvedHref || currentPath === href
+                    return (
+                      <a
+                        href={resolvedHref}
+                        role="menuitem"
+                        class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
+                        style={active ? 'background:#EFF6FF;' : ''}
+                      >
+                        <div
+                          class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                          style={
+                            active
+                              ? 'background:#DBEAFE;'
+                              : 'background:#F1F5F9;'
+                          }
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            style={active ? 'color:#2563EB;' : 'color:#64748B;'}
+                            aria-hidden="true"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="1.5"
+                              d={iconPath}
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <div
+                            class="text-sm font-medium"
+                            style={active ? 'color:#1D4ED8;' : 'color:#0F172A;'}
+                          >
+                            {label}
+                          </div>
+                          <div class="text-xs mt-0.5" style="color:#94A3B8;">
+                            {desc}
+                          </div>
+                        </div>
+                      </a>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop right: GitHub + CTA + language switcher -->
+        <div class="hidden lg:flex items-center gap-3 flex-shrink-0">
+          <a
+            href="https://github.com/lra-cloud-ops"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+            aria-label="GitHub profile"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href={contactHref}
+            class="text-sm font-semibold text-white px-5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-px active:scale-[0.98]"
+            style="background:#2563EB; box-shadow:0 2px 8px rgba(37,99,235,0.3);"
+          >
+            {ctaLabel}
+          </a>
+          <!-- Desktop language dropdown — Red Hat grouped style -->
+          <div data-lang-dropdown data-lang-style="desktop" class="relative">
+            <button
+              data-lang-dropdown-btn
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors"
+              style="border:1px solid #e2e8f0;"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-label="Select language"
+            >
+              <span aria-hidden="true" style="font-size:0.9rem; line-height:1;">{currentLangInfo.flag}</span>
+              <span class="hidden sm:inline">{currentLangInfo.name}</span>
+              <span class="sm:hidden">{lang.toUpperCase()}</span>
+              <svg
+                data-lang-chevron
+                class="w-3 h-3 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div
+              data-lang-dropdown-menu
+              role="listbox"
+              aria-label="Language options"
+              class="absolute top-full right-0 mt-2 w-52 rounded-xl overflow-hidden opacity-0 pointer-events-none"
+              style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 16px 40px rgba(15,23,42,0.12); transform:translateY(-6px); transition:opacity 0.15s ease,transform 0.15s ease; z-index:200;"
+            >
+              <div class="py-2">
+                {Object.entries(regions).map(([region, locales], regionIdx) => (
+                  <div>
+                    <div class="px-3 pt-2 pb-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">{region}</div>
+                    {locales.map((locale) => {
+                      const info = languages[locale as keyof typeof languages]
+                      const href = localeUrls[locale as keyof typeof languages]
+                      const isActive = locale === lang
+                      return (
+                        <a
+                          href={href}
+                          role="option"
+                          aria-selected={isActive ? 'true' : 'false'}
+                          data-lang-option={locale}
+                          class={`flex items-center gap-2.5 px-3 py-2 text-sm transition-colors ${isActive ? 'font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
+                          style={isActive ? 'color:#0A2540; background:#EEF4FF;' : ''}
+                        >
+                          <span aria-hidden="true">{info.flag}</span>
+                          <span>{info.name}</span>
+                          {isActive && (
+                            <svg class="w-3.5 h-3.5 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </a>
+                      )
+                    })}
+                    {regionIdx < Object.keys(regions).length - 1 && (
+                      <div class="border-t border-gray-100 my-1.5 mx-3" />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button
+          id="menu-btn"
+          class="lg:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100/80 transition-colors"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
+        >
+          <div class="w-5 h-4 flex flex-col justify-between">
+            <span
+              id="bar1"
+              class="block h-0.5 bg-gray-800 rounded-full transition-all duration-300 origin-center"
+            ></span>
+            <span
+              id="bar2"
+              class="block h-0.5 bg-gray-800 rounded-full transition-all duration-300"
+            ></span>
+            <span
+              id="bar3"
+              class="block h-0.5 bg-gray-800 rounded-full transition-all duration-300 origin-center"
+            ></span>
+          </div>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile overlay -->
+    <div
+      id="mobile-overlay"
+      class="fixed inset-0 z-40 lg:hidden pointer-events-none"
+      style="background:rgba(11,18,32,0.5); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); opacity:0; transition:opacity 0.3s ease;"
+      aria-hidden="true"
+    >
+    </div>
+
+    <!-- ── Mobile Drawer ── -->
+    <div
+      id="mobile-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+      class="fixed top-0 right-0 bottom-0 z-40 w-72 lg:hidden flex flex-col"
+      style="background:white; transform:translateX(100%); transition:transform 0.32s cubic-bezier(0.4,0,0.2,1); box-shadow:-12px 0 40px rgba(11,18,32,0.15);"
+    >
+      <!-- Drawer header -->
+      <div
+        class="h-[64px] flex-shrink-0 border-b border-gray-100 flex items-center px-5"
+      >
+        <span
+          class="text-[10px] font-bold uppercase tracking-widest"
+          style="color:#2563EB;">{lang === 'es' ? 'Navegación' : 'Navigation'}</span
+        >
+      </div>
+
+      <!-- Drawer nav -->
+      <nav class="flex-1 overflow-y-auto">
+        <!-- Home -->
+        <a
+          href={lang === 'en' ? '/en/' : '/'}
+          class={`flex items-center gap-3 px-5 py-3.5 text-sm font-medium border-b border-gray-50 transition-colors ${isHomeActive ? 'text-blue-600 bg-blue-50/50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
+          aria-current={isHomeActive ? 'page' : undefined}
+        >
+          {lang === 'es' ? 'Inicio' : 'Home'}
+        </a>
+
+        <!-- Services accordion -->
+        <div data-accordion class="border-b border-gray-50">
+          <button
+            data-accordion-trigger
+            aria-expanded="false"
+            class="flex items-center justify-between w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <span>{lang === 'es' ? 'Servicios' : 'Services'}</span>
+            <svg
+              data-accordion-chevron
+              class="w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            data-accordion-content
+            class="overflow-hidden"
+            style="max-height:0; opacity:0; transition:max-height 0.28s ease, opacity 0.2s ease;"
+          >
+            <div class="px-4 pb-2 pt-1 space-y-0.5">
+              {
+                activeServicesItems.map(({ href, label, iconPath }) => {
+                  const active =
+                    currentPath === href || currentPath.startsWith(href + '/')
+                  return (
+                    <a
+                      href={href}
+                      class={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${active ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'}`}
+                    >
+                      <svg
+                        class="w-4 h-4 flex-shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        style={active ? 'color:#2563EB;' : 'color:#94A3B8;'}
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d={iconPath}
+                        />
+                      </svg>
+                      {label}
+                    </a>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Solutions accordion -->
+        <div data-accordion class="border-b border-gray-50">
+          <button
+            data-accordion-trigger
+            aria-expanded="false"
+            class="flex items-center justify-between w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <span>{lang === 'es' ? 'Soluciones' : 'Solutions'}</span>
+            <svg
+              data-accordion-chevron
+              class="w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            data-accordion-content
+            class="overflow-hidden"
+            style="max-height:0; opacity:0; transition:max-height 0.28s ease, opacity 0.2s ease;"
+          >
+            <div class="px-4 pb-2 pt-1 space-y-0.5">
+              {
+                activeSolutionsItems.map(({ href, label, iconPath }) => {
+                  const active =
+                    currentPath === href || currentPath.startsWith(href + '/')
+                  return (
+                    <a
+                      href={href}
+                      class={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${active ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'}`}
+                    >
+                      <svg
+                        class="w-4 h-4 flex-shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        style={active ? 'color:#2563EB;' : 'color:#94A3B8;'}
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d={iconPath}
+                        />
+                      </svg>
+                      {label}
+                    </a>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Industries accordion -->
+        <div data-accordion class="border-b border-gray-50">
+          <button
+            data-accordion-trigger
+            aria-expanded="false"
+            class="flex items-center justify-between w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <span>{lang === 'es' ? 'Industrias' : 'Industries'}</span>
+            <svg
+              data-accordion-chevron
+              class="w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            data-accordion-content
+            class="overflow-hidden"
+            style="max-height:0; opacity:0; transition:max-height 0.28s ease, opacity 0.2s ease;"
+          >
+            <div class="px-4 pb-2 pt-1 space-y-0.5">
+              {
+                activeIndustriesItems.map(({ href, label, iconPath }) => {
+                  const active =
+                    currentPath === href || currentPath.startsWith(href + '/')
+                  return (
+                    <a
+                      href={href}
+                      class={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${active ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'}`}
+                    >
+                      <svg
+                        class="w-4 h-4 flex-shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        style={active ? 'color:#2563EB;' : 'color:#94A3B8;'}
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d={iconPath}
+                        />
+                      </svg>
+                      {label}
+                    </a>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Resources accordion -->
+        <div data-accordion class="border-b border-gray-50">
+          <button
+            data-accordion-trigger
+            aria-expanded="false"
+            class="flex items-center justify-between w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <span>{lang === 'es' ? 'Recursos' : 'Resources'}</span>
+            <svg
+              data-accordion-chevron
+              class="w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            data-accordion-content
+            class="overflow-hidden"
+            style="max-height:0; opacity:0; transition:max-height 0.28s ease, opacity 0.2s ease;"
+          >
+            <div class="px-4 pb-2 pt-1 space-y-0.5">
+              {
+                activeResourcesItems.map(({ href, label, iconPath }) => {
+                  const active =
+                    currentPath === href || currentPath.startsWith(href + '/')
+                  return (
+                    <a
+                      href={href}
+                      class={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${active ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'}`}
+                    >
+                      <svg
+                        class="w-4 h-4 flex-shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        style={active ? 'color:#2563EB;' : 'color:#94A3B8;'}
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d={iconPath}
+                        />
+                      </svg>
+                      {label}
+                    </a>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- About accordion -->
+        <div data-accordion class="border-b border-gray-50">
+          <button
+            data-accordion-trigger
+            aria-expanded="false"
+            class="flex items-center justify-between w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <span>{lang === 'es' ? 'Nosotros' : 'About'}</span>
+            <svg
+              data-accordion-chevron
+              class="w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            data-accordion-content
+            class="overflow-hidden"
+            style="max-height:0; opacity:0; transition:max-height 0.28s ease, opacity 0.2s ease;"
+          >
+            <div class="px-4 pb-2 pt-1 space-y-0.5">
+              {
+                activeAboutItems.map(({ href, label, iconPath }) => {
+                  const esHref =
+                    href === '/about' ? '/nosotros' : href === '/methodology' ? '/metodologia' : href
+                  const enHref =
+                    href === '/about' ? '/en/about' : href === '/methodology' ? '/en/methodology' : `/en${href}`
+                  const resolvedHref = lang === 'es' ? esHref : lang === 'en' ? enHref : href
+                  const active =
+                    currentPath === resolvedHref || currentPath === href
+                  return (
+                    <a
+                      href={resolvedHref}
+                      class={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${active ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'}`}
+                    >
+                      <svg
+                        class="w-4 h-4 flex-shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        style={active ? 'color:#2563EB;' : 'color:#94A3B8;'}
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d={iconPath}
+                        />
+                      </svg>
+                      {label}
+                    </a>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Language selector (Red Hat grouped style, end of drawer) -->
+        <div class="border-t border-gray-100 mt-1">
+          <div data-lang-dropdown data-lang-style="mobile" class="relative">
+            <button
+              data-lang-dropdown-btn
+              class="flex items-center gap-2 w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-label="Select language"
+            >
+              <span aria-hidden="true" style="font-size:1rem; line-height:1;">{currentLangInfo.flag}</span>
+              <span>{currentLangInfo.name}</span>
+              <svg
+                data-lang-chevron
+                class="w-4 h-4 text-gray-400 transition-transform duration-200 ml-auto flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div
+              data-lang-dropdown-menu
+              role="listbox"
+              aria-label="Language options"
+              class="overflow-hidden"
+              style="max-height:0; opacity:0; transition:max-height 0.3s ease, opacity 0.2s ease; background:#F8FAFC;"
+            >
+              {Object.entries(regions).map(([region, locales]) => (
+                <div>
+                  <div class="px-5 pt-2.5 pb-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">{region}</div>
+                  <div class="px-3 pb-1 space-y-0.5">
+                    {locales.map((locale) => {
+                      const info = languages[locale as keyof typeof languages]
+                      const href = localeUrls[locale as keyof typeof languages]
+                      const isActive = locale === lang
+                      return (
+                        <a
+                          href={href}
+                          role="option"
+                          aria-selected={isActive ? 'true' : 'false'}
+                          data-lang-option={locale}
+                          class={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${isActive ? 'font-semibold' : 'hover:bg-white/80'}`}
+                          style={isActive ? 'color:#0A2540; background:rgba(255,255,255,0.9);' : 'color:#374151;'}
+                        >
+                          <span aria-hidden="true" class="flex-shrink-0">{info.flag}</span>
+                          <span>{info.name}</span>
+                          {isActive && (
+                            <svg class="w-3.5 h-3.5 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </a>
+                      )
+                    })}
+                  </div>
+                </div>
+              ))}
+              <div class="h-3" />
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Drawer footer CTA -->
+      <div class="flex-shrink-0 px-4 pb-6 pt-4 border-t border-gray-100">
+        <a
+          href={contactHref}
+          class="flex items-center justify-center gap-2 w-full text-sm font-semibold text-white py-3.5 rounded-xl transition-all hover:opacity-90 mb-3"
+          style="background:#2563EB; box-shadow:0 4px 14px rgba(37,99,235,0.35);"
+        >
+          {ctaLabel}
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+        <div class="flex gap-2">
+          <a
+            href="https://github.com/lra-cloud-ops"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 flex items-center justify-center gap-1.5 text-xs font-medium text-gray-500 py-2.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            aria-label="GitHub"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              ></path>
+            </svg>
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 flex items-center justify-center gap-1.5 text-xs font-medium text-gray-500 py-2.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            aria-label="LinkedIn"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              ></path>
+            </svg>
+            LinkedIn
+          </a>
+          <a
+            href="https://www.instagram.com/lracloudops/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 flex items-center justify-center gap-1.5 text-xs font-medium text-gray-500 py-2.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            aria-label="Instagram"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MAIN CONTENT ── -->
     <main id="main-content">
       <slot />
     </main>
 
-    <SiteFooter />
+    <!-- ── FOOTER ── -->
+    <footer style="background-color:#0B1220;" role="contentinfo">
+      <div class="max-w-7xl mx-auto px-6 pt-16 pb-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-14">
+          <!-- Brand -->
+          <div class="col-span-2 md:col-span-1">
+            <a
+              href={lang === 'en' ? '/en/' : '/'}
+              class="inline-block mb-5"
+              aria-label="LRA Cloud Ops — Home"
+            >
+              <img
+                src="/logo.svg"
+                alt="LRA Cloud Ops"
+                class="h-9 w-auto"
+                style="filter:brightness(0) invert(1) opacity(0.9);"
+              />
+            </a>
+            <p
+              class="text-sm leading-relaxed mb-6 max-w-xs"
+              style="color:rgba(148,163,184,0.8);"
+            >
+              {
+                lang === 'es'
+                  ? 'Infraestructura cloud, plataformas Kubernetes y automatización DevOps.'
+                  : 'Cloud infrastructure, Kubernetes platforms and DevOps automation.'
+              }
+            </p>
+            <div class="flex gap-2.5 mb-5">
+              <a
+                href="https://github.com/lra-cloud-ops"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-white/15"
+                style="background:rgba(255,255,255,0.08);"
+                aria-label="GitHub"
+              >
+                <svg
+                  class="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-white/15"
+                style="background:rgba(255,255,255,0.08);"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  class="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/lracloudops/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-white/15"
+                style="background:rgba(255,255,255,0.08);"
+                aria-label="Instagram @lracloudops"
+              >
+                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
+            </div>
+            <div
+              class="flex items-center gap-2 text-sm mb-4"
+              style="color:rgba(52,211,153,0.9);"
+            >
+              <span
+                class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"
+                aria-hidden="true"></span>
+              <span
+                >{
+                  lang === 'es'
+                    ? 'Disponible para nuevos proyectos'
+                    : 'Accepting new engagements'
+                }</span
+              >
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span
+                class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full"
+                style="background: rgba(123,66,188,0.15); color: #A78BFA; border: 1px solid rgba(123,66,188,0.3);"
+                >HashiCorp</span
+              >
+              <span
+                class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full"
+                style="background: rgba(4,159,217,0.15); color: #7DD3FC; border: 1px solid rgba(4,159,217,0.3);"
+                >Cisco</span
+              >
+              <span
+                class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full"
+                style="background: rgba(238,49,36,0.15); color: #FCA5A5; border: 1px solid rgba(238,49,36,0.3);"
+                >Fortinet ×2</span
+              >
+            </div>
+          </div>
 
+          <!-- Services -->
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+              {lang === 'es' ? 'Servicios' : 'Services'}
+            </h3>
+            <ul class="space-y-3">
+              {(lang === 'es' ? [
+                { label: 'Infraestructura Cloud', href: '/cloud-infrastructure' },
+                { label: 'Plataformas Kubernetes', href: '/kubernetes-platforms' },
+                { label: 'Automatización DevOps', href: '/devops-automation' },
+                { label: 'Ingeniería de Plataforma', href: '/platform-engineering' },
+                { label: 'Observabilidad & SRE', href: '/observability' },
+                { label: 'Modelos de engagement', href: '/pricing' },
+              ] : [
+                { label: 'Cloud Infrastructure', href: '/en/cloud-infrastructure' },
+                { label: 'Kubernetes Platforms', href: '/en/kubernetes-platforms' },
+                { label: 'DevOps Automation', href: '/en/devops-automation' },
+                { label: 'Platform Engineering', href: '/en/platform-engineering' },
+                { label: 'Observability & SRE', href: '/en/observability' },
+                { label: 'Engagement Models', href: '/en/pricing' },
+              ]).map(({ label, href }) => (
+                <li>
+                  <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+              {lang === 'es' ? 'Recursos' : 'Resources'}
+            </h3>
+            <ul class="space-y-3">
+              {(lang === 'es' ? [
+                { label: 'Blog', href: '/blog' },
+                { label: 'Documentación', href: '/en/docs' },
+                { label: 'Centro de Arquitectura', href: '/en/architectures' },
+                { label: 'Herramientas de evaluación', href: '/assessment' },
+                { label: 'Casos de uso', href: '/proyectos' },
+                { label: 'Open Source', href: '/open-source' },
+                { label: 'Seguridad', href: '/security' },
+              ] : [
+                { label: 'Blog', href: '/en/blog' },
+                { label: 'Documentation', href: '/en/docs' },
+                { label: 'Architecture Center', href: '/en/architectures' },
+                { label: 'Assessment Tools', href: '/en/assessments' },
+                { label: 'Case Studies', href: '/en/projects' },
+                { label: 'Open Source', href: '/en/open-source' },
+                { label: 'Security', href: '/en/security' },
+              ]).map(({ label, href }) => (
+                <li>
+                  <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+              {lang === 'es' ? 'Empresa' : 'Company'}
+            </h3>
+            <ul class="space-y-3">
+              {(lang === 'es' ? [
+                { label: 'Nosotros', href: '/nosotros' },
+                { label: 'Certificaciones', href: '/certifications' },
+                { label: '¿Por qué LRA?', href: '/why-lra' },
+                { label: 'Contacto', href: '/contacto' },
+                { label: 'Privacidad', href: '/privacy' },
+                { label: 'GitHub', href: 'https://github.com/lra-cloud-ops', external: true },
+              ] : ([
+                { label: 'About', href: '/en/about' },
+                { label: 'Certifications', href: '/en/certifications' },
+                { label: 'Why LRA', href: '/en/why-lra' },
+                { label: 'Contact', href: '/en/contact' },
+                { label: 'Privacy', href: '/en/privacy' },
+                { label: 'GitHub', href: 'https://github.com/lra-cloud-ops', external: true },
+              ] as { label: string; href: string; external?: boolean }[])
+              ).map(({ label, href, external }) => (
+                <li>
+                  <a
+                    href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                    class="text-sm transition-colors hover:text-white"
+                    style="color:rgba(148,163,184,0.7);"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer bottom -->
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6"
+          style="border-top:1px solid rgba(255,255,255,0.06);"
+        >
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span class="text-xs" style="color:rgba(148,163,184,0.4);">
+              {lang === 'es'
+                ? '© 2026 LRA Cloud Operations · Licencia MIT · Hecho con Astro + Cloudflare · Consultora con sede en la UE'
+                : '© 2026 LRA Cloud Operations · MIT License · Built with Astro + Cloudflare · EU-based consultancy'}
+            </span>
+            <a
+              href={lang === 'en' ? '/en/privacy' : '/privacy'}
+              class="text-xs transition-colors hover:text-white"
+              style="color:rgba(148,163,184,0.35);"
+              >{lang === 'es' ? 'Privacidad' : 'Privacy Policy'}</a
+            >
+            <a
+              href={lang === 'en' ? '/en/terms' : '/terms'}
+              class="text-xs transition-colors hover:text-white"
+              style="color:rgba(148,163,184,0.35);"
+              >{lang === 'es' ? 'Términos' : 'Terms of Service'}</a
+            >
+          </div>
+          <div class="flex items-center gap-4">
+            <!-- Footer language selector — Red Hat grouped style -->
+            <div data-lang-dropdown data-lang-style="footer" class="relative">
+              <button
+                data-lang-dropdown-btn
+                class="inline-flex items-center gap-1 text-xs transition-colors hover:text-white"
+                style="color:rgba(148,163,184,0.55);"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-label="Select language"
+              >
+                <span aria-hidden="true">{currentLangInfo.flag}</span>
+                <span>{currentLangInfo.name}</span>
+                <svg
+                  data-lang-chevron
+                  class="w-3 h-3 ml-0.5 transition-transform duration-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div
+                data-lang-dropdown-menu
+                role="listbox"
+                class="absolute bottom-full right-0 mb-2 w-52 rounded-xl overflow-hidden opacity-0 pointer-events-none"
+                style="background:#0F1E33; border:1px solid rgba(255,255,255,0.1); box-shadow:0 -4px 20px rgba(0,0,0,0.4); transform:translateY(6px); transition:opacity 0.15s ease,transform 0.15s ease; z-index:200;"
+              >
+                <div class="py-2">
+                  {Object.entries(regions).map(([region, locales], regionIdx) => (
+                    <div>
+                      <div class="px-3 pt-2 pb-1 text-[10px] font-bold uppercase tracking-widest" style="color:rgba(148,163,184,0.4);">{region}</div>
+                      {locales.map((locale) => {
+                        const info = languages[locale as keyof typeof languages]
+                        const href = localeUrls[locale as keyof typeof languages]
+                        const isActive = locale === lang
+                        return (
+                          <a
+                            href={href}
+                            role="option"
+                            aria-selected={isActive ? 'true' : 'false'}
+                            data-lang-option={locale}
+                            class={`flex items-center gap-2 px-3 py-2 text-xs transition-colors ${isActive ? 'font-semibold' : 'hover:bg-white/5'}`}
+                            style={isActive ? 'color:white; background:rgba(30,111,255,0.2);' : 'color:rgba(148,163,184,0.7);'}
+                          >
+                            <span aria-hidden="true">{info.flag}</span>
+                            <span>{info.name}</span>
+                            {isActive && (
+                              <svg class="w-3 h-3 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                              </svg>
+                            )}
+                          </a>
+                        )
+                      })}
+                      {regionIdx < Object.keys(regions).length - 1 && (
+                        <div class="border-t mx-3 my-1.5" style="border-color:rgba(255,255,255,0.07);" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <span style="color:rgba(255,255,255,0.05);" aria-hidden="true"
+              >|</span
+            >
+            <div
+              class="flex items-center gap-1.5 text-xs"
+              style="color:rgba(148,163,184,0.4);"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"
+                aria-hidden="true"></span>
+              Cloudflare Edge Network
+            </div>
+            <span style="color:rgba(255,255,255,0.05);" aria-hidden="true"
+              >|</span
+            >
+            <span
+              class="text-xs font-mono"
+              style="color:rgba(148,163,184,0.25);">v5.0</span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ── Scripts ── -->
     <script>
+      // Global cfTrack helper for Cloudflare Web Analytics custom events
       ;(window as any).cfTrack = function (
         event: string,
         props: Record<string, unknown> = {}
       ) {
-        if ((window as any).cf) (window as any).cf.track(event, props)
+        if ((window as any).cf) {
+          ;(window as any).cf.track(event, props)
+        }
       }
     </script>
+
     <script>
+      // Announcement bar dismiss
       const bar = document.getElementById('announcement-bar')
       const closeBtn = document.getElementById('announcement-close')
       if (bar && localStorage.getItem('announcement-dismissed') === '1')
@@ -351,7 +2169,227 @@ const websiteSchema = {
         localStorage.setItem('announcement-dismissed', '1')
       })
     </script>
+
     <script>
+      // Generic dropdown handler (desktop)
+      const dropdownWrappers = Array.from(
+        document.querySelectorAll('[data-dropdown]')
+      )
+
+      function closeAllDropdowns() {
+        dropdownWrappers.forEach((w) => {
+          const m = w.querySelector<HTMLElement>('[data-dropdown-menu]')
+          const b = w.querySelector<HTMLElement>('[data-dropdown-btn]')
+          const c = w.querySelector<HTMLElement>('[data-dropdown-chevron]')
+          if (m) {
+            m.style.opacity = '0'
+            m.style.pointerEvents = 'none'
+            m.style.transform = 'translateY(-8px)'
+          }
+          if (b) b.setAttribute('aria-expanded', 'false')
+          if (c) c.style.transform = ''
+        })
+      }
+
+      dropdownWrappers.forEach((wrapper) => {
+        const btn = wrapper.querySelector<HTMLElement>('[data-dropdown-btn]')
+        const menu = wrapper.querySelector<HTMLElement>('[data-dropdown-menu]')
+        const chevron = wrapper.querySelector<HTMLElement>(
+          '[data-dropdown-chevron]'
+        )
+        if (!btn || !menu) return
+
+        let closeTimer: ReturnType<typeof setTimeout> | null = null
+
+        function openThis() {
+          if (closeTimer) clearTimeout(closeTimer)
+          // Close sibling dropdowns first
+          dropdownWrappers.forEach((w) => {
+            if (w !== wrapper) {
+              const m = w.querySelector<HTMLElement>('[data-dropdown-menu]')
+              const b = w.querySelector<HTMLElement>('[data-dropdown-btn]')
+              const c = w.querySelector<HTMLElement>('[data-dropdown-chevron]')
+              if (m) {
+                m.style.opacity = '0'
+                m.style.pointerEvents = 'none'
+                m.style.transform = 'translateY(-8px)'
+              }
+              if (b) b.setAttribute('aria-expanded', 'false')
+              if (c) c.style.transform = ''
+            }
+          })
+          menu.style.opacity = '1'
+          menu.style.pointerEvents = 'auto'
+          menu.style.transform = 'translateY(0)'
+          btn.setAttribute('aria-expanded', 'true')
+          if (chevron) chevron.style.transform = 'rotate(180deg)'
+        }
+
+        function closeThis() {
+          menu.style.opacity = '0'
+          menu.style.pointerEvents = 'none'
+          menu.style.transform = 'translateY(-8px)'
+          btn.setAttribute('aria-expanded', 'false')
+          if (chevron) chevron.style.transform = ''
+        }
+
+        wrapper.addEventListener('mouseenter', openThis)
+        wrapper.addEventListener('mouseleave', () => {
+          closeTimer = setTimeout(closeThis, 120)
+        })
+        btn.addEventListener('click', () => {
+          btn.getAttribute('aria-expanded') === 'true'
+            ? closeThis()
+            : openThis()
+        })
+        btn.addEventListener('keydown', (e: KeyboardEvent) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            btn.getAttribute('aria-expanded') === 'true'
+              ? closeThis()
+              : openThis()
+          }
+          if (e.key === 'Escape') closeThis()
+        })
+        menu.addEventListener('mouseenter', () => {
+          if (closeTimer) clearTimeout(closeTimer)
+        })
+        menu.addEventListener('mouseleave', () => {
+          closeTimer = setTimeout(closeThis, 120)
+        })
+      })
+
+      document.addEventListener('click', (e: MouseEvent) => {
+        if (!dropdownWrappers.some((w) => w.contains(e.target as Node)))
+          closeAllDropdowns()
+      })
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape') closeAllDropdowns()
+      })
+    </script>
+
+    <script>
+      // Mobile menu
+      const menuBtn = document.getElementById('menu-btn')
+      const drawer = document.getElementById('mobile-drawer')
+      const overlay = document.getElementById('mobile-overlay')
+      const bar1 = document.getElementById('bar1')
+      const bar2 = document.getElementById('bar2')
+      const bar3 = document.getElementById('bar3')
+      let isOpen = false
+
+      function openMenu() {
+        isOpen = true
+        if (drawer) drawer.style.transform = 'translateX(0)'
+        if (overlay) {
+          overlay.style.opacity = '1'
+          overlay.style.pointerEvents = 'auto'
+        }
+        document.body.style.overflow = 'hidden'
+        if (bar1) bar1.style.transform = 'translateY(6px) rotate(45deg)'
+        if (bar2) bar2.style.opacity = '0'
+        if (bar3) bar3.style.transform = 'translateY(-6px) rotate(-45deg)'
+        menuBtn?.setAttribute('aria-expanded', 'true')
+      }
+
+      function closeMenu() {
+        isOpen = false
+        if (drawer) drawer.style.transform = 'translateX(100%)'
+        if (overlay) {
+          overlay.style.opacity = '0'
+          overlay.style.pointerEvents = 'none'
+        }
+        document.body.style.overflow = ''
+        if (bar1) bar1.style.transform = ''
+        if (bar2) bar2.style.opacity = '1'
+        if (bar3) bar3.style.transform = ''
+        menuBtn?.setAttribute('aria-expanded', 'false')
+      }
+
+      menuBtn?.addEventListener('click', () =>
+        isOpen ? closeMenu() : openMenu()
+      )
+      overlay?.addEventListener('click', closeMenu)
+      document
+        .querySelectorAll('#mobile-drawer a')
+        .forEach((l) => l.addEventListener('click', closeMenu))
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && isOpen) closeMenu()
+      })
+
+      // Mobile accordion
+      const accordions = Array.from(
+        document.querySelectorAll('[data-accordion]')
+      )
+      accordions.forEach((section) => {
+        const trigger = section.querySelector<HTMLElement>(
+          '[data-accordion-trigger]'
+        )
+        const content = section.querySelector<HTMLElement>(
+          '[data-accordion-content]'
+        )
+        const chevron = section.querySelector<HTMLElement>(
+          '[data-accordion-chevron]'
+        )
+        if (!trigger || !content) return
+
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true'
+          // Close all others
+          accordions.forEach((other) => {
+            if (other !== section) {
+              const ot = other.querySelector<HTMLElement>(
+                '[data-accordion-trigger]'
+              )
+              const oc = other.querySelector<HTMLElement>(
+                '[data-accordion-content]'
+              )
+              const ov = other.querySelector<HTMLElement>(
+                '[data-accordion-chevron]'
+              )
+              if (ot) ot.setAttribute('aria-expanded', 'false')
+              if (oc) {
+                oc.style.maxHeight = '0'
+                oc.style.opacity = '0'
+              }
+              if (ov) ov.style.transform = ''
+            }
+          })
+          if (expanded) {
+            trigger.setAttribute('aria-expanded', 'false')
+            content.style.maxHeight = '0'
+            content.style.opacity = '0'
+            if (chevron) chevron.style.transform = ''
+          } else {
+            trigger.setAttribute('aria-expanded', 'true')
+            content.style.maxHeight = content.scrollHeight + 'px'
+            content.style.opacity = '1'
+            if (chevron) chevron.style.transform = 'rotate(180deg)'
+          }
+        })
+      })
+
+      // Navbar scroll shadow
+      const header = document.getElementById('site-header')
+      let scrolled = false
+      window.addEventListener(
+        'scroll',
+        () => {
+          const s = window.scrollY > 10
+          if (s !== scrolled) {
+            scrolled = s
+            if (header)
+              header.style.boxShadow = scrolled
+                ? '0 1px 0 rgba(15,23,42,0.05),0 4px 20px rgba(15,23,42,0.07)'
+                : 'none'
+          }
+        },
+        { passive: true }
+      )
+    </script>
+
+    <script>
+      // Scroll-reveal
       const scrollObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -366,7 +2404,104 @@ const websiteSchema = {
         )
         .forEach((el) => scrollObserver.observe(el))
     </script>
+
     <script>
+      // Language dropdown (🌐) + localStorage preference persistence
+      const LANG_PREF_KEY = 'lang-preference'
+
+      // Save preference on manual selection — no auto-redirect to avoid loops
+      document.querySelectorAll('[data-lang-option]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const v = (el as HTMLElement).dataset.langOption
+          if (v) localStorage.setItem(LANG_PREF_KEY, v)
+        })
+      })
+
+      const langDropdowns = Array.from(
+        document.querySelectorAll('[data-lang-dropdown]')
+      )
+
+      function closeLangDropdown(wrapper: Element) {
+        const m = wrapper.querySelector<HTMLElement>(
+          '[data-lang-dropdown-menu]'
+        )
+        const b = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-btn]')
+        const c = wrapper.querySelector<HTMLElement>('[data-lang-chevron]')
+        const style = (wrapper as HTMLElement).dataset.langStyle
+        if (m) {
+          if (style === 'mobile') {
+            m.style.maxHeight = '0'
+            m.style.opacity = '0'
+          } else {
+            m.style.opacity = '0'
+            m.style.pointerEvents = 'none'
+            m.style.transform =
+              style === 'footer' ? 'translateY(6px)' : 'translateY(-6px)'
+          }
+        }
+        if (b) b.setAttribute('aria-expanded', 'false')
+        if (c) c.style.transform = ''
+      }
+
+      function closeAllLangDropdowns() {
+        langDropdowns.forEach((w) => closeLangDropdown(w))
+      }
+
+      langDropdowns.forEach((wrapper) => {
+        const btn = wrapper.querySelector<HTMLElement>(
+          '[data-lang-dropdown-btn]'
+        )
+        const menu = wrapper.querySelector<HTMLElement>(
+          '[data-lang-dropdown-menu]'
+        )
+        const chevron = wrapper.querySelector<HTMLElement>(
+          '[data-lang-chevron]'
+        )
+        const style = (wrapper as HTMLElement).dataset.langStyle
+        if (!btn || !menu) return
+
+        function openLang() {
+          closeAllLangDropdowns()
+          if (style === 'mobile') {
+            menu!.style.maxHeight = menu!.scrollHeight + 'px'
+            menu!.style.opacity = '1'
+          } else {
+            menu!.style.opacity = '1'
+            menu!.style.pointerEvents = 'auto'
+            menu!.style.transform = 'translateY(0)'
+          }
+          btn!.setAttribute('aria-expanded', 'true')
+          if (chevron) chevron.style.transform = 'rotate(180deg)'
+        }
+
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation()
+          btn!.getAttribute('aria-expanded') === 'true'
+            ? closeLangDropdown(wrapper)
+            : openLang()
+        })
+        btn.addEventListener('keydown', (e: KeyboardEvent) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            btn!.getAttribute('aria-expanded') === 'true'
+              ? closeLangDropdown(wrapper)
+              : openLang()
+          }
+          if (e.key === 'Escape') closeLangDropdown(wrapper)
+        })
+      })
+
+      document.addEventListener('click', (e: MouseEvent) => {
+        if (!langDropdowns.some((w) => w.contains(e.target as Node)))
+          closeAllLangDropdowns()
+      })
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape') closeAllLangDropdowns()
+      })
+    </script>
+
+    <script>
+      // Animated counters
       function animateCounter(el: Element) {
         const target = parseInt((el as HTMLElement).dataset.count || '0', 10)
         const suffix = (el as HTMLElement).dataset.suffix || ''
