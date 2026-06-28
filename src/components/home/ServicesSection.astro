@@ -109,13 +109,11 @@ const allHref = lang === 'es' ? '/servicios' : '/services'
 ---
 
 <section
-  style="background: var(--surface-1); border-top: 1px solid var(--color-gray-200);"
+  class="rh-surface-white rh-section"
+  style="border-top: 1px solid var(--color-gray-200);"
   aria-labelledby="services-heading"
 >
-  <div
-    class="max-w-7xl mx-auto px-6"
-    style="padding-block: var(--section-gap);"
-  >
+  <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-14 animate-fade-up">
       <span class="ds-eyebrow">{badge}</span>
       <h2
@@ -131,14 +129,11 @@ const allHref = lang === 'es' ? '/servicios' : '/services'
       </p>
     </div>
 
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 animate-fade-up"
-      style="gap: var(--gap-2xl);"
-    >
+    <div class="rh-feature-grid animate-fade-up">
       {
         services.map(({ icon, title, desc, href, aiBadge }) => (
-          <div class="feature-item">
-            <div class="feature-icon" aria-hidden="true">
+          <div class="rh-feature-item">
+            <div class="rh-feature-icon" aria-hidden="true">
               <svg
                 class="w-6 h-6"
                 fill="none"
@@ -158,18 +153,11 @@ const allHref = lang === 'es' ? '/servicios' : '/services'
                 class="flex items-center gap-2 mb-2"
                 style="flex-wrap: wrap;"
               >
-                <h3 style="font-size: var(--type-h4); font-weight: 700; color: var(--color-gray-900);">
-                  {title}
-                </h3>
+                <h3 class="rh-feature-title">{title}</h3>
                 {aiBadge && <span class="badge badge-blue">{aiBadge}</span>}
               </div>
-              <p style="font-size: var(--type-sm); line-height: 1.7; color: var(--color-gray-600); margin-bottom: var(--gap-sm);">
-                {desc}
-              </p>
-              <a
-                href={href}
-                style="font-size: var(--type-sm); font-weight: 600; color: var(--color-primary); display: inline-flex; align-items: center; gap: 0.375rem; transition: opacity var(--transition);"
-              >
+              <p class="rh-feature-desc">{desc}</p>
+              <a href={href} class="rh-feature-link">
                 {learnMore}
                 <svg
                   class="w-3.5 h-3.5"
