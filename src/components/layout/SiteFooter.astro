@@ -9,117 +9,17 @@ const localeUrls = Object.fromEntries(
       getAlternateUrl(Astro.url, locale as keyof typeof languages),
   ])
 ) as Record<keyof typeof languages, string>
-
-const isEs = lang === 'es'
-
-const servicesLinks = isEs
-  ? [
-      { label: 'Infraestructura Cloud', href: '/cloud-infrastructure' },
-      { label: 'Plataformas Kubernetes', href: '/kubernetes-platforms' },
-      { label: 'Automatización DevOps', href: '/devops-automation' },
-      { label: 'Ingeniería de Plataforma', href: '/platform-engineering' },
-      { label: 'Observabilidad & SRE', href: '/observability' },
-      { label: 'Modelos de engagement', href: '/pricing' },
-    ]
-  : [
-      { label: 'Cloud Infrastructure', href: '/en/cloud-infrastructure' },
-      { label: 'Kubernetes Platforms', href: '/en/kubernetes-platforms' },
-      { label: 'DevOps Automation', href: '/en/devops-automation' },
-      { label: 'Platform Engineering', href: '/en/platform-engineering' },
-      { label: 'Observability & SRE', href: '/en/observability' },
-      { label: 'Engagement Models', href: '/en/pricing' },
-    ]
-
-const aiLinks = isEs
-  ? [
-      { label: 'AI DevOps', href: '/ai-devops' },
-      { label: 'Infrastructure Review', href: '/infrastructure-review' },
-      { label: 'Generador de Propuesta', href: '/proposal' },
-      { label: 'Optimizador de Costes', href: '/cost-optimizer' },
-      { label: 'Learning Agent', href: '/learn' },
-    ]
-  : [
-      { label: 'AI DevOps', href: '/en/ai-devops' },
-      { label: 'Infrastructure Review', href: '/en/infrastructure-review' },
-      { label: 'Proposal Generator', href: '/en/proposal' },
-      { label: 'Cost Optimizer', href: '/en/cost-optimizer' },
-      { label: 'Learning Agent', href: '/en/learn' },
-    ]
-
-const companyLinks = isEs
-  ? [
-      { label: 'Nosotros', href: '/nosotros' },
-      { label: 'Certificaciones', href: '/certifications' },
-      { label: '¿Por qué LRA?', href: '/why-lra' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Open Source', href: '/open-source' },
-      { label: 'Contacto', href: '/contacto' },
-    ]
-  : [
-      { label: 'About', href: '/en/about' },
-      { label: 'Certifications', href: '/en/certifications' },
-      { label: 'Why LRA', href: '/en/why-lra' },
-      { label: 'Blog', href: '/en/blog' },
-      { label: 'Open Source', href: '/en/open-source' },
-      { label: 'Contact', href: '/en/contact' },
-    ]
-
-const legalLinks = isEs
-  ? [
-      { label: 'Privacidad', href: '/privacy' },
-      { label: 'Términos', href: '/terms' },
-      { label: 'Seguridad', href: '/security' },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/lra-cloud-ops',
-        external: true,
-      },
-    ]
-  : [
-      { label: 'Privacy Policy', href: '/en/privacy' },
-      { label: 'Terms of Service', href: '/en/terms' },
-      { label: 'Security', href: '/en/security' },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/lra-cloud-ops',
-        external: true,
-      },
-    ]
-
-const navCols = [
-  {
-    heading: isEs ? 'Servicios' : 'Services',
-    links: servicesLinks,
-  },
-  {
-    heading: 'LRA AI',
-    links: aiLinks,
-  },
-  {
-    heading: isEs ? 'Empresa' : 'Company',
-    links: companyLinks,
-  },
-  {
-    heading: 'Legal',
-    links: legalLinks,
-  },
-]
+const currentLangInfo = languages[lang] ?? languages['en']
 ---
 
-<footer
-  style="background-color: #111827; border-top: 1px solid rgba(255,255,255,0.08);"
-  role="contentinfo"
->
-  <div class="max-w-7xl mx-auto px-6">
-    <!-- Brand row -->
-    <div
-      class="flex flex-col sm:flex-row items-start justify-between gap-8 py-10"
-      style="border-bottom: 1px solid rgba(255,255,255,0.07);"
-    >
-      <div>
+<footer style="background-color:#0B1220;" role="contentinfo">
+  <div class="max-w-7xl mx-auto px-6 pt-16 pb-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-14">
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
         <a
-          href={isEs ? '/' : '/en/'}
-          class="inline-block mb-4"
+          href={lang === 'en' ? '/en/' : '/'}
+          class="inline-block mb-5"
           aria-label="LRA Cloud Ops — Home"
         >
           <img
@@ -133,16 +33,16 @@ const navCols = [
           />
         </a>
         <p
-          class="text-sm leading-relaxed mb-5 max-w-xs"
-          style="color: #94A3B8;"
+          class="text-sm leading-relaxed mb-6 max-w-xs"
+          style="color:rgba(148,163,184,0.8);"
         >
           {
-            isEs
+            lang === 'es'
               ? 'Infraestructura cloud, plataformas Kubernetes y automatización DevOps.'
               : 'Cloud infrastructure, Kubernetes platforms and DevOps automation.'
           }
         </p>
-        <div class="flex gap-2.5">
+        <div class="flex gap-2.5 mb-5">
           <a
             href="https://github.com/lra-cloud-ops"
             target="_blank"
@@ -208,91 +108,263 @@ const navCols = [
             >
           </a>
         </div>
-      </div>
-      <div class="flex flex-col items-start sm:items-end gap-3">
         <div
-          class="flex items-center gap-2 text-sm"
-          style="color: rgba(52,211,153,0.9);"
+          class="flex items-center gap-2 text-sm mb-4"
+          style="color:rgba(52,211,153,0.9);"
         >
           <span
             class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"
             aria-hidden="true"></span>
           <span
             >{
-              isEs
+              lang === 'es'
                 ? 'Disponible para nuevos proyectos'
                 : 'Accepting new engagements'
             }</span
           >
         </div>
         <div class="flex flex-wrap gap-1.5">
-          <span class="chip-dark">HashiCorp</span>
-          <span class="chip-dark">Cisco</span>
-          <span class="chip-dark">Fortinet ×2</span>
+          <span
+            class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full"
+            style="background: rgba(123,66,188,0.15); color: #A78BFA; border: 1px solid rgba(123,66,188,0.3);"
+            >HashiCorp</span
+          >
+          <span
+            class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full"
+            style="background: rgba(4,159,217,0.15); color: #7DD3FC; border: 1px solid rgba(4,159,217,0.3);"
+            >Cisco</span
+          >
+          <span
+            class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full"
+            style="background: rgba(238,49,36,0.15); color: #FCA5A5; border: 1px solid rgba(238,49,36,0.3);"
+            >Fortinet ×2</span
+          >
         </div>
       </div>
-    </div>
 
-    <!-- 4-column nav grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-10">
-      {
-        navCols.map(({ heading: colHeading, links }) => (
-          <div>
-            <h3
-              class="text-xs font-bold uppercase tracking-widest mb-5"
-              style="color: #ffffff;"
-            >
-              {colHeading}
-            </h3>
-            <ul class="space-y-3">
-              {links.map(
-                ({
-                  label,
-                  href,
-                  external,
-                }: {
-                  label: string
-                  href: string
-                  external?: boolean
-                }) => (
-                  <li>
-                    <a
-                      href={href}
-                      target={external ? '_blank' : undefined}
-                      rel={external ? 'noopener noreferrer' : undefined}
-                      class="text-sm transition-colors hover:text-white"
-                      style="color: #94A3B8;"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
-        ))
-      }
+      <!-- Services -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+          {lang === 'es' ? 'Servicios' : 'Services'}
+        </h3>
+        <ul class="space-y-3">
+          {
+            (lang === 'es'
+              ? [
+                  {
+                    label: 'Infraestructura Cloud',
+                    href: '/cloud-infrastructure',
+                  },
+                  {
+                    label: 'Plataformas Kubernetes',
+                    href: '/kubernetes-platforms',
+                  },
+                  {
+                    label: 'Automatización DevOps',
+                    href: '/devops-automation',
+                  },
+                  {
+                    label: 'Ingeniería de Plataforma',
+                    href: '/platform-engineering',
+                  },
+                  { label: 'Observabilidad & SRE', href: '/observability' },
+                  { label: 'Modelos de engagement', href: '/pricing' },
+                ]
+              : [
+                  {
+                    label: 'Cloud Infrastructure',
+                    href: '/en/cloud-infrastructure',
+                  },
+                  {
+                    label: 'Kubernetes Platforms',
+                    href: '/en/kubernetes-platforms',
+                  },
+                  { label: 'DevOps Automation', href: '/en/devops-automation' },
+                  {
+                    label: 'Platform Engineering',
+                    href: '/en/platform-engineering',
+                  },
+                  { label: 'Observability & SRE', href: '/en/observability' },
+                  { label: 'Engagement Models', href: '/en/pricing' },
+                ]
+            ).map(({ label, href }) => (
+              <li>
+                <a
+                  href={href}
+                  class="text-sm transition-colors hover:text-white"
+                  style="color:rgba(148,163,184,0.7);"
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+          {lang === 'es' ? 'Recursos' : 'Resources'}
+        </h3>
+        <ul class="space-y-3">
+          {
+            (lang === 'es'
+              ? [
+                  { label: 'AI DevOps', href: '/ai-devops' },
+                  {
+                    label: 'Infrastructure Review',
+                    href: '/infrastructure-review',
+                  },
+                  { label: 'Generador de Propuesta', href: '/proposal' },
+                  { label: 'Optimizador de Costes', href: '/cost-optimizer' },
+                  { label: 'Learning Agent', href: '/learn' },
+                  { label: 'Auditoría de Seguridad', href: '/security-audit' },
+                  { label: 'Arquitecto AWS', href: '/aws-architect' },
+                  { label: 'Incident Response', href: '/incident-response' },
+                  { label: 'Generador de Docs', href: '/documentation' },
+                  { label: 'Entrevista DevOps', href: '/interview' },
+                  { label: 'Revisar CV', href: '/resume-review' },
+                  { label: 'AWS CLI Agent', href: '/aws-cli' },
+                  { label: 'Blog', href: '/blog' },
+                  { label: 'Documentación', href: '/en/docs' },
+                  {
+                    label: 'Centro de Arquitectura',
+                    href: '/en/architectures',
+                  },
+                  { label: 'Herramientas de evaluación', href: '/assessment' },
+                  { label: 'Checklist AWS', href: '/checklist' },
+                  { label: 'Casos de uso', href: '/proyectos' },
+                  { label: 'Open Source', href: '/open-source' },
+                  { label: 'Calculadora ROI', href: '/roi-calculator' },
+                  { label: 'Seguridad', href: '/security' },
+                ]
+              : [
+                  { label: 'AI DevOps', href: '/en/ai-devops' },
+                  {
+                    label: 'Infrastructure Review',
+                    href: '/en/infrastructure-review',
+                  },
+                  { label: 'Proposal Generator', href: '/en/proposal' },
+                  { label: 'Cost Optimizer', href: '/en/cost-optimizer' },
+                  { label: 'Learning Agent', href: '/en/learn' },
+                  { label: 'Security Audit', href: '/en/security-audit' },
+                  { label: 'AWS Architect', href: '/en/aws-architect' },
+                  { label: 'Incident Response', href: '/en/incident-response' },
+                  { label: 'Doc Generator', href: '/en/documentation' },
+                  { label: 'DevOps Interview', href: '/en/interview' },
+                  { label: 'Resume Review', href: '/en/resume-review' },
+                  { label: 'AWS CLI Agent', href: '/en/aws-cli' },
+                  { label: 'Blog', href: '/en/blog' },
+                  { label: 'Documentation', href: '/en/docs' },
+                  { label: 'Architecture Center', href: '/en/architectures' },
+                  { label: 'Assessment Tools', href: '/en/assessments' },
+                  { label: 'AWS Checklist', href: '/en/checklist' },
+                  { label: 'Case Studies', href: '/en/projects' },
+                  { label: 'Open Source', href: '/en/open-source' },
+                  { label: 'ROI Calculator', href: '/en/roi-calculator' },
+                  { label: 'Security', href: '/en/security' },
+                ]
+            ).map(({ label, href }) => (
+              <li>
+                <a
+                  href={href}
+                  class="text-sm transition-colors hover:text-white"
+                  style="color:rgba(148,163,184,0.7);"
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+          {lang === 'es' ? 'Empresa' : 'Company'}
+        </h3>
+        <ul class="space-y-3">
+          {
+            (lang === 'es'
+              ? [
+                  { label: 'Nosotros', href: '/nosotros' },
+                  { label: 'Certificaciones', href: '/certifications' },
+                  { label: '¿Por qué LRA?', href: '/why-lra' },
+                  { label: 'Agentes IA', href: '/agents' },
+                  { label: 'Contacto', href: '/contacto' },
+                  { label: 'Privacidad', href: '/privacy' },
+                  {
+                    label: 'GitHub',
+                    href: 'https://github.com/lra-cloud-ops',
+                    external: true,
+                  },
+                ]
+              : ([
+                  { label: 'About', href: '/en/about' },
+                  { label: 'Certifications', href: '/en/certifications' },
+                  { label: 'Why LRA', href: '/en/why-lra' },
+                  { label: 'AI Agents', href: '/en/agents' },
+                  { label: 'Contact', href: '/en/contact' },
+                  { label: 'Privacy', href: '/en/privacy' },
+                  {
+                    label: 'GitHub',
+                    href: 'https://github.com/lra-cloud-ops',
+                    external: true,
+                  },
+                ] as { label: string; href: string; external?: boolean }[])
+            ).map(({ label, href, external }) => (
+              <li>
+                <a
+                  href={href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noopener noreferrer' : undefined}
+                  class="text-sm transition-colors hover:text-white"
+                  style="color:rgba(148,163,184,0.7);"
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
 
     <!-- Footer bottom -->
     <div
-      class="flex flex-col sm:flex-row justify-between items-center gap-4 py-6"
-      style="border-top: 1px solid rgba(255,255,255,0.06);"
+      class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6"
+      style="border-top:1px solid rgba(255,255,255,0.06);"
     >
-      <span class="text-xs" style="color: rgba(148,163,184,0.4);">
-        {
-          isEs
-            ? '© 2026 LRA Cloud Operations · Hecho con Astro · Desplegado con Cloudflare'
-            : '© 2026 LRA Cloud Operations · Built with Astro · Deployed with Cloudflare'
-        }
-      </span>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <span class="text-xs" style="color:rgba(148,163,184,0.4);">
+          {
+            lang === 'es'
+              ? '© 2026 LRA Cloud Operations · Licencia MIT · Hecho con Astro + Cloudflare · Consultora con sede en la UE'
+              : '© 2026 LRA Cloud Operations · MIT License · Built with Astro + Cloudflare · EU-based consultancy'
+          }
+        </span>
+        <a
+          href={lang === 'en' ? '/en/privacy' : '/privacy'}
+          class="text-xs transition-colors hover:text-white"
+          style="color:rgba(148,163,184,0.35);"
+          >{lang === 'es' ? 'Privacidad' : 'Privacy Policy'}</a
+        >
+        <a
+          href={lang === 'en' ? '/en/terms' : '/terms'}
+          class="text-xs transition-colors hover:text-white"
+          style="color:rgba(148,163,184,0.35);"
+          >{lang === 'es' ? 'Términos' : 'Terms of Service'}</a
+        >
+      </div>
       <div class="flex items-center gap-4">
-        <!-- Language selector -->
+        <!-- Footer language selector -->
         <div data-lang-dropdown data-lang-style="footer" class="relative">
           <button
             data-lang-dropdown-btn
             class="inline-flex items-center gap-1 text-xs transition-colors hover:text-white"
-            style="color: rgba(148,163,184,0.55);"
+            style="color:rgba(148,163,184,0.55);"
             aria-haspopup="listbox"
             aria-expanded="false"
             aria-label="Select language"
@@ -313,7 +385,7 @@ const navCols = [
                 d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
               ></path>
             </svg>
-            <span>{isEs ? 'Español' : 'English'}</span>
+            <span>{lang === 'es' ? 'Español' : 'English'}</span>
             <svg
               data-lang-chevron
               class="w-3 h-3 ml-0.5 transition-transform duration-200"
@@ -336,7 +408,7 @@ const navCols = [
           >
             <div class="py-2">
               {
-                Object.entries(regions).map(([, locales], regionIdx) => (
+                Object.entries(regions).map(([region, locales], regionIdx) => (
                   <div>
                     {locales.map((locale) => {
                       const info = languages[locale as keyof typeof languages]
@@ -398,6 +470,10 @@ const navCols = [
             aria-hidden="true"></span>
           Cloudflare Edge Network
         </div>
+        <span style="color:rgba(255,255,255,0.05);" aria-hidden="true">|</span>
+        <span class="text-xs font-mono" style="color:rgba(148,163,184,0.25);"
+          >v5.0</span
+        >
       </div>
     </div>
   </div>
