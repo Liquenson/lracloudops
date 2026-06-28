@@ -1,6 +1,12 @@
 ---
 import '../styles/global.css'
-import { getLangFromUrl, languages, regions, getAlternateUrl, getHreflangTags } from '../i18n'
+import {
+  getLangFromUrl,
+  languages,
+  regions,
+  getAlternateUrl,
+  getHreflangTags,
+} from '../i18n'
 import AgentChat from '../components/AgentChat.astro'
 
 interface Props {
@@ -32,7 +38,8 @@ const shouldNoindex = isMinorLocale && isFallbackOnlyPath
 const localeUrls = Object.fromEntries(
   Object.keys(languages).map((locale) => [
     locale,
-    'https://lracloudops.com' + getAlternateUrl(Astro.url, locale as keyof typeof languages),
+    'https://lracloudops.com' +
+      getAlternateUrl(Astro.url, locale as keyof typeof languages),
   ])
 ) as Record<keyof typeof languages, string>
 const enUrl = localeUrls['en']
@@ -138,7 +145,6 @@ const organizationSchema = {
   sameAs: [
     'https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/',
     'https://github.com/lra-cloud-ops',
-    'https://www.instagram.com/lracloudops/',
   ],
 }
 const websiteSchema = {
@@ -317,8 +323,7 @@ const aboutItems: NavItem[] = [
     href: '/why-lra',
     label: 'Why LRA',
     desc: 'The case for specialized over generalist',
-    iconPath:
-      'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+    iconPath: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
     href: '/methodology',
@@ -482,8 +487,7 @@ const esAboutItems: NavItem[] = [
     href: '/es/why-lra',
     label: 'Por qué LRA',
     desc: 'El caso de lo especializado frente a lo generalista',
-    iconPath:
-      'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+    iconPath: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
     href: '/es/metodologia',
@@ -497,14 +501,17 @@ const esAboutItems: NavItem[] = [
 // Active item arrays based on locale
 const activeServicesItems = lang === 'es' ? esServicesItems : servicesItems
 const activeSolutionsItems = lang === 'es' ? esSolutionsItems : solutionsItems
-const activeIndustriesItems = lang === 'es' ? esIndustriesItems : industriesItems
+const activeIndustriesItems =
+  lang === 'es' ? esIndustriesItems : industriesItems
 const activeResourcesItems = lang === 'es' ? esResourcesItems : resourcesItems
 const activeAboutItems = lang === 'es' ? esAboutItems : aboutItems
 
 const isServicesActive =
   servicesItems.some(
     (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
-  ) || currentPath.startsWith('/services') || currentPath.startsWith('/es/servicios')
+  ) ||
+  currentPath.startsWith('/services') ||
+  currentPath.startsWith('/es/servicios')
 const isSolutionsActive = solutionsItems.some(
   (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
 )
@@ -535,9 +542,12 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{titulo} | LRA Cloud Ops</title>
     <meta name="description" content={descripcion} />
-    {shouldNoindex
-      ? <meta name="robots" content="noindex, nofollow" />
-      : <meta name="robots" content="index, follow, max-image-preview:large" />
+    {
+      shouldNoindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+      )
     }
     <meta
       name="keywords"
@@ -545,10 +555,16 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
         'cloud infrastructure, platform engineering, DevOps consulting, AWS, Kubernetes, Terraform, GitOps, ArgoCD, Infrastructure as Code, SRE, CI/CD automation'}
     />
     <link rel="canonical" href={canonicalURL.href} />
-    {hreflangTags.map(({ locale, href }) => (
-      <link rel="alternate" hreflang={locale} href={href} />
-    ))}
-    <link rel="alternate" hreflang="x-default" href="https://lracloudops.com/" />
+    {
+      hreflangTags.map(({ locale, href }) => (
+        <link rel="alternate" hreflang={locale} href={href} />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://lracloudops.com/"
+    />
 
     <meta property="og:title" content={`${titulo} | LRA Cloud Ops`} />
     <meta property="og:description" content={descripcion} />
@@ -559,7 +575,6 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
     <meta property="og:image" content={finalOgImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:see_also" content="https://www.instagram.com/lracloudops/" />
     {
       ogType === 'article' && (
         <meta property="article:publisher" content="https://lracloudops.com" />
@@ -603,12 +618,17 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
       )
     }
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JES91JND3F" is:inline></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-JES91JND3F"
+      is:inline></script>
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JES91JND3F');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-JES91JND3F')
     </script>
 
     <script
@@ -844,54 +864,61 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
             >
               <div class="p-2">
                 {
-                  activeSolutionsItems.map(({ href, label, desc, iconPath }) => {
-                    const active =
-                      currentPath === href || currentPath.startsWith(href + '/')
-                    return (
-                      <a
-                        href={href}
-                        role="menuitem"
-                        class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
-                        style={active ? 'background:#EFF6FF;' : ''}
-                      >
-                        <div
-                          class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                          style={
-                            active
-                              ? 'background:#DBEAFE;'
-                              : 'background:#F1F5F9;'
-                          }
+                  activeSolutionsItems.map(
+                    ({ href, label, desc, iconPath }) => {
+                      const active =
+                        currentPath === href ||
+                        currentPath.startsWith(href + '/')
+                      return (
+                        <a
+                          href={href}
+                          role="menuitem"
+                          class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
+                          style={active ? 'background:#EFF6FF;' : ''}
                         >
-                          <svg
-                            class="w-4 h-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            style={active ? 'color:#2563EB;' : 'color:#64748B;'}
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="1.5"
-                              d={iconPath}
-                            />
-                          </svg>
-                        </div>
-                        <div>
                           <div
-                            class="text-sm font-medium"
-                            style={active ? 'color:#1D4ED8;' : 'color:#0F172A;'}
+                            class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                            style={
+                              active
+                                ? 'background:#DBEAFE;'
+                                : 'background:#F1F5F9;'
+                            }
                           >
-                            {label}
+                            <svg
+                              class="w-4 h-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              style={
+                                active ? 'color:#2563EB;' : 'color:#64748B;'
+                              }
+                              aria-hidden="true"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d={iconPath}
+                              />
+                            </svg>
                           </div>
-                          <div class="text-xs mt-0.5" style="color:#94A3B8;">
-                            {desc}
+                          <div>
+                            <div
+                              class="text-sm font-medium"
+                              style={
+                                active ? 'color:#1D4ED8;' : 'color:#0F172A;'
+                              }
+                            >
+                              {label}
+                            </div>
+                            <div class="text-xs mt-0.5" style="color:#94A3B8;">
+                              {desc}
+                            </div>
                           </div>
-                        </div>
-                      </a>
-                    )
-                  })
+                        </a>
+                      )
+                    }
+                  )
                 }
               </div>
             </div>
@@ -938,54 +965,61 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
             >
               <div class="p-2">
                 {
-                  activeIndustriesItems.map(({ href, label, desc, iconPath }) => {
-                    const active =
-                      currentPath === href || currentPath.startsWith(href + '/')
-                    return (
-                      <a
-                        href={href}
-                        role="menuitem"
-                        class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
-                        style={active ? 'background:#EFF6FF;' : ''}
-                      >
-                        <div
-                          class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                          style={
-                            active
-                              ? 'background:#DBEAFE;'
-                              : 'background:#F1F5F9;'
-                          }
+                  activeIndustriesItems.map(
+                    ({ href, label, desc, iconPath }) => {
+                      const active =
+                        currentPath === href ||
+                        currentPath.startsWith(href + '/')
+                      return (
+                        <a
+                          href={href}
+                          role="menuitem"
+                          class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
+                          style={active ? 'background:#EFF6FF;' : ''}
                         >
-                          <svg
-                            class="w-4 h-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            style={active ? 'color:#2563EB;' : 'color:#64748B;'}
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="1.5"
-                              d={iconPath}
-                            />
-                          </svg>
-                        </div>
-                        <div>
                           <div
-                            class="text-sm font-medium"
-                            style={active ? 'color:#1D4ED8;' : 'color:#0F172A;'}
+                            class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                            style={
+                              active
+                                ? 'background:#DBEAFE;'
+                                : 'background:#F1F5F9;'
+                            }
                           >
-                            {label}
+                            <svg
+                              class="w-4 h-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              style={
+                                active ? 'color:#2563EB;' : 'color:#64748B;'
+                              }
+                              aria-hidden="true"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d={iconPath}
+                              />
+                            </svg>
                           </div>
-                          <div class="text-xs mt-0.5" style="color:#94A3B8;">
-                            {desc}
+                          <div>
+                            <div
+                              class="text-sm font-medium"
+                              style={
+                                active ? 'color:#1D4ED8;' : 'color:#0F172A;'
+                              }
+                            >
+                              {label}
+                            </div>
+                            <div class="text-xs mt-0.5" style="color:#94A3B8;">
+                              {desc}
+                            </div>
                           </div>
-                        </div>
-                      </a>
-                    )
-                  })
+                        </a>
+                      )
+                    }
+                  )
                 }
               </div>
             </div>
@@ -1032,54 +1066,61 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
             >
               <div class="p-2">
                 {
-                  activeResourcesItems.map(({ href, label, desc, iconPath }) => {
-                    const active =
-                      currentPath === href || currentPath.startsWith(href + '/')
-                    return (
-                      <a
-                        href={href}
-                        role="menuitem"
-                        class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
-                        style={active ? 'background:#EFF6FF;' : ''}
-                      >
-                        <div
-                          class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                          style={
-                            active
-                              ? 'background:#DBEAFE;'
-                              : 'background:#F1F5F9;'
-                          }
+                  activeResourcesItems.map(
+                    ({ href, label, desc, iconPath }) => {
+                      const active =
+                        currentPath === href ||
+                        currentPath.startsWith(href + '/')
+                      return (
+                        <a
+                          href={href}
+                          role="menuitem"
+                          class={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${active ? '' : 'hover:bg-gray-50'}`}
+                          style={active ? 'background:#EFF6FF;' : ''}
                         >
-                          <svg
-                            class="w-4 h-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            style={active ? 'color:#2563EB;' : 'color:#64748B;'}
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="1.5"
-                              d={iconPath}
-                            />
-                          </svg>
-                        </div>
-                        <div>
                           <div
-                            class="text-sm font-medium"
-                            style={active ? 'color:#1D4ED8;' : 'color:#0F172A;'}
+                            class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                            style={
+                              active
+                                ? 'background:#DBEAFE;'
+                                : 'background:#F1F5F9;'
+                            }
                           >
-                            {label}
+                            <svg
+                              class="w-4 h-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              style={
+                                active ? 'color:#2563EB;' : 'color:#64748B;'
+                              }
+                              aria-hidden="true"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d={iconPath}
+                              />
+                            </svg>
                           </div>
-                          <div class="text-xs mt-0.5" style="color:#94A3B8;">
-                            {desc}
+                          <div>
+                            <div
+                              class="text-sm font-medium"
+                              style={
+                                active ? 'color:#1D4ED8;' : 'color:#0F172A;'
+                              }
+                            >
+                              {label}
+                            </div>
+                            <div class="text-xs mt-0.5" style="color:#94A3B8;">
+                              {desc}
+                            </div>
                           </div>
-                        </div>
-                      </a>
-                    )
-                  })
+                        </a>
+                      )
+                    }
+                  )
                 }
               </div>
             </div>
@@ -1128,9 +1169,14 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
                 {
                   activeAboutItems.map(({ href, label, desc, iconPath }) => {
                     const esHref =
-                      href === '/about' ? '/nosotros' : href === '/methodology' ? '/metodologia' : href
+                      href === '/about'
+                        ? '/nosotros'
+                        : href === '/methodology'
+                          ? '/metodologia'
+                          : href
                     const enHref = href
-                    const resolvedHref = lang === 'es' ? esHref : lang === 'en' ? enHref : href
+                    const resolvedHref =
+                      lang === 'es' ? esHref : lang === 'en' ? enHref : href
                     const active =
                       currentPath === resolvedHref || currentPath === href
                     return (
@@ -1223,7 +1269,9 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
               aria-expanded="false"
               aria-label="Select language"
             >
-              <span aria-hidden="true" style="font-size:0.9rem; line-height:1;">{currentLangInfo.flag}</span>
+              <span aria-hidden="true" style="font-size:0.9rem; line-height:1;"
+                >{currentLangInfo.flag}</span
+              >
               <span class="hidden sm:inline">{currentLangInfo.name}</span>
               <span class="sm:hidden">{lang.toUpperCase()}</span>
               <svg
@@ -1234,7 +1282,11 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
                 stroke="currentColor"
                 aria-hidden="true"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div
@@ -1245,37 +1297,61 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
               style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 16px 40px rgba(15,23,42,0.12); transform:translateY(-6px); transition:opacity 0.15s ease,transform 0.15s ease; z-index:200;"
             >
               <div class="py-2">
-                {Object.entries(regions).map(([region, locales], regionIdx) => (
-                  <div>
-                    <div class="px-3 pt-2 pb-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">{region}</div>
-                    {locales.map((locale) => {
-                      const info = languages[locale as keyof typeof languages]
-                      const href = localeUrls[locale as keyof typeof languages]
-                      const isActive = locale === lang
-                      return (
-                        <a
-                          href={href}
-                          role="option"
-                          aria-selected={isActive ? 'true' : 'false'}
-                          data-lang-option={locale}
-                          class={`flex items-center gap-2.5 px-3 py-2 text-sm transition-colors ${isActive ? 'font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
-                          style={isActive ? 'color:#0A2540; background:#EEF4FF;' : ''}
-                        >
-                          <span aria-hidden="true">{info.flag}</span>
-                          <span>{info.name}</span>
-                          {isActive && (
-                            <svg class="w-3.5 h-3.5 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                            </svg>
-                          )}
-                        </a>
-                      )
-                    })}
-                    {regionIdx < Object.keys(regions).length - 1 && (
-                      <div class="border-t border-gray-100 my-1.5 mx-3" />
-                    )}
-                  </div>
-                ))}
+                {
+                  Object.entries(regions).map(
+                    ([region, locales], regionIdx) => (
+                      <div>
+                        <div class="px-3 pt-2 pb-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                          {region}
+                        </div>
+                        {locales.map((locale) => {
+                          const info =
+                            languages[locale as keyof typeof languages]
+                          const href =
+                            localeUrls[locale as keyof typeof languages]
+                          const isActive = locale === lang
+                          return (
+                            <a
+                              href={href}
+                              role="option"
+                              aria-selected={isActive ? 'true' : 'false'}
+                              data-lang-option={locale}
+                              class={`flex items-center gap-2.5 px-3 py-2 text-sm transition-colors ${isActive ? 'font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
+                              style={
+                                isActive
+                                  ? 'color:#0A2540; background:#EEF4FF;'
+                                  : ''
+                              }
+                            >
+                              <span aria-hidden="true">{info.flag}</span>
+                              <span>{info.name}</span>
+                              {isActive && (
+                                <svg
+                                  class="w-3.5 h-3.5 ml-auto flex-shrink-0"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  style="color:#1E6FFF;"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2.5"
+                                    d="M5 13l4 4L19 7"
+                                  />
+                                </svg>
+                              )}
+                            </a>
+                          )
+                        })}
+                        {regionIdx < Object.keys(regions).length - 1 && (
+                          <div class="border-t border-gray-100 my-1.5 mx-3" />
+                        )}
+                      </div>
+                    )
+                  )
+                }
               </div>
             </div>
           </div>
@@ -1331,7 +1407,8 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
       >
         <span
           class="text-[10px] font-bold uppercase tracking-widest"
-          style="color:#2563EB;">{lang === 'es' ? 'Navegación' : 'Navigation'}</span
+          style="color:#2563EB;"
+          >{lang === 'es' ? 'Navegación' : 'Navigation'}</span
         >
       </div>
 
@@ -1626,10 +1703,19 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
               {
                 activeAboutItems.map(({ href, label, iconPath }) => {
                   const esHref =
-                    href === '/about' ? '/nosotros' : href === '/methodology' ? '/metodologia' : href
+                    href === '/about'
+                      ? '/nosotros'
+                      : href === '/methodology'
+                        ? '/metodologia'
+                        : href
                   const enHref =
-                    href === '/about' ? '/about' : href === '/methodology' ? '/methodology' : `/en${href}`
-                  const resolvedHref = lang === 'es' ? esHref : lang === 'en' ? enHref : href
+                    href === '/about'
+                      ? '/about'
+                      : href === '/methodology'
+                        ? '/methodology'
+                        : `/en${href}`
+                  const resolvedHref =
+                    lang === 'es' ? esHref : lang === 'en' ? enHref : href
                   const active =
                     currentPath === resolvedHref || currentPath === href
                   return (
@@ -1671,7 +1757,9 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
               aria-expanded="false"
               aria-label="Select language"
             >
-              <span aria-hidden="true" style="font-size:1rem; line-height:1;">{currentLangInfo.flag}</span>
+              <span aria-hidden="true" style="font-size:1rem; line-height:1;"
+                >{currentLangInfo.flag}</span
+              >
               <span>{currentLangInfo.name}</span>
               <svg
                 data-lang-chevron
@@ -1681,7 +1769,11 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
                 stroke="currentColor"
                 aria-hidden="true"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div
@@ -1691,37 +1783,60 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
               class="overflow-hidden"
               style="max-height:0; opacity:0; transition:max-height 0.3s ease, opacity 0.2s ease; background:#F8FAFC;"
             >
-              {Object.entries(regions).map(([region, locales]) => (
-                <div>
-                  <div class="px-5 pt-2.5 pb-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">{region}</div>
-                  <div class="px-3 pb-1 space-y-0.5">
-                    {locales.map((locale) => {
-                      const info = languages[locale as keyof typeof languages]
-                      const href = localeUrls[locale as keyof typeof languages]
-                      const isActive = locale === lang
-                      return (
-                        <a
-                          href={href}
-                          role="option"
-                          aria-selected={isActive ? 'true' : 'false'}
-                          data-lang-option={locale}
-                          class={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${isActive ? 'font-semibold' : 'hover:bg-white/80'}`}
-                          style={isActive ? 'color:#0A2540; background:rgba(255,255,255,0.9);' : 'color:#374151;'}
-                        >
-                          <span aria-hidden="true" class="flex-shrink-0">{info.flag}</span>
-                          <span>{info.name}</span>
-                          {isActive && (
-                            <svg class="w-3.5 h-3.5 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                            </svg>
-                          )}
-                        </a>
-                      )
-                    })}
+              {
+                Object.entries(regions).map(([region, locales]) => (
+                  <div>
+                    <div class="px-5 pt-2.5 pb-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                      {region}
+                    </div>
+                    <div class="px-3 pb-1 space-y-0.5">
+                      {locales.map((locale) => {
+                        const info = languages[locale as keyof typeof languages]
+                        const href =
+                          localeUrls[locale as keyof typeof languages]
+                        const isActive = locale === lang
+                        return (
+                          <a
+                            href={href}
+                            role="option"
+                            aria-selected={isActive ? 'true' : 'false'}
+                            data-lang-option={locale}
+                            class={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${isActive ? 'font-semibold' : 'hover:bg-white/80'}`}
+                            style={
+                              isActive
+                                ? 'color:#0A2540; background:rgba(255,255,255,0.9);'
+                                : 'color:#374151;'
+                            }
+                          >
+                            <span aria-hidden="true" class="flex-shrink-0">
+                              {info.flag}
+                            </span>
+                            <span>{info.name}</span>
+                            {isActive && (
+                              <svg
+                                class="w-3.5 h-3.5 ml-auto flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                style="color:#1E6FFF;"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2.5"
+                                  d="M5 13l4 4L19 7"
+                                />
+                              </svg>
+                            )}
+                          </a>
+                        )
+                      })}
+                    </div>
                   </div>
-                </div>
-              ))}
-              <div class="h-3" />
+                ))
+              }
+              <div class="h-3"></div>
             </div>
           </div>
         </div>
@@ -1789,20 +1904,6 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
               ></path>
             </svg>
             LinkedIn
-          </a>
-          <a
-            href="https://www.instagram.com/lracloudops/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex-1 flex items-center justify-center gap-1.5 text-xs font-medium text-gray-500 py-2.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
-            aria-label="Instagram"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-            </svg>
-            Instagram
           </a>
         </div>
       </div>
@@ -1882,20 +1983,6 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
                   ></path>
                 </svg>
               </a>
-              <a
-                href="https://www.instagram.com/lracloudops/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-9 h-9 flex items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-white/15"
-                style="background:rgba(255,255,255,0.08);"
-                aria-label="Instagram @lracloudops"
-              >
-                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <circle cx="12" cy="12" r="4"/>
-                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-                </svg>
-              </a>
             </div>
             <div
               class="flex items-center gap-2 text-sm mb-4"
@@ -1933,100 +2020,169 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
 
           <!-- Services -->
           <div>
-            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+            <h3
+              class="text-xs font-bold uppercase tracking-widest mb-5 text-white"
+            >
               {lang === 'es' ? 'Servicios' : 'Services'}
             </h3>
             <ul class="space-y-3">
-              {(lang === 'es' ? [
-                { label: 'Infraestructura Cloud', href: '/es/cloud-infrastructure' },
-                { label: 'Plataformas Kubernetes', href: '/es/kubernetes-platforms' },
-                { label: 'Automatización DevOps', href: '/es/devops-automation' },
-                { label: 'Ingeniería de Plataforma', href: '/es/platform-engineering' },
-                { label: 'Observabilidad & SRE', href: '/es/observability' },
-                { label: 'Modelos de engagement', href: '/es/pricing' },
-              ] : [
-                { label: 'Cloud Infrastructure', href: '/cloud-infrastructure' },
-                { label: 'Kubernetes Platforms', href: '/kubernetes-platforms' },
-                { label: 'DevOps Automation', href: '/devops-automation' },
-                { label: 'Platform Engineering', href: '/platform-engineering' },
-                { label: 'Observability & SRE', href: '/observability' },
-                { label: 'Engagement Models', href: '/pricing' },
-              ]).map(({ label, href }) => (
-                <li>
-                  <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
-                    {label}
-                  </a>
-                </li>
-              ))}
+              {
+                (lang === 'es'
+                  ? [
+                      {
+                        label: 'Infraestructura Cloud',
+                        href: '/es/cloud-infrastructure',
+                      },
+                      {
+                        label: 'Plataformas Kubernetes',
+                        href: '/es/kubernetes-platforms',
+                      },
+                      {
+                        label: 'Automatización DevOps',
+                        href: '/es/devops-automation',
+                      },
+                      {
+                        label: 'Ingeniería de Plataforma',
+                        href: '/es/platform-engineering',
+                      },
+                      {
+                        label: 'Observabilidad & SRE',
+                        href: '/es/observability',
+                      },
+                      { label: 'Modelos de engagement', href: '/es/pricing' },
+                    ]
+                  : [
+                      {
+                        label: 'Cloud Infrastructure',
+                        href: '/cloud-infrastructure',
+                      },
+                      {
+                        label: 'Kubernetes Platforms',
+                        href: '/kubernetes-platforms',
+                      },
+                      {
+                        label: 'DevOps Automation',
+                        href: '/devops-automation',
+                      },
+                      {
+                        label: 'Platform Engineering',
+                        href: '/platform-engineering',
+                      },
+                      { label: 'Observability & SRE', href: '/observability' },
+                      { label: 'Engagement Models', href: '/pricing' },
+                    ]
+                ).map(({ label, href }) => (
+                  <li>
+                    <a
+                      href={href}
+                      class="text-sm transition-colors hover:text-white"
+                      style="color:rgba(148,163,184,0.7);"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
           <!-- Resources -->
           <div>
-            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+            <h3
+              class="text-xs font-bold uppercase tracking-widest mb-5 text-white"
+            >
               {lang === 'es' ? 'Recursos' : 'Resources'}
             </h3>
             <ul class="space-y-3">
-              {(lang === 'es' ? [
-                { label: 'Blog', href: '/es/blog' },
-                { label: 'Documentación', href: '/es/docs' },
-                { label: 'Centro de Arquitectura', href: '/es/architectures' },
-                { label: 'Herramientas de evaluación', href: '/es/assessment' },
-                { label: 'Casos de uso', href: '/es/proyectos' },
-                { label: 'Open Source', href: '/es/open-source' },
-                { label: 'Seguridad', href: '/es/security' },
-              ] : [
-                { label: 'Blog', href: '/es/blog' },
-                { label: 'Documentation', href: '/docs' },
-                { label: 'Architecture Center', href: '/architectures' },
-                { label: 'Assessment Tools', href: '/assessments' },
-                { label: 'Case Studies', href: '/projects' },
-                { label: 'Open Source', href: '/es/open-source' },
-                { label: 'Security', href: '/security' },
-              ]).map(({ label, href }) => (
-                <li>
-                  <a href={href} class="text-sm transition-colors hover:text-white" style="color:rgba(148,163,184,0.7);">
-                    {label}
-                  </a>
-                </li>
-              ))}
+              {
+                (lang === 'es'
+                  ? [
+                      { label: 'Blog', href: '/es/blog' },
+                      { label: 'Documentación', href: '/es/docs' },
+                      {
+                        label: 'Centro de Arquitectura',
+                        href: '/es/architectures',
+                      },
+                      {
+                        label: 'Herramientas de evaluación',
+                        href: '/es/assessment',
+                      },
+                      { label: 'Casos de uso', href: '/es/proyectos' },
+                      { label: 'Open Source', href: '/es/open-source' },
+                      { label: 'Seguridad', href: '/es/security' },
+                    ]
+                  : [
+                      { label: 'Blog', href: '/es/blog' },
+                      { label: 'Documentation', href: '/docs' },
+                      { label: 'Architecture Center', href: '/architectures' },
+                      { label: 'Assessment Tools', href: '/assessments' },
+                      { label: 'Case Studies', href: '/projects' },
+                      { label: 'Open Source', href: '/es/open-source' },
+                      { label: 'Security', href: '/security' },
+                    ]
+                ).map(({ label, href }) => (
+                  <li>
+                    <a
+                      href={href}
+                      class="text-sm transition-colors hover:text-white"
+                      style="color:rgba(148,163,184,0.7);"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
           <!-- Company -->
           <div>
-            <h3 class="text-xs font-bold uppercase tracking-widest mb-5 text-white">
+            <h3
+              class="text-xs font-bold uppercase tracking-widest mb-5 text-white"
+            >
               {lang === 'es' ? 'Empresa' : 'Company'}
             </h3>
             <ul class="space-y-3">
-              {(lang === 'es' ? [
-                { label: 'Nosotros', href: '/es/nosotros' },
-                { label: 'Certificaciones', href: '/es/certifications' },
-                { label: '¿Por qué LRA?', href: '/es/why-lra' },
-                { label: 'Contacto', href: '/es/contacto' },
-                { label: 'Privacidad', href: '/es/privacy' },
-                { label: 'GitHub', href: 'https://github.com/lra-cloud-ops', external: true },
-              ] : ([
-                { label: 'About', href: '/about' },
-                { label: 'Certifications', href: '/certifications' },
-                { label: 'Why LRA', href: '/why-lra' },
-                { label: 'Contact', href: '/contact' },
-                { label: 'Privacy', href: '/privacy' },
-                { label: 'GitHub', href: 'https://github.com/lra-cloud-ops', external: true },
-              ] as { label: string; href: string; external?: boolean }[])
-              ).map(({ label, href, external }) => (
-                <li>
-                  <a
-                    href={href}
-                    target={external ? '_blank' : undefined}
-                    rel={external ? 'noopener noreferrer' : undefined}
-                    class="text-sm transition-colors hover:text-white"
-                    style="color:rgba(148,163,184,0.7);"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
+              {
+                (lang === 'es'
+                  ? [
+                      { label: 'Nosotros', href: '/es/nosotros' },
+                      { label: 'Certificaciones', href: '/es/certifications' },
+                      { label: '¿Por qué LRA?', href: '/es/why-lra' },
+                      { label: 'Contacto', href: '/es/contacto' },
+                      { label: 'Privacidad', href: '/es/privacy' },
+                      {
+                        label: 'GitHub',
+                        href: 'https://github.com/lra-cloud-ops',
+                        external: true,
+                      },
+                    ]
+                  : ([
+                      { label: 'About', href: '/about' },
+                      { label: 'Certifications', href: '/certifications' },
+                      { label: 'Why LRA', href: '/why-lra' },
+                      { label: 'Contact', href: '/contact' },
+                      { label: 'Privacy', href: '/privacy' },
+                      {
+                        label: 'GitHub',
+                        href: 'https://github.com/lra-cloud-ops',
+                        external: true,
+                      },
+                    ] as { label: string; href: string; external?: boolean }[])
+                ).map(({ label, href, external }) => (
+                  <li>
+                    <a
+                      href={href}
+                      target={external ? '_blank' : undefined}
+                      rel={external ? 'noopener noreferrer' : undefined}
+                      class="text-sm transition-colors hover:text-white"
+                      style="color:rgba(148,163,184,0.7);"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
@@ -2038,9 +2194,11 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span class="text-xs" style="color:rgba(148,163,184,0.4);">
-              {lang === 'es'
-                ? '© 2026 LRA Cloud Operations · Licencia MIT · Hecho con Astro + Cloudflare · Consultora con sede en la UE'
-                : '© 2026 LRA Cloud Operations · MIT License · Built with Astro + Cloudflare · EU-based consultancy'}
+              {
+                lang === 'es'
+                  ? '© 2026 LRA Cloud Operations · Licencia MIT · Hecho con Astro + Cloudflare · Consultora con sede en la UE'
+                  : '© 2026 LRA Cloud Operations · MIT License · Built with Astro + Cloudflare · EU-based consultancy'
+              }
             </span>
             <a
               href={lang === 'en' ? '/privacy' : '/privacy'}
@@ -2076,7 +2234,11 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
                   stroke="currentColor"
                   aria-hidden="true"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
               <div
@@ -2086,37 +2248,67 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
                 style="background:#0F1E33; border:1px solid rgba(255,255,255,0.1); box-shadow:0 -4px 20px rgba(0,0,0,0.4); transform:translateY(6px); transition:opacity 0.15s ease,transform 0.15s ease; z-index:200;"
               >
                 <div class="py-2">
-                  {Object.entries(regions).map(([region, locales], regionIdx) => (
-                    <div>
-                      <div class="px-3 pt-2 pb-1 text-[10px] font-bold uppercase tracking-widest" style="color:rgba(148,163,184,0.4);">{region}</div>
-                      {locales.map((locale) => {
-                        const info = languages[locale as keyof typeof languages]
-                        const href = localeUrls[locale as keyof typeof languages]
-                        const isActive = locale === lang
-                        return (
-                          <a
-                            href={href}
-                            role="option"
-                            aria-selected={isActive ? 'true' : 'false'}
-                            data-lang-option={locale}
-                            class={`flex items-center gap-2 px-3 py-2 text-xs transition-colors ${isActive ? 'font-semibold' : 'hover:bg-white/5'}`}
-                            style={isActive ? 'color:white; background:rgba(30,111,255,0.2);' : 'color:rgba(148,163,184,0.7);'}
+                  {
+                    Object.entries(regions).map(
+                      ([region, locales], regionIdx) => (
+                        <div>
+                          <div
+                            class="px-3 pt-2 pb-1 text-[10px] font-bold uppercase tracking-widest"
+                            style="color:rgba(148,163,184,0.4);"
                           >
-                            <span aria-hidden="true">{info.flag}</span>
-                            <span>{info.name}</span>
-                            {isActive && (
-                              <svg class="w-3 h-3 ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                              </svg>
-                            )}
-                          </a>
-                        )
-                      })}
-                      {regionIdx < Object.keys(regions).length - 1 && (
-                        <div class="border-t mx-3 my-1.5" style="border-color:rgba(255,255,255,0.07);" />
-                      )}
-                    </div>
-                  ))}
+                            {region}
+                          </div>
+                          {locales.map((locale) => {
+                            const info =
+                              languages[locale as keyof typeof languages]
+                            const href =
+                              localeUrls[locale as keyof typeof languages]
+                            const isActive = locale === lang
+                            return (
+                              <a
+                                href={href}
+                                role="option"
+                                aria-selected={isActive ? 'true' : 'false'}
+                                data-lang-option={locale}
+                                class={`flex items-center gap-2 px-3 py-2 text-xs transition-colors ${isActive ? 'font-semibold' : 'hover:bg-white/5'}`}
+                                style={
+                                  isActive
+                                    ? 'color:white; background:rgba(30,111,255,0.2);'
+                                    : 'color:rgba(148,163,184,0.7);'
+                                }
+                              >
+                                <span aria-hidden="true">{info.flag}</span>
+                                <span>{info.name}</span>
+                                {isActive && (
+                                  <svg
+                                    class="w-3 h-3 ml-auto flex-shrink-0"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    style="color:#1E6FFF;"
+                                    aria-hidden="true"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2.5"
+                                      d="M5 13l4 4L19 7"
+                                    />
+                                  </svg>
+                                )}
+                              </a>
+                            )
+                          })}
+                          {regionIdx < Object.keys(regions).length - 1 && (
+                            <div
+                              class="border-t mx-3 my-1.5"
+                              style="border-color:rgba(255,255,255,0.07);"
+                            />
+                          )}
+                        </div>
+                      )
+                    )
+                  }
                 </div>
               </div>
             </div>
