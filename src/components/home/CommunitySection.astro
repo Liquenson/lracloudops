@@ -13,12 +13,6 @@ const subtext =
   lang === 'es'
     ? 'Proyectos reales. Infraestructura real. Resultados reales.'
     : 'Real projects. Real infrastructure. Real results.'
-const igFollowers = lang === 'es' ? '9,598 seguidores' : '9,598 followers'
-const igDesc =
-  lang === 'es'
-    ? 'Consejos de platform engineering y diagramas de arquitectura'
-    : 'Platform engineering tips and architecture diagrams'
-const igCta = lang === 'es' ? 'Seguir en Instagram' : 'Follow on Instagram'
 const liConnections = lang === 'es' ? '518 conexiones' : '518 connections'
 const liDesc =
   lang === 'es'
@@ -50,70 +44,7 @@ const ghCta = lang === 'es' ? 'Ver en GitHub' : 'View on GitHub'
       <p class="text-lg max-w-xl mx-auto" style="color: #64748B;">{subtext}</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <a
-        href="https://www.instagram.com/lracloudops/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-white rounded-2xl p-7 flex flex-col card-lift animate-fade-up delay-100"
-        style="border-left: 4px solid #E1306C; border-top: 1px solid #E5E7EB; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06); text-decoration: none;"
-      >
-        <div class="flex items-center gap-4 mb-5">
-          <div
-            class="w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0"
-            style="background: #FFF0F5;"
-            aria-hidden="true"
-          >
-            <svg
-              class="w-6 h-6"
-              style="color: #E1306C;"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <circle cx="12" cy="12" r="4"></circle>
-              <circle
-                cx="17.5"
-                cy="6.5"
-                r="0.5"
-                fill="currentColor"
-                stroke="none"></circle>
-            </svg>
-          </div>
-          <div>
-            <div class="text-sm font-bold" style="color: #0F172A;">
-              @lracloudops
-            </div>
-            <div class="text-xs" style="color: #94A3B8;">{igFollowers}</div>
-          </div>
-        </div>
-        <p class="text-sm leading-relaxed flex-1 mb-5" style="color: #64748B;">
-          {igDesc}
-        </p>
-        <span
-          class="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
-          style="color: #E1306C;"
-        >
-          {igCta}
-          <svg
-            class="w-3.5 h-3.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-            ><path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
-          >
-        </span>
-      </a>
-
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       <a
         href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/"
         target="_blank"
