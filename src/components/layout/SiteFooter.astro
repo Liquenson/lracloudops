@@ -18,7 +18,7 @@ const currentLangInfo = languages[lang] ?? languages['en']
       <!-- Brand -->
       <div class="col-span-2 md:col-span-1">
         <a
-          href={lang === 'en' ? '/en/' : '/'}
+          href={lang === 'es' ? '/es/' : '/'}
           class="inline-block mb-5"
           aria-label="LRA Cloud Ops — Home"
         >
@@ -173,19 +173,19 @@ const currentLangInfo = languages[lang] ?? languages['en']
               : [
                   {
                     label: 'Cloud Infrastructure',
-                    href: '/en/cloud-infrastructure',
+                    href: '/cloud-infrastructure',
                   },
                   {
                     label: 'Kubernetes Platforms',
-                    href: '/en/kubernetes-platforms',
+                    href: '/kubernetes-platforms',
                   },
-                  { label: 'DevOps Automation', href: '/en/devops-automation' },
+                  { label: 'DevOps Automation', href: '/devops-automation' },
                   {
                     label: 'Platform Engineering',
-                    href: '/en/platform-engineering',
+                    href: '/platform-engineering',
                   },
-                  { label: 'Observability & SRE', href: '/en/observability' },
-                  { label: 'Engagement Models', href: '/en/pricing' },
+                  { label: 'Observability & SRE', href: '/observability' },
+                  { label: 'Engagement Models', href: '/pricing' },
                 ]
             ).map(({ label, href }) => (
               <li>
@@ -227,10 +227,10 @@ const currentLangInfo = languages[lang] ?? languages['en']
                   { label: 'Revisar CV', href: '/resume-review' },
                   { label: 'AWS CLI Agent', href: '/aws-cli' },
                   { label: 'Blog', href: '/blog' },
-                  { label: 'Documentación', href: '/en/docs' },
+                  { label: 'Documentación', href: '/docs' },
                   {
                     label: 'Centro de Arquitectura',
-                    href: '/en/architectures',
+                    href: '/architectures',
                   },
                   { label: 'Herramientas de evaluación', href: '/assessment' },
                   { label: 'Checklist AWS', href: '/checklist' },
@@ -240,30 +240,30 @@ const currentLangInfo = languages[lang] ?? languages['en']
                   { label: 'Seguridad', href: '/security' },
                 ]
               : [
-                  { label: 'AI DevOps', href: '/en/ai-devops' },
+                  { label: 'AI DevOps', href: '/ai-devops' },
                   {
                     label: 'Infrastructure Review',
-                    href: '/en/infrastructure-review',
+                    href: '/infrastructure-review',
                   },
-                  { label: 'Proposal Generator', href: '/en/proposal' },
-                  { label: 'Cost Optimizer', href: '/en/cost-optimizer' },
-                  { label: 'Learning Agent', href: '/en/learn' },
-                  { label: 'Security Audit', href: '/en/security-audit' },
-                  { label: 'AWS Architect', href: '/en/aws-architect' },
-                  { label: 'Incident Response', href: '/en/incident-response' },
-                  { label: 'Doc Generator', href: '/en/documentation' },
-                  { label: 'DevOps Interview', href: '/en/interview' },
-                  { label: 'Resume Review', href: '/en/resume-review' },
-                  { label: 'AWS CLI Agent', href: '/en/aws-cli' },
-                  { label: 'Blog', href: '/en/blog' },
-                  { label: 'Documentation', href: '/en/docs' },
-                  { label: 'Architecture Center', href: '/en/architectures' },
-                  { label: 'Assessment Tools', href: '/en/assessments' },
-                  { label: 'AWS Checklist', href: '/en/checklist' },
-                  { label: 'Case Studies', href: '/en/projects' },
-                  { label: 'Open Source', href: '/en/open-source' },
-                  { label: 'ROI Calculator', href: '/en/roi-calculator' },
-                  { label: 'Security', href: '/en/security' },
+                  { label: 'Proposal Generator', href: '/proposal' },
+                  { label: 'Cost Optimizer', href: '/cost-optimizer' },
+                  { label: 'Learning Agent', href: '/learn' },
+                  { label: 'Security Audit', href: '/security-audit' },
+                  { label: 'AWS Architect', href: '/aws-architect' },
+                  { label: 'Incident Response', href: '/incident-response' },
+                  { label: 'Doc Generator', href: '/documentation' },
+                  { label: 'DevOps Interview', href: '/interview' },
+                  { label: 'Resume Review', href: '/resume-review' },
+                  { label: 'AWS CLI Agent', href: '/aws-cli' },
+                  { label: 'Blog', href: '/blog' },
+                  { label: 'Documentation', href: '/docs' },
+                  { label: 'Architecture Center', href: '/architectures' },
+                  { label: 'Assessment Tools', href: '/assessments' },
+                  { label: 'AWS Checklist', href: '/checklist' },
+                  { label: 'Case Studies', href: '/projects' },
+                  { label: 'Open Source', href: '/open-source' },
+                  { label: 'ROI Calculator', href: '/roi-calculator' },
+                  { label: 'Security', href: '/security' },
                 ]
             ).map(({ label, href }) => (
               <li>
@@ -302,12 +302,12 @@ const currentLangInfo = languages[lang] ?? languages['en']
                   },
                 ]
               : ([
-                  { label: 'About', href: '/en/about' },
-                  { label: 'Certifications', href: '/en/certifications' },
-                  { label: 'Why LRA', href: '/en/why-lra' },
-                  { label: 'AI Agents', href: '/en/agents' },
-                  { label: 'Contact', href: '/en/contact' },
-                  { label: 'Privacy', href: '/en/privacy' },
+                  { label: 'About', href: '/about' },
+                  { label: 'Certifications', href: '/certifications' },
+                  { label: 'Why LRA', href: '/why-lra' },
+                  { label: 'AI Agents', href: '/agents' },
+                  { label: 'Contact', href: '/contact' },
+                  { label: 'Privacy', href: '/privacy' },
                   {
                     label: 'GitHub',
                     href: 'https://github.com/lra-cloud-ops',
@@ -346,13 +346,13 @@ const currentLangInfo = languages[lang] ?? languages['en']
           }
         </span>
         <a
-          href={lang === 'en' ? '/en/privacy' : '/privacy'}
+          href={lang === 'en' ? '/privacy' : '/privacy'}
           class="text-xs transition-colors hover:text-white"
           style="color:rgba(148,163,184,0.35);"
           >{lang === 'es' ? 'Privacidad' : 'Privacy Policy'}</a
         >
         <a
-          href={lang === 'en' ? '/en/terms' : '/terms'}
+          href={lang === 'en' ? '/terms' : '/terms'}
           class="text-xs transition-colors hover:text-white"
           style="color:rgba(148,163,184,0.35);"
           >{lang === 'es' ? 'Términos' : 'Terms of Service'}</a
