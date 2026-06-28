@@ -65,42 +65,35 @@ const subtext =
 ---
 
 <section
-  style="background: var(--color-gray-50); border-top: 1px solid var(--color-gray-200); border-bottom: 1px solid var(--color-gray-200);"
+  style="background: var(--surface-2); border-top: 1px solid var(--color-gray-200); border-bottom: 1px solid var(--color-gray-200);"
   aria-labelledby="metrics-heading"
 >
-  <div class="max-w-7xl mx-auto px-6 py-16">
-    <div class="text-center mb-10 animate-fade-up">
-      <span class="section-eyebrow">{badge}</span>
+  <div
+    class="max-w-7xl mx-auto px-6"
+    style="padding-block: var(--gap-xl);"
+  >
+    <div class="text-center mb-8 animate-fade-up">
+      <span class="ds-eyebrow">{badge}</span>
       <h2
         id="metrics-heading"
-        class="text-4xl sm:text-5xl font-bold mt-4 mb-3"
-        style="color: var(--color-gray-900); letter-spacing: -0.025em; font-family: var(--font-display);"
+        style="margin-top: var(--gap-sm); font-family: var(--font-display); font-size: var(--type-h2); font-weight: 800; color: var(--color-gray-900); letter-spacing: -0.025em; margin-bottom: var(--gap-xs);"
       >
         {heading}
       </h2>
-      <p class="text-lg max-w-xl mx-auto" style="color: var(--color-gray-600);">
+      <p
+        style="font-size: var(--type-body-lg); color: var(--color-gray-600); max-width: 36rem; margin-inline: auto;"
+      >
         {subtext}
       </p>
     </div>
 
-    <div
-      class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 animate-fade-up"
-      style="border: 1px solid var(--color-gray-200); border-radius: var(--radius-md); overflow: hidden; background: var(--color-white);"
-    >
+    <div class="stat-strip animate-fade-up">
       {
-        metrics.map(({ value, label, sub }, idx) => (
-          <div
-            class="flex flex-col items-center justify-center text-center px-5 py-10 cursor-default transition-colors hover:bg-gray-50"
-            style={
-              idx < metrics.length - 1
-                ? 'border-right: 1px solid var(--color-gray-200);'
-                : ''
-            }
-          >
-            <div class="metric-value mb-1.5">{value}</div>
+        metrics.map(({ value, label, sub }) => (
+          <div class="stat-strip-item">
+            <div class="metric-value">{value}</div>
             <div
-              class="text-sm font-semibold mb-1"
-              style="color: var(--color-gray-800); font-family: var(--font-display);"
+              style="font-size: var(--type-sm); font-weight: 600; color: var(--color-gray-800); font-family: var(--font-display); margin-top: 0.25rem;"
             >
               {label}
             </div>
