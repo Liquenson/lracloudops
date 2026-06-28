@@ -1,0 +1,119 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const posts = (await getCollection('esBlog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf()
+)
+---
+
+<Layout
+  titulo="Blog Técnico · Infraestructura Cloud y Platform Engineering"
+  descripcion="Artículos técnicos sobre AWS, Kubernetes, Terraform y CI/CD. Decisiones de arquitectura, estrategias de implementación y lecciones de producción."
+>
+  <section class="relative overflow-hidden" style="background-color: #0A2540;">
+    <div
+      class="absolute inset-0 pointer-events-none opacity-40"
+      style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
+      <div class="max-w-2xl">
+        <span
+          class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6"
+          style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);"
+        >
+          Blog · {posts.length} artículo{posts.length !== 1 ? 's' : ''}
+        </span>
+        <h1
+          class="text-4xl sm:text-5xl font-extrabold text-white mb-5"
+          style="letter-spacing: -0.02em;"
+        >
+          Notas de ingeniería.
+        </h1>
+        <p class="text-lg" style="color: rgba(147,184,255,0.8);">
+          Decisiones de arquitectura, estrategias de implementación y lecciones
+          aprendidas en producción.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      {
+        posts.length === 0 ? (
+          <div class="text-center py-20">
+            <p class="text-gray-400">Artículos próximamente.</p>
+          </div>
+        ) : (
+          <div class="space-y-4">
+            {posts.map((post) => (
+              <a
+                href={`/blog/${post.id}`}
+                aria-label={`Leer artículo: ${post.data.titulo}`}
+                class="group flex flex-col sm:flex-row sm:items-start justify-between gap-6 p-6 sm:p-7 rounded-2xl transition-all duration-200 block"
+                style="background: white; border: 1px solid #e8eef4; box-shadow: 0 1px 3px rgba(10,37,64,0.04);"
+                onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 2px 6px rgba(10,37,64,0.06), 0 10px 28px rgba(10,37,64,0.09)'; this.style.borderColor='rgba(30,111,255,0.2)';"
+                onmouseleave="this.style.transform=''; this.style.boxShadow='0 1px 3px rgba(10,37,64,0.04)'; this.style.borderColor='#e8eef4';"
+              >
+                <div class="flex-1">
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    {post.data.tags.map((tag) => (
+                      <span
+                        class="text-xs font-medium px-2.5 py-1 rounded-full"
+                        style="background: #EEF4FF; color: #1E6FFF; border: 1px solid #c3d9ff;"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h2
+                    class="text-lg font-bold mb-2 group-hover:text-[#1E6FFF] transition-colors"
+                    style="color: #0A2540;"
+                  >
+                    {post.data.titulo}
+                  </h2>
+                  <p class="text-sm leading-relaxed" style="color: #64748b;">
+                    {post.data.descripcion}
+                  </p>
+                </div>
+                <div class="flex sm:flex-col items-center sm:items-end gap-4 flex-shrink-0">
+                  <span
+                    class="text-xs whitespace-nowrap"
+                    style="color: #94a3b8;"
+                  >
+                    {post.data.fecha.toLocaleDateString('es-ES', {
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric',
+                    })}
+                  </span>
+                  <span
+                    class="inline-flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all"
+                    style="color: #1E6FFF;"
+                  >
+                    Leer
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Layout>

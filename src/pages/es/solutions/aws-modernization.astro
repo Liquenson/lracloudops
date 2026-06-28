@@ -1,0 +1,189 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Modernización AWS — LRA Cloud Operations"
+  descripcion="Migra y moderniza tus workloads de AWS con infraestructura IaC-first. EKS, RDS Multi-AZ, pipelines CI/CD y gobierno total desde el primer día."
+>
+  <!-- Hero -->
+  <section
+    style="background: linear-gradient(135deg, #0A2540 0%, #0d2f50 100%); padding: 100px 24px 80px;"
+  >
+    <div class="max-w-4xl mx-auto text-center">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8"
+        style="background: rgba(30,111,255,0.15); color: #60A5FA; border: 1px solid rgba(30,111,255,0.25);"
+      >
+        Solución · Modernización AWS
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+        De infraestructura manual<br />a AWS automatizado y gobernable.
+      </h1>
+      <p
+        class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
+        style="color: rgba(148,163,184,0.9);"
+      >
+        Modernización de workloads AWS con Terraform modular, EKS en producción,
+        RDS Multi-AZ y pipelines CI/CD que eliminan el trabajo manual y los
+        cambios no auditables.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+          style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
+        >
+          Iniciar modernización
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
+        </a>
+        <a
+          href="/proyectos"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:bg-white/10"
+          style="color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);"
+        >
+          Ver casos de uso
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key points -->
+  <section style="background: #F8FAFC; padding: 80px 24px;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
+          Infraestructura AWS lista para producción
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          No solo migramos recursos — entregamos una plataforma completa con
+          gobierno, seguridad y observabilidad integrados.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {
+          [
+            {
+              title: 'Terraform modular IaC-first',
+              desc: 'Cada recurso AWS en un módulo Terraform independiente y reutilizable. Estado remoto en S3 con bloqueo DynamoDB. Sin ClickOps en producción, nunca. Cada cambio pasa por terraform plan antes del apply.',
+              icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+            },
+            {
+              title: 'EKS en producción con IRSA y escalado',
+              desc: 'Clusters EKS con managed node groups, IAM Roles for Service Accounts (IRSA), red privada y cluster autoscaler. Nada de kubectl apply manual — todo GitOps con ArgoCD.',
+              icon: 'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
+            },
+            {
+              title: 'RDS Multi-AZ y seguridad de datos',
+              desc: 'PostgreSQL 15 Multi-AZ con backups automatizados, cifrado en reposo (KMS), y credenciales en AWS Secrets Manager. Rotación automática de contraseñas sin downtime.',
+              icon: 'M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 2.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125',
+            },
+            {
+              title: 'CI/CD dual con quality gates',
+              desc: 'GitHub Actions + Jenkins en paralelo para máxima fiabilidad. SonarCloud con umbrales de cobertura, escaneo de imágenes Docker (Trivy) y despliegue automático en verde. Ningún artefacto llega a producción sin pasar los gates.',
+              icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+            },
+          ].map(({ title, desc, icon }) => (
+            <div
+              class="bg-white rounded-2xl p-7"
+              style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04);"
+            >
+              <div
+                class="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style="background: #EEF4FF;"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  style="color: #1E6FFF;"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: #64748B;">
+                {desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540; padding: 80px 24px;">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        ¿Listo para modernizar tu infraestructura AWS?
+      </h2>
+      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">
+        Agenda una revisión de arquitectura de 30 minutos. Evaluamos tu estado
+        actual y trazamos un plan de modernización concreto.
+      </p>
+      <a
+        href="/contacto"
+        class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+        style="background: #1E6FFF; box-shadow: 0 4px 24px rgba(30,111,255,0.45);"
+      >
+        Agendar revisión de arquitectura
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
+      </a>
+    </div>
+  </section>
+
+  <!-- Vélo en práctica -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest" style="color: #1E6FFF;">Vélo en práctica</span>
+            <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">aws-terraform-devops — AWS en producción con Terraform</h2>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-4" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Producción</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">Stack Terraform modular que despliega Flask en EKS con RDS PostgreSQL 15 Multi-AZ, pipelines duales GitHub Actions y Jenkins, y quality gates SonarCloud. Cada módulo versionado independientemente y reutilizable.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          {['Terraform','EKS','RDS PostgreSQL 15','GitHub Actions','Jenkins','SonarCloud','Flask','Docker'].map(t => (
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #F1F5F9; color: #475569;">{t}</span>
+          ))}
+        </div>
+        <div class="flex gap-3">
+          <a href="/proyectos/aws-terraform-devops" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Leer caso de uso →</a>
+          <a href="https://github.com/lra-cloud-ops/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,427 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Cost Optimization Agent · Reduce tu gasto cloud hasta un 40%"
+  descripcion="Describe tu infraestructura cloud y recibe un análisis detallado de ahorro potencial con quick wins, herramientas recomendadas y plan de acción."
+  keywords="optimización costes cloud, reducir gasto AWS, AWS cost optimization, FinOps, cloud savings"
+>
+  <!-- ── HERO ── -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0A2540;"
+    aria-labelledby="co-hero-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-bold tracking-widest uppercase"
+        style="background: rgba(30,111,255,0.2); border: 1px solid rgba(96,165,250,0.35); color: #93C5FD;"
+      >
+        <span
+          class="w-2 h-2 rounded-full flex-shrink-0"
+          style="background: #60A5FA; animation: pulse 2s infinite;"
+          aria-hidden="true"></span>
+        FinOps · AI-Powered · Gratis
+      </div>
+      <h1
+        id="co-hero-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
+        style="letter-spacing: -0.035em;"
+      >
+        Cost Optimization Agent
+      </h1>
+      <p
+        class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
+        style="color: rgba(147,184,255,0.85);"
+      >
+        Describe tu infraestructura y gasto cloud. Recibe un análisis detallado
+        con potencial de ahorro, quick wins y plan de acción.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── METRICS STRIP ── -->
+  <section
+    class="py-10 border-b"
+    style="background: #0f172a; border-color: rgba(255,255,255,0.06);"
+    aria-label="Métricas de ahorro"
+  >
+    <div
+      class="max-w-4xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center"
+    >
+      {
+        [
+          { val: '40%', label: 'Ahorro promedio' },
+          { val: '48h', label: 'Quick wins en' },
+          { val: '3x', label: 'ROI típico' },
+          { val: '100%', label: 'Gratis' },
+        ].map((m) => (
+          <div>
+            <div class="text-3xl font-extrabold" style="color: #60A5FA;">
+              {m.val}
+            </div>
+            <div
+              class="text-xs mt-1 font-medium"
+              style="color: rgba(147,184,255,0.6);"
+            >
+              {m.label}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ── FORM + RESULTS ── -->
+  <section class="bg-white py-16" aria-label="Formulario de optimización">
+    <div class="max-w-3xl mx-auto px-6">
+      <form id="co-form" class="space-y-6" novalidate>
+        <div>
+          <label
+            for="co-description"
+            class="block text-sm font-semibold mb-2"
+            style="color: #0F172A;"
+          >
+            Describe tu infraestructura cloud
+            <span class="font-normal text-xs ml-1" style="color: #64748B;"
+              >(requerido)</span
+            >
+          </label>
+          <textarea
+            id="co-description"
+            name="description"
+            rows="7"
+            placeholder="Ejemplo: Usamos AWS con una flota de 20 instancias EC2 t3.large (algunas al 10% de CPU la mayor parte del tiempo), RDS MySQL Multi-AZ con instancia db.r5.large, varios buckets S3 con 2TB de datos (mucho contenido antiguo sin política de ciclo de vida), y CloudFront. Hemos crecido rápido y nunca hemos revisado si el dimensionamiento es correcto..."
+            class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
+            style="border-color: #E2E8F0; color: #0F172A;"></textarea>
+        </div>
+
+        <div>
+          <label
+            for="co-spend"
+            class="block text-sm font-semibold mb-2"
+            style="color: #0F172A;"
+          >
+            Gasto mensual aproximado
+          </label>
+          <select
+            id="co-spend"
+            class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
+            style="border-color: #E2E8F0; color: #0F172A;"
+          >
+            <option value="menos de €500">Menos de €500/mes</option>
+            <option value="€500–€2.000">€500 – €2.000/mes</option>
+            <option value="€2.000–€10.000" selected>€2.000 – €10.000/mes</option
+            >
+            <option value="€10.000–€50.000">€10.000 – €50.000/mes</option>
+            <option value="más de €50.000">Más de €50.000/mes</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          id="co-submit"
+          class="w-full inline-flex items-center justify-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.01]"
+          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.4);"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span id="co-btn-text">Analizar ahorro potencial →</span>
+        </button>
+        <p id="co-error" class="hidden text-sm text-red-600 text-center"></p>
+      </form>
+
+      <!-- Loading -->
+      <div id="co-loading" class="hidden text-center py-16">
+        <div
+          class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
+          style="background: #EEF4FF; border: 1px solid #c3d9ff;"
+        >
+          <svg
+            class="w-5 h-5 animate-spin"
+            style="color: #2563EB;"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          <span class="text-sm font-medium" style="color: #1D4ED8;"
+            >Calculando ahorro potencial...</span
+          >
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="co-results" class="hidden mt-10 space-y-6">
+        <!-- Savings header -->
+        <div class="rounded-2xl p-8" style="background: #0A2540;">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-widest mb-2"
+                style="color: #93C5FD;"
+              >
+                Gasto estimado actual
+              </p>
+              <div id="co-current" class="text-3xl font-extrabold text-white">
+              </div>
+              <p class="text-xs mt-1" style="color: rgba(147,184,255,0.6);">
+                / mes
+              </p>
+            </div>
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-widest mb-2"
+                style="color: #93C5FD;"
+              >
+                Ahorro potencial
+              </p>
+              <div
+                id="co-savings-pct"
+                class="text-3xl font-extrabold"
+                style="color: #4ADE80;"
+              >
+              </div>
+              <div
+                id="co-savings-amt"
+                class="text-sm mt-1"
+                style="color: #86EFAC;"
+              >
+              </div>
+            </div>
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-widest mb-2"
+                style="color: #93C5FD;"
+              >
+                Quick wins en
+              </p>
+              <div class="text-3xl font-extrabold" style="color: #60A5FA;">
+                48h
+              </div>
+              <p class="text-xs mt-1" style="color: rgba(147,184,255,0.6);">
+                aplicables hoy
+              </p>
+            </div>
+          </div>
+          <p
+            id="co-summary"
+            class="mt-6 text-sm leading-relaxed text-center"
+            style="color: rgba(147,184,255,0.85);"
+          >
+          </p>
+        </div>
+
+        <!-- Quick wins -->
+        <div>
+          <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
+            Quick wins — Impacto inmediato
+          </h2>
+          <div id="co-quickwins" class="space-y-3"></div>
+        </div>
+
+        <!-- Medium term -->
+        <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
+          <h2 class="text-base font-bold mb-3" style="color: #0F172A;">
+            Optimizaciones a medio plazo
+          </h2>
+          <ul id="co-medium" class="space-y-2"></ul>
+        </div>
+
+        <!-- Tools -->
+        <div
+          class="rounded-2xl p-6"
+          style="background: #EEF4FF; border: 1px solid #c3d9ff;"
+        >
+          <h2 class="text-base font-bold mb-3" style="color: #1E40AF;">
+            Herramientas recomendadas
+          </h2>
+          <div id="co-tools" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center pt-4 pb-2">
+          <p class="text-base font-semibold mb-4" style="color: #0F172A;">
+            ¿Quieres que implementemos estas optimizaciones?
+          </p>
+          <a
+            href="/contacto"
+            class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
+            style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
+          >
+            Hablar con el equipo →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('co-form') as HTMLFormElement
+  const loading = document.getElementById('co-loading')!
+  const results = document.getElementById('co-results')!
+  const errorEl = document.getElementById('co-error')!
+  const btnText = document.getElementById('co-btn-text')!
+  const submitBtn = document.getElementById('co-submit') as HTMLButtonElement
+
+  interface QuickWin {
+    action: string
+    savings: string
+    effort: string
+    priority: string
+  }
+
+  function effortColor(effort: string): string {
+    const e = effort.toLowerCase()
+    if (e.includes('alt') || e.includes('high')) return '#DC2626'
+    if (e.includes('med')) return '#D97706'
+    return '#16A34A'
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    errorEl.classList.add('hidden')
+    const desc = (
+      document.getElementById('co-description') as HTMLTextAreaElement
+    ).value
+    const spend = (document.getElementById('co-spend') as HTMLSelectElement)
+      .value
+
+    if (desc.trim().length < 20) {
+      errorEl.textContent =
+        'Por favor, describe tu infraestructura con más detalle.'
+      errorEl.classList.remove('hidden')
+      return
+    }
+
+    form.classList.add('hidden')
+    loading.classList.remove('hidden')
+    submitBtn.disabled = true
+    btnText.textContent = 'Analizando...'
+
+    try {
+      const res = await fetch('/api/cost-optimizer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ description: desc, monthly_spend: spend }),
+      })
+      const json = (await res.json()) as {
+        analysis?: Record<string, unknown>
+        error?: string
+      }
+      if (json.error) throw new Error(json.error)
+      const a = json.analysis ?? {}
+
+      document.getElementById('co-current')!.textContent =
+        typeof a.current_monthly_estimate === 'string'
+          ? a.current_monthly_estimate
+          : ''
+      document.getElementById('co-savings-pct')!.textContent =
+        typeof a.potential_savings_pct === 'string'
+          ? a.potential_savings_pct
+          : ''
+      document.getElementById('co-savings-amt')!.textContent =
+        typeof a.potential_savings_monthly === 'string'
+          ? a.potential_savings_monthly
+          : ''
+      document.getElementById('co-summary')!.textContent =
+        typeof a.summary === 'string' ? a.summary : ''
+
+      // Quick wins cards
+      const qwEl = document.getElementById('co-quickwins')!
+      const qw = Array.isArray(a.quick_wins) ? (a.quick_wins as QuickWin[]) : []
+      qwEl.innerHTML = qw
+        .map(
+          (w) => `
+        <div class="rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-3" style="border: 1px solid #E5E7EB;">
+          <div class="flex-1">
+            <div class="text-sm font-semibold" style="color:#0F172A;">${w.action}</div>
+            <div class="text-xs mt-1" style="color:#64748B;">Esfuerzo: <span style="color:${effortColor(w.effort ?? '')}; font-weight:600;">${w.effort}</span></div>
+          </div>
+          <div class="text-right sm:text-center flex-shrink-0">
+            <div class="text-base font-bold" style="color:#16A34A;">${w.savings}</div>
+            <div class="text-xs" style="color:#94A3B8;">ahorro</div>
+          </div>
+        </div>`
+        )
+        .join('')
+
+      // Medium term
+      const medEl = document.getElementById('co-medium')!
+      const med = Array.isArray(a.medium_term)
+        ? (a.medium_term as string[])
+        : []
+      medEl.innerHTML = med
+        .map(
+          (item) =>
+            `<li class="flex gap-2.5 text-sm" style="color:#64748B;">
+            <span style="flex-shrink:0;">•</span><span>${item}</span>
+          </li>`
+        )
+        .join('')
+
+      // Tools
+      const toolsEl = document.getElementById('co-tools')!
+      const tools = Array.isArray(a.tools_recommended)
+        ? (a.tools_recommended as string[])
+        : []
+      toolsEl.innerHTML = tools
+        .map(
+          (t) =>
+            `<span class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background:white; color:#1E6FFF; border:1px solid #c3d9ff;">${t}</span>`
+        )
+        .join('')
+
+      loading.classList.add('hidden')
+      results.classList.remove('hidden')
+    } catch (err) {
+      loading.classList.add('hidden')
+      form.classList.remove('hidden')
+      submitBtn.disabled = false
+      btnText.textContent = 'Analizar ahorro potencial →'
+      errorEl.textContent =
+        err instanceof Error
+          ? err.message
+          : 'Error analizando los costes. Intenta de nuevo.'
+      errorEl.classList.remove('hidden')
+    }
+  })
+</script>

@@ -1,0 +1,190 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Infraestructura Cloud para Fintech — LRA Cloud Operations"
+  descripcion="Infraestructura cloud segura y de baja latencia para empresas fintech. Arquitectura alineada con PCI-DSS, alta disponibilidad en Kubernetes y controles de cumplimiento automatizados en AWS."
+>
+  <!-- Hero -->
+  <section
+    style="background: linear-gradient(135deg, #0A2540 0%, #0d2f50 100%); padding: 100px 24px 80px;"
+  >
+    <div class="max-w-4xl mx-auto text-center">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8"
+        style="background: rgba(30,111,255,0.15); color: #60A5FA; border: 1px solid rgba(30,111,255,0.25);"
+      >
+        Industria · Fintech
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+        Infraestructura financiera<br />que escala sin compromisos.
+      </h1>
+      <p
+        class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
+        style="color: rgba(148,163,184,0.9);"
+      >
+        Plataformas cloud diseñadas para los requisitos de seguridad, latencia
+        y cumplimiento normativo del sector fintech — alineadas con PCI-DSS,
+        alta disponibilidad, y preparadas para manejar volúmenes de transacciones
+        a escala.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+          style="background: #1E6FFF; box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
+        >
+          Hablar con un arquitecto
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+          >
+        </a>
+        <a
+          href="/cloud-infrastructure"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:bg-white/10"
+          style="color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);"
+        >
+          Ver servicios de infraestructura
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key points -->
+  <section style="background: #F8FAFC; padding: 80px 24px;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold mb-4" style="color: #0A2540;">
+          Infraestructura construida para workloads financieros
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
+          La baja latencia, la alta disponibilidad y el cumplimiento regulatorio
+          son requisitos de arquitectura — no opciones adicionales.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {
+          [
+            {
+              title: 'Arquitectura de red alineada con PCI-DSS',
+              desc: 'Entornos de datos de tarjetas aislados en VPCs dedicadas con controles estrictos de egress, WAF y protección DDoS mediante AWS Shield Advanced. Segmentación de red aplicada a nivel de infraestructura.',
+              icon: 'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z',
+            },
+            {
+              title: 'Optimización de latencia sub-milisegundo',
+              desc: 'Placement groups para cómputo sensible a la latencia, enhanced networking (ENA) y enrutamiento por VPC endpoints para evitar el tránsito por internet público. Rutas críticas benchmarkeadas antes del cutover.',
+              icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+            },
+            {
+              title: 'Arquitectura de disponibilidad 99,99%',
+              desc: 'EKS Multi-AZ con auto-scaling, Aurora Global Database para replicación cross-region y failover automatizado probado trimestralmente. Los compromisos de SLA están respaldados por arquitectura, no solo en papel.',
+              icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+            },
+            {
+              title: 'Gestión de secretos y cifrado',
+              desc: 'AWS Secrets Manager para rotación de credenciales, KMS CMKs para cifrado en sobre, y HashiCorp Vault para secretos dinámicos en Kubernetes. Sin credenciales en texto plano en archivos de configuración.',
+              icon: 'M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z',
+            },
+          ].map(({ title, desc, icon }) => (
+            <div
+              class="bg-white rounded-2xl p-7"
+              style="border: 1px solid rgba(15,23,42,0.06); box-shadow: 0 2px 12px rgba(15,23,42,0.04);"
+            >
+              <div
+                class="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style="background: #EEF4FF;"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  style="color: #1E6FFF;"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d={icon}
+                  />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold mb-3" style="color: #0A2540;">
+                {title}
+              </h3>
+              <p class="text-sm leading-relaxed" style="color: #64748B;">
+                {desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #0A2540; padding: 80px 24px;">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        ¿Tu infraestructura soporta el crecimiento de tu fintech?
+      </h2>
+      <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">
+        Agenda una revisión de arquitectura. Evaluamos la resiliencia, latencia
+        y postura de cumplimiento de tu plataforma actual.
+      </p>
+      <a
+        href="/contacto"
+        class="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-white transition-all hover:-translate-y-px"
+        style="background: #1E6FFF; box-shadow: 0 4px 24px rgba(30,111,255,0.45);"
+      >
+        Solicitar revisión de arquitectura
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
+      </a>
+    </div>
+  </section>
+
+  <!-- Vélo en práctica -->
+  <section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest" style="color: #1E6FFF;">Vélo en práctica</span>
+            <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">aws-terraform-devops — Alta disponibilidad Multi-AZ con Terraform</h2>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-4" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Producción</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">Stack AWS con EKS Multi-AZ, RDS PostgreSQL 15 Multi-AZ con backups automatizados, IAM de mínimo privilegio con IRSA, y red privada con NAT Gateway. Toda la infraestructura versionada en Terraform.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          {['Terraform','EKS','RDS PostgreSQL 15','KMS','Secrets Manager','VPC','GitHub Actions','Docker'].map(t => (
+            <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #F1F5F9; color: #475569;">{t}</span>
+          ))}
+        </div>
+        <div class="flex gap-3">
+          <a href="/proyectos/aws-terraform-devops" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Leer caso de uso →</a>
+          <a href="https://github.com/lra-cloud-ops/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

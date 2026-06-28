@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Genera tu Propuesta Técnica · AI-Powered · Gratis"
-  descripcion="Describe tu proyecto y recibe una propuesta técnica en segundos con alcance, arquitectura, timeline y presupuesto orientativo."
-  keywords="propuesta técnica DevOps, presupuesto cloud, propuesta Terraform Kubernetes, generador propuesta IA"
+  titulo="Generate Your Technical Proposal · AI-Powered · Free"
+  descripcion="Describe your project and receive a technical proposal in seconds with scope, architecture, timeline and indicative budget."
+  keywords="DevOps technical proposal, cloud budget, Terraform Kubernetes proposal, AI proposal generator"
 >
   <!-- ── HERO ── -->
   <section
@@ -36,27 +36,27 @@ import Layout from '../layouts/Layout.astro'
           class="w-2 h-2 rounded-full flex-shrink-0"
           style="background: #60A5FA; animation: pulse 2s infinite;"
           aria-hidden="true"></span>
-        AI-Powered · Gratis
+        AI-Powered · Free
       </div>
       <h1
         id="prop-hero-heading"
         class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
         style="letter-spacing: -0.035em;"
       >
-        Genera tu propuesta técnica
+        Generate your technical proposal
       </h1>
       <p
         class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
         style="color: rgba(147,184,255,0.85);"
       >
-        Describe tu proyecto y recibe una propuesta técnica en segundos con
-        alcance, arquitectura, timeline y presupuesto orientativo.
+        Describe your project and receive a technical proposal in seconds with
+        scope, architecture, timeline and indicative budget.
       </p>
     </div>
   </section>
 
   <!-- ── FORM + RESULTS ── -->
-  <section class="bg-white py-16" aria-label="Generador de propuesta">
+  <section class="bg-white py-16" aria-label="Proposal generator">
     <div class="max-w-3xl mx-auto px-6">
       <form id="prop-form" class="space-y-6" novalidate>
         <div>
@@ -65,16 +65,16 @@ import Layout from '../layouts/Layout.astro'
             class="block text-sm font-semibold mb-2"
             style="color: #0F172A;"
           >
-            ¿Qué necesitas construir o mejorar?
+            What do you need to build or improve?
             <span class="font-normal text-xs ml-1" style="color: #64748B;"
-              >(requerido)</span
+              >(required)</span
             >
           </label>
           <textarea
             id="prop-requirements"
             name="requirements"
             rows="6"
-            placeholder="Ejemplo: Necesitamos migrar nuestra aplicación monolítica en Node.js a microservicios en Kubernetes en AWS. Actualmente tenemos ~50k usuarios activos, desplegamos en EC2 manualmente y no tenemos CI/CD. Queremos automatizar los deploys, mejorar la disponibilidad y reducir costes."
+            placeholder="Example: We need to migrate our monolithic Node.js app to microservices on Kubernetes in AWS. We currently have ~50k active users, deploy manually to EC2 and have no CI/CD. We want to automate deployments, improve availability and reduce costs."
             class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
             style="border-color: #E2E8F0; color: #0F172A;"></textarea>
         </div>
@@ -91,28 +91,28 @@ import Layout from '../layouts/Layout.astro'
               class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
               style="border-color: #E2E8F0; color: #0F172A;"
             >
-              <option value="Healthcare">Healthcare / Salud</option>
-              <option value="Fintech">Fintech / Banca</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Fintech">Fintech / Banking</option>
               <option value="SaaS" selected>SaaS / Software</option>
               <option value="E-commerce">E-commerce</option>
-              <option value="Otro">Otro</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div>
             <label
               for="prop-urgency"
               class="block text-sm font-semibold mb-2"
-              style="color: #0F172A;">Urgencia</label
+              style="color: #0F172A;">Urgency</label
             >
             <select
               id="prop-urgency"
               class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
               style="border-color: #E2E8F0; color: #0F172A;"
             >
-              <option value="Inmediata">Inmediata</option>
-              <option value="1-3 meses" selected>1–3 meses</option>
-              <option value="3-6 meses">3–6 meses</option>
-              <option value="Explorando">Explorando opciones</option>
+              <option value="Immediate">Immediate</option>
+              <option value="1-3 months" selected>1–3 months</option>
+              <option value="3-6 months">3–6 months</option>
+              <option value="Exploring">Just exploring</option>
             </select>
           </div>
         </div>
@@ -123,14 +123,14 @@ import Layout from '../layouts/Layout.astro'
             class="block text-sm font-semibold mb-2"
             style="color: #0F172A;"
           >
-            Tu email <span class="font-normal" style="color: #64748B;"
-              >(opcional — para recibir la propuesta completa)</span
+            Your email <span class="font-normal" style="color: #64748B;"
+              >(optional — to receive the full proposal)</span
             >
           </label>
           <input
             id="prop-email"
             type="email"
-            placeholder="nombre@empresa.com"
+            placeholder="name@company.com"
             class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
             style="border-color: #E2E8F0; color: #0F172A;"
           />
@@ -156,7 +156,7 @@ import Layout from '../layouts/Layout.astro'
               d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
             ></path>
           </svg>
-          <span id="prop-btn-text">Generar propuesta →</span>
+          <span id="prop-btn-text">Generate proposal →</span>
         </button>
         <p id="prop-error" class="hidden text-sm text-red-600 text-center"></p>
       </form>
@@ -186,14 +186,13 @@ import Layout from '../layouts/Layout.astro'
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
           </svg>
           <span class="text-sm font-medium" style="color: #1D4ED8;"
-            >Generando tu propuesta...</span
+            >Generating your proposal...</span
           >
         </div>
       </div>
 
       <!-- Results -->
       <div id="prop-results" class="hidden mt-10 space-y-6">
-        <!-- Header -->
         <div class="rounded-2xl p-8" style="background: #0A2540;">
           <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -201,7 +200,7 @@ import Layout from '../layouts/Layout.astro'
                 class="text-xs font-bold uppercase tracking-widest mb-2"
                 style="color: #93C5FD;"
               >
-                Plan recomendado
+                Recommended plan
               </p>
               <div
                 id="prop-plan"
@@ -234,10 +233,9 @@ import Layout from '../layouts/Layout.astro'
           </p>
         </div>
 
-        <!-- Architecture -->
         <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
           <h2 class="text-base font-bold mb-3" style="color: #0F172A;">
-            Arquitectura propuesta
+            Proposed architecture
           </h2>
           <p
             id="prop-architecture"
@@ -247,48 +245,44 @@ import Layout from '../layouts/Layout.astro'
           </p>
         </div>
 
-        <!-- Scope + Tech Stack -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
             <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
-              Entregables
+              Deliverables
             </h2>
             <ul id="prop-scope" class="space-y-2"></ul>
           </div>
           <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
             <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
-              Stack tecnológico
+              Tech stack
             </h2>
             <div id="prop-stack" class="flex flex-wrap gap-2"></div>
           </div>
         </div>
 
-        <!-- Phases -->
         <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
           <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
-            Fases del proyecto
+            Project phases
           </h2>
           <div id="prop-phases" class="space-y-4"></div>
         </div>
 
-        <!-- Risks -->
         <div
           class="rounded-2xl p-6"
           style="background: #FFFBEB; border: 1px solid #FDE68A;"
         >
           <h2 class="text-base font-bold mb-3" style="color: #92400E;">
-            Riesgos identificados
+            Identified risks
           </h2>
           <ul id="prop-risks" class="space-y-2"></ul>
         </div>
 
-        <!-- Next steps -->
         <div
           class="rounded-2xl p-6"
           style="background: #F0FDF4; border: 1px solid #BBF7D0;"
         >
           <h2 class="text-base font-bold mb-2" style="color: #15803D;">
-            Próximos pasos
+            Next steps
           </h2>
           <p
             id="prop-nextsteps"
@@ -298,17 +292,16 @@ import Layout from '../layouts/Layout.astro'
           </p>
         </div>
 
-        <!-- CTA -->
         <div class="text-center pt-4 pb-2">
           <p class="text-base font-semibold mb-4" style="color: #0F172A;">
-            Agenda una consulta para validar esta propuesta
+            Schedule a consultation to validate this proposal
           </p>
           <a
-            href="/contacto"
+            href="/en/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
           >
-            Agendar consulta →
+            Schedule consultation →
           </a>
         </div>
       </div>
@@ -355,7 +348,7 @@ import Layout from '../layouts/Layout.astro'
     ).value
 
     if (req.trim().length < 10) {
-      errorEl.textContent = 'Por favor, describe tu proyecto con más detalle.'
+      errorEl.textContent = 'Please describe your project in more detail.'
       errorEl.classList.remove('hidden')
       return
     }
@@ -363,14 +356,14 @@ import Layout from '../layouts/Layout.astro'
     form.classList.add('hidden')
     loading.classList.remove('hidden')
     submitBtn.disabled = true
-    btnText.textContent = 'Generando...'
+    btnText.textContent = 'Generating...'
 
     try {
       const res = await fetch('/api/proposal-generator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          requirements: `Sector: ${sector}\nUrgencia: ${urgency}\n\n${req}`,
+          requirements: `Sector: ${sector}\nUrgency: ${urgency}\n\n${req}`,
         }),
       })
       const json = (await res.json()) as {
@@ -390,7 +383,6 @@ import Layout from '../layouts/Layout.astro'
       renderList('prop-scope', Array.isArray(p.scope) ? p.scope : [])
       renderList('prop-risks', Array.isArray(p.risks) ? p.risks : [], '#92400E')
 
-      // Tech stack chips
       const stackEl = document.getElementById('prop-stack')!
       const stack = Array.isArray(p.tech_stack)
         ? (p.tech_stack as string[])
@@ -402,7 +394,6 @@ import Layout from '../layouts/Layout.astro'
         )
         .join('')
 
-      // Phases
       interface Phase {
         name: string
         duration: string
@@ -431,11 +422,11 @@ import Layout from '../layouts/Layout.astro'
       loading.classList.add('hidden')
       form.classList.remove('hidden')
       submitBtn.disabled = false
-      btnText.textContent = 'Generar propuesta →'
+      btnText.textContent = 'Generate proposal →'
       errorEl.textContent =
         err instanceof Error
           ? err.message
-          : 'Error generando la propuesta. Intenta de nuevo.'
+          : 'Error generating the proposal. Please try again.'
       errorEl.classList.remove('hidden')
     }
   })

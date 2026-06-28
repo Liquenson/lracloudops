@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Calculadora ROI DevOps · Calcula tu ahorro con automatización"
-  descripcion="Calcula el ROI de automatizar tus despliegues con LRA Cloud Operations. Introduce tus datos y ve cuánto puedes ahorrar al mes y al año."
+  titulo="DevOps ROI Calculator · Calculate your savings with automation"
+  descripcion="Calculate the ROI of automating your deployments with LRA Cloud Operations. Enter your data and see how much you can save per month and per year."
 >
   <!-- HERO -->
   <section class="relative overflow-hidden" style="background-color: #0A2540;">
@@ -25,25 +25,26 @@ import Layout from '../layouts/Layout.astro'
         class="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-full mb-6"
         style="background: rgba(30,111,255,0.2); color: #93b8ff; border: 1px solid rgba(30,111,255,0.25);"
       >
-        Calculadora ROI
+        ROI Calculator
       </span>
       <h1
         class="text-4xl sm:text-5xl font-extrabold text-white mb-6"
         style="letter-spacing: -0.02em;"
       >
-        ¿Cuánto cuesta <em class="not-italic" style="color: #93b8ff;">no</em> automatizar?
+        How much does <em class="not-italic" style="color: #93b8ff;">not</em> automating
+        cost?
       </h1>
       <p
         class="text-lg leading-relaxed max-w-2xl mx-auto mb-4"
         style="color: rgba(147,184,255,0.8);"
       >
-        Introduce los datos de tu equipo y descubre el coste real de los
-        despliegues manuales y el ahorro potencial con automatización DevOps.
+        Enter your team data and discover the real cost of manual deployments —
+        and the potential savings with DevOps automation.
       </p>
     </div>
   </section>
 
-  <!-- CALCULADORA -->
+  <!-- CALCULATOR -->
   <section class="py-20" style="background: #F8FAFC;">
     <div class="max-w-5xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -53,15 +54,15 @@ import Layout from '../layouts/Layout.astro'
           style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 8px 32px rgba(10,37,64,0.08); border-radius: 16px;"
         >
           <h2 class="text-xl font-bold mb-6" style="color: #0A2540;">
-            Tu situación actual
+            Your current situation
           </h2>
 
           <div class="space-y-7">
-            <!-- Deploys por mes -->
+            <!-- Deploys per month -->
             <div>
               <div class="flex justify-between items-center mb-2">
                 <label class="text-sm font-semibold" style="color: #0A2540;"
-                  >Deploys por mes</label
+                  >Deploys per month</label
                 >
                 <span
                   id="label-deploys"
@@ -86,11 +87,11 @@ import Layout from '../layouts/Layout.astro'
               </div>
             </div>
 
-            <!-- Horas por deploy -->
+            <!-- Hours per deploy -->
             <div>
               <div class="flex justify-between items-center mb-2">
                 <label class="text-sm font-semibold" style="color: #0A2540;"
-                  >Horas por deploy</label
+                  >Hours per deploy</label
                 >
                 <span
                   id="label-hours"
@@ -115,16 +116,16 @@ import Layout from '../layouts/Layout.astro'
               </div>
             </div>
 
-            <!-- Coste hora -->
+            <!-- Hourly rate -->
             <div>
               <div class="flex justify-between items-center mb-2">
                 <label class="text-sm font-semibold" style="color: #0A2540;"
-                  >Coste hora del equipo (€)</label
+                  >Team hourly rate (€)</label
                 >
                 <span
                   id="label-rate"
                   class="text-sm font-bold tabular-nums"
-                  style="color: #1E6FFF;">50€/h</span
+                  style="color: #1E6FFF;">€50/h</span
                 >
               </div>
               <input
@@ -138,11 +139,11 @@ import Layout from '../layouts/Layout.astro'
               />
             </div>
 
-            <!-- Ingenieros -->
+            <!-- Engineers -->
             <div>
               <div class="flex justify-between items-center mb-2">
                 <label class="text-sm font-semibold" style="color: #0A2540;"
-                  >Ingenieros involucrados</label
+                  >Engineers involved</label
                 >
                 <span
                   id="label-engineers"
@@ -169,15 +170,15 @@ import Layout from '../layouts/Layout.astro'
           </div>
         </div>
 
-        <!-- RESULTADOS -->
+        <!-- RESULTS -->
         <div class="space-y-5">
-          <!-- Tabla comparativa -->
+          <!-- Comparison table -->
           <div
             class="bg-white rounded-2xl p-8"
             style="border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(10,37,64,0.04), 0 8px 32px rgba(10,37,64,0.08); border-radius: 16px;"
           >
             <h2 class="text-xl font-bold mb-6" style="color: #0A2540;">
-              Ahora vs Con LRA
+              Now vs With LRA
             </h2>
             <div
               class="overflow-hidden rounded-xl"
@@ -188,22 +189,22 @@ import Layout from '../layouts/Layout.astro'
                   <tr style="background: #F8FAFC;">
                     <th
                       class="px-4 py-3 text-left font-semibold"
-                      style="color: #64748b;">Métrica</th
+                      style="color: #64748b;">Metric</th
                     >
                     <th
                       class="px-4 py-3 text-right font-semibold"
-                      style="color: #DC2626;">Ahora</th
+                      style="color: #DC2626;">Now</th
                     >
                     <th
                       class="px-4 py-3 text-right font-semibold"
-                      style="color: #16a34a;">Con LRA</th
+                      style="color: #16a34a;">With LRA</th
                     >
                   </tr>
                 </thead>
                 <tbody>
                   <tr style="border-top: 1px solid #f1f5f9;">
                     <td class="px-4 py-3" style="color: #64748b;"
-                      >Horas/mes en deploys</td
+                      >Hours/month on deploys</td
                     >
                     <td
                       id="row-hours-now"
@@ -218,7 +219,7 @@ import Layout from '../layouts/Layout.astro'
                   </tr>
                   <tr style="border-top: 1px solid #f1f5f9;">
                     <td class="px-4 py-3" style="color: #64748b;"
-                      >Coste mensual</td
+                      >Monthly cost</td
                     >
                     <td
                       id="row-cost-now"
@@ -235,7 +236,7 @@ import Layout from '../layouts/Layout.astro'
                     style="border-top: 1px solid #f1f5f9; background: #F0FDF4;"
                   >
                     <td class="px-4 py-3 font-semibold" style="color: #0A2540;"
-                      >Ahorro mensual</td
+                      >Monthly savings</td
                     >
                     <td class="px-4 py-3"></td>
                     <td
@@ -249,7 +250,7 @@ import Layout from '../layouts/Layout.astro'
             </div>
           </div>
 
-          <!-- Cards de métricas clave -->
+          <!-- Key metric cards -->
           <div class="grid grid-cols-2 gap-4">
             <div
               class="bg-white rounded-2xl p-6 text-center"
@@ -263,7 +264,7 @@ import Layout from '../layouts/Layout.astro'
                 —
               </div>
               <div class="text-xs font-semibold" style="color: #64748b;">
-                Ahorro anual
+                Annual savings
               </div>
             </div>
             <div
@@ -278,7 +279,7 @@ import Layout from '../layouts/Layout.astro'
                 —
               </div>
               <div class="text-xs font-semibold" style="color: #64748b;">
-                ROI estimado
+                Estimated ROI
               </div>
             </div>
           </div>
@@ -289,14 +290,14 @@ import Layout from '../layouts/Layout.astro'
             style="background: linear-gradient(135deg, #0A2540 0%, #1a3a60 100%);"
           >
             <p class="text-sm mb-4" style="color: rgba(147,184,255,0.85);">
-              ¿Quieres estos ahorros en tu equipo? Hablemos.
+              Want these savings for your team? Let's talk.
             </p>
             <a
-              href="/contacto"
+              href="/en/contact"
               class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-6 py-3 rounded-xl transition-all hover:scale-[1.02]"
               style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
             >
-              Solicitar consulta gratuita
+              Request a free consultation
               <svg
                 class="w-4 h-4"
                 fill="none"
@@ -313,11 +314,11 @@ import Layout from '../layouts/Layout.astro'
         </div>
       </div>
 
-      <!-- Nota metodología -->
+      <!-- Methodology note -->
       <p class="text-center text-xs mt-8" style="color: #94a3b8;">
-        * Estimación basada en reducción media del 85% en horas de deploy con
-        automatización CI/CD completa. ROI calculado sobre plan Starter
-        (€1.500). Resultados reales pueden variar.
+        * Estimate based on an average 85% reduction in deploy hours with full
+        CI/CD automation. ROI calculated against Starter plan (€1,500). Actual
+        results may vary.
       </p>
     </div>
   </section>
@@ -325,7 +326,7 @@ import Layout from '../layouts/Layout.astro'
 
 <script>
   function fmt(n: number) {
-    return new Intl.NumberFormat('es-ES', {
+    return new Intl.NumberFormat('en-EU', {
       style: 'currency',
       currency: 'EUR',
       maximumFractionDigits: 0,
@@ -355,7 +356,7 @@ import Layout from '../layouts/Layout.astro'
     ;(document.getElementById('label-hours') as HTMLElement).textContent =
       hours + 'h'
     ;(document.getElementById('label-rate') as HTMLElement).textContent =
-      rate + '€/h'
+      '€' + rate + '/h'
     ;(document.getElementById('label-engineers') as HTMLElement).textContent =
       String(engineers)
 

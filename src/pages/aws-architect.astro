@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="AWS Architect Agent · Diseño de Arquitectura AWS · Well-Architected · Gratis"
-  descripcion="Genera arquitecturas AWS de nivel enterprise con los 5 pilares del Well-Architected Framework. Serverless, ECS, EKS, RDS, CloudFront y más."
+  titulo="AWS Architect Agent · AWS Architecture Design · Well-Architected · Free"
+  descripcion="Generate enterprise-grade AWS architectures aligned with the Well-Architected Framework. Serverless, ECS, EKS, RDS, CloudFront and more."
 >
   <!-- HERO -->
   <section
@@ -35,7 +35,7 @@ import Layout from '../layouts/Layout.astro'
           class="w-2 h-2 rounded-full flex-shrink-0"
           style="background: #60A5FA; animation: pulse 2s infinite;"
           aria-hidden="true"></span>
-        AWS Well-Architected · 5 Pilares · Enterprise
+        AWS Well-Architected · 5 Pillars · Enterprise
       </div>
       <h1
         id="aa-hero-heading"
@@ -48,18 +48,15 @@ import Layout from '../layouts/Layout.astro'
         class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
         style="color: rgba(147,184,255,0.85);"
       >
-        Describe tu sistema y obtén una arquitectura AWS completa alineada con
-        el Well-Architected Framework: componentes, costes estimados y plan de
-        migración.
+        Describe your system and get a complete AWS architecture aligned with
+        the Well-Architected Framework: components, estimated costs and
+        migration plan.
       </p>
     </div>
   </section>
 
   <!-- FORM + RESULTS -->
-  <section
-    class="bg-white py-16"
-    aria-label="Formulario de diseño de arquitectura AWS"
-  >
+  <section class="bg-white py-16" aria-label="AWS architecture design form">
     <div class="max-w-3xl mx-auto px-6">
       <form id="aa-form" class="space-y-6" novalidate>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -67,7 +64,7 @@ import Layout from '../layouts/Layout.astro'
             <label
               for="aa-workload"
               class="block text-sm font-semibold mb-2"
-              style="color: #0F172A;">Tipo de workload</label
+              style="color: #0F172A;">Workload type</label
             >
             <select
               id="aa-workload"
@@ -86,16 +83,14 @@ import Layout from '../layouts/Layout.astro'
             <label
               for="aa-scale"
               class="block text-sm font-semibold mb-2"
-              style="color: #0F172A;">Escala</label
+              style="color: #0F172A;">Scale</label
             >
             <select
               id="aa-scale"
               class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
               style="border-color: #E2E8F0; color: #0F172A;"
             >
-              <option value="Startup" selected
-                >Startup (&lt;10K usuarios)</option
-              >
+              <option value="Startup" selected>Startup (&lt;10K users)</option>
               <option value="Scale-up">Scale-up (10K-1M)</option>
               <option value="Enterprise">Enterprise (&gt;1M)</option>
             </select>
@@ -104,16 +99,16 @@ import Layout from '../layouts/Layout.astro'
             <label
               for="aa-budget"
               class="block text-sm font-semibold mb-2"
-              style="color: #0F172A;">Prioridad de coste</label
+              style="color: #0F172A;">Cost priority</label
             >
             <select
               id="aa-budget"
               class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
               style="border-color: #E2E8F0; color: #0F172A;"
             >
-              <option value="Cost-optimized" selected>Optimizar coste</option>
-              <option value="Balanced">Equilibrado</option>
-              <option value="Performance-first">Máximo rendimiento</option>
+              <option value="Cost-optimized" selected>Cost optimized</option>
+              <option value="Balanced">Balanced</option>
+              <option value="Performance-first">Maximum performance</option>
             </select>
           </div>
         </div>
@@ -123,15 +118,15 @@ import Layout from '../layouts/Layout.astro'
             class="block text-sm font-semibold mb-2"
             style="color: #0F172A;"
           >
-            Describe tu sistema actual o el que quieres construir
+            Describe your current system or what you want to build
             <span class="font-normal text-xs ml-1" style="color: #64748B;"
-              >(requerido)</span
+              >(required)</span
             >
           </label>
           <textarea
             id="aa-description"
             rows="7"
-            placeholder="Ejemplo: Necesitamos migrar una aplicación monolítica Java a AWS. Tiene ~50K usuarios activos, maneja pagos con Stripe, tiene una base de datos PostgreSQL de 200GB y picos de tráfico en Black Friday de 10x. El equipo tiene 3 desarrolladores y queremos reducir el tiempo de deployment de 2 horas a menos de 10 minutos..."
+            placeholder="Example: We need to migrate a Java monolith to AWS. It has ~50K active users, handles payments with Stripe, has a 200GB PostgreSQL database and 10x traffic spikes on Black Friday. The team has 3 developers and we want to reduce deployment time from 2 hours to under 10 minutes..."
             class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
             style="border-color: #E2E8F0; color: #0F172A;"></textarea>
         </div>
@@ -155,7 +150,7 @@ import Layout from '../layouts/Layout.astro'
               d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
             ></path>
           </svg>
-          <span id="aa-btn-text">Diseñar arquitectura →</span>
+          <span id="aa-btn-text">Design architecture →</span>
         </button>
         <p id="aa-error" class="hidden text-sm text-red-600 text-center"></p>
       </form>
@@ -185,14 +180,13 @@ import Layout from '../layouts/Layout.astro'
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
           </svg>
           <span class="text-sm font-medium" style="color: #2563EB;"
-            >Diseñando arquitectura AWS...</span
+            >Designing AWS architecture...</span
           >
         </div>
       </div>
 
       <!-- Results -->
       <div id="aa-results" class="hidden mt-10 space-y-6">
-        <!-- Header -->
         <div class="rounded-2xl p-8" style="background: #0A2540;">
           <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
             <div>
@@ -200,7 +194,7 @@ import Layout from '../layouts/Layout.astro'
                 class="text-xs font-bold uppercase tracking-widest mb-1"
                 style="color: #93C5FD;"
               >
-                Arquitectura
+                Architecture
               </p>
               <h2 id="aa-name" class="text-2xl font-extrabold text-white"></h2>
               <span
@@ -214,7 +208,7 @@ import Layout from '../layouts/Layout.astro'
                 class="text-xs font-semibold uppercase tracking-widest mb-1"
                 style="color: #93C5FD;"
               >
-                Coste estimado
+                Estimated cost
               </p>
               <div
                 id="aa-cost"
@@ -223,7 +217,7 @@ import Layout from '../layouts/Layout.astro'
               >
               </div>
               <p class="text-xs mt-0.5" style="color: rgba(147,184,255,0.6);">
-                por mes
+                per month
               </p>
             </div>
           </div>
@@ -235,7 +229,6 @@ import Layout from '../layouts/Layout.astro'
           </p>
         </div>
 
-        <!-- Well-Architected pillars -->
         <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
           <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
             Well-Architected Framework
@@ -243,24 +236,22 @@ import Layout from '../layouts/Layout.astro'
           <div id="aa-pillars" class="space-y-3"></div>
         </div>
 
-        <!-- Components -->
         <div
           class="rounded-2xl p-6"
           style="background: #F8FAFF; border: 1px solid #E5E7EB;"
         >
           <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
-            Componentes AWS
+            AWS Components
           </h2>
           <div id="aa-components" class="space-y-3"></div>
         </div>
 
-        <!-- Diagram description -->
         <div
           class="rounded-2xl p-6"
           style="background: #F1F5F9; border: 1px solid #CBD5E1;"
         >
           <h2 class="text-base font-bold mb-2" style="color: #0F172A;">
-            Flujo de arquitectura
+            Architecture flow
           </h2>
           <p
             id="aa-diagram"
@@ -270,39 +261,36 @@ import Layout from '../layouts/Layout.astro'
           </p>
         </div>
 
-        <!-- Trade-offs -->
         <div
           class="rounded-2xl p-6"
           style="background: #FFFBEB; border: 1px solid #FDE68A;"
         >
           <h2 class="text-base font-bold mb-3" style="color: #92400E;">
-            Trade-offs a considerar
+            Trade-offs to consider
           </h2>
           <ul id="aa-tradeoffs" class="space-y-2"></ul>
         </div>
 
-        <!-- Migration path -->
         <div
           class="rounded-2xl p-6"
           style="background: #F0FDF4; border: 1px solid #BBF7D0;"
         >
           <h2 class="text-base font-bold mb-3" style="color: #15803D;">
-            Plan de migración
+            Migration plan
           </h2>
           <ol id="aa-migration" class="space-y-2"></ol>
         </div>
 
-        <!-- CTA -->
         <div class="text-center pt-4 pb-2">
           <p class="text-base font-semibold mb-4" style="color: #0F172A;">
-            ¿Quieres que implementemos esta arquitectura?
+            Want us to implement this architecture?
           </p>
           <a
-            href="/contacto"
+            href="/en/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
           >
-            Implementar con LRA →
+            Implement with LRA →
           </a>
         </div>
       </div>
@@ -319,11 +307,11 @@ import Layout from '../layouts/Layout.astro'
   const submitBtn = document.getElementById('aa-submit') as HTMLButtonElement
 
   const pillarLabels: Record<string, string> = {
-    operational_excellence: 'Excelencia Operacional',
-    security: 'Seguridad',
-    reliability: 'Fiabilidad',
-    performance: 'Eficiencia de Rendimiento',
-    cost_optimization: 'Optimización de Costes',
+    operational_excellence: 'Operational Excellence',
+    security: 'Security',
+    reliability: 'Reliability',
+    performance: 'Performance Efficiency',
+    cost_optimization: 'Cost Optimization',
   }
 
   interface Component {
@@ -348,7 +336,7 @@ import Layout from '../layouts/Layout.astro'
 
     if (desc.trim().length < 20) {
       errorEl.textContent =
-        'Describe tu sistema con más detalle (mínimo 20 caracteres).'
+        'Please describe your system in more detail (minimum 20 characters).'
       errorEl.classList.remove('hidden')
       return
     }
@@ -356,7 +344,7 @@ import Layout from '../layouts/Layout.astro'
     form.classList.add('hidden')
     loading.classList.remove('hidden')
     submitBtn.disabled = true
-    btnText.textContent = 'Diseñando...'
+    btnText.textContent = 'Designing...'
 
     try {
       const res = await fetch('/api/aws-architect', {
@@ -379,7 +367,7 @@ import Layout from '../layouts/Layout.astro'
       document.getElementById('aa-name')!.textContent =
         typeof a.architecture_name === 'string'
           ? a.architecture_name
-          : 'Arquitectura AWS'
+          : 'AWS Architecture'
       document.getElementById('aa-pattern')!.textContent =
         typeof a.pattern === 'string' ? a.pattern : ''
       document.getElementById('aa-cost')!.textContent =
@@ -458,11 +446,11 @@ import Layout from '../layouts/Layout.astro'
       loading.classList.add('hidden')
       form.classList.remove('hidden')
       submitBtn.disabled = false
-      btnText.textContent = 'Diseñar arquitectura →'
+      btnText.textContent = 'Design architecture →'
       errorEl.textContent =
         err instanceof Error
           ? err.message
-          : 'Error generando la arquitectura. Intenta de nuevo.'
+          : 'Error generating architecture. Please try again.'
       errorEl.classList.remove('hidden')
     }
   })

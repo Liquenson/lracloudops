@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Checklist de preparación AWS — LRA Cloud Operations"
-  descripcion="47 verificaciones esenciales para auditar tu infraestructura AWS. Seguridad, Fiabilidad, Rendimiento, Observabilidad, Costos y CI/CD."
+  titulo="AWS Readiness Checklist — LRA Cloud Operations"
+  descripcion="47 essential checks to audit your AWS infrastructure. Security, Reliability, Performance, Observability, Cost Optimization, and CI/CD."
 >
   <!-- Hero -->
   <section
@@ -16,19 +16,19 @@ import Layout from '../layouts/Layout.astro'
         class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6"
         style="background: rgba(30,111,255,0.2); color: #93c5fd;"
       >
-        Herramienta gratuita
+        Free tool
       </div>
       <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        Checklist de preparación AWS
+        AWS Readiness Checklist
       </h1>
       <p class="text-lg mb-8" style="color: #94a3b8;">
-        47 verificaciones en 6 categorías para auditar tu infraestructura antes
-        de producción.
+        47 checks across 6 categories to audit your infrastructure before
+        production.
       </p>
       <!-- Progress bar -->
       <div class="max-w-md mx-auto">
         <div class="flex justify-between text-sm mb-2" style="color: #94a3b8;">
-          <span id="progress-label">0 de 47 completados</span>
+          <span id="progress-label">0 of 47 completed</span>
           <span id="progress-pct">0%</span>
         </div>
         <div
@@ -77,9 +77,9 @@ import Layout from '../layouts/Layout.astro'
           </div>
           <div>
             <h2 class="font-bold text-base" style="color: #0A2540;">
-              Seguridad
+              Security
             </h2>
-            <p class="text-xs" style="color: #64748b;">10 verificaciones</p>
+            <p class="text-xs" style="color: #64748b;">10 checks</p>
           </div>
           <span
             class="ml-auto text-sm font-semibold"
@@ -98,11 +98,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                IAM: MFA habilitado en cuenta root y todos los usuarios IAM
+                IAM: MFA enabled on root account and all IAM users
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Crítico — La cuenta root nunca debe usarse en operaciones
-                rutinarias.
+                Critical — The root account must never be used for routine
+                operations.
               </p>
             </div>
           </li>
@@ -116,11 +116,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                IAM: roles con principio de mínimo privilegio (no políticas
-                AdministratorAccess)
+                IAM: roles follow least privilege principle (no
+                AdministratorAccess policies)
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Revisa con IAM Access Analyzer para detectar accesos excesivos.
+                Use IAM Access Analyzer to detect overly permissive access.
               </p>
             </div>
           </li>
@@ -134,11 +134,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                S3: todos los buckets con Block Public Access habilitado
+                S3: all buckets have Block Public Access enabled
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Activa a nivel de cuenta para cubrir todos los buckets actuales
-                y futuros.
+                Enable at the account level to cover all current and future
+                buckets.
               </p>
             </div>
           </li>
@@ -152,11 +152,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                VPC: security groups sin reglas 0.0.0.0/0 en puertos sensibles
+                VPC: security groups without 0.0.0.0/0 rules on sensitive ports
                 (22, 3306, 5432)
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Usa Bastion host o SSM Session Manager en lugar de SSH directo.
+                Use a Bastion host or SSM Session Manager instead of direct SSH.
               </p>
             </div>
           </li>
@@ -170,11 +170,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Secrets Manager / Parameter Store para todas las credenciales
+                Secrets Manager / Parameter Store for all credentials
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Ningún secreto hardcodeado en código, variables de entorno en
-                EC2 o imágenes Docker.
+                No hardcoded secrets in code, EC2 environment variables, or
+                Docker images.
               </p>
             </div>
           </li>
@@ -188,10 +188,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                CloudTrail activo en todas las regiones con log file validation
+                CloudTrail active in all regions with log file validation
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Guardar logs en bucket S3 separado con MFA Delete activado.
+                Store logs in a separate S3 bucket with MFA Delete enabled.
               </p>
             </div>
           </li>
@@ -205,10 +205,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                GuardDuty habilitado en todas las regiones activas
+                GuardDuty enabled in all active regions
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Detección de amenazas con ML sin necesidad de agentes.
+                ML-based threat detection with no agents required.
               </p>
             </div>
           </li>
@@ -222,10 +222,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                KMS: cifrado en reposo para RDS, S3 y EBS
+                KMS: encryption at rest for RDS, S3 and EBS
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Usar Customer Managed Keys (CMK) para mayor control de rotación.
+                Use Customer Managed Keys (CMK) for greater rotation control.
               </p>
             </div>
           </li>
@@ -239,10 +239,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                AWS Config habilitado con reglas de conformidad
+                AWS Config enabled with compliance rules
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Reglas managed recomendadas: restricted-ssh,
+                Recommended managed rules: restricted-ssh,
                 s3-bucket-public-read-prohibited.
               </p>
             </div>
@@ -257,11 +257,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                ECR: escaneo de vulnerabilidades en imágenes Docker activado
+                ECR: Docker image vulnerability scanning enabled
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Enhanced scanning con Inspector para CVEs en OS y dependencias
-                de aplicación.
+                Enhanced scanning with Inspector for OS and application
+                dependency CVEs.
               </p>
             </div>
           </li>
@@ -296,9 +296,9 @@ import Layout from '../layouts/Layout.astro'
           </div>
           <div>
             <h2 class="font-bold text-base" style="color: #0A2540;">
-              Fiabilidad
+              Reliability
             </h2>
-            <p class="text-xs" style="color: #64748b;">10 verificaciones</p>
+            <p class="text-xs" style="color: #64748b;">10 checks</p>
           </div>
           <span
             class="ml-auto text-sm font-semibold"
@@ -317,10 +317,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Multi-AZ en RDS y/o ElastiCache
+                Multi-AZ on RDS and/or ElastiCache
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Failover automático en caso de fallo de zona de disponibilidad.
+                Automatic failover in case of availability zone failure.
               </p>
             </div>
           </li>
@@ -334,12 +334,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Auto Scaling Group configurado en EC2/ECS con políticas de
-                escalado
+                Auto Scaling Group configured in EC2/ECS with scaling policies
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Target Tracking con CPU/RequestCount. Mínimo 2 instancias en
-                producción.
+                Target Tracking with CPU/RequestCount. Minimum 2 instances in
+                production.
               </p>
             </div>
           </li>
@@ -353,11 +352,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                ALB/NLB configurado con health checks correctos
+                ALB/NLB configured with correct health checks
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Health check path devuelve 200 y verifica conectividad real (DB,
-                cache).
+                Health check path returns 200 and verifies real connectivity
+                (DB, cache).
               </p>
             </div>
           </li>
@@ -371,11 +370,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Backups automáticos de RDS con retención ≥ 7 días
+                Automatic RDS backups with retention ≥ 7 days
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Probar restauración periódicamente — una copia sin prueba de
-                restore no cuenta.
+                Test restores periodically — a backup without a tested restore
+                doesn't count.
               </p>
             </div>
           </li>
@@ -389,10 +388,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                S3: versioning habilitado en buckets críticos
+                S3: versioning enabled on critical buckets
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Protege contra borrado accidental y corrupción de datos.
+                Protects against accidental deletion and data corruption.
               </p>
             </div>
           </li>
@@ -406,11 +405,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Route 53 health checks y failover DNS configurado
+                Route 53 health checks and DNS failover configured
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Failover activo-pasivo o latency-based routing para
-                multi-región.
+                Active-passive failover or latency-based routing for
+                multi-region.
               </p>
             </div>
           </li>
@@ -424,10 +423,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                ECS/EKS: deployment strategy con rollback automático
+                ECS/EKS: deployment strategy with automatic rollback
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Rolling update o Blue/Green con circuit breaker en CodeDeploy.
+                Rolling update or Blue/Green with circuit breaker in CodeDeploy.
               </p>
             </div>
           </li>
@@ -441,10 +440,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                SQS/SNS para desacoplar servicios críticos
+                SQS/SNS to decouple critical services
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Dead Letter Queue configurada con alarma de CloudWatch.
+                Dead Letter Queue configured with CloudWatch alarm.
               </p>
             </div>
           </li>
@@ -458,11 +457,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Terraform state en S3 + DynamoDB locking
+                Terraform state in S3 + DynamoDB locking
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                State remoto evita conflictos en equipos. Nunca estado local en
-                producción.
+                Remote state prevents conflicts in teams. Never local state in
+                production.
               </p>
             </div>
           </li>
@@ -476,10 +475,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                DR documentado: RTO y RPO definidos y probados
+                DR documented: RTO and RPO defined and tested
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Runbook de recuperación actualizado y accesible fuera de AWS.
+                Recovery runbook updated and accessible outside of AWS.
               </p>
             </div>
           </li>
@@ -513,9 +512,9 @@ import Layout from '../layouts/Layout.astro'
           </div>
           <div>
             <h2 class="font-bold text-base" style="color: #0A2540;">
-              Rendimiento
+              Performance
             </h2>
-            <p class="text-xs" style="color: #64748b;">8 verificaciones</p>
+            <p class="text-xs" style="color: #64748b;">8 checks</p>
           </div>
           <span
             class="ml-auto text-sm font-semibold"
@@ -534,10 +533,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                CloudFront CDN para assets estáticos y frontend
+                CloudFront CDN for static assets and frontend
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Cache-Control headers correctos. OAC en lugar de OAI para S3.
+                Correct Cache-Control headers. OAC instead of OAI for S3.
               </p>
             </div>
           </li>
@@ -551,11 +550,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                ElastiCache (Redis/Memcached) para queries frecuentes
+                ElastiCache (Redis/Memcached) for frequent queries
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Cache de sesiones, resultados de DB y respuestas de API
-                costosas.
+                Cache sessions, DB results, and expensive API responses.
               </p>
             </div>
           </li>
@@ -569,11 +567,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                RDS: tipo de instancia correcto + read replicas si hay lectura
-                intensiva
+                RDS: correct instance type + read replicas if read-intensive
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Performance Insights activado para detectar queries lentas.
+                Performance Insights enabled to detect slow queries.
               </p>
             </div>
           </li>
@@ -587,12 +584,12 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                EC2/ECS: tipo de instancia ajustado a carga real (no
+                EC2/ECS: instance type adjusted to real load (not
                 over-provisioned)
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Compute Optimizer analiza métricas históricas y recomienda
-                tamaño óptimo.
+                Compute Optimizer analyzes historical metrics and recommends
+                optimal sizing.
               </p>
             </div>
           </li>
@@ -606,10 +603,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                EBS: tipo gp3 (no gp2) en volúmenes de EC2
+                EBS: gp3 type (not gp2) on EC2 volumes
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                gp3 ofrece mejor rendimiento base a menor coste que gp2.
+                gp3 delivers better baseline performance at lower cost than gp2.
               </p>
             </div>
           </li>
@@ -623,12 +620,12 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Lambda (si aplica): configuración de memoria y concurrencia
-                reservada
+                Lambda (if applicable): memory and reserved concurrency
+                configured
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Lambda Power Tuning para encontrar el balance coste/rendimiento
-                óptimo.
+                Lambda Power Tuning to find the optimal cost/performance
+                balance.
               </p>
             </div>
           </li>
@@ -642,11 +639,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                VPC endpoints para servicios AWS (S3, DynamoDB, SQS)
+                VPC endpoints for AWS services (S3, DynamoDB, SQS)
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Evita tráfico hacia internet público. Reduce latencia y coste de
-                NAT.
+                Avoid public internet traffic. Reduces latency and NAT cost.
               </p>
             </div>
           </li>
@@ -660,11 +656,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Load testing ejecutado antes de producción
+                Load testing executed before production
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Usar k6, Locust o AWS Distributed Load Testing. Documentar
-                resultados.
+                Use k6, Locust, or AWS Distributed Load Testing. Document
+                results.
               </p>
             </div>
           </li>
@@ -699,9 +695,9 @@ import Layout from '../layouts/Layout.astro'
           </div>
           <div>
             <h2 class="font-bold text-base" style="color: #0A2540;">
-              Observabilidad
+              Observability
             </h2>
-            <p class="text-xs" style="color: #64748b;">8 verificaciones</p>
+            <p class="text-xs" style="color: #64748b;">8 checks</p>
           </div>
           <span
             class="ml-auto text-sm font-semibold"
@@ -720,10 +716,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                CloudWatch Alarms en métricas críticas (CPU, errores, latencia)
+                CloudWatch Alarms on critical metrics (CPU, errors, latency)
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Alarmas con acciones SNS → email/PagerDuty/Slack configuradas.
+                Alarms with SNS actions → email/PagerDuty/Slack configured.
               </p>
             </div>
           </li>
@@ -737,12 +733,12 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Logs estructurados (JSON) con retención configurada en
-                CloudWatch Logs
+                Structured logs (JSON) with configured retention in CloudWatch
+                Logs
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Retención 30-90 días en prod. Logs sin expiración acumulan coste
-                innecesario.
+                30–90 days retention in prod. Logs without expiration accumulate
+                unnecessary cost.
               </p>
             </div>
           </li>
@@ -756,10 +752,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                X-Ray o trazabilidad distribuida en servicios críticos
+                X-Ray or distributed tracing on critical services
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Identificar cuellos de botella y errores entre microservicios.
+                Identify bottlenecks and errors across microservices.
               </p>
             </div>
           </li>
@@ -773,11 +769,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Dashboard de CloudWatch con métricas de negocio y técnicas
+                CloudWatch Dashboard with business and technical metrics
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Combinación de métricas de AWS + custom metrics de la
-                aplicación.
+                Combination of AWS metrics + application custom metrics.
               </p>
             </div>
           </li>
@@ -791,11 +786,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Health checks de aplicación en endpoint /health o /ready
+                Application health checks at /health or /ready endpoint
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                El endpoint debe verificar conectividad real (DB, cache,
-                dependencias externas).
+                The endpoint must verify real connectivity (DB, cache, external
+                dependencies).
               </p>
             </div>
           </li>
@@ -809,10 +804,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                VPC Flow Logs habilitados para auditoría de red
+                VPC Flow Logs enabled for network auditing
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Enviar a S3 o CloudWatch Logs para análisis con Athena.
+                Send to S3 or CloudWatch Logs for analysis with Athena.
               </p>
             </div>
           </li>
@@ -826,11 +821,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                AWS Health Events y Trusted Advisor revisados regularmente
+                AWS Health Events and Trusted Advisor reviewed regularly
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Health notifications en SNS para alertas proactivas de
-                mantenimiento.
+                Health notifications via SNS for proactive maintenance alerts.
               </p>
             </div>
           </li>
@@ -844,10 +838,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Runbook / playbook de incidentes documentado
+                Incident runbook / playbook documented
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Pasos de diagnóstico y escalado para cada servicio crítico.
+                Diagnosis and escalation steps for each critical service.
               </p>
             </div>
           </li>
@@ -882,9 +876,9 @@ import Layout from '../layouts/Layout.astro'
           </div>
           <div>
             <h2 class="font-bold text-base" style="color: #0A2540;">
-              Optimización de costos
+              Cost Optimization
             </h2>
-            <p class="text-xs" style="color: #64748b;">6 verificaciones</p>
+            <p class="text-xs" style="color: #64748b;">6 checks</p>
           </div>
           <span
             class="ml-auto text-sm font-semibold"
@@ -903,11 +897,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Cost Explorer y AWS Budgets configurados con alertas
+                Cost Explorer and AWS Budgets configured with alerts
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Alerta al 80% y 100% del presupuesto mensual. Tags de coste por
-                proyecto.
+                Alert at 80% and 100% of monthly budget. Cost tags per project.
               </p>
             </div>
           </li>
@@ -921,11 +914,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Savings Plans o Reserved Instances para cargas estables
+                Savings Plans or Reserved Instances for stable workloads
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                1 año Compute Savings Plan da ~30% de ahorro sin compromiso de
-                tipo de instancia.
+                1-year Compute Savings Plan gives ~30% savings with no instance
+                type commitment.
               </p>
             </div>
           </li>
@@ -939,11 +932,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Spot Instances en cargas tolerantes a interrupción (batch, CI)
+                Spot Instances for interruption-tolerant workloads (batch, CI)
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Hasta 90% de ahorro. Combinar con On-Demand para workers
-                críticos.
+                Up to 90% savings. Combine with On-Demand for critical workers.
               </p>
             </div>
           </li>
@@ -957,11 +949,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Recursos no utilizados identificados y eliminados
+                Unused resources identified and removed
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                EIPs sin asociar, snapshots huérfanos, load balancers vacíos,
-                NAT Gateways innecesarios.
+                Unattached EIPs, orphaned snapshots, empty load balancers,
+                unnecessary NAT Gateways.
               </p>
             </div>
           </li>
@@ -975,11 +967,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                S3 Intelligent-Tiering o lifecycle policies para datos fríos
+                S3 Intelligent-Tiering or lifecycle policies for cold data
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Mover objetos a Glacier/Glacier Instant Retrieval después de 90
-                días.
+                Move objects to Glacier/Glacier Instant Retrieval after 90 days.
               </p>
             </div>
           </li>
@@ -993,11 +984,12 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Recursos de entorno dev/staging apagados fuera de horario
+                Dev/staging environment resources shut down outside working
+                hours
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Lambda + EventBridge para stop/start automático. Ahorra 65% en
-                entornos no-prod.
+                Lambda + EventBridge for automatic stop/start. Saves up to 65%
+                on non-prod environments.
               </p>
             </div>
           </li>
@@ -1032,9 +1024,9 @@ import Layout from '../layouts/Layout.astro'
           </div>
           <div>
             <h2 class="font-bold text-base" style="color: #0A2540;">
-              CI/CD y DevOps
+              CI/CD & DevOps
             </h2>
-            <p class="text-xs" style="color: #64748b;">5 verificaciones</p>
+            <p class="text-xs" style="color: #64748b;">5 checks</p>
           </div>
           <span
             class="ml-auto text-sm font-semibold"
@@ -1053,10 +1045,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Pipeline automatizado: lint → test → build → deploy
+                Automated pipeline: lint → test → build → deploy
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Ningún deploy manual en producción. Todo a través del pipeline.
+                No manual deploys to production. Everything through the
+                pipeline.
               </p>
             </div>
           </li>
@@ -1070,11 +1063,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Secretos de CI/CD en GitHub Secrets o AWS Secrets Manager
+                CI/CD secrets in GitHub Secrets or AWS Secrets Manager
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                OIDC en lugar de access keys de larga duración para GitHub
-                Actions ↔ AWS.
+                OIDC instead of long-lived access keys for GitHub Actions ↔ AWS.
               </p>
             </div>
           </li>
@@ -1088,11 +1080,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Imágenes Docker con tag de versión semántica o commit SHA
+                Docker images tagged with semantic version or commit SHA
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Nunca usar :latest en producción. Permite rollback exacto de
-                versiones.
+                Never use :latest in production. Enables exact version rollback.
               </p>
             </div>
           </li>
@@ -1106,10 +1097,10 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Terraform aplicado sólo desde pipeline (no desde local en prod)
+                Terraform applied only from pipeline (not locally in prod)
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                terraform plan en PRs como check obligatorio antes de merge.
+                terraform plan on PRs as a required check before merge.
               </p>
             </div>
           </li>
@@ -1123,11 +1114,11 @@ import Layout from '../layouts/Layout.astro'
             />
             <div>
               <p class="text-sm font-medium" style="color: #0A2540;">
-                Branch protection en main con revisión de código requerida
+                Branch protection on main with required code review
               </p>
               <p class="text-xs mt-0.5" style="color: #64748b;">
-                Mínimo 1 reviewer + CI en verde obligatorio antes de merge a
-                producción.
+                Minimum 1 reviewer + CI green required before merge to
+                production.
               </p>
             </div>
           </li>
@@ -1154,14 +1145,14 @@ import Layout from '../layouts/Layout.astro'
               d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
             ></path>
           </svg>
-          Imprimir / Guardar PDF
+          Print / Save as PDF
         </button>
         <a
-          href="/contacto"
+          href="/en/contact"
           class="px-6 py-3 rounded-xl font-semibold text-white text-sm transition-all flex items-center gap-2 justify-center"
           style="background: #1E6FFF;"
         >
-          ¿Necesitas ayuda? Contactar
+          Need help? Contact Us
         </a>
       </div>
     </div>
@@ -1194,7 +1185,7 @@ import Layout from '../layouts/Layout.astro'
       pct + '%'
     ;(
       document.getElementById('progress-label') as HTMLSpanElement
-    ).textContent = `${total} de ${TOTAL} completados`
+    ).textContent = `${total} of ${TOTAL} completed`
     ;(document.getElementById('progress-pct') as HTMLSpanElement).textContent =
       pct + '%'
     for (const cat of Object.keys(catTotals)) {
@@ -1227,7 +1218,7 @@ import Layout from '../layouts/Layout.astro'
     nav,
     footer,
     button,
-    a[href='/contacto'] {
+    a[href='/en/contact'] {
       display: none !important;
     }
     .checklist-item {

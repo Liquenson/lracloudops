@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Security Agent · Auditoría de Seguridad Cloud · AI-Powered · Gratis"
-  descripcion="Detecta vulnerabilidades IAM, networking, secrets y compliance en tu infraestructura cloud sin acceso a tu cuenta. CIS Benchmark, HIPAA, PCI-DSS."
+  titulo="Security Agent · Cloud Security Audit · AI-Powered · Free"
+  descripcion="Detect IAM, networking, secrets and compliance vulnerabilities in your cloud infrastructure without account access. CIS Benchmark, HIPAA, PCI-DSS."
 >
   <!-- HERO -->
   <section
@@ -48,17 +48,14 @@ import Layout from '../layouts/Layout.astro'
         class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
         style="color: rgba(147,184,255,0.85);"
       >
-        Auditoría automática de seguridad cloud. Detecta vulnerabilidades IAM,
-        networking, secrets y compliance sin acceso a tu cuenta.
+        Automated cloud security audit. Detect IAM, networking, secrets and
+        compliance vulnerabilities without account access.
       </p>
     </div>
   </section>
 
   <!-- FORM + RESULTS -->
-  <section
-    class="bg-white py-16"
-    aria-label="Formulario de auditoría de seguridad"
-  >
+  <section class="bg-white py-16" aria-label="Security audit form">
     <div class="max-w-3xl mx-auto px-6">
       <form id="sa-form" class="space-y-6" novalidate>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -83,7 +80,7 @@ import Layout from '../layouts/Layout.astro'
             <label
               for="sa-compliance"
               class="block text-sm font-semibold mb-2"
-              style="color: #0F172A;">Framework de compliance</label
+              style="color: #0F172A;">Compliance framework</label
             >
             <select
               id="sa-compliance"
@@ -104,15 +101,15 @@ import Layout from '../layouts/Layout.astro'
             class="block text-sm font-semibold mb-2"
             style="color: #0F172A;"
           >
-            Describe tu infraestructura y configuración de seguridad
+            Describe your infrastructure and security configuration
             <span class="font-normal text-xs ml-1" style="color: #64748B;"
-              >(requerido)</span
+              >(required)</span
             >
           </label>
           <textarea
             id="sa-description"
             rows="8"
-            placeholder="Ejemplo: Tenemos una VPC con instancias EC2 expuestas directamente a internet sin WAF. Los security groups permiten tráfico desde 0.0.0.0/0 en el puerto 22. Usamos una clave de acceso AWS hardcodeada en el código. No tenemos MFA habilitado para usuarios IAM. CloudTrail está activo pero sin alertas..."
+            placeholder="Example: We have a VPC with EC2 instances directly exposed to the internet without WAF. Security groups allow traffic from 0.0.0.0/0 on port 22. We use an AWS access key hardcoded in the code. MFA is not enabled for IAM users. CloudTrail is active but without alerts..."
             class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
             style="border-color: #E2E8F0; color: #0F172A;"></textarea>
         </div>
@@ -136,7 +133,7 @@ import Layout from '../layouts/Layout.astro'
               d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
             ></path>
           </svg>
-          <span id="sa-btn-text">Auditar seguridad →</span>
+          <span id="sa-btn-text">Audit security →</span>
         </button>
         <p id="sa-error" class="hidden text-sm text-red-600 text-center"></p>
       </form>
@@ -166,14 +163,13 @@ import Layout from '../layouts/Layout.astro'
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
           </svg>
           <span class="text-sm font-medium" style="color: #DC2626;"
-            >Analizando vulnerabilidades de seguridad...</span
+            >Analyzing security vulnerabilities...</span
           >
         </div>
       </div>
 
       <!-- Results -->
       <div id="sa-results" class="hidden mt-10 space-y-6">
-        <!-- Risk level + overall score -->
         <div class="rounded-2xl p-8" style="background: #0A2540;">
           <div class="flex flex-wrap items-center justify-between gap-4">
             <div>
@@ -181,7 +177,7 @@ import Layout from '../layouts/Layout.astro'
                 class="text-xs font-bold uppercase tracking-widest mb-2"
                 style="color: #93C5FD;"
               >
-                Nivel de riesgo
+                Risk level
               </p>
               <div id="sa-risk-badge" class="text-3xl font-extrabold"></div>
             </div>
@@ -190,7 +186,7 @@ import Layout from '../layouts/Layout.astro'
                 class="text-xs font-semibold uppercase tracking-widest mb-1"
                 style="color: #93C5FD;"
               >
-                Puntuación global
+                Overall score
               </p>
               <div
                 id="sa-overall"
@@ -209,15 +205,13 @@ import Layout from '../layouts/Layout.astro'
           </p>
         </div>
 
-        <!-- Score bars -->
         <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
           <h2 class="text-base font-bold mb-5" style="color: #0F172A;">
-            Puntuaciones por área
+            Scores by area
           </h2>
           <div id="sa-scores" class="space-y-4"></div>
         </div>
 
-        <!-- Critical findings -->
         <div
           id="sa-findings-section"
           class="hidden rounded-2xl p-6"
@@ -241,12 +235,11 @@ import Layout from '../layouts/Layout.astro'
                 d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
               ></path>
             </svg>
-            Hallazgos críticos
+            Critical findings
           </h2>
           <div id="sa-findings" class="space-y-4"></div>
         </div>
 
-        <!-- Quick fixes -->
         <div
           class="rounded-2xl p-6"
           style="background: #F0FDF4; border: 1px solid #BBF7D0;"
@@ -257,29 +250,27 @@ import Layout from '../layouts/Layout.astro'
           <ul id="sa-quickfixes" class="space-y-2"></ul>
         </div>
 
-        <!-- Compliance gaps -->
         <div
           id="sa-gaps-section"
           class="hidden rounded-2xl p-6"
           style="background: #FFFBEB; border: 1px solid #FDE68A;"
         >
           <h2 class="text-base font-bold mb-3" style="color: #92400E;">
-            Gaps de compliance
+            Compliance gaps
           </h2>
           <ul id="sa-gaps" class="space-y-2"></ul>
         </div>
 
-        <!-- CTA -->
         <div class="text-center pt-4 pb-2">
           <p class="text-base font-semibold mb-4" style="color: #0F172A;">
-            ¿Quieres que implementemos las correcciones?
+            Want us to implement these fixes?
           </p>
           <a
-            href="/contacto"
+            href="/en/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
           >
-            Implementar correcciones con LRA →
+            Implement fixes with LRA →
           </a>
         </div>
       </div>
@@ -301,7 +292,6 @@ import Layout from '../layouts/Layout.astro'
     MEDIUM: '#D97706',
     LOW: '#16A34A',
   }
-
   const scoreLabels: Record<string, string> = {
     iam: 'IAM',
     networking: 'Networking',
@@ -347,7 +337,7 @@ import Layout from '../layouts/Layout.astro'
 
     if (desc.trim().length < 20) {
       errorEl.textContent =
-        'Describe tu infraestructura con más detalle (mínimo 20 caracteres).'
+        'Please describe your infrastructure in more detail (minimum 20 characters).'
       errorEl.classList.remove('hidden')
       return
     }
@@ -355,7 +345,7 @@ import Layout from '../layouts/Layout.astro'
     form.classList.add('hidden')
     loading.classList.remove('hidden')
     submitBtn.disabled = true
-    btnText.textContent = 'Analizando...'
+    btnText.textContent = 'Analyzing...'
 
     try {
       const res = await fetch('/api/security-agent', {
@@ -374,22 +364,18 @@ import Layout from '../layouts/Layout.astro'
       if (json.error) throw new Error(json.error)
       const a = json.audit ?? {}
 
-      // Risk badge
       const risk = typeof a.risk_level === 'string' ? a.risk_level : 'MEDIUM'
       const riskEl = document.getElementById('sa-risk-badge')!
       riskEl.textContent = risk
       riskEl.style.color = riskColors[risk] ?? '#D97706'
 
-      // Overall score
       const overall = typeof a.overall_score === 'number' ? a.overall_score : 0
       const overallEl = document.getElementById('sa-overall')!
       overallEl.textContent = String(overall)
       overallEl.style.color = scoreColor(overall)
-
       document.getElementById('sa-summary')!.textContent =
         typeof a.summary === 'string' ? a.summary : ''
 
-      // Score bars
       const scoresEl = document.getElementById('sa-scores')!
       const scores = (
         a.scores && typeof a.scores === 'object' ? a.scores : {}
@@ -403,13 +389,12 @@ import Layout from '../layouts/Layout.astro'
               <span style="color:${color}; font-weight:700;">${val}/10</span>
             </div>
             <div class="h-2.5 rounded-full overflow-hidden" style="background:#F1F5F9;">
-              <div class="h-full rounded-full transition-all duration-700" style="width:${val * 10}%; background:${color};"></div>
+              <div class="h-full rounded-full" style="width:${val * 10}%; background:${color};"></div>
             </div>
           </div>`
         })
         .join('')
 
-      // Critical findings
       const findingsSection = document.getElementById('sa-findings-section')!
       const findings = Array.isArray(a.critical_findings)
         ? (a.critical_findings as Finding[])
@@ -437,18 +422,14 @@ import Layout from '../layouts/Layout.astro'
           .join('')
       }
 
-      // Quick fixes
       const qf = Array.isArray(a.quick_fixes) ? (a.quick_fixes as string[]) : []
       document.getElementById('sa-quickfixes')!.innerHTML = qf
         .map(
           (f) =>
-            `<li class="flex gap-2.5 text-sm" style="color:#15803D;">
-            <span style="flex-shrink:0;">✓</span><span>${f}</span>
-          </li>`
+            `<li class="flex gap-2.5 text-sm" style="color:#15803D;"><span style="flex-shrink:0;">✓</span><span>${f}</span></li>`
         )
         .join('')
 
-      // Compliance gaps
       const gapsSection = document.getElementById('sa-gaps-section')!
       const gaps = Array.isArray(a.compliance_gaps)
         ? (a.compliance_gaps as string[])
@@ -458,9 +439,7 @@ import Layout from '../layouts/Layout.astro'
         document.getElementById('sa-gaps')!.innerHTML = gaps
           .map(
             (g) =>
-              `<li class="flex gap-2.5 text-sm" style="color:#92400E;">
-              <span style="flex-shrink:0;">•</span><span>${g}</span>
-            </li>`
+              `<li class="flex gap-2.5 text-sm" style="color:#92400E;"><span style="flex-shrink:0;">•</span><span>${g}</span></li>`
           )
           .join('')
       }
@@ -471,11 +450,11 @@ import Layout from '../layouts/Layout.astro'
       loading.classList.add('hidden')
       form.classList.remove('hidden')
       submitBtn.disabled = false
-      btnText.textContent = 'Auditar seguridad →'
+      btnText.textContent = 'Audit security →'
       errorEl.textContent =
         err instanceof Error
           ? err.message
-          : 'Error en la auditoría. Intenta de nuevo.'
+          : 'Error in the audit. Please try again.'
       errorEl.classList.remove('hidden')
     }
   })

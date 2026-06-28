@@ -29,9 +29,11 @@
     "vite": "^7"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@playwright/test": "^1.60.0",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
-    "simple-icons": "^16.23.0"
+    "simple-icons": "^16.23.0",
+    "typescript": "^6.0.3"
   }
 }

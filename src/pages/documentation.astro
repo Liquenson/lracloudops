@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  titulo="Documentation Agent · Generador de Documentación Técnica · AI-Powered · Gratis"
-  descripcion="Genera README, ADR, Runbooks, SOPs, Postmortems y documentación de API de nivel profesional en segundos. Markdown listo para usar."
+  titulo="Documentation Agent · Technical Documentation Generator · AI-Powered · Free"
+  descripcion="Generate professional README, ADR, Runbooks, SOPs, Postmortems and API documentation in seconds. Production-ready Markdown."
 >
   <!-- HERO -->
   <section
@@ -48,17 +48,14 @@ import Layout from '../layouts/Layout.astro'
         class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
         style="color: rgba(147,184,255,0.85);"
       >
-        Genera documentación técnica profesional en segundos. README, ADR,
-        Runbooks, SOPs, Postmortems y más — Markdown listo para copiar.
+        Generate professional technical documentation in seconds. README, ADR,
+        Runbooks, SOPs, Postmortems and more — Markdown ready to use.
       </p>
     </div>
   </section>
 
   <!-- FORM + RESULTS -->
-  <section
-    class="bg-white py-16"
-    aria-label="Formulario de generación de documentación"
-  >
+  <section class="bg-white py-16" aria-label="Documentation generation form">
     <div class="max-w-3xl mx-auto px-6">
       <form id="doc-form" class="space-y-6" novalidate>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -66,7 +63,7 @@ import Layout from '../layouts/Layout.astro'
             <label
               for="doc-type"
               class="block text-sm font-semibold mb-2"
-              style="color: #0F172A;">Tipo de documento</label
+              style="color: #0F172A;">Document type</label
             >
             <select
               id="doc-type"
@@ -75,10 +72,10 @@ import Layout from '../layouts/Layout.astro'
             >
               <option value="README" selected>README.md</option>
               <option value="ADR">ADR (Architecture Decision Record)</option>
-              <option value="Runbook">Runbook operativo</option>
+              <option value="Runbook">Operational Runbook</option>
               <option value="SOP">SOP (Standard Operating Procedure)</option>
               <option value="Postmortem">Postmortem / RCA</option>
-              <option value="API Docs">Documentación de API</option>
+              <option value="API Docs">API Documentation</option>
             </select>
           </div>
           <div>
@@ -87,15 +84,15 @@ import Layout from '../layouts/Layout.astro'
               class="block text-sm font-semibold mb-2"
               style="color: #0F172A;"
             >
-              Stack tecnológico
+              Tech stack
               <span class="font-normal text-xs ml-1" style="color: #64748B;"
-                >(opcional)</span
+                >(optional)</span
               >
             </label>
             <input
               id="doc-stack"
               type="text"
-              placeholder="Ej: Terraform, EKS, ArgoCD, Helm"
+              placeholder="E.g.: Terraform, EKS, ArgoCD, Helm"
               class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none focus:ring-2"
               style="border-color: #E2E8F0; color: #0F172A;"
             />
@@ -107,15 +104,15 @@ import Layout from '../layouts/Layout.astro'
             class="block text-sm font-semibold mb-2"
             style="color: #0F172A;"
           >
-            Describe tu proyecto o proceso
+            Describe your project or process
             <span class="font-normal text-xs ml-1" style="color: #64748B;"
-              >(requerido)</span
+              >(required)</span
             >
           </label>
           <textarea
             id="doc-description"
             rows="7"
-            placeholder="Ejemplo (README): Microservicio de autenticación JWT en FastAPI. Se despliega en EKS con Helm. Tiene endpoints para login, refresh token y logout. Usa Redis para blacklist de tokens y PostgreSQL para usuarios. Los tests corren con pytest + testcontainers..."
+            placeholder="Example (README): JWT authentication microservice in FastAPI. Deployed on EKS with Helm. Has endpoints for login, refresh token and logout. Uses Redis for token blacklist and PostgreSQL for users. Tests run with pytest + testcontainers..."
             class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
             style="border-color: #E2E8F0; color: #0F172A;"></textarea>
         </div>
@@ -139,7 +136,7 @@ import Layout from '../layouts/Layout.astro'
               d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
             ></path>
           </svg>
-          <span id="doc-btn-text">Generar documentación →</span>
+          <span id="doc-btn-text">Generate documentation →</span>
         </button>
         <p id="doc-error" class="hidden text-sm text-red-600 text-center"></p>
       </form>
@@ -169,7 +166,7 @@ import Layout from '../layouts/Layout.astro'
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
           </svg>
           <span class="text-sm font-medium" style="color: #2563EB;"
-            >Generando documentación...</span
+            >Generating documentation...</span
           >
         </div>
       </div>
@@ -178,7 +175,7 @@ import Layout from '../layouts/Layout.astro'
       <div id="doc-results" class="hidden mt-10 space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-base font-bold" style="color: #0F172A;">
-            Documento generado
+            Generated document
           </h2>
           <div class="flex gap-2">
             <button
@@ -199,7 +196,7 @@ import Layout from '../layouts/Layout.astro'
                   d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                 ></path>
               </svg>
-              <span id="copy-label">Copiar Markdown</span>
+              <span id="copy-label">Copy Markdown</span>
             </button>
             <button
               id="doc-download"
@@ -219,7 +216,7 @@ import Layout from '../layouts/Layout.astro'
                   d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                 ></path>
               </svg>
-              Descargar .md
+              Download .md
             </button>
           </div>
         </div>
@@ -230,14 +227,14 @@ import Layout from '../layouts/Layout.astro'
         </pre>
         <div class="text-center pt-4">
           <p class="text-sm font-semibold mb-3" style="color: #0F172A;">
-            ¿Quieres que documentemos tu proyecto completo?
+            Want us to document your entire project?
           </p>
           <a
-            href="/contacto"
+            href="/en/contact"
             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
             style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
           >
-            Hablar con LRA →
+            Talk to LRA →
           </a>
         </div>
       </div>
@@ -269,7 +266,7 @@ import Layout from '../layouts/Layout.astro'
 
     if (desc.trim().length < 20) {
       errorEl.textContent =
-        'Describe tu proyecto con más detalle (mínimo 20 caracteres).'
+        'Please describe your project in more detail (minimum 20 characters).'
       errorEl.classList.remove('hidden')
       return
     }
@@ -277,7 +274,7 @@ import Layout from '../layouts/Layout.astro'
     form.classList.add('hidden')
     loading.classList.remove('hidden')
     submitBtn.disabled = true
-    btnText.textContent = 'Generando...'
+    btnText.textContent = 'Generating...'
 
     try {
       const res = await fetch('/api/documentation-agent', {
@@ -300,11 +297,11 @@ import Layout from '../layouts/Layout.astro'
       loading.classList.add('hidden')
       form.classList.remove('hidden')
       submitBtn.disabled = false
-      btnText.textContent = 'Generar documentación →'
+      btnText.textContent = 'Generate documentation →'
       errorEl.textContent =
         err instanceof Error
           ? err.message
-          : 'Error generando. Intenta de nuevo.'
+          : 'Error generating. Please try again.'
       errorEl.classList.remove('hidden')
     }
   })
@@ -312,9 +309,9 @@ import Layout from '../layouts/Layout.astro'
   document.getElementById('doc-copy')!.addEventListener('click', async () => {
     await navigator.clipboard.writeText(generatedDoc)
     const label = document.getElementById('copy-label')!
-    label.textContent = '¡Copiado!'
+    label.textContent = 'Copied!'
     setTimeout(() => {
-      label.textContent = 'Copiar Markdown'
+      label.textContent = 'Copy Markdown'
     }, 2000)
   })
 

@@ -1,23 +1,14 @@
 export const languages = {
-  es: { name: 'Español', flag: '🇪🇸', dir: 'ltr', region: 'Americas' },
-  en: { name: 'English', flag: '🇬🇧', dir: 'ltr', region: 'Americas' },
-  'pt-br': { name: 'Português (BR)', flag: '🇧🇷', dir: 'ltr', region: 'Americas' },
-  de: { name: 'Deutsch', flag: '🇩🇪', dir: 'ltr', region: 'Europe' },
-  fr: { name: 'Français', flag: '🇫🇷', dir: 'ltr', region: 'Europe' },
-  it: { name: 'Italiano', flag: '🇮🇹', dir: 'ltr', region: 'Europe' },
-  ja: { name: '日本語', flag: '🇯🇵', dir: 'ltr', region: 'Asia Pacific' },
-  ko: { name: '한국어', flag: '🇰🇷', dir: 'ltr', region: 'Asia Pacific' },
-  'zh-cn': { name: '中文(简体)', flag: '🇨🇳', dir: 'ltr', region: 'Asia Pacific' },
+  en: { name: 'English', flag: '🇬🇧', dir: 'ltr', region: 'main' },
+  es: { name: 'Español', flag: '🇪🇸', dir: 'ltr', region: 'main' },
 } as const
 
 export type Locale = keyof typeof languages
-export const defaultLocale: Locale = 'es'
+export const defaultLocale: Locale = 'en'
 export const localeList = Object.keys(languages) as Locale[]
 
 export const regions = {
-  'Americas': ['es', 'en', 'pt-br'],
-  'Europe': ['de', 'fr', 'it'],
-  'Asia Pacific': ['ja', 'ko', 'zh-cn'],
+  Languages: ['en', 'es'],
 } as const
 
 export function getLangFromUrl(url: URL): Locale {
@@ -31,8 +22,8 @@ export async function getTranslations(locale: Locale) {
     const translations = await import(`./locales/${locale}.json`)
     return translations.default
   } catch {
-    const es = await import('./locales/es.json')
-    return es.default
+    const en = await import('./locales/en.json')
+    return en.default
   }
 }
 
@@ -48,7 +39,7 @@ export function getAlternateUrl(url: URL, targetLocale: Locale): string {
 
 export function getHreflangTags(url: URL): Array<{ locale: string; href: string }> {
   return localeList.map((locale) => ({
-    locale: locale === 'zh-cn' ? 'zh-Hans' : locale,
+    locale,
     href: `https://lracloudops.com${getAlternateUrl(url, locale)}`,
   }))
 }

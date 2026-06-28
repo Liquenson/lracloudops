@@ -1,0 +1,422 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="Infrastructure Review Agent · Auditoría Automática de Infraestructura Cloud"
+  descripcion="Describe tu infraestructura actual y recibe un informe técnico automatizado con puntuaciones de seguridad, costes, disponibilidad y escalabilidad."
+  keywords="auditoría infraestructura cloud, revisión arquitectura AWS, análisis seguridad cloud, infrastructure review, DevOps audit"
+>
+  <!-- ── HERO ── -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0A2540;"
+    aria-labelledby="ir-hero-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-bold tracking-widest uppercase"
+        style="background: rgba(30,111,255,0.2); border: 1px solid rgba(96,165,250,0.35); color: #93C5FD;"
+      >
+        <span
+          class="w-2 h-2 rounded-full flex-shrink-0"
+          style="background: #60A5FA; animation: pulse 2s infinite;"
+          aria-hidden="true"></span>
+        AI-Powered · Gratis
+      </div>
+      <h1
+        id="ir-hero-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
+        style="letter-spacing: -0.035em;"
+      >
+        Infrastructure Review Agent
+      </h1>
+      <p
+        class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-4"
+        style="color: rgba(147,184,255,0.85);"
+      >
+        Describe tu infraestructura actual y recibe un informe técnico
+        automatizado con puntuaciones de seguridad, costes, disponibilidad y
+        escalabilidad.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── FORM + RESULTS ── -->
+  <section class="bg-white py-16" aria-label="Formulario de análisis">
+    <div class="max-w-3xl mx-auto px-6">
+      <!-- Form -->
+      <form id="ir-form" class="space-y-6" novalidate>
+        <div>
+          <label
+            for="ir-cloud"
+            class="block text-sm font-semibold mb-2"
+            style="color: #0F172A;"
+          >
+            Cloud principal
+          </label>
+          <select
+            id="ir-cloud"
+            name="cloud"
+            class="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none focus:ring-2"
+            style="border-color: #E2E8F0; color: #0F172A; focus-ring-color: #2563EB;"
+          >
+            <option value="AWS">Amazon Web Services (AWS)</option>
+            <option value="Azure">Microsoft Azure</option>
+            <option value="GCP">Google Cloud Platform (GCP)</option>
+            <option value="Multi-cloud">Multi-cloud</option>
+          </select>
+        </div>
+
+        <div>
+          <label
+            for="ir-architecture"
+            class="block text-sm font-semibold mb-2"
+            style="color: #0F172A;"
+          >
+            Describe tu infraestructura
+            <span class="font-normal ml-1" style="color: #64748B;"
+              >(mínimo 20 caracteres)</span
+            >
+          </label>
+          <textarea
+            id="ir-architecture"
+            name="architecture"
+            rows="8"
+            placeholder="Ejemplo: Tenemos una aplicación web en AWS con 3 instancias EC2 t3.medium detrás de un ALB, una base de datos RDS PostgreSQL Multi-AZ, almacenamiento en S3 y CloudFront. Usamos ECS para microservicios, IAM con roles básicos y GitHub Actions para CI/CD. El gasto mensual es de ~2.000€..."
+            class="w-full px-4 py-3 rounded-xl text-sm border resize-none focus:outline-none focus:ring-2"
+            style="border-color: #E2E8F0; color: #0F172A;"></textarea>
+        </div>
+
+        <button
+          type="submit"
+          id="ir-submit"
+          class="w-full inline-flex items-center justify-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.01] active:scale-[0.99]"
+          style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.4);"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path>
+          </svg>
+          <span id="ir-btn-text">Analizar infraestructura →</span>
+        </button>
+
+        <p id="ir-error" class="hidden text-sm text-red-600 text-center"></p>
+      </form>
+
+      <!-- Loading -->
+      <div id="ir-loading" class="hidden text-center py-16">
+        <div
+          class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
+          style="background: #EEF4FF; border: 1px solid #c3d9ff;"
+        >
+          <svg
+            class="w-5 h-5 animate-spin"
+            style="color: #2563EB;"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          <span class="text-sm font-medium" style="color: #1D4ED8;"
+            >Analizando tu infraestructura...</span
+          >
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="ir-results" class="hidden mt-10 space-y-8">
+        <!-- Overall score -->
+        <div
+          class="rounded-2xl p-8 text-center"
+          style="background: #0A2540; color: white;"
+        >
+          <p
+            class="text-sm font-semibold uppercase tracking-widest mb-2"
+            style="color: #93C5FD;"
+          >
+            Puntuación global
+          </p>
+          <div
+            id="ir-overall"
+            class="text-7xl font-extrabold mb-2"
+            style="color: #60A5FA;"
+          >
+            —
+          </div>
+          <p class="text-sm" style="color: rgba(147,184,255,0.7);">/ 10</p>
+          <p
+            id="ir-summary"
+            class="mt-4 text-sm leading-relaxed max-w-xl mx-auto"
+            style="color: rgba(147,184,255,0.85);"
+          >
+          </p>
+        </div>
+
+        <!-- Score bars -->
+        <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
+          <h2 class="text-base font-bold mb-5" style="color: #0F172A;">
+            Puntuaciones por área
+          </h2>
+          <div id="ir-scores" class="space-y-4"></div>
+        </div>
+
+        <!-- Critical issues -->
+        <div
+          id="ir-critical-section"
+          class="hidden rounded-2xl p-6"
+          style="border: 1px solid #FCA5A5; background: #FFF5F5;"
+        >
+          <h2
+            class="text-base font-bold mb-4 flex items-center gap-2"
+            style="color: #DC2626;"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              ></path>
+            </svg>
+            Problemas críticos
+          </h2>
+          <ul id="ir-critical" class="space-y-2"></ul>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="rounded-2xl p-6" style="border: 1px solid #E5E7EB;">
+          <h2 class="text-base font-bold mb-4" style="color: #0F172A;">
+            Recomendaciones priorizadas
+          </h2>
+          <ul id="ir-recommendations" class="space-y-2"></ul>
+        </div>
+
+        <!-- Quick wins -->
+        <div
+          class="rounded-2xl p-6"
+          style="background: #F0FDF4; border: 1px solid #BBF7D0;"
+        >
+          <h2
+            class="text-base font-bold mb-4 flex items-center gap-2"
+            style="color: #15803D;"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+            Quick wins
+          </h2>
+          <ul id="ir-quickwins" class="space-y-2"></ul>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center pt-4 pb-2">
+          <p class="text-base font-semibold mb-4" style="color: #0F172A;">
+            ¿Quieres que implementemos estas mejoras?
+          </p>
+          <a
+            href="/contacto"
+            class="inline-flex items-center gap-2.5 text-sm font-semibold text-white px-7 py-4 rounded-xl transition-all hover:scale-[1.02]"
+            style="background: #2563EB; box-shadow: 0 4px 20px rgba(37,99,235,0.35);"
+          >
+            Hablar con el equipo →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('ir-form') as HTMLFormElement
+  const loading = document.getElementById('ir-loading')!
+  const results = document.getElementById('ir-results')!
+  const errorEl = document.getElementById('ir-error')!
+  const btnText = document.getElementById('ir-btn-text')!
+  const submitBtn = document.getElementById('ir-submit') as HTMLButtonElement
+
+  function scoreColor(n: number): string {
+    if (n <= 4) return '#DC2626'
+    if (n <= 6) return '#D97706'
+    if (n <= 8) return '#2563EB'
+    return '#16A34A'
+  }
+
+  function renderScores(scores: Record<string, number>) {
+    const labels: Record<string, string> = {
+      security: 'Seguridad',
+      cost: 'Costes',
+      availability: 'Disponibilidad',
+      automation: 'Automatización',
+      scalability: 'Escalabilidad',
+    }
+    const container = document.getElementById('ir-scores')!
+    container.innerHTML = Object.entries(scores)
+      .map(([key, val]) => {
+        const color = scoreColor(val)
+        const label = labels[key] ?? key
+        return `
+        <div>
+          <div class="flex justify-between text-sm mb-1.5">
+            <span style="color:#0F172A; font-weight:600;">${label}</span>
+            <span style="color:${color}; font-weight:700;">${val}/10</span>
+          </div>
+          <div class="h-2.5 rounded-full overflow-hidden" style="background:#F1F5F9;">
+            <div class="h-full rounded-full transition-all duration-700"
+              style="width:${val * 10}%; background:${color};"></div>
+          </div>
+        </div>`
+      })
+      .join('')
+  }
+
+  function renderList(id: string, items: string[], color = '#64748B') {
+    const el = document.getElementById(id)!
+    el.innerHTML = items
+      .map(
+        (item) =>
+          `<li class="flex gap-2.5 text-sm" style="color:${color};">
+          <span style="margin-top:2px; flex-shrink:0;">•</span>
+          <span>${item}</span>
+        </li>`
+      )
+      .join('')
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    errorEl.classList.add('hidden')
+    const arch = (
+      document.getElementById('ir-architecture') as HTMLTextAreaElement
+    ).value
+    const cloud = (document.getElementById('ir-cloud') as HTMLSelectElement)
+      .value
+
+    if (arch.trim().length < 20) {
+      errorEl.textContent =
+        'Por favor, describe tu infraestructura con más detalle (mínimo 20 caracteres).'
+      errorEl.classList.remove('hidden')
+      return
+    }
+
+    form.classList.add('hidden')
+    loading.classList.remove('hidden')
+    results.classList.add('hidden')
+    submitBtn.disabled = true
+    btnText.textContent = 'Analizando...'
+
+    try {
+      const res = await fetch('/api/infrastructure-review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          architecture: `Cloud: ${cloud}\n\n${arch}`,
+          lang: 'es',
+        }),
+      })
+      const json = (await res.json()) as {
+        review?: Record<string, unknown>
+        error?: string
+      }
+
+      if (json.error) throw new Error(json.error)
+      const r = json.review ?? {}
+
+      // Overall score
+      const overall = typeof r.overall === 'number' ? r.overall : 0
+      document.getElementById('ir-overall')!.textContent = String(overall)
+      const overallEl = document.getElementById('ir-overall')!
+      ;(overallEl as HTMLElement).style.color = scoreColor(overall)
+      const summaryEl = document.getElementById('ir-summary')!
+      summaryEl.textContent = typeof r.summary === 'string' ? r.summary : ''
+
+      // Scores
+      if (r.scores && typeof r.scores === 'object') {
+        renderScores(r.scores as Record<string, number>)
+      }
+
+      // Critical issues
+      const criticalSection = document.getElementById('ir-critical-section')!
+      const critical = Array.isArray(r.critical_issues)
+        ? (r.critical_issues as string[])
+        : []
+      if (critical.length > 0) {
+        criticalSection.classList.remove('hidden')
+        renderList('ir-critical', critical, '#DC2626')
+      }
+
+      // Recommendations
+      const recs = Array.isArray(r.recommendations)
+        ? (r.recommendations as string[])
+        : []
+      renderList('ir-recommendations', recs)
+
+      // Quick wins
+      const qw = Array.isArray(r.quick_wins) ? (r.quick_wins as string[]) : []
+      renderList('ir-quickwins', qw, '#15803D')
+
+      loading.classList.add('hidden')
+      results.classList.remove('hidden')
+    } catch (err) {
+      loading.classList.add('hidden')
+      form.classList.remove('hidden')
+      submitBtn.disabled = false
+      btnText.textContent = 'Analizar infraestructura →'
+      errorEl.textContent =
+        err instanceof Error
+          ? err.message
+          : 'Error procesando la revisión. Intenta de nuevo.'
+      errorEl.classList.remove('hidden')
+    }
+  })
+</script>
