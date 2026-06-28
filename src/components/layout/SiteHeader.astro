@@ -14,7 +14,7 @@ const localeUrls = Object.fromEntries(
 
 const currentLangInfo = languages[lang] ?? languages['en']
 const contactHref =
-  lang === 'es' ? '/contacto' : lang === 'en' ? '/en/contact' : '/contacto'
+  lang === 'es' ? '/contacto' : lang === 'en' ? '/contact' : '/contacto'
 const ctaLabel = lang === 'es' ? 'Agendar consulta' : 'Schedule Consultation'
 const skipLabel =
   lang === 'es' ? 'Ir al contenido principal' : 'Skip to main content'
@@ -28,35 +28,35 @@ interface NavItem {
 
 const servicesItems: NavItem[] = [
   {
-    href: '/en/cloud-infrastructure',
+    href: '/cloud-infrastructure',
     label: 'Cloud Infrastructure',
     desc: 'AWS, multi-cloud & hybrid environments',
     iconPath:
       'M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z',
   },
   {
-    href: '/en/kubernetes-platforms',
+    href: '/kubernetes-platforms',
     label: 'Kubernetes Platforms',
     desc: 'EKS, GKE & self-managed clusters',
     iconPath:
       'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
   },
   {
-    href: '/en/devops-automation',
+    href: '/devops-automation',
     label: 'DevOps Automation',
     desc: 'CI/CD pipelines & workflow automation',
     iconPath:
       'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99',
   },
   {
-    href: '/en/platform-engineering',
+    href: '/platform-engineering',
     label: 'Platform Engineering',
     desc: 'Internal developer platforms & tooling',
     iconPath:
       'M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122',
   },
   {
-    href: '/en/observability',
+    href: '/observability',
     label: 'Observability & SRE',
     desc: 'Monitoring, alerting & reliability engineering',
     iconPath:
@@ -65,41 +65,41 @@ const servicesItems: NavItem[] = [
 ]
 const solutionsItems: NavItem[] = [
   {
-    href: '/en/solutions/aws-modernization',
+    href: '/solutions/aws-modernization',
     label: 'AWS Modernization',
     desc: 'Migrate & modernize your AWS workloads',
     iconPath:
       'M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
-    href: '/en/solutions/azure-migration',
+    href: '/solutions/azure-migration',
     label: 'Azure Migration',
     desc: 'AKS platforms, Azure DevOps & cloud migration',
     iconPath:
       'M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z',
   },
   {
-    href: '/en/solutions/gcp-migration',
+    href: '/solutions/gcp-migration',
     label: 'Google Cloud Migration',
     desc: 'GKE platforms, Cloud Run & multi-cloud strategy',
     iconPath:
       'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3',
   },
   {
-    href: '/en/solutions/kubernetes-adoption',
+    href: '/solutions/kubernetes-adoption',
     label: 'Kubernetes Adoption',
     desc: 'Container orchestration at enterprise scale',
     iconPath:
       'M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9',
   },
   {
-    href: '/en/solutions/cicd-transformation',
+    href: '/solutions/cicd-transformation',
     label: 'CI/CD Transformation',
     desc: 'Accelerate delivery with automated pipelines',
     iconPath: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
   },
   {
-    href: '/en/solutions/gitops',
+    href: '/solutions/gitops',
     label: 'GitOps Implementation',
     desc: 'Git-driven infrastructure operations',
     iconPath:
@@ -108,21 +108,21 @@ const solutionsItems: NavItem[] = [
 ]
 const industriesItems: NavItem[] = [
   {
-    href: '/en/industries/healthcare',
+    href: '/industries/healthcare',
     label: 'Healthcare',
     desc: 'HIPAA-compliant cloud infrastructure',
     iconPath:
       'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z',
   },
   {
-    href: '/en/industries/fintech',
+    href: '/industries/fintech',
     label: 'Fintech',
     desc: 'Secure, scalable financial platforms',
     iconPath:
       'M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z',
   },
   {
-    href: '/en/industries/saas',
+    href: '/industries/saas',
     label: 'SaaS',
     desc: 'Multi-tenant cloud-native platforms',
     iconPath:
@@ -131,119 +131,119 @@ const industriesItems: NavItem[] = [
 ]
 const resourcesItems: NavItem[] = [
   {
-    href: '/en/ai-devops',
+    href: '/ai-devops',
     label: 'AI DevOps',
     desc: 'DevOps Advisor & AI-powered engineering',
     iconPath:
       'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z',
   },
   {
-    href: '/en/blog',
+    href: '/blog',
     label: 'Blog',
     desc: 'Cloud engineering insights & tutorials',
     iconPath:
       'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
   },
   {
-    href: '/en/resources',
+    href: '/resources',
     label: 'Guides & Resources',
     desc: 'Technical guides & best practices',
     iconPath:
       'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
   },
   {
-    href: '/en/docs',
+    href: '/docs',
     label: 'Documentation',
     desc: 'Engineering standards & technical guides',
     iconPath:
       'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
   },
   {
-    href: '/en/architectures',
+    href: '/architectures',
     label: 'Architecture Center',
     desc: 'Reference architecture patterns & diagrams',
     iconPath:
       'M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z',
   },
   {
-    href: '/en/assessments',
+    href: '/assessments',
     label: 'Assessment Tools',
     desc: 'Evaluate your DevOps & cloud maturity',
     iconPath:
       'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
   },
   {
-    href: '/en/infrastructure-review',
+    href: '/infrastructure-review',
     label: 'Infrastructure Review',
     desc: 'AI-powered cloud architecture audit',
     iconPath:
       'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
   },
   {
-    href: '/en/proposal',
+    href: '/proposal',
     label: 'Proposal Generator',
     desc: 'Generate a technical proposal in seconds',
     iconPath:
       'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
   },
   {
-    href: '/en/cost-optimizer',
+    href: '/cost-optimizer',
     label: 'Cost Optimizer',
     desc: 'Find savings in your cloud spend',
     iconPath:
       'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
-    href: '/en/learn',
+    href: '/learn',
     label: 'Learning Agent',
     desc: 'Learn DevOps & cloud with an AI teacher',
     iconPath:
       'M12 14l9-5-9-5-9 5 9 5zm0 7v-4m0 0l-3.536-1.768M12 17l3.536-1.768',
   },
   {
-    href: '/en/security-audit',
+    href: '/security-audit',
     label: 'Security Audit',
     desc: 'AI-powered cloud security vulnerability scanner',
     iconPath:
       'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
   },
   {
-    href: '/en/aws-architect',
+    href: '/aws-architect',
     label: 'AWS Architect',
     desc: 'Design AWS architectures with Well-Architected Framework',
     iconPath:
       'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
   },
   {
-    href: '/en/incident-response',
+    href: '/incident-response',
     label: 'Incident Response',
     desc: 'Diagnose and resolve cloud incidents instantly',
     iconPath:
       'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
   },
   {
-    href: '/en/documentation',
+    href: '/documentation',
     label: 'Doc Generator',
     desc: 'Generate README, ADR, Runbooks and SOPs instantly',
     iconPath:
       'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
   },
   {
-    href: '/en/interview',
+    href: '/interview',
     label: 'DevOps Interview',
     desc: 'Practice DevOps interviews with AI and get instant feedback',
     iconPath:
       'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z',
   },
   {
-    href: '/en/resume-review',
+    href: '/resume-review',
     label: 'Resume Review',
     desc: 'Optimize your DevOps resume for ATS with AI feedback',
     iconPath:
       'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
   },
   {
-    href: '/en/aws-cli',
+    href: '/aws-cli',
     label: 'AWS CLI Agent',
     desc: 'Natural language to AWS CLI commands instantly',
     iconPath:
@@ -252,41 +252,41 @@ const resourcesItems: NavItem[] = [
 ]
 const aboutItems: NavItem[] = [
   {
-    href: '/en/about',
+    href: '/about',
     label: 'Our Team',
     desc: 'Platform engineers & cloud architects',
     iconPath:
       'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
   },
   {
-    href: '/en/certifications',
+    href: '/certifications',
     label: 'Certifications',
     desc: 'Verified credentials & expertise badges',
     iconPath:
       'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
   },
   {
-    href: '/en/open-source',
+    href: '/open-source',
     label: 'Open Source',
     desc: 'Production-grade tools & reference implementations',
     iconPath:
       'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
   },
   {
-    href: '/en/why-lra',
+    href: '/why-lra',
     label: 'Why LRA',
     desc: 'The case for specialized over generalist',
     iconPath: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
-    href: '/en/methodology',
+    href: '/methodology',
     label: 'Methodology',
     desc: 'Our 6-phase engineering process & standards',
     iconPath:
       'M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2',
   },
   {
-    href: '/en/lra-ai',
+    href: '/lra-ai',
     label: 'LRA AI',
     desc: 'AI applied to DevOps and cloud infrastructure',
     iconPath:
@@ -589,7 +589,7 @@ const isServicesActive =
   esServicesItems.some(
     (i) => currentPath === i.href || currentPath.startsWith(i.href + '/')
   ) ||
-  currentPath.startsWith('/en/services') ||
+  currentPath.startsWith('/services') ||
   currentPath.startsWith('/servicios')
 const isSolutionsActive =
   solutionsItems.some(
@@ -610,20 +610,20 @@ const isResourcesActive = [...resourcesItems, ...esResourcesItems].some(
 )
 const isAboutActive =
   currentPath === '/nosotros' ||
-  currentPath === '/en/about' ||
+  currentPath === '/about' ||
   currentPath === '/certifications' ||
-  currentPath === '/en/certifications' ||
+  currentPath === '/certifications' ||
   currentPath === '/open-source' ||
-  currentPath === '/en/open-source' ||
+  currentPath === '/open-source' ||
   currentPath === '/why-lra' ||
-  currentPath === '/en/why-lra' ||
+  currentPath === '/why-lra' ||
   currentPath === '/metodologia' ||
-  currentPath === '/en/methodology' ||
+  currentPath === '/methodology' ||
   currentPath === '/lra-ai' ||
-  currentPath === '/en/lra-ai' ||
+  currentPath === '/lra-ai' ||
   currentPath === '/agents' ||
-  currentPath === '/en/agents'
-const isHomeActive = currentPath === '/' || currentPath === '/en/'
+  currentPath === '/agents'
+const isHomeActive = currentPath === '/' || currentPath === '/es/'
 ---
 
 <!-- Skip navigation -->
@@ -645,7 +645,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
   >
     <!-- Logo -->
     <a
-      href={lang === 'en' ? '/en/' : '/'}
+      href={lang === 'es' ? '/es/' : '/'}
       class="flex items-center gap-2 flex-shrink-0 z-50"
       aria-label="LRA Cloud Ops — Home"
     >
@@ -666,7 +666,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
     <div class="hidden lg:flex items-center gap-0.5">
       <!-- Home -->
       <a
-        href={lang === 'en' ? '/en/' : '/'}
+        href={lang === 'es' ? '/es/' : '/'}
         class={`relative text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 ${isHomeActive ? 'text-[#0F172A] font-semibold' : 'text-[#64748B] hover:text-[#0F172A] hover:bg-gray-50'}`}
         aria-current={isHomeActive ? 'page' : undefined}
       >
@@ -1094,10 +1094,10 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
                       : href
                 const enHref =
                   href === '/about'
-                    ? '/en/about'
+                    ? '/about'
                     : href === '/methodology'
-                      ? '/en/methodology'
-                      : `/en${href}`
+                      ? '/methodology'
+                      : href
                 const resolvedHref =
                   lang === 'es' ? esHref : lang === 'en' ? enHref : href
                 const active =
@@ -1329,7 +1329,7 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
   <!-- Drawer nav -->
   <nav class="flex-1 overflow-y-auto">
     <a
-      href={lang === 'en' ? '/en/' : '/'}
+      href={lang === 'es' ? '/es/' : '/'}
       class={`flex items-center gap-3 px-5 py-3.5 text-sm font-medium border-b border-gray-50 transition-colors ${isHomeActive ? 'text-blue-600 bg-blue-50/50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'}`}
       aria-current={isHomeActive ? 'page' : undefined}
     >
@@ -1618,10 +1618,10 @@ const isHomeActive = currentPath === '/' || currentPath === '/en/'
                     : href
               const enHref =
                 href === '/about'
-                  ? '/en/about'
+                  ? '/about'
                   : href === '/methodology'
-                    ? '/en/methodology'
-                    : `/en${href}`
+                    ? '/methodology'
+                    : href
               const resolvedHref =
                 lang === 'es' ? esHref : lang === 'en' ? enHref : href
               const active =
