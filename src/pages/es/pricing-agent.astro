@@ -170,7 +170,9 @@ import Layout from '../../layouts/Layout.astro'
                   class="w-full px-4 py-3 rounded-xl text-sm border outline-none"
                   style="border-color: #e2e8f0; color: #0A2540; background: #f8fafc;"
                 >
-                  <option value="ASAP (menos de 2 semanas)">ASAP (menos de 2 semanas)</option>
+                  <option value="ASAP (menos de 2 semanas)"
+                    >ASAP (menos de 2 semanas)</option
+                  >
                   <option value="1 mes" selected>~1 mes</option>
                   <option value="2-3 meses">2-3 meses</option>
                   <option value="Flexible">Flexible</option>
@@ -191,8 +193,12 @@ import Layout from '../../layouts/Layout.astro'
                   <option value="AWS" selected>AWS</option>
                   <option value="Azure">Azure</option>
                   <option value="GCP">GCP</option>
-                  <option value="Multi-cloud (AWS + Azure)">Multi-cloud (AWS + Azure)</option>
-                  <option value="Multi-cloud (AWS + GCP)">Multi-cloud (AWS + GCP)</option>
+                  <option value="Multi-cloud (AWS + Azure)"
+                    >Multi-cloud (AWS + Azure)</option
+                  >
+                  <option value="Multi-cloud (AWS + GCP)"
+                    >Multi-cloud (AWS + GCP)</option
+                  >
                 </select>
               </div>
 
@@ -258,10 +264,20 @@ import Layout from '../../layouts/Layout.astro'
           </div>
 
           <!-- Loading state -->
-          <div id="loading-state-es" class="hidden rounded-2xl p-10 text-center" style="background: white; border: 1px solid #e2e8f0;">
+          <div
+            id="loading-state-es"
+            class="hidden rounded-2xl p-10 text-center"
+            style="background: white; border: 1px solid #e2e8f0;"
+          >
             <div class="flex flex-col items-center gap-4">
-              <div class="w-10 h-10 rounded-full border-4 border-t-transparent animate-spin" style="border-color: #1E6FFF; border-top-color: transparent;"></div>
-              <p class="text-sm font-medium" style="color: #64748b;">Generando tu presupuesto personalizado…</p>
+              <div
+                class="w-10 h-10 rounded-full border-4 border-t-transparent animate-spin"
+                style="border-color: #1E6FFF; border-top-color: transparent;"
+              >
+              </div>
+              <p class="text-sm font-medium" style="color: #64748b;">
+                Generando tu presupuesto personalizado…
+              </p>
             </div>
           </div>
 
@@ -273,40 +289,118 @@ import Layout from '../../layouts/Layout.astro'
               class="rounded-2xl p-6 text-center"
               style="background: linear-gradient(135deg, #0A2540 0%, #1a3a60 100%);"
             >
-              <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #93b8ff;">Plan recomendado</div>
-              <div id="plan-name-es" class="text-3xl font-extrabold text-white mb-1">—</div>
-              <div id="plan-price-es" class="text-xl font-bold mb-3" style="color: #60A5FA;">—</div>
-              <div id="plan-timeline-es" class="text-sm" style="color: rgba(147,184,255,0.75);">—</div>
+              <div
+                class="text-xs font-bold uppercase tracking-widest mb-2"
+                style="color: #93b8ff;"
+              >
+                Plan recomendado
+              </div>
+              <div
+                id="plan-name-es"
+                class="text-3xl font-extrabold text-white mb-1"
+              >
+                —
+              </div>
+              <div
+                id="plan-price-es"
+                class="text-xl font-bold mb-3"
+                style="color: #60A5FA;"
+              >
+                —
+              </div>
+              <div
+                id="plan-timeline-es"
+                class="text-sm"
+                style="color: rgba(147,184,255,0.75);"
+              >
+                —
+              </div>
             </div>
 
             <!-- Summary -->
-            <div class="rounded-2xl p-6" style="background: white; border: 1px solid #e2e8f0;">
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #64748b;">Resumen</h3>
-              <p id="result-summary-es" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+            <div
+              class="rounded-2xl p-6"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-3"
+                style="color: #64748b;"
+              >
+                Resumen
+              </h3>
+              <p
+                id="result-summary-es"
+                class="text-sm leading-relaxed"
+                style="color: #0A2540;"
+              >
+              </p>
             </div>
 
             <!-- Deliverables -->
-            <div class="rounded-2xl p-6" style="background: white; border: 1px solid #e2e8f0;">
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: #64748b;">Entregables</h3>
+            <div
+              class="rounded-2xl p-6"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-4"
+                style="color: #64748b;"
+              >
+                Entregables
+              </h3>
               <ul id="result-deliverables-es" class="space-y-2"></ul>
             </div>
 
             <!-- Why this plan -->
-            <div class="rounded-2xl p-6" style="background: #EEF4FF; border: 1px solid rgba(30,111,255,0.15);">
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #1E6FFF;">Por qué este plan</h3>
-              <p id="result-why-es" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+            <div
+              class="rounded-2xl p-6"
+              style="background: #EEF4FF; border: 1px solid rgba(30,111,255,0.15);"
+            >
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-3"
+                style="color: #1E6FFF;"
+              >
+                Por qué este plan
+              </h3>
+              <p
+                id="result-why-es"
+                class="text-sm leading-relaxed"
+                style="color: #0A2540;"
+              >
+              </p>
             </div>
 
             <!-- Alternatives -->
-            <div id="result-alternatives-section-es" class="rounded-2xl p-6 hidden" style="background: white; border: 1px solid #e2e8f0;">
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: #64748b;">Alternativas</h3>
+            <div
+              id="result-alternatives-section-es"
+              class="rounded-2xl p-6 hidden"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-4"
+                style="color: #64748b;"
+              >
+                Alternativas
+              </h3>
               <div id="result-alternatives-es" class="space-y-3"></div>
             </div>
 
             <!-- Next steps -->
-            <div class="rounded-2xl p-6" style="background: white; border: 1px solid #e2e8f0;">
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #64748b;">Próximos pasos</h3>
-              <p id="result-next-steps-es" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+            <div
+              class="rounded-2xl p-6"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-3"
+                style="color: #64748b;"
+              >
+                Próximos pasos
+              </h3>
+              <p
+                id="result-next-steps-es"
+                class="text-sm leading-relaxed"
+                style="color: #0A2540;"
+              >
+              </p>
             </div>
 
             <!-- CTA -->
@@ -315,7 +409,8 @@ import Layout from '../../layouts/Layout.astro'
               style="background: linear-gradient(135deg, #0A2540 0%, #1a3a60 100%);"
             >
               <p class="text-sm mb-4" style="color: rgba(147,184,255,0.85);">
-                ¿Listo para empezar? Agendemos una llamada de diagnóstico de 30 minutos.
+                ¿Listo para empezar? Agendemos una llamada de diagnóstico de 30
+                minutos.
               </p>
               <a
                 href="/contacto"
@@ -323,8 +418,16 @@ import Layout from '../../layouts/Layout.astro'
                 style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
               >
                 Agendar consulta gratuita
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
                 >
               </a>
             </div>
@@ -338,22 +441,36 @@ import Layout from '../../layouts/Layout.astro'
 <script>
   const btn = document.getElementById('get-quote-btn-es') as HTMLButtonElement
   const emptyState = document.getElementById('empty-state-es') as HTMLElement
-  const loadingState = document.getElementById('loading-state-es') as HTMLElement
+  const loadingState = document.getElementById(
+    'loading-state-es'
+  ) as HTMLElement
   const resultState = document.getElementById('result-state-es') as HTMLElement
 
   btn?.addEventListener('click', async () => {
-    const projectType = (document.getElementById('project-type-es') as HTMLSelectElement).value
-    const companySize = (document.getElementById('company-size-es') as HTMLSelectElement).value
-    const timeline = (document.getElementById('timeline-es') as HTMLSelectElement).value
-    const cloudProvider = (document.getElementById('cloud-provider-es') as HTMLSelectElement).value
-    const currentStack = (document.getElementById('current-stack-es') as HTMLTextAreaElement).value.trim()
+    const projectType = (
+      document.getElementById('project-type-es') as HTMLSelectElement
+    ).value
+    const companySize = (
+      document.getElementById('company-size-es') as HTMLSelectElement
+    ).value
+    const timeline = (
+      document.getElementById('timeline-es') as HTMLSelectElement
+    ).value
+    const cloudProvider = (
+      document.getElementById('cloud-provider-es') as HTMLSelectElement
+    ).value
+    const currentStack = (
+      document.getElementById('current-stack-es') as HTMLTextAreaElement
+    ).value.trim()
 
     const requirements = projectType
       ? `${projectType}. ${currentStack}`
       : currentStack
 
     if (!requirements) {
-      alert('Por favor selecciona el tipo de proyecto o describe tus requisitos.')
+      alert(
+        'Por favor selecciona el tipo de proyecto o describe tus requisitos.'
+      )
       return
     }
 
@@ -391,14 +508,25 @@ import Layout from '../../layouts/Layout.astro'
 
       const q = data.quote ?? {}
 
-      ;(document.getElementById('plan-name-es') as HTMLElement).textContent = q.recommended_plan ?? '—'
-      ;(document.getElementById('plan-price-es') as HTMLElement).textContent = q.price_range ?? '—'
-      ;(document.getElementById('plan-timeline-es') as HTMLElement).textContent = q.timeline ? `Timeline: ${q.timeline}` : '—'
-      ;(document.getElementById('result-summary-es') as HTMLElement).textContent = q.summary ?? ''
-      ;(document.getElementById('result-why-es') as HTMLElement).textContent = q.why_this_plan ?? ''
-      ;(document.getElementById('result-next-steps-es') as HTMLElement).textContent = q.next_steps ?? ''
+      ;(document.getElementById('plan-name-es') as HTMLElement).textContent =
+        q.recommended_plan ?? '—'
+      ;(document.getElementById('plan-price-es') as HTMLElement).textContent =
+        q.price_range ?? '—'
+      ;(
+        document.getElementById('plan-timeline-es') as HTMLElement
+      ).textContent = q.timeline ? `Timeline: ${q.timeline}` : '—'
+      ;(
+        document.getElementById('result-summary-es') as HTMLElement
+      ).textContent = q.summary ?? ''
+      ;(document.getElementById('result-why-es') as HTMLElement).textContent =
+        q.why_this_plan ?? ''
+      ;(
+        document.getElementById('result-next-steps-es') as HTMLElement
+      ).textContent = q.next_steps ?? ''
 
-      const deliverablesEl = document.getElementById('result-deliverables-es') as HTMLElement
+      const deliverablesEl = document.getElementById(
+        'result-deliverables-es'
+      ) as HTMLElement
       deliverablesEl.innerHTML = (q.deliverables ?? [])
         .map(
           (d) =>
@@ -411,8 +539,12 @@ import Layout from '../../layouts/Layout.astro'
         )
         .join('')
 
-      const altsSection = document.getElementById('result-alternatives-section-es') as HTMLElement
-      const altsEl = document.getElementById('result-alternatives-es') as HTMLElement
+      const altsSection = document.getElementById(
+        'result-alternatives-section-es'
+      ) as HTMLElement
+      const altsEl = document.getElementById(
+        'result-alternatives-es'
+      ) as HTMLElement
       if (q.alternatives && q.alternatives.length > 0) {
         altsSection.classList.remove('hidden')
         altsEl.innerHTML = q.alternatives

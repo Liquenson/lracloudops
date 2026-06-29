@@ -1,24 +1,28 @@
 ---
-import { getCollection } from 'astro:content';
-import ProjectCard from './ProjectCard.astro';
+import { getCollection } from 'astro:content'
+import ProjectCard from './ProjectCard.astro'
 
 interface Props {
-  lang: string;
-  limit?: number;
+  lang: string
+  limit?: number
 }
-const { lang, limit } = Astro.props;
-const allProjects = await getCollection('projects', ({ data }) => !data.draft);
-const projects = limit ? allProjects.slice(0, limit) : allProjects;
+const { lang, limit } = Astro.props
+const allProjects = await getCollection('projects', ({ data }) => !data.draft)
+const projects = limit ? allProjects.slice(0, limit) : allProjects
 ---
 
-{projects.length > 0 ? (
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {projects.map((project) => (
-      <ProjectCard project={project} lang={lang} />
-    ))}
-  </div>
-) : (
-  <p class="text-[#64748b] text-lg text-center py-12">
-    {lang === 'es' ? 'Próximamente nuevos proyectos.' : 'New projects coming soon.'}
-  </p>
-)}
+{
+  projects.length > 0 ? (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => (
+        <ProjectCard project={project} lang={lang} />
+      ))}
+    </div>
+  ) : (
+    <p class="text-[#64748b] text-lg text-center py-12">
+      {lang === 'es'
+        ? 'Próximamente nuevos proyectos.'
+        : 'New projects coming soon.'}
+    </p>
+  )
+}

@@ -18,16 +18,18 @@ const root = path.resolve(__dirname, '..')
 
 // Resolve sharp from Astro's node_modules if not at project root
 const require = createRequire(import.meta.url)
-const sharp = (await import('sharp').catch(() => {
-  try {
-    return { default: require(path.join(root, 'node_modules', 'sharp')) }
-  } catch {
-    throw new Error(
-      'sharp not found. It is a transitive dependency of Astro — ' +
-      'run `npm install` from the project root to restore it.'
-    )
-  }
-})).default
+const sharp = (
+  await import('sharp').catch(() => {
+    try {
+      return { default: require(path.join(root, 'node_modules', 'sharp')) }
+    } catch {
+      throw new Error(
+        'sharp not found. It is a transitive dependency of Astro — ' +
+          'run `npm install` from the project root to restore it.'
+      )
+    }
+  })
+).default
 
 const svgPath = path.join(root, 'public', 'og-image.svg')
 const pngPath = path.join(root, 'public', 'og-image.png')

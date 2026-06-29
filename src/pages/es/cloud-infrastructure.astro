@@ -139,35 +139,99 @@ const schema = {
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-10">
         <span class="section-label">Flujo de aprovisionamiento</span>
-        <h2 class="text-2xl font-bold mt-4" style="color: #0A2540;">Del código al entorno AWS.</h2>
+        <h2 class="text-2xl font-bold mt-4" style="color: #0A2540;">
+          Del código al entorno AWS.
+        </h2>
       </div>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-0" role="img" aria-label="Flujo IaC: Terraform → AWS → Observabilidad">
-        {[
-          { label: 'Terraform', sub: 'Módulos auditables', color: '#7B42BC', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
-          { label: 'AWS', sub: 'VPC · EKS · RDS · CDN', color: '#FF9900', icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6' },
-          { label: 'Observabilidad', sub: 'CloudWatch · Prometheus', color: '#E5421E', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
-          { label: 'Estado remoto', sub: 'S3 · DynamoDB lock', color: '#1E6FFF', icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4' },
-        ].map(({ label, sub, color, icon }, i, arr) => (
-          <div class="flex items-center">
-            <div class="flex flex-col items-center text-center px-6 py-5 rounded-2xl min-w-[130px]" style={`background: ${color}12; border: 1.5px solid ${color}30;`}>
-              <div class="w-10 h-10 flex items-center justify-center rounded-xl mb-3" style={`background: ${color}20;`} aria-hidden="true">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={`color: ${color};`}>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
-                </svg>
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-0"
+        role="img"
+        aria-label="Flujo IaC: Terraform → AWS → Observabilidad"
+      >
+        {
+          [
+            {
+              label: 'Terraform',
+              sub: 'Módulos auditables',
+              color: '#7B42BC',
+              icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+            },
+            {
+              label: 'AWS',
+              sub: 'VPC · EKS · RDS · CDN',
+              color: '#FF9900',
+              icon: 'M3 15a4 4 0 004 4h10a4 4 0 001-7.9A5 5 0 106 6.6',
+            },
+            {
+              label: 'Observabilidad',
+              sub: 'CloudWatch · Prometheus',
+              color: '#E5421E',
+              icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+            },
+            {
+              label: 'Estado remoto',
+              sub: 'S3 · DynamoDB lock',
+              color: '#1E6FFF',
+              icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4',
+            },
+          ].map(({ label, sub, color, icon }, i, arr) => (
+            <div class="flex items-center">
+              <div
+                class="flex flex-col items-center text-center px-6 py-5 rounded-2xl min-w-[130px]"
+                style={`background: ${color}12; border: 1.5px solid ${color}30;`}
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center rounded-xl mb-3"
+                  style={`background: ${color}20;`}
+                  aria-hidden="true"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    style={`color: ${color};`}
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d={icon}
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-sm font-bold mb-0.5"
+                  style={`color: ${color};`}
+                >
+                  {label}
+                </div>
+                <div class="text-xs" style="color: #64748B;">
+                  {sub}
+                </div>
               </div>
-              <div class="text-sm font-bold mb-0.5" style={`color: ${color};`}>{label}</div>
-              <div class="text-xs" style="color: #64748B;">{sub}</div>
+              {i < arr.length - 1 && (
+                <div class="flex items-center px-2" aria-hidden="true">
+                  <div class="h-px w-8 sm:w-12" style="background: #CBD5E1;" />
+                  <svg
+                    class="w-4 h-4 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    style="color: #CBD5E1;"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              )}
             </div>
-            {i < arr.length - 1 && (
-              <div class="flex items-center px-2" aria-hidden="true">
-                <div class="h-px w-8 sm:w-12" style="background: #CBD5E1;"></div>
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #CBD5E1;">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            )}
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>

@@ -165,23 +165,62 @@ import Layout from '../../layouts/Layout.astro'
   <!-- See it in practice -->
   <section class="py-20 bg-white border-t border-gray-100">
     <div class="max-w-4xl mx-auto px-6">
-      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+      <div
+        class="bg-white rounded-2xl p-8"
+        style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+      >
         <div class="flex items-start justify-between mb-4">
           <div>
             <span class="section-label">See it in practice</span>
-            <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">aws-terraform-devops — Production AWS with Terraform</h2>
+            <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">
+              aws-terraform-devops — Production AWS with Terraform
+            </h2>
           </div>
-          <span class="text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-4" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+          <span
+            class="text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-4"
+            style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
+            >Production</span
+          >
         </div>
-        <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">Modular Terraform stack deploying Flask on EKS with RDS PostgreSQL 15 Multi-AZ, dual GitHub Actions and Jenkins pipelines, and SonarCloud coverage gates. Every module independently versioned and reusable.</p>
+        <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">
+          Modular Terraform stack deploying Flask on EKS with RDS PostgreSQL 15
+          Multi-AZ, dual GitHub Actions and Jenkins pipelines, and SonarCloud
+          coverage gates. Every module independently versioned and reusable.
+        </p>
         <div class="flex flex-wrap gap-2 mb-5">
-          {['Terraform','EKS','RDS PostgreSQL 15','GitHub Actions','Jenkins','SonarCloud','Flask','Docker'].map(t => (
-            <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #F1F5F9; color: #475569;">{t}</span>
-          ))}
+          {
+            [
+              'Terraform',
+              'EKS',
+              'RDS PostgreSQL 15',
+              'GitHub Actions',
+              'Jenkins',
+              'SonarCloud',
+              'Flask',
+              'Docker',
+            ].map((t) => (
+              <span
+                class="text-xs px-2.5 py-1 rounded-full font-medium"
+                style="background: #F1F5F9; color: #475569;"
+              >
+                {t}
+              </span>
+            ))
+          }
         </div>
         <div class="flex gap-3">
-          <a href="/projects/aws-terraform-devops" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Read case study →</a>
-          <a href="https://github.com/lra-cloud-ops/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          <a
+            href="/projects/aws-terraform-devops"
+            class="text-sm font-semibold px-4 py-2 rounded-lg"
+            style="background: #EEF4FF; color: #1E6FFF;">Read case study →</a
+          >
+          <a
+            href="https://github.com/lra-cloud-ops/aws-terraform-devops"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-semibold px-4 py-2 rounded-lg"
+            style="background: #F1F5F9; color: #0A2540;">GitHub →</a
+          >
         </div>
       </div>
     </div>

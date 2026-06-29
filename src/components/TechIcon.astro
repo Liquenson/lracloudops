@@ -16,7 +16,7 @@ import {
   siVagrant,
   siLinux,
   siGnubash,
-} from 'simple-icons';
+} from 'simple-icons'
 
 const icons = {
   terraform: siTerraform,
@@ -35,27 +35,29 @@ const icons = {
   vagrant: siVagrant,
   linux: siLinux,
   gnubash: siGnubash,
-} as const;
+} as const
 
 interface Props {
-  slug: string;
-  class?: string;
-  style?: string;
+  slug: string
+  class?: string
+  style?: string
 }
 
-const { slug, class: className = 'w-8 h-8', style } = Astro.props;
-const icon = (icons as Record<string, { path: string; title: string }>)[slug];
+const { slug, class: className = 'w-8 h-8', style } = Astro.props
+const icon = (icons as Record<string, { path: string; title: string }>)[slug]
 ---
 
-{icon && (
-  <svg
-    class={className}
-    style={style}
-    role="img"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-label={icon.title}
-  >
-    <path d={icon.path} />
-  </svg>
-)}
+{
+  icon && (
+    <svg
+      class={className}
+      style={style}
+      role="img"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-label={icon.title}
+    >
+      <path d={icon.path} />
+    </svg>
+  )
+}

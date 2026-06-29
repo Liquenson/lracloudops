@@ -18,14 +18,16 @@ import Layout from '../../../layouts/Layout.astro'
         Solución · Adopción de Kubernetes
       </div>
       <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-        De contenedores a Kubernetes en producción<br />sin el rodeo de seis meses.
+        De contenedores a Kubernetes en producción<br />sin el rodeo de seis
+        meses.
       </h1>
       <p
         class="text-lg sm:text-xl max-w-2xl mx-auto mb-10"
         style="color: rgba(148,163,184,0.9);"
       >
-        Adopción estructurada de Kubernetes — EKS en AWS o bare metal con kubeadm,
-        entrega GitOps con ArgoCD y observabilidad desde el primer despliegue.
+        Adopción estructurada de Kubernetes — EKS en AWS o bare metal con
+        kubeadm, entrega GitOps con ArgoCD y observabilidad desde el primer
+        despliegue.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
@@ -65,8 +67,8 @@ import Layout from '../../../layouts/Layout.astro'
           Una plataforma Kubernetes completa, no solo un cluster
         </h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: #64748B;">
-          Kubernetes en producción requiere más que kubectl apply. Entregamos
-          la capa de plataforma completa.
+          Kubernetes en producción requiere más que kubectl apply. Entregamos la
+          capa de plataforma completa.
         </p>
       </div>
       <div class="grid sm:grid-cols-2 gap-6">
@@ -137,8 +139,8 @@ import Layout from '../../../layouts/Layout.astro'
         ¿Listo para Kubernetes en producción?
       </h2>
       <p class="text-lg mb-10" style="color: rgba(148,163,184,0.85);">
-        Agenda una sesión técnica de 30 minutos. Evaluamos tu stack actual
-        y diseñamos el camino de adopción adaptado a tu equipo.
+        Agenda una sesión técnica de 30 minutos. Evaluamos tu stack actual y
+        diseñamos el camino de adopción adaptado a tu equipo.
       </p>
       <a
         href="/contacto"
@@ -164,23 +166,65 @@ import Layout from '../../../layouts/Layout.astro'
   <!-- Vélo en práctica -->
   <section class="py-20 bg-white border-t border-gray-100">
     <div class="max-w-4xl mx-auto px-6">
-      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+      <div
+        class="bg-white rounded-2xl p-8"
+        style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+      >
         <div class="flex items-start justify-between mb-4">
           <div>
-            <span class="text-xs font-bold uppercase tracking-widest" style="color: #1E6FFF;">Vélo en práctica</span>
-            <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">k8s-on-premise — Kubernetes en bare metal</h2>
+            <span
+              class="text-xs font-bold uppercase tracking-widest"
+              style="color: #1E6FFF;">Vélo en práctica</span
+            >
+            <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">
+              k8s-on-premise — Kubernetes en bare metal
+            </h2>
           </div>
-          <span class="text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-4" style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE;">En Desarrollo</span>
+          <span
+            class="text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-4"
+            style="background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE;"
+            >En Desarrollo</span
+          >
         </div>
-        <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">Cluster Kubernetes autogestionado en hardware bare metal usando kubeadm, con ArgoCD para entrega GitOps, stack de observabilidad Prometheus/Grafana y gestión de secretos con HashiCorp Vault.</p>
+        <p class="text-sm leading-relaxed mb-5" style="color: #64748B;">
+          Cluster Kubernetes autogestionado en hardware bare metal usando
+          kubeadm, con ArgoCD para entrega GitOps, stack de observabilidad
+          Prometheus/Grafana y gestión de secretos con HashiCorp Vault.
+        </p>
         <div class="flex flex-wrap gap-2 mb-5">
-          {['Kubernetes','kubeadm','ArgoCD','Terraform','Prometheus','Grafana','Vault','Cilium'].map(t => (
-            <span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background: #F1F5F9; color: #475569;">{t}</span>
-          ))}
+          {
+            [
+              'Kubernetes',
+              'kubeadm',
+              'ArgoCD',
+              'Terraform',
+              'Prometheus',
+              'Grafana',
+              'Vault',
+              'Cilium',
+            ].map((t) => (
+              <span
+                class="text-xs px-2.5 py-1 rounded-full font-medium"
+                style="background: #F1F5F9; color: #475569;"
+              >
+                {t}
+              </span>
+            ))
+          }
         </div>
         <div class="flex gap-3">
-          <a href="/proyectos/k8s-on-premise" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Leer caso de uso →</a>
-          <a href="https://github.com/lra-cloud-ops/k8s-on-premise" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold px-4 py-2 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+          <a
+            href="/proyectos/k8s-on-premise"
+            class="text-sm font-semibold px-4 py-2 rounded-lg"
+            style="background: #EEF4FF; color: #1E6FFF;">Leer caso de uso →</a
+          >
+          <a
+            href="https://github.com/lra-cloud-ops/k8s-on-premise"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-semibold px-4 py-2 rounded-lg"
+            style="background: #F1F5F9; color: #0A2540;">GitHub →</a
+          >
         </div>
       </div>
     </div>

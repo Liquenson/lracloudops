@@ -191,8 +191,12 @@ import Layout from '../layouts/Layout.astro'
                   <option value="AWS" selected>AWS</option>
                   <option value="Azure">Azure</option>
                   <option value="GCP">GCP</option>
-                  <option value="Multi-cloud (AWS + Azure)">Multi-cloud (AWS + Azure)</option>
-                  <option value="Multi-cloud (AWS + GCP)">Multi-cloud (AWS + GCP)</option>
+                  <option value="Multi-cloud (AWS + Azure)"
+                    >Multi-cloud (AWS + Azure)</option
+                  >
+                  <option value="Multi-cloud (AWS + GCP)"
+                    >Multi-cloud (AWS + GCP)</option
+                  >
                 </select>
               </div>
 
@@ -252,16 +256,25 @@ import Layout from '../layouts/Layout.astro'
               Your quote will appear here
             </p>
             <p class="text-sm" style="color: #64748b;">
-              Fill in your project details and click "Get my personalized
-              quote"
+              Fill in your project details and click "Get my personalized quote"
             </p>
           </div>
 
           <!-- Loading state -->
-          <div id="loading-state" class="hidden rounded-2xl p-10 text-center" style="background: white; border: 1px solid #e2e8f0;">
+          <div
+            id="loading-state"
+            class="hidden rounded-2xl p-10 text-center"
+            style="background: white; border: 1px solid #e2e8f0;"
+          >
             <div class="flex flex-col items-center gap-4">
-              <div class="w-10 h-10 rounded-full border-4 border-t-transparent animate-spin" style="border-color: #1E6FFF; border-top-color: transparent;"></div>
-              <p class="text-sm font-medium" style="color: #64748b;">Generating your personalized quote…</p>
+              <div
+                class="w-10 h-10 rounded-full border-4 border-t-transparent animate-spin"
+                style="border-color: #1E6FFF; border-top-color: transparent;"
+              >
+              </div>
+              <p class="text-sm font-medium" style="color: #64748b;">
+                Generating your personalized quote…
+              </p>
             </div>
           </div>
 
@@ -273,10 +286,32 @@ import Layout from '../layouts/Layout.astro'
               class="rounded-2xl p-6 text-center"
               style="background: linear-gradient(135deg, #0A2540 0%, #1a3a60 100%);"
             >
-              <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #93b8ff;">Recommended plan</div>
-              <div id="plan-name" class="text-3xl font-extrabold text-white mb-1">—</div>
-              <div id="plan-price" class="text-xl font-bold mb-3" style="color: #60A5FA;">—</div>
-              <div id="plan-timeline" class="text-sm" style="color: rgba(147,184,255,0.75);">—</div>
+              <div
+                class="text-xs font-bold uppercase tracking-widest mb-2"
+                style="color: #93b8ff;"
+              >
+                Recommended plan
+              </div>
+              <div
+                id="plan-name"
+                class="text-3xl font-extrabold text-white mb-1"
+              >
+                —
+              </div>
+              <div
+                id="plan-price"
+                class="text-xl font-bold mb-3"
+                style="color: #60A5FA;"
+              >
+                —
+              </div>
+              <div
+                id="plan-timeline"
+                class="text-sm"
+                style="color: rgba(147,184,255,0.75);"
+              >
+                —
+              </div>
             </div>
 
             <!-- Summary -->
@@ -284,8 +319,18 @@ import Layout from '../layouts/Layout.astro'
               class="rounded-2xl p-6"
               style="background: white; border: 1px solid #e2e8f0;"
             >
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #64748b;">Summary</h3>
-              <p id="result-summary" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-3"
+                style="color: #64748b;"
+              >
+                Summary
+              </h3>
+              <p
+                id="result-summary"
+                class="text-sm leading-relaxed"
+                style="color: #0A2540;"
+              >
+              </p>
             </div>
 
             <!-- Deliverables -->
@@ -293,7 +338,12 @@ import Layout from '../layouts/Layout.astro'
               class="rounded-2xl p-6"
               style="background: white; border: 1px solid #e2e8f0;"
             >
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: #64748b;">Deliverables</h3>
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-4"
+                style="color: #64748b;"
+              >
+                Deliverables
+              </h3>
               <ul id="result-deliverables" class="space-y-2"></ul>
             </div>
 
@@ -302,13 +352,32 @@ import Layout from '../layouts/Layout.astro'
               class="rounded-2xl p-6"
               style="background: #EEF4FF; border: 1px solid rgba(30,111,255,0.15);"
             >
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #1E6FFF;">Why this plan</h3>
-              <p id="result-why" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-3"
+                style="color: #1E6FFF;"
+              >
+                Why this plan
+              </h3>
+              <p
+                id="result-why"
+                class="text-sm leading-relaxed"
+                style="color: #0A2540;"
+              >
+              </p>
             </div>
 
             <!-- Alternatives -->
-            <div id="result-alternatives-section" class="rounded-2xl p-6 hidden" style="background: white; border: 1px solid #e2e8f0;">
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: #64748b;">Alternatives</h3>
+            <div
+              id="result-alternatives-section"
+              class="rounded-2xl p-6 hidden"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-4"
+                style="color: #64748b;"
+              >
+                Alternatives
+              </h3>
               <div id="result-alternatives" class="space-y-3"></div>
             </div>
 
@@ -317,8 +386,18 @@ import Layout from '../layouts/Layout.astro'
               class="rounded-2xl p-6"
               style="background: white; border: 1px solid #e2e8f0;"
             >
-              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #64748b;">Next steps</h3>
-              <p id="result-next-steps" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+              <h3
+                class="text-sm font-bold uppercase tracking-widest mb-3"
+                style="color: #64748b;"
+              >
+                Next steps
+              </h3>
+              <p
+                id="result-next-steps"
+                class="text-sm leading-relaxed"
+                style="color: #0A2540;"
+              >
+              </p>
             </div>
 
             <!-- CTA -->
@@ -335,8 +414,16 @@ import Layout from '../layouts/Layout.astro'
                 style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
               >
                 Schedule free consultation
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
                 >
               </a>
             </div>
@@ -354,11 +441,20 @@ import Layout from '../layouts/Layout.astro'
   const resultState = document.getElementById('result-state') as HTMLElement
 
   btn?.addEventListener('click', async () => {
-    const projectType = (document.getElementById('project-type') as HTMLSelectElement).value
-    const companySize = (document.getElementById('company-size') as HTMLSelectElement).value
-    const timeline = (document.getElementById('timeline') as HTMLSelectElement).value
-    const cloudProvider = (document.getElementById('cloud-provider') as HTMLSelectElement).value
-    const currentStack = (document.getElementById('current-stack') as HTMLTextAreaElement).value.trim()
+    const projectType = (
+      document.getElementById('project-type') as HTMLSelectElement
+    ).value
+    const companySize = (
+      document.getElementById('company-size') as HTMLSelectElement
+    ).value
+    const timeline = (document.getElementById('timeline') as HTMLSelectElement)
+      .value
+    const cloudProvider = (
+      document.getElementById('cloud-provider') as HTMLSelectElement
+    ).value
+    const currentStack = (
+      document.getElementById('current-stack') as HTMLTextAreaElement
+    ).value.trim()
 
     const requirements = projectType
       ? `${projectType}. ${currentStack}`
@@ -408,10 +504,18 @@ import Layout from '../layouts/Layout.astro'
       const timelineEl = document.getElementById('plan-timeline') as HTMLElement
       const summaryEl = document.getElementById('result-summary') as HTMLElement
       const whyEl = document.getElementById('result-why') as HTMLElement
-      const nextStepsEl = document.getElementById('result-next-steps') as HTMLElement
-      const deliverablesEl = document.getElementById('result-deliverables') as HTMLElement
-      const altsSection = document.getElementById('result-alternatives-section') as HTMLElement
-      const altsEl = document.getElementById('result-alternatives') as HTMLElement
+      const nextStepsEl = document.getElementById(
+        'result-next-steps'
+      ) as HTMLElement
+      const deliverablesEl = document.getElementById(
+        'result-deliverables'
+      ) as HTMLElement
+      const altsSection = document.getElementById(
+        'result-alternatives-section'
+      ) as HTMLElement
+      const altsEl = document.getElementById(
+        'result-alternatives'
+      ) as HTMLElement
 
       planEl.textContent = q.recommended_plan ?? '—'
       priceEl.textContent = q.price_range ?? '—'

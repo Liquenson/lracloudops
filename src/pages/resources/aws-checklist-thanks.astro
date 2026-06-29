@@ -9,18 +9,69 @@ const sections = [
     bg: 'rgba(190,18,60,0.08)',
     border: 'rgba(190,18,60,0.2)',
     items: [
-      { check: 'IAM roles use least-privilege — no root credentials in applications', remediation: 'Use AWS Access Analyzer to generate scoped policies from CloudTrail activity.' },
-      { check: 'OIDC configured for GitHub Actions — zero static access keys', remediation: 'Replace AWS_ACCESS_KEY_ID/SECRET with GitHub OIDC + aws-actions/configure-aws-credentials.' },
-      { check: 'SSM Session Manager enabled — no SSH keys on servers', remediation: 'Attach AmazonSSMManagedInstanceCore policy to instance role. Remove port 22 from security groups.' },
-      { check: 'CloudTrail active in all regions with multi-region trail', remediation: '`aws cloudtrail create-trail --is-multi-region-trail --enable-log-file-validation`.' },
-      { check: 'VPC with public and private subnets separated', remediation: 'Compute (EKS nodes, RDS) must live in private subnets. Only ALB/NAT in public subnets.' },
-      { check: 'Security Groups with minimum necessary rules (no 0.0.0.0/0 on port 22)', remediation: 'Audit: `aws ec2 describe-security-groups`. Restrict SSH to bastion or replace with SSM.' },
-      { check: 'RDS in private subnet — not accessible from the internet', remediation: 'Set `publicly_accessible = false` in Terraform. Verify with `aws rds describe-db-instances`.' },
-      { check: 'ECR with image scanning enabled on push', remediation: 'Enable in ECR repository settings. Block CRITICAL vulnerabilities in CI/CD gate.' },
-      { check: 'Secrets Manager for application credentials — no secrets in env vars', remediation: 'Migrate secrets to Secrets Manager. Audit code: `git secrets --scan`.' },
-      { check: 'AWS Config with compliance rules enabled', remediation: 'Enable Config recorder. Add rules: `encrypted-volumes`, `s3-bucket-public-read-prohibited`.' },
-      { check: 'GuardDuty enabled in all regions', remediation: 'Enable via AWS Organizations for automatic coverage of all member accounts.' },
-      { check: 'MFA on all IAM accounts — root and users', remediation: 'Enforce via SCP: deny actions when `aws:MultiFactorAuthPresent` is false.' },
+      {
+        check:
+          'IAM roles use least-privilege — no root credentials in applications',
+        remediation:
+          'Use AWS Access Analyzer to generate scoped policies from CloudTrail activity.',
+      },
+      {
+        check: 'OIDC configured for GitHub Actions — zero static access keys',
+        remediation:
+          'Replace AWS_ACCESS_KEY_ID/SECRET with GitHub OIDC + aws-actions/configure-aws-credentials.',
+      },
+      {
+        check: 'SSM Session Manager enabled — no SSH keys on servers',
+        remediation:
+          'Attach AmazonSSMManagedInstanceCore policy to instance role. Remove port 22 from security groups.',
+      },
+      {
+        check: 'CloudTrail active in all regions with multi-region trail',
+        remediation:
+          '`aws cloudtrail create-trail --is-multi-region-trail --enable-log-file-validation`.',
+      },
+      {
+        check: 'VPC with public and private subnets separated',
+        remediation:
+          'Compute (EKS nodes, RDS) must live in private subnets. Only ALB/NAT in public subnets.',
+      },
+      {
+        check:
+          'Security Groups with minimum necessary rules (no 0.0.0.0/0 on port 22)',
+        remediation:
+          'Audit: `aws ec2 describe-security-groups`. Restrict SSH to bastion or replace with SSM.',
+      },
+      {
+        check: 'RDS in private subnet — not accessible from the internet',
+        remediation:
+          'Set `publicly_accessible = false` in Terraform. Verify with `aws rds describe-db-instances`.',
+      },
+      {
+        check: 'ECR with image scanning enabled on push',
+        remediation:
+          'Enable in ECR repository settings. Block CRITICAL vulnerabilities in CI/CD gate.',
+      },
+      {
+        check:
+          'Secrets Manager for application credentials — no secrets in env vars',
+        remediation:
+          'Migrate secrets to Secrets Manager. Audit code: `git secrets --scan`.',
+      },
+      {
+        check: 'AWS Config with compliance rules enabled',
+        remediation:
+          'Enable Config recorder. Add rules: `encrypted-volumes`, `s3-bucket-public-read-prohibited`.',
+      },
+      {
+        check: 'GuardDuty enabled in all regions',
+        remediation:
+          'Enable via AWS Organizations for automatic coverage of all member accounts.',
+      },
+      {
+        check: 'MFA on all IAM accounts — root and users',
+        remediation:
+          'Enforce via SCP: deny actions when `aws:MultiFactorAuthPresent` is false.',
+      },
     ],
   },
   {
@@ -30,16 +81,57 @@ const sections = [
     bg: 'rgba(2,132,199,0.08)',
     border: 'rgba(2,132,199,0.2)',
     items: [
-      { check: 'RDS Multi-AZ configured', remediation: 'Set `multi_az = true` in Terraform RDS module. Verify standby in a different AZ.' },
-      { check: 'EKS in multiple Availability Zones', remediation: 'Specify 3 private subnets across 3 AZs in `subnet_ids` for node groups.' },
-      { check: 'Auto Scaling Groups with health checks', remediation: 'Set `health_check_type = "ELB"` and `health_check_grace_period`. Test with instance termination.' },
-      { check: 'RDS automatic backups enabled (7+ day retention)', remediation: 'Set `backup_retention_period = 7` minimum. Test restore quarterly.' },
-      { check: 'S3 versioning enabled on critical buckets', remediation: 'Enable via `aws s3api put-bucket-versioning`. Add Lifecycle policy to expire old versions.' },
-      { check: 'CloudWatch Alarms for critical metrics (p99 latency, error rate, CPU)', remediation: 'Follow USE method: Utilization, Saturation, Errors per resource type.' },
-      { check: 'Runbooks documented for common failures', remediation: 'Each alarm must link to a runbook URL. Include: symptoms, diagnosis steps, resolution.' },
-      { check: 'Rollback process tested and documented', remediation: 'Test `helm rollback` or `argocd app rollback`. Document the steps including database migrations.' },
-      { check: 'Load Balancer health checks configured', remediation: 'Set health check path, interval, threshold. Unhealthy instances must be deregistered automatically.' },
-      { check: 'PodDisruptionBudgets on critical Kubernetes workloads', remediation: 'Set `minAvailable: 1` to prevent all replicas from being evicted simultaneously.' },
+      {
+        check: 'RDS Multi-AZ configured',
+        remediation:
+          'Set `multi_az = true` in Terraform RDS module. Verify standby in a different AZ.',
+      },
+      {
+        check: 'EKS in multiple Availability Zones',
+        remediation:
+          'Specify 3 private subnets across 3 AZs in `subnet_ids` for node groups.',
+      },
+      {
+        check: 'Auto Scaling Groups with health checks',
+        remediation:
+          'Set `health_check_type = "ELB"` and `health_check_grace_period`. Test with instance termination.',
+      },
+      {
+        check: 'RDS automatic backups enabled (7+ day retention)',
+        remediation:
+          'Set `backup_retention_period = 7` minimum. Test restore quarterly.',
+      },
+      {
+        check: 'S3 versioning enabled on critical buckets',
+        remediation:
+          'Enable via `aws s3api put-bucket-versioning`. Add Lifecycle policy to expire old versions.',
+      },
+      {
+        check:
+          'CloudWatch Alarms for critical metrics (p99 latency, error rate, CPU)',
+        remediation:
+          'Follow USE method: Utilization, Saturation, Errors per resource type.',
+      },
+      {
+        check: 'Runbooks documented for common failures',
+        remediation:
+          'Each alarm must link to a runbook URL. Include: symptoms, diagnosis steps, resolution.',
+      },
+      {
+        check: 'Rollback process tested and documented',
+        remediation:
+          'Test `helm rollback` or `argocd app rollback`. Document the steps including database migrations.',
+      },
+      {
+        check: 'Load Balancer health checks configured',
+        remediation:
+          'Set health check path, interval, threshold. Unhealthy instances must be deregistered automatically.',
+      },
+      {
+        check: 'PodDisruptionBudgets on critical Kubernetes workloads',
+        remediation:
+          'Set `minAvailable: 1` to prevent all replicas from being evicted simultaneously.',
+      },
     ],
   },
   {
@@ -49,14 +141,47 @@ const sections = [
     bg: 'rgba(124,58,237,0.08)',
     border: 'rgba(124,58,237,0.2)',
     items: [
-      { check: 'CloudFront for static assets — CDN in front of S3 and ALB', remediation: 'Set cache behaviors for static assets (max-age=31536000). Invalidate on deploy.' },
-      { check: 'ElastiCache for sessions and hot-path cache', remediation: 'Use Redis cluster mode for HA. Benchmark cache hit rate — target >90%.' },
-      { check: 'RDS connection pooling configured (RDS Proxy or app-level)', remediation: 'EKS workloads should use RDS Proxy to prevent connection exhaustion.' },
-      { check: 'EKS HPA configured for variable workloads', remediation: 'Set CPU/memory targets. Load test to validate scale-out behavior before go-live.' },
-      { check: 'Cluster Autoscaler (or Karpenter) enabled in EKS', remediation: 'Karpenter preferred: faster node provisioning, cost-optimized instance selection.' },
-      { check: 'EC2/EKS instances correctly sized (Compute Optimizer review)', remediation: 'Enable Compute Optimizer. Review recommendations. Right-size before purchasing Savings Plans.' },
-      { check: 'Database queries optimized with indexes', remediation: 'Run EXPLAIN ANALYZE on slow queries. Add indexes for JOIN and WHERE columns.' },
-      { check: 'Container images use multi-stage builds — minimal production image', remediation: 'Build stage installs deps. Runtime stage copies only the binary/app. Target < 200MB.' },
+      {
+        check: 'CloudFront for static assets — CDN in front of S3 and ALB',
+        remediation:
+          'Set cache behaviors for static assets (max-age=31536000). Invalidate on deploy.',
+      },
+      {
+        check: 'ElastiCache for sessions and hot-path cache',
+        remediation:
+          'Use Redis cluster mode for HA. Benchmark cache hit rate — target >90%.',
+      },
+      {
+        check: 'RDS connection pooling configured (RDS Proxy or app-level)',
+        remediation:
+          'EKS workloads should use RDS Proxy to prevent connection exhaustion.',
+      },
+      {
+        check: 'EKS HPA configured for variable workloads',
+        remediation:
+          'Set CPU/memory targets. Load test to validate scale-out behavior before go-live.',
+      },
+      {
+        check: 'Cluster Autoscaler (or Karpenter) enabled in EKS',
+        remediation:
+          'Karpenter preferred: faster node provisioning, cost-optimized instance selection.',
+      },
+      {
+        check: 'EC2/EKS instances correctly sized (Compute Optimizer review)',
+        remediation:
+          'Enable Compute Optimizer. Review recommendations. Right-size before purchasing Savings Plans.',
+      },
+      {
+        check: 'Database queries optimized with indexes',
+        remediation:
+          'Run EXPLAIN ANALYZE on slow queries. Add indexes for JOIN and WHERE columns.',
+      },
+      {
+        check:
+          'Container images use multi-stage builds — minimal production image',
+        remediation:
+          'Build stage installs deps. Runtime stage copies only the binary/app. Target < 200MB.',
+      },
     ],
   },
   {
@@ -66,13 +191,41 @@ const sections = [
     bg: 'rgba(180,83,9,0.08)',
     border: 'rgba(180,83,9,0.2)',
     items: [
-      { check: 'Cost Explorer enabled with budget alerts configured', remediation: 'Create budget with 80% and 100% threshold alerts via SNS/email.' },
-      { check: 'Savings Plans purchased for stable EKS/EC2 workloads', remediation: '1-year Compute Savings Plans yield ~40% savings. Purchase after rightsizing.' },
-      { check: 'S3 Intelligent Tiering for variable-access data', remediation: 'Enable on buckets where access patterns are unknown or unpredictable.' },
-      { check: 'Non-prod RDS instances stopped outside business hours', remediation: 'Schedule `aws rds stop-db-instance` via EventBridge rule. Saves up to 65% on dev costs.' },
-      { check: 'Unattached EBS volumes and idle load balancers identified', remediation: 'Run monthly: `aws ec2 describe-volumes --filters Name=status,Values=available`.' },
-      { check: 'NAT Gateway traffic minimized with VPC endpoints', remediation: 'Add Gateway endpoints for S3 and DynamoDB — zero cost, eliminates NAT charges for these.' },
-      { check: 'Monthly review of unused resources', remediation: 'Use AWS Cost Anomaly Detection + Trusted Advisor. Document each review with action taken.' },
+      {
+        check: 'Cost Explorer enabled with budget alerts configured',
+        remediation:
+          'Create budget with 80% and 100% threshold alerts via SNS/email.',
+      },
+      {
+        check: 'Savings Plans purchased for stable EKS/EC2 workloads',
+        remediation:
+          '1-year Compute Savings Plans yield ~40% savings. Purchase after rightsizing.',
+      },
+      {
+        check: 'S3 Intelligent Tiering for variable-access data',
+        remediation:
+          'Enable on buckets where access patterns are unknown or unpredictable.',
+      },
+      {
+        check: 'Non-prod RDS instances stopped outside business hours',
+        remediation:
+          'Schedule `aws rds stop-db-instance` via EventBridge rule. Saves up to 65% on dev costs.',
+      },
+      {
+        check: 'Unattached EBS volumes and idle load balancers identified',
+        remediation:
+          'Run monthly: `aws ec2 describe-volumes --filters Name=status,Values=available`.',
+      },
+      {
+        check: 'NAT Gateway traffic minimized with VPC endpoints',
+        remediation:
+          'Add Gateway endpoints for S3 and DynamoDB — zero cost, eliminates NAT charges for these.',
+      },
+      {
+        check: 'Monthly review of unused resources',
+        remediation:
+          'Use AWS Cost Anomaly Detection + Trusted Advisor. Document each review with action taken.',
+      },
     ],
   },
   {
@@ -82,16 +235,57 @@ const sections = [
     bg: 'rgba(4,120,87,0.08)',
     border: 'rgba(4,120,87,0.2)',
     items: [
-      { check: 'Terraform with remote state in S3 + DynamoDB lock', remediation: 'Configure backend "s3" with dynamodb_table. Never use local state in team environments.' },
-      { check: 'All resources created via IaC — zero manual provisioning', remediation: 'Run `terraform plan` weekly. Any unexpected drift means something was created manually.' },
-      { check: 'CI/CD pipeline with quality gates (SonarCloud, coverage thresholds)', remediation: 'Block merges unless tests pass and coverage ≥ 80%. SonarCloud quality gate enforced.' },
-      { check: 'Dockerfiles use multi-stage builds and run as non-root user', remediation: 'Add `USER appuser` before CMD. Use distroless or alpine as final base image.' },
-      { check: 'Kubernetes manifests in Git — GitOps with ArgoCD auto-sync', remediation: 'No manual kubectl apply in production. ArgoCD selfHeal=true enforces this.' },
-      { check: 'Prometheus + Grafana for observability', remediation: 'Install via Helm: kube-prometheus-stack. Pre-built dashboards for cluster and workload metrics.' },
-      { check: 'Alertmanager with routing by severity (page vs. ticket)', remediation: 'Route P1/P2 to PagerDuty/on-call. P3/P4 to Slack/Jira ticket creation.' },
-      { check: 'Log aggregation configured (CloudWatch Logs or Loki)', remediation: 'Ship structured JSON logs. Enable log-based metrics for error rate alerting.' },
-      { check: 'Architecture documentation updated with each release', remediation: 'Maintain an Architecture Decision Record (ADR) for non-obvious design choices.' },
-      { check: 'Post-mortem process defined for incidents', remediation: 'Run blameless post-mortem within 48h. 5 Whys root cause. Action items tracked to completion.' },
+      {
+        check: 'Terraform with remote state in S3 + DynamoDB lock',
+        remediation:
+          'Configure backend "s3" with dynamodb_table. Never use local state in team environments.',
+      },
+      {
+        check: 'All resources created via IaC — zero manual provisioning',
+        remediation:
+          'Run `terraform plan` weekly. Any unexpected drift means something was created manually.',
+      },
+      {
+        check:
+          'CI/CD pipeline with quality gates (SonarCloud, coverage thresholds)',
+        remediation:
+          'Block merges unless tests pass and coverage ≥ 80%. SonarCloud quality gate enforced.',
+      },
+      {
+        check: 'Dockerfiles use multi-stage builds and run as non-root user',
+        remediation:
+          'Add `USER appuser` before CMD. Use distroless or alpine as final base image.',
+      },
+      {
+        check: 'Kubernetes manifests in Git — GitOps with ArgoCD auto-sync',
+        remediation:
+          'No manual kubectl apply in production. ArgoCD selfHeal=true enforces this.',
+      },
+      {
+        check: 'Prometheus + Grafana for observability',
+        remediation:
+          'Install via Helm: kube-prometheus-stack. Pre-built dashboards for cluster and workload metrics.',
+      },
+      {
+        check: 'Alertmanager with routing by severity (page vs. ticket)',
+        remediation:
+          'Route P1/P2 to PagerDuty/on-call. P3/P4 to Slack/Jira ticket creation.',
+      },
+      {
+        check: 'Log aggregation configured (CloudWatch Logs or Loki)',
+        remediation:
+          'Ship structured JSON logs. Enable log-based metrics for error rate alerting.',
+      },
+      {
+        check: 'Architecture documentation updated with each release',
+        remediation:
+          'Maintain an Architecture Decision Record (ADR) for non-obvious design choices.',
+      },
+      {
+        check: 'Post-mortem process defined for incidents',
+        remediation:
+          'Run blameless post-mortem within 48h. 5 Whys root cause. Action items tracked to completion.',
+      },
     ],
   },
 ]
@@ -106,14 +300,28 @@ const sections = [
     <div
       class="absolute inset-0 pointer-events-none opacity-30"
       style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
-    ></div>
-    <div class="relative max-w-4xl mx-auto px-5 sm:px-6 py-16 sm:py-20 text-center">
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-16 sm:py-20 text-center"
+    >
       <div
         class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
         style="background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.3);"
       >
-        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#6EE7B7;" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg
+          class="w-7 h-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          style="color:#6EE7B7;"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
       </div>
       <h1
@@ -123,7 +331,10 @@ const sections = [
         Your checklist is ready
       </h1>
       <p class="text-base mb-8" style="color: rgba(147,184,255,0.75);">
-        Bookmark this page or use <kbd class="px-2 py-0.5 rounded text-sm font-mono" style="background:rgba(255,255,255,0.1); color:white;">Ctrl+P</kbd> to save as PDF.
+        Bookmark this page or use <kbd
+          class="px-2 py-0.5 rounded text-sm font-mono"
+          style="background:rgba(255,255,255,0.1); color:white;">Ctrl+P</kbd
+        > to save as PDF.
       </p>
       <div class="flex flex-wrap justify-center gap-3">
         <button
@@ -131,8 +342,19 @@ const sections = [
           class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:-translate-y-px"
           style="background:white; color:#0A2540; box-shadow:0 4px 16px rgba(0,0,0,0.2);"
         >
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+            ></path>
           </svg>
           Save as PDF
         </button>
@@ -150,81 +372,107 @@ const sections = [
   <!-- CHECKLIST CONTENT -->
   <main id="main-content">
     <div class="max-w-4xl mx-auto px-5 sm:px-6 py-14 space-y-10">
-
       <!-- Quick jump -->
-      <div class="rounded-2xl p-5" style="background:#F8FAFC; border:1px solid #E2E8F0;">
-        <p class="text-xs font-bold uppercase tracking-wider mb-3" style="color:#94A3B8;">Jump to section</p>
+      <div
+        class="rounded-2xl p-5"
+        style="background:#F8FAFC; border:1px solid #E2E8F0;"
+      >
+        <p
+          class="text-xs font-bold uppercase tracking-wider mb-3"
+          style="color:#94A3B8;"
+        >
+          Jump to section
+        </p>
         <div class="flex flex-wrap gap-2">
-          {sections.map(s => (
-            <a
-              href={`#${s.id}`}
-              class="text-xs font-semibold px-3 py-1.5 rounded-full transition-colors hover:text-white"
-              style={`background:${s.bg}; color:${s.color}; border:1px solid ${s.border};`}
-            >
-              {s.title}
-            </a>
-          ))}
+          {
+            sections.map((s) => (
+              <a
+                href={`#${s.id}`}
+                class="text-xs font-semibold px-3 py-1.5 rounded-full transition-colors hover:text-white"
+                style={`background:${s.bg}; color:${s.color}; border:1px solid ${s.border};`}
+              >
+                {s.title}
+              </a>
+            ))
+          }
         </div>
       </div>
 
-      {sections.map(section => (
-        <section id={section.id}>
-          <div class="flex items-center gap-3 mb-5">
-            <div
-              class="w-2 h-8 rounded-full flex-shrink-0"
-              style={`background:${section.color};`}
-              aria-hidden="true"
-            ></div>
-            <h2 class="text-xl font-bold" style={`color:${section.color};`}>
-              {section.title}
-            </h2>
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-full ml-auto" style={`background:${section.bg}; color:${section.color}; border:1px solid ${section.border};`}>
-              {section.items.length} items
-            </span>
-          </div>
-
-          <div class="space-y-3">
-            {section.items.map((item, idx) => (
+      {
+        sections.map((section) => (
+          <section id={section.id}>
+            <div class="flex items-center gap-3 mb-5">
               <div
-                class="rounded-xl p-4 flex gap-4"
-                style={`background:${section.bg}; border:1px solid ${section.border};`}
+                class="w-2 h-8 rounded-full flex-shrink-0"
+                style={`background:${section.color};`}
+                aria-hidden="true"
+              />
+              <h2 class="text-xl font-bold" style={`color:${section.color};`}>
+                {section.title}
+              </h2>
+              <span
+                class="text-xs font-semibold px-2.5 py-1 rounded-full ml-auto"
+                style={`background:${section.bg}; color:${section.color}; border:1px solid ${section.border};`}
               >
-                <div class="flex-shrink-0 mt-0.5">
-                  <div
-                    class="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold"
-                    style={`border-color:${section.color}; color:${section.color};`}
-                    aria-label={`Checkpoint ${idx + 1}`}
-                  >
-                    {idx + 1}
+                {section.items.length} items
+              </span>
+            </div>
+
+            <div class="space-y-3">
+              {section.items.map((item, idx) => (
+                <div
+                  class="rounded-xl p-4 flex gap-4"
+                  style={`background:${section.bg}; border:1px solid ${section.border};`}
+                >
+                  <div class="flex-shrink-0 mt-0.5">
+                    <div
+                      class="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold"
+                      style={`border-color:${section.color}; color:${section.color};`}
+                      aria-label={`Checkpoint ${idx + 1}`}
+                    >
+                      {idx + 1}
+                    </div>
+                  </div>
+                  <div class="min-w-0">
+                    <p
+                      class="text-sm font-semibold mb-1"
+                      style="color:#0F172A;"
+                    >
+                      {item.check}
+                    </p>
+                    <p class="text-xs" style="color:#64748b;">
+                      <span
+                        class="font-semibold"
+                        style={`color:${section.color};`}
+                      >
+                        Fix:{' '}
+                      </span>
+                      {item.remediation}
+                    </p>
+                  </div>
+                  <div class="flex-shrink-0 ml-auto">
+                    <div
+                      class="w-5 h-5 rounded border-2 mt-0.5 print:border-gray-400"
+                      style="border-color:#CBD5E1;"
+                      aria-label="Checkbox — mark when complete"
+                      role="presentation"
+                    />
                   </div>
                 </div>
-                <div class="min-w-0">
-                  <p class="text-sm font-semibold mb-1" style="color:#0F172A;">{item.check}</p>
-                  <p class="text-xs" style="color:#64748b;">
-                    <span class="font-semibold" style={`color:${section.color};`}>Fix: </span>
-                    {item.remediation}
-                  </p>
-                </div>
-                <div class="flex-shrink-0 ml-auto">
-                  <div
-                    class="w-5 h-5 rounded border-2 mt-0.5 print:border-gray-400"
-                    style="border-color:#CBD5E1;"
-                    aria-label="Checkbox — mark when complete"
-                    role="presentation"
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
+              ))}
+            </div>
+          </section>
+        ))
+      }
 
       <!-- CTA bottom -->
       <div
         class="rounded-2xl p-8 text-center"
         style="background: linear-gradient(135deg, #0A2540 0%, #0F3460 100%); border: 1px solid rgba(30,111,255,0.2);"
       >
-        <h3 class="text-xl font-bold text-white mb-2">Need help running through this?</h3>
+        <h3 class="text-xl font-bold text-white mb-2">
+          Need help running through this?
+        </h3>
         <p class="text-sm mb-6" style="color:rgba(147,184,255,0.8);">
           LRA Cloud Operations runs this checklist on every engagement and
           delivers a remediation plan with prioritized Terraform modules.
@@ -243,8 +491,17 @@ const sections = [
 
 <style>
   @media print {
-    header, footer, button, nav { display: none !important; }
-    body { background: white; }
-    section { break-inside: avoid; }
+    header,
+    footer,
+    button,
+    nav {
+      display: none !important;
+    }
+    body {
+      background: white;
+    }
+    section {
+      break-inside: avoid;
+    }
   }
 </style>
