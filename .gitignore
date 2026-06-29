@@ -22,4 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+# Claude Code internal dirs — never track worktrees (gitlinks break Cloudflare)
 .claude/worktrees/
+.claude/worktrees/**
