@@ -15,33 +15,96 @@ const LOG_PATH = path.join(__dirname, 'agent-log.json')
 
 // ── Topic rotation (deterministic by day-of-year) ──────────────────────────
 const TOPICS = [
-  { en: 'Kubernetes Resource Management and HPA', es: 'Gestión de recursos en Kubernetes y HPA', tags: ['Kubernetes', 'DevOps', 'Cloud'] },
-  { en: 'Terraform State Management Best Practices', es: 'Mejores prácticas para gestionar el estado en Terraform', tags: ['Terraform', 'IaC', 'DevOps'] },
-  { en: 'AWS EKS Cluster Hardening', es: 'Hardening de clústeres AWS EKS', tags: ['AWS', 'Kubernetes', 'Security'] },
-  { en: 'GitOps Patterns with ArgoCD', es: 'Patrones GitOps con ArgoCD', tags: ['GitOps', 'ArgoCD', 'Kubernetes'] },
-  { en: 'Docker Multi-Stage Build Optimization', es: 'Optimización de builds multi-stage en Docker', tags: ['Docker', 'DevOps', 'CI/CD'] },
-  { en: 'Observability with Prometheus and Grafana', es: 'Observabilidad con Prometheus y Grafana', tags: ['Observability', 'SRE', 'DevOps'] },
-  { en: 'GitHub Actions Advanced Workflows', es: 'Workflows avanzados con GitHub Actions', tags: ['CI/CD', 'GitHub Actions', 'DevOps'] },
-  { en: 'AWS IAM Least Privilege Patterns', es: 'Patrones de mínimo privilegio en AWS IAM', tags: ['AWS', 'Security', 'IAM'] },
-  { en: 'Platform Engineering Internal Developer Platforms', es: 'Ingeniería de plataforma: plataformas internas de desarrollo', tags: ['Platform Engineering', 'DevOps', 'Cloud'] },
-  { en: 'Incident Response Runbook Automation', es: 'Automatización de runbooks para respuesta a incidencias', tags: ['SRE', 'DevOps', 'Automation'] },
-  { en: 'Kubernetes Networking with Cilium', es: 'Networking en Kubernetes con Cilium', tags: ['Kubernetes', 'Networking', 'Cloud'] },
-  { en: 'AWS Cost Optimization Strategies', es: 'Estrategias de optimización de costes en AWS', tags: ['AWS', 'FinOps', 'Cloud'] },
-  { en: 'Helm Chart Best Practices', es: 'Mejores prácticas para Helm Charts', tags: ['Kubernetes', 'Helm', 'DevOps'] },
-  { en: 'Zero-Downtime Deployments with Kubernetes', es: 'Despliegues sin downtime con Kubernetes', tags: ['Kubernetes', 'DevOps', 'SRE'] },
+  {
+    en: 'Kubernetes Resource Management and HPA',
+    es: 'Gestión de recursos en Kubernetes y HPA',
+    tags: ['Kubernetes', 'DevOps', 'Cloud'],
+  },
+  {
+    en: 'Terraform State Management Best Practices',
+    es: 'Mejores prácticas para gestionar el estado en Terraform',
+    tags: ['Terraform', 'IaC', 'DevOps'],
+  },
+  {
+    en: 'AWS EKS Cluster Hardening',
+    es: 'Hardening de clústeres AWS EKS',
+    tags: ['AWS', 'Kubernetes', 'Security'],
+  },
+  {
+    en: 'GitOps Patterns with ArgoCD',
+    es: 'Patrones GitOps con ArgoCD',
+    tags: ['GitOps', 'ArgoCD', 'Kubernetes'],
+  },
+  {
+    en: 'Docker Multi-Stage Build Optimization',
+    es: 'Optimización de builds multi-stage en Docker',
+    tags: ['Docker', 'DevOps', 'CI/CD'],
+  },
+  {
+    en: 'Observability with Prometheus and Grafana',
+    es: 'Observabilidad con Prometheus y Grafana',
+    tags: ['Observability', 'SRE', 'DevOps'],
+  },
+  {
+    en: 'GitHub Actions Advanced Workflows',
+    es: 'Workflows avanzados con GitHub Actions',
+    tags: ['CI/CD', 'GitHub Actions', 'DevOps'],
+  },
+  {
+    en: 'AWS IAM Least Privilege Patterns',
+    es: 'Patrones de mínimo privilegio en AWS IAM',
+    tags: ['AWS', 'Security', 'IAM'],
+  },
+  {
+    en: 'Platform Engineering Internal Developer Platforms',
+    es: 'Ingeniería de plataforma: plataformas internas de desarrollo',
+    tags: ['Platform Engineering', 'DevOps', 'Cloud'],
+  },
+  {
+    en: 'Incident Response Runbook Automation',
+    es: 'Automatización de runbooks para respuesta a incidencias',
+    tags: ['SRE', 'DevOps', 'Automation'],
+  },
+  {
+    en: 'Kubernetes Networking with Cilium',
+    es: 'Networking en Kubernetes con Cilium',
+    tags: ['Kubernetes', 'Networking', 'Cloud'],
+  },
+  {
+    en: 'AWS Cost Optimization Strategies',
+    es: 'Estrategias de optimización de costes en AWS',
+    tags: ['AWS', 'FinOps', 'Cloud'],
+  },
+  {
+    en: 'Helm Chart Best Practices',
+    es: 'Mejores prácticas para Helm Charts',
+    tags: ['Kubernetes', 'Helm', 'DevOps'],
+  },
+  {
+    en: 'Zero-Downtime Deployments with Kubernetes',
+    es: 'Despliegues sin downtime con Kubernetes',
+    tags: ['Kubernetes', 'DevOps', 'SRE'],
+  },
 ]
 
 function getTopic() {
-  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000)
+  const dayOfYear = Math.floor(
+    (Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000
+  )
   return TOPICS[dayOfYear % TOPICS.length]
 }
 
 function toSlug(text) {
   return text
     .toLowerCase()
-    .replace(/[áàä]/g, 'a').replace(/[éèë]/g, 'e').replace(/[íìï]/g, 'i')
-    .replace(/[óòö]/g, 'o').replace(/[úùü]/g, 'u').replace(/ñ/g, 'n')
-    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+    .replace(/[áàä]/g, 'a')
+    .replace(/[éèë]/g, 'e')
+    .replace(/[íìï]/g, 'i')
+    .replace(/[óòö]/g, 'o')
+    .replace(/[úùü]/g, 'u')
+    .replace(/ñ/g, 'n')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
 }
 
 function todayISO() {
@@ -116,7 +179,11 @@ function writeBlogPost(dir, slug, frontmatter, body) {
 function updateLog(entry) {
   let log = []
   if (fs.existsSync(LOG_PATH)) {
-    try { log = JSON.parse(fs.readFileSync(LOG_PATH, 'utf8')) } catch { log = [] }
+    try {
+      log = JSON.parse(fs.readFileSync(LOG_PATH, 'utf8'))
+    } catch {
+      log = []
+    }
   }
   log.unshift(entry)
   // Keep last 30 entries
@@ -134,8 +201,15 @@ async function main() {
   console.log(`[daily-agent] Topic ES: ${topic.es}`)
 
   if (!process.env.ANTHROPIC_API_KEY) {
-    console.warn('[daily-agent] ⚠ ANTHROPIC_API_KEY not set — skipping generation')
-    updateLog({ date: today, status: 'skipped', reason: 'no API key', topic: topic.en })
+    console.warn(
+      '[daily-agent] ⚠ ANTHROPIC_API_KEY not set — skipping generation'
+    )
+    updateLog({
+      date: today,
+      status: 'skipped',
+      reason: 'no API key',
+      topic: topic.en,
+    })
     process.exit(0)
   }
 
@@ -148,24 +222,34 @@ async function main() {
 
     // Write EN
     const enDir = path.join(ROOT, 'src/content/blog')
-    const enFile = writeBlogPost(enDir, slugBase, {
-      titulo: topic.en,
-      descripcion: `${topic.en}: practical guide for DevOps engineers and platform teams.`,
-      fecha: today,
-      tags: topic.tags,
-      draft: false,
-    }, enBody)
+    const enFile = writeBlogPost(
+      enDir,
+      slugBase,
+      {
+        titulo: topic.en,
+        descripcion: `${topic.en}: practical guide for DevOps engineers and platform teams.`,
+        fecha: today,
+        tags: topic.tags,
+        draft: false,
+      },
+      enBody
+    )
     console.log(`[daily-agent] ✓ EN: ${enFile}`)
 
     // Write ES
     const esDir = path.join(ROOT, 'src/content/es/blog')
-    const esFile = writeBlogPost(esDir, slugBase, {
-      titulo: topic.es,
-      descripcion: `${topic.es}: guía práctica para ingenieros DevOps y equipos de plataforma.`,
-      fecha: today,
-      tags: topic.tags,
-      draft: false,
-    }, esBody)
+    const esFile = writeBlogPost(
+      esDir,
+      slugBase,
+      {
+        titulo: topic.es,
+        descripcion: `${topic.es}: guía práctica para ingenieros DevOps y equipos de plataforma.`,
+        fecha: today,
+        tags: topic.tags,
+        draft: false,
+      },
+      esBody
+    )
     console.log(`[daily-agent] ✓ ES: ${esFile}`)
 
     updateLog({
@@ -179,7 +263,12 @@ async function main() {
     console.log('[daily-agent] ✅ Done')
   } catch (err) {
     console.error(`[daily-agent] ✗ Error: ${err.message}`)
-    updateLog({ date: today, status: 'error', topic: topic.en, error: err.message })
+    updateLog({
+      date: today,
+      status: 'error',
+      topic: topic.en,
+      error: err.message,
+    })
     process.exit(1)
   }
 }

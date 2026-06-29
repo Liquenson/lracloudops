@@ -37,7 +37,9 @@ export function getAlternateUrl(url: URL, targetLocale: Locale): string {
   return path ? `/${targetLocale}/${path}` : `/${targetLocale}/`
 }
 
-export function getHreflangTags(url: URL): Array<{ locale: string; href: string }> {
+export function getHreflangTags(
+  url: URL
+): Array<{ locale: string; href: string }> {
   return localeList.map((locale) => ({
     locale,
     href: `https://lracloudops.com${getAlternateUrl(url, locale)}`,

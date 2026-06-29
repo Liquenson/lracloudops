@@ -165,43 +165,117 @@ import Layout from '../../layouts/Layout.astro'
   <!-- See it in practice -->
   <section class="py-20 bg-white border-t border-gray-100">
     <div class="max-w-5xl mx-auto px-6">
-      <div class="bg-white rounded-2xl p-8" style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);">
+      <div
+        class="bg-white rounded-2xl p-8"
+        style="border: 1px solid #E5E7EB; border-left: 4px solid #1E6FFF; box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.06);"
+      >
         <div class="mb-6">
           <span class="section-label">See it in practice</span>
-          <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">Three CI/CD implementations</h2>
+          <h2 class="text-2xl font-bold mt-3" style="color: #0A2540;">
+            Three CI/CD implementations
+          </h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
-          <div class="rounded-xl p-5" style="background: #F8FAFC; border: 1px solid #E5E7EB;">
+          <div
+            class="rounded-xl p-5"
+            style="background: #F8FAFC; border: 1px solid #E5E7EB;"
+          >
             <div class="flex items-center justify-between mb-3">
-              <span class="text-sm font-bold" style="color: #0A2540;">aws-terraform-devops</span>
-              <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+              <span class="text-sm font-bold" style="color: #0A2540;"
+                >aws-terraform-devops</span
+              >
+              <span
+                class="text-xs px-2 py-0.5 rounded-full font-semibold"
+                style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
+                >Production</span
+              >
             </div>
-            <p class="text-xs leading-relaxed mb-3" style="color: #64748B;">Dual pipelines — GitHub Actions (OIDC) + Jenkins (on-premise). SonarCloud 80% coverage gate blocks every merge. ECR push → EKS deploy.</p>
+            <p class="text-xs leading-relaxed mb-3" style="color: #64748B;">
+              Dual pipelines — GitHub Actions (OIDC) + Jenkins (on-premise).
+              SonarCloud 80% coverage gate blocks every merge. ECR push → EKS
+              deploy.
+            </p>
             <div class="flex gap-2">
-              <a href="/projects/aws-terraform-devops" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
-              <a href="https://github.com/lra-cloud-ops/aws-terraform-devops" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+              <a
+                href="/projects/aws-terraform-devops"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg"
+                style="background: #EEF4FF; color: #1E6FFF;">Case study →</a
+              >
+              <a
+                href="https://github.com/lra-cloud-ops/aws-terraform-devops"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg"
+                style="background: #F1F5F9; color: #0A2540;">GitHub →</a
+              >
             </div>
           </div>
-          <div class="rounded-xl p-5" style="background: #F8FAFC; border: 1px solid #E5E7EB;">
+          <div
+            class="rounded-xl p-5"
+            style="background: #F8FAFC; border: 1px solid #E5E7EB;"
+          >
             <div class="flex items-center justify-between mb-3">
-              <span class="text-sm font-bold" style="color: #0A2540;">gitops-stack</span>
-              <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+              <span class="text-sm font-bold" style="color: #0A2540;"
+                >gitops-stack</span
+              >
+              <span
+                class="text-xs px-2 py-0.5 rounded-full font-semibold"
+                style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
+                >Production</span
+              >
             </div>
-            <p class="text-xs leading-relaxed mb-3" style="color: #64748B;">Jenkins CI: Build → Test → Deploy to EKS. Ansible config management. SSM for access — zero SSH keys. git push to production in under 8 minutes.</p>
+            <p class="text-xs leading-relaxed mb-3" style="color: #64748B;">
+              Jenkins CI: Build → Test → Deploy to EKS. Ansible config
+              management. SSM for access — zero SSH keys. git push to production
+              in under 8 minutes.
+            </p>
             <div class="flex gap-2">
-              <a href="/projects/gitops-stack" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
-              <a href="https://github.com/lra-cloud-ops/gitops-stack" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+              <a
+                href="/projects/gitops-stack"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg"
+                style="background: #EEF4FF; color: #1E6FFF;">Case study →</a
+              >
+              <a
+                href="https://github.com/lra-cloud-ops/gitops-stack"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg"
+                style="background: #F1F5F9; color: #0A2540;">GitHub →</a
+              >
             </div>
           </div>
-          <div class="rounded-xl p-5" style="background: #F8FAFC; border: 1px solid #E5E7EB;">
+          <div
+            class="rounded-xl p-5"
+            style="background: #F8FAFC; border: 1px solid #E5E7EB;"
+          >
             <div class="flex items-center justify-between mb-3">
-              <span class="text-sm font-bold" style="color: #0A2540;">linux-fleet-manager</span>
-              <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;">Production</span>
+              <span class="text-sm font-bold" style="color: #0A2540;"
+                >linux-fleet-manager</span
+              >
+              <span
+                class="text-xs px-2 py-0.5 rounded-full font-semibold"
+                style="background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0;"
+                >Production</span
+              >
             </div>
-            <p class="text-xs leading-relaxed mb-3" style="color: #64748B;">Bash + SSH fleet management — no agents. ShellCheck validation in CI. Idempotent scripts safe for re-runs. Red Hat engineering standards.</p>
+            <p class="text-xs leading-relaxed mb-3" style="color: #64748B;">
+              Bash + SSH fleet management — no agents. ShellCheck validation in
+              CI. Idempotent scripts safe for re-runs. Red Hat engineering
+              standards.
+            </p>
             <div class="flex gap-2">
-              <a href="/projects/linux-fleet-manager" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #EEF4FF; color: #1E6FFF;">Case study →</a>
-              <a href="https://github.com/lra-cloud-ops/linux-fleet-manager" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold px-3 py-1.5 rounded-lg" style="background: #F1F5F9; color: #0A2540;">GitHub →</a>
+              <a
+                href="/projects/linux-fleet-manager"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg"
+                style="background: #EEF4FF; color: #1E6FFF;">Case study →</a
+              >
+              <a
+                href="https://github.com/lra-cloud-ops/linux-fleet-manager"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg"
+                style="background: #F1F5F9; color: #0A2540;">GitHub →</a
+              >
             </div>
           </div>
         </div>

@@ -1214,31 +1214,84 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
           aria-haspopup="listbox"
           aria-label="Change language"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path
+              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+            ></path>
           </svg>
           <span>{isES ? 'Español' : 'English'}</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
-        <div class="lang-dropdown" id="langDropdown" role="listbox" aria-label="Language options">
-          <a href={enUrl} class={`lang-option${!isES ? ' active' : ''}`} role="option" aria-selected={!isES ? 'true' : 'false'}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        <div
+          class="lang-dropdown"
+          id="langDropdown"
+          role="listbox"
+          aria-label="Language options"
+        >
+          <a
+            href={enUrl}
+            class={`lang-option${!isES ? ' active' : ''}`}
+            role="option"
+            aria-selected={!isES ? 'true' : 'false'}
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
             </svg>
             English
             {!isES && <span class="lang-check">✓</span>}
           </a>
-          <a href={esUrl} class={`lang-option${isES ? ' active' : ''}`} role="option" aria-selected={isES ? 'true' : 'false'}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <a
+            href={esUrl}
+            class={`lang-option${isES ? ' active' : ''}`}
+            role="option"
+            aria-selected={isES ? 'true' : 'false'}
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
             </svg>
             Español
             {isES && <span class="lang-check">✓</span>}
@@ -1640,14 +1693,33 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
           aria-haspopup="listbox"
           aria-label="Change language"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path
+              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+            ></path>
           </svg>
           <span>{isES ? 'Español' : 'English'}</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="lang-chevron-mobile" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"/>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            class="lang-chevron-mobile"
+            aria-hidden="true"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
         <div
@@ -1656,20 +1728,50 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
           role="listbox"
           aria-label="Language options"
         >
-          <a href={enUrl} class={`lang-option${!isES ? ' active' : ''}`} role="option" aria-selected={!isES ? 'true' : 'false'}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <a
+            href={enUrl}
+            class={`lang-option${!isES ? ' active' : ''}`}
+            role="option"
+            aria-selected={!isES ? 'true' : 'false'}
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
             </svg>
             English
             {!isES && <span class="lang-check">✓</span>}
           </a>
-          <a href={esUrl} class={`lang-option${isES ? ' active' : ''}`} role="option" aria-selected={isES ? 'true' : 'false'}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <a
+            href={esUrl}
+            class={`lang-option${isES ? ' active' : ''}`}
+            role="option"
+            aria-selected={isES ? 'true' : 'false'}
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
             </svg>
             Español
             {isES && <span class="lang-check">✓</span>}
@@ -2036,8 +2138,12 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
 <script>
   // Desktop language switcher
   const langBtn = document.getElementById('langBtn') as HTMLButtonElement | null
-  const langDropdown = document.getElementById('langDropdown') as HTMLElement | null
-  const langSwitcher = document.getElementById('langSwitcher') as HTMLElement | null
+  const langDropdown = document.getElementById(
+    'langDropdown'
+  ) as HTMLElement | null
+  const langSwitcher = document.getElementById(
+    'langSwitcher'
+  ) as HTMLElement | null
 
   langBtn?.addEventListener('click', (e) => {
     e.stopPropagation()
@@ -2061,9 +2167,15 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
   })
 
   // Mobile language switcher
-  const langBtnMobile = document.getElementById('langBtnMobile') as HTMLButtonElement | null
-  const langDropdownMobile = document.getElementById('langDropdownMobile') as HTMLElement | null
-  const langSwitcherMobile = document.getElementById('langSwitcherMobile') as HTMLElement | null
+  const langBtnMobile = document.getElementById(
+    'langBtnMobile'
+  ) as HTMLButtonElement | null
+  const langDropdownMobile = document.getElementById(
+    'langDropdownMobile'
+  ) as HTMLElement | null
+  const langSwitcherMobile = document.getElementById(
+    'langSwitcherMobile'
+  ) as HTMLElement | null
 
   langBtnMobile?.addEventListener('click', (e) => {
     e.stopPropagation()

@@ -54,17 +54,30 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
     <div class="max-w-5xl mx-auto px-6">
       <!-- ─── CATEGORY FILTERS ──────────────────────────────────────────── -->
       <div class="flex flex-wrap gap-2 mb-8" id="resource-filters">
-        {['All', 'Kubernetes', 'Terraform', 'AWS', 'GitOps', 'Security', 'Observability', 'Architecture'].map(cat => (
-          <button
-            data-filter={cat}
-            class="resource-filter-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-200"
-            style={cat === 'All'
-              ? 'background: #1E6FFF; color: white; border-color: #1E6FFF; box-shadow: 0 2px 8px rgba(30,111,255,0.3);'
-              : 'background: white; color: #64748b; border-color: #e2e8f0;'}
-          >
-            {cat}
-          </button>
-        ))}
+        {
+          [
+            'All',
+            'Kubernetes',
+            'Terraform',
+            'AWS',
+            'GitOps',
+            'Security',
+            'Observability',
+            'Architecture',
+          ].map((cat) => (
+            <button
+              data-filter={cat}
+              class="resource-filter-btn text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-200"
+              style={
+                cat === 'All'
+                  ? 'background: #1E6FFF; color: white; border-color: #1E6FFF; box-shadow: 0 2px 8px rgba(30,111,255,0.3);'
+                  : 'background: white; color: #64748b; border-color: #e2e8f0;'
+              }
+            >
+              {cat}
+            </button>
+          ))
+        }
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
         <!-- AWS Production Readiness Checklist -->
@@ -1358,7 +1371,9 @@ import NewsletterCTA from '../components/NewsletterCTA.astro'
 </Layout>
 
 <script>
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.resource-filter-btn')
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>(
+    '.resource-filter-btn'
+  )
   const resourceCards = document.querySelectorAll<HTMLElement>('.resource-card')
   const archSection = document.getElementById('arch-section')
 
