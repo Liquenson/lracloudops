@@ -1,0 +1,463 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout
+  titulo="AI Pricing Agent · Get a personalized DevOps quote instantly"
+  descripcion="Describe your project requirements and get a personalized quote with recommended plan, deliverables, and timeline. Powered by AI."
+  keywords="DevOps consulting pricing, cloud infrastructure quote, Kubernetes implementation cost, platform engineering rates, Terraform pricing"
+>
+  <!-- HERO -->
+  <section
+    class="relative overflow-hidden"
+    style="background: #0A2540;"
+    aria-labelledby="pricing-agent-heading"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background-image: radial-gradient(circle, rgba(96,165,250,0.1) 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
+    <div
+      class="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style="background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(30,111,255,0.18) 0%, transparent 65%);"
+    >
+    </div>
+    <div
+      class="relative max-w-4xl mx-auto px-5 sm:px-6 py-20 sm:py-28 text-center"
+    >
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-xs font-bold tracking-widest uppercase"
+        style="background: rgba(30,111,255,0.2); border: 1px solid rgba(96,165,250,0.35); color: #93C5FD;"
+      >
+        <span
+          class="w-2 h-2 rounded-full flex-shrink-0"
+          style="background: #60A5FA; animation: pulse 2s infinite;"
+          aria-hidden="true"></span>
+        AI Pricing · Personalized · Instant
+      </div>
+      <h1
+        id="pricing-agent-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
+        style="letter-spacing: -0.035em;"
+      >
+        AI Pricing Agent
+      </h1>
+      <p
+        class="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
+        style="color: rgba(147,184,255,0.85);"
+      >
+        Describe your project and get a personalized quote — plan, deliverables,
+        timeline and pricing tailored to your specific needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- METRICS STRIP -->
+  <section
+    class="py-10 border-b"
+    style="background: #0f172a; border-color: rgba(255,255,255,0.06);"
+    aria-label="Pricing metrics"
+  >
+    <div
+      class="max-w-4xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center"
+    >
+      {
+        [
+          { val: '€1.5K', label: 'From Starter' },
+          { val: '24h', label: 'Quote in' },
+          { val: '3', label: 'Plans available' },
+          { val: '100%', label: 'Personalized' },
+        ].map((m) => (
+          <div>
+            <div class="text-3xl font-extrabold" style="color: #60A5FA;">
+              {m.val}
+            </div>
+            <div
+              class="text-xs mt-1 font-medium"
+              style="color: rgba(147,184,255,0.6);"
+            >
+              {m.label}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- MAIN SECTION -->
+  <section class="py-20" style="background: #F8FAFC;">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <!-- FORM -->
+        <div class="lg:col-span-2">
+          <div
+            class="bg-white rounded-2xl p-7"
+            style="border: 1px solid #e2e8f0; box-shadow: 0 4px 24px rgba(10,37,64,0.06);"
+          >
+            <h2 class="text-xl font-bold mb-6" style="color: #0A2540;">
+              Your project
+            </h2>
+
+            <div class="space-y-5">
+              <div>
+                <label
+                  for="project-type"
+                  class="block text-sm font-semibold mb-2"
+                  style="color: #0A2540;">Project type</label
+                >
+                <select
+                  id="project-type"
+                  class="w-full px-4 py-3 rounded-xl text-sm border outline-none transition-all"
+                  style="border-color: #e2e8f0; color: #0A2540; background: #f8fafc;"
+                >
+                  <option value="">Select project type…</option>
+                  <option value="IaC setup from scratch"
+                    >IaC setup from scratch (Terraform + AWS)</option
+                  >
+                  <option value="Kubernetes migration"
+                    >Kubernetes migration / EKS setup</option
+                  >
+                  <option value="Full DevOps platform"
+                    >Full DevOps platform (CI/CD + monitoring + IaC)</option
+                  >
+                  <option value="CI/CD pipeline"
+                    >CI/CD pipeline automation</option
+                  >
+                  <option value="Cloud cost optimization"
+                    >Cloud cost optimization</option
+                  >
+                  <option value="Security audit and hardening"
+                    >Security audit and hardening</option
+                  >
+                  <option value="Observability platform"
+                    >Observability platform (metrics + logs + alerts)</option
+                  >
+                  <option value="Multi-cloud architecture"
+                    >Multi-cloud architecture</option
+                  >
+                  <option value="Other">Other (describe below)</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="company-size"
+                  class="block text-sm font-semibold mb-2"
+                  style="color: #0A2540;">Company size</label
+                >
+                <select
+                  id="company-size"
+                  class="w-full px-4 py-3 rounded-xl text-sm border outline-none"
+                  style="border-color: #e2e8f0; color: #0A2540; background: #f8fafc;"
+                >
+                  <option value="startup">Startup (1-20 people)</option>
+                  <option value="smb" selected>SMB (21-200 people)</option>
+                  <option value="enterprise">Enterprise (200+ people)</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="timeline"
+                  class="block text-sm font-semibold mb-2"
+                  style="color: #0A2540;">Timeline</label
+                >
+                <select
+                  id="timeline"
+                  class="w-full px-4 py-3 rounded-xl text-sm border outline-none"
+                  style="border-color: #e2e8f0; color: #0A2540; background: #f8fafc;"
+                >
+                  <option value="ASAP (< 2 weeks)">ASAP (under 2 weeks)</option>
+                  <option value="1 month" selected>~1 month</option>
+                  <option value="2-3 months">2-3 months</option>
+                  <option value="Flexible">Flexible</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="cloud-provider"
+                  class="block text-sm font-semibold mb-2"
+                  style="color: #0A2540;">Cloud provider</label
+                >
+                <select
+                  id="cloud-provider"
+                  class="w-full px-4 py-3 rounded-xl text-sm border outline-none"
+                  style="border-color: #e2e8f0; color: #0A2540; background: #f8fafc;"
+                >
+                  <option value="AWS" selected>AWS</option>
+                  <option value="Azure">Azure</option>
+                  <option value="GCP">GCP</option>
+                  <option value="Multi-cloud (AWS + Azure)">Multi-cloud (AWS + Azure)</option>
+                  <option value="Multi-cloud (AWS + GCP)">Multi-cloud (AWS + GCP)</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="current-stack"
+                  class="block text-sm font-semibold mb-2"
+                  style="color: #0A2540;">Current stack & requirements</label
+                >
+                <textarea
+                  id="current-stack"
+                  rows="4"
+                  placeholder="e.g. We have 3 microservices in Docker, no Kubernetes yet, team of 5 engineers. Need full CI/CD and monitoring setup..."
+                  class="w-full px-4 py-3 rounded-xl text-sm border outline-none resize-none transition-all"
+                  style="border-color: #e2e8f0; color: #0A2540; background: white;"
+                ></textarea>
+              </div>
+
+              <button
+                id="get-quote-btn"
+                class="w-full py-4 rounded-xl font-bold text-white transition-all hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
+                style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.35);"
+              >
+                Get my personalized quote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="lg:col-span-3">
+          <!-- Empty state -->
+          <div
+            id="empty-state"
+            class="rounded-2xl p-10 text-center h-full flex flex-col items-center justify-center"
+            style="border: 2px dashed #e2e8f0; background: white; min-height: 400px;"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 mx-auto"
+              style="background: #EEF4FF;"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                style="color: #1E6FFF;"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path></svg
+              >
+            </div>
+            <p class="text-base font-semibold mb-2" style="color: #0A2540;">
+              Your quote will appear here
+            </p>
+            <p class="text-sm" style="color: #64748b;">
+              Fill in your project details and click "Get my personalized
+              quote"
+            </p>
+          </div>
+
+          <!-- Loading state -->
+          <div id="loading-state" class="hidden rounded-2xl p-10 text-center" style="background: white; border: 1px solid #e2e8f0;">
+            <div class="flex flex-col items-center gap-4">
+              <div class="w-10 h-10 rounded-full border-4 border-t-transparent animate-spin" style="border-color: #1E6FFF; border-top-color: transparent;"></div>
+              <p class="text-sm font-medium" style="color: #64748b;">Generating your personalized quote…</p>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div id="result-state" class="hidden space-y-5">
+            <!-- Plan badge -->
+            <div
+              id="result-plan"
+              class="rounded-2xl p-6 text-center"
+              style="background: linear-gradient(135deg, #0A2540 0%, #1a3a60 100%);"
+            >
+              <div class="text-xs font-bold uppercase tracking-widest mb-2" style="color: #93b8ff;">Recommended plan</div>
+              <div id="plan-name" class="text-3xl font-extrabold text-white mb-1">—</div>
+              <div id="plan-price" class="text-xl font-bold mb-3" style="color: #60A5FA;">—</div>
+              <div id="plan-timeline" class="text-sm" style="color: rgba(147,184,255,0.75);">—</div>
+            </div>
+
+            <!-- Summary -->
+            <div
+              class="rounded-2xl p-6"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #64748b;">Summary</h3>
+              <p id="result-summary" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+            </div>
+
+            <!-- Deliverables -->
+            <div
+              class="rounded-2xl p-6"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: #64748b;">Deliverables</h3>
+              <ul id="result-deliverables" class="space-y-2"></ul>
+            </div>
+
+            <!-- Why this plan -->
+            <div
+              class="rounded-2xl p-6"
+              style="background: #EEF4FF; border: 1px solid rgba(30,111,255,0.15);"
+            >
+              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #1E6FFF;">Why this plan</h3>
+              <p id="result-why" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+            </div>
+
+            <!-- Alternatives -->
+            <div id="result-alternatives-section" class="rounded-2xl p-6 hidden" style="background: white; border: 1px solid #e2e8f0;">
+              <h3 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: #64748b;">Alternatives</h3>
+              <div id="result-alternatives" class="space-y-3"></div>
+            </div>
+
+            <!-- Next steps -->
+            <div
+              class="rounded-2xl p-6"
+              style="background: white; border: 1px solid #e2e8f0;"
+            >
+              <h3 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #64748b;">Next steps</h3>
+              <p id="result-next-steps" class="text-sm leading-relaxed" style="color: #0A2540;"></p>
+            </div>
+
+            <!-- CTA -->
+            <div
+              class="rounded-2xl p-6 text-center"
+              style="background: linear-gradient(135deg, #0A2540 0%, #1a3a60 100%);"
+            >
+              <p class="text-sm mb-4" style="color: rgba(147,184,255,0.85);">
+                Ready to start? Let's schedule a 30-minute diagnostic call.
+              </p>
+              <a
+                href="/contact"
+                class="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-6 py-3 rounded-xl transition-all hover:scale-[1.02]"
+                style="background: linear-gradient(135deg, #1E6FFF 0%, #1452cc 100%); box-shadow: 0 4px 20px rgba(30,111,255,0.4);"
+              >
+                Schedule free consultation
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const btn = document.getElementById('get-quote-btn') as HTMLButtonElement
+  const emptyState = document.getElementById('empty-state') as HTMLElement
+  const loadingState = document.getElementById('loading-state') as HTMLElement
+  const resultState = document.getElementById('result-state') as HTMLElement
+
+  btn?.addEventListener('click', async () => {
+    const projectType = (document.getElementById('project-type') as HTMLSelectElement).value
+    const companySize = (document.getElementById('company-size') as HTMLSelectElement).value
+    const timeline = (document.getElementById('timeline') as HTMLSelectElement).value
+    const cloudProvider = (document.getElementById('cloud-provider') as HTMLSelectElement).value
+    const currentStack = (document.getElementById('current-stack') as HTMLTextAreaElement).value.trim()
+
+    const requirements = projectType
+      ? `${projectType}. ${currentStack}`
+      : currentStack
+
+    if (!requirements) {
+      alert('Please select a project type or describe your requirements.')
+      return
+    }
+
+    btn.disabled = true
+    emptyState.classList.add('hidden')
+    resultState.classList.add('hidden')
+    loadingState.classList.remove('hidden')
+
+    try {
+      const res = await fetch('/api/pricing-agent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          requirements,
+          team_size: companySize,
+          timeline,
+          cloud_provider: cloudProvider,
+          current_stack: currentStack || 'not specified',
+          lang: 'en',
+        }),
+      })
+
+      const data = (await res.json()) as {
+        quote?: {
+          recommended_plan?: string
+          price_range?: string
+          timeline?: string
+          deliverables?: string[]
+          why_this_plan?: string
+          alternatives?: { plan: string; price: string; difference: string }[]
+          next_steps?: string
+          summary?: string
+        }
+      }
+
+      const q = data.quote ?? {}
+
+      const planEl = document.getElementById('plan-name') as HTMLElement
+      const priceEl = document.getElementById('plan-price') as HTMLElement
+      const timelineEl = document.getElementById('plan-timeline') as HTMLElement
+      const summaryEl = document.getElementById('result-summary') as HTMLElement
+      const whyEl = document.getElementById('result-why') as HTMLElement
+      const nextStepsEl = document.getElementById('result-next-steps') as HTMLElement
+      const deliverablesEl = document.getElementById('result-deliverables') as HTMLElement
+      const altsSection = document.getElementById('result-alternatives-section') as HTMLElement
+      const altsEl = document.getElementById('result-alternatives') as HTMLElement
+
+      planEl.textContent = q.recommended_plan ?? '—'
+      priceEl.textContent = q.price_range ?? '—'
+      timelineEl.textContent = q.timeline ? `Timeline: ${q.timeline}` : '—'
+      summaryEl.textContent = q.summary ?? ''
+      whyEl.textContent = q.why_this_plan ?? ''
+      nextStepsEl.textContent = q.next_steps ?? ''
+
+      deliverablesEl.innerHTML = (q.deliverables ?? [])
+        .map(
+          (d) =>
+            `<li class="flex items-start gap-2 text-sm" style="color:#0A2540;">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:#1E6FFF;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>${d}</span>
+            </li>`
+        )
+        .join('')
+
+      if (q.alternatives && q.alternatives.length > 0) {
+        altsSection.classList.remove('hidden')
+        altsEl.innerHTML = q.alternatives
+          .map(
+            (a) =>
+              `<div class="rounded-xl p-4" style="background:#f8fafc; border:1px solid #e2e8f0;">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm font-bold" style="color:#0A2540;">${a.plan}</span>
+                  <span class="text-sm font-semibold" style="color:#1E6FFF;">${a.price}</span>
+                </div>
+                <p class="text-xs" style="color:#64748b;">${a.difference}</p>
+              </div>`
+          )
+          .join('')
+      } else {
+        altsSection.classList.add('hidden')
+      }
+
+      loadingState.classList.add('hidden')
+      resultState.classList.remove('hidden')
+    } catch (e) {
+      loadingState.classList.add('hidden')
+      emptyState.classList.remove('hidden')
+      alert('Error generating quote. Please try again.')
+    } finally {
+      btn.disabled = false
+    }
+  })
+</script>
