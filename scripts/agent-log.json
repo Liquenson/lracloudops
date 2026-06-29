@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-06-29",
+    "status": "success",
+    "topic": "Helm Chart Best Practices",
+    "slug": "helm-chart-best-practices-2026-06-29",
+    "files": [
+      "/home/runner/work/lracloudops/lracloudops/src/content/blog/helm-chart-best-practices-2026-06-29.md",
+      "/home/runner/work/lracloudops/lracloudops/src/content/es/blog/helm-chart-best-practices-2026-06-29.md"
+    ]
+  },
+  {
     "date": "2026-06-27",
     "status": "success",
     "topic": "Kubernetes Networking with Cilium",
