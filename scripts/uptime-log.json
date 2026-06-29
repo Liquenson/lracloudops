@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "date": "2026-06-29T12:43:39.091Z",
+    "total": 15,
+    "ok": 15,
+    "failed": 0,
+    "slow": 0,
+    "avg_ms": 346,
+    "status": "healthy",
+    "failed_pages": []
+  }
+]
