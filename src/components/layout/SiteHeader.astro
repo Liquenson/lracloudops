@@ -603,6 +603,10 @@ const esAboutItems: NavItem[] = [
   },
 ]
 
+const isES = currentPath.startsWith('/es')
+const enUrl = isES ? currentPath.replace(/^\/es/, '') || '/' : currentPath
+const esUrl = isES ? currentPath : '/es' + currentPath
+
 const activeServicesItems = lang === 'es' ? esServicesItems : servicesItems
 const activeSolutionsItems = lang === 'es' ? esSolutionsItems : solutionsItems
 const activeIndustriesItems =
@@ -1202,100 +1206,43 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
       </a>
       <a href={contactHref} class="btn btn-primary btn-sm">{ctaLabel}</a>
       <!-- Desktop language dropdown -->
-      <div data-lang-dropdown data-lang-style="desktop" class="relative">
+      <div class="lang-switcher" id="langSwitcher">
         <button
-          data-lang-dropdown-btn
-          class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors"
-          style="border:1px solid #e2e8f0;"
-          aria-haspopup="listbox"
+          class="lang-btn"
+          id="langBtn"
           aria-expanded="false"
-          aria-label="Select language"
+          aria-haspopup="listbox"
+          aria-label="Change language"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            width="16"
-            height="16"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="2" y1="12" x2="22" y2="12"></line>
-            <path
-              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-            ></path>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
           </svg>
-          <span class="hidden sm:inline">{lang.toUpperCase()}</span>
-          <svg
-            data-lang-chevron
-            class="w-3 h-3 transition-transform duration-200"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-            ><path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2.5"
-              d="M19 9l-7 7-7-7"></path></svg
-          >
+          <span>{isES ? 'Español' : 'English'}</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
         </button>
-        <div
-          data-lang-dropdown-menu
-          role="listbox"
-          aria-label="Language options"
-          class="absolute top-full right-0 mt-2 w-40 rounded-xl overflow-hidden opacity-0 pointer-events-none"
-          style="background:white; border:1px solid rgba(15,23,42,0.08); box-shadow:0 4px 6px rgba(15,23,42,0.04),0 16px 40px rgba(15,23,42,0.12); transform:translateY(-6px); transition:opacity 0.15s ease,transform 0.15s ease; z-index:200;"
-        >
-          <div class="py-2">
-            {
-              Object.entries(regions).map(([region, locales], regionIdx) => (
-                <div>
-                  {locales.map((locale) => {
-                    const info = languages[locale as keyof typeof languages]
-                    const href = localeUrls[locale as keyof typeof languages]
-                    const isActive = locale === lang
-                    return (
-                      <a
-                        href={href}
-                        role="option"
-                        aria-selected={isActive ? 'true' : 'false'}
-                        data-lang-option={locale}
-                        class={`flex items-center gap-2.5 px-3 py-2 text-sm transition-colors ${isActive ? 'font-semibold' : 'text-gray-700 hover:bg-gray-50'}`}
-                        style={
-                          isActive ? 'color:#0A2540; background:#EEF4FF;' : ''
-                        }
-                      >
-                        <span>{info.name}</span>
-                        {isActive && (
-                          <svg
-                            class="w-3.5 h-3.5 ml-auto flex-shrink-0"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            style="color:#1E6FFF;"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2.5"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        )}
-                      </a>
-                    )
-                  })}
-                  {regionIdx < Object.keys(regions).length - 1 && (
-                    <div class="border-t border-gray-100 my-1.5 mx-3" />
-                  )}
-                </div>
-              ))
-            }
-          </div>
+        <div class="lang-dropdown" id="langDropdown" role="listbox" aria-label="Language options">
+          <a href={enUrl} class={`lang-option${!isES ? ' active' : ''}`} role="option" aria-selected={!isES ? 'true' : 'false'}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            English
+            {!isES && <span class="lang-check">✓</span>}
+          </a>
+          <a href={esUrl} class={`lang-option${isES ? ' active' : ''}`} role="option" aria-selected={isES ? 'true' : 'false'}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            Español
+            {isES && <span class="lang-check">✓</span>}
+          </a>
         </div>
       </div>
     </div>
@@ -1685,99 +1632,48 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
 
     <!-- Language selector (end of drawer) -->
     <div class="border-t border-gray-100 mt-1">
-      <div data-lang-dropdown data-lang-style="mobile" class="relative">
+      <div class="lang-switcher lang-switcher-mobile" id="langSwitcherMobile">
         <button
-          data-lang-dropdown-btn
-          class="flex items-center gap-2 w-full px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-          aria-haspopup="listbox"
+          class="lang-btn lang-btn-mobile"
+          id="langBtnMobile"
           aria-expanded="false"
-          aria-label="Select language"
+          aria-haspopup="listbox"
+          aria-label="Change language"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            width="16"
-            height="16"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="2" y1="12" x2="22" y2="12"></line>
-            <path
-              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-            ></path>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
           </svg>
-          <span>{lang.toUpperCase()}</span>
-          <svg
-            data-lang-chevron
-            class="w-4 h-4 text-gray-400 transition-transform duration-200 ml-auto flex-shrink-0"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-            ><path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"></path></svg
-          >
+          <span>{isES ? 'Español' : 'English'}</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="lang-chevron-mobile" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
         </button>
         <div
-          data-lang-dropdown-menu
+          class="lang-dropdown-mobile"
+          id="langDropdownMobile"
           role="listbox"
           aria-label="Language options"
-          class="overflow-hidden"
-          style="max-height:0; opacity:0; transition:max-height 0.3s ease, opacity 0.2s ease; background:#F8FAFC;"
         >
-          {
-            Object.entries(regions).map(([region, locales]) => (
-              <div>
-                <div class="px-3 pb-1 space-y-0.5 pt-1">
-                  {locales.map((locale) => {
-                    const info = languages[locale as keyof typeof languages]
-                    const href = localeUrls[locale as keyof typeof languages]
-                    const isActive = locale === lang
-                    return (
-                      <a
-                        href={href}
-                        role="option"
-                        aria-selected={isActive ? 'true' : 'false'}
-                        data-lang-option={locale}
-                        class={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${isActive ? 'font-semibold' : 'hover:bg-white/80'}`}
-                        style={
-                          isActive
-                            ? 'color:#0A2540; background:rgba(255,255,255,0.9);'
-                            : 'color:#374151;'
-                        }
-                      >
-                        <span>{info.name}</span>
-                        {isActive && (
-                          <svg
-                            class="w-3.5 h-3.5 ml-auto flex-shrink-0"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            style="color:#1E6FFF;"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2.5"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        )}
-                      </a>
-                    )
-                  })}
-                </div>
-              </div>
-            ))
-          }
-          <div class="h-3"></div>
+          <a href={enUrl} class={`lang-option${!isES ? ' active' : ''}`} role="option" aria-selected={!isES ? 'true' : 'false'}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            English
+            {!isES && <span class="lang-check">✓</span>}
+          </a>
+          <a href={esUrl} class={`lang-option${isES ? ' active' : ''}`} role="option" aria-selected={isES ? 'true' : 'false'}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            Español
+            {isES && <span class="lang-check">✓</span>}
+          </a>
         </div>
       </div>
     </div>
@@ -2044,80 +1940,136 @@ const isHomeActive = currentPath === '/' || currentPath === '/es/'
   )
 </script>
 
+<style>
+  .lang-switcher {
+    position: relative;
+  }
+  .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    white-space: nowrap;
+  }
+  .lang-btn:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+  }
+  .lang-btn-mobile {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: none;
+    border-radius: 0;
+    justify-content: flex-start;
+    font-size: 0.875rem;
+  }
+  .lang-btn-mobile:hover {
+    background: #f9fafb;
+    border-color: transparent;
+  }
+  .lang-chevron-mobile {
+    margin-left: auto;
+    transition: transform 200ms ease;
+    color: #9ca3af;
+  }
+  .lang-switcher-mobile.open .lang-chevron-mobile {
+    transform: rotate(180deg);
+  }
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 140px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 200;
+  }
+  .lang-dropdown.open {
+    display: block;
+  }
+  .lang-dropdown-mobile {
+    display: none;
+    background: #f8fafc;
+    border-top: 1px solid #f1f5f9;
+  }
+  .lang-dropdown-mobile.open {
+    display: block;
+  }
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    text-decoration: none;
+    transition: background 150ms ease;
+  }
+  .lang-option:hover {
+    background: #f3f4f6;
+  }
+  .lang-option.active {
+    color: #1e6fff;
+    background: #eef4ff;
+    font-weight: 600;
+  }
+  .lang-check {
+    margin-left: auto;
+    color: #1e6fff;
+    font-weight: 700;
+  }
+</style>
+
 <script>
-  // Language dropdown + localStorage preference
-  const LANG_PREF_KEY = 'lang-preference'
-  document.querySelectorAll('[data-lang-option]').forEach((el) => {
-    el.addEventListener('click', () => {
-      const v = (el as HTMLElement).dataset.langOption
-      if (v) localStorage.setItem(LANG_PREF_KEY, v)
-    })
+  // Desktop language switcher
+  const langBtn = document.getElementById('langBtn') as HTMLButtonElement | null
+  const langDropdown = document.getElementById('langDropdown') as HTMLElement | null
+  const langSwitcher = document.getElementById('langSwitcher') as HTMLElement | null
+
+  langBtn?.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const isOpen = langDropdown?.classList.contains('open')
+    langDropdown?.classList.toggle('open', !isOpen)
+    langBtn?.setAttribute('aria-expanded', String(!isOpen))
   })
-  const langDropdowns = Array.from(
-    document.querySelectorAll('[data-lang-dropdown]')
-  )
-  function closeLangDropdown(wrapper: Element) {
-    const m = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-menu]')
-    const b = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-btn]')
-    const c = wrapper.querySelector<HTMLElement>('[data-lang-chevron]')
-    const style = (wrapper as HTMLElement).dataset.langStyle
-    if (m) {
-      if (style === 'mobile') {
-        m.style.maxHeight = '0'
-        m.style.opacity = '0'
-      } else {
-        m.style.opacity = '0'
-        m.style.pointerEvents = 'none'
-        m.style.transform =
-          style === 'footer' ? 'translateY(6px)' : 'translateY(-6px)'
-      }
+
+  document.addEventListener('click', (e) => {
+    if (!langSwitcher?.contains(e.target as Node)) {
+      langDropdown?.classList.remove('open')
+      langBtn?.setAttribute('aria-expanded', 'false')
     }
-    if (b) b.setAttribute('aria-expanded', 'false')
-    if (c) c.style.transform = ''
-  }
-  function closeAllLangDropdowns() {
-    langDropdowns.forEach((w) => closeLangDropdown(w))
-  }
-  langDropdowns.forEach((wrapper) => {
-    const btn = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-btn]')
-    const menu = wrapper.querySelector<HTMLElement>('[data-lang-dropdown-menu]')
-    const chevron = wrapper.querySelector<HTMLElement>('[data-lang-chevron]')
-    const style = (wrapper as HTMLElement).dataset.langStyle
-    if (!btn || !menu) return
-    function openLang() {
-      closeAllLangDropdowns()
-      if (style === 'mobile') {
-        menu!.style.maxHeight = menu!.scrollHeight + 'px'
-        menu!.style.opacity = '1'
-      } else {
-        menu!.style.opacity = '1'
-        menu!.style.pointerEvents = 'auto'
-        menu!.style.transform = 'translateY(0)'
-      }
-      btn!.setAttribute('aria-expanded', 'true')
-      if (chevron) chevron.style.transform = 'rotate(180deg)'
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      langDropdown?.classList.remove('open')
+      langBtn?.setAttribute('aria-expanded', 'false')
     }
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation()
-      btn!.getAttribute('aria-expanded') === 'true'
-        ? closeLangDropdown(wrapper)
-        : openLang()
-    })
-    btn.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault()
-        btn!.getAttribute('aria-expanded') === 'true'
-          ? closeLangDropdown(wrapper)
-          : openLang()
-      }
-      if (e.key === 'Escape') closeLangDropdown(wrapper)
-    })
   })
-  document.addEventListener('click', (e: MouseEvent) => {
-    if (!langDropdowns.some((w) => w.contains(e.target as Node)))
-      closeAllLangDropdowns()
-  })
-  document.addEventListener('keydown', (e: KeyboardEvent) => {
-    if (e.key === 'Escape') closeAllLangDropdowns()
+
+  // Mobile language switcher
+  const langBtnMobile = document.getElementById('langBtnMobile') as HTMLButtonElement | null
+  const langDropdownMobile = document.getElementById('langDropdownMobile') as HTMLElement | null
+  const langSwitcherMobile = document.getElementById('langSwitcherMobile') as HTMLElement | null
+
+  langBtnMobile?.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const isOpen = langDropdownMobile?.classList.contains('open')
+    langDropdownMobile?.classList.toggle('open', !isOpen)
+    langSwitcherMobile?.classList.toggle('open', !isOpen)
+    langBtnMobile?.setAttribute('aria-expanded', String(!isOpen))
   })
 </script>
