@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-06-30",
+    "status": "success",
+    "topic": "Zero-Downtime Deployments with Kubernetes",
+    "slug": "zero-downtime-deployments-with-kubernetes-2026-06-30",
+    "files": [
+      "/home/runner/work/lracloudops/lracloudops/src/content/blog/zero-downtime-deployments-with-kubernetes-2026-06-30.md",
+      "/home/runner/work/lracloudops/lracloudops/src/content/es/blog/zero-downtime-deployments-with-kubernetes-2026-06-30.md"
+    ]
+  },
+  {
     "date": "2026-06-29",
     "status": "success",
     "topic": "Helm Chart Best Practices",
