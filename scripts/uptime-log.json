@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-07-01T17:49:50.298Z",
+    "total": 15,
+    "ok": 15,
+    "failed": 0,
+    "slow": 0,
+    "avg_ms": 214,
+    "status": "healthy",
+    "failed_pages": []
+  },
+  {
     "date": "2026-07-01T15:37:27.764Z",
     "total": 15,
     "ok": 15,
