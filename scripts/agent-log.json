@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-07-01",
+    "status": "success",
+    "topic": "Kubernetes Resource Management and HPA",
+    "slug": "kubernetes-resource-management-and-hpa-2026-07-01",
+    "files": [
+      "/home/runner/work/lracloudops/lracloudops/src/content/blog/kubernetes-resource-management-and-hpa-2026-07-01.md",
+      "/home/runner/work/lracloudops/lracloudops/src/content/es/blog/kubernetes-resource-management-and-hpa-2026-07-01.md"
+    ]
+  },
+  {
     "date": "2026-06-30",
     "status": "success",
     "topic": "Zero-Downtime Deployments with Kubernetes",
