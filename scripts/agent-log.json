@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-07-02",
+    "status": "success",
+    "topic": "Terraform State Management Best Practices",
+    "slug": "terraform-state-management-best-practices-2026-07-02",
+    "files": [
+      "/home/runner/work/lracloudops/lracloudops/src/content/blog/terraform-state-management-best-practices-2026-07-02.md",
+      "/home/runner/work/lracloudops/lracloudops/src/content/es/blog/terraform-state-management-best-practices-2026-07-02.md"
+    ]
+  },
+  {
     "date": "2026-07-01",
     "status": "success",
     "topic": "Kubernetes Resource Management and HPA",
