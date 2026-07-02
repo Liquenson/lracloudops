@@ -1,552 +1,124 @@
-@import 'tailwindcss';
-@plugin "@tailwindcss/typography";
-@import '@fontsource-variable/inter';
-@import '@fontsource/jetbrains-mono/400.css';
-@import '@fontsource/jetbrains-mono/500.css';
+/* LRA CloudOps — Design System v4.0 — Clean Slate */
 
-/* ── Enterprise Design System ─────────────────────────────────────────── */
+@import '@fontsource/red-hat-display/700.css';
+@import '@fontsource/red-hat-display/900.css';
+@import '@fontsource/red-hat-text/400.css';
+@import '@fontsource/red-hat-text/600.css';
+@import '@fontsource/red-hat-mono/400.css';
+
 :root {
-  /* Brand palette — LRA Cloud Ops enterprise */
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
-  --color-primary-light: #60a5fa;
-  --color-dark-navy: #0b1220;
-  --color-dark-surface: #111827;
-  --color-light-surface: #f8fafc;
-  --color-gray-border: #e5e7eb;
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
+  --font-display: 'Red Hat Display', system-ui, sans-serif;
+  --font-body: 'Red Hat Text', system-ui, sans-serif;
+  --font-mono: 'Red Hat Mono', monospace;
 
-  /* Legacy aliases (backward compat with existing pages) */
-  --color-accent: #2563eb;
-  --color-bg-soft: #eff6ff;
-  --color-text-tertiary: #94a3b8;
+  --color-primary: #1e6fff;
+  --color-primary-dark: #1558d6;
+  --color-primary-light: #eef4ff;
+  --color-dark: #0d1b2e;
+  --color-white: #ffffff;
+  --color-gray-50: #f8f9fa;
+  --color-gray-100: #f1f3f5;
+  --color-gray-200: #e5e7eb;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-900: #111827;
 
-  /* Typography */
-  --font-sans:
-    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono:
-    'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-pill: 9999px;
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --transition: 200ms ease;
 
-  /* Spacing */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 40px;
-  --space-2xl: 64px;
-
-  /* Border radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-
-  /* Shadows — enterprise depth */
-  --shadow-card:
-    0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.06),
-    0 8px 32px rgba(15, 23, 42, 0.03);
-  --shadow-card-hover:
-    0 2px 6px rgba(37, 99, 235, 0.06), 0 8px 28px rgba(37, 99, 235, 0.12),
-    0 20px 48px rgba(15, 23, 42, 0.07);
-  --shadow-elevated:
-    0 4px 12px rgba(15, 23, 42, 0.08), 0 16px 40px rgba(15, 23, 42, 0.1);
-  --shadow-btn:
-    0 4px 16px rgba(37, 99, 235, 0.35), 0 1px 3px rgba(37, 99, 235, 0.2);
-  --shadow-btn-hover:
-    0 8px 24px rgba(37, 99, 235, 0.45), 0 2px 6px rgba(37, 99, 235, 0.25);
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 220ms ease;
-  --transition-slow: 320ms ease;
+  --container-max: 1200px;
+  --container-px: clamp(1rem, 5vw, 2rem);
+  --section-py: clamp(5rem, 10vw, 8rem);
 }
 
-/* ── Base ─────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 body {
-  font-family: var(--font-sans);
-  font-size: 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
   line-height: 1.65;
-  color: var(--color-text-primary);
-  background: #ffffff;
+  color: var(--color-gray-900);
+  background: var(--color-white);
 }
 
-/* ── Typography scale ─────────────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
 h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.06;
 }
 h2 {
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.14;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
 }
 h3 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.22;
-}
-h4 {
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
 }
 p {
-  font-weight: 400;
+  color: var(--color-gray-600);
+  line-height: 1.7;
 }
 
-/* ── Scrollbar ────────────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 2px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* ── Code / mono ──────────────────────────────────────────────────────── */
-.font-mono,
-code,
-pre {
-  font-family: var(--font-mono);
-}
-
-/* ── Section label chip ───────────────────────────────────────────────── */
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 100px;
-  background: #eff6ff;
-  color: #2563eb;
-  border: 1px solid #bfdbfe;
-}
-
-/* ── Card system ──────────────────────────────────────────────────────── */
-.card {
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-border);
-  box-shadow: var(--shadow-card);
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    border-color var(--transition-base);
-}
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: rgba(37, 99, 235, 0.2);
-}
-
-.card-accent:hover {
-  border-color: rgba(37, 99, 235, 0.25);
-}
-
-.card-left-accent {
-  border-left: 3px solid #2563eb;
-}
-
-/* ── Stack tag ────────────────────────────────────────────────────────── */
-.stack-tag {
-  font-size: 0.68rem;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 100px;
-  background: #f8fafc;
-  color: #64748b;
-  border: 1px solid #e5e7eb;
-  transition:
-    background var(--transition-fast),
-    color var(--transition-fast);
-}
-
-/* ── Buttons ──────────────────────────────────────────────────────────── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #ffffff;
-  padding: 13px 26px;
-  border-radius: 10px;
-  background: #2563eb;
-  box-shadow: var(--shadow-btn);
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    background var(--transition-fast);
-  border: none;
-  cursor: pointer;
-}
-.btn-primary:hover {
-  background: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-btn-hover);
-}
-.btn-primary:active {
-  transform: scale(0.98);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #2563eb;
-  padding: 12px 24px;
-  border-radius: 10px;
-  background: transparent;
-  border: 1.5px solid #2563eb;
-  transition:
-    background var(--transition-fast),
-    color var(--transition-fast),
-    transform var(--transition-base);
-  cursor: pointer;
-}
-.btn-secondary:hover {
-  background: #eff6ff;
-  transform: translateY(-1px);
-}
-
-/* ── Metric display ───────────────────────────────────────────────────── */
-.metric-number {
-  font-size: 2.75rem;
-  font-weight: 800;
-  color: var(--color-text-primary);
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-@media (min-width: 640px) {
-  .metric-number {
-    font-size: 3.25rem;
-  }
-}
-
-/* ── Hero gradient (enterprise dark) ─────────────────────────────────── */
-.hero-gradient {
-  background: linear-gradient(135deg, #0b1220 0%, #111827 50%, #1e3a8a 100%);
-  background-size: 200% 200%;
-  animation: gradientShift 18s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ── Terminal cursor ──────────────────────────────────────────────────── */
-@keyframes terminal-cursor {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-.terminal-cursor {
-  animation: terminal-cursor 1.1s step-end infinite;
-}
-
-/* ── Pulse soft ───────────────────────────────────────────────────────── */
-@keyframes pulse-soft {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.55;
-  }
-}
-.animate-pulse-soft {
-  animation: pulse-soft 2s ease-in-out infinite;
-}
-
-/* ── Scroll-reveal animations ─────────────────────────────────────────── */
-.animate-fade-up {
-  opacity: 0;
-  translate: 0 28px;
-  transition:
-    opacity 0.65s ease,
-    translate 0.65s ease;
-}
-.animate-fade-up.is-visible {
-  opacity: 1;
-  translate: none;
-}
-
-.animate-fade-left {
-  opacity: 0;
-  translate: -28px 0;
-  transition:
-    opacity 0.65s ease,
-    translate 0.65s ease;
-}
-.animate-fade-left.is-visible {
-  opacity: 1;
-  translate: none;
-}
-
-.animate-fade {
-  opacity: 0;
-  transition: opacity 0.65s ease;
-}
-.animate-fade.is-visible {
-  opacity: 1;
-}
-
-/* Stagger delays */
-.delay-100 {
-  transition-delay: 100ms;
-}
-.delay-200 {
-  transition-delay: 200ms;
-}
-.delay-300 {
-  transition-delay: 300ms;
-}
-.delay-400 {
-  transition-delay: 400ms;
-}
-.delay-500 {
-  transition-delay: 500ms;
-}
-.delay-600 {
-  transition-delay: 600ms;
-}
-
-/* ── Line draw ────────────────────────────────────────────────────────── */
-.line-draw {
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #2563eb, #60a5fa);
-  transition: width 0.8s ease;
-}
-.line-draw.is-visible {
+.container {
   width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+}
+.section {
+  padding-block: var(--section-py);
 }
 
-/* ── Card lift ────────────────────────────────────────────────────────── */
-.card-lift {
-  transition:
-    transform 0.22s ease,
-    box-shadow 0.22s ease;
+::selection {
+  background: rgba(30, 111, 255, 0.15);
 }
-.card-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 40px rgba(37, 99, 235, 0.12);
-}
-
-/* ── Link underline slide ─────────────────────────────────────────────── */
-.link-underline {
-  position: relative;
-  text-decoration: none;
-}
-.link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #2563eb;
-  transition: width 0.3s ease;
-}
-.link-underline:hover::after {
-  width: 100%;
-}
-
-/* ── Architecture diagram connectors ─────────────────────────────────── */
-.arch-connector {
-  width: 2px;
-  background: linear-gradient(180deg, #2563eb 0%, #60a5fa 100%);
-  margin: 0 auto;
-  position: relative;
-}
-.arch-connector::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 7px solid #60a5fa;
-}
-
-/* ── Tech logo band ───────────────────────────────────────────────────── */
-.tech-logo-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 20px 16px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #fafafa;
-  transition: all 0.22s ease;
-  cursor: default;
-}
-.tech-logo-item:hover {
-  border-color: rgba(37, 99, 235, 0.3);
-  background: #eff6ff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.1);
-}
-
-/* ── CTA gradient band ────────────────────────────────────────────────── */
-.cta-gradient {
-  background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 50%, #60a5fa 100%);
-}
-
-/* ── Section backgrounds ──────────────────────────────────────────────── */
-.section-white {
-  background: #ffffff;
-}
-.section-gray {
-  background: #f8fafc;
-}
-.section-dark {
-  background: #0a2540;
-}
-
-/* ── Card enterprise (Red Hat style — left accent border) ─────────────── */
-.card-enterprise {
-  border-left: 4px solid #1e6fff;
-  border-radius: 0 16px 16px 0;
-  background: white;
-  padding: 1.5rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
-.card-enterprise:hover {
-  box-shadow: 0 8px 32px rgba(30, 111, 255, 0.12);
-  transform: translateY(-2px);
-}
-
-/* ── Btn outline ──────────────────────────────────────────────────────── */
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 2px solid #1e6fff;
-  color: #1e6fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-.btn-outline:hover {
-  background: #1e6fff;
-  color: white;
-}
-
-/* ── prefers-reduced-motion ───────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-up,
-  .animate-fade-left,
-  .animate-fade {
-    opacity: 1;
-    translate: none;
-    transition: none;
-  }
-  .line-draw {
-    width: 100%;
-    transition: none;
-  }
-  .card-lift {
-    transition: none;
-  }
-  .hero-gradient {
-    animation: none;
-  }
-  .card-enterprise {
-    transition: none;
-  }
-  .btn-outline {
-    transition: none;
-  }
-}
-
-/* ── Logo responsivo enterprise ──────────────────────────────────────────── */
-.logo-text-full {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #0a2540;
-  letter-spacing: -0.02em;
-  transition: opacity 0.2s ease;
-  white-space: nowrap;
-}
-
-.logo-text-short {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #0a2540;
-  letter-spacing: -0.02em;
-  transition: opacity 0.2s ease;
-  white-space: nowrap;
-  display: none;
-}
-
-/* Desktop >1024px: texto completo */
-@media (min-width: 1024px) {
-  .logo-text-full {
-    display: block;
-  }
-  .logo-text-short {
-    display: none;
-  }
-}
-
-/* Tablet 768px-1024px: texto corto */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .logo-text-full {
-    display: none;
-  }
-  .logo-text-short {
-    display: block;
-  }
-}
-
-/* Movil <768px: solo icono */
-@media (max-width: 767px) {
-  .logo-text-full {
-    display: none;
-  }
-  .logo-text-short {
-    display: none;
-  }
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }

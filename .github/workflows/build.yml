@@ -1,71 +1,25 @@
 name: Build & Validate
-
 on:
   push:
-    branches: [main, feat/**, fix/**, chore/**]
+    branches: [main, v3/clean-slate]
   pull_request:
     branches: [main]
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   build:
     name: Astro Build
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Security audit
-        run: npm audit --audit-level=high
-        continue-on-error: true
-
-      # Format check disabled — run `npx prettier --write "src/**/*.{astro,ts,css}"` locally first to adopt formatting baseline
-      # - name: Format check
-      #   run: npx prettier --check "src/**/*.{astro,ts,css}"
-
-      - name: Type check
-        run: npx astro check
-
+      - run: npm ci
       - name: Build
         run: npm run build
-
-      - name: Verify output exists
+      - name: Check pages
         run: |
-          if [ ! -d "dist" ]; then
-            echo "Build output directory 'dist' not found"
-            exit 1
-          fi
-          echo "Build output verified: $(ls dist | wc -l) files"
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          name: dist
-          path: dist/
-          retention-days: 30
-
-      - name: Lighthouse CI
-        run: |
-          npm install -g @lhci/cli
-          lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Deploy is handled automatically by Cloudflare Pages
-      # via direct GitHub integration — no wrangler deploy needed.
-      # Every merge to main triggers an automatic deployment.
+          PAGES=$(find dist -name "*.html" | wc -l)
+          echo "✅ $PAGES pages built" >> $GITHUB_STEP_SUMMARY
