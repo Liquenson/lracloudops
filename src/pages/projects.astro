@@ -41,7 +41,7 @@ const defaultIconPath = "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2
     <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
       <div class="max-w-3xl">
         <span class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6" style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);">
-          {allProjects.length} implementation{allProjects.length !== 1 ? 's' : ''} · Production workloads documented
+          {allProjects.length > 0 ? `${allProjects.length} implementation${allProjects.length !== 1 ? 's' : ''} · Production workloads documented` : 'Case studies coming soon · Follow github.com/lra-cloud-ops'}
         </span>
         <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left" style="letter-spacing: -0.02em;">Reference Architectures</h1>
         <p class="text-lg max-w-2xl animate-fade-up delay-200" style="color: rgba(147,184,255,0.8);">
@@ -52,42 +52,46 @@ const defaultIconPath = "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2
   </section>
 
   <!-- LEGEND -->
-  <section class="bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-3 items-center">
-      <span class="text-xs font-semibold uppercase tracking-widest mr-1" style="color: #94a3b8;">Status:</span>
-      {[
-        { label: "Production",     style: "background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;" },
-        { label: "In Development", style: "background:#fffbeb; color:#b45309; border:1px solid #fde68a;" },
-        { label: "Reference",      style: "background:#f3f4f6; color:#4b5563; border:1px solid #e5e7eb;" },
-        { label: "Starter",        style: "background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;" },
-      ].map(b => (
-        <span class="text-xs font-medium px-3 py-1 rounded-full" style={b.style}>{b.label}</span>
-      ))}
-      <span class="hidden sm:block w-px h-4 bg-gray-200 mx-1"></span>
-      <span class="inline-flex items-center gap-1.5 text-xs font-medium" style="color: #64748b;">
-        <span class="w-2 h-2 rounded-full bg-green-400"></span>CI/CD active
-      </span>
-    </div>
-  </section>
+  {allProjects.length > 0 && (
+    <section class="bg-white border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-3 items-center">
+        <span class="text-xs font-semibold uppercase tracking-widest mr-1" style="color: #94a3b8;">Status:</span>
+        {[
+          { label: "Production",     style: "background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;" },
+          { label: "In Development", style: "background:#fffbeb; color:#b45309; border:1px solid #fde68a;" },
+          { label: "Reference",      style: "background:#f3f4f6; color:#4b5563; border:1px solid #e5e7eb;" },
+          { label: "Starter",        style: "background:#EEF4FF; color:#1E6FFF; border:1px solid #c3d9ff;" },
+        ].map(b => (
+          <span class="text-xs font-medium px-3 py-1 rounded-full" style={b.style}>{b.label}</span>
+        ))}
+        <span class="hidden sm:block w-px h-4 bg-gray-200 mx-1"></span>
+        <span class="inline-flex items-center gap-1.5 text-xs font-medium" style="color: #64748b;">
+          <span class="w-2 h-2 rounded-full bg-green-400"></span>CI/CD active
+        </span>
+      </div>
+    </section>
+  )}
 
   <!-- GRID -->
   <section class="py-16" style="background: #f8fafc;">
     <div class="max-w-7xl mx-auto px-6">
 
       <!-- Summary counts -->
-      <div class="flex flex-wrap gap-3 mb-10">
-        {[
-          { count: production.length,    label: 'Production',     color: '#15803d', bg: '#f0fdf4', border: '#bbf7d0' },
-          { count: inDevelopment.length, label: 'In Development', color: '#b45309', bg: '#fffbeb', border: '#fde68a' },
-          { count: reference.length,     label: 'Reference',      color: '#4b5563', bg: '#f3f4f6', border: '#e5e7eb' },
-          { count: starters.length,      label: 'Starters',       color: '#1E6FFF', bg: '#EEF4FF', border: '#c3d9ff' },
-        ].map(({ count, label, color, bg, border }) => (
-          <div class="px-4 py-2.5 rounded-xl flex items-center gap-2.5" style={`background: ${bg}; border: 1px solid ${border};`}>
-            <span class="text-lg font-bold" style={`color: ${color};`}>{count}</span>
-            <span class="text-xs font-medium" style={`color: ${color}; opacity: 0.8;`}>{label}</span>
-          </div>
-        ))}
-      </div>
+      {allProjects.length > 0 && (
+        <div class="flex flex-wrap gap-3 mb-10">
+          {[
+            { count: production.length,    label: 'Production',     color: '#15803d', bg: '#f0fdf4', border: '#bbf7d0' },
+            { count: inDevelopment.length, label: 'In Development', color: '#b45309', bg: '#fffbeb', border: '#fde68a' },
+            { count: reference.length,     label: 'Reference',      color: '#4b5563', bg: '#f3f4f6', border: '#e5e7eb' },
+            { count: starters.length,      label: 'Starters',       color: '#1E6FFF', bg: '#EEF4FF', border: '#c3d9ff' },
+          ].map(({ count, label, color, bg, border }) => (
+            <div class="px-4 py-2.5 rounded-xl flex items-center gap-2.5" style={`background: ${bg}; border: 1px solid ${border};`}>
+              <span class="text-lg font-bold" style={`color: ${color};`}>{count}</span>
+              <span class="text-xs font-medium" style={`color: ${color}; opacity: 0.8;`}>{label}</span>
+            </div>
+          ))}
+        </div>
+      )}
 
       {allProjects.length === 0 ? (
         <div class="text-center py-24">
