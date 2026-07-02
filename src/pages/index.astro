@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Logo from '../components/ui/Logo.astro'
 ---
 
 <Layout title="LRA CloudOps" description="LRA CloudOps — Coming soon">
@@ -9,7 +8,11 @@ import Logo from '../components/ui/Logo.astro'
   >
     <div style="text-align: center; padding: 2rem;">
       <div class="hero-logo" style="display: inline-flex; margin-bottom: 3rem;">
-        <Logo href="/" />
+        <img
+          src="/lracloudops-logo.svg"
+          alt="LRA CloudOps"
+          style="height: 40px; width: auto;"
+        />
       </div>
 
       <h1 style="color: #111827; font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem;">
@@ -91,9 +94,3 @@ import Logo from '../components/ui/Logo.astro'
     </div>
   </main>
 </Layout>
-
-<style>
-  .hero-logo :global(.logo-text) {
-    color: #111827;
-  }
-</style>
