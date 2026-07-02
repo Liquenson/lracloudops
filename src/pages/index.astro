@@ -1,36 +1,521 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Logo from '../components/ui/Logo.astro'
 ---
 
-<Layout title="LRA CloudOps" description="LRA CloudOps — Coming soon">
-  <main
-    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #0D1B2E;"
+<Layout
+  title="LRA CloudOps"
+  description="Cloud infrastructure platform for teams that need reliability. AWS, Kubernetes, Terraform, GitOps."
+>
+  <!-- HEADER -->
+  <header
+    style="position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid #EDEBE9;"
   >
-    <div style="text-align: center; padding: 2rem;">
-      <div class="hero-logo" style="display: inline-flex; margin-bottom: 3rem;">
-        <Logo href="/" />
+    <div
+      class="container"
+      style="display: flex; align-items: center; height: 56px; gap: 2rem;"
+    >
+      <!-- Logo -->
+      <a
+        href="/"
+        style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none; flex-shrink: 0;"
+      >
+        <img
+          src="/lracloudops-icon.svg"
+          alt="LRA CloudOps"
+          width="28"
+          height="28"
+        />
+        <span
+          style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: #323130; letter-spacing: -0.01em;"
+          >LRA CloudOps</span
+        >
+      </a>
+
+      <!-- Nav -->
+      <nav
+        style="display: flex; align-items: center; gap: 0.125rem; margin-left: auto;"
+      >
+        {
+          ['Platform', 'Projects', 'Blog', 'About'].map((item) => (
+            <a
+              href={`/${item.toLowerCase()}`}
+              style="padding: 0.375rem 0.75rem; font-size: 0.9375rem; font-weight: 500; color: #605E5C; border-radius: 4px; transition: all 150ms ease; text-decoration: none;"
+              onmouseover="this.style.background='#EFF6FC'; this.style.color='#0078D4'"
+              onmouseout="this.style.background='transparent'; this.style.color='#605E5C'"
+            >
+              {item}
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- CTA -->
+      <a href="/contact" class="btn btn-primary btn-sm"> Get in touch </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section
+    class="bg-dark on-dark"
+    style="min-height: 88vh; display: flex; align-items: center; position: relative; overflow: hidden;"
+  >
+    <!-- Background pattern -->
+    <div
+      style="position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0); background-size: 28px 28px; pointer-events: none;"
+    >
+    </div>
+    <!-- Blue gradient glow -->
+    <div
+      style="position: absolute; top: 0; right: -10%; width: 60%; height: 100%; background: radial-gradient(ellipse at 70% 50%, rgba(0,120,212,0.12) 0%, transparent 60%); pointer-events: none;"
+    >
+    </div>
+
+    <div
+      class="container"
+      style="position: relative; z-index: 1; padding-block: 6rem;"
+    >
+      <div style="max-width: 720px;">
+        <!-- Status -->
+        <div
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,124,16,0.12); border: 1px solid rgba(16,124,16,0.25); color: #4EC9B0; padding: 0.375rem 0.875rem; border-radius: 4px; font-size: 0.8125rem; font-weight: 600; margin-bottom: 2rem; font-family: var(--font-mono);"
+        >
+          <span class="status-dot" style="background: #4EC9B0;"></span>
+          Available for new projects
+        </div>
+
+        <h1 style="color: #FFFFFF; margin-bottom: 1.5rem; line-height: 1.08;">
+          Cloud infrastructure<br />
+          <span style="color: #60B8FF;">built to last.</span>
+        </h1>
+
+        <p
+          style="font-size: 1.125rem; color: #A19F9D; max-width: 540px; margin-bottom: 2.5rem; line-height: 1.7;"
+        >
+          We design and operate production-grade infrastructure on AWS, Azure,
+          and GCP. Kubernetes, Terraform, GitOps — zero manual changes in
+          production.
+        </p>
+
+        <!-- Tech stack -->
+        <div
+          style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem;"
+        >
+          {
+            [
+              'AWS · EKS',
+              'Terraform',
+              'Kubernetes',
+              'ArgoCD',
+              'GitOps',
+              'Prometheus',
+              'Ansible',
+            ].map((t) => <span class="tech-pill on-dark">{t}</span>)
+          }
+        </div>
+
+        <!-- CTAs -->
+        <div style="display: flex; gap: 0.875rem; flex-wrap: wrap;">
+          <a href="/projects" class="btn btn-white btn-lg">View projects →</a>
+          <a href="/contact" class="btn btn-outline-white btn-lg"
+            >Get in touch</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="bg-light section-sm">
+    <div class="container">
+      <div
+        style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;"
+      >
+        {
+          [
+            {
+              value: '4+',
+              label: 'Years in production',
+              sub: 'Real environments',
+            },
+            { value: '3', label: 'Cloud providers', sub: 'AWS · Azure · GCP' },
+            {
+              value: '100%',
+              label: 'Infrastructure as Code',
+              sub: 'Zero manual changes',
+            },
+            { value: '0', label: 'Manual deploys', sub: 'GitOps with ArgoCD' },
+          ].map(({ value, label, sub }, i) => (
+            <div
+              style={`text-align: center; padding: 2rem 1rem; ${i < 3 ? 'border-right: 1px solid #EDEBE9;' : ''}`}
+            >
+              <div style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 900; color: #0078D4; line-height: 1; letter-spacing: -0.04em;">
+                {value}
+              </div>
+              <div style="font-size: 0.9375rem; font-weight: 600; color: #323130; margin-top: 0.5rem;">
+                {label}
+              </div>
+              <div style="font-size: 0.8125rem; color: #605E5C; margin-top: 0.25rem;">
+                {sub}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="bg-white section">
+    <div class="container">
+      <div
+        style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;"
+      >
+        <div>
+          <p class="eyebrow">What we do</p>
+          <h2 style="margin-bottom: 1.5rem;">
+            Infrastructure that engineers actually trust
+          </h2>
+          <p style="margin-bottom: 1rem;">
+            Every environment we build is reproducible, automated, and monitored
+            from day one. No snowflake servers. No manual steps. No surprises at
+            3am.
+          </p>
+          <p style="margin-bottom: 2rem;">
+            We specialize in AWS EKS, Terraform modules, and GitOps with ArgoCD
+            — following the same engineering standards used at enterprise scale.
+          </p>
+
+          <div
+            style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;"
+          >
+            {
+              [
+                'Multi-cloud infrastructure (AWS, Azure, GCP)',
+                'Kubernetes platforms with EKS, AKS, GKE',
+                'GitOps delivery with ArgoCD',
+                'Observability with Prometheus + Grafana',
+                'Security-first with OIDC, no static credentials',
+              ].map((item) => (
+                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    style="color: #0078D4; flex-shrink: 0; margin-top: 2px;"
+                  >
+                    <path
+                      d="M20 6L9 17l-5-5"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span style="font-size: 0.9375rem; color: #605E5C;">
+                    {item}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+
+          <a href="/projects" class="btn btn-primary btn-pill"
+            >See our projects →</a
+          >
+        </div>
+
+        <!-- Code block -->
+        <div class="code-block fade-up">
+          <div class="code-block-header">
+            <span class="code-dot code-dot-red"></span>
+            <span class="code-dot code-dot-yellow"></span>
+            <span class="code-dot code-dot-green"></span>
+            <span class="code-filename">main.tf · aws-production</span>
+          </div>
+          <div class="code-block-content">
+            <div>
+              <span class="code-comment"># EKS Cluster — Production</span>
+            </div>
+            <div>
+              <span class="code-keyword">module</span>
+              <span class="code-string">"eks"</span>
+              {}
+              <div>
+                &nbsp;&nbsp;source&nbsp;&nbsp;= <span class="code-string"
+                  >"./modules/eks"</span>
+              </div>
+              <div>
+                &nbsp;&nbsp;cluster_name&nbsp;&nbsp;&nbsp;&nbsp;= <span
+                  class="code-string">"prod-eu-west-1"</span>
+              </div>
+              <div>
+                &nbsp;&nbsp;cluster_version = <span class="code-string"
+                  >"1.31"</span>
+              </div>
+              <div>
+                &nbsp;&nbsp;vpc_id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+                <span class="code-path">module.vpc.vpc_id</span>
+              </div>
+              <div>
+                &nbsp;&nbsp;instance_types&nbsp;&nbsp;= [<span
+                  class="code-string">"t3.medium"</span
+                >]
+              </div>
+              <div>
+                &nbsp;&nbsp;min_size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+                <span class="code-number">2</span>
+              </div>
+              <div>
+                &nbsp;&nbsp;max_size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+                <span class="code-number">10</span>
+              </div>
+              <div></div>
+            </div>
+            <div style="margin-top: 0.75rem;">
+              <span class="code-comment"># Apply complete</span>
+            </div>
+            <div><span class="code-success">✓ aws_eks_cluster.main</span></div>
+            <div><span class="code-success">✓ aws_rds_cluster.db</span></div>
+            <div>
+              <span class="code-success">✓ module.alb.aws_lb.main</span>
+            </div>
+            <div style="color: #4EC9B0;">
+              Apply complete! Resources: 14 added.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS PREVIEW -->
+  <section class="bg-light section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3.5rem;">
+        <p class="eyebrow">Open Source</p>
+        <h2>Production projects on GitHub</h2>
+        <p style="max-width: 500px; margin: 1rem auto 0;">
+          Real infrastructure — production-grade, documented, and publicly
+          available.
+        </p>
       </div>
 
-      <h1 style="color: #FFFFFF; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1rem;">
-        Something new is coming.
-      </h1>
-      <p style="color: #94A3B8; font-size: 1.125rem; max-width: 480px; margin: 0 auto 2.5rem;">
-        We're rebuilding from the ground up. A new vision for cloud infrastructure is on the way.
-      </p>
-
-      <a
-        href="mailto:info@lracloudops.com"
-        style="display: inline-flex; align-items: center; gap: 0.5rem; background: #1E6FFF; color: #FFF; padding: 0.875rem 2rem; border-radius: 9999px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+      <div
+        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2.5rem;"
       >
-        Get in touch →
-      </a>
+        {
+          [
+            {
+              name: 'aws-terraform-devops',
+              desc: 'EKS 1.31 Multi-AZ, RDS PostgreSQL 15, ArgoCD, Prometheus/Grafana. Full Terraform modules.',
+              tags: ['AWS', 'EKS', 'Terraform', 'ArgoCD'],
+              status: 'Production',
+              href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+            },
+            {
+              name: 'gitops-stack',
+              desc: 'GitOps pipeline with ArgoCD. Zero manual kubectl in production. Every change through Git.',
+              tags: ['ArgoCD', 'GitOps', 'Kubernetes', 'Helm'],
+              status: 'Production',
+              href: 'https://github.com/lra-cloud-ops/gitops-stack',
+            },
+            {
+              name: 'k8s-devops-platform',
+              desc: 'Local Kubernetes with KinD, ArgoCD, Prometheus. Mirrors production exactly.',
+              tags: ['Kubernetes', 'KinD', 'Prometheus', 'Grafana'],
+              status: 'Reference',
+              href: 'https://github.com/lra-cloud-ops/k8s-devops-platform',
+            },
+            {
+              name: 'linux-fleet-manager',
+              desc: '100% ShellCheck validated fleet management via SSH. Idempotent across Linux hosts.',
+              tags: ['Bash', 'SSH', 'ShellCheck', 'Linux'],
+              status: 'Production',
+              href: 'https://github.com/lra-cloud-ops/linux-fleet-manager',
+            },
+          ].map((p) => (
+            <a
+              href={p.href}
+              target="_blank"
+              rel="noopener"
+              class="card"
+              style="display: block; text-decoration: none;"
+            >
+              <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="font-family: var(--font-mono); font-size: 0.9375rem; font-weight: 600; color: #0078D4;">
+                  {p.name}
+                </span>
+                <span
+                  class={`badge ${p.status === 'Production' ? 'badge-green' : 'badge-blue'}`}
+                >
+                  {p.status}
+                </span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.6;">
+                {p.desc}
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
+                {p.tags.map((t) => (
+                  <span class="tech-pill">{t}</span>
+                ))}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <div style="text-align: center;">
+        <a href="/projects" class="btn btn-secondary btn-pill"
+          >View all projects →</a
+        >
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="bg-dark on-dark section" style="text-align: center;">
+    <div class="container">
+      <div style="max-width: 580px; margin: 0 auto;">
+        <p class="eyebrow on-dark">Let's work together</p>
+        <h2 style="color: #FFFFFF; margin-bottom: 1rem;">
+          Ready to modernize your infrastructure?
+        </h2>
+        <p style="color: #A19F9D; margin-bottom: 2.5rem; font-size: 1.0625rem;">
+          Free 30-minute architecture review. We'll assess your current setup
+          and propose a concrete roadmap.
+        </p>
+        <div
+          style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
+        >
+          <a href="/contact" class="btn btn-white btn-lg btn-pill"
+            >Schedule a call →</a
+          >
+          <a href="/projects" class="btn btn-outline-white btn-lg btn-pill"
+            >View our work</a
+          >
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 0.8125rem; color: #605E5C;">
+          ✓ No commitment · ✓ Initial roadmap included · ✓ Response in 24h
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer
+    style="background: #1B1B1B; color: #F3F2F1; padding-block: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.06);"
+  >
+    <div class="container">
+      <div
+        style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 1.5rem;"
+      >
+        <div>
+          <div
+            style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;"
+          >
+            <img
+              src="/lracloudops-icon.svg"
+              alt="LRA CloudOps"
+              width="24"
+              height="24"
+            />
+            <span
+              style="font-family: var(--font-display); font-weight: 700; color: #FFF;"
+              >LRA CloudOps</span
+            >
+          </div>
+          <p style="font-size: 0.875rem; color: #8A8886; line-height: 1.6;">
+            Cloud infrastructure platform.<br />
+            AWS · Azure · GCP · Kubernetes
+          </p>
+        </div>
+        <div>
+          <p
+            style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8886; margin-bottom: 0.875rem;"
+          >
+            Navigation
+          </p>
+          {
+            [
+              ['Platform', '/platform'],
+              ['Projects', '/projects'],
+              ['Blog', '/blog'],
+              ['About', '/about'],
+              ['Contact', '/contact'],
+            ].map(([label, href]) => (
+              <a
+                href={href}
+                style="display: block; font-size: 0.9375rem; color: #A19F9D; margin-bottom: 0.5rem; text-decoration: none; transition: color 150ms ease;"
+                onmouseover="this.style.color='#FFF'"
+                onmouseout="this.style.color='#A19F9D'"
+              >
+                {label}
+              </a>
+            ))
+          }
+        </div>
+        <div>
+          <p
+            style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8886; margin-bottom: 0.875rem;"
+          >
+            Connect
+          </p>
+          {
+            [
+              [
+                'LinkedIn',
+                'https://www.linkedin.com/in/rubenliquenson-490961269',
+              ],
+              ['GitHub', 'https://github.com/lra-cloud-ops'],
+              ['Email', 'mailto:info@lracloudops.com'],
+            ].map(([label, href]) => (
+              <a
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel="noopener"
+                style="display: block; font-size: 0.9375rem; color: #A19F9D; margin-bottom: 0.5rem; text-decoration: none; transition: color 150ms ease;"
+                onmouseover="this.style.color='#FFF'"
+                onmouseout="this.style.color='#A19F9D'"
+              >
+                {label} ↗
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div
+        style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #605E5C;"
+      >
+        <p>© 2026 LRA CloudOps · Built with Astro · Deployed on Cloudflare</p>
+        <a href="/privacy" style="color: #605E5C; text-decoration: none;"
+          >Privacy</a
+        >
+      </div>
+    </div>
+  </footer>
 </Layout>
 
 <style>
-  .hero-logo :global(.logo-text) {
-    color: #ffffff;
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+    }
+    [style*='grid-template-columns: 1fr 1fr'] {
+      grid-template-columns: 1fr !important;
+      gap: 3rem !important;
+    }
+    [style*='grid-template-columns: repeat(4, 1fr)'] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    [style*='grid-template-columns: repeat(2, 1fr)'] {
+      grid-template-columns: 1fr !important;
+    }
+    [style*='grid-template-columns: 1fr 1fr 1fr'] {
+      grid-template-columns: 1fr !important;
+    }
+    .code-block {
+      display: none;
+    }
   }
 </style>
