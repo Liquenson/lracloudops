@@ -1,0 +1,937 @@
+---
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout
+  title="LRA AI Platform — Project"
+  description="AI-Assisted Engineering Platform. Task-centric multi-agent system for DevOps and Platform Engineering. Python, GitHub API, Governance Engine, Workflow Engine."
+  lang="en"
+>
+  <!-- HEADER SIMPLE -->
+  <header
+    style="position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid #EDEBE9;"
+  >
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); display: flex; align-items: center; height: 56px; gap: 2rem;"
+    >
+      <a
+        href="/"
+        style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none; flex-shrink: 0;"
+      >
+        <img
+          src="/lracloudops-icon.svg"
+          alt="LRA CloudOps"
+          width="28"
+          height="28"
+        />
+        <span
+          style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 700; color: #111827;"
+          >LRA CloudOps</span
+        >
+      </a>
+      <nav
+        style="display: flex; align-items: center; gap: 0.125rem; margin-left: auto;"
+      >
+        <a
+          href="/"
+          style="padding: 0.375rem 0.75rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #6B7280; border-radius: 4px; text-decoration: none;"
+          >Home</a
+        >
+        <a
+          href="/projects"
+          style="padding: 0.375rem 0.75rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #0078D4; border-radius: 4px; text-decoration: none; background: #EFF6FC;"
+          >Projects</a
+        >
+      </nav>
+      <a
+        href="mailto:info@lracloudops.com"
+        style="display: inline-flex; align-items: center; background: #0078D4; color: #FFFFFF; padding: 0.5rem 1rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; text-decoration: none;"
+        >Contact</a
+      >
+    </div>
+  </header>
+
+  <!-- HERO DEL PROYECTO -->
+  <section
+    style="background: #0D1B2E; padding-block: 5rem; position: relative; overflow: hidden;"
+  >
+    <div
+      style="position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0); background-size: 28px 28px; pointer-events: none;"
+    >
+    </div>
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); position: relative; z-index: 1;"
+    >
+      <!-- Breadcrumb -->
+      <div
+        style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem;"
+      >
+        <a href="/" style="color: #6B7280; text-decoration: none;">Home</a>
+        <span style="color: #6B7280;">/</span>
+        <a href="/projects" style="color: #6B7280; text-decoration: none;"
+          >Projects</a
+        >
+        <span style="color: #6B7280;">/</span>
+        <span style="color: #FFFFFF;">lra-ai-platform</span>
+      </div>
+
+      <!-- Status badges -->
+      <div
+        style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;"
+      >
+        <span
+          style="display: inline-flex; align-items: center; gap: 0.375rem; background: rgba(16,124,16,0.15); border: 1px solid rgba(74,222,128,0.3); color: #4ADE80; padding: 0.25rem 0.75rem; border-radius: 4px; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 600;"
+        >
+          <span
+            style="width: 6px; height: 6px; background: #4ADE80; border-radius: 50%; animation: pulse 2s infinite;"
+          ></span>
+          Active Development
+        </span>
+        <span
+          style="display: inline-flex; align-items: center; gap: 0.375rem; background: rgba(0,120,212,0.15); border: 1px solid rgba(0,120,212,0.3); color: #FFFFFF; padding: 0.25rem 0.75rem; border-radius: 4px; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 600;"
+        >
+          Open Source
+        </span>
+        <span
+          style="display: inline-flex; align-items: center; gap: 0.375rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #6B7280; padding: 0.25rem 0.75rem; border-radius: 4px; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 600;"
+        >
+          Python 3.11+
+        </span>
+      </div>
+
+      <!-- Título -->
+      <h1
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: #FFFFFF; margin-bottom: 1rem; letter-spacing: -0.025em; line-height: 1.1;"
+      >
+        LRA AI Platform
+      </h1>
+
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 1.125rem; color: #6B7280; max-width: 620px; line-height: 1.7; margin-bottom: 2.5rem;"
+      >
+        AI-Assisted Engineering Platform for DevOps, Platform Engineering and
+        Cloud Operations. Task-centric multi-agent system with real tool
+        integrations across AWS, Azure, GCP, Kubernetes, Terraform, and more.
+      </p>
+
+      <!-- CTAs -->
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a
+          href="https://github.com/lra-cloud-ops/lra-ai-platform"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: #FFFFFF; color: #111827; padding: 0.75rem 1.5rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+            ></path>
+          </svg>
+          View on GitHub
+        </a>
+        <a
+          href="#architecture"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+        >
+          View architecture →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section style="background: #FAF9F8; border-bottom: 1px solid #EDEBE9;">
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div
+        style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;"
+      >
+        {
+          [
+            { value: '8', label: 'AI Agents' },
+            { value: '14', label: 'Live Integrations' },
+            { value: '9', label: 'Workflows' },
+            { value: '33', label: 'Tests' },
+            { value: '3', label: 'Cloud Providers' },
+          ].map(({ value, label }, i) => (
+            <div
+              style={`text-align: center; padding: 1.5rem 1rem; ${i < 4 ? 'border-right: 1px solid #EDEBE9;' : ''}`}
+            >
+              <div style="font-family: 'Red Hat Display', sans-serif; font-size: 2rem; font-weight: 900; color: #0078D4; line-height: 1; letter-spacing: -0.04em;">
+                {value}
+              </div>
+              <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #6B7280; margin-top: 0.375rem; font-weight: 500;">
+                {label}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT DOES -->
+  <section style="background: #FFFFFF; padding-block: clamp(4rem, 8vw, 6rem);">
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div
+        style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;"
+      >
+        <div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
+          >
+            What it does
+          </p>
+          <h2
+            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #111827; margin-bottom: 1.25rem; letter-spacing: -0.02em; line-height: 1.2;"
+          >
+            What takes hours,<br />delivered in seconds.
+          </h2>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280; line-height: 1.7; margin-bottom: 1rem;"
+          >
+            LRA AI Platform enables DevOps and Platform Engineering teams to
+            design, provision, deploy, review, and document infrastructure
+            projects using AI-powered agents with real tool integrations.
+          </p>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280; line-height: 1.7; margin-bottom: 2rem;"
+          >
+            Built following enterprise engineering standards — task-centric
+            architecture, governance engine with 5 permission levels, and full
+            audit trail.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.625rem;">
+            {
+              [
+                'Multi-agent system with 8 specialized agents',
+                '14 live tool integrations (AWS, Azure, GCP, K8s...)',
+                'Governance Engine — RBAC 5 levels, fail-safe by default',
+                'REST API + CLI + Web Dashboard',
+                '33 tests — CI/CD on every push to main',
+              ].map((item) => (
+                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    style="color: #0078D4; flex-shrink: 0; margin-top: 3px;"
+                  >
+                    <path
+                      d="M20 6L9 17l-5-5"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #111827;">
+                    {item}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Terminal demo -->
+        <div
+          style="background: #0D1B2E; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);"
+        >
+          <div
+            style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);"
+          >
+            <span
+              style="width: 12px; height: 12px; border-radius: 50%; background: #6B7280;"
+            ></span>
+            <span
+              style="width: 12px; height: 12px; border-radius: 50%; background: #0078D4;"
+            ></span>
+            <span
+              style="width: 12px; height: 12px; border-radius: 50%; background: #4ADE80;"
+            ></span>
+            <span
+              style="margin-left: 0.5rem; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #6B7280;"
+              >lra-ai-platform — bash</span
+            >
+          </div>
+          <div
+            style="padding: 1.5rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; line-height: 1.8; color: #FAF9F8;"
+          >
+            <div>
+              <span style="color: #6B7280;"># Natural language intent</span>
+            </div>
+            <div>
+              <span style="color: #4ADE80;">$</span>
+              <span style="color: #FAF9F8;">lra init</span>
+              <span style="color: #4EC9B0;">"Create project client-api"</span>
+            </div>
+            <div style="margin-top: 0.5rem; color: #6B7280;">
+              Execution Plan:
+            </div>
+            <div>
+              <span style="color: #0078D4;">1.</span> create_repository <span
+                style="color: #6B7280;">→ Founder Agent → GitHub API</span>
+            </div>
+            <div>
+              <span style="color: #0078D4;">2.</span> generate_docs <span
+                style="color: #6B7280;">→ Founder Agent → README + ADR</span>
+            </div>
+            <div style="margin-top: 0.5rem; color: #FAF9F8;">
+              Execute? [y/N]: <span style="color: #FFFFFF;">y</span>
+            </div>
+            <div style="margin-top: 0.5rem;">
+              <div>
+                <span style="color: #4ADE80;">✓</span> Repository created: github.com/lra-cloud-ops/client-api
+              </div>
+              <div>
+                <span style="color: #4ADE80;">✓</span> README.md generated
+              </div>
+              <div>
+                <span style="color: #4ADE80;">✓</span> ARCHITECTURE.md generated
+              </div>
+              <div>
+                <span style="color: #4ADE80;">✓</span> ROADMAP.md generated
+              </div>
+            </div>
+            <div style="margin-top: 0.75rem; color: #6B7280;">
+              # Also available
+            </div>
+            <div>
+              <span style="color: #4ADE80;">$</span> lra <span
+                style="color: #4EC9B0;">scan</span
+              > --github lra-cloud-ops/aws-terraform-devops-lab
+            </div>
+            <div>
+              <span style="color: #4ADE80;">$</span> lra <span
+                style="color: #4EC9B0;">review</span
+              > aws
+            </div>
+            <div>
+              <span style="color: #4ADE80;">$</span> lra <span
+                style="color: #4EC9B0;">status</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section
+    id="architecture"
+    style="background: #FAF9F8; padding-block: clamp(4rem, 8vw, 6rem); border-top: 1px solid #EDEBE9; border-bottom: 1px solid #EDEBE9;"
+  >
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div style="text-align: center; margin-bottom: 3.5rem;">
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
+        >
+          Architecture
+        </p>
+        <h2
+          style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #111827; letter-spacing: -0.02em;"
+        >
+          Task-centric design
+        </h2>
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280; max-width: 520px; margin: 0.75rem auto 0; line-height: 1.7;"
+        >
+          Agents execute Tasks. They never orchestrate directly. Every task
+          passes through the Governance Engine before execution.
+        </p>
+      </div>
+
+      <!-- Architecture flow -->
+      <div
+        style="background: #0D1B2E; border-radius: 8px; padding: 2rem; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 3rem; overflow-x: auto;"
+      >
+        <pre
+          style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; line-height: 1.9; color: #FAF9F8; margin: 0;"><span style="color: #4EC9B0;">Intent (natural language text)</span>
+    │
+    ▼
+<span style="color: #0078D4;">Supervisor</span> → <span style="color: #0078D4;">TaskPlanner</span> → <span style="color: #0078D4;">ExecutionPlan (DAG)</span>
+                                │
+                        <span style="color: #0078D4;">WorkflowEngine</span>
+                        <span style="color: #6B7280;">(topological sort, parallelism)</span>
+                                │
+                        <span style="color: #0078D4;">GovernanceEngine</span>
+                        <span style="color: #6B7280;">(RBAC 5 levels, Policy, Audit)</span>
+                        <span style="color: #4ADE80;">Fail-safe: deny by default</span>
+                                │
+                        <span style="color: #0078D4;">TaskEngine</span>
+                        <span style="color: #6B7280;">(retry, timeout, idempotency)</span>
+                                │
+                        <span style="color: #0078D4;">Agent.execute_task()</span>
+                                │
+                        <span style="color: #4EC9B0;">Tool → Provider</span>
+                        <span style="color: #6B7280;">(GitHub, AWS, kubectl, Terraform...)</span></pre>
+      </div>
+
+      <!-- Permission levels -->
+      <div
+        style="background: #FFFFFF; border: 1px solid #EDEBE9; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;"
+      >
+        <p
+          style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 1rem;"
+        >
+          Governance — Permission Levels
+        </p>
+        <div
+          style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem;"
+        >
+          {
+            [
+              {
+                level: '1',
+                name: 'READ_ONLY',
+                desc: 'List repos, read metrics',
+                color: '#4EC9B0',
+              },
+              {
+                level: '2',
+                name: 'PROPOSE',
+                desc: 'Create PRs, generate docs',
+                color: '#4ADE80',
+              },
+              {
+                level: '3',
+                name: 'DEVELOPMENT',
+                desc: 'Commits, deploy to dev',
+                color: '#0078D4',
+              },
+              {
+                level: '4',
+                name: 'PRODUCTION',
+                desc: 'Deploy to prod (requires approval)',
+                color: '#0D1B2E',
+              },
+              {
+                level: '5',
+                name: 'ADMIN',
+                desc: 'Modify agents, tools, policies',
+                color: '#111827',
+              },
+            ].map((p) => (
+              <div
+                style={`background: #FAF9F8; border: 1px solid #EDEBE9; border-top: 3px solid ${p.color}; border-radius: 4px; padding: 0.875rem;`}
+              >
+                <div
+                  style={`font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 700; color: ${p.color}; margin-bottom: 0.25rem;`}
+                >
+                  Level {p.level}
+                </div>
+                <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; color: #111827; margin-bottom: 0.25rem;">
+                  {p.name}
+                </div>
+                <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #6B7280; line-height: 1.5;">
+                  {p.desc}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENTS -->
+  <section style="background: #FFFFFF; padding-block: clamp(4rem, 8vw, 6rem);">
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
+        >
+          Agents
+        </p>
+        <h2
+          style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #111827; letter-spacing: -0.02em;"
+        >
+          8 Specialized Agents
+        </h2>
+      </div>
+
+      <div
+        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;"
+      >
+        {
+          [
+            {
+              name: 'Founder Agent',
+              role: 'Creates repositories, generates documentation',
+              tools: ['github'],
+              color: '#0078D4',
+            },
+            {
+              name: 'Cloud Architect',
+              role: 'Reviews AWS, Azure and GCP infrastructure',
+              tools: ['aws', 'azure', 'gcp', 'github'],
+              color: '#107C10',
+            },
+            {
+              name: 'DevOps Engineer',
+              role: 'Terraform, Kubernetes, Ansible automation',
+              tools: ['terraform', 'kubernetes', 'ansible', 'github'],
+              color: '#0078D4',
+            },
+            {
+              name: 'Security Engineer',
+              role: 'Vulnerability and IaC scanning with Trivy + Checkov',
+              tools: ['trivy', 'checkov', 'github'],
+              color: '#0D1B2E',
+            },
+            {
+              name: 'SRE',
+              role: 'Observability, alerts, reliability engineering',
+              tools: ['cloudwatch', 'prometheus', 'grafana'],
+              color: '#107C10',
+            },
+            {
+              name: 'OpenShift Agent',
+              role: 'OC CLI, Operators, Pipelines on OpenShift',
+              tools: ['openshift', 'kubernetes', 'github'],
+              color: '#0D1B2E',
+            },
+            {
+              name: 'Documentation Agent',
+              role: 'README, ADR, Runbooks — local and GitHub',
+              tools: ['github', 'local'],
+              color: '#0078D4',
+            },
+            {
+              name: 'Reviewer Agent',
+              role: 'PR review, code quality, security analysis',
+              tools: ['github', 'trivy', 'checkov'],
+              color: '#107C10',
+            },
+          ].map((agent) => (
+            <div style="background: #FFFFFF; border: 1px solid #EDEBE9; border-radius: 8px; padding: 1.25rem; display: flex; align-items: start; gap: 1rem; transition: border-color 150ms;">
+              <div
+                style={`width: 36px; height: 36px; border-radius: 4px; background: ${agent.color}15; display: flex; align-items: center; justify-content: center; flex-shrink: 0;`}
+              >
+                <div
+                  style={`width: 10px; height: 10px; border-radius: 50%; background: ${agent.color};`}
+                />
+              </div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="font-family: 'Red Hat Display', sans-serif; font-size: 0.9375rem; font-weight: 700; color: #111827; margin-bottom: 0.25rem;">
+                  {agent.name}
+                </div>
+                <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #6B7280; line-height: 1.5; margin-bottom: 0.75rem;">
+                  {agent.role}
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.25rem;">
+                  {agent.tools.map((tool) => (
+                    <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: #6B7280; background: #FAF9F8; border: 1px solid #EDEBE9; padding: 0.1rem 0.5rem; border-radius: 3px;">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section style="background: #0D1B2E; padding-block: clamp(4rem, 8vw, 6rem);">
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
+        >
+          Integrations
+        </p>
+        <h2
+          style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em;"
+        >
+          14 Live Tool Integrations
+        </h2>
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280; margin-top: 0.75rem;"
+        >
+          All integrations are live — not mocked, not simulated.
+        </p>
+      </div>
+
+      <div
+        style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;"
+      >
+        {
+          [
+            {
+              name: 'GitHub',
+              desc: 'Repos, PRs, files, issues',
+              tech: 'PyGithub',
+            },
+            {
+              name: 'AWS',
+              desc: 'S3, EC2, EKS, ECR, VPC, IAM, CloudWatch',
+              tech: 'boto3',
+            },
+            {
+              name: 'Azure',
+              desc: 'VMs, VNets, AKS, ACR, Storage',
+              tech: 'azure-sdk',
+            },
+            {
+              name: 'GCP',
+              desc: 'GCE, GCS, GKE, VPC, Cloud Run',
+              tech: 'gcloud CLI',
+            },
+            {
+              name: 'Terraform',
+              desc: 'init, plan, apply, destroy',
+              tech: 'subprocess',
+            },
+            {
+              name: 'Kubernetes',
+              desc: 'pods, deployments, scale, logs',
+              tech: 'kubectl',
+            },
+            { name: 'Ansible', desc: 'playbooks, ad-hoc, vault', tech: 'WSL2' },
+            {
+              name: 'Trivy',
+              desc: 'image, fs, k8s, terraform scans',
+              tech: 'subprocess',
+            },
+            {
+              name: 'Checkov',
+              desc: 'terraform, k8s, dockerfile, gha',
+              tech: 'python -m',
+            },
+            {
+              name: 'CloudWatch',
+              desc: 'alarms, metrics, logs',
+              tech: 'boto3',
+            },
+            {
+              name: 'Prometheus',
+              desc: 'query, alerts, targets',
+              tech: 'HTTP API',
+            },
+            {
+              name: 'Grafana',
+              desc: 'dashboards, health, alerts',
+              tech: 'HTTP API',
+            },
+            {
+              name: 'OpenShift',
+              desc: 'projects, deployments, operators',
+              tech: 'oc CLI',
+            },
+            {
+              name: 'Local',
+              desc: 'filesystem, stack detection, save files',
+              tech: 'filesystem',
+            },
+          ].map((tool) => (
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.375rem;">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; flex-shrink: 0;" />
+                <span style="font-family: 'Red Hat Display', sans-serif; font-size: 0.9375rem; font-weight: 700; color: #FFFFFF;">
+                  {tool.name}
+                </span>
+              </div>
+              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #6B7280; line-height: 1.5; margin-bottom: 0.375rem;">
+                {tool.desc}
+              </p>
+              <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: #4EC9B0; background: rgba(78,201,176,0.08); padding: 0.1rem 0.4rem; border-radius: 3px;">
+                {tool.tech}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK START -->
+  <section style="background: #FFFFFF; padding-block: clamp(4rem, 8vw, 6rem);">
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+        <div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
+          >
+            Quick Start
+          </p>
+          <h2
+            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #111827; margin-bottom: 1rem; letter-spacing: -0.02em;"
+          >
+            Up and running in minutes
+          </h2>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280; line-height: 1.7; margin-bottom: 1.5rem;"
+          >
+            Two ways to run the platform — terminal for development with live
+            logs, or Docker for production-ready deployment.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; align-items: start; gap: 0.75rem;">
+              <span
+                style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #0078D4; background: #EFF6FC; border: 1px solid rgba(0,120,212,0.2); padding: 0.125rem 0.5rem; border-radius: 3px; flex-shrink: 0;"
+                >req</span
+              >
+              <span
+                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #111827;"
+                >Python 3.11+, AWS CLI, Azure CLI, gcloud CLI configured</span
+              >
+            </div>
+            <div style="display: flex; align-items: start; gap: 0.75rem;">
+              <span
+                style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #0078D4; background: #EFF6FC; border: 1px solid rgba(0,120,212,0.2); padding: 0.125rem 0.5rem; border-radius: 3px; flex-shrink: 0;"
+                >opt</span
+              >
+              <span
+                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #111827;"
+                >WSL2 for Ansible on Windows, Docker for containerized
+                deployment</span
+              >
+            </div>
+          </div>
+          <div style="margin-top: 2rem;">
+            <a
+              href="https://github.com/lra-cloud-ops/lra-ai-platform"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0078D4; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+            >
+              View full documentation →
+            </a>
+          </div>
+        </div>
+
+        <!-- Code blocks -->
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div
+            style="background: #0D1B2E; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);"
+          >
+            <div
+              style="display: flex; align-items: center; justify-content: space-between; padding: 0.625rem 1rem; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);"
+            >
+              <span
+                style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #6B7280;"
+                >Terminal (development)</span
+              >
+            </div>
+            <div
+              style="padding: 1.25rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; line-height: 1.8; color: #FAF9F8;"
+            >
+              <div>
+                <span style="color: #4ADE80;">$</span> git clone https://github.com/lra-cloud-ops/lra-ai-platform.git
+              </div>
+              <div>
+                <span style="color: #4ADE80;">$</span> pip install -r requirements.txt
+              </div>
+              <div>
+                <span style="color: #4ADE80;">$</span> cp .env.example .env
+              </div>
+              <div>
+                <span style="color: #6B7280;"
+                  ># Edit .env with your credentials</span>
+              </div>
+              <div>
+                <span style="color: #4ADE80;">$</span> python api/app.py
+              </div>
+              <div style="color: #4EC9B0;">
+                ✓ API running at http://localhost:8000
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="background: #0D1B2E; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);"
+          >
+            <div
+              style="display: flex; align-items: center; padding: 0.625rem 1rem; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);"
+            >
+              <span
+                style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #6B7280;"
+                >Docker (production)</span
+              >
+            </div>
+            <div
+              style="padding: 1.25rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; line-height: 1.8; color: #FAF9F8;"
+            >
+              <div>
+                <span style="color: #4ADE80;">$</span> docker-compose up -d
+              </div>
+              <div style="color: #4EC9B0;">✓ API: http://localhost:8000</div>
+              <div style="color: #4EC9B0;">
+                ✓ Dashboard: http://localhost:3001
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section
+    style="background: #FAF9F8; padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid #EDEBE9;"
+  >
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0078D4; margin-bottom: 1.5rem; text-align: center;"
+      >
+        Tech Stack
+      </p>
+      <div
+        style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;"
+      >
+        {
+          [
+            'Python 3.11+',
+            'FastAPI',
+            'Uvicorn',
+            'Click',
+            'PyYAML',
+            'boto3',
+            'azure-sdk',
+            'gcloud CLI',
+            'Terraform v1.15+',
+            'kubectl v1.35+',
+            'Ansible v2.10+',
+            'Trivy v0.69+',
+            'Checkov v3.3+',
+            'Prometheus HTTP API',
+            'Grafana HTTP API',
+            'PyGithub',
+            'Docker',
+            'pytest',
+          ].map((tech) => (
+            <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #111827; background: #FFFFFF; border: 1px solid #EDEBE9; padding: 0.375rem 0.75rem; border-radius: 4px;">
+              {tech}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section
+    style="background: #0D1B2E; padding-block: clamp(4rem, 8vw, 6rem); text-align: center;"
+  >
+    <div
+      style="max-width: 600px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
+      >
+        Open Source
+      </p>
+      <h2
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #FFFFFF; margin-bottom: 1rem; letter-spacing: -0.02em;"
+      >
+        Explore the source code
+      </h2>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280; margin-bottom: 2rem; line-height: 1.7;"
+      >
+        All code is public. Read the architecture docs, explore the agents, run
+        it yourself.
+      </p>
+      <div
+        style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
+      >
+        <a
+          href="https://github.com/lra-cloud-ops/lra-ai-platform"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: #FFFFFF; color: #111827; padding: 0.875rem 1.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+            ></path>
+          </svg>
+          View on GitHub →
+        </a>
+        <a
+          href="mailto:info@lracloudops.com"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #FFFFFF; padding: 0.875rem 1.75rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+        >
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER SIMPLE -->
+  <footer
+    style="background: #0D1B2E; padding-block: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06);"
+  >
+    <div
+      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;"
+    >
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <img
+          src="/lracloudops-icon.svg"
+          alt="LRA CloudOps"
+          width="20"
+          height="20"
+        />
+        <span
+          style="font-family: 'Red Hat Display', sans-serif; font-size: 0.875rem; font-weight: 700; color: #FFFFFF;"
+          >LRA CloudOps</span
+        >
+      </div>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #6B7280;"
+      >
+        © 2026 LRA CloudOps · Built by Ruben Liquenson
+      </p>
+      <a
+        href="/"
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #6B7280; text-decoration: none;"
+        >← Back to home</a
+      >
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  @media (max-width: 768px) {
+    [style*='grid-template-columns: 1fr 1fr'] {
+      grid-template-columns: 1fr !important;
+      gap: 2.5rem !important;
+    }
+    [style*='grid-template-columns: repeat(5, 1fr)'] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    [style*='grid-template-columns: repeat(4, 1fr)'] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    [style*='grid-template-columns: repeat(2, 1fr)'] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
