@@ -57,10 +57,10 @@ No lint scripts. CI via `.github/workflows/build.yml` (npm ci + astro check + as
 
 **Security:** `public/_headers` configures HTTP security headers (CSP, X-Frame-Options, HSTS, Permissions-Policy) for Cloudflare Pages.
 
-## Portfolio state (updated June 11, 2026)
+## Portfolio state (updated July 2, 2026)
 
 ### Active projects in `src/content/projects/`
-- `k8s-on-premise.md` — Kubernetes cluster on bare metal, Phase 3/18, In Development
+- None. `src/content/projects/` is empty — `/projects` and `/es/proyectos` render a "Coming Soon" placeholder linking to `github.com/lra-cloud-ops`. Real repos (k8s-on-premise, gitops-stack, aws-devops-agent, aws-terraform-devops, k8s-devops-platform, linux-fleet-manager) are still listed on `/open-source` with direct GitHub links, independent of this collection.
 
 ### Schema field names (Zod)
 The content collection schema uses different names than the intuitive ones:

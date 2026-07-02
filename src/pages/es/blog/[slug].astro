@@ -13,40 +13,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props
 const { Content } = await render(post)
 
-const projectLinks: Record<string, { name: string; slug: string }[]> = {
-  'kubernetes-bare-metal-kubeadm': [
-    { name: 'k8s-on-premise', slug: 'k8s-on-premise' },
-    { name: 'k8s-devops-platform', slug: 'k8s-devops-platform' },
-  ],
-  'gitops-argocd-zero-manual-deploys': [
-    { name: 'gitops-stack', slug: 'gitops-stack' },
-    { name: 'k8s-devops-platform', slug: 'k8s-devops-platform' },
-  ],
-  'gitops-argocd-kubernetes': [
-    { name: 'k8s-devops-platform', slug: 'k8s-devops-platform' },
-    { name: 'gitops-stack', slug: 'gitops-stack' },
-  ],
-  'terraform-modular-6-projects-one-pattern': [
-    { name: 'aws-terraform-devops', slug: 'aws-terraform-devops' },
-    { name: 'gitops-stack', slug: 'gitops-stack' },
-  ],
-  'terraform-aws-produccion': [
-    { name: 'aws-terraform-devops', slug: 'aws-terraform-devops' },
-  ],
-  'terraform-modulos-reutilizables': [
-    { name: 'aws-terraform-devops', slug: 'aws-terraform-devops' },
-    { name: 'gitops-stack', slug: 'gitops-stack' },
-  ],
-  'github-actions-pipeline': [
-    { name: 'aws-terraform-devops', slug: 'aws-terraform-devops' },
-    { name: 'gitops-stack', slug: 'gitops-stack' },
-  ],
-  'docker-best-practices': [
-    { name: 'aws-terraform-devops', slug: 'aws-terraform-devops' },
-    { name: 'linux-fleet-manager', slug: 'linux-fleet-manager' },
-  ],
-  'aws-devops-agent': [{ name: 'aws-devops-agent', slug: 'aws-devops-agent' }],
-}
+const projectLinks: Record<string, { name: string; slug: string }[]> = {}
 const relatedProjects = projectLinks[post.id] ?? []
 
 const _bodyText = (post as any).body ?? ''
