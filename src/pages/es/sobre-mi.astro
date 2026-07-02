@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Header from '../components/layout/Header.astro'
-import Footer from '../components/layout/Footer.astro'
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/layout/Header.astro'
+import Footer from '../../components/layout/Footer.astro'
 
 export const prerender = true
 
@@ -17,36 +17,39 @@ const stackGroups = [
       'GCP',
     ],
   },
-  { title: 'Infrastructure as Code', items: ['Terraform', 'Ansible', 'Helm'] },
-  { title: 'Kubernetes & GitOps', items: ['Kubernetes', 'ArgoCD', 'KinD'] },
   {
-    title: 'Observability',
+    title: 'Infraestructura como código',
+    items: ['Terraform', 'Ansible', 'Helm'],
+  },
+  { title: 'Kubernetes y GitOps', items: ['Kubernetes', 'ArgoCD', 'KinD'] },
+  {
+    title: 'Observabilidad',
     items: ['Prometheus', 'Grafana', 'Alertmanager', 'CloudWatch'],
   },
   { title: 'CI/CD', items: ['GitHub Actions', 'Jenkins'] },
-  { title: 'Languages', items: ['Python', 'Bash', 'HCL'] },
+  { title: 'Lenguajes', items: ['Python', 'Bash', 'HCL'] },
 ]
 
 const focus = [
   {
-    title: 'Infrastructure as Code',
-    desc: 'Every environment I build is defined in Terraform — reproducible, versioned, reviewed through pull requests. No manual console changes.',
+    title: 'Infraestructura como código',
+    desc: 'Cada entorno que construyo está definido en Terraform — reproducible, versionado, revisado vía pull requests. Sin cambios manuales en la consola.',
   },
   {
-    title: 'GitOps delivery',
-    desc: 'ArgoCD watches the Git repository and reconciles cluster state automatically. Deploys happen through commits, not kubectl.',
+    title: 'Entrega GitOps',
+    desc: 'ArgoCD vigila el repositorio Git y reconcilia el estado del cluster automáticamente. Los deploys ocurren por commits, no por kubectl.',
   },
   {
-    title: 'Observability from day one',
-    desc: 'Prometheus and Grafana are part of the initial setup, not an afterthought. If it runs in production, it emits metrics.',
+    title: 'Observabilidad desde el día uno',
+    desc: 'Prometheus y Grafana forman parte de la configuración inicial, no una idea tardía. Si corre en producción, emite métricas.',
   },
 ]
 ---
 
 <Layout
-  title="About — Ruben Liquenson"
-  description="DevOps Engineer & AWS Specialist based in Las Palmas de Gran Canaria, Spain. Cloud infrastructure, Kubernetes, GitOps."
-  lang="en"
+  title="Sobre mí — Ruben Liquenson"
+  description="Ingeniero DevOps & Especialista AWS con base en Las Palmas de Gran Canaria, España. Infraestructura cloud, Kubernetes, GitOps."
+  lang="es"
 >
   <Header />
 
@@ -59,12 +62,12 @@ const focus = [
           class="about-photo"
         />
         <div>
-          <div class="eyebrow">About me</div>
+          <div class="eyebrow">Sobre mí</div>
           <h1 style="color: #FFF; margin-bottom: 0.75rem;">Ruben Liquenson</h1>
           <p style="color: #94A3B8; font-size: 1.125rem; max-width: 560px;">
-            DevOps Engineer & AWS Specialist based in Las Palmas de Gran
-            Canaria, Spain. I build and operate production-grade cloud
-            infrastructure — Kubernetes, Terraform, GitOps.
+            Ingeniero DevOps & Especialista AWS con base en Las Palmas de Gran
+            Canaria, España. Construyo y opero infraestructura cloud de nivel
+            producción — Kubernetes, Terraform, GitOps.
           </p>
         </div>
       </div>
@@ -75,30 +78,30 @@ const focus = [
     <div class="container" style="max-width: 800px;">
       <h2 style="margin-bottom: 1.5rem;">Bio</h2>
       <p style="margin-bottom: 1.25rem;">
-        I work as a DevOps Engineer, designing and operating cloud
-        infrastructure on AWS. My focus is on production-grade systems:
-        infrastructure that is reproducible, automated, and monitored — not
-        one-off setups that only work in a demo.
+        Trabajo como Ingeniero DevOps, diseñando y operando infraestructura
+        cloud en AWS. Mi enfoque está en sistemas de nivel producción:
+        infraestructura reproducible, automatizada y monitorizada — no
+        configuraciones puntuales que solo funcionan en una demo.
       </p>
       <p style="margin-bottom: 1.25rem;">
-        Most of my work centers on AWS EKS, Terraform, and GitOps delivery with
-        ArgoCD. I care about removing manual steps from deployment: every change
-        to infrastructure or application state should be visible in Git and
-        applied automatically.
+        La mayor parte de mi trabajo se centra en AWS EKS, Terraform y entrega
+        GitOps con ArgoCD. Me importa eliminar pasos manuales del despliegue:
+        cada cambio en infraestructura o en el estado de la aplicación debe ser
+        visible en Git y aplicarse automáticamente.
       </p>
       <p>
-        Outside of client and job work, I maintain a set of open source
-        infrastructure projects under{' '}
+        Fuera del trabajo con clientes, mantengo un conjunto de proyectos de
+        infraestructura open source bajo{' '}
         <a
           href="https://github.com/lra-cloud-ops"
           target="_blank"
           rel="noopener"
           style="color: var(--color-primary); font-weight: 600;"
           >github.com/lra-cloud-ops</a
-        > — see the <a
-          href="/projects"
-          style="color: var(--color-primary); font-weight: 600;">Projects</a
-        > page for details.
+        > — visita la página de <a
+          href="/es/proyectos"
+          style="color: var(--color-primary); font-weight: 600;">Proyectos</a
+        > para más detalles.
       </p>
     </div>
   </section>
@@ -106,8 +109,8 @@ const focus = [
   <section class="bg-subtle section">
     <div class="container">
       <div style="text-align: center; margin-bottom: 3rem;">
-        <div class="eyebrow">How I work</div>
-        <h2>Engineering principles</h2>
+        <div class="eyebrow">Cómo trabajo</div>
+        <h2>Principios de ingeniería</h2>
       </div>
       <div class="focus-grid">
         {
@@ -128,7 +131,7 @@ const focus = [
     <div class="container">
       <div style="text-align: center; margin-bottom: 3rem;">
         <div class="eyebrow">Stack</div>
-        <h2>Tools I use in production</h2>
+        <h2>Herramientas que uso en producción</h2>
       </div>
       <div class="stack-grid">
         {
@@ -150,18 +153,19 @@ const focus = [
   <section class="bg-dark on-dark section" style="text-align: center;">
     <div class="container">
       <div style="max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #FFF; margin-bottom: 1rem;">Let's talk</h2>
+        <h2 style="color: #FFF; margin-bottom: 1rem;">Hablemos</h2>
         <p style="color: #94A3B8; margin-bottom: 2.5rem; font-size: 1.125rem;">
-          Open to full-time roles, contracts, and freelance infrastructure work.
+          Abierto a puestos de tiempo completo, contratos y trabajo freelance en
+          infraestructura.
         </p>
         <div
           style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
         >
-          <a href="/contact" class="btn btn-primary btn-lg btn-pill"
-            >Get in touch →</a
+          <a href="/es/contacto" class="btn btn-primary btn-lg btn-pill"
+            >Contactar →</a
           >
-          <a href="/projects" class="btn btn-outline-white btn-lg btn-pill"
-            >View projects</a
+          <a href="/es/proyectos" class="btn btn-outline-white btn-lg btn-pill"
+            >Ver proyectos</a
           >
         </div>
       </div>

@@ -1,0 +1,328 @@
+---
+const currentPath = Astro.url.pathname
+const isES = currentPath.startsWith('/es')
+
+const enUrl = isES ? currentPath.replace(/^\/es/, '') || '/' : currentPath
+const esUrl = isES ? currentPath : '/es' + currentPath
+
+const navEN = [
+  { label: 'About', href: '/about' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+]
+const navES = [
+  { label: 'Sobre mí', href: '/es/sobre-mi' },
+  { label: 'Proyectos', href: '/es/proyectos' },
+  { label: 'Blog', href: '/es/blog' },
+  { label: 'Contacto', href: '/es/contacto' },
+]
+const nav = isES ? navES : navEN
+---
+
+<header class="site-header" id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a
+        href={isES ? '/es/' : '/'}
+        class="logo"
+        aria-label="Ruben Liquenson — Home"
+      >
+        <span class="logo-name">Ruben Liquenson</span>
+        <span class="logo-title">DevOps Engineer</span>
+      </a>
+
+      <!-- Nav desktop -->
+      <nav class="nav-desktop" aria-label="Main navigation">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class={`nav-link ${currentPath === item.href ? 'active' : ''}`}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- Actions -->
+      <div class="header-actions">
+        <!-- Language switcher -->
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-btn" id="langBtn" aria-expanded="false">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
+            </svg>
+            <span>{isES ? 'ES' : 'EN'}</span>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <a href={enUrl} class={`lang-option ${!isES ? 'active' : ''}`}>
+              English {!isES ? '✓' : ''}
+            </a>
+            <a href={esUrl} class={`lang-option ${isES ? 'active' : ''}`}>
+              Español {isES ? '✓' : ''}
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <a
+          href={isES ? '/es/contacto' : '/contact'}
+          class="btn btn-primary btn-sm"
+        >
+          {isES ? 'Contactar' : 'Hire me'}
+        </a>
+
+        <!-- Mobile menu toggle -->
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="container">
+      <nav>
+        {
+          nav.map((item) => (
+            <a href={item.href} class="mobile-nav-link">
+              {item.label}
+            </a>
+          ))
+        }
+        <div class="mobile-lang">
+          <a href={enUrl} class={!isES ? 'active' : ''}>English</a>
+          <a href={esUrl} class={isES ? 'active' : ''}>Español</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 64px;
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .logo-title {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
+  .nav-link {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+    text-decoration: none;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .lang-switcher {
+    position: relative;
+  }
+  .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.375rem 0.625rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .lang-btn:hover {
+    background: var(--surface-subtle);
+  }
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 130px;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    z-index: 200;
+  }
+  .lang-dropdown.open {
+    display: block;
+  }
+  .lang-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: background var(--transition);
+  }
+  .lang-option:hover {
+    background: var(--surface-subtle);
+  }
+  .lang-option.active {
+    color: var(--color-primary);
+    font-weight: 600;
+    background: var(--color-primary-light);
+  }
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  .mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all var(--transition);
+  }
+  .mobile-nav {
+    display: none;
+    border-top: 1px solid var(--border-light);
+    padding: 1rem 0;
+  }
+  .mobile-nav.open {
+    display: block;
+  }
+  .mobile-nav-link {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+    text-decoration: none;
+  }
+  .mobile-lang {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+  .mobile-lang a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .mobile-lang a.active {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .nav-desktop {
+      display: none;
+    }
+    .mobile-toggle {
+      display: flex;
+    }
+    .btn.btn-sm {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const langBtn = document.getElementById('langBtn')
+  const langDropdown = document.getElementById('langDropdown')
+  const langSwitcher = document.getElementById('langSwitcher')
+  const mobileToggle = document.getElementById('mobileToggle')
+  const mobileNav = document.getElementById('mobileNav')
+
+  langBtn?.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const open = langDropdown?.classList.toggle('open')
+    langBtn.setAttribute('aria-expanded', String(open))
+  })
+  document.addEventListener('click', (e) => {
+    if (!langSwitcher?.contains(e.target as Node)) {
+      langDropdown?.classList.remove('open')
+      langBtn?.setAttribute('aria-expanded', 'false')
+    }
+  })
+  mobileToggle?.addEventListener('click', () => {
+    mobileNav?.classList.toggle('open')
+  })
+</script>

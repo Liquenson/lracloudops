@@ -1,77 +1,214 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/layout/Header.astro'
+import Footer from '../../components/layout/Footer.astro'
+
+export const prerender = true
+
+const projects = [
+  {
+    name: 'aws-terraform-devops',
+    longDesc:
+      'Plataforma AWS de nivel producción construida con módulos Terraform. Incluye VPC con subredes Multi-AZ, cluster EKS con node groups gestionados, RDS PostgreSQL con backups automáticos, Application Load Balancer, CDN CloudFront y stack de observabilidad completo.',
+    tags: [
+      'AWS',
+      'EKS 1.31',
+      'Terraform',
+      'RDS PostgreSQL 15',
+      'ArgoCD',
+      'Jenkins',
+      'Prometheus',
+      'Grafana',
+    ],
+    status: 'Production',
+    href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+    metrics: [
+      { label: 'Tiempo de deploy', value: '45min' },
+      { label: 'Deploys manuales', value: '0' },
+      { label: 'Disponibilidad', value: '99.9%' },
+      { label: 'Cobertura IaC', value: '100%' },
+    ],
+  },
+  {
+    name: 'gitops-stack',
+    longDesc:
+      'Implementación GitOps completa siguiendo el modelo declarativo. ArgoCD vigila los repositorios Git y sincroniza automáticamente el estado del cluster. El drift se detecta y reconcilia automáticamente.',
+    tags: [
+      'ArgoCD',
+      'GitOps',
+      'Kubernetes',
+      'Helm',
+      'AWS EKS',
+      'Ansible',
+      'CloudWatch',
+    ],
+    status: 'Production',
+    href: 'https://github.com/lra-cloud-ops/gitops-stack',
+    metrics: [
+      { label: 'kubectl manual', value: '0' },
+      { label: 'Tiempo de deploy', value: '<8min' },
+      { label: 'Cobertura IaC', value: '100%' },
+      { label: 'Credenciales AWS', value: '0 estáticas' },
+    ],
+  },
+  {
+    name: 'k8s-devops-platform',
+    longDesc:
+      'Plataforma DevOps local completa para desarrollo. Usa KinD (Kubernetes in Docker) para replicar el entorno de producción. Incluye stack GitOps completo, observabilidad y pipelines CI/CD.',
+    tags: [
+      'Kubernetes',
+      'KinD',
+      'ArgoCD',
+      'Helm',
+      'Prometheus',
+      'Grafana',
+      'Alertmanager',
+    ],
+    status: 'Reference',
+    href: 'https://github.com/lra-cloud-ops/k8s-devops-platform',
+    metrics: [
+      { label: 'kubectl manual', value: '0' },
+      { label: 'Deploys GitOps', value: '100%' },
+      { label: 'Paridad con prod', value: 'Exacta' },
+      { label: 'Auto-heal', value: 'Activo' },
+    ],
+  },
+  {
+    name: 'linux-fleet-manager',
+    longDesc:
+      'Herramienta de gestión de flota de nivel producción que opera vía agentes SSH sin requerir agentes en los hosts destino. Todos los scripts están validados con ShellCheck y probados en CI en múltiples plataformas.',
+    tags: ['Bash', 'SSH', 'Linux', 'ShellCheck', 'CI/CD', 'Ansible'],
+    status: 'Production',
+    href: 'https://github.com/lra-cloud-ops/linux-fleet-manager',
+    metrics: [
+      { label: 'Agentes en hosts', value: '0' },
+      { label: 'Score ShellCheck', value: '100%' },
+      { label: 'Plataformas', value: '3 SO' },
+      { label: 'Idempotente', value: 'Sí' },
+    ],
+  },
+]
 ---
 
 <Layout
-  titulo="Arquitecturas de Referencia e Implementaciones de Plataforma"
-  descripcion="Entornos AWS de producción, implementaciones de platform engineering y arquitecturas de referencia GitOps. Workloads reales, resultados documentados."
+  title="Proyectos — Ruben Liquenson"
+  description="Proyectos DevOps open source de Ruben Liquenson. AWS EKS, Terraform, GitOps, Kubernetes — infraestructura de nivel producción."
+  lang="es"
 >
-  <section class="relative overflow-hidden" style="background-color: #0A2540;">
-    <div
-      class="absolute inset-0 pointer-events-none opacity-40"
-      style="background-image: radial-gradient(circle, rgba(147,184,255,0.15) 1px, transparent 1px); background-size: 28px 28px;"
-    >
+  <Header />
+
+  <section class="bg-dark on-dark section-sm">
+    <div class="container">
+      <div class="eyebrow">Open Source</div>
+      <h1 style="color: #FFF; margin-bottom: 1rem;">Proyectos</h1>
+      <p style="color: #94A3B8; max-width: 560px; font-size: 1.125rem;">
+        Proyectos de infraestructura de nivel producción. Código real, métricas
+        reales, entornos reales. No demos de sandbox.
+      </p>
     </div>
-    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-24">
-      <div class="max-w-3xl">
-        <span
-          class="inline-flex items-center text-xs font-semibold px-4 py-2 rounded-full mb-6"
-          style="background: rgba(30,111,255,0.15); color: #93b8ff; border: 1px solid rgba(30,111,255,0.3);"
-        >
-          Implementaciones documentadas · Workloads de producción
-        </span>
-        <h1
-          class="text-4xl sm:text-5xl font-extrabold text-white mb-5 animate-fade-left"
-          style="letter-spacing: -0.02em;"
-        >
-          Arquitecturas de Referencia
-        </h1>
-        <p
-          class="text-lg max-w-2xl animate-fade-up delay-200"
-          style="color: rgba(147,184,255,0.8);"
-        >
-          Plataformas de producción, implementaciones GitOps y automatización de
-          infraestructura. Workloads reales, no demos.
-        </p>
+  </section>
+
+  <section class="bg-light section">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; gap: 3rem;">
+        {
+          projects.map((project, i) => (
+            <article
+              class={`project-article ${i === 0 ? 'project-article-featured' : ''}`}
+            >
+              <div style="display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; margin-bottom: 1.5rem;">
+                <div>
+                  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener"
+                      style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); text-decoration: none;"
+                    >
+                      {project.name} ↗
+                    </a>
+                    <span
+                      class={`badge ${project.status === 'Production' ? 'badge-green' : 'badge-blue'}`}
+                    >
+                      {project.status}
+                    </span>
+                  </div>
+                  <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6;">
+                    {project.longDesc}
+                  </p>
+                </div>
+              </div>
+
+              <div class="metrics-grid">
+                {project.metrics.map((m, mi) => (
+                  <div
+                    class={`metric-item ${mi < project.metrics.length - 1 ? 'metric-border' : ''}`}
+                  >
+                    <div class="metric-value">{m.value}</div>
+                    <div class="metric-label">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
+                {project.tags.map((tag) => (
+                  <span class="tech-pill" style="font-size: 0.75rem;">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section class="py-24" style="background: #f8fafc;">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <div
-        class="inline-block mb-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
-        style="background: #EEF4FF; color: #1E6FFF;"
-      >
-        Proyectos
-      </div>
-      <h2 class="text-3xl font-bold mb-4" style="color: #111827;">
-        Próximamente
-      </h2>
-      <p class="text-base max-w-md mx-auto mb-8" style="color: #6B7280;">
-        Estamos documentando nuestros proyectos más recientes. Vuelve pronto.
-      </p>
-      <a
-        href="https://github.com/lra-cloud-ops"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"
-        style="background: #1E6FFF; color: #FFFFFF;"
-      >
-        <svg
-          class="w-4 h-4"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-          ></path>
-        </svg>
-        Ver GitHub
-      </a>
-    </div>
-  </section>
+  <Footer />
 </Layout>
+
+<style>
+  .project-article {
+    padding: 2.5rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    background: #fff;
+  }
+  .project-article-featured {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--surface-subtle);
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .metric-item {
+    padding: 1rem;
+    text-align: center;
+  }
+  .metric-border {
+    border-right: 1px solid var(--border-light);
+  }
+  .metric-value {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-primary);
+  }
+  .metric-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

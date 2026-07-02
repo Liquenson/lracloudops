@@ -1,42 +1,43 @@
-# ── Old EN /en/* URLs → new root EN URLs ─────────────────────────────────
+# ── Old /en/* prefixed URLs → new root EN URLs ───────────────────────────
 /en/about                       /about                      301
 /en/contact                     /contact                    301
-/en/services                    /services                   301
 /en/projects                    /projects                   301
 /en/blog/:slug                  /blog/:slug                 301
 /en/blog                        /blog                       301
-/en/certifications              /certifications             301
-/en/cloud-infrastructure        /cloud-infrastructure       301
-/en/devops-automation           /devops-automation          301
-/en/kubernetes-platforms        /kubernetes-platforms       301
-/en/platform-engineering        /platform-engineering       301
-/en/observability               /observability              301
-/en/pricing                     /pricing                    301
-/en/resources                   /resources                  301
-/en/open-source                 /open-source                301
-/en/security                    /security                   301
-/en/why-lra                     /why-lra                    301
-/en/terms                       /terms                      301
-/en/privacy                     /privacy                    301
-/en/methodology                 /methodology                301
-/en/assessment                  /assessment                 301
-/en/docs/:slug                  /docs/:slug                 301
-/en/docs                        /docs                       301
-/en/solutions/:slug             /solutions/:slug            301
-/en/industries/:slug            /industries/:slug           301
-/en/architectures/:slug         /architectures/:slug        301
-/en/architectures               /architectures              301
-/en/*                           /:splat                     301
+/en/*                           /                           301
 
-# ── Old root ES URLs → new /es/ URLs (ES was default before this refactor) ─
-/nosotros                       /es/nosotros                301
+# ── Old ES URLs (previous site structure) → current /es/ URLs ───────────
+/es/nosotros                    /es/sobre-mi                301
+/nosotros                       /es/sobre-mi                301
+/sobre-nosotros                 /es/sobre-mi                301
+/es/servicios                   /es/                        301
+/servicios                      /es/                        301
 /contacto                       /es/contacto                301
 /proyectos                      /es/proyectos               301
-/servicios                      /es/servicios               301
-/metodologia                    /es/metodologia             301
-/gracias                        /es/gracias                 301
-
-# ── Legacy Spanish vanity slugs ──────────────────────────────────────────
-/sobre-nosotros                 /es/nosotros                301
 /case-studies                   /es/proyectos               301
+/metodologia                    /es/                        301
+/gracias                        /es/                        301
+
+# ── Retired sections from the previous enterprise site ───────────────────
+/services                       /                           301
+/pricing                        /                           301
+/resources                      /                           301
+/open-source                    /projects                   301
+/security                       /                           301
+/why-lra                        /                           301
+/certifications                 /about                      301
+/cloud-infrastructure           /                           301
+/devops-automation              /                           301
+/kubernetes-platforms           /                           301
+/platform-engineering           /                           301
+/observability                  /                           301
+/terms                          /                           301
+/privacy                        /                           301
+/assessment                     /                           301
+/docs/:slug                     /                           301
+/docs                           /                           301
+/solutions/:slug                /                           301
+/industries/:slug               /                           301
+/architectures/:slug            /                           301
+/architectures                  /                           301
 /blog/en/:slug                  /blog/:slug                 301
