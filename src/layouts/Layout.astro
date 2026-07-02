@@ -8,6 +8,11 @@ interface Props {
 }
 
 const { title, description = 'LRA CloudOps', lang = 'en' } = Astro.props
+
+const isES = lang === 'es'
+const currentPath = Astro.url.pathname
+const enPath = isES ? currentPath.replace(/^\/es/, '') || '/' : currentPath
+const esPath = isES ? currentPath : '/es' + (currentPath === '/' ? '/' : currentPath)
 ---
 
 <!doctype html>
@@ -19,6 +24,9 @@ const { title, description = 'LRA CloudOps', lang = 'en' } = Astro.props
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/lracloudops-icon.svg" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL(esPath, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={Astro.site} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,5 +36,69 @@ const { title, description = 'LRA CloudOps', lang = 'en' } = Astro.props
   </head>
   <body>
     <slot />
+
+    <div id="lang-switcher" style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;">
+      <div style="position: relative;">
+        <button
+          id="lang-btn"
+          type="button"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 8px; padding: 0.5rem 0.875rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #111827; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
+          aria-expanded="false"
+          aria-haspopup="true"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span>{isES ? 'Español' : 'English'}</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <div
+          id="lang-dropdown"
+          style="display: none; position: absolute; bottom: calc(100% + 8px); right: 0; min-width: 140px; background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); overflow: hidden;"
+          role="menu"
+        >
+          <a
+            href={enPath}
+            role="menuitem"
+            style={`display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.625rem 1rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; text-decoration: none; ${!isES ? 'color: #1E6FFF; background: #EEF4FF; font-weight: 600;' : 'color: #111827; font-weight: 500;'}`}
+          >
+            <span>English</span>
+            {!isES && <span aria-hidden="true">✓</span>}
+          </a>
+          <a
+            href={esPath}
+            role="menuitem"
+            style={`display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.625rem 1rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; text-decoration: none; ${isES ? 'color: #1E6FFF; background: #EEF4FF; font-weight: 600;' : 'color: #111827; font-weight: 500;'}`}
+          >
+            <span>Español</span>
+            {isES && <span aria-hidden="true">✓</span>}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const btn = document.getElementById('lang-btn')
+      const dropdown = document.getElementById('lang-dropdown')
+      const switcher = document.getElementById('lang-switcher')
+
+      btn?.addEventListener('click', () => {
+        const isOpen = dropdown?.style.display === 'block'
+        if (dropdown) dropdown.style.display = isOpen ? 'none' : 'block'
+        btn.setAttribute('aria-expanded', String(!isOpen))
+      })
+
+      document.addEventListener('click', (event) => {
+        if (switcher && event.target instanceof Node && !switcher.contains(event.target)) {
+          if (dropdown) dropdown.style.display = 'none'
+          btn?.setAttribute('aria-expanded', 'false')
+        }
+      })
+    </script>
   </body>
 </html>
