@@ -1,94 +1,693 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import SaasHeader from '../components/layout/SaasHeader.astro'
+import SaasFooter from '../components/layout/SaasFooter.astro'
+
+const features = [
+  {
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+    title: 'Feature title placeholder',
+    description:
+      'Short placeholder description explaining what this capability does for the user.',
+  },
+  {
+    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+    title: 'Feature title placeholder',
+    description:
+      'Short placeholder description explaining what this capability does for the user.',
+  },
+  {
+    icon: 'M19 11H5m14-7H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z',
+    title: 'Feature title placeholder',
+    description:
+      'Short placeholder description explaining what this capability does for the user.',
+  },
+]
+
+const steps = [
+  {
+    number: '01',
+    title: 'Step title placeholder',
+    description: 'Placeholder copy describing the first step of the workflow.',
+  },
+  {
+    number: '02',
+    title: 'Step title placeholder',
+    description: 'Placeholder copy describing the second step of the workflow.',
+  },
+  {
+    number: '03',
+    title: 'Step title placeholder',
+    description: 'Placeholder copy describing the third step of the workflow.',
+  },
+]
+
+const plans = [
+  {
+    name: 'Free',
+    price: '€0',
+    period: '/mo',
+    features: [
+      'Placeholder feature one',
+      'Placeholder feature two',
+      'Placeholder feature three',
+      'Placeholder feature four',
+      'Placeholder feature five',
+    ],
+    cta: 'Start for free',
+    featured: false,
+  },
+  {
+    name: 'Starter',
+    price: '€49',
+    period: '/mo',
+    features: [
+      'Placeholder feature one',
+      'Placeholder feature two',
+      'Placeholder feature three',
+      'Placeholder feature four',
+      'Placeholder feature five',
+    ],
+    cta: 'Start free trial',
+    featured: false,
+  },
+  {
+    name: 'Professional',
+    price: '€199',
+    period: '/mo',
+    features: [
+      'Placeholder feature one',
+      'Placeholder feature two',
+      'Placeholder feature three',
+      'Placeholder feature four',
+      'Placeholder feature five',
+    ],
+    cta: 'Start free trial',
+    featured: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    features: [
+      'Placeholder feature one',
+      'Placeholder feature two',
+      'Placeholder feature three',
+      'Placeholder feature four',
+      'Placeholder feature five',
+    ],
+    cta: 'Talk to sales',
+    featured: false,
+  },
+]
+
+const testimonials = [
+  {
+    quote:
+      'Placeholder testimonial quote about the product experience goes here.',
+    name: 'Placeholder Name',
+    role: 'Role, Company',
+  },
+  {
+    quote:
+      'Placeholder testimonial quote about the product experience goes here.',
+    name: 'Placeholder Name',
+    role: 'Role, Company',
+  },
+  {
+    quote:
+      'Placeholder testimonial quote about the product experience goes here.',
+    name: 'Placeholder Name',
+    role: 'Role, Company',
+  },
+]
 ---
 
-<Layout title="LRA CloudOps" description="LRA CloudOps — Coming soon">
-  <main
-    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #FFFFFF;"
-  >
-    <div style="text-align: center; padding: 2rem;">
-      <div class="hero-logo" style="display: inline-flex; margin-bottom: 3rem;">
-        <div style="display: inline-flex; align-items: center; gap: 0.75rem;">
-          <img
-            src="/lracloudops-icon.svg"
-            alt="LRA CloudOps"
-            style="height: 40px; width: auto;"
-          />
-          <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #111827; letter-spacing: -0.01em;">
-            LRA CloudOps
-          </span>
+<Layout
+  title="Platform — Placeholder SaaS Design"
+  description="Platform headline goes here."
+>
+  <SaasHeader />
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="badge">● Now in beta</span>
+          <h1>Platform headline goes here</h1>
+          <p class="hero-subtitle">
+            Description of what the platform does in two lines max, placeholder
+            copy for now.
+          </p>
+          <div class="hero-ctas">
+            <a href="/signup" class="btn-primary btn-lg">Start for free →</a>
+            <a href="#how-it-works" class="btn-outline-white"
+              >See how it works</a
+            >
+          </div>
+          <p class="hero-note">No credit card required · Free forever plan</p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot" style="background:#ff5f56;"></span>
+              <span class="dot" style="background:#ffbd2e;"></span>
+              <span class="dot" style="background:#27c93f;"></span>
+            </div>
+            <pre
+              class="terminal-body"><code>$ platform init my-project
+✓ Analyzing configuration
+✓ Provisioning resources
+✓ Deployment ready
+
+$ platform status
+● All systems operational</code></pre>
+          </div>
         </div>
       </div>
+    </section>
 
-      <h1 style="color: #111827; font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem;">
-        Something new is coming.
-      </h1>
-      <p style="color: #6B7280; font-family: 'Red Hat Text', sans-serif; font-weight: 400; font-size: 1.125rem; max-width: 480px; margin: 0 auto 2.5rem;">
-        We're rebuilding from the ground up. A new vision for cloud infrastructure is on the way.
-      </p>
-
-      <a
-        href="mailto:info@lracloudops.com"
-        style="display: inline-flex; align-items: center; gap: 0.5rem; background: #111827; color: #FFF; padding: 0.875rem 2rem; border-radius: 9999px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
-      >
-        Get in touch →
-      </a>
-
-      <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem;">
-        <a
-          href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #0A66C2; text-decoration: none;"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/lra-cloud-ops/lra-ai-platform"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #111827; text-decoration: none;"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-          </svg>
-          LRA AI Platform
-        </a>
-      </div>
-
-      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #E5E7EB; text-align: center;">
-        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;">
-          DevOps Engineer · Cloud Engineer · AWS · Kubernetes · Terraform · GitOps
-        </p>
-        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #6B7280; margin-bottom: 0.25rem;">
-          📍 Las Palmas de Gran Canaria, Canarias, España
-        </p>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap;">
-          <a
-            href="https://www.linkedin.com/company/nibble-tech-llc/posts/?feedView=all"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="display: inline-flex; align-items: center; opacity: 0.85; transition: opacity 150ms ease;"
-            onmouseover="this.style.opacity='1'"
-            onmouseout="this.style.opacity='0.85'"
-          >
-            <img src="/nibble-logo.jpg" alt="Nibble Tech LLC" style="height: 36px; width: auto; border-radius: 4px;" />
-          </a>
-          <a
-            href="https://www.linkedin.com/school/itla/posts/?feedView=all"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="display: inline-flex; align-items: center; opacity: 0.85; transition: opacity 150ms ease;"
-            onmouseover="this.style.opacity='1'"
-            onmouseout="this.style.opacity='0.85'"
-          >
-            <img src="/itla-logo.jpg" alt="ITLA" style="height: 36px; width: auto; border-radius: 4px;" />
-          </a>
+    <!-- LOGOS STRIP -->
+    <section class="logos-strip">
+      <div class="container">
+        <p class="logos-label">Trusted by engineering teams at</p>
+        <div class="logos-row">
+          {
+            Array.from({ length: 5 }).map(() => (
+              <span class="logo-placeholder" />
+            ))
+          }
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section features">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Platform</span>
+          <h2>Everything your team needs</h2>
+        </div>
+        <div class="features-grid">
+          {
+            features.map((feature) => (
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d={feature.icon}
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">How it works</span>
+          <h2>From intent to production in seconds</h2>
+        </div>
+        <div class="steps-grid">
+          {
+            steps.map((step) => (
+              <div class="step-card">
+                <span class="step-number">{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Pricing</span>
+          <h2>Simple, transparent pricing</h2>
+        </div>
+
+        <div
+          class="toggle"
+          style="margin: 0 auto 3rem; display: flex;"
+          role="tablist"
+          aria-label="Billing period"
+        >
+          <button
+            class="toggle-option active"
+            type="button"
+            role="tab"
+            aria-selected="true">Monthly</button
+          >
+          <button
+            class="toggle-option"
+            type="button"
+            role="tab"
+            aria-selected="false">Annual</button
+          >
+        </div>
+
+        <div class="pricing-grid">
+          {
+            plans.map((plan) => (
+              <div class={`pricing-card ${plan.featured ? 'featured' : ''}`}>
+                {plan.featured && (
+                  <span class="pricing-badge">Most popular</span>
+                )}
+                <div>
+                  <h3>{plan.name}</h3>
+                  <p class="pricing-price">
+                    {plan.price}
+                    {plan.period && <span>{plan.period}</span>}
+                  </p>
+                </div>
+                <ul class="feature-list">
+                  {plan.features.map((f) => (
+                    <li>{f}</li>
+                  ))}
+                </ul>
+                <a
+                  href="/signup"
+                  class={plan.featured ? 'btn-primary' : 'btn-outline'}
+                  style="justify-content: center;"
+                >
+                  {plan.cta}
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Testimonials</span>
+          <h2>What engineers say</h2>
+        </div>
+        <div class="testimonials-grid">
+          {
+            testimonials.map((t) => (
+              <div class="testimonial-card">
+                <p class="testimonial-quote">"{t.quote}"</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar" />
+                  <div>
+                    <p class="testimonial-name">{t.name}</p>
+                    <p class="testimonial-role">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <div class="container final-cta-inner">
+        <h2>Ready to get started?</h2>
+        <p>
+          Placeholder subtitle inviting the visitor to take the next step with
+          the platform.
+        </p>
+        <div class="hero-ctas" style="justify-content: center;">
+          <a href="/signup" class="btn-primary btn-lg">Start for free →</a>
+          <a href="#" class="btn-outline-white">Talk to sales</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <SaasFooter />
 </Layout>
+
+<style>
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 2rem);
+  }
+  .section {
+    padding-block: clamp(4rem, 8vw, 6rem);
+  }
+  .section-heading {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0078d4;
+    margin-bottom: 0.75rem;
+  }
+  .section-heading h2 {
+    color: #111827;
+  }
+
+  /* HERO */
+  .hero {
+    background: #0d1b2e;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding-block: 5rem;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-copy h1 {
+    color: #ffffff;
+    margin-block: 1.25rem 1rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: rgba(0, 120, 212, 0.15);
+    color: #4ade80;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+  }
+  .hero-subtitle {
+    color: #a19f9d;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 1.125rem;
+    max-width: 480px;
+    margin-bottom: 2rem;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .hero-note {
+    color: #6b7280;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.875rem;
+  }
+  .btn-lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+  .btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Red Hat Text', sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.875rem 1.75rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: border-color 150ms ease;
+  }
+  .btn-outline-white:hover {
+    border-color: #ffffff;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Red Hat Text', sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: #0078d4;
+    border: 1px solid #0078d4;
+    padding: 0.625rem 1.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background 150ms ease;
+  }
+  .btn-outline:hover {
+    background: #eff6fc;
+  }
+
+  .terminal {
+    background: #0a1628;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  }
+  .terminal-bar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+  }
+  .terminal-body {
+    padding: 1.5rem;
+    font-family: 'Red Hat Mono', monospace;
+    font-size: 0.8125rem;
+    line-height: 1.8;
+    color: #4ec9b0;
+    white-space: pre-wrap;
+  }
+
+  /* LOGOS STRIP */
+  .logos-strip {
+    background: #0a1628;
+    padding-block: 3rem;
+  }
+  .logos-label {
+    text-align: center;
+    color: #6b7280;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .logos-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 5vw, 3rem);
+    flex-wrap: wrap;
+  }
+  .logo-placeholder {
+    width: 120px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+  }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .feature-card {
+    background: #ffffff;
+    border: 1px solid #edebe9;
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: #eff6fc;
+    color: #0078d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .feature-card h3 {
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  .feature-card p {
+    color: #6b7280;
+    font-size: 0.9375rem;
+  }
+
+  /* HOW IT WORKS */
+  .how-it-works {
+    background: #faf9f8;
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .step-card {
+    text-align: center;
+  }
+  .step-number {
+    display: block;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #0078d4;
+    opacity: 0.35;
+    margin-bottom: 0.5rem;
+  }
+  .step-card h3 {
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  .step-card p {
+    color: #6b7280;
+    font-size: 0.9375rem;
+  }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .pricing-card {
+    position: relative;
+  }
+  .pricing-badge {
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0078d4;
+    color: #ffffff;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+  .pricing-card h3 {
+    color: #111827;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: #faf9f8;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .testimonial-card {
+    background: #ffffff;
+    border: 1px solid #edebe9;
+    border-radius: 8px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .testimonial-quote {
+    color: #374151;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background: #edebe9;
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #111827;
+  }
+  .testimonial-role {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.8125rem;
+    color: #6b7280;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: #0d1b2e;
+    padding-block: clamp(4rem, 8vw, 6rem);
+  }
+  .final-cta-inner {
+    text-align: center;
+  }
+  .final-cta-inner h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  .final-cta-inner p {
+    color: #a19f9d;
+    font-size: 1.0625rem;
+    max-width: 480px;
+    margin: 0 auto 2rem;
+  }
+
+  @media (max-width: 960px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .pricing-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .features-grid,
+    .steps-grid,
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

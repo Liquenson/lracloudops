@@ -1,0 +1,317 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import DashboardLayout from '../../components/layout/DashboardLayout.astro'
+
+const stats = [
+  { label: 'Queries this month', value: '0 / 500' },
+  { label: 'Agents available', value: '18' },
+  { label: 'API calls', value: '0' },
+  { label: 'Next billing', value: 'Mar 1' },
+]
+
+const agents = [
+  {
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+    name: 'Agent name placeholder',
+    description: 'Short placeholder description of what this agent does.',
+  },
+  {
+    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+    name: 'Agent name placeholder',
+    description: 'Short placeholder description of what this agent does.',
+  },
+  {
+    icon: 'M19 11H5m14-7H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z',
+    name: 'Agent name placeholder',
+    description: 'Short placeholder description of what this agent does.',
+  },
+  {
+    icon: 'M3 3v18h18M7 15l4-4 4 4 5-6',
+    name: 'Agent name placeholder',
+    description: 'Short placeholder description of what this agent does.',
+  },
+  {
+    icon: 'M15 7a2 2 0 012 2m4 0a6 6 0 11-12 0 6 6 0 0112 0zM3 21l6-6',
+    name: 'Agent name placeholder',
+    description: 'Short placeholder description of what this agent does.',
+  },
+  {
+    icon: 'M12 15a3 3 0 100-6 3 3 0 000 6z',
+    name: 'Agent name placeholder',
+    description: 'Short placeholder description of what this agent does.',
+  },
+]
+
+const chartBars = [40, 65, 30, 80, 55, 90, 45]
+
+const activity = [
+  { label: 'Placeholder activity item', time: '2h ago' },
+  { label: 'Placeholder activity item', time: '5h ago' },
+  { label: 'Placeholder activity item', time: '1d ago' },
+  { label: 'Placeholder activity item', time: '2d ago' },
+  { label: 'Placeholder activity item', time: '3d ago' },
+]
+---
+
+<Layout title="Dashboard — Platform" description="Platform dashboard.">
+  <DashboardLayout active="overview">
+    <div class="topbar">
+      <div>
+        <h1>Good morning, User</h1>
+      </div>
+      <div class="topbar-actions">
+        <span class="plan-badge">Professional</span>
+        <a href="/pricing" class="btn-upgrade">Upgrade</a>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      {
+        stats.map((stat) => (
+          <div class="stat-card">
+            <p class="stat-value">{stat.value}</p>
+            <p class="stat-label">{stat.label}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="dashboard-section-heading">
+      <h2>Your agents</h2>
+      <a href="#" class="view-all-link">View all 18 agents →</a>
+    </div>
+    <div class="agents-grid">
+      {
+        agents.map((agent) => (
+          <div class="agent-card">
+            <div class="agent-icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d={agent.icon}
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3>{agent.name}</h3>
+            <p>{agent.description}</p>
+            <a href="#" class="agent-link">
+              Use →
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="panel">
+        <h2>Usage this month</h2>
+        <div class="chart">
+          {
+            chartBars.map((height) => (
+              <div class="chart-bar" style={`height: ${height}%`} />
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Recent activity</h2>
+        <ul class="activity-list">
+          {
+            activity.map((item) => (
+              <li>
+                <span class="activity-dot" />
+                <span class="activity-label">{item.label}</span>
+                <span class="activity-time">{item.time}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </DashboardLayout>
+</Layout>
+
+<style>
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .topbar h1 {
+    font-size: 1.5rem;
+    color: #111827;
+  }
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .plan-badge {
+    background: #eff6fc;
+    color: #0078d4;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+  }
+  .btn-upgrade {
+    background: #0078d4;
+    color: #ffffff;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    text-decoration: none;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .dashboard-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .dashboard-section-heading h2 {
+    font-size: 1.125rem;
+    color: #111827;
+  }
+  .view-all-link {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0078d4;
+    text-decoration: none;
+  }
+
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .agent-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #eff6fc;
+    color: #0078d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.875rem;
+  }
+  .agent-card h3 {
+    font-size: 0.9375rem;
+    color: #111827;
+    margin-bottom: 0.375rem;
+  }
+  .agent-card p {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    margin-bottom: 0.875rem;
+  }
+  .agent-link {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #0078d4;
+    text-decoration: none;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.25rem;
+  }
+  .panel {
+    background: #ffffff;
+    border: 1px solid #edebe9;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  .panel h2 {
+    font-size: 1rem;
+    color: #111827;
+    margin-bottom: 1.25rem;
+  }
+
+  .chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    height: 160px;
+  }
+  .chart-bar {
+    flex: 1;
+    background: #0078d4;
+    border-radius: 4px 4px 0 0;
+    opacity: 0.85;
+  }
+
+  .activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .activity-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  .activity-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #0078d4;
+    flex-shrink: 0;
+  }
+  .activity-label {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.875rem;
+    color: #374151;
+    flex: 1;
+  }
+  .activity-time {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.8125rem;
+    color: #a19f9d;
+  }
+
+  @media (max-width: 960px) {
+    .stats-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .agents-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .stats-row,
+    .agents-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

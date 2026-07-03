@@ -1,0 +1,140 @@
+---
+const columns = [
+  {
+    title: 'Product',
+    links: ['Features', 'Pricing', 'Changelog', 'Roadmap'],
+  },
+  {
+    title: 'Resources',
+    links: ['Documentation', 'API Reference', 'Guides', 'Status'],
+  },
+  {
+    title: 'Company',
+    links: ['About', 'Blog', 'Careers', 'Contact'],
+  },
+  {
+    title: 'Legal',
+    links: ['Privacy Policy', 'Terms of Service', 'Security', 'Cookies'],
+  },
+]
+---
+
+<footer class="saas-footer">
+  <div class="saas-footer-inner">
+    <div class="saas-footer-brand">
+      <div class="saas-footer-logo">
+        <img src="/lracloudops-icon.svg" alt="" width="28" height="28" />
+        <span>Platform</span>
+      </div>
+      <p class="saas-footer-tagline">
+        Short placeholder description of the platform goes here, one or two
+        lines.
+      </p>
+    </div>
+
+    <div class="saas-footer-columns">
+      {
+        columns.map((col) => (
+          <div class="saas-footer-column">
+            <h4>{col.title}</h4>
+            <ul>
+              {col.links.map((link) => (
+                <li>
+                  <a href="#">{link}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="saas-footer-bottom">
+    <p>&copy; 2026 Platform, Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .saas-footer {
+    background: #1b1b1b;
+    color: #a19f9d;
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+  .saas-footer-inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 2rem);
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+  }
+  .saas-footer-brand {
+    max-width: 320px;
+  }
+  .saas-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  .saas-footer-tagline {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #a19f9d;
+  }
+  .saas-footer-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .saas-footer-column h4 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+  }
+  .saas-footer-column ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .saas-footer-column a {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.9375rem;
+    color: #a19f9d;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+  .saas-footer-column a:hover {
+    color: #ffffff;
+  }
+  .saas-footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.5rem clamp(1rem, 5vw, 2rem);
+  }
+  .saas-footer-bottom p {
+    max-width: 1200px;
+    margin-inline: auto;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 0.8125rem;
+    color: #6b7280;
+  }
+
+  @media (max-width: 720px) {
+    .saas-footer-inner {
+      grid-template-columns: 1fr;
+    }
+    .saas-footer-columns {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
