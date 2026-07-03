@@ -1,342 +1,98 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-
-const projects = [
-  {
-    name: 'lra-ai-platform',
-    desc: 'Plataforma de ingeniería asistida por IA. Sistema multi-agente centrado en tareas para DevOps y Platform Engineering.',
-    tags: ['Python', 'FastAPI', 'Multi-Agent'],
-    status: 'Active',
-    href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
-  },
-  {
-    name: 'aws-terraform-devops',
-    desc: 'Infraestructura AWS completa con EKS 1.31, RDS PostgreSQL 15, ArgoCD, Prometheus/Grafana.',
-    tags: ['AWS', 'Terraform', 'EKS'],
-    status: 'Production',
-    href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
-  },
-  {
-    name: 'gitops-stack',
-    desc: 'Pipeline GitOps con ArgoCD sobre AWS EKS. Cero kubectl manual en producción.',
-    tags: ['ArgoCD', 'GitOps', 'Kubernetes'],
-    status: 'Production',
-    href: 'https://github.com/lra-cloud-ops/gitops-stack',
-  },
-  {
-    name: 'k8s-devops-platform',
-    desc: 'Plataforma Kubernetes local con KinD, ArgoCD, Prometheus. Refleja producción exactamente.',
-    tags: ['Kubernetes', 'KinD', 'Prometheus'],
-    status: 'Reference',
-    href: 'https://github.com/lra-cloud-ops/k8s-devops-platform',
-  },
-  {
-    name: 'linux-fleet-manager',
-    desc: 'Gestión de flotas Linux 100% validada con ShellCheck vía SSH. Operaciones idempotentes en múltiples hosts.',
-    tags: ['Bash', 'SSH', 'Linux'],
-    status: 'Production',
-    href: 'https://github.com/lra-cloud-ops/linux-fleet-manager',
-  },
-  {
-    name: 'Más próximamente',
-    desc: 'Nuevos proyectos se están documentando y se publicarán aquí a medida que se completen.',
-    tags: [],
-    status: 'Soon',
-    href: 'https://github.com/lra-cloud-ops',
-  },
-]
-
-function statusStyle(status: string) {
-  if (status === 'Production') return 'background: #DFF6DD; color: #107C10;'
-  if (status === 'Active') return 'background: #EFF6FC; color: #0078D4;'
-  return 'background: #FAF9F8; color: #6B7280;'
-}
 ---
 
 <Layout
   title="LRA CloudOps"
-  description="Plataforma de infraestructura cloud. AWS, Kubernetes, Terraform, GitOps."
+  description="LRA CloudOps — Próximamente. Una nueva visión para la infraestructura cloud."
   lang="es"
 >
-  <!-- HERO — bloque grande navy -->
-  <section
-    style="background: #0D1B2E; padding: 5rem 0 4rem; position: relative; overflow: hidden;"
+  <main
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #FFFFFF;"
   >
-    <div
-      style="position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0); background-size: 28px 28px; pointer-events: none;"
-    >
-    </div>
-
-    <div
-      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); position: relative; z-index: 1;"
-    >
-      <div
-        style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4rem;"
-      >
-        <a
-          href="/es"
-          style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none;"
-        >
+    <div style="text-align: center; padding: 2rem;">
+      <div class="hero-logo" style="display: inline-flex; margin-bottom: 3rem;">
+        <div style="display: inline-flex; align-items: center; gap: 0.75rem;">
           <img
             src="/lracloudops-icon.svg"
             alt="LRA CloudOps"
-            width="32"
-            height="32"
+            style="height: 40px; width: auto;"
           />
-          <span
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #FFFFFF;"
-            >LRA CloudOps</span
-          >
+          <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #111827; letter-spacing: -0.01em;">
+            LRA CloudOps
+          </span>
+        </div>
+      </div>
+
+      <h1 style="color: #111827; font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem;">
+        Algo nuevo está por llegar.
+      </h1>
+      <p style="color: #6B7280; font-family: 'Red Hat Text', sans-serif; font-weight: 400; font-size: 1.125rem; max-width: 480px; margin: 0 auto 2.5rem;">
+        Estamos reconstruyendo desde cero. Una nueva visión para la infraestructura cloud está en camino.
+      </p>
+
+      <a
+        href="mailto:info@lracloudops.com"
+        style="display: inline-flex; align-items: center; gap: 0.5rem; background: #111827; color: #FFF; padding: 0.875rem 2rem; border-radius: 9999px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+      >
+        Contactar →
+      </a>
+
+      <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem;">
+        <a
+          href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #0A66C2; text-decoration: none;"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
         </a>
         <a
-          href="mailto:info@lracloudops.com"
-          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.7); text-decoration: none; border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 4px;"
+          href="https://github.com/lra-cloud-ops/lra-ai-platform"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #111827; text-decoration: none;"
         >
-          Contacto
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+          LRA AI Platform
         </a>
       </div>
 
-      <div style="max-width: 680px;">
-        <div
-          style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16,124,16,0.15); border: 1px solid rgba(74,222,128,0.25); color: #4ADE80; padding: 0.375rem 0.875rem; border-radius: 4px; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 600; margin-bottom: 2rem;"
-        >
-          <span
-            style="width: 6px; height: 6px; background: #4ADE80; border-radius: 50%;"
-          ></span>
-          Disponible para nuevos proyectos
-        </div>
-
-        <h1
-          style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 900; color: #FFFFFF; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1.25rem;"
-        >
-          Algo nuevo<br />está por llegar.
-        </h1>
-
-        <p
-          style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #A19F9D; line-height: 1.7; margin-bottom: 2.5rem; max-width: 520px;"
-        >
-          Estamos reconstruyendo desde cero. Una nueva visión para la
-          infraestructura cloud está en camino.
+      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #E5E7EB; text-align: center;">
+        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;">
+          Ingeniero DevOps · Ingeniero Cloud · AWS · Kubernetes · Terraform · GitOps
         </p>
-
-        <div
-          style="display: flex; gap: 0.875rem; flex-wrap: wrap; margin-bottom: 3rem;"
-        >
-          <a
-            href="mailto:info@lracloudops.com"
-            style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0078D4; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
-          >
-            Ponerse en contacto →
-          </a>
-          <a
-            href="https://github.com/lra-cloud-ops/lra-ai-platform"
-            target="_blank"
-            rel="noopener"
-            style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
-              ><path
-                d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
-              ></path></svg
-            >
-            Ver en GitHub
-          </a>
-        </div>
-
-        <div
-          style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;"
-        >
-          <a
-            href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
-            target="_blank"
-            rel="noopener"
-            style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; color: #A19F9D; text-decoration: none;"
-          >
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              style="color: #0A66C2;"
-              ><path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-              ></path></svg
-            >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/lra-cloud-ops/lra-ai-platform"
-            target="_blank"
-            rel="noopener"
-            style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; color: #A19F9D; text-decoration: none;"
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
-              ><path
-                d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
-              ></path></svg
-            >
-            LRA AI Platform
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BARRA — strip compacto navy más oscuro -->
-  <section
-    style="background: #0A1628; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);"
-  >
-    <div
-      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
-    >
-      <div
-        style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;"
-      >
-        <span
-          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #A19F9D; font-weight: 500;"
-        >
-          Ingeniero DevOps · Ingeniero Cloud · AWS · Kubernetes · Terraform ·
-          GitOps
-        </span>
-        <span
-          style="margin-left: auto; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #4ADE80; display: flex; align-items: center; gap: 0.375rem;"
-        >
-          <span
-            style="width: 6px; height: 6px; background: #4ADE80; border-radius: 50%;"
-          ></span>
-          Las Palmas de Gran Canaria, España
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN BLANCA — título -->
-  <section style="background: #FFFFFF; padding: 5rem 0 3rem;">
-    <div
-      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
-    >
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
-      >
-        Proyectos Open Source
-      </p>
-      <h2
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #111827; letter-spacing: -0.02em; margin-bottom: 0.75rem;"
-      >
-        Infraestructura construida en público
-      </h2>
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280; max-width: 520px; line-height: 1.7;"
-      >
-        Proyectos reales, infraestructura real, código real. Todo documentado y
-        open source.
-      </p>
-    </div>
-  </section>
-
-  <!-- GRID 3x2 — 6 cards -->
-  <section style="background: #FFFFFF; padding: 0 0 5rem;">
-    <div
-      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
-    >
-      <div
-        class="project-grid"
-        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;"
-      >
-        {
-          projects.map((project) => (
-            <a
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card"
-              style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #EDEBE9; border-radius: 8px; padding: 1.5rem; text-decoration: none; transition: all 150ms ease; min-height: 180px;"
-            >
-              <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 0.75rem;">
-                <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.9375rem; font-weight: 600; color: #0078D4;">
-                  {project.name}
-                </span>
-                <span
-                  style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 3px; flex-shrink: 0; margin-left: 0.5rem; ${statusStyle(project.status)}`}
-                >
-                  {project.status}
-                </span>
-              </div>
-              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #6B7280; line-height: 1.6; flex: 1; margin-bottom: 1rem;">
-                {project.desc}
-              </p>
-              {project.tags.length > 0 && (
-                <div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: auto;">
-                  {project.tags.map((tag) => (
-                    <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: #6B7280; background: #FAF9F8; border: 1px solid #EDEBE9; padding: 0.125rem 0.5rem; border-radius: 3px;">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ESPACIO BLANCO CIERRE -->
-  <section
-    style="background: #FAF9F8; padding: 3rem 0; border-top: 1px solid #EDEBE9;"
-  >
-    <div
-      style="max-width: 1200px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
-    >
-      <div
-        style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;"
-      >
-        <div
-          style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;"
-        >
+        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #6B7280; margin-bottom: 0.25rem;">
+          📍 Las Palmas de Gran Canaria, Canarias, España
+        </p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap;">
           <a
             href="https://www.linkedin.com/company/nibble-tech-llc/posts/?feedView=all"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
+            style="display: inline-flex; align-items: center; opacity: 0.85; transition: opacity 150ms ease;"
+            onmouseover="this.style.opacity='1'"
+            onmouseout="this.style.opacity='0.85'"
           >
-            <img
-              src="/nibble-logo.jpg"
-              alt="Nibble Tech LLC"
-              style="height: 32px; width: auto; border-radius: 4px; opacity: 0.8;"
-            />
+            <img src="/nibble-logo.jpg" alt="Nibble Tech LLC" style="height: 36px; width: auto; border-radius: 4px;" />
           </a>
           <a
             href="https://www.linkedin.com/school/itla/posts/?feedView=all"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
+            style="display: inline-flex; align-items: center; opacity: 0.85; transition: opacity 150ms ease;"
+            onmouseover="this.style.opacity='1'"
+            onmouseout="this.style.opacity='0.85'"
           >
-            <img
-              src="/itla-logo.jpg"
-              alt="ITLA"
-              style="height: 32px; width: auto; border-radius: 4px; opacity: 0.8;"
-            />
+            <img src="/itla-logo.jpg" alt="ITLA" style="height: 36px; width: auto; border-radius: 4px;" />
           </a>
         </div>
-        <p
-          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #6B7280;"
-        >
-          © 2026 LRA CloudOps · Construido por Ruben Liquenson
-        </p>
       </div>
     </div>
-  </section>
+  </main>
 </Layout>
-
-<style>
-  .project-card:hover {
-    border-color: #0078d4;
-    box-shadow: 0 4px 16px rgba(0, 120, 212, 0.1);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 768px) {
-    .project-grid {
-      grid-template-columns: 1fr !important;
-    }
-  }
-</style>
