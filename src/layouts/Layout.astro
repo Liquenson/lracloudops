@@ -12,9 +12,7 @@ const { title, description = 'LRA CloudOps', lang = 'en' } = Astro.props
 const isES = lang === 'es'
 const currentPath = Astro.url.pathname
 const enPath = isES ? currentPath.replace(/^\/es/, '') || '/' : currentPath
-const esPath = isES
-  ? currentPath
-  : '/es' + (currentPath === '/' ? '/' : currentPath)
+const esPath = isES ? currentPath : '/es' + (currentPath === '/' ? '/' : currentPath)
 ---
 
 <!doctype html>
@@ -39,14 +37,10 @@ const esPath = isES
   <body>
     <slot />
 
-    <div
-      id="lang-switcher"
-      style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;"
-    >
+    <div id="lang-switcher" style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;">
       <div style="position: relative; text-align: center;">
-        <p
-          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #6B7280; font-weight: 500; margin-bottom: 0.5rem;"
-        >
+
+        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #6B7280; font-weight: 500; margin-bottom: 0.5rem;">
           {isES ? 'Cambiar idioma' : 'Change page language'}
         </p>
 
@@ -57,31 +51,13 @@ const esPath = isES
           aria-expanded="false"
           aria-haspopup="true"
         >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            style="color: #6B7280;"
-          >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #6B7280;">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="2" y1="12" x2="22" y2="12"></line>
-            <path
-              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-            ></path>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
           </svg>
           <span>{isES ? 'Español' : 'English'}</span>
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            style="color: #6B7280;"
-          >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #6B7280;">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
@@ -96,62 +72,26 @@ const esPath = isES
             role="menuitem"
             style={`display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; ${!isES ? 'color: #0078D4; background: #EFF6FC; font-weight: 600;' : 'color: #111827;'}`}
           >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path
-                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-              ></path>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
             <span>English</span>
-            {
-              !isES && (
-                <span
-                  aria-hidden="true"
-                  style="margin-left: auto; color: #0078D4;"
-                >
-                  ✓
-                </span>
-              )
-            }
+            {!isES && <span aria-hidden="true" style="margin-left: auto; color: #0078D4;">✓</span>}
           </a>
           <a
             href={esPath}
             role="menuitem"
             style={`display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; ${isES ? 'color: #0078D4; background: #EFF6FC; font-weight: 600;' : 'color: #111827;'}`}
           >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path
-                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-              ></path>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
             <span>Español</span>
-            {
-              isES && (
-                <span
-                  aria-hidden="true"
-                  style="margin-left: auto; color: #0078D4;"
-                >
-                  ✓
-                </span>
-              )
-            }
+            {isES && <span aria-hidden="true" style="margin-left: auto; color: #0078D4;">✓</span>}
           </a>
         </div>
       </div>
@@ -169,11 +109,7 @@ const esPath = isES
       })
 
       document.addEventListener('click', (event) => {
-        if (
-          switcher &&
-          event.target instanceof Node &&
-          !switcher.contains(event.target)
-        ) {
+        if (switcher && event.target instanceof Node && !switcher.contains(event.target)) {
           if (dropdown) dropdown.style.display = 'none'
           btn?.setAttribute('aria-expanded', 'false')
         }
