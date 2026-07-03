@@ -2,93 +2,1026 @@
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="LRA CloudOps" description="LRA CloudOps — Coming soon">
-  <main
-    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #FFFFFF;"
+<Layout title="LRA CloudOps" description="Platform placeholder" lang="en">
+  <!-- HEADER -->
+  <header
+    style="position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid #EDEBE9;"
   >
-    <div style="text-align: center; padding: 2rem;">
-      <div class="hero-logo" style="display: inline-flex; margin-bottom: 3rem;">
-        <div style="display: inline-flex; align-items: center; gap: 0.75rem;">
-          <img
-            src="/lracloudops-icon.svg"
-            alt="LRA CloudOps"
-            style="height: 40px; width: auto;"
-          />
-          <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #111827; letter-spacing: -0.01em;">
-            LRA CloudOps
-          </span>
+    <div
+      style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); display: flex; align-items: center; height: 64px; gap: 2rem;"
+    >
+      <a
+        href="/"
+        style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none; flex-shrink: 0;"
+      >
+        <img
+          src="/lracloudops-icon.svg"
+          alt="LRA CloudOps"
+          width="28"
+          height="28"
+        />
+        <span
+          style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 700; color: #111827; letter-spacing: -0.01em;"
+          >LRA CloudOps</span
+        >
+      </a>
+      <nav
+        style="display: flex; align-items: center; gap: 0.125rem; margin-left: 2rem;"
+        class="main-nav"
+      >
+        {
+          ['Products', 'Solutions', 'Resources', 'Pricing', 'Company'].map(
+            (item) => (
+              <a
+                href="#"
+                style="padding: 0.375rem 0.75rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #6B7280; border-radius: 4px; text-decoration: none; transition: all 150ms ease; display: flex; align-items: center; gap: 0.25rem;"
+              >
+                {item}
+                {['Products', 'Solutions', 'Resources', 'Company'].includes(
+                  item
+                ) && (
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                )}
+              </a>
+            )
+          )
+        }
+      </nav>
+      <div
+        style="display: flex; align-items: center; gap: 0.75rem; margin-left: auto; flex-shrink: 0;"
+      >
+        <a
+          href="/login"
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #6B7280; text-decoration: none; padding: 0.375rem 0.75rem; border-radius: 4px;"
+        >
+          Sign in
+        </a>
+        <a
+          href="/signup"
+          style="display: inline-flex; align-items: center; gap: 0.375rem; background: #0078D4; color: #FFFFFF; padding: 0.5rem 1.125rem; border-radius: 6px; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 600; text-decoration: none;"
+        >
+          Start for free
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO — white/light background, dashboard mockup on the right -->
+  <section
+    style="background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F8 100%); padding: 5rem 0 4rem; overflow: hidden; min-height: 85vh; display: flex; align-items: center;"
+  >
+    <div
+      style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); width: 100%;"
+    >
+      <div
+        style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center;"
+        class="hero-grid"
+      >
+        <!-- Left -->
+        <div>
+          <div
+            style="display: inline-flex; align-items: center; gap: 0.5rem; background: #EFF6FC; border: 1px solid rgba(0,120,212,0.2); color: #0078D4; padding: 0.375rem 0.875rem; border-radius: 9999px; font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; margin-bottom: 1.75rem;"
+          >
+            <span
+              style="width: 6px; height: 6px; background: #4ADE80; border-radius: 50%; animation: pulse 2s infinite;"
+            ></span>
+            New &nbsp;·&nbsp; Advanced integrations just launched →
+          </div>
+
+          <h1
+            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 900; color: #111827; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1.25rem;"
+          >
+            The all-in-one<br />
+            platform to<br />
+            grow <span style="color: #0078D4;">your business</span>
+          </h1>
+
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #6B7280; line-height: 1.7; margin-bottom: 2.5rem; max-width: 440px;"
+          >
+            Manage your customers, projects, and finances from one place. More
+            productivity, fewer headaches.
+          </p>
+
+          <div
+            style="display: flex; gap: 0.875rem; flex-wrap: wrap; margin-bottom: 1.5rem;"
+          >
+            <a
+              href="/signup"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0078D4; color: #FFFFFF; padding: 0.875rem 1.75rem; border-radius: 8px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+            >
+              Start for free →
+            </a>
+            <a
+              href="#demo"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; background: #FFFFFF; color: #111827; padding: 0.875rem 1.75rem; border-radius: 8px; border: 1px solid #EDEBE9; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; box-shadow: 0 1px 3px rgba(0,0,0,0.08);"
+            >
+              <span
+                style="width: 24px; height: 24px; background: #0078D4; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"
+              >
+                <svg width="8" height="10" viewBox="0 0 8 10" fill="white"
+                  ><path d="M1 1l6 4-6 4V1z"></path></svg
+                >
+              </span>
+              Watch demo
+            </a>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;"
+          >
+            {
+              [
+                'No credit card required',
+                'Set up in 1 minute',
+                'Cancel anytime',
+              ].map((item) => (
+                <span style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #6B7280;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M20 6L9 17l-5-5"
+                      stroke="#107C10"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  {item}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Right: floating dashboard mockup -->
+        <div style="position: relative;">
+          <div
+            style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 32px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid #EDEBE9;"
+          >
+            <!-- Dashboard topbar -->
+            <div
+              style="background: #FAF9F8; border-bottom: 1px solid #EDEBE9; padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between;"
+            >
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <img
+                  src="/lracloudops-icon.svg"
+                  width="18"
+                  height="18"
+                  alt=""
+                />
+                <span
+                  style="font-family: 'Red Hat Display', sans-serif; font-size: 0.875rem; font-weight: 700; color: #111827;"
+                  >Dashboard</span
+                >
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div
+                  style="width: 24px; height: 24px; border-radius: 50%; background: #EDEBE9;"
+                >
+                </div>
+                <div
+                  style="width: 28px; height: 28px; border-radius: 50%; background: #0078D4; display: flex; align-items: center; justify-content: center;"
+                >
+                  <span
+                    style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #FFFFFF;"
+                    >RL</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats row -->
+            <div
+              style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-bottom: 1px solid #EDEBE9;"
+            >
+              {
+                [
+                  {
+                    label: 'Total revenue',
+                    value: '$24,950',
+                    change: '+18.8%',
+                    up: true,
+                  },
+                  {
+                    label: 'New customers',
+                    value: '1,429',
+                    change: '+8.2%',
+                    up: true,
+                  },
+                  {
+                    label: 'Active projects',
+                    value: '86',
+                    change: '+4.7%',
+                    up: true,
+                  },
+                  {
+                    label: 'Conversion rate',
+                    value: '3.64%',
+                    change: '+1.2%',
+                    up: true,
+                  },
+                ].map(({ label, value, change, up }, i) => (
+                  <div
+                    style={`padding: 1rem; ${i < 3 ? 'border-right: 1px solid #EDEBE9;' : ''}`}
+                  >
+                    <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #6B7280; margin-bottom: 0.25rem;">
+                      {label}
+                    </div>
+                    <div style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 900; color: #111827; line-height: 1;">
+                      {value}
+                    </div>
+                    <div
+                      style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 600; color: ${up ? '#107C10' : '#6B7280'}; margin-top: 0.25rem;`}
+                    >
+                      {change}
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            <!-- Chart placeholder -->
+            <div
+              style="padding: 1rem; border-bottom: 1px solid #EDEBE9; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;"
+            >
+              <div>
+                <div
+                  style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;"
+                >
+                  <span
+                    style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; color: #111827;"
+                    >Revenue</span
+                  >
+                  <span
+                    style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #6B7280;"
+                    >This month ↓</span
+                  >
+                </div>
+                <div
+                  style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 900; color: #111827;"
+                >
+                  $24,950
+                </div>
+                <div
+                  style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #107C10; font-weight: 600;"
+                >
+                  +12.6% vs last month
+                </div>
+                <!-- Chart bars placeholder -->
+                <div
+                  style="display: flex; align-items: end; gap: 3px; height: 48px; margin-top: 0.75rem;"
+                >
+                  {
+                    [30, 45, 35, 60, 40, 70, 55, 80, 65, 90, 75, 85].map(
+                      (h) => (
+                        <div
+                          style={`flex: 1; background: ${h > 60 ? '#0078D4' : '#EFF6FC'}; border-radius: 2px 2px 0 0; height: ${h}%;`}
+                        />
+                      )
+                    )
+                  }
+                </div>
+              </div>
+              <div>
+                <div
+                  style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;"
+                >
+                  Customers by plan
+                </div>
+                <!-- Donut placeholder -->
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <div
+                    style="width: 56px; height: 56px; border-radius: 50%; background: conic-gradient(#0078D4 0deg 195deg, #EFF6FC 195deg 303deg, #EDEBE9 303deg 360deg); flex-shrink: 0;"
+                  >
+                  </div>
+                  <div
+                    style="display: flex; flex-direction: column; gap: 0.25rem;"
+                  >
+                    {
+                      [
+                        ['Pro', '54%', '#0078D4'],
+                        ['Business', '30%', '#EFF6FC'],
+                        ['Starter', '16%', '#EDEBE9'],
+                      ].map(([name, pct, color]) => (
+                        <div style="display: flex; align-items: center; gap: 0.375rem;">
+                          <div
+                            style={`width: 8px; height: 8px; border-radius: 2px; background: ${color}; border: 1px solid #EDEBE9; flex-shrink: 0;`}
+                          />
+                          <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #6B7280;">
+                            {name}
+                          </span>
+                          <span style="font-family: 'Red Hat Display', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #111827; margin-left: auto;">
+                            {pct}
+                          </span>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent activity -->
+            <div style="padding: 0.875rem 1rem;">
+              <div
+                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.625rem;"
+              >
+                Recent activity
+              </div>
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.375rem;"
+              >
+                {
+                  [
+                    ['New customer signed up', '2 minutes ago'],
+                    ['Project "Website Redesign" completed', '3 hours ago'],
+                    ['Payment received from ACME Inc.', '1 hour ago'],
+                    ['New user invited', '5 hours ago'],
+                  ].map(([action, time]) => (
+                    <div style="display: flex; align-items: start; gap: 0.375rem; padding: 0.375rem 0;">
+                      <div style="width: 6px; height: 6px; border-radius: 50%; background: #0078D4; margin-top: 5px; flex-shrink: 0;" />
+                      <div>
+                        <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #111827; font-weight: 500;">
+                          {action}
+                        </div>
+                        <div style="font-family: 'Red Hat Mono', monospace; font-size: 0.625rem; color: #A19F9D;">
+                          {time}
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <h1 style="color: #111827; font-family: 'Red Hat Display', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem;">
-        Something new is coming.
-      </h1>
-      <p style="color: #6B7280; font-family: 'Red Hat Text', sans-serif; font-weight: 400; font-size: 1.125rem; max-width: 480px; margin: 0 auto 2.5rem;">
-        We're rebuilding from the ground up. A new vision for cloud infrastructure is on the way.
-      </p>
-
-      <a
-        href="mailto:info@lracloudops.com"
-        style="display: inline-flex; align-items: center; gap: 0.5rem; background: #111827; color: #FFF; padding: 0.875rem 2rem; border-radius: 9999px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+  <!-- SOCIAL PROOF STRIP -->
+  <section
+    style="background: #FAF9F8; padding: 2rem 0; border-top: 1px solid #EDEBE9; border-bottom: 1px solid #EDEBE9;"
+  >
+    <div
+      style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #A19F9D; text-align: center; margin-bottom: 1.5rem;"
       >
-        Get in touch →
-      </a>
+        Trusted by 4,000+ companies (placeholder)
+      </p>
+      <div
+        style="display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;"
+        class="logo-strip"
+      >
+        {
+          [
+            'Acme Co.',
+            'Globex',
+            'Initech',
+            'Umbrella',
+            'Hooli',
+            'Stark Ind.',
+          ].map((brand) => (
+            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #D1D5DB; letter-spacing: -0.01em;">
+              {brand}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-      <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem;">
-        <a
-          href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #0A66C2; text-decoration: none;"
+  <!-- FEATURES -->
+  <section
+    id="features"
+    style="background: #FFFFFF; padding: clamp(4rem, 8vw, 6rem) 0;"
+  >
+    <div
+      style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div style="text-align: center; margin-bottom: 3.5rem;">
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/lra-cloud-ops/lra-ai-platform"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #111827; text-decoration: none;"
+          Features
+        </p>
+        <h2
+          style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; color: #111827; letter-spacing: -0.02em; margin-bottom: 0.875rem;"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-          </svg>
-          LRA AI Platform
-        </a>
+          Everything you need to scale
+        </h2>
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280; max-width: 480px; margin: 0 auto;"
+        >
+          Powerful tools built for modern teams.
+        </p>
       </div>
 
-      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #E5E7EB; text-align: center;">
-        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;">
-          DevOps Engineer · Cloud Engineer · AWS · Kubernetes · Terraform · GitOps
-        </p>
-        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #6B7280; margin-bottom: 0.25rem;">
-          📍 Las Palmas de Gran Canaria, Canarias, España
-        </p>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap;">
-          <a
-            href="https://www.linkedin.com/company/nibble-tech-llc/posts/?feedView=all"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="display: inline-flex; align-items: center; opacity: 0.85; transition: opacity 150ms ease;"
-            onmouseover="this.style.opacity='1'"
-            onmouseout="this.style.opacity='0.85'"
+      <div
+        style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;"
+        class="features-grid"
+      >
+        {
+          [
+            {
+              bg: '#EFF6FC',
+              icon: '👥',
+              color: '#0078D4',
+              title: 'Customer Management',
+              desc: 'Organize contacts, history, and communications in one place.',
+            },
+            {
+              bg: '#DFF6DD',
+              icon: '✅',
+              color: '#107C10',
+              title: 'Project Management',
+              desc: 'Plan, assign tasks, and track progress in real time.',
+            },
+            {
+              bg: '#EFF6FC',
+              icon: '📊',
+              color: '#0078D4',
+              title: 'Reports & Analytics',
+              desc: 'Make data-driven decisions with clear, visual reports.',
+            },
+            {
+              bg: '#DFF6DD',
+              icon: '💳',
+              color: '#107C10',
+              title: 'Billing & Payments',
+              desc: 'Create invoices, collect payments, and track your finances.',
+            },
+          ].map(({ bg, icon, color, title, desc }) => (
+            <div
+              class="feature-card"
+              style="background: #FFFFFF; border: 1px solid #EDEBE9; border-radius: 12px; padding: 1.5rem; transition: all 150ms ease;"
+            >
+              <div
+                style={`width: 48px; height: 48px; border-radius: 10px; background: ${bg}; display: flex; align-items: center; justify-content: center; font-size: 1.375rem; margin-bottom: 1.25rem;`}
+              >
+                {icon}
+              </div>
+              <h3 style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem;">
+                {title}
+              </h3>
+              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #6B7280; line-height: 1.6; margin-bottom: 1rem;">
+                {desc}
+              </p>
+              <a
+                href="#"
+                style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: ${color}; text-decoration: none;`}
+              >
+                Learn more →
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT DEMO — DARK -->
+  <section
+    id="demo"
+    style="background: #0D1B2E; padding: clamp(4rem, 8vw, 6rem) 0;"
+  >
+    <div
+      style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div
+        style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: center;"
+        class="demo-grid"
+      >
+        <!-- Left: dark app mockup -->
+        <div
+          style="background: #0A1628; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 24px 64px rgba(0,0,0,0.4);"
+        >
+          <!-- App header -->
+          <div
+            style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between;"
           >
-            <img src="/nibble-logo.jpg" alt="Nibble Tech LLC" style="height: 36px; width: auto; border-radius: 4px;" />
-          </a>
-          <a
-            href="https://www.linkedin.com/school/itla/posts/?feedView=all"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="display: inline-flex; align-items: center; opacity: 0.85; transition: opacity 150ms ease;"
-            onmouseover="this.style.opacity='1'"
-            onmouseout="this.style.opacity='0.85'"
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <img src="/lracloudops-icon.svg" width="16" height="16" alt="" />
+              <span
+                style="font-family: 'Red Hat Display', sans-serif; font-size: 0.8125rem; font-weight: 700; color: #FFFFFF;"
+                >Projects</span
+              >
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span
+                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #A19F9D; background: rgba(255,255,255,0.06); padding: 0.2rem 0.5rem; border-radius: 4px;"
+                >Kanban ↓</span
+              >
+              <span
+                style="background: #0078D4; color: #FFFFFF; font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 600; padding: 0.25rem 0.625rem; border-radius: 4px;"
+                >+ New project</span
+              >
+            </div>
+          </div>
+
+          <!-- Kanban columns -->
+          <div
+            style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; padding: 1rem;"
           >
-            <img src="/itla-logo.jpg" alt="ITLA" style="height: 36px; width: auto; border-radius: 4px;" />
+            {
+              [
+                {
+                  title: 'To do',
+                  count: 4,
+                  color: '#A19F9D',
+                  items: [
+                    'Website redesign',
+                    'Marketing campaign',
+                    'CRM integration',
+                  ],
+                },
+                {
+                  title: 'In progress',
+                  count: 3,
+                  color: '#0078D4',
+                  items: [
+                    'Dashboard development',
+                    'SEO optimization',
+                    'Data migration',
+                  ],
+                },
+                {
+                  title: 'Done',
+                  count: 7,
+                  color: '#107C10',
+                  items: ['Market research', 'Initial wireframes'],
+                },
+              ].map(({ title, count, color, items }, colIndex) => (
+                <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 0.75rem;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.625rem;">
+                    <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #A19F9D;">
+                      {title}
+                    </span>
+                    <span
+                      style={`font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; font-weight: 700; color: ${color};`}
+                    >
+                      {count}
+                    </span>
+                  </div>
+                  {items.map((item, itemIndex) => (
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.625rem; margin-bottom: 0.375rem;">
+                      <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #FFFFFF; font-weight: 500; margin-bottom: 0.25rem;">
+                        {item}
+                      </div>
+                      <div style="font-family: 'Red Hat Mono', monospace; font-size: 0.625rem; color: #605E5C;">
+                        Mar {((colIndex * 7 + itemIndex * 3) % 28) + 1}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Right: content -->
+        <div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #4EC9B0; margin-bottom: 0.875rem;"
+          >
+            Productivity without limits
+          </p>
+          <h2
+            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-bottom: 1.25rem; line-height: 1.2;"
+          >
+            Work better<br />as a team
+          </h2>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #A19F9D; line-height: 1.7; margin-bottom: 2rem;"
+          >
+            Collaborate in real time, assign tasks, share files, and keep
+            everyone aligned.
+          </p>
+
+          <div
+            style="display: flex; flex-direction: column; gap: 0.875rem; margin-bottom: 2rem;"
+          >
+            {
+              [
+                'Real-time collaboration',
+                'Comments and mentions',
+                'Centralized files and documentation',
+                'Smart notifications',
+              ].map((item) => (
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <div style="width: 20px; height: 20px; border-radius: 50%; background: #0078D4; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                      <path
+                        d="M1 4l3 3 5-6"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #A19F9D;">
+                    {item}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+
+          <a
+            href="#"
+            style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0078D4; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 6px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+          >
+            Learn more →
           </a>
         </div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- PRICING -->
+  <section
+    id="pricing"
+    style="background: #FFFFFF; padding: clamp(4rem, 8vw, 6rem) 0;"
+  >
+    <div
+      style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div style="text-align: center; margin-bottom: 3.5rem;">
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0078D4; margin-bottom: 0.875rem;"
+        >
+          Pricing
+        </p>
+        <h2
+          style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; color: #111827; letter-spacing: -0.02em; margin-bottom: 0.875rem;"
+        >
+          Simple, transparent plans
+        </h2>
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #6B7280;"
+        >
+          Choose the plan that fits your business best.
+        </p>
+      </div>
+
+      <div
+        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; margin: 0 auto;"
+        class="pricing-grid"
+      >
+        {
+          [
+            {
+              name: 'Starter',
+              desc: 'Ideal for entrepreneurs',
+              price: '19',
+              features: [
+                'Up to 5 users',
+                'Unlimited projects',
+                'Email support',
+                '1GB of storage',
+              ],
+              cta: 'Get started',
+              featured: false,
+            },
+            {
+              name: 'Business',
+              desc: 'For growing teams',
+              price: '49',
+              features: [
+                'Up to 20 users',
+                'Everything in Starter',
+                'Advanced reports',
+                'Premium integrations',
+                '10GB of storage',
+              ],
+              cta: 'Get started',
+              featured: true,
+              badge: 'Most popular',
+            },
+            {
+              name: 'Enterprise',
+              desc: 'For large organizations',
+              price: '99',
+              features: [
+                'Unlimited users',
+                'Everything in Business',
+                '24/7 priority support',
+                'Unlimited storage',
+                'Advanced security',
+              ],
+              cta: 'Contact sales',
+              featured: false,
+            },
+          ].map((plan) => (
+            <div
+              style={`border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; position: relative; ${plan.featured ? 'background: #FFFFFF; border: 2px solid #0078D4; box-shadow: 0 8px 32px rgba(0,120,212,0.15);' : 'background: #FFFFFF; border: 1px solid #EDEBE9;'}`}
+            >
+              {plan.featured && (
+                <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #0078D4; color: #FFFFFF; font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; padding: 0.3rem 1rem; border-radius: 9999px; white-space: nowrap;">
+                  {plan.badge}
+                </div>
+              )}
+              <div>
+                <div
+                  style={`font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; color: ${plan.featured ? '#0078D4' : '#111827'};`}
+                >
+                  {plan.name}
+                </div>
+                <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #6B7280;">
+                  {plan.desc}
+                </div>
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 0.25rem;">
+                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #6B7280; font-weight: 500;">
+                  $
+                </span>
+                <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #111827; line-height: 1; letter-spacing: -0.04em;">
+                  {plan.price}
+                </span>
+                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #6B7280;">
+                  /mo
+                </span>
+              </div>
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
+                {plan.features.map((f) => (
+                  <li style="display: flex; align-items: start; gap: 0.625rem;">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      style="flex-shrink: 0; margin-top: 2px;"
+                    >
+                      <path
+                        d="M20 6L9 17l-5-5"
+                        stroke="#107C10"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #323130;">
+                      {f}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="/signup"
+                style={`display: block; text-align: center; padding: 0.75rem; border-radius: 8px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; transition: all 150ms; ${plan.featured ? 'background: #0078D4; color: #FFFFFF;' : 'background: transparent; color: #0078D4; border: 1px solid #0078D4;'}`}
+              >
+                {plan.cta}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section
+    style="background: #0D1B2E; padding: clamp(4rem, 8vw, 6rem) 0; text-align: center;"
+  >
+    <div
+      style="max-width: 640px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <h2
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 900; color: #FFFFFF; letter-spacing: -0.025em; margin-bottom: 1rem; line-height: 1.15;"
+      >
+        Ready to get started?
+      </h2>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #A19F9D; margin-bottom: 2.5rem; line-height: 1.7;"
+      >
+        Join thousands of teams already using LRA CloudOps to grow faster.
+      </p>
+      <div
+        style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
+      >
+        <a
+          href="/signup"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0078D4; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 8px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+        >
+          Start for free →
+        </a>
+        <a
+          href="mailto:info@lracloudops.com"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+        >
+          Contact sales
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer
+    style="background: #0A1628; padding: 3.5rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06);"
+  >
+    <div
+      style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+    >
+      <div
+        style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr; gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 2rem;"
+        class="footer-grid"
+      >
+        <!-- Brand -->
+        <div>
+          <div
+            style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.875rem;"
+          >
+            <img
+              src="/lracloudops-icon.svg"
+              alt="LRA CloudOps"
+              width="24"
+              height="24"
+            />
+            <span
+              style="font-family: 'Red Hat Display', sans-serif; font-size: 0.9375rem; font-weight: 700; color: #FFFFFF;"
+              >LRA CloudOps</span
+            >
+          </div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #605E5C; line-height: 1.6; margin-bottom: 1.25rem; max-width: 240px;"
+          >
+            The all-in-one platform for modern businesses.
+          </p>
+          <div style="display: flex; gap: 0.875rem;">
+            {
+              [
+                {
+                  label: 'LI',
+                  href: 'https://www.linkedin.com/in/ruben-liquenson-490961269/',
+                },
+                { label: 'GH', href: 'https://github.com/lra-cloud-ops' },
+              ].map(({ label, href }) => (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener"
+                  style="width: 32px; height: 32px; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; font-weight: 700; color: #A19F9D; text-decoration: none;"
+                >
+                  {label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Columns -->
+        {
+          [
+            {
+              title: 'Product',
+              items: ['Features', 'Integrations', 'Updates', 'Roadmap'],
+            },
+            {
+              title: 'Resources',
+              items: ['Documentation', 'Guides', 'Blog', 'Templates'],
+            },
+            {
+              title: 'Company',
+              items: ['About', 'Careers', 'Contact', 'Affiliates'],
+            },
+          ].map(({ title, items }) => (
+            <div>
+              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #605E5C; margin-bottom: 1rem;">
+                {title}
+              </p>
+              {items.map((item) => (
+                <a
+                  href="#"
+                  class="footer-link"
+                  style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #605E5C; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          ))
+        }
+
+        <!-- Newsletter -->
+        <div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #605E5C; margin-bottom: 1rem;"
+          >
+            Subscribe to our newsletter
+          </p>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #605E5C; line-height: 1.6; margin-bottom: 0.875rem;"
+          >
+            Get news and tips to grow your business.
+          </p>
+          <div style="display: flex; gap: 0.375rem;">
+            <input
+              type="email"
+              placeholder="Your email"
+              style="flex: 1; min-width: 0; padding: 0.5rem 0.75rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #FFFFFF; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; outline: none;"
+            />
+            <button
+              style="width: 36px; height: 36px; background: #0078D4; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2.5"
+                ><line x1="22" y1="2" x2="11" y2="13"></line><polygon
+                  points="22 2 15 22 11 13 2 9 22 2"></polygon></svg
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;"
+      >
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #4B5563;"
+        >
+          © 2026 LRA CloudOps. All rights reserved.
+        </p>
+        <div style="display: flex; gap: 1.5rem;">
+          {
+            ['Terms of service', 'Privacy', 'Cookies'].map((item) => (
+              <a
+                href="#"
+                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #4B5563; text-decoration: none;"
+              >
+                {item}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </footer>
 </Layout>
+
+<style>
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  .main-nav a:hover {
+    color: #111827 !important;
+    background: #faf9f8;
+  }
+  .feature-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+  .footer-link:hover {
+    color: #a19f9d !important;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-grid,
+    .demo-grid {
+      grid-template-columns: 1fr !important;
+      gap: 3rem !important;
+    }
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 2rem !important;
+    }
+  }
+  @media (max-width: 640px) {
+    .pricing-grid,
+    .features-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .main-nav {
+      display: none !important;
+    }
+  }
+</style>
