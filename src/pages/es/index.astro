@@ -1,8 +1,68 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+
+const navIcons = {
+  overview:
+    '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+  infra:
+    '<rect x="3" y="4" width="18" height="4" rx="1"/><rect x="3" y="10" width="18" height="4" rx="1"/><rect x="3" y="16" width="18" height="4" rx="1"/>',
+  pipelines:
+    '<circle cx="4" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="20" cy="12" r="2"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="18" y2="12"/>',
+  k8s: '<polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5"/>',
+  security: '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/>',
+  observability:
+    '<rect x="4" y="12" width="3" height="8"/><rect x="10.5" y="7" width="3" height="13"/><rect x="17" y="3" width="3" height="17"/>',
+  finops:
+    '<circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.3c0 3 6 1.5 6 4.5 0 1.4-1.3 2.5-3 2.5s-3-1.1-3-2.5"/>',
+  automation: '<polygon points="13,2 4,14 11,14 10,22 20,10 13,10"/>',
+  settings:
+    '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+  bell: '<path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>',
+}
+
+const navItems = [
+  { label: 'Resumen', icon: navIcons.overview },
+  { label: 'Infraestructura', icon: navIcons.infra },
+  { label: 'Pipelines', icon: navIcons.pipelines },
+  { label: 'Kubernetes', icon: navIcons.k8s },
+  { label: 'Seguridad', icon: navIcons.security },
+  { label: 'Observabilidad', icon: navIcons.observability },
+  { label: 'FinOps', icon: navIcons.finops },
+  { label: 'Automatizaciones', icon: navIcons.automation },
+  { label: 'Configuración', icon: navIcons.settings },
+]
+
+const socialIcons = {
+  youtube:
+    '<path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569A2.994 2.994 0 0 0 .502 6.186 31.26 31.26 0 0 0 0 12a31.26 31.26 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117A31.26 31.26 0 0 0 24 12a31.26 31.26 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z"/>',
+  linkedin:
+    '<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>',
+  x: '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>',
+  github:
+    '<path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>',
+}
+
+const socialLinks = [
+  { label: 'YouTube', href: '#', icon: socialIcons.youtube },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/ruben-liquenson-490961269/',
+    icon: socialIcons.linkedin,
+  },
+  { label: 'X', href: '#', icon: socialIcons.x },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/lra-cloud-ops',
+    icon: socialIcons.github,
+  },
+]
 ---
 
-<Layout title="LRA CloudOps" description="Plataforma placeholder" lang="es">
+<Layout
+  title="LRA CloudOps"
+  description="Plataforma DevOps placeholder"
+  lang="es"
+>
   <!-- HEADER -->
   <header
     style="position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid #EDEBE9;"
@@ -75,7 +135,7 @@ import Layout from '../../layouts/Layout.astro'
     </div>
   </header>
 
-  <!-- HERO — fondo blanco/gris claro, dashboard mockup a la derecha -->
+  <!-- HERO -->
   <section
     style="background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F8 100%); padding: 5rem 0 4rem; overflow: hidden; min-height: 85vh; display: flex; align-items: center;"
   >
@@ -94,22 +154,22 @@ import Layout from '../../layouts/Layout.astro'
             <span
               style="width: 6px; height: 6px; background: #4ADE80; border-radius: 50%; animation: pulse 2s infinite;"
             ></span>
-            Novedad &nbsp;·&nbsp; Lanzamos integraciones avanzadas →
+            Novedad &nbsp;·&nbsp; Lanzamos Integraciones Avanzadas →
           </div>
 
           <h1
             style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 900; color: #111827; line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 1.25rem;"
           >
-            La plataforma<br />
+            La plataforma DevOps<br />
             todo en uno para<br />
-            hacer crecer <span style="color: #0078D4;">tu negocio</span>
+            hacer crecer <span style="color: #0078D4;">tu infraestructura</span>
           </h1>
 
           <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #6B7280; line-height: 1.7; margin-bottom: 2.5rem; max-width: 440px;"
           >
-            Gestiona tus clientes, proyectos y finanzas desde un solo lugar. Más
-            productividad, menos complicaciones.
+            Automatiza, despliega y escala tu infraestructura en la nube con una
+            plataforma segura, observable y optimizada.
           </p>
 
           <div
@@ -132,7 +192,7 @@ import Layout from '../../layouts/Layout.astro'
                   ><path d="M1 1l6 4-6 4V1z"></path></svg
                 >
               </span>
-              Ver demo
+              Solicitar una demo ▷
             </a>
           </div>
 
@@ -143,7 +203,7 @@ import Layout from '../../layouts/Layout.astro'
               [
                 'Sin tarjeta de crédito',
                 'Instalación en 1 minuto',
-                'Cancelación en cualquier momento',
+                'Cancela cuando quieras',
               ].map((item) => (
                 <span style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #6B7280;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -162,204 +222,275 @@ import Layout from '../../layouts/Layout.astro'
           </div>
         </div>
 
-        <!-- Right: dashboard mockup flotando -->
+        <!-- Right: floating dashboard mockup -->
         <div style="position: relative;">
           <div
-            style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 32px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid #EDEBE9;"
+            style="background: #FFFFFF; border-radius: 16px; box-shadow: 0 32px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid #EDEBE9; display: flex;"
           >
-            <!-- Dashboard topbar -->
+            <!-- Sidebar -->
             <div
-              style="background: #FAF9F8; border-bottom: 1px solid #EDEBE9; padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between;"
+              style="width: 140px; flex-shrink: 0; background: #0D1B2E; padding: 1rem 0.625rem; display: flex; flex-direction: column; gap: 0.125rem;"
             >
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <div
+                style="display: flex; align-items: center; gap: 0.375rem; padding: 0 0.375rem 1rem;"
+              >
                 <img
                   src="/lracloudops-icon.svg"
-                  width="18"
-                  height="18"
+                  width="16"
+                  height="16"
                   alt=""
                 />
                 <span
-                  style="font-family: 'Red Hat Display', sans-serif; font-size: 0.875rem; font-weight: 700; color: #111827;"
-                  >Dashboard</span
+                  style="font-family: 'Red Hat Display', sans-serif; font-size: 0.625rem; font-weight: 700; color: #FFFFFF;"
+                  >LRA CloudOps</span
                 >
               </div>
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <div
-                  style="width: 24px; height: 24px; border-radius: 50%; background: #EDEBE9;"
-                >
-                </div>
-                <div
-                  style="width: 28px; height: 28px; border-radius: 50%; background: #0078D4; display: flex; align-items: center; justify-content: center;"
-                >
-                  <span
-                    style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #FFFFFF;"
-                    >RL</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- Stats row -->
-            <div
-              style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-bottom: 1px solid #EDEBE9;"
-            >
               {
-                [
-                  {
-                    label: 'Ingresos totales',
-                    value: '$24,950',
-                    change: '+18.8%',
-                    up: true,
-                  },
-                  {
-                    label: 'Nuevos clientes',
-                    value: '1,429',
-                    change: '+8.2%',
-                    up: true,
-                  },
-                  {
-                    label: 'Proyectos activos',
-                    value: '86',
-                    change: '+4.7%',
-                    up: true,
-                  },
-                  {
-                    label: 'Tasa de conversión',
-                    value: '3.64%',
-                    change: '+1.2%',
-                    up: true,
-                  },
-                ].map(({ label, value, change, up }, i) => (
+                navItems.map(({ label, icon }, i) => (
                   <div
-                    style={`padding: 1rem; ${i < 3 ? 'border-right: 1px solid #EDEBE9;' : ''}`}
+                    style={`display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border-radius: 6px; ${i === 0 ? 'background: rgba(0,120,212,0.18);' : ''}`}
                   >
-                    <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #6B7280; margin-bottom: 0.25rem;">
-                      {label}
-                    </div>
-                    <div style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 900; color: #111827; line-height: 1;">
-                      {value}
-                    </div>
-                    <div
-                      style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 600; color: ${up ? '#107C10' : '#6B7280'}; margin-top: 0.25rem;`}
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke={i === 0 ? '#FFFFFF' : '#A19F9D'}
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      set:html={icon}
+                    />
+                    <span
+                      style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.625rem; font-weight: ${i === 0 ? '600' : '500'}; color: ${i === 0 ? '#FFFFFF' : '#A19F9D'};`}
                     >
-                      {change}
-                    </div>
+                      {label}
+                    </span>
                   </div>
                 ))
               }
             </div>
 
-            <!-- Chart placeholder -->
+            <!-- Content -->
             <div
-              style="padding: 1rem; border-bottom: 1px solid #EDEBE9; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;"
+              style="flex: 1; min-width: 0; display: flex; flex-direction: column;"
             >
-              <div>
-                <div
-                  style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;"
-                >
-                  <span
-                    style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; color: #111827;"
-                    >Ingresos</span
-                  >
-                  <span
-                    style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #6B7280;"
-                    >Este mes ↓</span
-                  >
-                </div>
-                <div
-                  style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 900; color: #111827;"
-                >
-                  $24,950
-                </div>
-                <div
-                  style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #107C10; font-weight: 600;"
-                >
-                  +12.6% vs mes anterior
-                </div>
-                <!-- Chart bars placeholder -->
-                <div
-                  style="display: flex; align-items: end; gap: 3px; height: 48px; margin-top: 0.75rem;"
-                >
-                  {
-                    [30, 45, 35, 60, 40, 70, 55, 80, 65, 90, 75, 85].map(
-                      (h) => (
-                        <div
-                          style={`flex: 1; background: ${h > 60 ? '#0078D4' : '#EFF6FC'}; border-radius: 2px 2px 0 0; height: ${h}%;`}
-                        />
-                      )
-                    )
-                  }
-                </div>
-              </div>
-              <div>
-                <div
-                  style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;"
-                >
-                  Clientes por plan
-                </div>
-                <!-- Donut placeholder -->
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <div
-                    style="width: 56px; height: 56px; border-radius: 50%; background: conic-gradient(#0078D4 0deg 195deg, #EFF6FC 195deg 303deg, #EDEBE9 303deg 360deg); flex-shrink: 0;"
-                  >
-                  </div>
-                  <div
-                    style="display: flex; flex-direction: column; gap: 0.25rem;"
-                  >
-                    {
-                      [
-                        ['Pro', '54%', '#0078D4'],
-                        ['Business', '30%', '#EFF6FC'],
-                        ['Starter', '16%', '#EDEBE9'],
-                      ].map(([name, pct, color]) => (
-                        <div style="display: flex; align-items: center; gap: 0.375rem;">
-                          <div
-                            style={`width: 8px; height: 8px; border-radius: 2px; background: ${color}; border: 1px solid #EDEBE9; flex-shrink: 0;`}
-                          />
-                          <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #6B7280;">
-                            {name}
-                          </span>
-                          <span style="font-family: 'Red Hat Display', sans-serif; font-size: 0.6875rem; font-weight: 700; color: #111827; margin-left: auto;">
-                            {pct}
-                          </span>
-                        </div>
-                      ))
-                    }
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Recent activity -->
-            <div style="padding: 0.875rem 1rem;">
+              <!-- Header -->
               <div
-                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.625rem;"
+                style="padding: 0.75rem 1rem; border-bottom: 1px solid #EDEBE9; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;"
               >
-                Actividad reciente
+                <span
+                  style="font-family: 'Red Hat Display', sans-serif; font-size: 0.8125rem; font-weight: 700; color: #111827; white-space: nowrap;"
+                  >Resumen general</span
+                >
+                <div
+                  style="flex: 1; max-width: 130px; background: #FAF9F8; border: 1px solid #EDEBE9; border-radius: 6px; padding: 0.25rem 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.625rem; color: #A19F9D;"
+                >
+                  Buscar…
+                </div>
+                <div
+                  style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;"
+                >
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#6B7280"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    set:html={navIcons.bell}
+                  />
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#6B7280"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    set:html={navIcons.settings}
+                  />
+                  <div
+                    style="width: 22px; height: 22px; border-radius: 50%; background: #0078D4; display: flex; align-items: center; justify-content: center;"
+                  >
+                    <span
+                      style="font-family: 'Red Hat Text', sans-serif; font-size: 0.5625rem; font-weight: 700; color: #FFFFFF;"
+                      >RL</span
+                    >
+                  </div>
+                </div>
               </div>
+
+              <!-- Stats row -->
               <div
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.375rem;"
+                style="display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid #EDEBE9;"
               >
                 {
                   [
-                    ['Nuevo cliente registrado', 'Hace 2 minutos'],
-                    ['Proyecto "Rediseño Web" completado', 'Hace 3 horas'],
-                    ['Pago recibido de ACME Inc.', 'Hace 1 hora'],
-                    ['Nuevo usuario invitado', 'Hace 5 horas'],
-                  ].map(([action, time]) => (
-                    <div style="display: flex; align-items: start; gap: 0.375rem; padding: 0.375rem 0;">
-                      <div style="width: 6px; height: 6px; border-radius: 50%; background: #0078D4; margin-top: 5px; flex-shrink: 0;" />
-                      <div>
-                        <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #111827; font-weight: 500;">
-                          {action}
-                        </div>
-                        <div style="font-family: 'Red Hat Mono', monospace; font-size: 0.625rem; color: #A19F9D;">
-                          {time}
-                        </div>
+                    {
+                      label: 'Clusters',
+                      value: '12',
+                      change: '+12%',
+                      changeColor: '#107C10',
+                    },
+                    {
+                      label: 'Deployments',
+                      value: '128',
+                      change: '+8.2%',
+                      changeColor: '#107C10',
+                    },
+                    {
+                      label: 'Pipelines',
+                      value: '45',
+                      change: '+10%',
+                      changeColor: '#107C10',
+                    },
+                    {
+                      label: 'Incidentes',
+                      value: '2',
+                      change: '-50%',
+                      changeColor: '#8A8886',
+                    },
+                  ].map(({ label, value, change, changeColor }, i) => (
+                    <div
+                      style={`padding: 0.625rem 0.5rem; ${i < 3 ? 'border-right: 1px solid #EDEBE9;' : ''}`}
+                    >
+                      <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.5625rem; color: #6B7280; margin-bottom: 0.2rem;">
+                        {label}
+                      </div>
+                      <div style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 900; color: #111827; line-height: 1;">
+                        {value}
+                      </div>
+                      <div
+                        style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.5625rem; font-weight: 600; color: ${changeColor}; margin-top: 0.2rem;`}
+                      >
+                        {change}
                       </div>
                     </div>
                   ))
                 }
+              </div>
+
+              <!-- Resource usage -->
+              <div
+                style="padding: 0.75rem 1rem; border-bottom: 1px solid #EDEBE9;"
+              >
+                <div
+                  style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;"
+                >
+                  Uso de recursos (últimos 7 días)
+                </div>
+                {
+                  [
+                    {
+                      label: 'CPU',
+                      color: '#0078D4',
+                      points: '0,12 15,10 30,11 45,7 60,8 75,5 90,6 100,4',
+                    },
+                    {
+                      label: 'Memoria',
+                      color: '#107C10',
+                      points: '0,14 15,13 30,12 45,13 60,11 75,10 90,9 100,8',
+                    },
+                    {
+                      label: 'Almacen.',
+                      color: '#8A8886',
+                      points:
+                        '0,16 15,15.5 30,15 45,14.5 60,14 75,13.5 90,13 100,12.5',
+                    },
+                  ].map(({ label, color, points }) => (
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.375rem;">
+                      <span
+                        style={`width: 6px; height: 6px; border-radius: 50%; background: ${color}; flex-shrink: 0;`}
+                      />
+                      <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.5625rem; color: #6B7280; width: 46px; flex-shrink: 0;">
+                        {label}
+                      </span>
+                      <svg
+                        width="100%"
+                        height="18"
+                        viewBox="0 0 100 18"
+                        preserveAspectRatio="none"
+                        style="flex: 1;"
+                      >
+                        <polyline
+                          points={points}
+                          fill="none"
+                          stroke={color}
+                          stroke-width="1.5"
+                        />
+                      </svg>
+                    </div>
+                  ))
+                }
+              </div>
+
+              <!-- Platform status -->
+              <div
+                style="padding: 0.75rem 1rem; border-bottom: 1px solid #EDEBE9;"
+              >
+                <div
+                  style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;"
+                >
+                  Estado de la plataforma
+                </div>
+                <div
+                  style="display: flex; flex-direction: column; gap: 0.3rem;"
+                >
+                  {
+                    ['AWS', 'Kubernetes', 'CI/CD', 'Seguridad'].map((label) => (
+                      <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.625rem; color: #6B7280;">
+                          {label}
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.25rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.625rem; color: #107C10; font-weight: 600;">
+                          <span style="width: 6px; height: 6px; border-radius: 50%; background: #4ADE80;" />
+                          Operativo
+                        </span>
+                      </div>
+                    ))
+                  }
+                </div>
+                <a
+                  href="#"
+                  style="display: inline-block; margin-top: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.625rem; font-weight: 600; color: #0078D4; text-decoration: none;"
+                >
+                  Ver todos los servicios →
+                </a>
+              </div>
+
+              <!-- Recent activity -->
+              <div style="padding: 0.75rem 1rem;">
+                <div
+                  style="font-family: 'Red Hat Text', sans-serif; font-size: 0.625rem; font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;"
+                >
+                  Actividad reciente
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.375rem;"
+                >
+                  {
+                    [
+                      ['Deploy: payment-service', 'api-gateway'],
+                      ['Terraform Apply', 'prod-infra'],
+                      ['Pipeline: build-and-test', '#4521'],
+                      ['Backup completado', 'db-production'],
+                    ].map(([line1, line2]) => (
+                      <div style="background: #FAF9F8; border: 1px solid #EDEBE9; border-radius: 6px; padding: 0.4rem;">
+                        <div style="width: 5px; height: 5px; border-radius: 50%; background: #0078D4; margin-bottom: 0.25rem;" />
+                        <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.5625rem; color: #111827; font-weight: 500; line-height: 1.3;">
+                          {line1}
+                        </div>
+                        <div style="font-family: 'Red Hat Mono', monospace; font-size: 0.5rem; color: #A19F9D;">
+                          {line2}
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
               </div>
             </div>
           </div>
@@ -378,7 +509,7 @@ import Layout from '../../layouts/Layout.astro'
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #A19F9D; text-align: center; margin-bottom: 1.5rem;"
       >
-        Más de 4,000 empresas confían en nosotros (placeholder)
+        Tecnologías que soportamos
       </p>
       <div
         style="display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;"
@@ -386,12 +517,12 @@ import Layout from '../../layouts/Layout.astro'
       >
         {
           [
-            'Acme Co.',
-            'Globex',
-            'Initech',
-            'Umbrella',
-            'Hooli',
-            'Stark Ind.',
+            'AWS',
+            'Kubernetes',
+            'Terraform',
+            'GitHub Actions',
+            'Docker',
+            'Prometheus',
           ].map((brand) => (
             <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #D1D5DB; letter-spacing: -0.01em;">
               {brand}
@@ -436,31 +567,59 @@ import Layout from '../../layouts/Layout.astro'
           [
             {
               bg: '#EFF6FC',
-              icon: '👥',
+              icon: '</>',
               color: '#0078D4',
-              title: 'Gestión de Clientes',
-              desc: 'Organiza contactos, historial y comunicaciones en un solo lugar.',
+              title: 'Platform Engineering',
+              desc: 'Crea plataformas internas para desarrolladores y acelera la entrega de software.',
             },
             {
               bg: '#DFF6DD',
-              icon: '✅',
+              icon: '☁',
               color: '#107C10',
-              title: 'Gestión de Proyectos',
-              desc: 'Planifica, asigna tareas y monitorea el progreso en tiempo real.',
+              title: 'Cloud Infrastructure',
+              desc: 'Diseña, implementa y gestiona infraestructuras escalables y seguras en cualquier nube.',
             },
             {
               bg: '#EFF6FC',
-              icon: '📊',
+              icon: '⚙',
               color: '#0078D4',
-              title: 'Reportes y Analíticas',
-              desc: 'Toma decisiones basadas en datos con reportes claros y visuales.',
+              title: 'Kubernetes',
+              desc: 'Despliega, escala y opera clústeres Kubernetes con las mejores prácticas.',
             },
             {
               bg: '#DFF6DD',
-              icon: '💳',
+              icon: '∞',
               color: '#107C10',
-              title: 'Facturación y Pagos',
-              desc: 'Crea facturas, recibe pagos y lleva el control de tus finanzas.',
+              title: 'CI/CD & GitOps',
+              desc: 'Automatiza todo tu ciclo de entrega con GitHub Actions, GitLab CI, Jenkins, ArgoCD y más.',
+            },
+            {
+              bg: '#EFF6FC',
+              icon: '🛡',
+              color: '#0078D4',
+              title: 'DevSecOps',
+              desc: 'Integra la seguridad en cada etapa con escaneo, cumplimiento y gestión de secretos.',
+            },
+            {
+              bg: '#DFF6DD',
+              icon: '📊',
+              color: '#107C10',
+              title: 'Observability',
+              desc: 'Monitoriza todo en tiempo real con métricas, logs y trazas distribuidas.',
+            },
+            {
+              bg: '#EFF6FC',
+              icon: '$',
+              color: '#0078D4',
+              title: 'FinOps',
+              desc: 'Optimiza costes en la nube y toma decisiones basadas en datos reales.',
+            },
+            {
+              bg: '#DFF6DD',
+              icon: '⚡',
+              color: '#107C10',
+              title: 'Automatización',
+              desc: 'Automatiza tareas operativas y reduce errores con scripts, workflows y eventos.',
             },
           ].map(({ bg, icon, color, title, desc }) => (
             <div
@@ -468,7 +627,7 @@ import Layout from '../../layouts/Layout.astro'
               style="background: #FFFFFF; border: 1px solid #EDEBE9; border-radius: 12px; padding: 1.5rem; transition: all 150ms ease;"
             >
               <div
-                style={`width: 48px; height: 48px; border-radius: 10px; background: ${bg}; display: flex; align-items: center; justify-content: center; font-size: 1.375rem; margin-bottom: 1.25rem;`}
+                style={`width: 48px; height: 48px; border-radius: 10px; background: ${bg}; display: flex; align-items: center; justify-content: center; font-size: 1.375rem; margin-bottom: 1.25rem; color: ${color}; font-family: 'Red Hat Mono', monospace; font-weight: 700;`}
               >
                 {icon}
               </div>
@@ -503,7 +662,7 @@ import Layout from '../../layouts/Layout.astro'
         style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: center;"
         class="demo-grid"
       >
-        <!-- Left: app mockup dark -->
+        <!-- Left: dark app mockup -->
         <div
           style="background: #0A1628; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 24px 64px rgba(0,0,0,0.4);"
         >
@@ -521,12 +680,14 @@ import Layout from '../../layouts/Layout.astro'
             <div style="display: flex; align-items: center; gap: 0.5rem;">
               <span
                 style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #A19F9D; background: rgba(255,255,255,0.06); padding: 0.2rem 0.5rem; border-radius: 4px;"
-                >Kanban ↓</span
               >
+                Kanban ↓
+              </span>
               <span
                 style="background: #0078D4; color: #FFFFFF; font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 600; padding: 0.25rem 0.625rem; border-radius: 4px;"
-                >+ Nuevo proyecto</span
               >
+                + Nuevo proyecto
+              </span>
             </div>
           </div>
 
@@ -541,9 +702,10 @@ import Layout from '../../layouts/Layout.astro'
                   count: 4,
                   color: '#A19F9D',
                   items: [
-                    'Rediseño del sitio web',
-                    'Campaña de marketing',
-                    'Integración con CRM',
+                    ['Infraestructura como Código', 'Terraform'],
+                    ['Implementar Monitoring', 'Prometheus+Grafana'],
+                    ['Actualizar dependencias', 'Dependabot'],
+                    ['Políticas de seguridad', 'Open Policy Agent'],
                   ],
                 },
                 {
@@ -551,18 +713,22 @@ import Layout from '../../layouts/Layout.astro'
                   count: 3,
                   color: '#0078D4',
                   items: [
-                    'Desarrollo de dashboard',
-                    'Optimización SEO',
-                    'Migración de datos',
+                    ['Migración a Kubernetes', 'EKS'],
+                    ['CI/CD Pipeline', 'GitHub Actions'],
+                    ['Backup automatizado', 'Velero'],
                   ],
                 },
                 {
                   title: 'Completado',
                   count: 7,
                   color: '#107C10',
-                  items: ['Investigación de mercado', 'Wireframes iniciales'],
+                  items: [
+                    ['Landing Zone AWS', 'Terraform'],
+                    ['Centralizar logs', 'Loki'],
+                    ['Alertas inteligentes', 'AlertManager'],
+                  ],
                 },
-              ].map(({ title, count, color, items }, colIndex) => (
+              ].map(({ title, count, color, items }) => (
                 <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 0.75rem;">
                   <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.625rem;">
                     <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #A19F9D;">
@@ -574,13 +740,13 @@ import Layout from '../../layouts/Layout.astro'
                       {count}
                     </span>
                   </div>
-                  {items.map((item, itemIndex) => (
+                  {items.map(([item, tag]) => (
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.625rem; margin-bottom: 0.375rem;">
                       <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #FFFFFF; font-weight: 500; margin-bottom: 0.25rem;">
                         {item}
                       </div>
                       <div style="font-family: 'Red Hat Mono', monospace; font-size: 0.625rem; color: #605E5C;">
-                        Mar {((colIndex * 7 + itemIndex * 3) % 28) + 1}
+                        {tag}
                       </div>
                     </div>
                   ))}
@@ -605,8 +771,8 @@ import Layout from '../../layouts/Layout.astro'
           <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #A19F9D; line-height: 1.7; margin-bottom: 2rem;"
           >
-            Colabora en tiempo real, asigna tareas, comparte archivos y mantén a
-            todos alineados.
+            Colabora en tiempo real, automatiza procesos y mantén todo bajo
+            control desde una única plataforma.
           </p>
 
           <div
@@ -614,10 +780,11 @@ import Layout from '../../layouts/Layout.astro'
           >
             {
               [
-                'Colaboración en tiempo real',
-                'Comentarios y menciones',
-                'Archivos y documentación centralizada',
-                'Notificaciones inteligentes',
+                'Visibilidad completa de tu infraestructura',
+                'Automatizaciones y flujos de trabajo',
+                'Integraciones con tus herramientas favoritas',
+                'Seguridad y cumplimiento integrados',
+                'Soporte 24/7 para tu equipo',
               ].map((item) => (
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                   <div style="width: 20px; height: 20px; border-radius: 50%; background: #0078D4; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -643,7 +810,7 @@ import Layout from '../../layouts/Layout.astro'
             href="#"
             style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0078D4; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 6px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
           >
-            Conocer más →
+            Conocer la plataforma →
           </a>
         </div>
       </div>
@@ -684,44 +851,53 @@ import Layout from '../../layouts/Layout.astro'
           [
             {
               name: 'Starter',
-              desc: 'Ideal para emprendedores',
-              price: '19',
+              desc: 'Ideal para pequeños equipos',
+              price: '29',
+              priceSuffix: '/mes',
+              customPrice: null,
               features: [
-                'Hasta 5 usuarios',
-                'Proyectos ilimitados',
-                'Soporte por email',
-                '1GB de almacenamiento',
+                '1 proyecto',
+                'Pipelines básicos',
+                'Infraestructura limitada',
+                'Soporte por correo',
               ],
-              cta: 'Comenzar',
+              cta: 'Comenzar gratis',
+              ctaHref: '/es/signup',
               featured: false,
             },
             {
               name: 'Business',
               desc: 'Para equipos en crecimiento',
-              price: '49',
+              price: '79',
+              priceSuffix: '/mes',
+              customPrice: null,
               features: [
-                'Hasta 20 usuarios',
-                'Todo lo de Starter',
-                'Reportes avanzados',
-                'Integraciones premium',
-                '10GB de almacenamiento',
+                'Proyectos ilimitados',
+                'Pipelines avanzados',
+                'Clústeres Kubernetes',
+                'Observabilidad completa',
+                'Soporte prioritario 24/7',
               ],
-              cta: 'Comenzar',
+              cta: 'Comenzar gratis',
+              ctaHref: '/es/signup',
               featured: true,
-              badge: 'Más popular',
+              badge: 'MÁS POPULAR',
             },
             {
               name: 'Enterprise',
               desc: 'Para grandes organizaciones',
-              price: '99',
+              price: null,
+              priceSuffix: null,
+              customPrice: 'A medida',
               features: [
-                'Usuarios ilimitados',
-                'Todo lo de Business',
-                'Soporte prioritario 24/7',
-                'Almacenamiento ilimitado',
+                'Todo en Business',
+                'Multi-cloud & híbrido',
                 'Seguridad avanzada',
+                'SLA personalizado',
+                'Arquitecto DevOps asignado',
               ],
-              cta: 'Contactar ventas',
+              cta: 'Hablar con ventas',
+              ctaHref: 'mailto:info@lracloudops.com',
               featured: false,
             },
           ].map((plan) => (
@@ -743,16 +919,24 @@ import Layout from '../../layouts/Layout.astro'
                   {plan.desc}
                 </div>
               </div>
-              <div style="display: flex; align-items: baseline; gap: 0.25rem;">
-                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #6B7280; font-weight: 500;">
-                  $
-                </span>
-                <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #111827; line-height: 1; letter-spacing: -0.04em;">
-                  {plan.price}
-                </span>
-                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #6B7280;">
-                  /mes
-                </span>
+              <div style="display: flex; align-items: baseline; gap: 0.25rem; min-height: 3.5rem;">
+                {plan.customPrice ? (
+                  <span style="font-family: 'Red Hat Display', sans-serif; font-size: 2rem; font-weight: 900; color: #111827; letter-spacing: -0.02em;">
+                    {plan.customPrice}
+                  </span>
+                ) : (
+                  <span style="display: flex; align-items: baseline; gap: 0.25rem;">
+                    <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #6B7280; font-weight: 500;">
+                      €
+                    </span>
+                    <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #111827; line-height: 1; letter-spacing: -0.04em;">
+                      {plan.price}
+                    </span>
+                    <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #6B7280;">
+                      {plan.priceSuffix}
+                    </span>
+                  </span>
+                )}
               </div>
               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
                 {plan.features.map((f) => (
@@ -772,14 +956,14 @@ import Layout from '../../layouts/Layout.astro'
                         stroke-linejoin="round"
                       />
                     </svg>
-                    <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #323130;">
+                    <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #111827;">
                       {f}
                     </span>
                   </li>
                 ))}
               </ul>
               <a
-                href="/es/signup"
+                href={plan.ctaHref}
                 style={`display: block; text-align: center; padding: 0.75rem; border-radius: 8px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; transition: all 150ms; ${plan.featured ? 'background: #0078D4; color: #FFFFFF;' : 'background: transparent; color: #0078D4; border: 1px solid #0078D4;'}`}
               >
                 {plan.cta}
@@ -792,38 +976,69 @@ import Layout from '../../layouts/Layout.astro'
   </section>
 
   <!-- CTA FINAL -->
-  <section
-    style="background: #0D1B2E; padding: clamp(4rem, 8vw, 6rem) 0; text-align: center;"
-  >
+  <section style="background: #0D1B2E; padding: clamp(4rem, 8vw, 6rem) 0;">
     <div
-      style="max-width: 640px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
+      style="max-width: 1152px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem);"
     >
-      <h2
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 900; color: #FFFFFF; letter-spacing: -0.025em; margin-bottom: 1rem; line-height: 1.15;"
-      >
-        ¿Listo para empezar?
-      </h2>
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #A19F9D; margin-bottom: 2.5rem; line-height: 1.7;"
-      >
-        Únete a miles de equipos que ya usan LRA CloudOps para crecer más
-        rápido.
-      </p>
       <div
-        style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
+        style="display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: center;"
+        class="cta-grid"
       >
-        <a
-          href="/es/signup"
-          style="display: inline-flex; align-items: center; gap: 0.5rem; background: #0078D4; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 8px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+        <!-- Icon -->
+        <div
+          style="display: flex; align-items: center; justify-content: center;"
         >
-          Comenzar gratis →
-        </a>
-        <a
-          href="mailto:info@lracloudops.com"
-          style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
-        >
-          Contactar ventas
-        </a>
+          <svg width="160" height="160" viewBox="0 0 180 180" fill="none">
+            <circle cx="90" cy="90" r="88" fill="rgba(255,255,255,0.04)"
+            ></circle>
+            <path
+              d="M50 100c-11 0-20-9-20-20s9-20 20-20c3-14 15-24 30-24s27 10 30 24c11 0 20 9 20 20s-9 20-20 20H50z"
+              fill="none"
+              stroke="#4EC9B0"
+              stroke-width="3"></path>
+            <circle
+              cx="90"
+              cy="90"
+              r="14"
+              fill="none"
+              stroke="#0078D4"
+              stroke-width="3"></circle>
+            <circle cx="90" cy="90" r="4" fill="#0078D4"></circle>
+            <path
+              d="M90 72v6M90 102v6M72 90h6M102 90h6M78 78l4.2 4.2M97.8 97.8l4.2 4.2M78 102l4.2-4.2M97.8 82.2l4.2-4.2"
+              stroke="#0078D4"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <!-- Content -->
+        <div>
+          <h2
+            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 900; color: #FFFFFF; letter-spacing: -0.025em; margin-bottom: 1rem; line-height: 1.15;"
+          >
+            ¿Listo para llevar tu plataforma al siguiente nivel?
+          </h2>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #A19F9D; margin-bottom: 2.5rem; line-height: 1.7; max-width: 480px;"
+          >
+            Únete a cientos de equipos que ya están construyendo, desplegando y
+            escalando mejor con LRA CloudOps.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a
+              href="/es/signup"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; background: #FFFFFF; color: #0D1B2E; padding: 0.875rem 2rem; border-radius: 8px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+            >
+              Comenzar gratis
+            </a>
+            <a
+              href="mailto:info@lracloudops.com"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none;"
+            >
+              Hablar con un experto
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -860,22 +1075,23 @@ import Layout from '../../layouts/Layout.astro'
           >
             La plataforma todo en uno para empresas modernas.
           </p>
-          <div style="display: flex; gap: 0.875rem;">
+          <div style="display: flex; gap: 0.625rem;">
             {
-              [
-                {
-                  label: 'LI',
-                  href: 'https://www.linkedin.com/in/ruben-liquenson-490961269/',
-                },
-                { label: 'GH', href: 'https://github.com/lra-cloud-ops' },
-              ].map(({ label, href }) => (
+              socialLinks.map(({ label, href, icon }) => (
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener"
-                  style="width: 32px; height: 32px; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; font-weight: 700; color: #A19F9D; text-decoration: none;"
+                  aria-label={label}
+                  style="width: 32px; height: 32px; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; text-decoration: none;"
                 >
-                  {label}
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="#A19F9D"
+                    set:html={icon}
+                  />
                 </a>
               ))
             }
@@ -948,9 +1164,10 @@ import Layout from '../../layouts/Layout.astro'
                 fill="none"
                 stroke="white"
                 stroke-width="2.5"
-                ><line x1="22" y1="2" x2="11" y2="13"></line><polygon
-                  points="22 2 15 22 11 13 2 9 22 2"></polygon></svg
               >
+                <line x1="22" y1="2" x2="11" y2="13"></line><polygon
+                  points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
             </button>
           </div>
         </div>
@@ -1016,6 +1233,11 @@ import Layout from '../../layouts/Layout.astro'
     .footer-grid {
       grid-template-columns: 1fr 1fr !important;
       gap: 2rem !important;
+    }
+    .cta-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center;
+      justify-items: center;
     }
   }
   @media (max-width: 640px) {
