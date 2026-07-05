@@ -158,7 +158,7 @@ const techs = [
 ---
 
 <Layout
-  title="LRA CloudOps"
+  title="LRA CloudOps — Plataforma de Ingeniería DevOps"
   description="4 proyectos open source que cubren agentes IA, infraestructura AWS, Kubernetes y automatización cloud. Todo verificado, nada ficticio."
   lang="es"
 >
@@ -169,12 +169,12 @@ const techs = [
     style="position: sticky; top: 0; z-index: 100; background: #FFFFFF; border-bottom: 1px solid #DADCE0; height: 64px;"
   >
     <div
-      style="max-width: 1280px; margin: 0 auto; padding-inline: 1.5rem; display: flex; align-items: center; height: 100%; gap: 1rem;"
+      style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); display: flex; align-items: center; height: 100%; gap: 1.5rem;"
     >
       <!-- Logo -->
       <a
         href="/es"
-        style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; flex-shrink: 0; margin-right: 1rem;"
+        style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none; flex-shrink: 0;"
       >
         <img
           src="/lracloudops-icon.svg"
@@ -188,50 +188,44 @@ const techs = [
         >
       </a>
 
-      <!-- Nav -->
+      <!-- Nav — solo links reales -->
       <nav
-        style="display: flex; align-items: center; gap: 0; flex: 1;"
+        style="display: flex; align-items: center; gap: 0; margin-left: auto;"
         class="gc-nav"
       >
         {
-          ['Productos', 'Soluciones', 'Precios', 'Recursos', 'Docs'].map(
-            (item) => (
-              <a
-                href="#"
-                style="padding: 0 0.875rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; color: #202124; text-decoration: none; height: 64px; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: all 150ms ease; white-space: nowrap;"
-                onmouseover="this.style.borderBottomColor='#1A73E8'; this.style.color='#1A73E8'"
-                onmouseout="this.style.borderBottomColor='transparent'; this.style.color='#202124'"
-              >
-                {item}
-              </a>
-            )
-          )
+          [
+            { label: 'GitHub', href: 'https://github.com/lra-cloud-ops' },
+            {
+              label: 'lra-ai-platform',
+              href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+            },
+            {
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/in/ruben-liquenson-490961269/',
+            },
+          ].map(({ label, href }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener"
+              style="padding: 0 0.875rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #5F6368; text-decoration: none; height: 64px; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: all 150ms ease; white-space: nowrap;"
+              onmouseover="this.style.borderBottomColor='#1A73E8'; this.style.color='#1A73E8'"
+              onmouseout="this.style.borderBottomColor='transparent'; this.style.color='#5F6368'"
+            >
+              {label}
+            </a>
+          ))
         }
       </nav>
 
-      <!-- Actions -->
-      <div
-        style="display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;"
+      <!-- CTA real -->
+      <a
+        href="mailto:info@lracloudops.com"
+        style="display: inline-flex; align-items: center; gap: 0.375rem; background: #1A73E8; color: #FFFFFF; padding: 0.5rem 1.25rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; white-space: nowrap; flex-shrink: 0;"
       >
-        <a
-          href="#"
-          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; color: #1A73E8; text-decoration: none; padding: 0 0.75rem;"
-        >
-          Iniciar sesión
-        </a>
-        <a
-          href="#"
-          style="display: inline-flex; align-items: center; background: #1A73E8; color: #FFFFFF; padding: 0.5rem 1.25rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; white-space: nowrap;"
-        >
-          Comenzar gratis
-        </a>
-        <a
-          href="#"
-          style="display: inline-flex; align-items: center; background: transparent; color: #1A73E8; padding: 0.5rem 1.25rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; white-space: nowrap;"
-        >
-          Contactar ventas
-        </a>
-      </div>
+        Contactar
+      </a>
     </div>
   </header>
 
@@ -581,7 +575,7 @@ const techs = [
   </section>
 
   <!-- ============================================================
-     CLOUD PROVIDERS
+     CLOUD PROVIDERS — solo AWS, verificado
      ============================================================ -->
   <section
     style="background: #F8F9FA; padding: 2.5rem 1.5rem; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0;"
@@ -590,10 +584,10 @@ const techs = [
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #5F6368; text-align: center; margin-bottom: 1.5rem; letter-spacing: 0.08em; text-transform: uppercase;"
       >
-        Plataformas en las que operamos
+        Nuestra plataforma cloud principal
       </p>
       <div
-        style="display: flex; align-items: center; justify-content: center; gap: 5rem; flex-wrap: wrap;"
+        style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;"
       >
         <a
           href="https://aws.amazon.com/es/"
@@ -610,36 +604,18 @@ const techs = [
             loading="lazy"
           />
         </a>
-        <a
-          href="https://azure.microsoft.com/es-es"
-          target="_blank"
-          rel="noopener"
-          style="opacity: 0.6; transition: opacity 150ms ease; text-decoration: none;"
-          onmouseover="this.style.opacity='1'"
-          onmouseout="this.style.opacity='0.6'"
+      </div>
+      <div style="text-align: center; margin-top: 1rem;">
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-bottom: 0.5rem;"
         >
-          <img
-            src="/azure-logo.svg"
-            alt="Microsoft Azure"
-            style="height: 36px; width: auto;"
-            loading="lazy"
-          />
-        </a>
-        <a
-          href="https://cloud.google.com/?hl=es"
-          target="_blank"
-          rel="noopener"
-          style="opacity: 0.6; transition: opacity 150ms ease; text-decoration: none;"
-          onmouseover="this.style.opacity='1'"
-          onmouseout="this.style.opacity='0.6'"
+          Los 4 proyectos funcionan en AWS — EKS, RDS, ECR, VPC, IAM, CloudWatch
+        </p>
+        <p
+          style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368;"
         >
-          <img
-            src="/google-cloud-logo.svg"
-            alt="Google Cloud"
-            style="height: 36px; width: auto;"
-            loading="lazy"
-          />
-        </a>
+          EKS · RDS · ECR · VPC · IAM · CloudWatch · S3 · DynamoDB
+        </p>
       </div>
     </div>
   </section>
@@ -684,14 +660,14 @@ const techs = [
   </section>
 
   <!-- ============================================================
-     FOOTER
+     FOOTER — solo links reales
      ============================================================ -->
   <footer
     style="background: #202124; padding: 3rem 1.5rem 2rem; border-top: 1px solid #3C4043;"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
       <div
-        style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid #3C4043; margin-bottom: 1.5rem;"
+        style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid #3C4043; margin-bottom: 1.5rem;"
         class="footer-grid"
       >
         <!-- Brand -->
@@ -712,147 +688,164 @@ const techs = [
             </span>
           </div>
           <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; line-height: 1.6; margin-bottom: 1.25rem; max-width: 240px;"
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; line-height: 1.6; margin-bottom: 1.25rem; max-width: 280px;"
           >
-            Plataforma de automatización DevOps open source, construida sobre 4
-            proyectos reales y verificados.
+            Ingeniería DevOps open source. Proyectos reales, infraestructura
+            real, código real.
           </p>
           <div style="display: flex; gap: 0.75rem;">
-            {
-              [
-                { icon: 'LI', href: '#' },
-                { icon: 'GH', href: 'https://github.com/lra-cloud-ops' },
-                { icon: 'YT', href: '#' },
-                { icon: 'TW', href: '#' },
-              ].map(({ icon, href }) => (
-                <a
-                  href={href}
-                  target={href !== '#' ? '_blank' : undefined}
-                  style="width: 32px; height: 32px; border-radius: 50%; background: #3C4043; display: flex; align-items: center; justify-content: center; font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; font-weight: 700; color: #9AA0A6; text-decoration: none; transition: background 150ms;"
-                  onmouseover="this.style.background='#5F6368'"
-                  onmouseout="this.style.background='#3C4043'"
-                >
-                  {icon}
-                </a>
-              ))
-            }
+            <a
+              href="https://github.com/lra-cloud-ops"
+              target="_blank"
+              rel="noopener"
+              style="width: 36px; height: 36px; border-radius: 50%; background: #3C4043; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 150ms;"
+              onmouseover="this.style.background='#5F6368'"
+              onmouseout="this.style.background='#3C4043'"
+              title="GitHub Organization"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#9AA0A6">
+                <path
+                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
+              target="_blank"
+              rel="noopener"
+              style="width: 36px; height: 36px; border-radius: 50%; background: #3C4043; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 150ms;"
+              onmouseover="this.style.background='#5F6368'"
+              onmouseout="this.style.background='#3C4043'"
+              title="LinkedIn"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#9AA0A6">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                ></path>
+              </svg>
+            </a>
           </div>
         </div>
 
-        <!-- 4 link columns -->
-        {
-          [
-            {
-              title: 'Productos',
-              links: [
-                {
-                  label: 'lra-ai-platform',
-                  href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
-                },
-                {
-                  label: 'aws-devops-agent',
-                  href: 'https://github.com/lra-cloud-ops/aws-devops-agent',
-                },
-                {
-                  label: 'aws-terraform-devops',
-                  href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
-                },
-                {
-                  label: 'k8s-on-premise',
-                  href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
-                },
+        <!-- Proyectos -->
+        <div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 1rem;"
+          >
+            Proyectos
+          </p>
+          {
+            [
+              [
+                'lra-ai-platform',
+                'https://github.com/lra-cloud-ops/lra-ai-platform',
               ],
-            },
-            {
-              title: 'Soluciones',
-              links: [
-                { label: 'Orquestación de Agentes IA', href: '#' },
-                { label: 'Infraestructura Cloud', href: '#' },
-                { label: 'Clústeres Kubernetes', href: '#' },
-                { label: 'Seguridad y Cumplimiento', href: '#' },
-                { label: 'GitOps y CI/CD', href: '#' },
+              [
+                'aws-devops-agent',
+                'https://github.com/lra-cloud-ops/aws-devops-agent',
               ],
-            },
-            {
-              title: 'Recursos',
-              links: [
-                {
-                  label: 'GitHub Organization',
-                  href: 'https://github.com/lra-cloud-ops',
-                },
-                {
-                  label: 'lra-ai-platform docs',
-                  href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
-                },
-                {
-                  label: 'aws-devops-agent',
-                  href: 'https://github.com/lra-cloud-ops/aws-devops-agent',
-                },
-                {
-                  label: 'aws-terraform-devops',
-                  href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
-                },
-                {
-                  label: 'k8s-on-premise',
-                  href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
-                },
+              [
+                'aws-terraform-devops',
+                'https://github.com/lra-cloud-ops/aws-terraform-devops',
               ],
-            },
-            {
-              title: 'Empresa',
-              links: [
-                { label: 'Sobre nosotros', href: '#' },
-                { label: 'Contacto', href: '#' },
-                { label: 'Privacidad', href: '#' },
-                { label: 'Términos', href: '#' },
+              [
+                'k8s-on-premise',
+                'https://github.com/lra-cloud-ops/k8s-on-premise',
               ],
-            },
-          ].map(({ title, links }) => (
-            <div>
-              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 1rem;">
-                {title}
-              </p>
-              {links.map(({ label, href }) => (
-                <a
-                  href={href}
-                  target={href.startsWith('http') ? '_blank' : undefined}
-                  style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
-                  onmouseover="this.style.color='#FFFFFF'"
-                  onmouseout="this.style.color='#9AA0A6'"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
-          ))
-        }
+            ].map(([name, href]) => (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener"
+                style="display: block; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
+                onmouseover="this.style.color='#FFFFFF'"
+                onmouseout="this.style.color='#9AA0A6'"
+              >
+                {name}
+              </a>
+            ))
+          }
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 1rem;"
+          >
+            Contacto
+          </p>
+          <a
+            href="mailto:info@lracloudops.com"
+            style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
+            onmouseover="this.style.color='#FFFFFF'"
+            onmouseout="this.style.color='#9AA0A6'"
+          >
+            info@lracloudops.com
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
+            target="_blank"
+            rel="noopener"
+            style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
+            onmouseover="this.style.color='#FFFFFF'"
+            onmouseout="this.style.color='#9AA0A6'"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/lra-cloud-ops"
+            target="_blank"
+            rel="noopener"
+            style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
+            onmouseover="this.style.color='#FFFFFF'"
+            onmouseout="this.style.color='#9AA0A6'"
+          >
+            GitHub Organization
+          </a>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; margin-top: 1rem; line-height: 1.5;"
+          >
+            📍 Las Palmas de Gran Canaria<br />Canarias, España
+          </p>
+        </div>
       </div>
 
       <!-- Bottom bar -->
       <div
+        class="footer-bottom"
         style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;"
       >
         <p
           style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368;"
         >
-          © 2026 LRA CloudOps · Construido por Ruben Liquenson · Las Palmas de
-          Gran Canaria, España
+          © 2026 LRA CloudOps · Ruben Liquenson · Las Palmas de Gran Canaria,
+          España
         </p>
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          {
-            ['Privacidad', 'Términos', 'Cookies', 'Mapa del sitio'].map(
-              (item) => (
-                <a
-                  href="#"
-                  style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; text-decoration: none; transition: color 150ms ease;"
-                  onmouseover="this.style.color='#9AA0A6'"
-                  onmouseout="this.style.color='#5F6368'"
-                >
-                  {item}
-                </a>
-              )
-            )
-          }
+        <div
+          style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;"
+        >
+          <a href="https://nibble.tech" target="_blank" rel="noopener">
+            <img
+              src="/nibble-logo.jpg"
+              alt="Nibble Tech LLC"
+              style="height: 20px; width: auto; border-radius: 3px; opacity: 0.5; transition: opacity 150ms;"
+              onmouseover="this.style.opacity='1'"
+              onmouseout="this.style.opacity='0.5'"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/school/itla/"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="/itla-logo.jpg"
+              alt="ITLA"
+              style="height: 20px; width: auto; border-radius: 3px; opacity: 0.5; transition: opacity 150ms;"
+              onmouseover="this.style.opacity='1'"
+              onmouseout="this.style.opacity='0.5'"
+            />
+          </a>
         </div>
       </div>
     </div>
