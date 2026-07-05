@@ -1,10 +1,165 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+
+const heroPills = ['AI Agents', 'AWS', 'Kubernetes', 'Terraform', 'GitOps']
+
+const newsCards = [
+  {
+    color: '#1A73E8',
+    category: 'AI Agents',
+    title: 'lra-ai-platform — 8 agentes, 14 integraciones, 9 workflows',
+    desc: 'Plataforma multi-agente para automatización DevOps con Governance Engine.',
+    href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+  },
+  {
+    color: '#137333',
+    category: 'Cloud AI',
+    title: 'aws-devops-agent — Claude Sonnet 4.6 + 24 servicios AWS',
+    desc: 'Agente IA real que usa Claude tool-use para gestionar AWS en lenguaje natural.',
+    href: 'https://github.com/lra-cloud-ops/aws-devops-agent',
+  },
+  {
+    color: '#F29900',
+    category: 'Infrastructure',
+    title: 'aws-terraform-devops — VPC, EKS, RDS, ECR con Terraform',
+    desc: 'Infraestructura AWS lista para producción con 7 módulos Terraform y CI/CD.',
+    href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+  },
+  {
+    color: '#C5221F',
+    category: 'Kubernetes',
+    title: 'k8s-on-premise — K8s bare metal con kubeadm + ArgoCD',
+    desc: 'Clúster Kubernetes multi-nodo desde cero con demo GitOps.',
+    href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+  },
+]
+
+const productCols = [
+  {
+    cat: 'AI & Automation',
+    color: '#1A73E8',
+    href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+    items: [
+      {
+        name: 'lra-ai-platform',
+        desc: 'Orquestación multi-agente con Governance Engine',
+      },
+      {
+        name: 'aws-devops-agent',
+        desc: 'Claude Sonnet 4.6 tool-use para gestión de AWS',
+      },
+      { name: 'lra scan', desc: 'Auditoría de seguridad vía Trivy + Checkov' },
+      { name: '9 workflows', desc: 'Desde create_project hasta deploy_eks' },
+    ],
+  },
+  {
+    cat: 'Cloud Infrastructure',
+    color: '#137333',
+    href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+    items: [
+      { name: 'AWS VPC', desc: 'Redes multi-AZ con subnets públicas/privadas' },
+      { name: 'EKS 1.31', desc: 'Kubernetes gestionado en AWS' },
+      {
+        name: 'RDS PostgreSQL 15',
+        desc: 'Base de datos gestionada con backups',
+      },
+      {
+        name: 'Módulos Terraform',
+        desc: 'vpc, eks, rds, ecr, iam, cloudwatch, s3',
+      },
+    ],
+  },
+  {
+    cat: 'Kubernetes',
+    color: '#F29900',
+    href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+    items: [
+      {
+        name: 'Clúster kubeadm',
+        desc: '1 master + 2 workers sobre Vagrant/VirtualBox',
+      },
+      { name: 'Calico networking', desc: 'CNI con políticas de red' },
+      { name: 'NGINX Ingress', desc: 'Enrutamiento HTTP/HTTPS' },
+      { name: 'ArgoCD GitOps', desc: 'Sincronización declarativa desde Git' },
+    ],
+  },
+  {
+    cat: 'DevOps Tools',
+    color: '#C5221F',
+    href: 'https://github.com/lra-cloud-ops',
+    items: [
+      { name: 'GitHub Actions', desc: 'CI/CD en cada push' },
+      { name: 'SonarCloud', desc: 'Calidad de código y cobertura' },
+      { name: 'Helm', desc: 'Gestión de paquetes Kubernetes' },
+      { name: 'Prometheus + Grafana', desc: 'Stack de observabilidad' },
+    ],
+  },
+]
+
+const tabs = [
+  {
+    label: 'AI Agents',
+    color: '#1A73E8',
+    h3: 'Automatiza DevOps con agentes IA especializados',
+    desc: 'lra-ai-platform proporciona 8 agentes especializados — Cloud Architect, Security Engineer, SRE y más — cada uno ejecutando operaciones reales via 14 integraciones live con AWS, Kubernetes, Terraform y Ansible.',
+    linkText: 'Explorar lra-ai-platform →',
+    href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+  },
+  {
+    label: 'AWS Infrastructure',
+    color: '#F29900',
+    h3: 'Infraestructura AWS lista para producción con Terraform',
+    desc: 'aws-terraform-devops entrega un entorno AWS completo: VPC multi-AZ, cluster EKS 1.31, RDS PostgreSQL 15, registro ECR y una app Flask desplegada via Helm y gestionada por ArgoCD.',
+    linkText: 'Explorar aws-terraform-devops →',
+    href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+  },
+  {
+    label: 'Kubernetes',
+    color: '#C5221F',
+    h3: 'Clúster Kubernetes on-premise desde cero',
+    desc: 'k8s-on-premise construye un clúster Kubernetes multi-nodo real usando kubeadm sobre Vagrant/VirtualBox. Calico CNI, NGINX Ingress, Helm y demo ArgoCD GitOps funcional incluidos.',
+    linkText: 'Explorar k8s-on-premise →',
+    href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+  },
+  {
+    label: 'Security',
+    color: '#1A73E8',
+    h3: 'Escaneo de seguridad automatizado con Trivy y Checkov',
+    desc: 'El agente Security Engineer en lra-ai-platform ejecuta Trivy para vulnerabilidades en contenedores e IaC, y Checkov para misconfiguraciones en Terraform, Kubernetes y Dockerfile — generando un informe PASS/FAIL automáticamente.',
+    linkText: null,
+    href: null,
+  },
+  {
+    label: 'Natural Language AWS',
+    color: '#137333',
+    h3: 'Gestiona AWS en lenguaje natural con Claude',
+    desc: 'aws-devops-agent usa Claude Sonnet 4.6 en un bucle real de tool-use para consultar y gestionar 24 servicios AWS. Haz preguntas en español o inglés y obtén datos reales de tu cuenta AWS.',
+    linkText: null,
+    href: null,
+  },
+]
+
+const techs = [
+  'AWS',
+  'Terraform',
+  'Kubernetes',
+  'ArgoCD',
+  'Ansible',
+  'Trivy',
+  'Checkov',
+  'Claude',
+  'Prometheus',
+  'Grafana',
+  'GitHub Actions',
+  'SonarCloud',
+  'Helm',
+  'Vagrant',
+]
 ---
 
 <Layout
   title="LRA CloudOps"
-  description="Descripción de la plataforma (placeholder)"
+  description="4 proyectos open source que cubren agentes IA, infraestructura AWS, Kubernetes y automatización cloud. Todo verificado, nada ficticio."
   lang="es"
 >
   <!-- ============================================================
@@ -81,7 +236,7 @@ import Layout from '../../layouts/Layout.astro'
   </header>
 
   <!-- ============================================================
-     HERO — Google Cloud style: white bg, large centered text
+     HERO
      ============================================================ -->
   <section
     style="background: #FFFFFF; padding: 5rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden;"
@@ -100,37 +255,36 @@ import Layout from '../../layouts/Layout.astro'
         <span
           style="width: 6px; height: 6px; background: #1A73E8; border-radius: 50%;"
         ></span>
-        Open Source · github.com/lra-cloud-ops
+        Open Source · lra-cloud-ops
       </div>
 
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: #202124; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem;"
       >
-        Automatización DevOps<br />con agentes<br /><span
-          style="color: #1A73E8;">especializados.</span
-        >
+        Automatización DevOps real.<br />
+        Integraciones reales.<br />
+        <span style="color: #1A73E8;">Infraestructura real.</span>
       </h1>
 
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.125rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-inline: auto; margin-bottom: 2.5rem;"
       >
-        8 agentes especializados que ejecutan operaciones reales en AWS, Azure,
-        GCP, Kubernetes y Terraform. Con un Governance Engine de 5 niveles y
-        audit trail completo.
+        4 proyectos open source que cubren agentes IA, infraestructura AWS,
+        Kubernetes y automatización cloud. Todo verificado, nada ficticio.
       </p>
 
       <div
         style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;"
       >
         <a
-          href="https://github.com/lra-cloud-ops/lra-ai-platform"
+          href="https://github.com/lra-cloud-ops"
           target="_blank"
           style="display: inline-flex; align-items: center; background: #1A73E8; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 1rem; text-decoration: none;"
         >
           Ver en GitHub →
         </a>
         <a
-          href="#"
+          href="mailto:info@lracloudops.com"
           style="display: inline-flex; align-items: center; background: transparent; color: #1A73E8; padding: 0.875rem 2rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 1rem; text-decoration: none;"
         >
           ▷ Solicitar una demo
@@ -140,8 +294,8 @@ import Layout from '../../layouts/Layout.astro'
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-bottom: 3rem;"
       >
-        ✓ 33 tests · 0.14s &nbsp;·&nbsp; ✓ 14 integraciones live &nbsp;·&nbsp; ✓
-        Open Source
+        ✓ Claude Sonnet 4.6 &nbsp;·&nbsp; ✓ 14 integraciones live &nbsp;·&nbsp;
+        ✓ 33 tests · 0.14s &nbsp;·&nbsp; ✓ Open Source
       </p>
 
       <!-- Hero visual — abstract grid/dots -->
@@ -156,13 +310,7 @@ import Layout from '../../layouts/Layout.astro'
           style="position: relative; z-index: 1; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; padding: 2rem;"
         >
           {
-            [
-              'Infraestructura',
-              'Seguridad',
-              'Automatización',
-              'Observabilidad',
-              'CI/CD',
-            ].map((item, i) => (
+            heroPills.map((item, i) => (
               <div
                 style={`background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 0.875rem 1.25rem; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); ${i === 2 ? 'border-color: #1A73E8; box-shadow: 0 2px 8px rgba(26,115,232,0.2);' : ''}`}
               >
@@ -181,7 +329,7 @@ import Layout from '../../layouts/Layout.astro'
   </section>
 
   <!-- ============================================================
-     NEWS STRIP — horizontal scrollable cards
+     NEWS STRIP — 4 proyectos reales
      ============================================================ -->
   <section
     style="background: #F8F9FA; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0; padding: 2rem 0; overflow: hidden;"
@@ -193,14 +341,14 @@ import Layout from '../../layouts/Layout.astro'
         <p
           style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 600; color: #202124;"
         >
-          Últimas novedades
+          Nuestros proyectos
         </p>
         <a
-          href="https://github.com/lra-cloud-ops/lra-ai-platform"
+          href="https://github.com/lra-cloud-ops"
           target="_blank"
           style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none; font-weight: 500;"
         >
-          Ver todo →
+          Ver todos →
         </a>
       </div>
       <div
@@ -208,35 +356,9 @@ import Layout from '../../layouts/Layout.astro'
         class="news-grid"
       >
         {
-          [
-            {
-              color: '#1A73E8',
-              category: 'Plataforma',
-              title: 'lra-ai-platform v2.0 — 8 agentes, 14 integraciones live',
-              desc: 'Nuevo Governance Engine con 5 niveles de permisos y audit trail completo.',
-            },
-            {
-              color: '#137333',
-              category: 'Seguridad',
-              title:
-                'lra scan — auditoría de seguridad instantánea para cualquier repo GitHub',
-              desc: 'Ejecuta escaneos Trivy y Checkov en cualquier repositorio en segundos.',
-            },
-            {
-              color: '#F29900',
-              category: 'Automatización',
-              title: '9 workflows — desde deploy_eks hasta compliance_check',
-              desc: 'Pipelines automatizados de extremo a extremo para las tareas DevOps más comunes.',
-            },
-            {
-              color: '#C5221F',
-              category: 'Calidad',
-              title: '33 tests pasando · 0.14s — construido para la fiabilidad',
-              desc: 'Suite de tests completa con CI/CD en cada push a main.',
-            },
-          ].map(({ color, category, title, desc }) => (
+          newsCards.map(({ color, category, title, desc, href }) => (
             <a
-              href="https://github.com/lra-cloud-ops/lra-ai-platform"
+              href={href}
               target="_blank"
               style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.25rem; text-decoration: none; display: block; transition: box-shadow 150ms ease;"
               onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.12)'"
@@ -264,19 +386,19 @@ import Layout from '../../layouts/Layout.astro'
   </section>
 
   <!-- ============================================================
-     PRODUCTS GRID — Google Cloud style categories
+     PRODUCTS GRID — capacidades reales
      ============================================================ -->
   <section style="background: #FFFFFF; padding: 4rem 1.5rem;">
     <div style="max-width: 1280px; margin: 0 auto;">
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem;"
       >
-        Explorar la plataforma
+        Qué construimos
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2.5rem;"
       >
-        8 agentes especializados para cada tarea DevOps.
+        Capacidades reales en 4 proyectos open source.
       </p>
 
       <div
@@ -284,64 +406,7 @@ import Layout from '../../layouts/Layout.astro'
         class="products-grid"
       >
         {
-          [
-            {
-              cat: 'Infraestructura',
-              items: [
-                {
-                  name: 'Founder Agent',
-                  desc: 'Crea repos GitHub, genera README, ARCHITECTURE, ROADMAP',
-                },
-                {
-                  name: 'Cloud Architect',
-                  desc: 'Revisa infraestructura AWS, Azure, GCP y compliance Well-Architected',
-                },
-              ],
-              color: '#1A73E8',
-            },
-            {
-              cat: 'Operaciones',
-              items: [
-                {
-                  name: 'DevOps Engineer',
-                  desc: 'Ejecuta operaciones Terraform, kubectl, Helm, Ansible',
-                },
-                {
-                  name: 'SRE Agent',
-                  desc: 'Configura alertas Prometheus, dashboards Grafana, alarmas CloudWatch',
-                },
-              ],
-              color: '#137333',
-            },
-            {
-              cat: 'Seguridad',
-              items: [
-                {
-                  name: 'Security Engineer',
-                  desc: 'Ejecuta escaneos Trivy y Checkov en imágenes, IaC, K8s, GitHub Actions',
-                },
-                {
-                  name: 'Reviewer Agent',
-                  desc: 'Revisa PRs, analiza calidad de código, publica comentarios en GitHub',
-                },
-              ],
-              color: '#F29900',
-            },
-            {
-              cat: 'Plataforma',
-              items: [
-                {
-                  name: 'OpenShift Agent',
-                  desc: 'Gestiona proyectos OpenShift, despliegues, operadores vía oc CLI',
-                },
-                {
-                  name: 'Documentation Agent',
-                  desc: 'Genera README, ADR, Runbooks a partir del análisis del código',
-                },
-              ],
-              color: '#C5221F',
-            },
-          ].map(({ cat, items, color }, i) => (
+          productCols.map(({ cat, items, color, href }, i) => (
             <div
               style={`padding: 1.5rem; ${i < 3 ? 'border-right: 1px solid #DADCE0;' : ''}`}
             >
@@ -362,7 +427,7 @@ import Layout from '../../layouts/Layout.astro'
                 </div>
               ))}
               <a
-                href="https://github.com/lra-cloud-ops/lra-ai-platform"
+                href={href}
                 target="_blank"
                 style="display: inline-flex; align-items: center; gap: 0.25rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #1A73E8; text-decoration: none; margin-top: 0.875rem; font-weight: 500;"
               >
@@ -376,22 +441,22 @@ import Layout from '../../layouts/Layout.astro'
   </section>
 
   <!-- ============================================================
-     INDUSTRIES — tabs style
+     INDUSTRIES — tabs con casos de uso reales
      ============================================================ -->
   <section
+    id="industries"
     style="background: #F8F9FA; padding: 4rem 1.5rem; border-top: 1px solid #DADCE0;"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem;"
       >
-        Diseñado para cada caso de uso DevOps
+        Diseñado para escenarios DevOps reales
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;"
       >
-        Desde la configuración de infraestructura hasta el compliance de
-        seguridad.
+        Desde agentes IA hasta clústeres Kubernetes bare metal.
       </p>
 
       <!-- Tabs -->
@@ -399,77 +464,98 @@ import Layout from '../../layouts/Layout.astro'
         style="display: flex; gap: 0; border-bottom: 1px solid #DADCE0; margin-bottom: 2rem; overflow-x: auto;"
       >
         {
-          [
-            'Infraestructura',
-            'Seguridad',
-            'Automatización',
-            'Observabilidad',
-            'CI/CD',
-          ].map((tab, i) => (
+          tabs.map((tab, i) => (
             <button
-              style={`padding: 0.875rem 1.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; border: none; background: transparent; cursor: pointer; white-space: nowrap; border-bottom: 3px solid ${i === 0 ? '#1A73E8' : 'transparent'}; color: ${i === 0 ? '#1A73E8' : '#5F6368'}; transition: all 150ms;`}
+              class="ind-tab-btn"
+              data-idx={i}
+              data-color={tab.color}
+              style={`padding: 0.875rem 1.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; border: none; background: transparent; cursor: pointer; white-space: nowrap; border-bottom: 3px solid ${i === 0 ? tab.color : 'transparent'}; color: ${i === 0 ? tab.color : '#5F6368'}; transition: all 150ms;`}
             >
-              {tab}
+              {tab.label}
             </button>
           ))
         }
       </div>
 
       <!-- Tab content -->
-      <div
-        style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;"
-      >
-        <div>
-          <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem;"
+      {
+        tabs.map((tab, i) => (
+          <div
+            class="ind-tab-panel"
+            data-idx={i}
+            style={`display: ${i === 0 ? 'grid' : 'none'}; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;`}
           >
-            Infraestructura
-          </p>
-          <h3
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.75rem; font-weight: 600; color: #202124; margin-bottom: 1rem; line-height: 1.25;"
-          >
-            Despliega y gestiona infraestructura en AWS, Azure y GCP
-          </h3>
-          <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
-          >
-            Los agentes Cloud Architect y DevOps Engineer revisan, planifican y
-            ejecutan operaciones de infraestructura usando Terraform, kubectl y
-            Helm.
-          </p>
-          <a
-            href="https://github.com/lra-cloud-ops/lra-ai-platform"
-            target="_blank"
-            style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: #1A73E8; text-decoration: none;"
-          >
-            Ver lra-ai-platform →
-          </a>
-        </div>
-        <div
-          style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 12px; height: 280px; display: flex; align-items: center; justify-content: center;"
-        >
-          <div style="text-align: center;">
-            <div
-              style="width: 64px; height: 64px; border-radius: 16px; background: #E8F0FE; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;"
-            >
-              <div
-                style="width: 32px; height: 32px; border-radius: 8px; background: #1A73E8;"
+            <div>
+              <p
+                style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; color: ${tab.color}; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem;`}
               >
+                {tab.label}
+              </p>
+              <h3 style="font-family: 'Red Hat Display', sans-serif; font-size: 1.75rem; font-weight: 600; color: #202124; margin-bottom: 1rem; line-height: 1.25;">
+                {tab.h3}
+              </h3>
+              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;">
+                {tab.desc}
+              </p>
+              {tab.href && (
+                <a
+                  href={tab.href}
+                  target="_blank"
+                  style={`display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: ${tab.color}; text-decoration: none;`}
+                >
+                  {tab.linkText}
+                </a>
+              )}
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 12px; height: 280px; display: flex; align-items: center; justify-content: center;">
+              <div style="text-align: center;">
+                <div
+                  style={`width: 64px; height: 64px; border-radius: 16px; background: ${tab.color}1A; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;`}
+                >
+                  <div
+                    style={`width: 32px; height: 32px; border-radius: 8px; background: ${tab.color};`}
+                  />
+                </div>
+                <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">
+                  {tab.label}
+                </p>
               </div>
             </div>
-            <p
-              style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;"
-            >
-              Visual de industria (placeholder)
-            </p>
           </div>
-        </div>
-      </div>
+        ))
+      }
     </div>
   </section>
 
+  <script>
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>(
+      '#industries .ind-tab-btn'
+    )
+    const panels = document.querySelectorAll<HTMLDivElement>(
+      '#industries .ind-tab-panel'
+    )
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idx = btn.dataset.idx
+        const color = btn.dataset.color || ''
+
+        tabBtns.forEach((b) => {
+          b.style.borderBottomColor = 'transparent'
+          b.style.color = '#5F6368'
+        })
+        btn.style.borderBottomColor = color
+        btn.style.color = color
+
+        panels.forEach((p) => {
+          p.style.display = p.dataset.idx === idx ? 'grid' : 'none'
+        })
+      })
+    })
+  </script>
+
   <!-- ============================================================
-     CUSTOMERS — logo strip
+     CUSTOMERS — stack tecnológico verificado
      ============================================================ -->
   <section
     style="background: #FFFFFF; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0;"
@@ -484,16 +570,7 @@ import Layout from '../../layouts/Layout.astro'
         style="display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap;"
       >
         {
-          [
-            'Terraform',
-            'Kubernetes',
-            'ArgoCD',
-            'Prometheus',
-            'Grafana',
-            'Trivy',
-            'Checkov',
-            'Ansible',
-          ].map((name) => (
+          techs.map((name) => (
             <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #DADCE0; letter-spacing: -0.01em;">
               {name}
             </span>
@@ -568,7 +645,7 @@ import Layout from '../../layouts/Layout.astro'
   </section>
 
   <!-- ============================================================
-     CTA FINAL — Google style: simple, centered
+     CTA FINAL
      ============================================================ -->
   <section
     style="background: #FFFFFF; padding: 5rem 1.5rem; text-align: center;"
@@ -577,23 +654,24 @@ import Layout from '../../layouts/Layout.astro'
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 600; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
       >
-        Ejecuta lra scan en cualquier repositorio GitHub.
+        4 proyectos open source. Infraestructura real. Cero demos ficticias.
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; margin-bottom: 2.5rem; line-height: 1.7;"
       >
-        Obtén una auditoría completa de seguridad e IaC en segundos. Con Trivy y
-        Checkov. Gratuito y open source.
+        Cada línea de código es pública. Cada métrica está verificada contra el
+        código fuente. Explora los repositorios, ejecuta el código, compruébalo
+        tú mismo.
       </p>
       <div
         style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
       >
         <a
-          href="https://github.com/lra-cloud-ops/lra-ai-platform"
+          href="https://github.com/lra-cloud-ops"
           target="_blank"
           style="display: inline-flex; align-items: center; background: #1A73E8; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 1rem; text-decoration: none;"
         >
-          Ver en GitHub →
+          Ver organización →
         </a>
         <a
           href="mailto:info@lracloudops.com"
@@ -606,7 +684,7 @@ import Layout from '../../layouts/Layout.astro'
   </section>
 
   <!-- ============================================================
-     FOOTER — 5 columns Google style
+     FOOTER
      ============================================================ -->
   <footer
     style="background: #202124; padding: 3rem 1.5rem 2rem; border-top: 1px solid #3C4043;"
@@ -636,13 +714,20 @@ import Layout from '../../layouts/Layout.astro'
           <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; line-height: 1.6; margin-bottom: 1.25rem; max-width: 240px;"
           >
-            Descripción de la plataforma (placeholder).
+            Plataforma de automatización DevOps open source, construida sobre 4
+            proyectos reales y verificados.
           </p>
           <div style="display: flex; gap: 0.75rem;">
             {
-              ['LI', 'GH', 'YT', 'TW'].map((icon) => (
+              [
+                { icon: 'LI', href: '#' },
+                { icon: 'GH', href: 'https://github.com/lra-cloud-ops' },
+                { icon: 'YT', href: '#' },
+                { icon: 'TW', href: '#' },
+              ].map(({ icon, href }) => (
                 <a
-                  href="#"
+                  href={href}
+                  target={href !== '#' ? '_blank' : undefined}
                   style="width: 32px; height: 32px; border-radius: 50%; background: #3C4043; display: flex; align-items: center; justify-content: center; font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; font-weight: 700; color: #9AA0A6; text-decoration: none; transition: background 150ms;"
                   onmouseover="this.style.background='#5F6368'"
                   onmouseout="this.style.background='#3C4043'"
@@ -660,50 +745,82 @@ import Layout from '../../layouts/Layout.astro'
             {
               title: 'Productos',
               links: [
-                'lra scan',
-                'deploy_eks',
-                'security_review',
-                'infrastructure_review',
-                'setup_monitoring',
+                {
+                  label: 'lra-ai-platform',
+                  href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+                },
+                {
+                  label: 'aws-devops-agent',
+                  href: 'https://github.com/lra-cloud-ops/aws-devops-agent',
+                },
+                {
+                  label: 'aws-terraform-devops',
+                  href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+                },
+                {
+                  label: 'k8s-on-premise',
+                  href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+                },
               ],
             },
             {
               title: 'Soluciones',
               links: [
-                'Cloud Architecture',
-                'Seguridad y Compliance',
-                'Observabilidad',
-                'CI/CD y GitOps',
-                'Documentación',
+                { label: 'Orquestación de Agentes IA', href: '#' },
+                { label: 'Infraestructura Cloud', href: '#' },
+                { label: 'Clústeres Kubernetes', href: '#' },
+                { label: 'Seguridad y Cumplimiento', href: '#' },
+                { label: 'GitOps y CI/CD', href: '#' },
               ],
             },
             {
               title: 'Recursos',
               links: [
-                'GitHub',
-                'Documentación',
-                'Architecture ADR',
-                'Roadmap',
-                'Referencia de API',
+                {
+                  label: 'GitHub Organization',
+                  href: 'https://github.com/lra-cloud-ops',
+                },
+                {
+                  label: 'lra-ai-platform docs',
+                  href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+                },
+                {
+                  label: 'aws-devops-agent',
+                  href: 'https://github.com/lra-cloud-ops/aws-devops-agent',
+                },
+                {
+                  label: 'aws-terraform-devops',
+                  href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+                },
+                {
+                  label: 'k8s-on-premise',
+                  href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+                },
               ],
             },
             {
               title: 'Empresa',
-              links: ['Nosotros', 'Contacto', 'Privacidad', 'Términos'],
+              links: [
+                { label: 'Sobre nosotros', href: '#' },
+                { label: 'Contacto', href: '#' },
+                { label: 'Privacidad', href: '#' },
+                { label: 'Términos', href: '#' },
+              ],
             },
           ].map(({ title, links }) => (
             <div>
               <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 1rem;">
                 {title}
               </p>
-              {links.map((link) => (
+              {links.map(({ label, href }) => (
                 <a
-                  href="#"
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
                   style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
                   onmouseover="this.style.color='#FFFFFF'"
                   onmouseout="this.style.color='#9AA0A6'"
                 >
-                  {link}
+                  {label}
                 </a>
               ))}
             </div>
@@ -718,7 +835,8 @@ import Layout from '../../layouts/Layout.astro'
         <p
           style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368;"
         >
-          © 2026 LRA CloudOps. Todos los derechos reservados.
+          © 2026 LRA CloudOps · Construido por Ruben Liquenson · Las Palmas de
+          Gran Canaria, España
         </p>
         <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
           {
@@ -745,6 +863,10 @@ import Layout from '../../layouts/Layout.astro'
   /* Google Cloud inspired styles */
   .gc-nav a {
     position: relative;
+  }
+
+  .ind-tab-btn:hover {
+    color: #1a73e8;
   }
 
   /* News grid responsive */
