@@ -4,12 +4,14 @@ import Header from '../components/layout/Header.astro'
 import Footer from '../components/layout/Footer.astro'
 
 const skills = [
-  { category: 'Cloud', skills: 'AWS · Azure · GCP' },
+  { category: 'Cloud', skills: 'AWS (primary) · Azure · GCP' },
   { category: 'IaC', skills: 'Terraform · Ansible · CloudFormation' },
-  { category: 'Containers', skills: 'Kubernetes · Docker · Helm' },
-  { category: 'CI/CD', skills: 'GitHub Actions · ArgoCD · Jenkins' },
+  { category: 'Containers', skills: 'Kubernetes · Docker · Helm · ArgoCD' },
+  { category: 'CI/CD', skills: 'GitHub Actions · Jenkins · GitOps' },
+  { category: 'Security', skills: 'Trivy · Checkov · SonarCloud · IAM' },
   { category: 'Observability', skills: 'Prometheus · Grafana · CloudWatch' },
-  { category: 'Security', skills: 'Trivy · Checkov · IAM' },
+  { category: 'AI & Agents', skills: 'Claude Sonnet 4.6 · boto3 · tool-use' },
+  { category: 'Languages', skills: 'Python · Bash · HCL · YAML' },
 ]
 ---
 
@@ -109,11 +111,19 @@ const skills = [
             Background
           </h3>
           <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1rem;"
+          >
+            DevOps Engineer and Cloud Engineer based in Las Palmas de Gran
+            Canaria, Spain. Specialized in AWS infrastructure, Kubernetes and
+            Infrastructure as Code with Terraform.
+          </p>
+          <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
           >
-            Placeholder bio text. DevOps Engineer specializing in AWS,
-            Kubernetes and Terraform. Building production-grade infrastructure
-            and open source tooling for DevOps teams.
+            Builder of open source tooling for DevOps teams — from multi-agent
+            automation platforms to bare metal Kubernetes clusters. All projects
+            are publicly available under the lra-cloud-ops organization on
+            GitHub.
           </p>
 
           <h3

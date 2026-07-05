@@ -4,12 +4,14 @@ import Header from '../../components/layout/Header.astro'
 import Footer from '../../components/layout/Footer.astro'
 
 const skills = [
-  { category: 'Cloud', skills: 'AWS · Azure · GCP' },
+  { category: 'Cloud', skills: 'AWS (principal) · Azure · GCP' },
   { category: 'IaC', skills: 'Terraform · Ansible · CloudFormation' },
-  { category: 'Contenedores', skills: 'Kubernetes · Docker · Helm' },
-  { category: 'CI/CD', skills: 'GitHub Actions · ArgoCD · Jenkins' },
+  { category: 'Contenedores', skills: 'Kubernetes · Docker · Helm · ArgoCD' },
+  { category: 'CI/CD', skills: 'GitHub Actions · Jenkins · GitOps' },
+  { category: 'Seguridad', skills: 'Trivy · Checkov · SonarCloud · IAM' },
   { category: 'Observabilidad', skills: 'Prometheus · Grafana · CloudWatch' },
-  { category: 'Seguridad', skills: 'Trivy · Checkov · IAM' },
+  { category: 'IA y Agentes', skills: 'Claude Sonnet 4.6 · boto3 · tool-use' },
+  { category: 'Lenguajes', skills: 'Python · Bash · HCL · YAML' },
 ]
 ---
 
@@ -109,11 +111,19 @@ const skills = [
             Trayectoria
           </h3>
           <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1rem;"
+          >
+            Ingeniero DevOps e Ingeniero Cloud con base en Las Palmas de Gran
+            Canaria, España. Especializado en infraestructura AWS, Kubernetes e
+            Infraestructura como Código con Terraform.
+          </p>
+          <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
           >
-            Texto de biografía (placeholder). DevOps Engineer especializado en
-            AWS, Kubernetes y Terraform. Construyendo infraestructura de nivel
-            producción y herramientas open source para equipos DevOps.
+            Desarrollador de herramientas open source para equipos DevOps —
+            desde plataformas de automatización multi-agente hasta clústeres
+            Kubernetes bare metal. Todos los proyectos están disponibles
+            públicamente bajo la organización lra-cloud-ops en GitHub.
           </p>
 
           <h3
