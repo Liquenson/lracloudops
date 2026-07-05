@@ -139,18 +139,23 @@ p {
   }
 }
 
-/* === Section animations — initial state === */
+/* === Section animations — initial state (JS adds class when ready) === */
+.js-animations-ready [data-animate='fade-up'],
+.js-animations-ready [data-animate='stagger'],
+.js-animations-ready [data-animate-child],
+.js-animations-ready [data-logo] {
+  opacity: 0;
+}
+
+/* Fallback: show everything if JS doesn't load in 2s */
 [data-animate='fade-up'],
-[data-animate='stagger'] {
-  opacity: 0;
-}
-
-[data-animate-child] {
-  opacity: 0;
-}
-
+[data-animate='stagger'],
+[data-animate-child],
 [data-logo] {
-  opacity: 0;
+  opacity: 1;
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
 }
 
 /* === Cards — premium hover === */

@@ -45,11 +45,11 @@ const esPath = isES
       rel="stylesheet"
     />
     <style>
-      /* Prevent flash of unstyled animated elements */
-      [data-animate='fade-up'],
-      [data-animate='stagger'],
-      [data-animate-child],
-      [data-logo] {
+      /* Only hide elements after JS confirms animations are ready */
+      .js-animations-ready [data-animate='fade-up'],
+      .js-animations-ready [data-animate='stagger'],
+      .js-animations-ready [data-animate-child],
+      .js-animations-ready [data-logo] {
         opacity: 0;
       }
       @media (prefers-reduced-motion: reduce) {

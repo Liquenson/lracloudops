@@ -235,6 +235,10 @@ export function initAnimations() {
 }
 
 function init() {
+  // Mark document as animation-ready
+  // This activates the opacity:0 initial states
+  document.documentElement.classList.add('js-animations-ready')
+
   initSmoothScroll()
   initSectionAnimations()
   initHeroParallax()
