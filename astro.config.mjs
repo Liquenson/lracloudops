@@ -11,9 +11,6 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: false,
     },
-    fallback: {
-      es: 'en',
-    },
   },
 
   vite: {
