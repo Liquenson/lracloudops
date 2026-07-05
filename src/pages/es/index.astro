@@ -511,12 +511,12 @@ const techs = [
         Tecnologías con las que trabajamos
       </p>
       <div
-        data-animate="logos"
+        data-animate="fade-up"
         style="display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap;"
       >
         {
           techs.map((name) => (
-            <span data-logo style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #DADCE0; letter-spacing: -0.01em;">
+            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #DADCE0; letter-spacing: -0.01em;">
               {name}
             </span>
           ))
@@ -542,7 +542,6 @@ const techs = [
         style="display: flex; align-items: center; justify-content: center; gap: 5rem; flex-wrap: wrap; margin-bottom: 1.5rem;"
       >
         <a
-          data-logo
           href="https://aws.amazon.com/es/"
           target="_blank"
           rel="noopener"
@@ -558,7 +557,6 @@ const techs = [
           />
         </a>
         <a
-          data-logo
           href="https://azure.microsoft.com/es-es"
           target="_blank"
           rel="noopener"
@@ -574,7 +572,6 @@ const techs = [
           />
         </a>
         <a
-          data-logo
           href="https://cloud.google.com/?hl=es"
           target="_blank"
           rel="noopener"
