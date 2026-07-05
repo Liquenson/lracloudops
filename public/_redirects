@@ -1,42 +1,15 @@
-# ── Old EN /en/* URLs → new root EN URLs ─────────────────────────────────
+# ── Legacy /en/ prefix → current root EN routes ──────────────────────────
 /en/about                       /about                      301
 /en/contact                     /contact                    301
 /en/services                    /services                   301
 /en/projects                    /projects                   301
-/en/blog/:slug                  /blog/:slug                 301
-/en/blog                        /blog                       301
-/en/certifications              /certifications             301
-/en/cloud-infrastructure        /cloud-infrastructure       301
-/en/devops-automation           /devops-automation          301
-/en/kubernetes-platforms        /kubernetes-platforms       301
-/en/platform-engineering        /platform-engineering       301
-/en/observability               /observability              301
 /en/pricing                     /pricing                    301
-/en/resources                   /resources                  301
-/en/open-source                 /open-source                301
-/en/security                    /security                   301
-/en/why-lra                     /why-lra                    301
-/en/terms                       /terms                      301
-/en/privacy                     /privacy                    301
-/en/methodology                 /methodology                301
-/en/assessment                  /assessment                 301
-/en/docs/:slug                  /docs/:slug                 301
-/en/docs                        /docs                       301
-/en/solutions/:slug             /solutions/:slug            301
-/en/industries/:slug            /industries/:slug           301
-/en/architectures/:slug         /architectures/:slug        301
-/en/architectures               /architectures              301
 /en/*                           /:splat                     301
 
-# ── Old root ES URLs → new /es/ URLs (ES was default before this refactor) ─
-/nosotros                       /es/nosotros                301
+# ── Legacy Spanish vanity paths → current /es/ routes ────────────────────
+/nosotros                       /es/sobre-nosotros          301
+/sobre-nosotros                 /es/sobre-nosotros          301
 /contacto                       /es/contacto                301
-/proyectos                      /es/proyectos               301
 /servicios                      /es/servicios               301
-/metodologia                    /es/metodologia             301
-/gracias                        /es/gracias                 301
-
-# ── Legacy Spanish vanity slugs ──────────────────────────────────────────
-/sobre-nosotros                 /es/nosotros                301
-/case-studies                   /es/proyectos               301
-/blog/en/:slug                  /blog/:slug                 301
+/proyectos                      /es/proyectos               301
+/precios                        /es/precios                 301
