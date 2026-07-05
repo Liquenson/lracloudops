@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/layout/Header.astro'
+import Footer from '../components/layout/Footer.astro'
+
+const platformFeatures = [
+  'lra scan — security audit on any GitHub repository',
+  'infrastructure_review — multi-cloud analysis',
+  'security_review — Trivy + Checkov on every scan',
+  'documentation_update — README, ADR, Runbooks',
+  'pr_review — automated code review',
+]
+
+const consultingItems = [
+  { title: 'Infrastructure setup', desc: 'EKS, VPC, RDS on AWS from scratch' },
+  { title: 'CI/CD pipelines', desc: 'GitHub Actions, ArgoCD, Helm' },
+  { title: 'Security audit', desc: 'Trivy, Checkov, IAM review' },
+  { title: 'Observability', desc: 'Prometheus, Grafana, CloudWatch' },
+]
+---
+
+<Layout
+  title="Services — LRA CloudOps"
+  description="Platform access and DevOps consulting. Choose what fits your team."
+  lang="en"
+>
+  <Header lang="en" currentPath={Astro.url.pathname} />
+
+  <!-- Page hero -->
+  <section
+    style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+  >
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
+      >
+        Services
+      </p>
+      <h1
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
+      >
+        What we offer
+      </h1>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; max-width: 560px;"
+      >
+        Platform access and DevOps consulting. Choose what fits your team.
+      </p>
+    </div>
+  </section>
+
+  <!-- SaaS Service -->
+  <section
+    style="background: #FFFFFF; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+  >
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div
+        style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;"
+        class="service-grid"
+      >
+        <div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;"
+          >
+            Platform
+          </p>
+          <h2
+            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
+          >
+            lra-ai-platform as a service
+          </h2>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
+          >
+            Access the full platform without installing anything. 8
+            specialized agents execute infrastructure operations on your
+            behalf — scanning, reviewing, deploying and documenting.
+          </p>
+          <div
+            style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;"
+          >
+            {
+              platformFeatures.map((item) => (
+                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"
+                  >
+                    <path
+                      d="M20 6L9 17l-5-5"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">
+                    {item}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+          <a
+            href="/pricing"
+            style="display: inline-flex; align-items: center; background: #1A73E8; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 0.9375rem; text-decoration: none;"
+          >
+            View pricing →
+          </a>
+        </div>
+        <!-- Visual placeholder -->
+        <div
+          style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368; line-height: 1.8;"
+        >
+          <div style="color: #5F6368; margin-bottom: 0.5rem;">
+            # Platform capabilities
+          </div>
+          <div><span style="color: #1A73E8;">$</span> lra scan --github org/repo</div>
+          <div style="color: #137333; margin-left: 1rem;">✓ Trivy: 0 critical</div>
+          <div style="color: #137333; margin-left: 1rem;">✓ Checkov: 47 passed</div>
+          <div style="margin-top: 0.75rem;"><span style="color: #1A73E8;">$</span> lra review aws</div>
+          <div style="color: #137333; margin-left: 1rem;">✓ EKS: healthy</div>
+          <div style="color: #137333; margin-left: 1rem;">✓ RDS: running</div>
+          <div style="margin-top: 0.75rem;"><span style="color: #1A73E8;">$</span> lra run security_review</div>
+          <div style="color: #137333; margin-left: 1rem;">✓ Report generated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consulting Service -->
+  <section style="background: #F8F9FA; padding: 3rem 1.5rem;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div
+        style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;"
+        class="service-grid"
+      >
+        <!-- Visual -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          {
+            consultingItems.map((item) => (
+              <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 6px; padding: 1rem;">
+                <p style="font-family: 'Red Hat Display', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124; margin-bottom: 0.25rem;">
+                  {item.title}
+                </p>
+                <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368;">
+                  {item.desc}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+        <div>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;"
+          >
+            Consulting
+          </p>
+          <h2
+            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
+          >
+            DevOps engineering on demand
+          </h2>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
+          >
+            Need someone to design, build or review your infrastructure? We
+            work directly with your team — cloud architecture, Kubernetes
+            setup, CI/CD pipelines, security hardening.
+          </p>
+          <a
+            href="/contact"
+            style="display: inline-flex; align-items: center; background: transparent; color: #1A73E8; padding: 0.75rem 1.5rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 0.9375rem; text-decoration: none;"
+          >
+            Get in touch →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="en" />
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    .service-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+  }
+</style>

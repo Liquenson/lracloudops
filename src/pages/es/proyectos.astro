@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/layout/Header.astro'
+import Footer from '../../components/layout/Footer.astro'
+
+const projects = [
+  {
+    name: 'lra-ai-platform',
+    category: 'AI Agents',
+    color: '#1A73E8',
+    desc: '8 agentes especializados orquestan operaciones DevOps en AWS, Kubernetes y Terraform con un Governance Engine de 5 niveles.',
+    tags: ['Python', 'FastAPI', 'boto3', 'Kubernetes', 'Terraform'],
+    status: 'Activo',
+    statusColor: '#137333',
+    href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+    stats: [
+      { label: 'Agentes', value: '8' },
+      { label: 'Integraciones', value: '14' },
+      { label: 'Workflows', value: '9' },
+      { label: 'Tests', value: '33' },
+    ],
+  },
+  {
+    name: 'aws-devops-agent',
+    category: 'Cloud AI',
+    color: '#137333',
+    desc: 'Agente CLI que usa Claude Sonnet 4.6 en un bucle de tool-use. 31 funciones boto3 cubriendo 24 servicios AWS. Pregunta en lenguaje natural.',
+    tags: ['Python', 'Anthropic', 'Claude', 'boto3', 'AWS'],
+    status: 'PoC',
+    statusColor: '#F29900',
+    href: 'https://github.com/lra-cloud-ops/aws-devops-agent',
+    stats: [
+      { label: 'Servicios AWS', value: '24' },
+      { label: 'Tools', value: '31' },
+      { label: 'Líneas', value: '593' },
+      { label: 'Modelo', value: 'Sonnet' },
+    ],
+  },
+  {
+    name: 'aws-terraform-devops',
+    category: 'Infrastructure',
+    color: '#F29900',
+    desc: 'Entorno AWS completo: VPC multi-AZ, EKS 1.31, RDS PostgreSQL 15, ECR. App Flask desplegada vía Helm. Sync ArgoCD. Gate SonarCloud.',
+    tags: ['Terraform', 'AWS', 'EKS', 'Helm', 'ArgoCD', 'SonarCloud'],
+    status: 'Activo',
+    statusColor: '#137333',
+    href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+    stats: [
+      { label: 'Módulos TF', value: '7' },
+      { label: 'Archivos TF', value: '26' },
+      { label: 'Tests', value: '18' },
+      { label: 'Commits', value: '71' },
+    ],
+  },
+  {
+    name: 'k8s-on-premise',
+    category: 'Kubernetes',
+    color: '#C5221F',
+    desc: 'Clúster Kubernetes multi-nodo desde cero: bootstrap kubeadm, Calico CNI, NGINX Ingress, add-ons Helm y sync GitOps con ArgoCD.',
+    tags: ['Kubernetes', 'kubeadm', 'Calico', 'Vagrant', 'Helm', 'ArgoCD'],
+    status: 'Activo',
+    statusColor: '#137333',
+    href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+    stats: [
+      { label: 'Nodos', value: '3' },
+      { label: 'Scripts', value: '6' },
+      { label: 'Commits', value: '25' },
+      { label: 'CNI', value: 'Calico' },
+    ],
+  },
+]
+---
+
+<Layout
+  title="Proyectos — LRA CloudOps"
+  description="Cuatro proyectos open source que cubren agentes IA, infraestructura AWS, Kubernetes y automatización cloud."
+  lang="es"
+>
+  <Header lang="es" currentPath={Astro.url.pathname} />
+
+  <!-- Page hero -->
+  <section
+    style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+  >
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
+      >
+        Open Source
+      </p>
+      <h1
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
+      >
+        Proyectos
+      </h1>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; max-width: 560px;"
+      >
+        Cuatro proyectos open source que cubren agentes IA, infraestructura AWS,
+        Kubernetes y automatización cloud.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects grid -->
+  <section style="background: #FFFFFF; padding: 3rem 1.5rem;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div
+        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;"
+        class="projects-grid"
+      >
+        {
+          projects.map((project) => (
+            <div
+              style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; overflow: hidden; transition: box-shadow 200ms ease;"
+              onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.10)'"
+              onmouseout="this.style.boxShadow='none'"
+            >
+              <div
+                style={`background: ${project.color}08; border-bottom: 1px solid #DADCE0; padding: 1.25rem 1.5rem; display: flex; align-items: start; justify-content: space-between;`}
+              >
+                <div>
+                  <p
+                    style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: ${project.color}; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.375rem;`}
+                  >
+                    {project.category}
+                  </p>
+                  <h2 style="font-family: 'Red Hat Mono', monospace; font-size: 1.0625rem; font-weight: 600; color: #202124;">
+                    {project.name}
+                  </h2>
+                </div>
+                <span
+                  style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: ${project.statusColor}; background: ${project.statusColor}12; padding: 0.25rem 0.625rem; border-radius: 4px; border: 1px solid ${project.statusColor}30; white-space: nowrap;`}
+                >
+                  {project.status}
+                </span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid #DADCE0;">
+                {project.stats.map(({ label, value }, i) => (
+                  <div
+                    style={`padding: 0.875rem 1rem; text-align: center; ${i < 3 ? 'border-right: 1px solid #DADCE0;' : ''}`}
+                  >
+                    <div
+                      style={`font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: ${project.color}; line-height: 1;`}
+                    >
+                      {value}
+                    </div>
+                    <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; color: #5F6368; margin-top: 0.25rem;">
+                      {label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style="padding: 1.25rem 1.5rem;">
+                <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; line-height: 1.6; margin-bottom: 1.25rem;">
+                  {project.desc}
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.375rem; margin-bottom: 1.25rem;">
+                  {project.tags.map((tag) => (
+                    <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368; background: #F8F9FA; border: 1px solid #DADCE0; padding: 0.2rem 0.5rem; border-radius: 3px;">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener"
+                  style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #1A73E8; text-decoration: none;"
+                  onmouseover="this.style.textDecoration='underline'"
+                  onmouseout="this.style.textDecoration='none'"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  Ver en GitHub →
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="es" />
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

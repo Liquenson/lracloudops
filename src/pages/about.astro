@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/layout/Header.astro'
+import Footer from '../components/layout/Footer.astro'
+
+const skills = [
+  { category: 'Cloud', skills: 'AWS · Azure · GCP' },
+  { category: 'IaC', skills: 'Terraform · Ansible · CloudFormation' },
+  { category: 'Containers', skills: 'Kubernetes · Docker · Helm' },
+  { category: 'CI/CD', skills: 'GitHub Actions · ArgoCD · Jenkins' },
+  { category: 'Observability', skills: 'Prometheus · Grafana · CloudWatch' },
+  { category: 'Security', skills: 'Trivy · Checkov · IAM' },
+]
+---
+
+<Layout
+  title="About — LRA CloudOps"
+  description="DevOps Engineer · Cloud Engineer · Las Palmas de Gran Canaria, España"
+  lang="en"
+>
+  <Header lang="en" currentPath={Astro.url.pathname} />
+
+  <section
+    style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+  >
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
+      >
+        About
+      </p>
+      <h1
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
+      >
+        Ruben Liquenson
+      </h1>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368;"
+      >
+        DevOps Engineer · Cloud Engineer · Las Palmas de Gran Canaria, España
+      </p>
+    </div>
+  </section>
+
+  <section style="background: #FFFFFF; padding: 3rem 1.5rem;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div
+        style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;"
+        class="about-grid"
+      >
+        <!-- Left: profile -->
+        <div>
+          <div
+            style="width: 120px; height: 120px; border-radius: 50%; background: #E8F0FE; border: 3px solid #DADCE0; margin-bottom: 1.5rem; overflow: hidden;"
+          >
+            <img
+              src="/devruben.png"
+              alt="Ruben Liquenson"
+              style="width: 100%; height: 100%; object-fit: cover;"
+              onerror="this.style.display='none'"
+            />
+          </div>
+          <h2
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;"
+          >
+            Ruben Liquenson
+          </h2>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; margin-bottom: 1.25rem;"
+          >
+            DevOps Engineer · AWS Specialist
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.625rem;">
+            <a
+              href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
+              target="_blank"
+              rel="noopener"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none;"
+            >
+              LinkedIn →
+            </a>
+            <a
+              href="https://github.com/lra-cloud-ops"
+              target="_blank"
+              rel="noopener"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none;"
+            >
+              GitHub →
+            </a>
+            <a
+              href="mailto:info@lracloudops.com"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none;"
+            >
+              info@lracloudops.com
+            </a>
+            <p
+              style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-top: 0.5rem;"
+            >
+              📍 Las Palmas de Gran Canaria<br />Canarias, España
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: bio + skills -->
+        <div>
+          <h3
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.875rem;"
+          >
+            Background
+          </h3>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
+          >
+            Placeholder bio text. DevOps Engineer specializing in AWS,
+            Kubernetes and Terraform. Building production-grade infrastructure
+            and open source tooling for DevOps teams.
+          </p>
+
+          <h3
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.875rem;"
+          >
+            Core skills
+          </h3>
+          <div
+            style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 2rem;"
+            class="skills-grid"
+          >
+            {
+              skills.map(({ category, skills }) => (
+                <div style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; padding: 0.875rem;">
+                  <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem;">
+                    {category}
+                  </p>
+                  <p style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368;">
+                    {skills}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+
+          <h3
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.875rem;"
+          >
+            Affiliations
+          </h3>
+          <div
+            style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;"
+          >
+            <a
+              href="https://www.linkedin.com/company/nibble-tech-llc/"
+              target="_blank"
+              rel="noopener"
+              style="opacity: 0.7; transition: opacity 150ms;"
+              onmouseover="this.style.opacity='1'"
+              onmouseout="this.style.opacity='0.7'"
+            >
+              <img
+                src="/nibble-logo.jpg"
+                alt="Nibble Tech LLC"
+                style="height: 36px; width: auto; border-radius: 4px;"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/school/itla/"
+              target="_blank"
+              rel="noopener"
+              style="opacity: 0.7; transition: opacity 150ms;"
+              onmouseover="this.style.opacity='1'"
+              onmouseout="this.style.opacity='0.7'"
+            >
+              <img
+                src="/itla-logo.jpg"
+                alt="ITLA"
+                style="height: 36px; width: auto; border-radius: 4px;"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="en" />
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+    .skills-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

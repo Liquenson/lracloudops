@@ -1,0 +1,85 @@
+---
+interface Props {
+  lang?: string
+  currentPath?: string
+}
+const { lang = 'en', currentPath = '' } = Astro.props
+const isES = lang === 'es'
+const base = isES ? '/es' : ''
+
+const navItems = isES
+  ? [
+      { label: 'Proyectos', href: `${base}/proyectos` },
+      { label: 'Servicios', href: `${base}/servicios` },
+      { label: 'Precios', href: `${base}/precios` },
+      { label: 'Sobre nosotros', href: `${base}/sobre-nosotros` },
+      { label: 'Contacto', href: `${base}/contacto` },
+    ]
+  : [
+      { label: 'Projects', href: '/projects' },
+      { label: 'Services', href: '/services' },
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+    ]
+
+const ctaLabel = isES ? 'Contactar' : 'Get in touch'
+const ctaHref = isES ? '/es/contacto' : '/contact'
+---
+
+<header
+  style="position: sticky; top: 0; z-index: 100; background: #FFFFFF; border-bottom: 1px solid #DADCE0; height: 64px;"
+>
+  <div
+    style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); display: flex; align-items: center; height: 100%; gap: 1.5rem;"
+  >
+    <a
+      href={isES ? '/es/' : '/'}
+      style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none; flex-shrink: 0;"
+    >
+      <img
+        src="/lracloudops-icon.svg"
+        alt="LRA CloudOps"
+        width="28"
+        height="28"
+      />
+      <span
+        style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; letter-spacing: -0.01em;"
+        >LRA CloudOps</span
+      >
+    </a>
+
+    <nav
+      style="display: flex; align-items: center; gap: 0; margin-left: auto;"
+      class="gc-nav"
+    >
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            style={`padding: 0 0.875rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 500; color: ${currentPath.includes(item.href) ? '#1A73E8' : '#5F6368'}; text-decoration: none; height: 64px; display: flex; align-items: center; border-bottom: 3px solid ${currentPath.includes(item.href) ? '#1A73E8' : 'transparent'}; transition: all 150ms ease; white-space: nowrap;`}
+            onmouseover="this.style.borderBottomColor='#1A73E8'; this.style.color='#1A73E8'"
+            onmouseout={`this.style.borderBottomColor='${currentPath.includes(item.href) ? '#1A73E8' : 'transparent'}'; this.style.color='${currentPath.includes(item.href) ? '#1A73E8' : '#5F6368'}'`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      href={ctaHref}
+      style="display: inline-flex; align-items: center; background: #1A73E8; color: #FFFFFF; padding: 0.5rem 1.25rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; white-space: nowrap; flex-shrink: 0;"
+    >
+      {ctaLabel}
+    </a>
+  </div>
+</header>
+
+<style>
+  @media (max-width: 768px) {
+    .gc-nav {
+      display: none !important;
+    }
+  }
+</style>
