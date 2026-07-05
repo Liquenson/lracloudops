@@ -44,6 +44,23 @@ const esPath = isES
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700;900&family=Red+Hat+Text:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Prevent flash of unstyled animated elements */
+      [data-animate='fade-up'],
+      [data-animate='stagger'],
+      [data-animate-child],
+      [data-logo] {
+        opacity: 0;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-animate='fade-up'],
+        [data-animate='stagger'],
+        [data-animate-child],
+        [data-logo] {
+          opacity: 1 !important;
+        }
+      }
+    </style>
     <script is:inline>
       ;(function () {
         const path = window.location.pathname
@@ -212,6 +229,11 @@ const esPath = isES
       document.getElementById('lang-link-es')?.addEventListener('click', () => {
         sessionStorage.setItem('lang-chosen', 'es')
       })
+    </script>
+
+    <script>
+      import { initAnimations } from '../scripts/animations.ts'
+      initAnimations()
     </script>
   </body>
 </html>

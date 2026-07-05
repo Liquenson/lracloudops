@@ -170,6 +170,7 @@ const techs = [
      HERO
      ============================================================ -->
   <section
+    data-hero
     style="background: #FFFFFF; padding: 5rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden;"
   >
     <div
@@ -178,6 +179,7 @@ const techs = [
     </div>
 
     <div
+      data-hero-content
       style="max-width: 860px; margin: 0 auto; position: relative; z-index: 1;"
     >
       <div
@@ -211,12 +213,14 @@ const techs = [
         <a
           href="https://github.com/lra-cloud-ops"
           target="_blank"
+          class="btn-premium"
           style="display: inline-flex; align-items: center; background: #1A73E8; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 1rem; text-decoration: none;"
         >
           Ver en GitHub →
         </a>
         <a
           href="mailto:info@lracloudops.com"
+          class="btn-premium"
           style="display: inline-flex; align-items: center; background: transparent; color: #1A73E8; padding: 0.875rem 2rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 1rem; text-decoration: none;"
         >
           ▷ Contactar
@@ -235,6 +239,7 @@ const techs = [
         style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 12px; height: 320px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;"
       >
         <div
+          data-hero-bg
           style="position: absolute; inset: 0; background-image: linear-gradient(#DADCE0 1px, transparent 1px), linear-gradient(90deg, #DADCE0 1px, transparent 1px); background-size: 40px 40px; opacity: 0.5;"
         >
         </div>
@@ -264,6 +269,7 @@ const techs = [
      NEWS STRIP — 4 proyectos open source
      ============================================================ -->
   <section
+    data-animate="fade-up"
     style="background: #F8F9FA; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0; padding: 2rem 0; overflow: hidden;"
   >
     <div style="max-width: 1280px; margin: 0 auto; padding-inline: 1.5rem;">
@@ -284,6 +290,7 @@ const techs = [
         </a>
       </div>
       <div
+        data-animate="stagger"
         style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;"
         class="news-grid"
       >
@@ -292,6 +299,8 @@ const techs = [
             <a
               href={href}
               target="_blank"
+              data-animate-child
+              class="card-premium"
               style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.25rem; text-decoration: none; display: block; transition: box-shadow 150ms ease;"
               onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.12)'"
               onmouseout="this.style.boxShadow='none'"
@@ -320,7 +329,7 @@ const techs = [
   <!-- ============================================================
      PRODUCTS GRID — capacidades
      ============================================================ -->
-  <section style="background: #FFFFFF; padding: 4rem 1.5rem;">
+  <section data-animate="fade-up" style="background: #FFFFFF; padding: 4rem 1.5rem;">
     <div style="max-width: 1280px; margin: 0 auto;">
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem;"
@@ -334,12 +343,14 @@ const techs = [
       </p>
 
       <div
+        data-animate="stagger"
         style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid #DADCE0; border-radius: 8px; overflow: hidden;"
         class="products-grid"
       >
         {
           productCols.map(({ cat, items, color, href }, i) => (
             <div
+              data-animate-child
               style={`padding: 1.5rem; ${i < 3 ? 'border-right: 1px solid #DADCE0;' : ''}`}
             >
               <div
@@ -377,6 +388,7 @@ const techs = [
      ============================================================ -->
   <section
     id="industries"
+    data-animate="fade-up"
     style="background: #F8F9FA; padding: 4rem 1.5rem; border-top: 1px solid #DADCE0;"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
@@ -499,11 +511,12 @@ const techs = [
         Tecnologías con las que trabajamos
       </p>
       <div
+        data-animate="logos"
         style="display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap;"
       >
         {
           techs.map((name) => (
-            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #DADCE0; letter-spacing: -0.01em;">
+            <span data-logo style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #DADCE0; letter-spacing: -0.01em;">
               {name}
             </span>
           ))
@@ -525,9 +538,11 @@ const techs = [
         Plataformas cloud
       </p>
       <div
+        data-animate="logos"
         style="display: flex; align-items: center; justify-content: center; gap: 5rem; flex-wrap: wrap; margin-bottom: 1.5rem;"
       >
         <a
+          data-logo
           href="https://aws.amazon.com/es/"
           target="_blank"
           rel="noopener"
@@ -543,6 +558,7 @@ const techs = [
           />
         </a>
         <a
+          data-logo
           href="https://azure.microsoft.com/es-es"
           target="_blank"
           rel="noopener"
@@ -558,6 +574,7 @@ const techs = [
           />
         </a>
         <a
+          data-logo
           href="https://cloud.google.com/?hl=es"
           target="_blank"
           rel="noopener"
@@ -585,6 +602,7 @@ const techs = [
      CTA FINAL
      ============================================================ -->
   <section
+    data-animate="fade-up"
     style="background: #FFFFFF; padding: 5rem 1.5rem; text-align: center;"
   >
     <div style="max-width: 640px; margin: 0 auto;">
@@ -604,12 +622,14 @@ const techs = [
         <a
           href="https://github.com/lra-cloud-ops"
           target="_blank"
+          class="btn-premium"
           style="display: inline-flex; align-items: center; background: #1A73E8; color: #FFFFFF; padding: 0.875rem 2rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 1rem; text-decoration: none;"
         >
           Ver organización →
         </a>
         <a
           href="mailto:info@lracloudops.com"
+          class="btn-premium"
           style="display: inline-flex; align-items: center; background: transparent; color: #1A73E8; padding: 0.875rem 2rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 1rem; text-decoration: none;"
         >
           Contactar
