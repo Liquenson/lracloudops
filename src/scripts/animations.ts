@@ -52,97 +52,55 @@ export function initSmoothScroll() {
 export function initSectionAnimations() {
   if (prefersReducedMotion) return
 
+  // Fade up — elementos visibles por defecto, GSAP anima la entrada
   gsap.utils.toArray<HTMLElement>('[data-animate="fade-up"]').forEach((el) => {
-    gsap.fromTo(
-      el,
-      {
-        opacity: 0,
-        y: 40,
-        scale: 0.98,
+    gsap.from(el, {
+      opacity: 0,
+      y: 32,
+      scale: 0.98,
+      duration: 0.65,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        once: true,
       },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.7,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          once: true,
-        },
-      }
-    )
+    })
   })
 
   gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach((container) => {
     const children = container.querySelectorAll('[data-animate-child]')
-    gsap.fromTo(
-      children,
-      {
-        opacity: 0,
-        y: 30,
-        scale: 0.97,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-        stagger: 0.08,
-        scrollTrigger: {
-          trigger: container,
-          start: 'top 85%',
-          once: true,
-        },
-      }
-    )
-  })
-
-  gsap.utils.toArray<HTMLElement>('[data-animate="counter"]').forEach((el) => {
-    const target = parseInt(el.getAttribute('data-value') || '0')
-    const suffix = el.getAttribute('data-suffix') || ''
-
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 85%',
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          { val: 0 },
-          { val: 0 },
-          {
-            val: target,
-            duration: 1.2,
-            ease: 'power2.out',
-            onUpdate: function () {
-              el.textContent = Math.round(this.targets()[0].val) + suffix
-            },
-          }
-        )
+    if (!children.length) return
+    gsap.from(children, {
+      opacity: 0,
+      y: 24,
+      scale: 0.97,
+      duration: 0.55,
+      ease: 'power2.out',
+      stagger: 0.07,
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 85%',
+        once: true,
       },
     })
   })
 
   gsap.utils.toArray<HTMLElement>('[data-animate="logos"]').forEach((container) => {
     const logos = container.querySelectorAll('[data-logo]')
-    gsap.fromTo(
-      logos,
-      { opacity: 0, y: 16 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: 'power2.out',
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: container,
-          start: 'top 88%',
-          once: true,
-        },
-      }
-    )
+    if (!logos.length) return
+    gsap.from(logos, {
+      opacity: 0,
+      y: 12,
+      duration: 0.45,
+      ease: 'power2.out',
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 88%',
+        once: true,
+      },
+    })
   })
 }
 
@@ -235,10 +193,6 @@ export function initAnimations() {
 }
 
 function init() {
-  // Mark document as animation-ready
-  // This activates the opacity:0 initial states
-  document.documentElement.classList.add('js-animations-ready')
-
   initSmoothScroll()
   initSectionAnimations()
   initHeroParallax()
