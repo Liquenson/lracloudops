@@ -4,20 +4,94 @@ import Header from '../../components/layout/Header.astro'
 import Footer from '../../components/layout/Footer.astro'
 
 const skills = [
-  { category: 'Cloud', skills: 'AWS (principal) · Azure · GCP' },
-  { category: 'IaC', skills: 'Terraform · Ansible · CloudFormation' },
-  { category: 'Contenedores', skills: 'Kubernetes · Docker · Helm · ArgoCD' },
-  { category: 'CI/CD', skills: 'GitHub Actions · Jenkins · GitOps' },
-  { category: 'Seguridad', skills: 'Trivy · Checkov · SonarCloud · IAM' },
+  {
+    category: 'Cloud AWS',
+    skills:
+      'EC2 · EKS · ECS · ECR · RDS · S3 · VPC · Route 53 · CloudFront · ELB · IAM · CloudWatch',
+  },
+  { category: 'IaC', skills: 'Terraform · Ansible' },
+  { category: 'Contenedores', skills: 'Docker · Kubernetes · Helm · ArgoCD' },
+  {
+    category: 'CI/CD',
+    skills: 'Jenkins · GitHub Actions · Maven · SonarQube · Nexus',
+  },
   { category: 'Observabilidad', skills: 'Prometheus · Grafana · CloudWatch' },
-  { category: 'IA y Agentes', skills: 'Claude Sonnet 4.6 · boto3 · tool-use' },
-  { category: 'Lenguajes', skills: 'Python · Bash · HCL · YAML' },
+  { category: 'Linux', skills: 'RHEL · CentOS · Ubuntu · Debian · Alpine' },
+  {
+    category: 'Redes',
+    skills: 'VPC · NAT · HAProxy · DNS · TCP/IP · Route 53',
+  },
+  { category: 'Scripting', skills: 'Bash · Python' },
+  {
+    category: 'Almacenamiento',
+    skills: 'RDS · S3 · EFS · EBS · LVM · Glacier',
+  },
+  { category: 'Virtualización', skills: 'VMware vSphere' },
+]
+
+const experience = [
+  {
+    company: 'Nibble Tech LLC',
+    role: 'Ingeniero DevOps',
+    period: 'Mayo 2026 – Actualidad',
+    highlights: [
+      'Plataforma de entrega continua sobre AWS EKS — totalmente como código, patrón GitOps',
+      'Pipeline CI/CD: Jenkins → Docker → ECR → Kubernetes (actualización sin downtime)',
+      'Terraform: VPC multi-AZ, EKS, ECR, RDS, S3, IAM, CloudWatch (DEV/PROD)',
+      'Ansible + AWS SSM para configuración automática de nodos (sin bastión SSH)',
+      'ArgoCD + Helm Charts con values por entorno',
+      'Observabilidad: Prometheus + Grafana + CloudWatch Container Insights',
+    ],
+  },
+  {
+    company: 'iCareMedical',
+    role: 'Ingeniero DevOps',
+    period: 'Mayo 2022 – Mayo 2026',
+    highlights: [
+      '4 años en infraestructura AWS del sector salud (entorno regulado)',
+      'CI/CD: Jenkins + Maven + SonarQube + Ansible + Kubernetes',
+      'AWS multi-AZ: VPC, EC2, RDS, EFS, S3, CloudFront, Route 53, ELB',
+      'Kubernetes + Helm Charts para despliegue, versionado y rollback',
+      'Prometheus + Grafana — alertas proactivas, menor tiempo de detección de incidentes',
+      'IAM: roles, políticas y grupos de seguridad con mínimo privilegio en entorno regulado',
+    ],
+  },
+  {
+    company: 'DR Financial Services',
+    role: 'Administrador de sistemas Linux',
+    period: 'Feb 2021 – Abr 2022',
+    highlights: [
+      'RHEL, CentOS, Ubuntu, Debian y Alpine en producción',
+      'VMware vSphere — aprovisionamiento de VMs, snapshots, optimización de recursos',
+      'LVM — gestión de volúmenes, extensión en caliente, snapshots',
+      'Bash scripting — automatización, gestión de usuarios, rotación de logs, backups',
+      'SLA 24/7 en entorno financiero regulado',
+    ],
+  },
+]
+
+const education = [
+  {
+    institution: 'ITLA — Instituto Tecnológico de las Américas',
+    degree: 'Grado Superior · HP Information Technology',
+    period: '2018–2019',
+  },
+  {
+    institution: 'ITLA — Instituto Tecnológico de las Américas',
+    degree: 'IT Essentials',
+    period: '2017–2018',
+  },
+  {
+    institution: 'Cisco Networking Academy',
+    degree: 'IT Essentials — Hardware, OS & Networks',
+    period: '2016–2017',
+  },
 ]
 ---
 
 <Layout
   title="Sobre nosotros — LRA CloudOps"
-  description="Ruben Liquenson — Ingeniero DevOps e Ingeniero Cloud. AWS, Kubernetes, Terraform, GitOps. Las Palmas de Gran Canaria, España."
+  description="Ruben Alexis Liquenson — Ingeniero DevOps e Ingeniero Cloud. AWS, Kubernetes, Terraform, GitOps. Las Palmas de Gran Canaria, España."
   lang="es"
 >
   <Header lang="es" currentPath={Astro.url.pathname} />
@@ -34,12 +108,18 @@ const skills = [
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
       >
-        Ruben Liquenson
+        Ruben Alexis Liquenson
       </h1>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368;"
       >
-        DevOps Engineer · Cloud Engineer · Las Palmas de Gran Canaria, España
+        Ingeniero DevOps · Ingeniero Cloud · 4+ años en infraestructura AWS de
+        producción
+      </p>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; margin-top: 0.5rem;"
+      >
+        📍 Las Palmas de Gran Canaria, Canarias, España
       </p>
     </div>
   </section>
@@ -57,7 +137,7 @@ const skills = [
           >
             <img
               src="/devruben.png"
-              alt="Ruben Liquenson"
+              alt="Ruben Alexis Liquenson"
               style="width: 100%; height: 100%; object-fit: cover;"
               onerror="this.style.display='none'"
             />
@@ -65,7 +145,7 @@ const skills = [
           <h2
             style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;"
           >
-            Ruben Liquenson
+            Ruben Alexis Liquenson
           </h2>
           <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; margin-bottom: 1.25rem;"
@@ -74,7 +154,7 @@ const skills = [
           </p>
           <div style="display: flex; flex-direction: column; gap: 0.625rem;">
             <a
-              href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
+              href="https://www.linkedin.com/in/ruben-alexis-liquenson-490961269/"
               target="_blank"
               rel="noopener"
               style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none;"
@@ -90,10 +170,10 @@ const skills = [
               GitHub →
             </a>
             <a
-              href="mailto:info@lracloudops.com"
+              href="mailto:liquenson.cloud@gmail.com"
               style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none;"
             >
-              info@lracloudops.com
+              liquenson.cloud@gmail.com
             </a>
             <p
               style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-top: 0.5rem;"
@@ -103,7 +183,7 @@ const skills = [
           </div>
         </div>
 
-        <!-- Right: bio + skills -->
+        <!-- Right: bio + experiencia + skills + educación + idiomas -->
         <div>
           <h3
             style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.875rem;"
@@ -113,18 +193,67 @@ const skills = [
           <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1rem;"
           >
-            Ingeniero DevOps e Ingeniero Cloud con base en Las Palmas de Gran
-            Canaria, España. Especializado en infraestructura AWS, Kubernetes e
-            Infraestructura como Código con Terraform.
+            Ingeniero DevOps con más de 4 años diseñando infraestructuras cloud
+            en AWS de nivel productivo. Especializado en Kubernetes (EKS),
+            Terraform, CI/CD y GitOps con ArgoCD.
+          </p>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1rem;"
+          >
+            Experiencia más reciente en Nibble Tech LLC construyendo plataformas
+            de entrega continua sobre AWS EKS — infraestructura completamente
+            como código, configuración automatizada de nodos via Ansible y AWS
+            SSM, y despliegue GitOps con ArgoCD y Helm.
           </p>
           <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
           >
-            Desarrollador de herramientas open source para equipos DevOps —
-            desde plataformas de automatización multi-agente hasta clústeres
-            Kubernetes bare metal. Todos los proyectos están disponibles
-            públicamente bajo la organización lra-cloud-ops en GitHub.
+            Anteriormente, 4 años en iCareMedical diseñando infraestructura AWS
+            de alta disponibilidad para el sector salud — entorno regulado con
+            requisitos estrictos de IAM, cumplimiento de SLA y despliegues sin
+            downtime.
           </p>
+
+          <h3
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 1.25rem;"
+          >
+            Experiencia
+          </h3>
+          <div
+            style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;"
+          >
+            {
+              experience.map((exp) => (
+                <div style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.25rem;">
+                  <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <div>
+                      <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 700; color: #202124;">
+                        {exp.company}
+                      </p>
+                      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #1A73E8; font-weight: 500;">
+                        {exp.role}
+                      </p>
+                    </div>
+                    <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368; background: #FFFFFF; border: 1px solid #DADCE0; padding: 0.2rem 0.625rem; border-radius: 4px; white-space: nowrap;">
+                      {exp.period}
+                    </span>
+                  </div>
+                  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.375rem;">
+                    {exp.highlights.map((h) => (
+                      <li style="display: flex; align-items: start; gap: 0.625rem;">
+                        <span style="color: #1A73E8; flex-shrink: 0; margin-top: 1px;">
+                          →
+                        </span>
+                        <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.5;">
+                          {h}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
 
           <h3
             style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.875rem;"
@@ -147,6 +276,71 @@ const skills = [
                 </div>
               ))
             }
+          </div>
+
+          <h3
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 1rem;"
+          >
+            Educación
+          </h3>
+          <div
+            style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;"
+          >
+            {
+              education.map((edu) => (
+                <div style="display: flex; align-items: start; justify-content: space-between; padding: 0.875rem 1rem; background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; flex-wrap: wrap; gap: 0.5rem;">
+                  <div>
+                    <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #202124;">
+                      {edu.institution}
+                    </p>
+                    <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">
+                      {edu.degree}
+                    </p>
+                  </div>
+                  <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368; white-space: nowrap;">
+                    {edu.period}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+
+          <h3
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 1rem;"
+          >
+            Idiomas
+          </h3>
+          <div
+            style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;"
+          >
+            <div
+              style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; padding: 0.75rem 1.25rem;"
+            >
+              <p
+                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124;"
+              >
+                Español
+              </p>
+              <p
+                style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368;"
+              >
+                Nativo
+              </p>
+            </div>
+            <div
+              style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; padding: 0.75rem 1.25rem;"
+            >
+              <p
+                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124;"
+              >
+                English
+              </p>
+              <p
+                style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368;"
+              >
+                B1 — En progreso
+              </p>
+            </div>
           </div>
 
           <h3
