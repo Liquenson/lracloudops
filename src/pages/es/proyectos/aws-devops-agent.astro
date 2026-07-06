@@ -6,7 +6,7 @@ import Footer from '../../../components/layout/Footer.astro'
 
 <Layout
   title="aws-devops-agent — LRA CloudOps"
-  description="Agente CLI que usa Claude Sonnet 4.6 en un bucle real de tool-use. 31 funciones boto3 que cubren 24 servicios AWS. Pregunta en lenguaje natural."
+  description="Agente CLI que usa un modelo de IA en un bucle real de tool-use. 31 funciones boto3 que cubren 24 servicios AWS. Pregunta en lenguaje natural."
   lang="es"
 >
   <Header lang="es" currentPath={Astro.url.pathname} />
@@ -47,10 +47,10 @@ import Footer from '../../../components/layout/Footer.astro'
           <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;"
           >
-            Agente CLI que usa Claude Sonnet 4.6 en un bucle real de tool-use.
-            Pregunta sobre tu infraestructura AWS en lenguaje natural. Claude
-            selecciona entre 31 funciones boto3 y las ejecuta contra tu cuenta
-            real.
+            Agente CLI que usa un modelo de IA en un bucle real de tool-use.
+            Pregunta sobre tu infraestructura AWS en lenguaje natural. El
+            agente IA selecciona entre 31 funciones boto3 y las ejecuta contra
+            tu cuenta real.
           </p>
 
           <div
@@ -59,7 +59,7 @@ import Footer from '../../../components/layout/Footer.astro'
             {
               [
                 'Python 3.11+',
-                'Claude Sonnet 4.6',
+                'Modelo de IA',
                 'boto3',
                 'Anthropic SDK',
                 'tool-use',
@@ -101,7 +101,7 @@ import Footer from '../../../components/layout/Footer.astro'
               { value: '24', label: 'Servicios AWS' },
               { value: '31', label: 'Tools boto3' },
               { value: '593', label: 'Líneas de código' },
-              { value: 'Sonnet', label: 'Modelo Claude' },
+              { value: 'IA', label: 'Modelo' },
             ].map(({ value, label }) => (
               <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1rem; text-align: center;">
                 <div style="font-family: 'Red Hat Display', sans-serif; font-size: 1.75rem; font-weight: 900; color: #1A73E8; line-height: 1;">
@@ -137,12 +137,12 @@ import Footer from '../../../components/layout/Footer.astro'
           <h2
             style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
           >
-            Preguntas. Claude decide. AWS responde.
+            Preguntas. La IA decide. AWS responde.
           </h2>
           <p
             style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
           >
-            Describes lo que necesitas en lenguaje natural. Claude Sonnet 4.6
+            Describes lo que necesitas en lenguaje natural. Un modelo de IA
             entra en un bucle de tool-use — selecciona la función boto3
             correcta, la ejecuta contra tu cuenta AWS y devuelve una respuesta
             estructurada.
@@ -158,7 +158,7 @@ import Footer from '../../../components/layout/Footer.astro'
                 },
                 {
                   step: '02',
-                  title: 'Claude selecciona',
+                  title: 'La IA selecciona',
                   desc: 'El modelo elige entre 31 funciones respaldadas por boto3 según tu intención.',
                 },
                 {
@@ -192,7 +192,7 @@ import Footer from '../../../components/layout/Footer.astro'
           <div
             style="color: #9AA0A6; font-style: italic; margin-bottom: 0.75rem;"
           >
-            # aws-devops-agent · Claude Sonnet 4.6
+            # aws-devops-agent · bucle de tool-use IA
           </div>
           <div style="margin-bottom: 0.75rem;">
             <span style="color: #5F6368;">Tu:</span>
@@ -201,7 +201,7 @@ import Footer from '../../../components/layout/Footer.astro'
             >
           </div>
           <div style="margin-bottom: 0.25rem;">
-            <span style="color: #1A73E8; font-weight: 600;">Claude</span>
+            <span style="color: #1A73E8; font-weight: 600;">IA</span>
             <span style="color: #5F6368;"> → calling list_ec2_instances()</span>
           </div>
           <div
@@ -221,7 +221,7 @@ import Footer from '../../../components/layout/Footer.astro'
             >
           </div>
           <div style="margin-bottom: 0.25rem;">
-            <span style="color: #1A73E8; font-weight: 600;">Claude</span>
+            <span style="color: #1A73E8; font-weight: 600;">IA</span>
             <span style="color: #5F6368;">
               → calling check_security_groups()</span
             >
@@ -304,7 +304,7 @@ import Footer from '../../../components/layout/Footer.astro'
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;"
       >
-        593 líneas. Un archivo. Tool-use real con Claude.
+        593 líneas. Un archivo. Tool-use real con IA.
       </p>
       <a
         href="https://github.com/lra-cloud-ops/aws-devops-agent"

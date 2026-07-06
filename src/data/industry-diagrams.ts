@@ -267,7 +267,7 @@ const svgNaturalLanguageAws = `
   <circle cx="18" cy="16" r="5" fill="#FF5F57"/>
   <circle cx="34" cy="16" r="5" fill="#FEBC2E"/>
   <circle cx="50" cy="16" r="5" fill="#28C840"/>
-  <text x="290" y="21" font-family="'Segoe UI', sans-serif" font-size="11" fill="#CCCCCC" text-anchor="middle">aws-devops-agent · Claude Sonnet 4.6</text>
+  <text x="290" y="21" font-family="'Segoe UI', sans-serif" font-size="11" fill="#CCCCCC" text-anchor="middle">aws-devops-agent · AI tool-use loop</text>
 
   <!-- Sidebar -->
   <rect x="0" y="32" width="48" height="248" fill="#333333"/>
@@ -306,7 +306,7 @@ const svgNaturalLanguageAws = `
   <text x="200" y="80" font-family="'Consolas', monospace" font-size="10" fill="#858585">You:</text>
   <text x="234" y="80" font-family="'Consolas', monospace" font-size="10" fill="#CCCCCC">What EC2 instances are running?</text>
 
-  <text x="200" y="96" font-family="'Consolas', monospace" font-size="10" fill="#569CD6">Claude</text>
+  <text x="200" y="96" font-family="'Consolas', monospace" font-size="10" fill="#569CD6">AI</text>
   <text x="248" y="96" font-family="'Consolas', monospace" font-size="10" fill="#6A9955">→ calling list_ec2_instances(region=eu-west-1)</text>
 
   <rect x="200" y="104" width="368" height="32" rx="3" fill="#252526"/>
@@ -316,7 +316,7 @@ const svgNaturalLanguageAws = `
   <text x="200" y="152" font-family="'Consolas', monospace" font-size="10" fill="#858585">You:</text>
   <text x="234" y="152" font-family="'Consolas', monospace" font-size="10" fill="#CCCCCC">Any dangerous security groups?</text>
 
-  <text x="200" y="168" font-family="'Consolas', monospace" font-size="10" fill="#569CD6">Claude</text>
+  <text x="200" y="168" font-family="'Consolas', monospace" font-size="10" fill="#569CD6">AI</text>
   <text x="248" y="168" font-family="'Consolas', monospace" font-size="10" fill="#6A9955">→ calling check_security_groups()</text>
 
   <rect x="200" y="176" width="368" height="32" rx="3" fill="#252526"/>
@@ -328,7 +328,7 @@ const svgNaturalLanguageAws = `
   <text x="56" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">⎇ main</text>
   <text x="130" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">Python 3.11</text>
   <text x="240" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">31 tools · 24 AWS services</text>
-  <text x="460" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">Claude Sonnet 4.6</text>
+  <text x="460" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">AI model</text>
 </svg>
 `
 
