@@ -10,11 +10,36 @@ interface Props {
 const { title, description = 'LRA CloudOps', lang = 'en' } = Astro.props
 
 const isES = lang === 'es'
-const currentPath = Astro.url.pathname
-const enPath = isES ? currentPath.replace(/^\/es/, '') || '/' : currentPath
-const esPath = isES
+
+// Explicit route map EN ↔ ES — translated slugs aren't a simple /es prefix
+const routeMap: Record<string, string> = {
+  '/': '/es/',
+  '/projects': '/es/proyectos',
+  '/projects/lra-ai-platform': '/es/proyectos/lra-ai-platform',
+  '/projects/aws-devops-agent': '/es/proyectos/aws-devops-agent',
+  '/projects/aws-terraform-devops': '/es/proyectos/aws-terraform-devops',
+  '/projects/k8s-on-premise': '/es/proyectos/k8s-on-premise',
+  '/services': '/es/servicios',
+  '/pricing': '/es/precios',
+  '/about': '/es/sobre-nosotros',
+  '/contact': '/es/contacto',
+  '/login': '/es/login',
+  '/dashboard': '/es/dashboard',
+}
+
+// Reverse map ES → EN
+const reverseMap = Object.fromEntries(
+  Object.entries(routeMap).map(([en, es]) => [es, en])
+)
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/'
+
+const enUrl = isES
+  ? reverseMap[currentPath] || reverseMap[currentPath + '/'] || '/'
+  : currentPath
+const esUrl = isES
   ? currentPath
-  : '/es' + (currentPath === '/' ? '/' : currentPath)
+  : routeMap[currentPath] || routeMap[currentPath + '/'] || '/es/'
 ---
 
 <!doctype html>
@@ -35,8 +60,8 @@ const esPath = isES
     <link rel="canonical" href={Astro.url} />
     <link rel="icon" type="image/svg+xml" href="/lracloudops-icon.svg" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site)} />
-    <link rel="alternate" hreflang="es" href={new URL(esPath, Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(enUrl, Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL(esUrl, Astro.site)} />
     <link rel="alternate" hreflang="x-default" href={Astro.site} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -117,7 +142,7 @@ const esPath = isES
         >
           <a
             id="lang-link-en"
-            href={enPath}
+            href={enUrl}
             role="menuitem"
             style={`display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; ${!isES ? 'color: #0078D4; background: #EFF6FC; font-weight: 600;' : 'color: #111827;'}`}
           >
@@ -149,7 +174,7 @@ const esPath = isES
           </a>
           <a
             id="lang-link-es"
-            href={esPath}
+            href={esUrl}
             role="menuitem"
             style={`display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; ${isES ? 'color: #0078D4; background: #EFF6FC; font-weight: 600;' : 'color: #111827;'}`}
           >
