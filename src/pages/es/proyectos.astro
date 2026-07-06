@@ -6,13 +6,14 @@ import Footer from '../../components/layout/Footer.astro'
 const projects = [
   {
     name: 'lra-ai-platform',
+    slug: 'lra-ai-platform',
     category: 'AI Agents',
     color: '#1A73E8',
     desc: '8 agentes especializados orquestan operaciones DevOps en AWS, Kubernetes y Terraform con un Governance Engine de 5 niveles.',
     tags: ['Python', 'FastAPI', 'boto3', 'Kubernetes', 'Terraform'],
     status: 'Activo',
     statusColor: '#137333',
-    href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+    githubHref: 'https://github.com/lra-cloud-ops/lra-ai-platform',
     stats: [
       { label: 'Agentes', value: '8' },
       { label: 'Integraciones', value: '14' },
@@ -22,13 +23,14 @@ const projects = [
   },
   {
     name: 'aws-devops-agent',
+    slug: 'aws-devops-agent',
     category: 'Cloud AI',
     color: '#137333',
     desc: 'Agente CLI que usa Claude Sonnet 4.6 en un bucle de tool-use. 31 funciones boto3 cubriendo 24 servicios AWS. Pregunta en lenguaje natural.',
     tags: ['Python', 'Anthropic', 'Claude', 'boto3', 'AWS'],
     status: 'PoC',
     statusColor: '#F29900',
-    href: 'https://github.com/lra-cloud-ops/aws-devops-agent',
+    githubHref: 'https://github.com/lra-cloud-ops/aws-devops-agent',
     stats: [
       { label: 'Servicios AWS', value: '24' },
       { label: 'Tools', value: '31' },
@@ -38,13 +40,14 @@ const projects = [
   },
   {
     name: 'aws-terraform-devops',
+    slug: 'aws-terraform-devops',
     category: 'Infrastructure',
     color: '#F29900',
     desc: 'Entorno AWS completo: VPC multi-AZ, EKS 1.31, RDS PostgreSQL 15, ECR. App Flask desplegada vía Helm. Sync ArgoCD. Gate SonarCloud.',
     tags: ['Terraform', 'AWS', 'EKS', 'Helm', 'ArgoCD', 'SonarCloud'],
     status: 'Activo',
     statusColor: '#137333',
-    href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+    githubHref: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
     stats: [
       { label: 'Módulos TF', value: '7' },
       { label: 'Archivos TF', value: '26' },
@@ -54,13 +57,14 @@ const projects = [
   },
   {
     name: 'k8s-on-premise',
+    slug: 'k8s-on-premise',
     category: 'Kubernetes',
     color: '#C5221F',
     desc: 'Clúster Kubernetes multi-nodo desde cero: bootstrap kubeadm, Calico CNI, NGINX Ingress, add-ons Helm y sync GitOps con ArgoCD.',
     tags: ['Kubernetes', 'kubeadm', 'Calico', 'Vagrant', 'Helm', 'ArgoCD'],
     status: 'Activo',
     statusColor: '#137333',
-    href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+    githubHref: 'https://github.com/lra-cloud-ops/k8s-on-premise',
     stats: [
       { label: 'Nodos', value: '3' },
       { label: 'Scripts', value: '6' },
@@ -170,24 +174,29 @@ const projects = [
                   ))}
                 </div>
 
-                <a
-                  href={project.href}
-                  target="_blank"
-                  rel="noopener"
-                  style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #1A73E8; text-decoration: none;"
-                  onmouseover="this.style.textDecoration='underline'"
-                  onmouseout="this.style.textDecoration='none'"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+                  <a
+                    href={`/es/proyectos/${project.slug}`}
+                    style="display: inline-flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #1A73E8; text-decoration: none;"
+                    onmouseover="this.style.textDecoration='underline'"
+                    onmouseout="this.style.textDecoration='none'"
                   >
-                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                  </svg>
-                  Ver en GitHub →
-                </a>
+                    Ver detalles →
+                  </a>
+                  <a
+                    href={project.githubHref}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={`${project.name} en GitHub`}
+                    style="display: inline-flex; align-items: center; color: #5F6368; text-decoration: none;"
+                    onmouseover="this.style.color='#202124'"
+                    onmouseout="this.style.color='#5F6368'"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           ))
