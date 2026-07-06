@@ -168,34 +168,91 @@ const svgKubernetes = `
 
 const svgSecurity = `
 <svg data-diagram="true" width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
-  <rect width="580" height="280" fill="#0D1117" rx="12"/>
+  <!-- Window background -->
+  <rect width="580" height="280" fill="#1E1E1E" rx="12"/>
 
-  <rect x="0" y="0" width="580" height="32" rx="12" fill="#161B22"/>
-  <rect x="0" y="20" width="580" height="12" fill="#161B22"/>
-  <circle cx="20" cy="16" r="5" fill="#5F6368"/>
-  <circle cx="38" cy="16" r="5" fill="#5F6368"/>
-  <circle cx="56" cy="16" r="5" fill="#5F6368"/>
-  <text x="290" y="21" font-family="monospace" font-size="10" fill="#5F6368" text-anchor="middle">lra-ai-platform — security scan</text>
+  <!-- Title bar -->
+  <rect x="0" y="0" width="580" height="32" fill="#323233" rx="12"/>
+  <rect x="0" y="20" width="580" height="12" fill="#323233"/>
 
-  <text x="20" y="55" font-family="monospace" font-size="10" fill="#4ADE80">$</text>
-  <text x="35" y="55" font-family="monospace" font-size="10" fill="#FFFFFF">lra scan --github lra-cloud-ops/aws-terraform-devops</text>
+  <!-- Traffic lights -->
+  <circle cx="18" cy="16" r="5" fill="#FF5F57"/>
+  <circle cx="34" cy="16" r="5" fill="#FEBC2E"/>
+  <circle cx="50" cy="16" r="5" fill="#28C840"/>
 
-  <text x="20" y="75" font-family="monospace" font-size="10" fill="#5F6368">→ Cloning repository...</text>
-  <text x="20" y="91" font-family="monospace" font-size="10" fill="#5F6368">→ Detecting stack: terraform, docker, kubernetes</text>
+  <!-- Title -->
+  <text x="290" y="21" font-family="'Segoe UI', sans-serif" font-size="11" fill="#CCCCCC" text-anchor="middle">lra-ai-platform — security scan</text>
 
-  <text x="20" y="111" font-family="monospace" font-size="10" fill="#FFFFFF">TRIVY — Container &amp; IaC vulnerabilities</text>
-  <text x="20" y="127" font-family="monospace" font-size="10" fill="#4ADE80">  ✓ Critical:  0</text>
-  <text x="20" y="143" font-family="monospace" font-size="10" fill="#4ADE80">  ✓ High:      0</text>
-  <text x="20" y="159" font-family="monospace" font-size="10" fill="#F29900">  ⚠ Medium:    2  →  auto-documented</text>
+  <!-- Sidebar -->
+  <rect x="0" y="32" width="48" height="248" fill="#333333"/>
 
-  <text x="20" y="179" font-family="monospace" font-size="10" fill="#FFFFFF">CHECKOV — IaC misconfigurations</text>
-  <text x="20" y="195" font-family="monospace" font-size="10" fill="#4ADE80">  ✓ Terraform:   47/50 passed</text>
-  <text x="20" y="211" font-family="monospace" font-size="10" fill="#4ADE80">  ✓ Dockerfile:   8/8  passed</text>
-  <text x="20" y="227" font-family="monospace" font-size="10" fill="#F29900">  ⚠ K8s manifests: 3 warnings</text>
+  <!-- Sidebar icons -->
+  <!-- Files icon -->
+  <rect x="12" y="44" width="24" height="24" rx="3" fill="#007ACC" opacity="0.9"/>
+  <text x="24" y="61" font-family="monospace" font-size="12" fill="white" text-anchor="middle">⊞</text>
+  <!-- Search -->
+  <text x="24" y="92" font-family="monospace" font-size="14" fill="#858585" text-anchor="middle">⌕</text>
+  <!-- Git -->
+  <text x="24" y="122" font-family="monospace" font-size="14" fill="#858585" text-anchor="middle">⎇</text>
+  <!-- Extensions -->
+  <text x="24" y="152" font-family="monospace" font-size="14" fill="#858585" text-anchor="middle">⊞</text>
 
-  <rect x="20" y="242" width="540" height="26" rx="6" fill="#137333" opacity="0.2"/>
-  <rect x="20" y="242" width="540" height="26" rx="6" fill="none" stroke="#137333" stroke-width="1"/>
-  <text x="290" y="260" font-family="monospace" font-size="11" fill="#4ADE80" text-anchor="middle" font-weight="bold">✓ SCAN COMPLETE — PASS · 4.2s</text>
+  <!-- File explorer panel -->
+  <rect x="48" y="32" width="140" height="248" fill="#252526"/>
+
+  <!-- Explorer header -->
+  <text x="58" y="50" font-family="'Segoe UI', sans-serif" font-size="9" fill="#BBBBBB" font-weight="600" letter-spacing="1">EXPLORER</text>
+
+  <!-- File tree -->
+  <text x="58" y="70" font-family="'Consolas', monospace" font-size="10" fill="#C5C5C5">▾ lra-ai-platform</text>
+  <text x="68" y="86" font-family="'Consolas', monospace" font-size="10" fill="#C5C5C5">▾ agents</text>
+  <text x="78" y="100" font-family="'Consolas', monospace" font-size="10" fill="#569CD6">security_engineer.py</text>
+  <text x="78" y="114" font-family="'Consolas', monospace" font-size="10" fill="#858585">cloud_architect.py</text>
+  <text x="78" y="128" font-family="'Consolas', monospace" font-size="10" fill="#858585">devops_engineer.py</text>
+  <text x="68" y="142" font-family="'Consolas', monospace" font-size="10" fill="#C5C5C5">▾ tools</text>
+  <text x="78" y="156" font-family="'Consolas', monospace" font-size="10" fill="#858585">trivy_tool.py</text>
+  <text x="78" y="170" font-family="'Consolas', monospace" font-size="10" fill="#858585">checkov_tool.py</text>
+  <text x="68" y="184" font-family="'Consolas', monospace" font-size="10" fill="#C5C5C5">▸ workflows</text>
+  <text x="68" y="198" font-family="'Consolas', monospace" font-size="10" fill="#C5C5C5">▸ api</text>
+
+  <!-- Tab bar -->
+  <rect x="188" y="32" width="392" height="28" fill="#2D2D2D"/>
+  <rect x="188" y="32" width="140" height="28" fill="#1E1E1E"/>
+  <rect x="188" y="56" width="140" height="2" fill="#007ACC"/>
+  <text x="200" y="51" font-family="'Consolas', monospace" font-size="10" fill="#CCCCCC">terminal</text>
+  <text x="310" y="51" font-family="'Consolas', monospace" font-size="10" fill="#858585">security_review.log</text>
+
+  <!-- Terminal content -->
+  <rect x="188" y="60" width="392" height="220" fill="#1E1E1E"/>
+
+  <!-- Terminal output -->
+  <text x="200" y="80" font-family="'Consolas', monospace" font-size="10" fill="#4EC9B0">$</text>
+  <text x="214" y="80" font-family="'Consolas', monospace" font-size="10" fill="#CCCCCC">lra scan --github lra-cloud-ops/aws-terraform-devops</text>
+
+  <text x="200" y="96" font-family="'Consolas', monospace" font-size="10" fill="#6A9955">→ Cloning repository...</text>
+  <text x="200" y="110" font-family="'Consolas', monospace" font-size="10" fill="#6A9955">→ Detecting stack: terraform, docker, k8s</text>
+
+  <text x="200" y="126" font-family="'Consolas', monospace" font-size="10" fill="#DCDCAA">TRIVY — Container &amp; IaC vulnerabilities</text>
+  <text x="200" y="140" font-family="'Consolas', monospace" font-size="10" fill="#4ADE80">  ✓ Critical:  0</text>
+  <text x="200" y="154" font-family="'Consolas', monospace" font-size="10" fill="#4ADE80">  ✓ High:      0</text>
+  <text x="200" y="168" font-family="'Consolas', monospace" font-size="10" fill="#CE9178">  ⚠ Medium:    2  → auto-documented</text>
+
+  <text x="200" y="184" font-family="'Consolas', monospace" font-size="10" fill="#DCDCAA">CHECKOV — IaC misconfigurations</text>
+  <text x="200" y="198" font-family="'Consolas', monospace" font-size="10" fill="#4ADE80">  ✓ Terraform:   47/50 passed</text>
+  <text x="200" y="212" font-family="'Consolas', monospace" font-size="10" fill="#4ADE80">  ✓ Dockerfile:   8/8 passed</text>
+  <text x="200" y="226" font-family="'Consolas', monospace" font-size="10" fill="#CE9178">  ⚠ K8s manifests: 3 warnings</text>
+
+  <!-- PASS verdict -->
+  <rect x="200" y="238" width="368" height="24" rx="4" fill="#137333" opacity="0.25"/>
+  <rect x="200" y="238" width="368" height="24" rx="4" fill="none" stroke="#4ADE80" stroke-width="1" opacity="0.5"/>
+  <text x="384" y="254" font-family="'Consolas', monospace" font-size="10" fill="#4ADE80" text-anchor="middle" font-weight="bold">✓ SCAN COMPLETE — PASS · 4.2s</text>
+
+  <!-- Status bar -->
+  <rect x="0" y="264" width="580" height="16" fill="#007ACC"/>
+  <text x="56" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">⎇ main</text>
+  <text x="200" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">Python 3.11</text>
+  <text x="400" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">lra-ai-platform</text>
+  <text x="520" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">UTF-8</text>
 </svg>
 `
 
