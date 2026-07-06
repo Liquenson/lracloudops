@@ -258,37 +258,77 @@ const svgSecurity = `
 
 const svgNaturalLanguageAws = `
 <svg data-diagram="true" width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
-  <rect width="580" height="280" fill="#0D1117" rx="12"/>
+  <!-- Window background -->
+  <rect width="580" height="280" fill="#1E1E1E" rx="12"/>
 
-  <rect x="0" y="0" width="580" height="32" rx="12" fill="#161B22"/>
-  <rect x="0" y="20" width="580" height="12" fill="#161B22"/>
-  <circle cx="20" cy="16" r="5" fill="#5F6368"/>
-  <circle cx="38" cy="16" r="5" fill="#5F6368"/>
-  <circle cx="56" cy="16" r="5" fill="#5F6368"/>
-  <text x="290" y="21" font-family="monospace" font-size="10" fill="#5F6368" text-anchor="middle">aws-devops-agent · Claude Sonnet 4.6</text>
+  <!-- Title bar -->
+  <rect x="0" y="0" width="580" height="32" fill="#323233" rx="12"/>
+  <rect x="0" y="20" width="580" height="12" fill="#323233"/>
+  <circle cx="18" cy="16" r="5" fill="#FF5F57"/>
+  <circle cx="34" cy="16" r="5" fill="#FEBC2E"/>
+  <circle cx="50" cy="16" r="5" fill="#28C840"/>
+  <text x="290" y="21" font-family="'Segoe UI', sans-serif" font-size="11" fill="#CCCCCC" text-anchor="middle">aws-devops-agent · Claude Sonnet 4.6</text>
 
-  <text x="20" y="55" font-family="monospace" font-size="10" fill="#5F6368">Tu:</text>
-  <text x="50" y="55" font-family="monospace" font-size="10" fill="#FFFFFF">¿Qué instancias EC2 están corriendo?</text>
+  <!-- Sidebar -->
+  <rect x="0" y="32" width="48" height="248" fill="#333333"/>
+  <rect x="12" y="44" width="24" height="24" rx="3" fill="#007ACC" opacity="0.9"/>
+  <text x="24" y="61" font-family="monospace" font-size="12" fill="white" text-anchor="middle">⊞</text>
+  <text x="24" y="92" font-family="monospace" font-size="14" fill="#858585" text-anchor="middle">⌕</text>
+  <text x="24" y="122" font-family="monospace" font-size="14" fill="#858585" text-anchor="middle">⎇</text>
 
-  <text x="20" y="78" font-family="monospace" font-size="10" fill="#1A73E8">Claude →</text>
-  <text x="85" y="78" font-family="monospace" font-size="10" fill="#5F6368">calling list_ec2_instances(region=eu-west-1)</text>
+  <!-- File explorer -->
+  <rect x="48" y="32" width="140" height="248" fill="#252526"/>
+  <text x="58" y="50" font-family="'Segoe UI', sans-serif" font-size="9" fill="#BBBBBB" font-weight="600" letter-spacing="1">EXPLORER</text>
+  <text x="58" y="70" font-family="'Consolas', monospace" font-size="10" fill="#C5C5C5">▾ aws-devops-agent</text>
+  <text x="68" y="86" font-family="'Consolas', monospace" font-size="10" fill="#569CD6">agent.py</text>
+  <text x="68" y="100" font-family="'Consolas', monospace" font-size="10" fill="#858585">.env</text>
+  <text x="68" y="114" font-family="'Consolas', monospace" font-size="10" fill="#858585">requirements.txt</text>
+  <text x="68" y="128" font-family="'Consolas', monospace" font-size="10" fill="#858585">README.md</text>
+  <text x="58" y="150" font-family="'Segoe UI', sans-serif" font-size="9" fill="#BBBBBB" font-weight="600" letter-spacing="1">AWS TOOLS (31)</text>
+  <text x="68" y="166" font-family="'Consolas', monospace" font-size="10" fill="#858585">list_ec2_instances</text>
+  <text x="68" y="180" font-family="'Consolas', monospace" font-size="10" fill="#858585">check_security_groups</text>
+  <text x="68" y="194" font-family="'Consolas', monospace" font-size="10" fill="#858585">get_rds_instances</text>
+  <text x="68" y="208" font-family="'Consolas', monospace" font-size="10" fill="#858585">list_eks_clusters</text>
+  <text x="68" y="222" font-family="'Consolas', monospace" font-size="10" fill="#858585">get_monthly_cost</text>
+  <text x="68" y="236" font-family="'Consolas', monospace" font-size="10" fill="#858585">... +26 more</text>
 
-  <rect x="20" y="88" width="540" height="50" rx="6" fill="#161B22"/>
-  <text x="35" y="106" font-family="monospace" font-size="10" fill="#4ADE80">i-0a1b2c3d  t3.medium   running   prod-api-server</text>
-  <text x="35" y="122" font-family="monospace" font-size="10" fill="#4ADE80">i-0e4f5a6b  t3.small    running   staging-worker</text>
+  <!-- Tab bar -->
+  <rect x="188" y="32" width="392" height="28" fill="#2D2D2D"/>
+  <rect x="188" y="32" width="100" height="28" fill="#1E1E1E"/>
+  <rect x="188" y="56" width="100" height="2" fill="#007ACC"/>
+  <text x="200" y="51" font-family="'Consolas', monospace" font-size="10" fill="#CCCCCC">agent.py</text>
+  <text x="308" y="51" font-family="'Consolas', monospace" font-size="10" fill="#858585">terminal</text>
 
-  <text x="20" y="160" font-family="monospace" font-size="10" fill="#5F6368">Tu:</text>
-  <text x="50" y="160" font-family="monospace" font-size="10" fill="#FFFFFF">¿Hay security groups peligrosos?</text>
+  <!-- Terminal content -->
+  <rect x="188" y="60" width="392" height="204" fill="#1E1E1E"/>
 
-  <text x="20" y="180" font-family="monospace" font-size="10" fill="#1A73E8">Claude →</text>
-  <text x="85" y="180" font-family="monospace" font-size="10" fill="#5F6368">calling check_security_groups()</text>
+  <!-- Conversation -->
+  <text x="200" y="80" font-family="'Consolas', monospace" font-size="10" fill="#858585">You:</text>
+  <text x="234" y="80" font-family="'Consolas', monospace" font-size="10" fill="#CCCCCC">What EC2 instances are running?</text>
 
-  <rect x="20" y="190" width="540" height="36" rx="6" fill="#161B22"/>
-  <text x="35" y="208" font-family="monospace" font-size="10" fill="#4ADE80">✓ No open 0.0.0.0/0 rules on critical ports</text>
-  <text x="35" y="222" font-family="monospace" font-size="10" fill="#F29900">⚠ sg-0a1b: port 22 open to 0.0.0.0/0 — review recommended</text>
+  <text x="200" y="96" font-family="'Consolas', monospace" font-size="10" fill="#569CD6">Claude</text>
+  <text x="248" y="96" font-family="'Consolas', monospace" font-size="10" fill="#6A9955">→ calling list_ec2_instances(region=eu-west-1)</text>
 
-  <rect x="20" y="245" width="540" height="22" rx="6" fill="#161B22"/>
-  <text x="35" y="261" font-family="monospace" font-size="10" fill="#5F6368">31 tools · 24 AWS services · Claude Sonnet 4.6 tool-use loop</text>
+  <rect x="200" y="104" width="368" height="32" rx="3" fill="#252526"/>
+  <text x="210" y="118" font-family="'Consolas', monospace" font-size="10" fill="#4ADE80">i-0a1b2c3d  t3.medium   running   prod-api-server</text>
+  <text x="210" y="130" font-family="'Consolas', monospace" font-size="10" fill="#4ADE80">i-0e4f5a6b  t3.small    running   staging-worker</text>
+
+  <text x="200" y="152" font-family="'Consolas', monospace" font-size="10" fill="#858585">You:</text>
+  <text x="234" y="152" font-family="'Consolas', monospace" font-size="10" fill="#CCCCCC">Any dangerous security groups?</text>
+
+  <text x="200" y="168" font-family="'Consolas', monospace" font-size="10" fill="#569CD6">Claude</text>
+  <text x="248" y="168" font-family="'Consolas', monospace" font-size="10" fill="#6A9955">→ calling check_security_groups()</text>
+
+  <rect x="200" y="176" width="368" height="32" rx="3" fill="#252526"/>
+  <text x="210" y="190" font-family="'Consolas', monospace" font-size="10" fill="#4ADE80">✓ No open 0.0.0.0/0 rules on critical ports</text>
+  <text x="210" y="202" font-family="'Consolas', monospace" font-size="10" fill="#CE9178">⚠ sg-0a1b: port 22 open — review recommended</text>
+
+  <!-- Status bar -->
+  <rect x="0" y="264" width="580" height="16" fill="#007ACC"/>
+  <text x="56" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">⎇ main</text>
+  <text x="130" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">Python 3.11</text>
+  <text x="240" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">31 tools · 24 AWS services</text>
+  <text x="460" y="275" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FFFFFF">Claude Sonnet 4.6</text>
 </svg>
 `
 
