@@ -3,7 +3,7 @@
 // 0 AI Agents · 1 AWS Infrastructure · 2 Kubernetes · 3 Security · 4 Natural Language AWS
 
 const svgAiAgents = `
-<svg width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+<svg data-diagram="true" width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
   <rect width="580" height="280" fill="#F8F9FA" rx="12"/>
 
   <rect x="20" y="110" width="80" height="36" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
@@ -64,7 +64,7 @@ const svgAiAgents = `
 `
 
 const svgAwsInfrastructure = `
-<svg width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+<svg data-diagram="true" width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
   <rect width="580" height="280" fill="#F8F9FA" rx="12"/>
 
   <rect x="20" y="30" width="540" height="220" rx="8" fill="none" stroke="#DADCE0" stroke-width="1.5" stroke-dasharray="6,4"/>
@@ -116,7 +116,7 @@ const svgAwsInfrastructure = `
 `
 
 const svgKubernetes = `
-<svg width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+<svg data-diagram="true" width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
   <rect width="580" height="280" fill="#F8F9FA" rx="12"/>
 
   <rect x="20" y="30" width="540" height="200" rx="8" fill="none" stroke="#DADCE0" stroke-width="1.5" stroke-dasharray="6,4"/>
@@ -167,7 +167,7 @@ const svgKubernetes = `
 `
 
 const svgSecurity = `
-<svg width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+<svg data-diagram="true" width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
   <rect width="580" height="280" fill="#0D1117" rx="12"/>
 
   <rect x="0" y="0" width="580" height="32" rx="12" fill="#161B22"/>
@@ -200,7 +200,7 @@ const svgSecurity = `
 `
 
 const svgNaturalLanguageAws = `
-<svg width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+<svg data-diagram="true" width="580" height="280" viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
   <rect width="580" height="280" fill="#0D1117" rx="12"/>
 
   <rect x="0" y="0" width="580" height="32" rx="12" fill="#161B22"/>

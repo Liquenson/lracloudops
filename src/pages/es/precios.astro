@@ -66,6 +66,7 @@ const plans = [
   <Header lang="es" currentPath={Astro.url.pathname} />
 
   <section
+    data-animate="fade-up"
     style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0; text-align: center;"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
@@ -153,7 +154,7 @@ const plans = [
               </ul>
               <a
                 href={plan.name === 'Enterprise' ? '/es/contacto' : '/es/login'}
-                class="btn-premium"
+                class={plan.featured ? 'btn-premium' : 'btn-premium-outline'}
                 style={`display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; ${plan.featured ? 'background: #1A73E8; color: #FFFFFF;' : 'background: transparent; color: #1A73E8; border: 1px solid #DADCE0;'}`}
               >
                 {plan.cta}
