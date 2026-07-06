@@ -3,28 +3,31 @@ import Layout from '../../layouts/Layout.astro'
 import Header from '../../components/layout/Header.astro'
 import Footer from '../../components/layout/Footer.astro'
 
-const platformFeatures = [
-  'lra scan — auditoría de seguridad en cualquier repo de GitHub',
-  'infrastructure_review — análisis multi-cloud',
-  'security_review — Trivy + Checkov en cada escaneo',
-  'documentation_update — README, ADR, Runbooks',
-  'pr_review — revisión de código automatizada',
+const auditChecklist = [
+  'Trivy — escaneo de vulnerabilidades en contenedores e IaC',
+  'Checkov — análisis de Terraform, Kubernetes, Dockerfile',
+  'Veredicto PASS/FAIL con hallazgos detallados',
+  'Recomendaciones concretas para resolver cada problema',
+  'Entregado por email en 24 horas',
 ]
 
 const consultingItems = [
-  {
-    title: 'Configuración de infraestructura',
-    desc: 'EKS, VPC, RDS en AWS desde cero',
-  },
-  { title: 'Pipelines CI/CD', desc: 'GitHub Actions, ArgoCD, Helm' },
-  { title: 'Auditoría de seguridad', desc: 'Trivy, Checkov, revisión IAM' },
-  { title: 'Observabilidad', desc: 'Prometheus, Grafana, CloudWatch' },
+  { title: 'Escaneo mensual de seguridad', desc: 'lra scan en todos tus repos cada mes' },
+  { title: 'Revisión de infraestructura', desc: 'Análisis y recomendaciones de arquitectura AWS/K8s' },
+  { title: 'Auditoría de pipelines CI/CD', desc: 'Revisión de GitHub Actions, Jenkins, ArgoCD' },
+  { title: 'Acceso directo', desc: 'Email y LinkedIn para preguntas y soporte' },
+]
+
+const techs = [
+  'AWS', 'Kubernetes', 'Terraform', 'ArgoCD', 'GitHub Actions', 'Docker',
+  'Helm', 'Prometheus', 'Grafana', 'Trivy', 'Checkov', 'Ansible', 'Jenkins',
+  'SonarCloud', 'Python', 'Bash',
 ]
 ---
 
 <Layout
   title="Servicios — LRA CloudOps"
-  description="Acceso a la plataforma y consultoría DevOps. lra-ai-platform como servicio — 8 agentes, 14 integraciones, 9 workflows."
+  description="Consultoría DevOps y auditoría de infraestructura. Analizamos tu infraestructura, identificamos problemas y te ayudamos a resolverlos. Empezando con una auditoría gratuita con lra scan."
   lang="es"
 >
   <Header lang="es" currentPath={Astro.url.pathname} />
@@ -43,182 +46,100 @@ const consultingItems = [
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
       >
-        Qué ofrecemos
+        Consultoría DevOps y auditoría de infraestructura
       </h1>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; max-width: 560px;"
       >
-        Acceso a la plataforma y consultoría DevOps. Elige lo que se ajuste a tu
-        equipo.
+        Analizamos tu infraestructura, identificamos problemas y te ayudamos
+        a resolverlos. Empezando con una auditoría gratuita con lra scan.
       </p>
     </div>
   </section>
 
-  <!-- SaaS Service -->
-  <section
-    data-animate="fade-up"
-    style="background: #FFFFFF; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
-  >
+  <!-- Auditoría gratuita -->
+  <section style="background: #FFFFFF; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;">
     <div style="max-width: 1280px; margin: 0 auto;">
-      <div
-        style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;"
-        class="service-grid"
-      >
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;" class="service-grid">
         <div>
-          <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;"
-          >
-            Plataforma
-          </p>
-          <h2
-            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
-          >
-            lra-ai-platform como servicio
-          </h2>
-          <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
-          >
-            Accede a la plataforma completa sin instalar nada. 8 agentes
-            especializados ejecutan operaciones de infraestructura en tu nombre
-            — escaneando, revisando, desplegando y documentando.
-          </p>
-          <div
-            style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;"
-          >
-            {
-              platformFeatures.map((item) => (
-                <div style="display: flex; align-items: start; gap: 0.75rem;">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"
-                  >
-                    <path
-                      d="M20 6L9 17l-5-5"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                  <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">
-                    {item}
-                  </span>
-                </div>
-              ))
-            }
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: #E6F4EA; color: #137333; padding: 0.25rem 0.875rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; margin-bottom: 1rem;">
+            Gratis · Sin compromiso
           </div>
-          <a
-            href="/es/precios"
-            class="btn-premium"
-            style="display: inline-flex; align-items: center; background: #1A73E8; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 0.9375rem; text-decoration: none;"
-          >
-            Ver precios →
+          <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 1rem; line-height: 1.2;">Auditoría de infraestructura con lra scan</h2>
+          <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;">
+            Envíanos la URL de tu repositorio GitHub. Ejecutamos lra scan — Trivy para vulnerabilidades de seguridad, Checkov para misconfiguraciones de IaC — y te enviamos un informe completo en 24 horas.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.625rem; margin-bottom: 2rem;">
+            {auditChecklist.map(item => (
+              <div style="display: flex; align-items: start; gap: 0.75rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">{item}</span>
+              </div>
+            ))}
+          </div>
+          <a href="/es/contacto" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #1A73E8; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;" class="btn-premium">
+            Solicitar auditoría gratuita →
           </a>
         </div>
-        <!-- Visual placeholder -->
-        <div
-          style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.5rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; line-height: 1.9; color: #5F6368;"
-        >
-          <div
-            style="color: #9AA0A6; font-style: italic; margin-bottom: 0.75rem;"
-          >
-            # Capacidades de la plataforma
-          </div>
+
+        <!-- Terminal claro -->
+        <div style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.5rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; line-height: 1.9; color: #5F6368;">
+          <div style="color: #9AA0A6; font-style: italic; margin-bottom: 0.75rem;"># Auditoría de tu repositorio</div>
           <div style="margin-bottom: 0.5rem;">
             <span style="color: #1A73E8; font-weight: 600;">$</span>
-            <span style="color: #202124; font-weight: 500;">
-              lra scan --github org/repo</span
-            >
+            <span style="color: #202124; font-weight: 500;"> lra scan --github tu-org/tu-repo</span>
           </div>
-          <div style="margin-left: 1rem; color: #137333;">
-            ✓ Trivy: 0 críticos
-          </div>
-          <div
-            style="margin-left: 1rem; color: #137333; margin-bottom: 0.75rem;"
-          >
-            ✓ Checkov: 47 superados
-          </div>
-          <div style="margin-bottom: 0.5rem;">
-            <span style="color: #1A73E8; font-weight: 600;">$</span>
-            <span style="color: #202124; font-weight: 500;">
-              lra review aws</span
-            >
-          </div>
-          <div style="margin-left: 1rem; color: #137333;">✓ EKS: saludable</div>
-          <div
-            style="margin-left: 1rem; color: #137333; margin-bottom: 0.75rem;"
-          >
-            ✓ RDS: en ejecución
-          </div>
-          <div style="margin-bottom: 0.5rem;">
-            <span style="color: #1A73E8; font-weight: 600;">$</span>
-            <span style="color: #202124; font-weight: 500;">
-              lra run security_review</span
-            >
-          </div>
-          <div style="margin-left: 1rem; color: #137333;">
-            ✓ Informe generado
-          </div>
+          <div style="margin-left: 1rem; color: #5F6368;">→ Escaneando repositorio...</div>
+          <div style="margin-left: 1rem; color: #5F6368; margin-bottom: 0.5rem;">→ Ejecutando Trivy + Checkov...</div>
+          <div style="margin-left: 1rem; color: #137333;">✓ Críticos: 0</div>
+          <div style="margin-left: 1rem; color: #137333;">✓ Altos: 0</div>
+          <div style="margin-left: 1rem; color: #F29900; margin-bottom: 0.75rem;">⚠ Medios: 2 → recomendaciones incluidas</div>
+          <div style="margin-left: 1rem; color: #137333; font-weight: 600;">✓ Informe entregado a tu email</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Consulting Service -->
-  <section
-    data-animate="fade-up"
-    style="background: #F8F9FA; padding: 3rem 1.5rem;"
-  >
+  <!-- Consultoría mensual -->
+  <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;">
     <div style="max-width: 1280px; margin: 0 auto;">
-      <div
-        style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;"
-        class="service-grid"
-      >
-        <!-- Visual -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          {
-            consultingItems.map((item) => (
-              <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 6px; padding: 1rem;">
-                <p style="font-family: 'Red Hat Display', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124; margin-bottom: 0.25rem;">
-                  {item.title}
-                </p>
-                <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368;">
-                  {item.desc}
-                </p>
-              </div>
-            ))
-          }
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;" class="service-grid">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" class="consulting-cards">
+          {consultingItems.map(item => (
+            <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 6px; padding: 1rem;" class="card-premium">
+              <p style="font-family: 'Red Hat Display', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124; margin-bottom: 0.25rem;">{item.title}</p>
+              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368;">{item.desc}</p>
+            </div>
+          ))}
         </div>
         <div>
-          <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;"
-          >
-            Consultoría
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: #E8F0FE; color: #1A73E8; padding: 0.25rem 0.875rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; margin-bottom: 1rem;">
+            €199/mes
+          </div>
+          <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 1rem; line-height: 1.2;">Consultoría DevOps continua</h2>
+          <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;">
+            Soporte mensual para equipos sin ingeniero DevOps dedicado. Escaneos de seguridad, revisiones de infraestructura, auditorías de pipelines y acceso directo para preguntas.
           </p>
-          <h2
-            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
-          >
-            Ingeniería DevOps bajo demanda
-          </h2>
-          <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
-          >
-            ¿Necesitas a alguien que diseñe, construya o revise tu
-            infraestructura? Trabajamos directamente con tu equipo —
-            arquitectura cloud, configuración Kubernetes, pipelines CI/CD,
-            hardening de seguridad.
+          <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; line-height: 1.7; margin-bottom: 2rem;">
+            Empieza con la auditoría gratuita. Si te resulta valiosa, montamos un acuerdo mensual. Sin contratos a largo plazo.
           </p>
-          <a
-            href="/es/contacto"
-            class="btn-premium-outline"
-            style="display: inline-flex; align-items: center; background: transparent; color: #1A73E8; padding: 0.75rem 1.5rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-weight: 500; font-size: 0.9375rem; text-decoration: none;"
-          >
+          <a href="/es/contacto" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #1A73E8; padding: 0.75rem 1.5rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;" class="btn-premium-outline">
             Contactar →
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tecnologías -->
+  <section style="background: #FFFFFF; padding: 3rem 1.5rem;" data-animate="fade-up">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Stack</p>
+      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: #202124; margin-bottom: 2rem;">Tecnologías con las que trabajamos</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+        {techs.map(tech => (
+          <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.875rem; color: #202124; background: #F8F9FA; border: 1px solid #DADCE0; padding: 0.375rem 0.875rem; border-radius: 4px;">{tech}</span>
+        ))}
       </div>
     </div>
   </section>
@@ -231,6 +152,9 @@ const consultingItems = [
     .service-grid {
       grid-template-columns: 1fr !important;
       gap: 2rem !important;
+    }
+    .consulting-cards {
+      grid-template-columns: 1fr !important;
     }
   }
 </style>

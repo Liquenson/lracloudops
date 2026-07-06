@@ -109,11 +109,26 @@ import Footer from '../../components/layout/Footer.astro'
                 style="width: 100%; padding: 0.625rem 0.875rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #202124; background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 4px; outline: none; box-sizing: border-box;"
               >
                 <option value="">Selecciona un tema</option>
+                <option value="audit">Auditoría de infraestructura gratuita</option>
                 <option value="platform">Acceso a la plataforma</option>
                 <option value="consulting">Consultoría DevOps</option>
                 <option value="pricing">Pregunta sobre precios</option>
                 <option value="other">Otro</option>
               </select>
+            </div>
+
+            <div>
+              <label style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124; margin-bottom: 0.375rem;">
+                URL del repositorio GitHub <span style="color: #9AA0A6; font-weight: 400;">(opcional)</span>
+              </label>
+              <input type="url" name="github_repo" placeholder="https://github.com/tu-org/tu-repo"
+                style="width: 100%; padding: 0.625rem 0.875rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #202124; background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 4px; outline: none; box-sizing: border-box;"
+                onfocus="this.style.borderColor='#1A73E8'; this.style.boxShadow='0 0 0 3px rgba(26,115,232,0.12)'"
+                onblur="this.style.borderColor='#DADCE0'; this.style.boxShadow='none'"
+              />
+              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #9AA0A6; margin-top: 0.375rem;">
+                Si quieres una auditoría gratuita con lra scan, pega aquí la URL de tu repo.
+              </p>
             </div>
 
             <div>

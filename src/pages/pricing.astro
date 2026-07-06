@@ -2,167 +2,98 @@
 import Layout from '../layouts/Layout.astro'
 import Header from '../components/layout/Header.astro'
 import Footer from '../components/layout/Footer.astro'
-
-const plans = [
-  {
-    name: 'Starter',
-    price: '49',
-    period: '/month',
-    desc: 'For small teams getting started with DevOps automation.',
-    features: [
-      'lra scan — unlimited GitHub scans',
-      'infrastructure_review — monthly',
-      'security_review — on demand',
-      '1 cloud account (AWS)',
-      'Email support',
-      'Dashboard access',
-    ],
-    cta: 'Get started',
-    featured: false,
-  },
-  {
-    name: 'Professional',
-    price: '199',
-    period: '/month',
-    desc: 'Full platform access. All 8 agents. All 9 workflows.',
-    features: [
-      'Everything in Starter',
-      'All 8 agents — full access',
-      'All 9 workflows automated',
-      'pr_review on every PR',
-      'documentation_update weekly',
-      '3 cloud accounts',
-      'Priority support',
-      'API access',
-    ],
-    cta: 'Get started',
-    featured: true,
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    period: '',
-    desc: 'Dedicated infrastructure. SLA. DevOps architect assigned.',
-    features: [
-      'Everything in Professional',
-      'deploy_eks managed',
-      'Dedicated DevOps architect',
-      'Custom agent development',
-      'SLA 99.9%',
-      'Unlimited cloud accounts',
-      'On-call support',
-    ],
-    cta: 'Contact us',
-    featured: false,
-  },
-]
 ---
 
 <Layout
   title="Pricing — LRA CloudOps"
-  description="Simple, transparent pricing for lra-ai-platform. Starter €49/mo, Professional €199/mo, Enterprise custom."
+  description="Simple pricing. Start free with an infrastructure audit. Pay only if it's useful — €199/month for ongoing DevOps consulting."
   lang="en"
 >
   <Header lang="en" currentPath={Astro.url.pathname} />
 
-  <section
-    data-animate="fade-up"
-    style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0; text-align: center;"
-  >
+  <!-- Hero -->
+  <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0; text-align: center;">
     <div style="max-width: 1280px; margin: 0 auto;">
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
-      >
-        Pricing
-      </p>
-      <h1
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
-      >
-        Simple, transparent pricing
-      </h1>
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368;"
-      >
-        Start with what you need. Scale when you grow.
-      </p>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Pricing</p>
+      <h1 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;">Simple pricing. No surprises.</h1>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368;">Start free. Pay only if it's useful.</p>
     </div>
   </section>
 
+  <!-- 2 plans -->
   <section style="background: #FFFFFF; padding: 3rem 1.5rem;">
-    <div style="max-width: 960px; margin: 0 auto;">
-      <div
-        data-animate="stagger"
-        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;"
-        class="pricing-grid"
-      >
-        {
-          plans.map((plan) => (
-            <div
-              data-animate-child
-              class="card-premium"
-              style={`border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; position: relative; ${plan.featured ? 'border: 2px solid #1A73E8; box-shadow: 0 4px 20px rgba(26,115,232,0.12);' : 'border: 1px solid #DADCE0;'}`}
-            >
-              {plan.featured && (
-                <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #1A73E8; color: #FFFFFF; font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 1rem; border-radius: 9999px; white-space: nowrap;">
-                  Most popular
-                </div>
-              )}
-              <div>
-                <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">
-                  {plan.name}
-                </p>
-                <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">
-                  {plan.desc}
-                </p>
-              </div>
-              <div style="display: flex; align-items: baseline; gap: 0.25rem;">
-                {plan.price !== 'Custom' && (
-                  <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #5F6368;">
-                    €
-                  </span>
-                )}
-                <span style="font-family: 'Red Hat Display', sans-serif; font-size: 2.5rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">
-                  {plan.price}
-                </span>
-                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">
-                  {plan.period}
-                </span>
-              </div>
-              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
-                {plan.features.map((f) => (
-                  <li style="display: flex; align-items: start; gap: 0.625rem;">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"
-                    >
-                      <path
-                        d="M20 6L9 17l-5-5"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                    <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">
-                      {f}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={plan.name === 'Enterprise' ? '/contact' : '/login'}
-                class={plan.featured ? 'btn-premium' : 'btn-premium-outline'}
-                style={`display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; ${plan.featured ? 'background: #1A73E8; color: #FFFFFF;' : 'background: transparent; color: #1A73E8; border: 1px solid #DADCE0;'}`}
-              >
-                {plan.cta}
-              </a>
-            </div>
-          ))
-        }
+    <div style="max-width: 860px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="pricing-grid">
+
+        <!-- Free Audit -->
+        <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+          <div>
+            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Infrastructure Audit</p>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">One-time security scan and report</p>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 0.25rem;">
+            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">Free</span>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
+            {[
+              'lra scan on 1 GitHub repository',
+              'Trivy — security vulnerabilities',
+              'Checkov — IaC misconfigurations',
+              'PASS/FAIL report by email',
+              'Concrete fix recommendations',
+              'Delivered within 24 hours',
+            ].map(f => (
+              <li style="display: flex; align-items: start; gap: 0.625rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">{f}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" style="display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: #1A73E8; border: 1px solid #DADCE0;" class="btn-premium-outline">
+            Request free audit
+          </a>
+        </div>
+
+        <!-- Monthly Consulting -->
+        <div style="border: 2px solid #1A73E8; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; position: relative; box-shadow: 0 4px 20px rgba(26,115,232,0.12);">
+          <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #1A73E8; color: #FFFFFF; font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 1rem; border-radius: 9999px; white-space: nowrap;">
+            Recommended
+          </div>
+          <div>
+            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Monthly Consulting</p>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Ongoing DevOps support</p>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 0.25rem;">
+            <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #5F6368; font-weight: 500;">€</span>
+            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">199</span>
+            <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">/month</span>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
+            {[
+              'Everything in Free Audit',
+              'Monthly lra scan on all repos',
+              'infrastructure_review — AWS/K8s analysis',
+              'CI/CD pipeline audit',
+              'Direct email + LinkedIn access',
+              'Implementation support',
+              'No long-term contract',
+            ].map(f => (
+              <li style="display: flex; align-items: start; gap: 0.625rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">{f}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" style="display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: #1A73E8; color: #FFFFFF;" class="btn-premium">
+            Get started
+          </a>
+        </div>
       </div>
+
+      <!-- Note -->
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-align: center; margin-top: 2rem;">
+        Start with the free audit. No credit card. No commitment. If it's useful, we can set up a monthly engagement.
+      </p>
     </div>
   </section>
 
