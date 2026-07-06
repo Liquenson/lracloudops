@@ -116,19 +116,26 @@ const consultingItems = [
         </div>
         <!-- Visual placeholder -->
         <div
-          style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368; line-height: 1.8;"
+          style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.5rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; line-height: 1.9; color: #5F6368;"
         >
-          <div style="color: #5F6368; margin-bottom: 0.5rem;">
-            # Platform capabilities
+          <div style="color: #9AA0A6; font-style: italic; margin-bottom: 0.75rem;"># Platform capabilities</div>
+          <div style="margin-bottom: 0.5rem;">
+            <span style="color: #1A73E8; font-weight: 600;">$</span>
+            <span style="color: #202124; font-weight: 500;"> lra scan --github org/repo</span>
           </div>
-          <div><span style="color: #1A73E8;">$</span> lra scan --github org/repo</div>
-          <div style="color: #137333; margin-left: 1rem;">✓ Trivy: 0 critical</div>
-          <div style="color: #137333; margin-left: 1rem;">✓ Checkov: 47 passed</div>
-          <div style="margin-top: 0.75rem;"><span style="color: #1A73E8;">$</span> lra review aws</div>
-          <div style="color: #137333; margin-left: 1rem;">✓ EKS: healthy</div>
-          <div style="color: #137333; margin-left: 1rem;">✓ RDS: running</div>
-          <div style="margin-top: 0.75rem;"><span style="color: #1A73E8;">$</span> lra run security_review</div>
-          <div style="color: #137333; margin-left: 1rem;">✓ Report generated</div>
+          <div style="margin-left: 1rem; color: #137333;">✓ Trivy: 0 critical</div>
+          <div style="margin-left: 1rem; color: #137333; margin-bottom: 0.75rem;">✓ Checkov: 47 passed</div>
+          <div style="margin-bottom: 0.5rem;">
+            <span style="color: #1A73E8; font-weight: 600;">$</span>
+            <span style="color: #202124; font-weight: 500;"> lra review aws</span>
+          </div>
+          <div style="margin-left: 1rem; color: #137333;">✓ EKS: healthy</div>
+          <div style="margin-left: 1rem; color: #137333; margin-bottom: 0.75rem;">✓ RDS: running</div>
+          <div style="margin-bottom: 0.5rem;">
+            <span style="color: #1A73E8; font-weight: 600;">$</span>
+            <span style="color: #202124; font-weight: 500;"> lra run security_review</span>
+          </div>
+          <div style="margin-left: 1rem; color: #137333;">✓ Report generated</div>
         </div>
       </div>
     </div>
