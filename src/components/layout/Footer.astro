@@ -4,6 +4,7 @@ interface Props {
 }
 const { lang = 'en' } = Astro.props
 const isES = lang === 'es'
+const currentYear = new Date().getFullYear()
 
 const brandBlurb = isES
   ? 'Ingeniería DevOps open source. Patrones de nivel producción. Código público.'
@@ -161,8 +162,8 @@ const projects: [string, string][] = [
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368;"
       >
-        © 2026 LRA CloudOps · Ruben Liquenson · Las Palmas de Gran Canaria,
-        España
+        © {currentYear} LRA CloudOps · Ruben Liquenson · Las Palmas de Gran
+        Canaria, España
       </p>
       <div
         style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;"
