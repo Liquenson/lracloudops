@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import Header from '../components/layout/Header.astro'
 import Footer from '../components/layout/Footer.astro'
+import { industrySvgs } from '../data/industry-diagrams'
 
 const heroPills = ['AI Agents', 'AWS', 'Kubernetes', 'Terraform', 'GitOps']
 
@@ -451,20 +452,10 @@ const techs = [
                 </a>
               )}
             </div>
-            <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 12px; height: 280px; display: flex; align-items: center; justify-content: center;">
-              <div style="text-align: center;">
-                <div
-                  style={`width: 64px; height: 64px; border-radius: 16px; background: ${tab.color}1A; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;`}
-                >
-                  <div
-                    style={`width: 32px; height: 32px; border-radius: 8px; background: ${tab.color};`}
-                  />
-                </div>
-                <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">
-                  {tab.label}
-                </p>
-              </div>
-            </div>
+            <div
+              style="border-radius: 12px; overflow: hidden; height: 280px;"
+              set:html={industrySvgs[i]}
+            />
           </div>
         ))
       }
