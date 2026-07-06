@@ -13,6 +13,8 @@ const brandBlurb = isES
 const projectsLabel = isES ? 'Proyectos' : 'Projects'
 const contactLabel = isES ? 'Contacto' : 'Contact'
 
+const certifications = ['HashiCorp Certified', 'Cisco Cybersecurity', 'Fortinet NSE']
+
 const projects: [string, string][] = [
   ['lra-ai-platform', 'https://github.com/lra-cloud-ops/lra-ai-platform'],
   ['aws-devops-agent', 'https://github.com/lra-cloud-ops/aws-devops-agent'],
@@ -54,7 +56,12 @@ const projects: [string, string][] = [
         >
           {brandBlurb}
         </p>
-        <div style="display: flex; gap: 0.75rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.875rem;">
+          {certifications.map(cert => (
+            <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: #5F6368; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 0.125rem 0.5rem; border-radius: 3px;">{cert}</span>
+          ))}
+        </div>
+        <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
           <a
             href="https://github.com/lra-cloud-ops"
             target="_blank"

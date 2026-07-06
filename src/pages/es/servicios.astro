@@ -131,6 +131,36 @@ const techs = [
     </div>
   </section>
 
+  <!-- Cómo trabajamos -->
+  <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0;" data-animate="fade-up">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Proceso</p>
+      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;">Cómo trabajamos</h2>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Desde tu primer mensaje hasta el informe entregado — sin sorpresas.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="process-grid">
+        {[
+          { step: '01', title: 'Nos contactas', desc: 'Envía la URL de tu repo GitHub por el formulario. Respondemos en menos de 24 horas para confirmar.', time: 'Día 1' },
+          { step: '02', title: 'Ejecutamos la auditoría', desc: 'Ejecutamos lra scan — Trivy para vulnerabilidades, Checkov para misconfiguraciones IaC. Análisis completo de tu código.', time: 'Día 2' },
+          { step: '03', title: 'Recibes el informe', desc: 'Informe PASS/FAIL completo por email. Incluye todos los hallazgos, niveles de severidad y recomendaciones concretas.', time: 'Día 3' },
+        ].map(({ step, title, desc, time }) => (
+          <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.5rem; position: relative;" class="card-premium">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #1A73E8; background: #E8F0FE; padding: 0.25rem 0.625rem; border-radius: 4px;">{step}</span>
+              <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #9AA0A6;">{time}</span>
+            </div>
+            <h3 style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 700; color: #202124; margin-bottom: 0.5rem;">{title}</h3>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.6;">{desc}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 1.5rem; padding: 1rem 1.5rem; background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 6px; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #137333; flex-shrink: 0;"></span>
+        <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #202124; font-weight: 500;">Respondemos a cada solicitud en menos de 24 horas.</span>
+        <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Repos privados aceptados. Sin compromiso a largo plazo.</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Tecnologías -->
   <section style="background: #FFFFFF; padding: 3rem 1.5rem;" data-animate="fade-up">
     <div style="max-width: 1280px; margin: 0 auto;">
@@ -154,6 +184,9 @@ const techs = [
       gap: 2rem !important;
     }
     .consulting-cards {
+      grid-template-columns: 1fr !important;
+    }
+    .process-grid {
       grid-template-columns: 1fr !important;
     }
   }

@@ -131,6 +131,36 @@ const techs = [
     </div>
   </section>
 
+  <!-- How we work -->
+  <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0;" data-animate="fade-up">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Process</p>
+      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;">How we work</h2>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">From your first message to the delivered report — no surprises.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="process-grid">
+        {[
+          { step: '01', title: 'You contact us', desc: 'Send your GitHub repo URL via the contact form. We respond within 24 hours to confirm we received it.', time: 'Day 1' },
+          { step: '02', title: 'We run the audit', desc: 'We execute lra scan — Trivy for vulnerabilities, Checkov for IaC misconfigurations. Full analysis of your codebase.', time: 'Day 2' },
+          { step: '03', title: 'You get the report', desc: 'Complete PASS/FAIL report delivered by email. Includes all findings, severity levels and concrete fix recommendations.', time: 'Day 3' },
+        ].map(({ step, title, desc, time }) => (
+          <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.5rem; position: relative;" class="card-premium">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #1A73E8; background: #E8F0FE; padding: 0.25rem 0.625rem; border-radius: 4px;">{step}</span>
+              <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #9AA0A6;">{time}</span>
+            </div>
+            <h3 style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 700; color: #202124; margin-bottom: 0.5rem;">{title}</h3>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.6;">{desc}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 1.5rem; padding: 1rem 1.5rem; background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 6px; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #137333; flex-shrink: 0;"></span>
+        <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #202124; font-weight: 500;">We respond to every request within 24 hours.</span>
+        <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Private repos accepted. No long-term commitment required.</span>
+      </div>
+    </div>
+  </section>
+
   <!-- What we work with -->
   <section style="background: #FFFFFF; padding: 3rem 1.5rem;" data-animate="fade-up">
     <div style="max-width: 1280px; margin: 0 auto;">
@@ -154,6 +184,9 @@ const techs = [
       gap: 2rem !important;
     }
     .consulting-cards {
+      grid-template-columns: 1fr !important;
+    }
+    .process-grid {
       grid-template-columns: 1fr !important;
     }
   }
