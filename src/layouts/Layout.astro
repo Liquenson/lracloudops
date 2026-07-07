@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import ChatWidget from '../components/ChatWidget.astro'
 
 interface Props {
   title: string
@@ -98,6 +99,8 @@ const esUrl = isES
   </head>
   <body>
     <slot />
+
+    <ChatWidget />
 
     <div
       id="lang-switcher"
