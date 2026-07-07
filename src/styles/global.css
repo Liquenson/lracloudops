@@ -121,6 +121,28 @@ p {
   padding-block: var(--section-py);
 }
 
+/* === CTA button groups — full-width, stacked on mobile (Red Hat pattern) === */
+.cta-group {
+  flex-direction: column;
+  align-items: stretch;
+}
+.cta-group > a,
+.cta-group > button {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .cta-group {
+    flex-direction: row;
+    align-items: center;
+  }
+  .cta-group > a,
+  .cta-group > button {
+    width: auto;
+  }
+}
+
 ::selection {
   background: rgba(0, 120, 212, 0.15);
 }
