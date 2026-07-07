@@ -48,16 +48,44 @@ const esUrl = isES
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LRA</title>
+    <title>{title}</title>
+
+    <!-- Primary Meta Tags -->
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta name="author" content="Ruben Liquenson — LRA CloudOps" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / LinkedIn / WhatsApp / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:site_name" content="LRA CloudOps" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://lracloudops.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content={isES
+        ? 'LRA CloudOps — Automatización DevOps con agentes especializados'
+        : 'LRA CloudOps — DevOps automation with specialized agents'}
+    />
+    <meta property="og:locale" content={isES ? 'es_ES' : 'en_US'} />
+
+    <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://lracloudops.com/og-image.png" />
+    <meta
+      name="twitter:image:alt"
+      content={isES
+        ? 'LRA CloudOps — Automatización DevOps con agentes especializados'
+        : 'LRA CloudOps — DevOps automation with specialized agents'}
+    />
+
+    <!-- Canonical -->
     <link rel="canonical" href={Astro.url} />
     <link rel="icon" type="image/svg+xml" href="/favicon-new.svg" />
     <link rel="apple-touch-icon" href="/favicon-new.png" />
@@ -78,9 +106,6 @@ const esUrl = isES
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-    <!-- SEO -->
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="Ruben Liquenson — LRA CloudOps" />
     <script is:inline>
       ;(function () {
         const path = window.location.pathname
