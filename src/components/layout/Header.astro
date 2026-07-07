@@ -34,7 +34,7 @@ const isActive = (href: string) =>
   style="position: sticky; top: 0; z-index: 100; background: #FFFFFF; border-bottom: 1px solid #DADCE0; height: 64px;"
 >
   <div
-    style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); display: flex; align-items: center; height: 100%; gap: 1.5rem;"
+    style="max-width: 1280px; margin: 0 auto; padding-inline: clamp(1rem, 5vw, 2rem); display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 1.5rem;"
   >
     <a
       href={isES ? '/es/' : '/'}
@@ -177,9 +177,9 @@ const isActive = (href: string) =>
 </script>
 
 <style>
-  /* Full inline nav only fits on true desktop (> 1024px) — collapsing it
+  /* Full inline nav only fits on true desktop (>= 1024px) — collapsing it
      earlier on tablets risks the nav + CTA overflowing the header width. */
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
     .gc-nav {
       display: none !important;
     }
@@ -188,6 +188,8 @@ const isActive = (href: string) =>
     }
     #mobile-menu-btn {
       display: flex !important;
+      margin-left: auto;
+      order: 3;
     }
   }
 </style>
