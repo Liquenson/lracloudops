@@ -852,72 +852,45 @@ const techs = [
   <!-- ============================================================
      CLOUD PROVIDERS
      ============================================================ -->
-  <section
-    style="background: #F8F9FA; padding: 2.5rem 1.5rem; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0;"
-  >
+  <section style="background: #F8F9FA; padding: 2rem 1.5rem; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0;">
     <div style="max-width: 1280px; margin: 0 auto;">
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #5F6368; text-align: center; margin-bottom: 2rem; letter-spacing: 0.08em; text-transform: uppercase;"
-      >
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #5F6368; text-align: center; margin-bottom: 1.5rem; letter-spacing: 0.08em; text-transform: uppercase;">
         Cloud platforms
       </p>
-      <div
-        class="cloud-logos"
-        data-animate="logos"
-        style="display: flex; align-items: center; justify-content: center; gap: 5rem; flex-wrap: wrap; margin-bottom: 1.5rem;"
-      >
-        <a
-          href="https://aws.amazon.com/es/"
-          target="_blank"
-          rel="noopener"
-          style="opacity: 0.65; transition: opacity 150ms ease; text-decoration: none;"
+
+      <!-- Logos row -->
+      <div class="cloud-logos" data-animate="logos" style="display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+        <a href="https://aws.amazon.com/es/" target="_blank" rel="noopener"
+          style="opacity: 0.65; transition: opacity 150ms ease; text-decoration: none; display: flex; align-items: center; justify-content: center;"
           onmouseover="this.style.opacity='1'"
           onmouseout="this.style.opacity='0.65'"
         >
-          <img
-            src="/aws-logo.svg"
-            alt="Amazon Web Services"
-            style="height: 36px; width: auto;"
-            loading="lazy"
-          />
+          <img src="/aws-logo.svg" alt="Amazon Web Services" style="height: 28px; width: auto;" loading="lazy" />
         </a>
-        <a
-          href="https://azure.microsoft.com/es-es"
-          target="_blank"
-          rel="noopener"
-          style="opacity: 0.65; transition: opacity 150ms ease; text-decoration: none;"
+        <a href="https://azure.microsoft.com/es-es" target="_blank" rel="noopener"
+          style="opacity: 0.65; transition: opacity 150ms ease; text-decoration: none; display: flex; align-items: center; justify-content: center;"
           onmouseover="this.style.opacity='1'"
           onmouseout="this.style.opacity='0.65'"
         >
-          <img
-            src="/azure-logo.svg"
-            alt="Microsoft Azure"
-            style="height: 36px; width: auto;"
-            loading="lazy"
-          />
+          <img src="/azure-logo.svg" alt="Microsoft Azure" style="height: 28px; width: auto;" loading="lazy" />
         </a>
-        <a
-          href="https://cloud.google.com/?hl=es"
-          target="_blank"
-          rel="noopener"
-          style="opacity: 0.65; transition: opacity 150ms ease; text-decoration: none;"
+        <a href="https://cloud.google.com/?hl=es" target="_blank" rel="noopener"
+          style="opacity: 0.65; transition: opacity 150ms ease; text-decoration: none; display: flex; align-items: center; justify-content: center;"
           onmouseover="this.style.opacity='1'"
           onmouseout="this.style.opacity='0.65'"
         >
-          <img
-            src="/google-cloud-logo.svg"
-            alt="Google Cloud"
-            style="height: 36px; width: auto;"
-            loading="lazy"
-          />
+          <img src="/google-cloud-logo.svg" alt="Google Cloud" style="height: 28px; width: auto;" loading="lazy" />
         </a>
       </div>
-      <p
-        class="cloud-services"
-        style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368; text-align: center;"
-      >
-        EKS · RDS · ECR · VPC · IAM · CloudWatch · S3 · DynamoDB
-      </p>
+
+      <!-- Services tags -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem;">
+        {['EKS', 'RDS', 'ECR', 'VPC', 'IAM', 'CloudWatch', 'S3', 'DynamoDB'].map(service => (
+          <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368; background: #FFFFFF; border: 1px solid #DADCE0; padding: 0.25rem 0.625rem; border-radius: 4px;">
+            {service}
+          </span>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -1049,11 +1022,6 @@ const techs = [
     .tech-badge {
       font-size: 0.75rem !important;
       padding: 0.375rem 0.625rem !important;
-    }
-    .cloud-services {
-      font-size: 0.75rem !important;
-      text-align: center !important;
-      word-break: break-word !important;
     }
     .cloud-logos {
       gap: 1.5rem !important;
