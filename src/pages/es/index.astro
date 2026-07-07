@@ -840,7 +840,12 @@ const techs = [
       >
         {
           techs.map((name) => (
-            <span class="tech-badge" style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #DADCE0; letter-spacing: -0.01em;">
+            <span
+              class="tech-badge"
+              style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; color: #5F6368; opacity: 0.65; padding: 0.25rem 0.5rem; transition: opacity 150ms ease; cursor: default;"
+              onmouseover="this.style.opacity='1'"
+              onmouseout="this.style.opacity='0.65'"
+            >
               {name}
             </span>
           ))
