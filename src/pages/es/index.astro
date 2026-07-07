@@ -553,7 +553,7 @@ const techs = [
         {
           tabs.map((tab, i) => (
             <div
-              class="ind-tab-panel"
+              class="ind-tab-panel tab-panel-grid"
               data-panel
               data-idx={i}
               style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;"
@@ -944,7 +944,7 @@ const techs = [
     .products-grid {
       grid-template-columns: 1fr !important;
     }
-    [style*='grid-template-columns: 1fr 1fr'] {
+    .tab-panel-grid {
       grid-template-columns: 1fr !important;
       gap: 2rem !important;
     }

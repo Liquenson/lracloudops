@@ -72,7 +72,7 @@ const isActive = (href: string) =>
 
     <button
       id="mobile-menu-btn"
-      style="display: none; padding: 0.5rem; background: transparent; border: none; cursor: pointer; color: #202124; flex-shrink: 0;"
+      style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; color: #202124; flex-shrink: 0;"
       aria-label="Toggle menu"
     >
       <svg
@@ -118,7 +118,7 @@ const isActive = (href: string) =>
       </div>
       <button
         id="mobile-close"
-        style="background: transparent; border: none; cursor: pointer; color: #5F6368; padding: 0.25rem;"
+        style="background: transparent; border: none; cursor: pointer; color: #5F6368; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; margin: -0.5rem -0.5rem -0.5rem 0;"
         aria-label="Close menu"
       >
         <svg
@@ -177,7 +177,9 @@ const isActive = (href: string) =>
 </script>
 
 <style>
-  @media (max-width: 768px) {
+  /* Full inline nav only fits on true desktop (> 1024px) — collapsing it
+     earlier on tablets risks the nav + CTA overflowing the header width. */
+  @media (max-width: 1024px) {
     .gc-nav {
       display: none !important;
     }
@@ -185,7 +187,7 @@ const isActive = (href: string) =>
       display: none !important;
     }
     #mobile-menu-btn {
-      display: block !important;
+      display: flex !important;
     }
   }
 </style>
