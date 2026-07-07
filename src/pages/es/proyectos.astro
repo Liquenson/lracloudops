@@ -2,6 +2,14 @@
 import Layout from '../../layouts/Layout.astro'
 import Header from '../../components/layout/Header.astro'
 import Footer from '../../components/layout/Footer.astro'
+import { getAllRepos, formatDateES, type RepoData } from '../../lib/github'
+
+let githubData: Record<string, RepoData> = {}
+try {
+  githubData = await getAllRepos()
+} catch {
+  // El build nunca debe fallar por un problema de la API de GitHub — las tarjetas usan datos estáticos como fallback
+}
 
 const projects = [
   {
@@ -72,7 +80,16 @@ const projects = [
       { label: 'CNI', value: 'Calico' },
     ],
   },
-]
+].map((project) => {
+  const github = githubData[project.slug]
+  const stats = project.stats.map((stat) =>
+    stat.label === 'Commits' && github?.commits ? { ...stat, value: String(github.commits) } : stat
+  )
+  return { ...project, stats, github }
+})
+
+const liveCommitTotal = Object.values(githubData).reduce((sum, repo) => sum + (repo?.commits || 0), 0)
+const totalCommitsDisplay = liveCommitTotal > 0 ? `${liveCommitTotal}+` : '121+'
 ---
 
 <Layout
@@ -114,7 +131,7 @@ const projects = [
         <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
           {[
             { value: '4', label: 'proyectos open source' },
-            { value: '121+', label: 'commits' },
+            { value: totalCommitsDisplay, label: 'commits' },
             { value: '51', label: 'tests' },
           ].map(({ value, label }) => (
             <div style="display: flex; align-items: baseline; gap: 0.375rem;">
@@ -207,6 +224,20 @@ const projects = [
                     </span>
                   ))}
                 </div>
+
+                {project.github?.pushedAt && (
+                  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; padding-top: 0.875rem; border-top: 1px solid #DADCE0; flex-wrap: wrap;">
+                    <span style="display: inline-flex; align-items: center; gap: 0.25rem; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368;">
+                      ★ {project.github.stars}
+                    </span>
+                    <span style="display: inline-flex; align-items: center; gap: 0.25rem; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368;">
+                      ⑂ {project.github.forks}
+                    </span>
+                    <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368;">
+                      Actualizado {formatDateES(project.github.pushedAt)}
+                    </span>
+                  </div>
+                )}
 
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
                   <a
