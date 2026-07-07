@@ -6,7 +6,7 @@ import Footer from '../../components/layout/Footer.astro'
 
 <Layout
   title="Precios — LRA CloudOps"
-  description="Precios simples. Empieza gratis con una auditoría de infraestructura. Paga solo si es útil — €199/mes para consultoría DevOps continua."
+  description="Precios simples. Empieza gratis con una auditoría de infraestructura. Proyectos DevOps desde €400. Consultoría mensual a €499/mes."
   lang="es"
 >
   <Header lang="es" currentPath={Astro.url.pathname} />
@@ -20,10 +20,10 @@ import Footer from '../../components/layout/Footer.astro'
     </div>
   </section>
 
-  <!-- 2 planes -->
+  <!-- 3 planes -->
   <section style="background: #FFFFFF; padding: 3rem 1.5rem;">
-    <div style="max-width: 860px; margin: 0 auto;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="pricing-grid">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="pricing-grid">
 
         <!-- Auditoría gratuita -->
         <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
@@ -54,23 +54,55 @@ import Footer from '../../components/layout/Footer.astro'
           </a>
         </div>
 
-        <!-- Consultoría mensual -->
+        <!-- Proyecto DevOps -->
         <div style="border: 2px solid #1A73E8; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; position: relative; box-shadow: 0 4px 20px rgba(26,115,232,0.12);">
           <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #1A73E8; color: #FFFFFF; font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 1rem; border-radius: 9999px; white-space: nowrap;">
-            Recomendado
+            Más popular
           </div>
+          <div>
+            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Proyecto DevOps</p>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Entrega de infraestructura a precio fijo</p>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 0.25rem;">
+            <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; font-weight: 500;">Desde</span>
+            <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #5F6368; font-weight: 500;">€</span>
+            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">400</span>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
+            {[
+              'Pipeline CI/CD (GitHub Actions + ArgoCD)',
+              'Infraestructura AWS con Terraform',
+              'Setup de Kubernetes',
+              'Escaneo de seguridad incluido (Trivy + Checkov)',
+              'Documentación completa',
+              'Entrega: 1-2 semanas',
+              'Precio fijo por proyecto',
+            ].map(f => (
+              <li style="display: flex; align-items: start; gap: 0.625rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">{f}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: #1A73E8; color: #FFFFFF;" class="btn-premium">
+            Solicitar presupuesto
+          </a>
+        </div>
+
+        <!-- Consultoría mensual -->
+        <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
           <div>
             <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Consultoría Mensual</p>
             <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Soporte DevOps continuo</p>
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
             <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #5F6368; font-weight: 500;">€</span>
-            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">199</span>
+            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">499</span>
             <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">/mes</span>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
             {[
-              'Todo lo de Auditoría de Infraestructura',
+              'Todo lo de Proyecto DevOps',
               'lra scan mensual en todos los repos',
               'infrastructure_review — análisis AWS/K8s',
               'Auditoría de pipelines CI/CD',
@@ -84,7 +116,7 @@ import Footer from '../../components/layout/Footer.astro'
               </li>
             ))}
           </ul>
-          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: #1A73E8; color: #FFFFFF;" class="btn-premium">
+          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: #1A73E8; border: 1px solid #DADCE0;" class="btn-premium-outline">
             Empezar
           </a>
         </div>
@@ -92,7 +124,7 @@ import Footer from '../../components/layout/Footer.astro'
 
       <!-- Nota -->
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-align: center; margin-top: 2rem;">
-        Empieza con la auditoría gratuita. Sin tarjeta. Sin compromiso. Si te resulta útil, podemos montar un acuerdo mensual.
+        El precio del proyecto varía según el alcance. Infraestructura AWS: €800-2.000. Setup Kubernetes: €1.000-2.500. Solo CI/CD: €400-800. Contáctanos para un presupuesto.
       </p>
     </div>
   </section>
