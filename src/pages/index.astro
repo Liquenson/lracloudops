@@ -834,12 +834,13 @@ const techs = [
         Technologies we work with
       </p>
       <div
+        class="tech-badges"
         data-animate="fade-up"
         style="display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap;"
       >
         {
           techs.map((name) => (
-            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #DADCE0; letter-spacing: -0.01em;">
+            <span class="tech-badge" style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #DADCE0; letter-spacing: -0.01em;">
               {name}
             </span>
           ))
@@ -861,6 +862,7 @@ const techs = [
         Cloud platforms
       </p>
       <div
+        class="cloud-logos"
         data-animate="logos"
         style="display: flex; align-items: center; justify-content: center; gap: 5rem; flex-wrap: wrap; margin-bottom: 1.5rem;"
       >
@@ -911,6 +913,7 @@ const techs = [
         </a>
       </div>
       <p
+        class="cloud-services"
         style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368; text-align: center;"
       >
         EKS · RDS · ECR · VPC · IAM · CloudWatch · S3 · DynamoDB
@@ -1035,6 +1038,26 @@ const techs = [
   @media (min-width: 768px) {
     .hero-mobile-only {
       display: none !important;
+    }
+  }
+
+  /* Tech stack & cloud provider strips — mobile */
+  @media (max-width: 767px) {
+    .tech-badges {
+      gap: 0.5rem !important;
+    }
+    .tech-badge {
+      font-size: 0.75rem !important;
+      padding: 0.375rem 0.625rem !important;
+    }
+    .cloud-services {
+      font-size: 0.75rem !important;
+      text-align: center !important;
+      word-break: break-word !important;
+    }
+    .cloud-logos {
+      gap: 1.5rem !important;
+      justify-content: center !important;
     }
   }
 </style>
