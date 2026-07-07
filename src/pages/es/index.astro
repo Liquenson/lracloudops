@@ -386,6 +386,76 @@ const techs = [
           <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368; margin-left: auto;">33/33 tests pasando</span>
         </div>
       </div>
+
+      <!-- Mobile hero visual — only visible on mobile -->
+      <div class="hero-mobile-only" style="
+        background: #FFFFFF;
+        border: 1px solid #DADCE0;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-top: 1rem;
+        display: none;
+      ">
+        <!-- Status indicator -->
+        <div style="
+          background: #F8F9FA;
+          border-bottom: 1px solid #DADCE0;
+          padding: 0.625rem 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        ">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #137333; animation: pulse-dot 2s infinite;"></span>
+          <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #137333; font-weight: 500;">Todos los sistemas operativos</span>
+          <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #9AA0A6; margin-left: auto;">33/33 ✓</span>
+        </div>
+
+        <!-- Pills grid 2x3 -->
+        <div style="padding: 0.875rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          {
+            [
+              { label: 'AI Agents', sub: '8 especializados · 14 integraciones', color: '#1A73E8', active: true },
+              { label: 'AWS', sub: 'EKS · RDS · ECR · VPC', color: '#137333', active: false },
+              { label: 'Kubernetes', sub: 'kubeadm · Calico · ArgoCD', color: '#1A73E8', active: false },
+              { label: 'Terraform', sub: '7 módulos · dev/prod', color: '#F29900', active: false },
+              { label: 'GitOps', sub: 'ArgoCD · Helm · sync', color: '#C5221F', active: false },
+            ].map(({ label, sub, color, active }) => (
+              <div style={`
+                background: ${active ? '#E8F0FE' : '#F8F9FA'};
+                border: 1px solid ${active ? '#1A73E8' : '#DADCE0'};
+                border-radius: 8px;
+                padding: 0.625rem 0.75rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+                ${label === 'GitOps' ? 'grid-column: 1 / -1;' : ''}
+              `}>
+                <div style="display: flex; align-items: center; gap: 0.375rem;">
+                  <span style={`width: 6px; height: 6px; border-radius: 50%; background: ${color}; flex-shrink: 0;`}></span>
+                  <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 600; color: #202124;">{label}</span>
+                </div>
+                <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: #9AA0A6; padding-left: 1rem;">{sub}</span>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Stats row -->
+        <div style="
+          border-top: 1px solid #DADCE0;
+          padding: 0.625rem 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #F8F9FA;
+        ">
+          <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: #5F6368;">último scan: 4.2s · 0 críticos</span>
+          <a href="https://github.com/lra-cloud-ops" target="_blank" rel="noopener"
+            style="font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: #1A73E8; text-decoration: none;">
+            github →
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -952,54 +1022,19 @@ const techs = [
     }
   }
 
-  /* Hero visual — mobile: compact, network SVG hidden, pills in a clean 2-col grid */
+  /* Hero visual — dedicated mobile version replaces the desktop network diagram */
   @media (max-width: 767px) {
-    .hero-visual {
-      height: auto !important;
-      min-height: 160px !important;
-      padding: 1rem !important;
-    }
-
-    .hero-network-svg {
+    [data-hero-visual] {
       display: none !important;
     }
-
-    .hero-pills-container {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 0.5rem !important;
-      padding: 0.5rem !important;
-      width: 100% !important;
+    .hero-mobile-only {
+      display: block !important;
     }
+  }
 
-    .hero-pill {
-      width: 100% !important;
-      min-width: unset !important;
-      padding: 0.5rem 0.75rem !important;
-      align-items: flex-start !important;
-      border-radius: 8px !important;
-    }
-
-    /* 5 pills don't split evenly into 2 columns — let the last one span the row */
-    .hero-pill:last-child {
-      grid-column: 1 / -1;
-    }
-
-    .hero-github-stats {
+  @media (min-width: 768px) {
+    .hero-mobile-only {
       display: none !important;
-    }
-
-    .hero-status-bar {
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      gap: 0.375rem !important;
-      padding: 0.375rem 0.75rem !important;
-      font-size: 0.6875rem !important;
-      text-align: left !important;
-    }
-
-    .hero-status-bar > span:last-child {
-      margin-left: 0 !important;
     }
   }
 </style>
