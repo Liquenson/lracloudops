@@ -115,26 +115,33 @@ const projects: [string, string][] = [
         }
       </div>
 
-      <!-- Language selector — Red Hat style -->
-      <div>
-        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 1rem;">Change page language</p>
+      <!-- Language selector — Red Hat style with dropdown -->
+      <div style="position: relative;">
+        <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 1rem;">
+          {isES ? 'Cambiar idioma' : 'Change page language'}
+        </p>
 
-        <a href={isES ? '/' : '/es/'} style="
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-family: 'Red Hat Text', sans-serif;
-          font-size: 0.875rem;
-          color: #9AA0A6;
-          text-decoration: none;
-          padding: 0.5rem 0.75rem;
-          border: 1px solid #3C4043;
-          border-radius: 4px;
-          width: fit-content;
-          transition: all 150ms ease;
-        "
-        onmouseover="this.style.borderColor='#FFFFFF'; this.style.color='#FFFFFF'"
-        onmouseout="this.style.borderColor='#3C4043'; this.style.color='#9AA0A6'"
+        <button
+          id="footer-lang-btn"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Red Hat Text', sans-serif;
+            font-size: 0.875rem;
+            color: #9AA0A6;
+            background: transparent;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #3C4043;
+            border-radius: 4px;
+            width: fit-content;
+            cursor: pointer;
+            transition: all 150ms ease;
+          "
+          onmouseover="this.style.borderColor='#FFFFFF'; this.style.color='#FFFFFF'"
+          onmouseout="if(!this.getAttribute('data-open')){this.style.borderColor='#3C4043'; this.style.color='#9AA0A6'}"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
@@ -142,8 +149,95 @@ const projects: [string, string][] = [
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
           </svg>
           {isES ? 'Español' : 'English'}
-        </a>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="footer-lang-chevron" style="transition: transform 200ms ease;">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+
+        <!-- Dropdown -->
+        <div
+          id="footer-lang-dropdown"
+          role="listbox"
+          style="
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 0.5rem);
+            left: 0;
+            background: #2D2D2D;
+            border: 1px solid #3C4043;
+            border-radius: 6px;
+            overflow: hidden;
+            min-width: 180px;
+            box-shadow: 0 -8px 24px rgba(0,0,0,0.3);
+            z-index: 100;
+          "
+        >
+          {[
+            { label: 'English', href: '/', code: 'en' },
+            { label: 'Español', href: '/es/', code: 'es' },
+          ].map(({ label, href, code }) => {
+            const active = (isES && code === 'es') || (!isES && code === 'en')
+            return (
+              <a
+                href={href}
+                role="option"
+                style={`
+                  display: flex;
+                  align-items: center;
+                  gap: 0.5rem;
+                  padding: 0.625rem 1rem;
+                  font-family: 'Red Hat Text', sans-serif;
+                  font-size: 0.875rem;
+                  color: ${active ? '#FFFFFF' : '#9AA0A6'};
+                  text-decoration: none;
+                  background: ${active ? '#3C4043' : 'transparent'};
+                  transition: background 150ms ease, color 150ms ease;
+                `}
+                onmouseover="this.style.background='#3C4043'; this.style.color='#FFFFFF'"
+                onmouseout={`this.style.background='${active ? '#3C4043' : 'transparent'}'; this.style.color='${active ? '#FFFFFF' : '#9AA0A6'}'`}
+              >
+                {active ? (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                ) : (
+                  <span style="width: 14px; display: inline-block;"></span>
+                )}
+                {label}
+              </a>
+            )
+          })}
+        </div>
       </div>
+
+      <script>
+        const btn = document.getElementById('footer-lang-btn')
+        const dropdown = document.getElementById('footer-lang-dropdown')
+        const chevron = document.getElementById('footer-lang-chevron')
+
+        btn?.addEventListener('click', () => {
+          const isOpen = dropdown?.style.display === 'block'
+          if (dropdown) dropdown.style.display = isOpen ? 'none' : 'block'
+          if (chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)'
+          if (btn) {
+            btn.setAttribute('aria-expanded', String(!isOpen))
+            btn.setAttribute('data-open', isOpen ? '' : 'true')
+            btn.style.borderColor = isOpen ? '#3C4043' : '#FFFFFF'
+            btn.style.color = isOpen ? '#9AA0A6' : '#FFFFFF'
+          }
+        })
+
+        document.addEventListener('click', (e) => {
+          if (!btn?.contains(e.target as Node) && !dropdown?.contains(e.target as Node)) {
+            if (dropdown) dropdown.style.display = 'none'
+            if (chevron) chevron.style.transform = 'rotate(0deg)'
+            if (btn) {
+              btn.setAttribute('aria-expanded', 'false')
+              btn.removeAttribute('data-open')
+              btn.style.borderColor = '#3C4043'
+              btn.style.color = '#9AA0A6'
+            }
+          }
+        })
+      </script>
 
       <!-- Contact -->
       <div>
