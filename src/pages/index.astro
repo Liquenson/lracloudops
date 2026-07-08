@@ -191,7 +191,7 @@ const techs = [
       </div>
 
       <h1
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: #202124; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem;"
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.875rem, 5vw, 3.5rem); font-weight: 900; color: #202124; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem;"
       >
         DevOps automation.<br />
         Specialized agents.<br />
@@ -1034,6 +1034,15 @@ const techs = [
     .cloud-logos {
       gap: 1.5rem !important;
       justify-content: center !important;
+    }
+  }
+
+  /* Hero H1 mobile optimization */
+  @media (max-width: 767px) {
+    [data-hero-content] h1 {
+      font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+      line-height: 1.15 !important;
+      letter-spacing: -0.02em !important;
     }
   }
 </style>
