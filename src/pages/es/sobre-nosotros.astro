@@ -422,4 +422,9 @@ const certifications = [
       grid-template-columns: 1fr !important;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
 </style>

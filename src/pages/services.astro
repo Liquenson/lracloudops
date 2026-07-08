@@ -287,4 +287,10 @@ const techs = [
       grid-template-columns: 1fr !important;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .service-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .services-list-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .consulting-cards { grid-template-columns: repeat(2, 1fr) !important; }
+  }
 </style>

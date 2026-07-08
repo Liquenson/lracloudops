@@ -294,3 +294,99 @@ header {
 [data-diagram] text {
   will-change: opacity, transform;
 }
+
+/* === Tablet intermediate breakpoint (768px - 1023px) === */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .two-col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .tab-panel-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .tabs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-project-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .consulting-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .services-list-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .agents-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .modules-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .nodes-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* === Extra small screens (< 360px) === */
+@media (max-width: 360px) {
+  section {
+    padding-inline: 1rem !important;
+  }
+
+  .hero-pill {
+    padding: 0.375rem 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .hero-pill span:last-child {
+    font-size: 0.625rem !important;
+  }
+
+  #chat-widget {
+    bottom: 0.75rem !important;
+    right: 0.75rem !important;
+  }
+
+  #chat-toggle {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
