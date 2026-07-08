@@ -51,6 +51,23 @@ No lint scripts. CI via `.github/workflows/build.yml` (npm ci + astro check + as
 
 **Design system:** Blue palette — `#0A2540` (dark navy), `#1E6FFF` (accent), `#2563EB` (CSS variable primary), `#EEF4FF` (soft background), `#64748b` (secondary text). Never use teal/emerald/cyan. Cards: `border-radius: 16px`, white bg, shadow. Fonts: Inter (headings/body), JetBrains Mono (code/terminal) — Google Fonts.
 
+## Design System — Current (v4)
+
+**Color palette (Google Cloud inspired):**
+- Primary: `#1A73E8` (Google Blue)
+- Text: `#202124`
+- Secondary text: `#5F6368`
+- Border: `#DADCE0`
+- Background: `#F8F9FA`
+- White: `#FFFFFF`
+- Success: `#137333`
+- Warning: `#F29900`
+- Error: `#C5221F`
+- Dark (footer): `#202124`
+
+**Typography:** Red Hat Display + Red Hat Text + Red Hat Mono
+**Animations:** Lenis 1.3.25 + GSAP 3.15.0 + ScrollTrigger
+
 **Content collections:** `src/content/blog/` (blog posts), `src/content/projects/` (case studies). Both use `loader: glob(...)`.
 
 **Email:** All references use `info@lracloudops.com`. Never use the personal Gmail address.

@@ -49,11 +49,10 @@ OUR 4 OPEN SOURCE PROJECTS (github.com/lra-cloud-ops):
 SERVICES AND PRICING:
 - Free infrastructure audit: lra scan on any GitHub repo (Trivy + Checkov)
   Delivered by email within 24 hours. No commitment.
-- Security Audit project: €199-299 (2-3 days)
-- CI/CD Pipeline setup: €400-800 (3-5 days)
-- AWS Infrastructure with Terraform: €800-2.000 (1-2 weeks)
-- Kubernetes cluster setup: €1.000-2.500 (2-3 weeks)
-- Monthly consulting retainer: €499/month (no long-term contract)
+- DevOps Project: from €400 (CI/CD pipeline: €400-800, AWS Infrastructure: €800-2.000, Kubernetes setup: €1.000-2.500, Security Audit: €199-299)
+  Fixed price per project. Delivery: 3 days to 2 weeks depending on scope.
+- Monthly Consulting: €499/month. No long-term contract.
+  Includes: monthly lra scan, infrastructure_review, CI/CD audit, direct access.
 
 CONTACT:
 - Website: https://lracloudops.com
