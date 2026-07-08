@@ -107,3 +107,37 @@ export function formatDate(isoDate: string): string {
 export function formatDateES(isoDate: string): string {
   return new Date(isoDate).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })
 }
+
+// Optional per-repo override file, read from each repo's default branch at build time.
+// Lets a project's own repo drive its description/stats/tags on lracloudops.com without a
+// site deploy — any push to .lracloudops.json still needs the daily/manual sync workflow
+// to trigger a rebuild here, since this site has no webhook listener for other repos.
+export interface ProjectConfig {
+  name: string
+  description: string
+  descriptionES: string
+  status: 'Active' | 'PoC' | 'Lab' | 'Archive'
+  stats: Record<string, string | number>
+  tags: string[]
+  features: string[]
+  featuresES: string[]
+}
+
+export async function getProjectConfig(repo: string): Promise<ProjectConfig | null> {
+  try {
+    const res = await fetch(`${GITHUB_API}/repos/${ORG}/${repo}/contents/.lracloudops.json`, {
+      headers: getHeaders(),
+    })
+    if (!res.ok) return null
+    const data = await res.json()
+    const content = atob(data.content.replace(/\n/g, ''))
+    return JSON.parse(content) as ProjectConfig
+  } catch {
+    return null
+  }
+}
+
+export async function getAllProjectConfigs(): Promise<Record<string, ProjectConfig | null>> {
+  const results = await Promise.all(REPOS.map(async (repo) => [repo, await getProjectConfig(repo)] as const))
+  return Object.fromEntries(results)
+}

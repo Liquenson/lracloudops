@@ -2,16 +2,17 @@
 import Layout from '../layouts/Layout.astro'
 import Header from '../components/layout/Header.astro'
 import Footer from '../components/layout/Footer.astro'
-import { getAllRepos, formatDate, type RepoData } from '../lib/github'
+import { getAllRepos, getAllProjectConfigs, formatDate, type RepoData, type ProjectConfig } from '../lib/github'
 
 let githubData: Record<string, RepoData> = {}
+let projectConfigs: Record<string, ProjectConfig | null> = {}
 try {
-  githubData = await getAllRepos()
+  ;[githubData, projectConfigs] = await Promise.all([getAllRepos(), getAllProjectConfigs()])
 } catch {
   // Build must never fail on a GitHub API hiccup — cards fall back to static data below
 }
 
-const projects = [
+const PROJECT_DEFAULTS = [
   {
     name: 'lra-ai-platform',
     slug: 'lra-ai-platform',
@@ -80,12 +81,44 @@ const projects = [
       { label: 'CNI', value: 'Calico' },
     ],
   },
-].map((project) => {
+] as const
+
+const STATUS_COLORS: Record<string, string> = {
+  Active: '#137333',
+  PoC: '#F29900',
+  Lab: '#1A73E8',
+  Archive: '#5F6368',
+}
+
+function mergeConfigStats(
+  defaultStats: readonly { label: string; value: string }[],
+  config: ProjectConfig | null | undefined
+) {
+  if (!config?.stats) return defaultStats
+  return defaultStats.map((stat) => {
+    const key = Object.keys(config.stats).find((k) => k.toLowerCase() === stat.label.toLowerCase().replace(/\s+/g, ''))
+    return key ? { ...stat, value: String(config.stats[key]) } : stat
+  })
+}
+
+const projects = PROJECT_DEFAULTS.map((project) => {
+  const config = projectConfigs[project.slug]
   const github = githubData[project.slug]
-  const stats = project.stats.map((stat) =>
+
+  let stats = mergeConfigStats(project.stats, config)
+  stats = stats.map((stat) =>
     stat.label === 'Commits' && github?.commits ? { ...stat, value: String(github.commits) } : stat
   )
-  return { ...project, stats, github }
+
+  return {
+    ...project,
+    desc: config?.description || project.desc,
+    status: config?.status || project.status,
+    statusColor: (config?.status && STATUS_COLORS[config.status]) || project.statusColor,
+    tags: config?.tags?.length ? config.tags : project.tags,
+    stats,
+    github,
+  }
 })
 
 const liveCommitTotal = Object.values(githubData).reduce((sum, repo) => sum + (repo?.commits || 0), 0)
