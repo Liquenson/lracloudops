@@ -171,6 +171,10 @@ html {
     transform: none !important;
     transition: none !important;
   }
+
+  .status-active {
+    animation: none !important;
+  }
 }
 
 /* === Header — smooth transition === */
@@ -192,12 +196,14 @@ header {
   transform: translateZ(0);
 }
 
-.card-premium:hover {
-  transform: translateY(-3px) translateZ(0);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.1),
-    0 4px 12px rgba(0, 0, 0, 0.06);
-  border-color: #1a73e8 !important;
+@media (hover: hover) {
+  .card-premium:hover {
+    transform: translateY(-4px) translateZ(0);
+    box-shadow:
+      0 12px 40px rgba(26, 115, 232, 0.12),
+      0 4px 12px rgba(26, 115, 232, 0.08);
+    border-color: #1a73e8 !important;
+  }
 }
 
 /* === Buttons — premium micro-interaction === */
@@ -293,6 +299,40 @@ header {
 [data-diagram] circle,
 [data-diagram] text {
   will-change: opacity, transform;
+}
+
+/* === Animated counters === */
+[data-count] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Technology badge colors === */
+.tag-python { background: #E8F4FD !important; color: #1565C0 !important; border-color: #BBDEFB !important; }
+.tag-terraform { background: #F3E5F5 !important; color: #6A1B9A !important; border-color: #E1BEE7 !important; }
+.tag-kubernetes { background: #E3F2FD !important; color: #0D47A1 !important; border-color: #BBDEFB !important; }
+.tag-aws { background: #FFF3E0 !important; color: #E65100 !important; border-color: #FFE0B2 !important; }
+.tag-docker { background: #E1F5FE !important; color: #01579B !important; border-color: #B3E5FC !important; }
+.tag-helm { background: #E8EAF6 !important; color: #283593 !important; border-color: #C5CAE9 !important; }
+.tag-argocd { background: #FCE4EC !important; color: #880E4F !important; border-color: #F8BBD9 !important; }
+.tag-security { background: #FFEBEE !important; color: #B71C1C !important; border-color: #FFCDD2 !important; }
+.tag-github { background: #F3E5F5 !important; color: #4A148C !important; border-color: #E1BEE7 !important; }
+.tag-sonarcloud { background: #E8F5E9 !important; color: #1B5E20 !important; border-color: #C8E6C9 !important; }
+.tag-ansible { background: #FFF8E1 !important; color: #F57F17 !important; border-color: #FFECB3 !important; }
+.tag-vagrant { background: #E0F2F1 !important; color: #004D40 !important; border-color: #B2DFDB !important; }
+.tag-ai { background: #E8F0FE !important; color: #1A73E8 !important; border-color: #C5D8F8 !important; }
+
+/* === Glow pulse for status badges === */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(19, 115, 51, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(19, 115, 51, 0);
+  }
+}
+
+.status-active {
+  animation: glow-pulse 2s infinite;
 }
 
 /* === Tablet intermediate breakpoint (768px - 1023px) === */
