@@ -36,8 +36,10 @@ const projects: [string, string][] = [
     >
       <!-- Brand -->
       <div>
-        <div
-          style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;"
+        <button
+          onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+          style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; background: transparent; border: none; cursor: pointer; padding: 0;"
+          aria-label="Back to top"
         >
           <img src="/lracloudops-logo-dark.png" alt="LRA CloudOps" style="height: 28px; width: auto;" />
           <span
@@ -45,7 +47,7 @@ const projects: [string, string][] = [
           >
             LRA CloudOps
           </span>
-        </div>
+        </button>
         <p
           style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; line-height: 1.6; margin-bottom: 1.25rem; max-width: 280px;"
         >
