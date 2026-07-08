@@ -121,6 +121,17 @@ const esUrl = isES
         }
       })()
     </script>
+
+    <!-- Google Analytics GA4 -->
+    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-VVRS1XH4Z5"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-VVRS1XH4Z5')
+    </script>
   </head>
   <body>
     <slot />
