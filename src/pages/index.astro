@@ -865,30 +865,40 @@ const techs = [
 
       <!-- Logos row -->
       <div class="cloud-logos" data-animate="logos" style="display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+
         <a href="https://aws.amazon.com/es/" target="_blank" rel="noopener"
-          style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease;"
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease; min-width: 120px;"
           onmouseover="this.style.opacity='1'"
           onmouseout="this.style.opacity='0.65'"
         >
-          <img src="/aws-logo.svg" alt="Amazon Web Services" style="height: 28px; width: auto;" loading="lazy" />
-          <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #5F6368;">Amazon Web Services</span>
+          <div style="height: 36px; display: flex; align-items: center; justify-content: center;">
+            <img src="/aws-logo.svg" alt="Amazon Web Services" style="height: 36px; width: auto; max-width: 120px;" loading="eager" />
+          </div>
+          <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #5F6368; text-align: center; white-space: nowrap;">Amazon Web Services</span>
         </a>
+
         <a href="https://azure.microsoft.com/es-es" target="_blank" rel="noopener"
-          style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease;"
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease; min-width: 120px;"
           onmouseover="this.style.opacity='1'"
           onmouseout="this.style.opacity='0.65'"
         >
-          <img src="/azure-logo.svg" alt="Microsoft Azure" style="height: 28px; width: auto;" loading="lazy" />
-          <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #5F6368;">Microsoft Azure</span>
+          <div style="height: 36px; display: flex; align-items: center; justify-content: center;">
+            <img src="/azure-logo.svg" alt="Microsoft Azure" style="height: 36px; width: auto; max-width: 120px;" loading="eager" />
+          </div>
+          <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #5F6368; text-align: center; white-space: nowrap;">Microsoft Azure</span>
         </a>
+
         <a href="https://cloud.google.com/?hl=es" target="_blank" rel="noopener"
-          style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease;"
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease; min-width: 120px;"
           onmouseover="this.style.opacity='1'"
           onmouseout="this.style.opacity='0.65'"
         >
-          <img src="/google-cloud-logo.svg" alt="Google Cloud" style="height: 28px; width: auto;" loading="lazy" />
-          <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #5F6368;">Google Cloud</span>
+          <div style="height: 36px; display: flex; align-items: center; justify-content: center;">
+            <img src="/google-cloud-logo.svg" alt="Google Cloud" style="height: 36px; width: auto; max-width: 120px;" loading="eager" />
+          </div>
+          <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #5F6368; text-align: center; white-space: nowrap;">Google Cloud</span>
         </a>
+
       </div>
 
       <!-- Services tags -->
@@ -1034,6 +1044,15 @@ const techs = [
     .cloud-logos {
       gap: 1.5rem !important;
       justify-content: center !important;
+    }
+    .cloud-logos a {
+      min-width: 80px !important;
+    }
+    .cloud-logos img {
+      height: 28px !important;
+    }
+    .cloud-logos span {
+      font-size: 0.6875rem !important;
     }
   }
 
