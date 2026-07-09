@@ -279,6 +279,24 @@ const projects: [string, string][] = [
         >
           📍 Las Palmas de Gran Canaria<br />Canarias, España
         </p>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a
+            href={isES ? '/es/privacidad' : '/privacy'}
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; text-decoration: none; transition: color 150ms ease;"
+            onmouseover="this.style.color='#9AA0A6'"
+            onmouseout="this.style.color='#5F6368'"
+          >
+            {isES ? 'Política de Privacidad' : 'Privacy Policy'}
+          </a>
+          <a
+            href={isES ? '/es/terminos' : '/terms'}
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; text-decoration: none; transition: color 150ms ease;"
+            onmouseover="this.style.color='#9AA0A6'"
+            onmouseout="this.style.color='#5F6368'"
+          >
+            {isES ? 'Términos' : 'Terms'}
+          </a>
+        </div>
       </div>
     </div>
 
