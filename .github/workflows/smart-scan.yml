@@ -1,0 +1,58 @@
+name: Smart Scan — AI security audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo_url:
+        description: 'GitHub repo to scan (org/repo)'
+        required: true
+        type: string
+      org:
+        description: 'Default GitHub org if repo_url has no "/"'
+        required: false
+        type: string
+        default: 'lra-cloud-ops'
+      client_email:
+        description: 'Client email to send the report to'
+        required: true
+        type: string
+      client_name:
+        description: 'Client name'
+        required: true
+        type: string
+
+jobs:
+  smart-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout lra-ai-platform
+        uses: actions/checkout@v4
+        with:
+          repository: lra-cloud-ops/lra-ai-platform
+          path: lra-ai-platform
+          token: ${{ secrets.AGENT_GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install lra-ai-platform dependencies
+        run: pip install -r lra-ai-platform/requirements.txt
+
+      - name: Install Trivy
+        run: |
+          wget -qO- https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+      - name: Run Smart Scan
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          python lra-ai-platform/scripts/smart_scan.py \
+            --repo "${{ github.event.inputs.repo_url }}" \
+            --org "${{ github.event.inputs.org }}" \
+            --email "${{ github.event.inputs.client_email }}" \
+            --name "${{ github.event.inputs.client_name }}"
