@@ -1,0 +1,7 @@
+name = "lracloudops-webhook"
+main = "index.ts"
+compatibility_date = "2026-01-01"
+
+# Secrets (set via `wrangler secret put`, not stored here):
+#   GITHUB_TOKEN — token with actions:write on Liquenson/lracloudops,
+#                  used to dispatch the smart-scan.yml workflow.
