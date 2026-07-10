@@ -15,6 +15,7 @@
 
 export interface Env {
   GITHUB_TOKEN: string
+  RESEND_API_KEY?: string
 }
 
 interface WebhookPayload {
@@ -67,6 +68,47 @@ async function triggerSmartScan(
   return response.status === 204
 }
 
+// Best-effort internal alert so we notice a new scan request without checking
+// the GitHub Actions tab. Optional: no-ops when RESEND_API_KEY isn't set.
+async function notifyInternal(
+  name: string,
+  email: string,
+  repo: string,
+  env: Env
+): Promise<void> {
+  if (!env.RESEND_API_KEY) return
+
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'LRA CloudOps Alerts <info@lracloudops.com>',
+        to: ['info@lracloudops.com'],
+        subject: `🔔 New audit request — ${name} · ${repo}`,
+        html: `
+          <h2 style="color:#1A73E8;">New Smart Scan Request</h2>
+          <p><strong>Client:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Repo:</strong> <code>${repo}</code></p>
+          <p><strong>Time:</strong> ${new Date().toISOString()}</p>
+          <hr/>
+          <p>Smart Scan triggered automatically.</p>
+          <a href="https://github.com/Liquenson/lracloudops/actions"
+             style="background:#1A73E8;color:#FFFFFF;padding:10px 20px;border-radius:4px;text-decoration:none;">
+            View Actions →
+          </a>
+        `,
+      }),
+    })
+  } catch {
+    // Non-critical — fail silently
+  }
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === 'OPTIONS') {
@@ -105,6 +147,9 @@ export default {
 
     try {
       const triggered = await triggerSmartScan(repo, email, name, env)
+      if (triggered) {
+        await notifyInternal(name, email, repo, env)
+      }
       return new Response(
         JSON.stringify({
           ok: true,

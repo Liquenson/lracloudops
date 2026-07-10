@@ -3,5 +3,7 @@ main = "index.ts"
 compatibility_date = "2026-01-01"
 
 # Secrets (set via `wrangler secret put`, not stored here):
-#   GITHUB_TOKEN — token with actions:write on Liquenson/lracloudops,
-#                  used to dispatch the smart-scan.yml workflow.
+#   GITHUB_TOKEN     — token with actions:write on Liquenson/lracloudops,
+#                      used to dispatch the smart-scan.yml workflow.
+#   RESEND_API_KEY   — optional. When set, sends an internal alert email to
+#                      info@lracloudops.com each time a smart scan is triggered.
