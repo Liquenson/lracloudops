@@ -134,6 +134,36 @@ const esUrl = isES
       gtag('js', new Date())
       gtag('config', 'G-VVRS1XH4Z5')
     </script>
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "LRA CloudOps",
+      "url": "https://lracloudops.com",
+      "logo": "https://lracloudops.com/lracloudops-icon.svg",
+      "description": "Platform Engineering consultancy specializing in Infrastructure as Code, Kubernetes, GitOps and AI agents.",
+      "founder": {
+        "@type": "Person",
+        "name": "Ruben Liquenson",
+        "jobTitle": "Platform Engineer",
+        "url": "https://www.linkedin.com/in/ruben-liquenson-490961269/"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Las Palmas de Gran Canaria",
+        "addressRegion": "Canarias",
+        "addressCountry": "ES"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@lracloudops.com",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://github.com/lra-cloud-ops",
+        "https://www.linkedin.com/in/ruben-liquenson-490961269/"
+      ]
+    })} />
   </head>
   <body>
     <slot />
