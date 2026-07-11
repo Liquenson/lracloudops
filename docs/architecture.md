@@ -1,116 +1,77 @@
-# Architecture — LRA Cloud Operations
+# LRA CloudOps — Architecture
 
-## Stack
+## Overview
 
-| Layer | Technology | Version |
-|---|---|---|
-| Framework | Astro | 6.2.1 |
-| Styling | Tailwind CSS + Vite plugin | 4.x |
-| Runtime | Node.js | ≥ 22.12.0 |
-| Deploy | Cloudflare Pages | — |
-| CDN / Edge | Cloudflare | — |
-| Typography | @tailwindcss/typography | 0.5.x |
-| Sitemap | @astrojs/sitemap | 3.x |
+lracloudops.com is a static site (Astro 6 + Cloudflare Pages)
+with two external Cloudflare Workers and GitHub Actions automation.
 
-## Page Structure
-
-All files in `src/pages/` map directly to URL routes (static site generation — no SSR).
+## Site Architecture
 
 ```
-src/pages/
-  index.astro                     → /
-  services.astro                  → /services
-  projects.astro                  → /projects
-  about.astro                     → /about
-  contact.astro                   → /contact
-  assessment.astro                → /assessment
-  assessments.astro               → /assessments
-  blog/index.astro                → /blog
-  blog/[slug].astro               → /blog/:slug
-  projects/[slug].astro           → /projects/:slug
-  cloud-infrastructure.astro      → /cloud-infrastructure
-  platform-engineering.astro      → /platform-engineering
-  devops-automation.astro         → /devops-automation
-  observability.astro             → /observability
-  pricing.astro                   → /pricing
-  resources.astro                 → /resources
-  security.astro                  → /security
-  why-lra.astro                   → /why-lra
-  certifications.astro            → /certifications
-  kubernetes-platforms.astro      → /kubernetes-platforms
-  kubernetes-readiness.astro      → /kubernetes-readiness
-  cloud-readiness.astro           → /cloud-readiness
-  architectures/                  → /architectures/*
-  solutions/                      → /solutions/*
-  industries/                     → /industries/*
-  docs/                           → /docs/*
-  es/                             → /es/* (Spanish locale)
-  404.astro                       → /404
+Visitor
+  │
+  ▼
+Cloudflare Pages (lracloudops.com)
+  │
+  ├── ChatWidget → lracloudops-agent.liquenson-cloud.workers.dev
+  │                (Claude Haiku — DevOps advisor)
+  │
+  └── /contact form → lracloudops-webhook.liquenson-cloud.workers.dev
+                       │
+                       └── GitHub Actions smart-scan.yml
+                             │
+                             ├── lra-ai-platform/scripts/smart_scan.py
+                             ├── Trivy + Checkov
+                             └── Resend email → client
+```
+
+## GitHub Actions
+
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| build.yml | push to main, PRs | astro build + page count |
+| smart-scan.yml | webhook / manual | Security audit + AI report |
+| sync-github.yml | daily 06:00 UTC | Force rebuild — refresh GitHub API data |
+
+## Data Flow
+
+```
+Build time:
+  src/lib/github.ts → GitHub API → project stats injected into pages
+
+Runtime:
+  ChatWidget → Cloudflare Worker → Anthropic API → response
+  Contact form → Cloudflare Worker → GitHub Actions → scan → email
 ```
 
 ## i18n
 
-- Default locale: `en` (no URL prefix)
-- Spanish locale: `es` (prefix `/es`)
-- Translation strings: `src/i18n/ui.ts` (79 keys)
-- Helper functions: `src/i18n/index.ts`
-- Old Spanish URL redirects: `public/_redirects`
+- English: root (/) — no prefix
+- Spanish: /es/ prefix
+- Route mapping: hardcoded routeMap in src/layouts/Layout.astro
+- hreflang: generated from routeMap
 
-## Layout System
+## Design System v4
 
-`src/layouts/Layout.astro` is the single base layout.
+- Primary: #1A73E8
+- Text: #202124 / #5F6368
+- Border: #DADCE0 / Background: #F8F9FA
+- Success: #137333 / Warning: #F29900 / Error: #C5221F
+- Fonts: Red Hat Display + Red Hat Text + Red Hat Mono
+- Animations: Lenis + GSAP ScrollTrigger
 
-Props:
-- `titulo` (required) — `<title>` and OG title
-- `descripcion` (required) — meta description and OG description
-- `schema` (optional) — LD+JSON structured data
-- `ogType` (optional, default `'website'`) — OG type
-- `ogImage` (optional) — OG image URL
+## Project Maturity
 
-Renders: sticky header + language switcher (EN | ES) + `<slot />` + footer + AI chat widget (EN only).
+| Project | Maturity | Layer |
+|---------|---------|-------|
+| lra-ai-platform | Core Platform | AI Orchestration |
+| aws-terraform-devops | Core Platform | Infrastructure |
+| k8s-on-premise | Supporting | Runtime |
+| aws-devops-agent | Lab | Automation |
 
-## Components
+## Security
 
-- `src/layouts/Layout.astro` — base layout
-- `src/components/SolutionLayout.astro` — parametrized template for all 4 solution detail pages
-- `src/components/AgentChat.astro` — floating AI DevOps Advisor chat widget (EN pages only, powered by Cloudflare Worker, toggle button `#lra-chat-toggle`)
-
-## Content Collections
-
-- `src/content/blog/` — blog posts (glob loader, MDX/Markdown)
-- `src/content/projects/` — case studies (glob loader, MDX/Markdown)
-
-## Design System
-
-| Token | Value | Usage |
-|---|---|---|
-| Primary dark | `#0A2540` | Backgrounds, headings |
-| Accent blue | `#1E6FFF` | CTAs, highlights |
-| CSS var primary | `#2563EB` | Interactive elements |
-| Soft background | `#EEF4FF` | Section backgrounds |
-| Secondary text | `#64748b` | Body text, captions |
-
-Fonts: Inter (headings/body), JetBrains Mono (code/terminal) — loaded via Google Fonts.  
-Cards: `border-radius: 16px`, white background, box shadow.  
-**Never** use teal / emerald / cyan.
-
-## Security Headers
-
-`public/_headers` sets HTTP security headers for Cloudflare Pages:
-- Content-Security-Policy (CSP)
-- X-Frame-Options
-- Strict-Transport-Security (HSTS)
-- Permissions-Policy
-
-## Environment Variables
-
-No runtime environment variables are required for the static build. The AI chat widget communicates with a Cloudflare Worker at runtime (client-side); the Worker URL is hardcoded in `AgentChat.astro`.
-
-## Deploy Flow
-
-1. Push to `main` branch
-2. GitHub Actions runs `build.yml` (type check + build)
-3. Cloudflare Pages detects the push via direct GitHub integration
-4. Cloudflare Pages builds and deploys automatically to `https://lracloudops.com`
-
-No `wrangler deploy` is needed — deployment is fully managed by Cloudflare Pages' GitHub integration.
+- CSP in public/_headers
+- rel="noopener noreferrer" on all external links
+- No secrets in codebase (.env.local in .gitignore)
+- Secrets in Cloudflare Pages + Workers environment variables
