@@ -11,6 +11,7 @@ const newsCards = [
     title: 'lra-ai-platform — 8 agentes, 14 integraciones, 9 workflows',
     desc: 'Plataforma multi-agente para automatización DevOps con Governance Engine.',
     href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+    maturity: 'Plataforma Core',
   },
   {
     color: '#137333',
@@ -18,6 +19,7 @@ const newsCards = [
     title: 'aws-devops-agent — modelo de IA + 24 servicios AWS',
     desc: 'Agente IA que usa un bucle de tool-use para gestionar AWS en lenguaje natural.',
     href: 'https://github.com/lra-cloud-ops/aws-devops-agent',
+    maturity: 'Soporte',
   },
   {
     color: '#F29900',
@@ -25,6 +27,7 @@ const newsCards = [
     title: 'aws-terraform-devops — VPC, EKS, RDS, ECR con Terraform',
     desc: 'Infraestructura AWS lista para producción con 7 módulos Terraform y CI/CD.',
     href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+    maturity: 'Plataforma Core',
   },
   {
     color: '#C5221F',
@@ -32,6 +35,63 @@ const newsCards = [
     title: 'k8s-on-premise — K8s bare metal con kubeadm + ArgoCD',
     desc: 'Clúster Kubernetes multi-nodo desde cero con sync GitOps vía ArgoCD.',
     href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+    maturity: 'Soporte',
+  },
+]
+
+const maturityStyles: Record<string, { bg: string; text: string }> = {
+  'Plataforma Core': { bg: '#E8F0FE', text: '#1A73E8' },
+  Soporte: { bg: '#FEF7E0', text: '#F29900' },
+  Lab: { bg: '#FCE8E6', text: '#C5221F' },
+}
+
+const ecosystemLayers = [
+  {
+    label: 'Interfaz',
+    color: '#1A73E8',
+    name: 'lracloudops.com',
+    desc: 'Punto de entrada de cara al cliente. El Smart Scan gratuito dispara una auditoría real con Trivy + Checkov.',
+  },
+  {
+    label: 'Orquestación',
+    color: '#137333',
+    name: 'lra-ai-platform',
+    desc: '8 agentes especializados con un motor de gobernanza de 5 niveles coordinan las capas de abajo.',
+  },
+  {
+    label: 'Infraestructura',
+    color: '#F29900',
+    name: 'aws-terraform-devops · aws-devops-agent',
+    desc: 'AWS gestionado con Terraform (VPC, EKS, RDS, ECR) más operaciones AWS en lenguaje natural.',
+  },
+  {
+    label: 'Runtime',
+    color: '#C5221F',
+    name: 'k8s-on-premise',
+    desc: 'Clúster Kubernetes bare-metal con kubeadm, redes Calico y sync ArgoCD.',
+  },
+]
+
+const deliverySteps = [
+  {
+    step: '01',
+    title: 'Descubrir',
+    desc: 'Auditoría de infraestructura y seguridad gratuita vía Smart Scan — Trivy + Checkov, informe generado con IA.',
+  },
+  {
+    step: '02',
+    title: 'Diseñar',
+    desc: 'Arquitectura de módulos Terraform para VPC, EKS, RDS y ECR, dimensionada a tu carga de trabajo real.',
+  },
+  {
+    step: '03',
+    title: 'Automatizar',
+    desc: 'CI/CD con GitHub Actions y sincronización GitOps vía ArgoCD — sin despliegues manuales.',
+  },
+  {
+    step: '04',
+    title: 'Operar',
+    desc: 'Observabilidad con Prometheus + Grafana e iteración continua tras el lanzamiento.',
   },
 ]
 
@@ -193,17 +253,17 @@ const techs = [
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.875rem, 5vw, 3.5rem); font-weight: 900; color: #202124; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem;"
       >
-        Automatización DevOps.<br />
-        Agentes especializados.<br />
-        <span style="color: #1A73E8;">Integraciones en vivo.</span>
+        Construimos plataformas.<br />
+        <span style="color: #1A73E8;">No solo infraestructura.</span>
       </h1>
 
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.125rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-inline: auto; margin-bottom: 2.5rem;"
       >
-        4 proyectos open source que cubren agentes IA, infraestructura AWS,
-        Kubernetes y automatización cloud. Todas las métricas extraídas
-        directamente del código.
+        4 proyectos open source — orquestación IA, infraestructura AWS y
+        Kubernetes — construidos como capas de una única práctica de
+        ingeniería de plataformas, no herramientas sueltas. Todas las
+        métricas extraídas directamente del código.
       </p>
 
       <div
@@ -460,7 +520,65 @@ const techs = [
   </section>
 
   <!-- ============================================================
-     NEWS STRIP — 4 proyectos open source
+     PLATFORM ENGINEERING ECOSYSTEM — 4 capas con conectores visuales
+     ============================================================ -->
+  <section
+    data-animate="fade-up"
+    style="background: #FFFFFF; padding: 4rem 1.5rem; border-top: 1px solid #DADCE0;"
+  >
+    <div style="max-width: 860px; margin: 0 auto;">
+      <h2
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem; text-align: center;"
+      >
+        El ecosistema de ingeniería de plataformas
+      </h2>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 3rem; text-align: center;"
+      >
+        4 capas, cada una respaldada por un proyecto open source real.
+      </p>
+
+      <div
+        class="ecosystem-stack"
+        data-animate="stagger"
+        style="position: relative;"
+      >
+        <div class="ecosystem-line" aria-hidden="true"></div>
+        {
+          ecosystemLayers.map(({ label, color, name, desc }, i) => (
+            <div
+              data-animate-child
+              class="ecosystem-layer"
+              style={`display: flex; gap: 1.5rem; align-items: flex-start; position: relative; ${i < ecosystemLayers.length - 1 ? 'margin-bottom: 2rem;' : ''}`}
+            >
+              <div
+                class="ecosystem-node"
+                style={`width: 48px; height: 48px; border-radius: 50%; background: #FFFFFF; border: 2px solid ${color}; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 1;`}
+              >
+                <span style={`font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; font-weight: 700; color: ${color};`}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <div class="card-premium" style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 12px; padding: 1.25rem 1.5rem; flex: 1;">
+                <p style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: ${color}; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.375rem;`}>
+                  {label}
+                </p>
+                <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 600; color: #202124; margin-bottom: 0.375rem;">
+                  {name}
+                </p>
+                <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.6;">
+                  {desc}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+     NEWS STRIP — Capacidades principales
      ============================================================ -->
   <section
     data-animate="fade-up"
@@ -473,7 +591,7 @@ const techs = [
         <p
           style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 600; color: #202124;"
         >
-          Nuestros proyectos
+          Capacidades principales
         </p>
         <a
           href="https://github.com/lra-cloud-ops"
@@ -489,7 +607,7 @@ const techs = [
         class="news-grid"
       >
         {
-          newsCards.map(({ color, category, title, desc, href }) => (
+          newsCards.map(({ color, category, title, desc, href, maturity }) => (
             <a
               href={href}
               target="_blank" rel="noopener noreferrer"
@@ -499,9 +617,16 @@ const techs = [
               onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.12)'"
               onmouseout="this.style.boxShadow='none'"
             >
-              <div
-                style={`width: 32px; height: 32px; border-radius: 6px; background: ${color}1A; margin-bottom: 0.875rem;`}
-              />
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.875rem;">
+                <div
+                  style={`width: 32px; height: 32px; border-radius: 6px; background: ${color}1A;`}
+                />
+                <span
+                  style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.6875rem; font-weight: 600; color: ${maturityStyles[maturity].text}; background: ${maturityStyles[maturity].bg}; padding: 0.1875rem 0.5rem; border-radius: 9999px;`}
+                >
+                  {maturity}
+                </span>
+              </div>
               <p
                 style={`font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: ${color}; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.375rem;`}
               >
@@ -571,6 +696,51 @@ const techs = [
               >
                 Ver todo →
               </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+     HOW WE DELIVER — proceso en 4 pasos
+     ============================================================ -->
+  <section data-animate="fade-up" style="background: #F8F9FA; padding: 4rem 1.5rem; border-top: 1px solid #DADCE0;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <h2
+        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem;"
+      >
+        Cómo lo entregamos
+      </h2>
+      <p
+        style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2.5rem;"
+      >
+        El mismo proceso detrás de cada proyecto de este ecosistema.
+      </p>
+
+      <div
+        data-animate="stagger"
+        class="delivery-steps"
+        style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative;"
+      >
+        <div class="delivery-connector" aria-hidden="true"></div>
+        {
+          deliverySteps.map(({ step, title, desc }) => (
+            <div data-animate-child style="position: relative;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 50%; background: #1A73E8; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; position: relative; z-index: 1;"
+              >
+                <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; font-weight: 700; color: #FFFFFF;">
+                  {step}
+                </span>
+              </div>
+              <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 600; color: #202124; margin-bottom: 0.5rem;">
+                {title}
+              </p>
+              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.6;">
+                {desc}
+              </p>
             </div>
           ))
         }
@@ -1017,6 +1187,40 @@ const techs = [
       grid-template-columns: 1fr !important;
     }
     .tab-panel-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+  }
+
+  /* Platform Engineering Ecosystem — línea de conexión detrás de los nodos */
+  .ecosystem-line {
+    position: absolute;
+    top: 24px;
+    bottom: 24px;
+    left: 23px;
+    width: 2px;
+    background: #DADCE0;
+    z-index: 0;
+  }
+
+  /* How we deliver — línea de conexión detrás de los círculos (solo desktop) */
+  .delivery-connector {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .delivery-connector {
+      display: block;
+      position: absolute;
+      top: 22px;
+      left: calc(12.5% + 22px);
+      right: calc(12.5% + 22px);
+      height: 2px;
+      background: #DADCE0;
+      z-index: 0;
+    }
+  }
+  @media (max-width: 767px) {
+    .delivery-steps {
       grid-template-columns: 1fr !important;
       gap: 2rem !important;
     }
