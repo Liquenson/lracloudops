@@ -30,7 +30,7 @@ import { getTagClass } from '../../../lib/tagColors'
             Activo
           </div>
 
-          <h1 style="font-family: 'Red Hat Mono', monospace; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;">aws-terraform-devops</h1>
+          <h1 style="font-family: 'Red Hat Mono', monospace; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;">aws-terraform-devops<span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:600;color:#137333;background:#E6F4EA;border:1px solid #137333;padding:0.25rem 0.75rem;border-radius:4px;margin-left:1rem;">Plataforma Core</span></h1>
           <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;">
             Infraestructura AWS lista para producción con 7 módulos Terraform. VPC multi-AZ, EKS 1.31, RDS PostgreSQL 15, registro ECR. App Flask desplegada vía Helm, gestionada por ArgoCD, con quality gate de SonarCloud.
           </p>
@@ -112,6 +112,31 @@ import { getTagClass } from '../../../lib/tagColors'
       >
         Ver en GitHub →
       </a>
+    </div>
+  </section>
+
+  <!-- ECOSISTEMA -->
+  <section style="background:#F8F9FA;padding:3rem 1.5rem;border-top:1px solid #DADCE0;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:0.75rem;font-weight:600;color:#1A73E8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Ecosistema</p>
+      <h2 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:#202124;margin-bottom:0.5rem;">Rol en la plataforma</h2>
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:1rem;color:#5F6368;margin-bottom:2rem;max-width:640px;">aws-terraform-devops es la capa de infraestructura — aprovisiona el entorno AWS sobre el que corren todos los demás proyectos.</p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;" class="grid-2">
+        {[
+          { action:'Auditado por', target:'lra-ai-platform', desc:'SecurityAgent escanea este repo en cada push vía lra scan — Trivy + Checkov.', href:'/es/proyectos/lra-ai-platform' },
+          { action:'Consultado por', target:'aws-devops-agent', desc:'El agente IA lee recursos EC2, EKS y RDS aprovisionados por estos módulos Terraform.', href:'/es/proyectos/aws-devops-agent' },
+          { action:'Complementa', target:'k8s-on-premise', desc:'EKS gestionado vs kubeadm bare-metal — los mismos patrones GitOps en distintas capas.', href:'/es/proyectos/k8s-on-premise' },
+          { action:'Documentado por', target:'lra-ai-platform', desc:'DocumentationAgent mantiene los docs de arquitectura sincronizados con el código Terraform.', href:'/es/proyectos/lra-ai-platform' },
+        ].map(({ action, target, desc, href }) => (
+          <div style="background:#FFFFFF;border:1px solid #DADCE0;border-radius:8px;padding:1.25rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+              <span style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#9AA0A6;">{action}</span>
+              <a href={href} style="font-family:'Red Hat Mono',monospace;font-size:0.8125rem;font-weight:600;color:#1A73E8;text-decoration:none;">{target} →</a>
+            </div>
+            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;margin:0;line-height:1.6;">{desc}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
