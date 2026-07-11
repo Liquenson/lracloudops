@@ -95,65 +95,42 @@ const deliverySteps = [
   },
 ]
 
-const productCols = [
+const capabilities = [
   {
-    cat: 'AI & Automation',
+    capability: 'Infraestructura como Código',
+    desc: 'Entornos AWS reproducibles con 7 módulos Terraform — VPC, EKS, RDS, ECR, IAM, CloudWatch, S3.',
+    project: 'aws-terraform-devops',
     color: '#1A73E8',
-    href: 'https://github.com/lra-cloud-ops/lra-ai-platform',
-    items: [
-      {
-        name: 'lra-ai-platform',
-        desc: 'Orquestación multi-agente con Governance Engine',
-      },
-      {
-        name: 'aws-devops-agent',
-        desc: 'Bucle de tool-use IA para gestión de AWS',
-      },
-      { name: 'lra scan', desc: 'Auditoría de seguridad vía Trivy + Checkov' },
-      { name: '9 workflows', desc: 'Desde create_project hasta deploy_eks' },
-    ],
   },
   {
-    cat: 'Cloud Infrastructure',
+    capability: 'Orquestación de Contenedores',
+    desc: 'Kubernetes desde EKS gestionado hasta kubeadm bare-metal — la misma plataforma, distintas capas.',
+    project: 'k8s-on-premise',
     color: '#137333',
-    href: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
-    items: [
-      { name: 'AWS VPC', desc: 'Redes multi-AZ con subnets públicas/privadas' },
-      { name: 'EKS 1.31', desc: 'Kubernetes gestionado en AWS' },
-      {
-        name: 'RDS PostgreSQL 15',
-        desc: 'Base de datos gestionada con backups',
-      },
-      {
-        name: 'Módulos Terraform',
-        desc: 'vpc, eks, rds, ecr, iam, cloudwatch, s3',
-      },
-    ],
   },
   {
-    cat: 'Kubernetes',
-    color: '#F29900',
-    href: 'https://github.com/lra-cloud-ops/k8s-on-premise',
-    items: [
-      {
-        name: 'Clúster kubeadm',
-        desc: '1 master + 2 workers sobre Vagrant/VirtualBox',
-      },
-      { name: 'Calico networking', desc: 'CNI con políticas de red' },
-      { name: 'NGINX Ingress', desc: 'Enrutamiento HTTP/HTTPS' },
-      { name: 'ArgoCD GitOps', desc: 'Sincronización declarativa desde Git' },
-    ],
+    capability: 'Entrega GitOps',
+    desc: 'ArgoCD con self-heal, auto-sync y prune — infraestructura y apps entregadas de forma declarativa.',
+    project: 'aws-terraform-devops',
+    color: '#1A73E8',
   },
   {
-    cat: 'DevOps Tools',
+    capability: 'Automatización de Seguridad',
+    desc: 'Escaneo continuo con Trivy + Checkov en cada repo — informes PASS/FAIL con recomendaciones generadas por IA.',
+    project: 'lra-ai-platform',
     color: '#C5221F',
-    href: 'https://github.com/lra-cloud-ops',
-    items: [
-      { name: 'GitHub Actions', desc: 'CI/CD en cada push' },
-      { name: 'SonarCloud', desc: 'Calidad de código y cobertura' },
-      { name: 'Helm', desc: 'Gestión de paquetes Kubernetes' },
-      { name: 'Prometheus + Grafana', desc: 'Stack de observabilidad' },
-    ],
+  },
+  {
+    capability: 'Orquestación de Agentes IA',
+    desc: '8 agentes especializados con gobernanza RBAC de 5 niveles — desde revisión de infraestructura hasta documentación.',
+    project: 'lra-ai-platform',
+    color: '#C5221F',
+  },
+  {
+    capability: 'Operaciones Cloud',
+    desc: '24 servicios AWS accesibles en lenguaje natural — EC2, EKS, RDS, IAM, CloudWatch vía IA con tool-use.',
+    project: 'aws-devops-agent',
+    color: '#F29900',
   },
 ]
 
@@ -200,22 +177,6 @@ const tabs = [
   },
 ]
 
-const techs = [
-  'AWS',
-  'Terraform',
-  'Kubernetes',
-  'ArgoCD',
-  'Ansible',
-  'Trivy',
-  'Checkov',
-  'Agente IA',
-  'Prometheus',
-  'Grafana',
-  'GitHub Actions',
-  'SonarCloud',
-  'Helm',
-  'Vagrant',
-]
 ---
 
 <Layout
@@ -646,64 +607,6 @@ const techs = [
   </section>
 
   <!-- ============================================================
-     PRODUCTS GRID — capacidades
-     ============================================================ -->
-  <section data-animate="fade-up" style="background: #FFFFFF; padding: 4rem 1.5rem;">
-    <div style="max-width: 1280px; margin: 0 auto;">
-      <h2
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem;"
-      >
-        Qué construimos
-      </h2>
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2.5rem;"
-      >
-        Capacidades en 4 proyectos open source.
-      </p>
-
-      <div
-        data-animate="stagger"
-        style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid #DADCE0; border-radius: 8px; overflow: hidden;"
-        class="products-grid"
-      >
-        {
-          productCols.map(({ cat, items, color, href }, i) => (
-            <div
-              data-animate-child
-              class="card-premium"
-              style={`padding: 1.5rem; ${i < 3 ? 'border-right: 1px solid #DADCE0;' : ''}`}
-            >
-              <div
-                style={`width: 4px; height: 24px; background: ${color}; border-radius: 2px; margin-bottom: 0.875rem;`}
-              />
-              <p style="font-family: 'Red Hat Display', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #202124; margin-bottom: 1rem;">
-                {cat}
-              </p>
-              {items.map(({ name, desc }) => (
-                <div style="padding: 0.5rem 0; border-bottom: 1px solid #F1F3F4;">
-                  <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124; margin-bottom: 0.25rem;">
-                    {name}
-                  </p>
-                  <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; line-height: 1.5;">
-                    {desc}
-                  </p>
-                </div>
-              ))}
-              <a
-                href={href}
-                target="_blank" rel="noopener noreferrer"
-                style="display: inline-flex; align-items: center; gap: 0.25rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #1A73E8; text-decoration: none; margin-top: 0.875rem; font-weight: 500;"
-              >
-                Ver todo →
-              </a>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
      HOW WE DELIVER — proceso en 4 pasos
      ============================================================ -->
   <section data-animate="fade-up" style="background: #F8F9FA; padding: 4rem 1.5rem; border-top: 1px solid #DADCE0;">
@@ -992,34 +895,21 @@ const techs = [
   </script>
 
   <!-- ============================================================
-     CUSTOMERS — stack tecnológico
+     ENGINEERING CAPABILITIES — lo que entregamos, no lo que usamos
      ============================================================ -->
-  <section
-    style="background: #FFFFFF; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0;"
-  >
-    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-bottom: 2rem; font-weight: 500;"
-      >
-        Tecnologías con las que trabajamos
-      </p>
-      <div
-        class="tech-badges"
-        data-animate="fade-up"
-        style="display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap;"
-      >
-        {
-          techs.map((name) => (
-            <span
-              class="tech-badge"
-              style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; color: #5F6368; opacity: 0.65; padding: 0.25rem 0.5rem; transition: opacity 150ms ease; cursor: default;"
-              onmouseover="this.style.opacity='1'"
-              onmouseout="this.style.opacity='0.65'"
-            >
-              {name}
-            </span>
-          ))
-        }
+  <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0;" data-animate="fade-up">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Capacidades de Ingeniería</p>
+      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 2rem;">Lo que entregamos, no lo que usamos</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="services-list-grid">
+        {capabilities.map(({ capability, desc, project, color }) => (
+          <div style={`background: #FFFFFF; border: 1px solid #DADCE0; border-top: 3px solid ${color}; border-radius: 8px; padding: 1.5rem;`} class="card-premium">
+            <h3 style="font-family: 'Red Hat Display', sans-serif; font-size: 0.9375rem; font-weight: 700; color: #202124; margin-bottom: 0.5rem;">{capability}</h3>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.6; margin-bottom: 1rem;">{desc}</p>
+            <span style={`font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: ${color}; background: ${color}15; border: 1px solid ${color}30; padding: 0.125rem 0.5rem; border-radius: 3px;`}>↗ {project}</span>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -1170,12 +1060,12 @@ const techs = [
     }
   }
 
-  /* News grid responsive */
+  /* News grid & capabilities grid responsive */
   @media (max-width: 1199px) {
     .news-grid {
       grid-template-columns: repeat(2, 1fr) !important;
     }
-    .products-grid {
+    .services-list-grid {
       grid-template-columns: repeat(2, 1fr) !important;
     }
   }
@@ -1183,7 +1073,7 @@ const techs = [
     .news-grid {
       grid-template-columns: 1fr !important;
     }
-    .products-grid {
+    .services-list-grid {
       grid-template-columns: 1fr !important;
     }
     .tab-panel-grid {
@@ -1242,15 +1132,8 @@ const techs = [
     }
   }
 
-  /* Tech stack & cloud provider strips — mobile */
+  /* Cloud provider strip — mobile */
   @media (max-width: 767px) {
-    .tech-badges {
-      gap: 0.5rem !important;
-    }
-    .tech-badge {
-      font-size: 0.75rem !important;
-      padding: 0.375rem 0.625rem !important;
-    }
     .cloud-logos {
       gap: 1.5rem !important;
       justify-content: center !important;
