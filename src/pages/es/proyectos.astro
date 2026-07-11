@@ -13,6 +13,20 @@ try {
   // El build nunca debe fallar por un problema de la API de GitHub — las tarjetas usan datos estáticos como fallback
 }
 
+const MATURITY_BADGES: Record<string, { label: string; color: string; bg: string }> = {
+  'lra-ai-platform': { label: 'Plataforma Core', color: '#137333', bg: '#E6F4EA' },
+  'aws-terraform-devops': { label: 'Plataforma Core', color: '#137333', bg: '#E6F4EA' },
+  'k8s-on-premise': { label: 'Soporte', color: '#1A73E8', bg: '#E8F0FE' },
+  'aws-devops-agent': { label: 'Lab', color: '#F29900', bg: '#FFF8E1' },
+}
+
+const PROJECT_CONNECTIONS = [
+  { from: 'lra-ai-platform', arrow: 'ejecuta auditorías de seguridad sobre', to: 'aws-terraform-devops', desc: 'El SecurityAgent escanea los módulos Terraform en busca de misconfiguraciones vía Checkov.' },
+  { from: 'aws-terraform-devops', arrow: 'aprovisiona el clúster para', to: 'k8s-on-premise', desc: 'El módulo EKS crea la capa de Kubernetes gestionado que complementa el bare-metal.' },
+  { from: 'aws-devops-agent', arrow: 'consulta la infraestructura de', to: 'aws-terraform-devops', desc: 'El agente IA lee recursos EC2, RDS y EKS aprovisionados por Terraform.' },
+  { from: 'lra-ai-platform', arrow: 'documenta y revisa', to: 'todos los proyectos', desc: 'DocumentationAgent y ReviewerAgent se ejecutan en todos los repositorios del ecosistema.' },
+]
+
 const PROJECT_DEFAULTS = [
   {
     name: 'lra-ai-platform',
@@ -149,18 +163,18 @@ const totalCommitsDisplay = liveCommitTotal > 0 ? `${liveCommitTotal}+` : '121+'
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
       >
-        Open Source
+        Ecosistema Open Source
       </p>
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
       >
-        Proyectos
+        Cuatro capacidades. Una plataforma.
       </h1>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; max-width: 560px;"
       >
-        Cuatro proyectos open source que cubren agentes IA, infraestructura AWS,
-        Kubernetes y automatización cloud.
+        Cada repositorio es una capa de un stack completo de Platform Engineering —
+        inspecciona el código, ejecuta las herramientas, construye sobre la base.
       </p>
     </div>
   </section>
@@ -225,9 +239,14 @@ const totalCommitsDisplay = liveCommitTotal > 0 ? `${liveCommitTotal}+` : '121+'
                   >
                     {project.category}
                   </p>
-                  <h2 style="font-family: 'Red Hat Mono', monospace; font-size: 1.0625rem; font-weight: 600; color: #202124;">
+                  <h2 style="font-family: 'Red Hat Mono', monospace; font-size: 1.0625rem; font-weight: 600; color: #202124; margin-bottom: 0.375rem;">
                     {project.name}
                   </h2>
+                  <span
+                    style={`font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; font-weight: 600; color: ${MATURITY_BADGES[project.slug].color}; background: ${MATURITY_BADGES[project.slug].bg}; border: 1px solid ${MATURITY_BADGES[project.slug].color}; padding: 0.125rem 0.5rem; border-radius: 3px;`}
+                  >
+                    {MATURITY_BADGES[project.slug].label}
+                  </span>
                 </div>
                 <span
                   class={project.status === 'Activo' ? 'status-active' : undefined}
@@ -309,6 +328,28 @@ const totalCommitsDisplay = liveCommitTotal > 0 ? `${liveCommitTotal}+` : '121+'
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo se conectan estos proyectos -->
+  <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0;" data-animate="fade-up">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Ecosistema</p>
+      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;">Cómo se conectan estos proyectos</h2>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">No son repositorios independientes. Son capas de una única práctica de ingeniería.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 720px;">
+        {PROJECT_CONNECTIONS.map(({ from, arrow, to, desc }) => (
+          <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+              <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; font-weight: 600; color: #1A73E8;">{from}</span>
+              <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #9AA0A6;">→ {arrow} →</span>
+              <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; font-weight: 600; color: #202124;">{to}</span>
+            </div>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin: 0; line-height: 1.6;">{desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
