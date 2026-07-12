@@ -78,3 +78,19 @@ Daily rebuild at 06:00 UTC refreshes GitHub API data (stars, commits).
 - Privacy Policy: /privacy · /es/privacidad
 - Terms of Service: /terms · /es/terminos
 - GDPR compliant — data processed in EU
+
+## Copy and narrative
+
+The site uses enterprise technical language aligned with
+Red Hat, AWS and Google Cloud communication standards:
+- Outcome-oriented, not tool-oriented
+- Fixed deliverables, not hourly billing
+- Open source transparency as a trust signal
+
+## Project maturity classification
+
+| Level | Color | Criteria |
+|-------|-------|---------|
+| Core Platform | Green #137333 | Production-grade, tested, documented |
+| Supporting | Blue #1A73E8 | Stable, complements Core projects |
+| Lab | Amber #F29900 | Proof of concept, actively explored |
