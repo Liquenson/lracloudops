@@ -27,18 +27,19 @@ import Footer from '../../components/layout/Footer.astro'
         <div>
           <span style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;font-weight:600;color:#137333;background:#E6F4EA;border:1px solid #137333;padding:0.25rem 0.625rem;border-radius:3px;">Auditoría de Infraestructura</span>
           <h2 style="font-family:'Red Hat Display',sans-serif;font-size:1.5rem;font-weight:700;color:#202124;margin:1rem 0 0.5rem;">Infraestructura AWS Terraform — baseline de seguridad</h2>
-          <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;margin-bottom:1.5rem;line-height:1.6;">Auditoría con lra scan de un repositorio de infraestructura AWS — VPC, EKS, RDS, ECR con 7 módulos Terraform.</p>
+          <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;margin-bottom:1.5rem;line-height:1.6;">Output real de lra scan — 263 checks superados, 53 misconfiguraciones identificadas.</p>
 
           <div style="display:flex;flex-direction:column;gap:0.75rem;">
             {[
-              { label: 'Repositorio', value: 'lra-cloud-ops/aws-terraform-devops' },
-              { label: 'Stack', value: 'Terraform, AWS, Kubernetes' },
-              { label: 'Herramientas de escaneo', value: 'Trivy, Checkov' },
-              { label: 'Resultado', value: 'PASS' },
-            ].map(({ label, value }) => (
+              { label: 'Repositorio', value: 'lra-cloud-ops/aws-terraform-devops', color: '#202124', weight: 500 },
+              { label: 'Stack', value: 'Terraform, AWS, Kubernetes', color: '#202124', weight: 500 },
+              { label: 'Herramientas de escaneo', value: 'Trivy, Checkov', color: '#202124', weight: 500 },
+              { label: 'Duración', value: '~60s', color: '#202124', weight: 500 },
+              { label: 'Resultado', value: 'FAIL', color: '#F29900', weight: 700 },
+            ].map(({ label, value, color, weight }) => (
               <div style="display:flex;flex-direction:column;gap:0.125rem;">
                 <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;color:#9AA0A6;text-transform:uppercase;letter-spacing:0.04em;">{label}</span>
-                <span style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;font-weight:500;color:#202124;">{value}</span>
+                <span style={`font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;font-weight:${weight};color:${color};`}>{value}</span>
               </div>
             ))}
           </div>
@@ -59,6 +60,8 @@ import Footer from '../../components/layout/Footer.astro'
               { value: '0', label: 'Críticas', color: '#137333' },
               { value: '0', label: 'Altas', color: '#137333' },
               { value: '2', label: 'Medias', color: '#F29900' },
+              { value: '263', label: 'Checks superados', color: '#137333' },
+              { value: '53', label: 'Checks fallidos', color: '#F29900' },
             ].map(({ value, label, color }) => (
               <div style="background:#F8F9FA;border:1px solid #DADCE0;border-radius:8px;padding:1rem;text-align:center;">
                 <div style={`font-family:'Red Hat Display',sans-serif;font-size:1.75rem;font-weight:900;color:${color};`}>{value}</div>
@@ -67,16 +70,15 @@ import Footer from '../../components/layout/Footer.astro'
             ))}
           </div>
 
-          <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1rem;font-weight:700;color:#202124;margin-bottom:1rem;">Qué verifica lra scan</h3>
+          <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1rem;font-weight:700;color:#202124;margin-bottom:1rem;">Hallazgos principales</h3>
           <div style="display:flex;flex-direction:column;gap:0.75rem;">
             {[
-              { severity: 'TRIVY', text: 'Imágenes de contenedor y archivos IaC escaneados en busca de CVEs conocidos — severidad Crítica y Alta bloquean el veredicto PASS.' },
-              { severity: 'CHECKOV', text: 'Módulos Terraform verificados contra políticas de mínimo privilegio IAM, cifrado en reposo y exposición de red.' },
-              { severity: 'CHECKOV', text: 'Manifiestos Kubernetes y Dockerfiles verificados en busca de misconfiguraciones — contenedores privilegiados, límites de recursos ausentes, secretos expuestos.' },
-              { severity: 'INFORME', text: 'Cada hallazgo se clasifica por severidad con guía de remediación concreta, no solo un indicador pass/fail.' },
-            ].map(({ severity, text }) => (
+              { severity: 'WARN', text: '25 misconfiguraciones en Terraform — configuración de logging CloudWatch y controles del registro de contenedores ECR.', color: '#F29900', bg: '#FFF8E1' },
+              { severity: 'WARN', text: '28 brechas de seguridad en despliegues Kubernetes — políticas de seguridad de pods, límites de recursos, permisos de runtime.', color: '#F29900', bg: '#FFF8E1' },
+              { severity: 'PASS', text: 'Seguridad de Dockerfile: todos los checks superados.', color: '#137333', bg: '#E6F4EA' },
+            ].map(({ severity, text, color, bg }) => (
               <div style="display:flex;align-items:start;gap:0.75rem;padding:0.875rem;background:#F8F9FA;border:1px solid #DADCE0;border-radius:6px;">
-                <span style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;font-weight:700;padding:0.125rem 0.5rem;border-radius:3px;flex-shrink:0;color:#1A73E8;background:#E8F0FE;border:1px solid #1A73E8;">{severity}</span>
+                <span style={`font-family:'Red Hat Mono',monospace;font-size:0.6875rem;font-weight:700;padding:0.125rem 0.5rem;border-radius:3px;flex-shrink:0;color:${color};background:${bg};border:1px solid ${color};`}>{severity}</span>
                 <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;margin:0;line-height:1.6;">{text}</p>
               </div>
             ))}

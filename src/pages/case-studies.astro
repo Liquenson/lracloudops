@@ -27,18 +27,19 @@ import Footer from '../components/layout/Footer.astro'
         <div>
           <span style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;font-weight:600;color:#137333;background:#E6F4EA;border:1px solid #137333;padding:0.25rem 0.625rem;border-radius:3px;">Infrastructure Audit</span>
           <h2 style="font-family:'Red Hat Display',sans-serif;font-size:1.5rem;font-weight:700;color:#202124;margin:1rem 0 0.5rem;">AWS Terraform infrastructure — security baseline</h2>
-          <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;margin-bottom:1.5rem;line-height:1.6;">lra scan audit of an AWS infrastructure repository — VPC, EKS, RDS, ECR with 7 Terraform modules.</p>
+          <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;margin-bottom:1.5rem;line-height:1.6;">Real lra scan output — 263 checks passed, 53 misconfigurations identified.</p>
 
           <div style="display:flex;flex-direction:column;gap:0.75rem;">
             {[
-              { label: 'Repository', value: 'lra-cloud-ops/aws-terraform-devops' },
-              { label: 'Stack', value: 'Terraform, AWS, Kubernetes' },
-              { label: 'Scan tools', value: 'Trivy, Checkov' },
-              { label: 'Verdict', value: 'PASS' },
-            ].map(({ label, value }) => (
+              { label: 'Repository', value: 'lra-cloud-ops/aws-terraform-devops', color: '#202124', weight: 500 },
+              { label: 'Stack', value: 'Terraform, AWS, Kubernetes', color: '#202124', weight: 500 },
+              { label: 'Scan tools', value: 'Trivy, Checkov', color: '#202124', weight: 500 },
+              { label: 'Duration', value: '~60s', color: '#202124', weight: 500 },
+              { label: 'Verdict', value: 'FAIL', color: '#F29900', weight: 700 },
+            ].map(({ label, value, color, weight }) => (
               <div style="display:flex;flex-direction:column;gap:0.125rem;">
                 <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;color:#9AA0A6;text-transform:uppercase;letter-spacing:0.04em;">{label}</span>
-                <span style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;font-weight:500;color:#202124;">{value}</span>
+                <span style={`font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;font-weight:${weight};color:${color};`}>{value}</span>
               </div>
             ))}
           </div>
@@ -59,6 +60,8 @@ import Footer from '../components/layout/Footer.astro'
               { value: '0', label: 'Critical', color: '#137333' },
               { value: '0', label: 'High', color: '#137333' },
               { value: '2', label: 'Medium', color: '#F29900' },
+              { value: '263', label: 'Checks passed', color: '#137333' },
+              { value: '53', label: 'Failed checks', color: '#F29900' },
             ].map(({ value, label, color }) => (
               <div style="background:#F8F9FA;border:1px solid #DADCE0;border-radius:8px;padding:1rem;text-align:center;">
                 <div style={`font-family:'Red Hat Display',sans-serif;font-size:1.75rem;font-weight:900;color:${color};`}>{value}</div>
@@ -67,16 +70,15 @@ import Footer from '../components/layout/Footer.astro'
             ))}
           </div>
 
-          <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1rem;font-weight:700;color:#202124;margin-bottom:1rem;">What lra scan checks</h3>
+          <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1rem;font-weight:700;color:#202124;margin-bottom:1rem;">Key findings</h3>
           <div style="display:flex;flex-direction:column;gap:0.75rem;">
             {[
-              { severity: 'TRIVY', text: 'Container images and IaC files scanned for known CVEs — Critical and High severity block the PASS verdict.' },
-              { severity: 'CHECKOV', text: 'Terraform modules checked against IAM least-privilege, encryption-at-rest and network exposure policies.' },
-              { severity: 'CHECKOV', text: 'Kubernetes manifests and Dockerfiles checked for misconfigurations — privileged containers, missing resource limits, exposed secrets.' },
-              { severity: 'REPORT', text: 'Every finding is classified by severity with concrete remediation guidance, not just a pass/fail flag.' },
-            ].map(({ severity, text }) => (
+              { severity: 'WARN', text: '25 Terraform misconfigurations — CloudWatch logging setup and ECR container registry controls.', color: '#F29900', bg: '#FFF8E1' },
+              { severity: 'WARN', text: '28 Kubernetes deployment security gaps — pod security policies, resource limits, runtime permissions.', color: '#F29900', bg: '#FFF8E1' },
+              { severity: 'PASS', text: 'Dockerfile security: all checks passed.', color: '#137333', bg: '#E6F4EA' },
+            ].map(({ severity, text, color, bg }) => (
               <div style="display:flex;align-items:start;gap:0.75rem;padding:0.875rem;background:#F8F9FA;border:1px solid #DADCE0;border-radius:6px;">
-                <span style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;font-weight:700;padding:0.125rem 0.5rem;border-radius:3px;flex-shrink:0;color:#1A73E8;background:#E8F0FE;border:1px solid #1A73E8;">{severity}</span>
+                <span style={`font-family:'Red Hat Mono',monospace;font-size:0.6875rem;font-weight:700;padding:0.125rem 0.5rem;border-radius:3px;flex-shrink:0;color:${color};background:${bg};border:1px solid ${color};`}>{severity}</span>
                 <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;margin:0;line-height:1.6;">{text}</p>
               </div>
             ))}
