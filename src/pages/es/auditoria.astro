@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/layout/Header.astro'
+import Footer from '../../components/layout/Footer.astro'
+---
+<Layout
+  title="Auditoría de Infraestructura Gratuita — LRA CloudOps"
+  description="Envía un repositorio de GitHub. Recibe un análisis completo de seguridad e IaC con Trivy + Checkov en menos de 24 horas. Sin compromiso."
+  lang="es"
+>
+  <Header lang="es" currentPath={Astro.url.pathname} />
+
+  <!-- Hero -->
+  <section style="background:linear-gradient(135deg,#FFFFFF 0%,#F0F4FF 50%,#FFFFFF 100%);padding:5rem 1.5rem 3rem;border-bottom:1px solid #DADCE0;">
+    <div style="max-width:720px;margin:0 auto;text-align:center;">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:#E8F0FE;border:1px solid #C5D8F8;border-radius:4px;padding:0.25rem 0.875rem;margin-bottom:1.5rem;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#137333;animation:pulse-dot 2s infinite;"></span>
+        <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:600;color:#1A73E8;">Automatizado · Entregado en menos de 24 horas</span>
+      </div>
+      <h1 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:900;color:#202124;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;">
+        Auditoría de seguridad<br/>de infraestructura gratuita.
+      </h1>
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:1.125rem;color:#5F6368;line-height:1.7;margin-bottom:2rem;max-width:560px;margin-inline:auto;">
+        Envía un repositorio de GitHub. lra scan ejecuta Trivy y Checkov sobre todo tu código — infraestructura, contenedores y pipelines. Informe PASS/FAIL completo con guía de remediación, entregado por email.
+      </p>
+
+      <!-- Qué recibes -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;text-align:left;" class="grid-3">
+        {[
+          { icon: '🔍', title: 'Análisis de vulnerabilidades', desc: 'Trivy detecta CVEs en imágenes de contenedor y archivos IaC.' },
+          { icon: '⚙️', title: 'Análisis IaC', desc: 'Checkov audita configuraciones de Terraform, Kubernetes y Dockerfile.' },
+          { icon: '📋', title: 'Informe de remediación', desc: 'Hallazgos generados con IA, con clasificación de severidad y guía de solución.' },
+        ].map(({ icon, title, desc }) => (
+          <div style="background:#FFFFFF;border:1px solid #DADCE0;border-radius:8px;padding:1.25rem;">
+            <div style="font-size:1.25rem;margin-bottom:0.5rem;">{icon}</div>
+            <h3 style="font-family:'Red Hat Display',sans-serif;font-size:0.9375rem;font-weight:700;color:#202124;margin-bottom:0.25rem;">{title}</h3>
+            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#5F6368;margin:0;line-height:1.5;">{desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Formulario -->
+      <div style="background:#FFFFFF;border:1px solid #DADCE0;border-radius:12px;padding:2rem;text-align:left;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+        <h2 style="font-family:'Red Hat Display',sans-serif;font-size:1.25rem;font-weight:700;color:#202124;margin-bottom:1.5rem;">Solicita tu auditoría gratuita</h2>
+
+        <div id="audit-success" style="display:none;background:#E6F4EA;border:1px solid #137333;border-radius:8px;padding:1.5rem;text-align:center;margin-bottom:1rem;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">✅</div>
+          <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#137333;margin-bottom:0.5rem;">Solicitud de auditoría recibida.</h3>
+          <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;margin:0;line-height:1.6;">lra scan ya está en marcha — análisis Trivy y Checkov sobre todo tu código. Recibirás el informe en menos de 24 horas.</p>
+        </div>
+
+        <form id="audit-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="e8aaab4e-270c-4163-bb76-6a8dfc247485" />
+          <input type="hidden" name="subject" value="Solicitud de Auditoría de Infraestructura Gratuita — lracloudops.com/es/auditoria" />
+          <input type="hidden" name="redirect" value="https://lracloudops.com/es/auditoria?success=true" />
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;" class="grid-2">
+            <div>
+              <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.375rem;">Nombre</label>
+              <input type="text" name="name" required placeholder="Tu nombre"
+                style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#F8F9FA;border:1px solid #DADCE0;border-radius:6px;outline:none;box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.375rem;">Email de trabajo</label>
+              <input type="email" name="email" required placeholder="tu@empresa.com"
+                style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#F8F9FA;border:1px solid #DADCE0;border-radius:6px;outline:none;box-sizing:border-box;" />
+            </div>
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.375rem;">Repositorio de GitHub <span style="color:#137333;">*</span></label>
+            <input type="text" name="github_repo" required placeholder="org/repositorio"
+              style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Mono',monospace;font-size:0.9375rem;color:#202124;background:#F8F9FA;border:1px solid #DADCE0;border-radius:6px;outline:none;box-sizing:border-box;" />
+            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#5F6368;margin-top:0.375rem;line-height:1.5;">
+              Formato: <code style="font-family:'Red Hat Mono',monospace;background:#F8F9FA;padding:0.125rem 0.375rem;border-radius:3px;font-size:0.75rem;">org/repositorio</code> — admite repositorios públicos y privados.
+            </p>
+          </div>
+
+          <button type="submit"
+            style="width:100%;background:#1A73E8;color:#FFFFFF;padding:0.875rem 2rem;border:none;border-radius:6px;font-family:'Red Hat Text',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:background 150ms ease;"
+            onmouseover="this.style.background='#1557B0'"
+            onmouseout="this.style.background='#1A73E8'"
+          >
+            Solicitar auditoría gratuita →
+          </button>
+
+          <p style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#9AA0A6;text-align:center;margin-top:1rem;margin-bottom:0;">
+            Sin compromiso. Informe entregado en menos de 24 horas.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Output de ejemplo -->
+  <section style="background:#F8F9FA;padding:3rem 1.5rem;border-bottom:1px solid #DADCE0;">
+    <div style="max-width:720px;margin:0 auto;">
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:0.75rem;font-weight:600;color:#1A73E8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Output de ejemplo</p>
+      <h2 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:#202124;margin-bottom:0.5rem;">Cómo es tu informe</h2>
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:1rem;color:#5F6368;margin-bottom:2rem;">Output ilustrativo de un escaneo en un repositorio similar a <code style="font-family:'Red Hat Mono',monospace;font-size:0.875rem;background:#FFFFFF;border:1px solid #DADCE0;padding:0.125rem 0.5rem;border-radius:3px;">lra-cloud-ops/aws-terraform-devops</code></p>
+
+      <div style="background:#202124;border-radius:8px;padding:1.5rem;font-family:'Red Hat Mono',monospace;font-size:0.8125rem;color:#E8EAED;line-height:1.8;overflow-x:auto;">
+        <div style="color:#9AA0A6;margin-bottom:0.5rem;">$ lra scan --github org/repositorio</div>
+        <div>→ Clonando repositorio...</div>
+        <div>→ Detectando stack: terraform, kubernetes, docker</div>
+        <div style="margin-top:0.5rem;color:#8AB4F8;">TRIVY — Vulnerabilidades de contenedores e IaC</div>
+        <div style="color:#81C995;">✓ Críticas: 0</div>
+        <div style="color:#81C995;">✓ Altas: 0</div>
+        <div style="color:#FDD663;">⚠ Medias: 2 → documentadas automáticamente</div>
+        <div style="margin-top:0.5rem;color:#8AB4F8;">CHECKOV — Misconfiguraciones IaC</div>
+        <div style="color:#81C995;">✓ Terraform: 47/50 superados</div>
+        <div style="color:#81C995;">✓ Dockerfile: 8/8 superados</div>
+        <div style="color:#FDD663;">⚠ Manifiestos K8s: 3 advertencias</div>
+        <div style="margin-top:0.5rem;color:#81C995;font-weight:700;">✓ SCAN COMPLETADO — PASS · 4.2s</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background:#FFFFFF;padding:3rem 1.5rem;">
+    <div style="max-width:720px;margin:0 auto;">
+      <h2 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:#202124;margin-bottom:2rem;">Preguntas frecuentes</h2>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        {[
+          { q: '¿La auditoría es realmente gratuita?', a: 'Sí. Sin tarjeta de crédito, sin compromiso. Recibes el informe completo y decides qué hacer con él.' },
+          { q: '¿Admitís repositorios privados?', a: 'Sí. Para repos privados, solicitamos acceso de lectura temporal mediante un token de GitHub que tú controlas y puedes revocar tras la auditoría.' },
+          { q: '¿Cuánto tarda?', a: 'El escaneo automatizado se ejecuta en minutos. El informe completo con guía de remediación generada con IA se entrega en menos de 24 horas.' },
+          { q: '¿Qué tecnologías soporta lra scan?', a: 'Terraform, manifiestos Kubernetes, Dockerfiles, workflows de GitHub Actions, AWS CloudFormation y Ansible. Incluye escaneo de imágenes de contenedor.' },
+          { q: '¿Qué ocurre después de recibir el informe?', a: 'Nada, a menos que tú quieras. Si los hallazgos son útiles y necesitas ayuda implementando las soluciones, podemos hablar de un proyecto de ingeniería.' },
+        ].map(({ q, a }) => (
+          <details style="background:#F8F9FA;border:1px solid #DADCE0;border-radius:8px;overflow:hidden;">
+            <summary style="padding:1rem 1.25rem;font-family:'Red Hat Display',sans-serif;font-size:0.9375rem;font-weight:600;color:#202124;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;">
+              {q}
+              <span style="font-size:1.25rem;color:#1A73E8;flex-shrink:0;margin-left:1rem;">+</span>
+            </summary>
+            <div style="padding:0 1.25rem 1rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;line-height:1.7;border-top:1px solid #DADCE0;padding-top:1rem;">
+              {a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="es" />
+</Layout>
+
+<style>
+  @media (max-width: 767px) {
+    .grid-3 {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<script>
+  const params = new URLSearchParams(window.location.search)
+  if (params.get('success') === 'true') {
+    document.getElementById('audit-success')?.style.setProperty('display', 'block')
+    document.getElementById('audit-form')?.style.setProperty('display', 'none')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const form = document.getElementById('audit-form') as HTMLFormElement
+  form?.addEventListener('submit', () => {
+    const formData = new FormData(form)
+    const githubRepo = (formData.get('github_repo') as string || '').trim()
+    if (githubRepo && githubRepo.includes('/')) {
+      try {
+        fetch('https://lracloudops-webhook.liquenson-cloud.workers.dev', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          keepalive: true,
+          body: JSON.stringify({
+            name: formData.get('name') as string || '',
+            email: formData.get('email') as string || '',
+            github_repo: githubRepo,
+          }),
+        })
+      } catch { /* fail silently */ }
+    }
+  })
+</script>
