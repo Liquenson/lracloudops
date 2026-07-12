@@ -14,9 +14,9 @@ import Footer from '../components/layout/Footer.astro'
   <!-- Hero -->
   <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0; text-align: center;">
     <div style="max-width: 1280px; margin: 0 auto;">
-      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Pricing</p>
-      <h1 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;">Simple pricing. No surprises.</h1>
-      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368;">Start free. Pay only if it's useful.</p>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Transparent Pricing</p>
+      <h1 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;">Fixed scope. Fixed price.</h1>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368;">No hourly billing. No scope creep. Defined deliverables on every engagement.</p>
     </div>
   </section>
 
@@ -29,7 +29,7 @@ import Footer from '../components/layout/Footer.astro'
         <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
           <div>
             <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Infrastructure Audit</p>
-            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">One-time security scan and report</p>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Automated security and IaC analysis of any GitHub repository. Delivered within 24 hours.</p>
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
             <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">Free</span>
@@ -60,8 +60,8 @@ import Footer from '../components/layout/Footer.astro'
             Most popular
           </div>
           <div>
-            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">DevOps Project</p>
-            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Fixed-price infrastructure delivery</p>
+            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Engineering Project</p>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Fixed-scope delivery — CI/CD pipeline, AWS infrastructure, Kubernetes platform or security remediation. Timeline and deliverables defined upfront.</p>
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
             <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; font-weight: 500;">From</span>
@@ -92,8 +92,8 @@ import Footer from '../components/layout/Footer.astro'
         <!-- Monthly Consulting -->
         <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
           <div>
-            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Monthly Consulting</p>
-            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Ongoing DevOps support</p>
+            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Platform Retainer</p>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Ongoing platform operations — monthly security scans, infrastructure reviews, CI/CD audits and direct engineering access. Month-to-month, no lock-in.</p>
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
             <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #5F6368; font-weight: 500;">€</span>
@@ -136,28 +136,28 @@ import Footer from '../components/layout/Footer.astro'
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         {[
           {
-            q: 'Do you work with private repositories?',
-            a: 'Yes. We work with both public and private GitHub repositories. For private repos, we request temporary read access via a GitHub token that you can revoke after the audit.'
+            q: 'Do you support private repositories?',
+            a: 'Yes. Both public and private GitHub repositories are supported. For private repos, temporary read access is granted via a revocable GitHub token.'
           },
           {
-            q: 'What do I need to get started?',
-            a: 'Just the URL of your GitHub repository and your email address. No installation, no setup, no credit card.'
+            q: 'What is required to get started?',
+            a: 'A GitHub repository URL and an email address. No installation, no setup, no credit card.'
           },
           {
-            q: 'How long does the audit take?',
-            a: 'We deliver the report within 24-48 hours of receiving your request. Complex repositories with many files may take up to 72 hours.'
+            q: 'What is the audit turnaround time?',
+            a: 'Reports are delivered within 24-48 hours of the request. Larger repositories may take up to 72 hours.'
           },
           {
-            q: 'What technologies does lra scan support?',
-            a: 'Terraform, Kubernetes manifests, Dockerfiles, GitHub Actions workflows, AWS CloudFormation, and Ansible. Trivy also scans container images if your repo includes them.'
+            q: 'Which technologies does lra scan support?',
+            a: 'Terraform, Kubernetes manifests, Dockerfiles, GitHub Actions workflows, AWS CloudFormation and Ansible. Trivy also scans container images when present in the repository.'
           },
           {
-            q: 'Is there a contract for the monthly consulting?',
-            a: 'No long-term contract. Monthly consulting is billed month-to-month and you can cancel at any time with 7 days notice.'
+            q: 'Is the Platform Retainer contract-based?',
+            a: 'No long-term contract. Billing is month-to-month, cancellable with 7 days notice.'
           },
           {
             q: 'What happens after the free audit?',
-            a: 'You receive the report by email. If you find it useful and want ongoing support, we can discuss a monthly consulting engagement. No pressure.'
+            a: 'The report is delivered by email. If ongoing support is needed, a Platform Retainer engagement can be discussed — no pressure.'
           },
         ].map(({ q, a }) => (
           <details style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; overflow: hidden;">
