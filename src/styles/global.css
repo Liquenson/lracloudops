@@ -1,8 +1,10 @@
 /* LRA CloudOps — Design System v4.0 — Clean Slate */
 
+@import '@fontsource/red-hat-display/400.css';
 @import '@fontsource/red-hat-display/700.css';
 @import '@fontsource/red-hat-display/900.css';
 @import '@fontsource/red-hat-text/400.css';
+@import '@fontsource/red-hat-text/500.css';
 @import '@fontsource/red-hat-text/600.css';
 @import '@fontsource/red-hat-mono/400.css';
 
@@ -11,17 +13,25 @@
   --font-body: 'Red Hat Text', system-ui, sans-serif;
   --font-mono: 'Red Hat Mono', monospace;
 
-  --color-primary: #0078d4;
-  --color-primary-dark: #106ebe;
-  --color-primary-light: #eff6fc;
-  --color-dark: #0d1b2e;
+  /* Design System v4 — matches the palette used inline across src/pages/ */
+  --color-primary: #1a73e8;
+  --color-text: #202124;
+  --color-text-secondary: #5f6368;
+  --color-border: #dadce0;
+  --color-bg-soft: #f8f9fa;
+  --color-success: #137333;
+  --color-warning: #f29900;
+  --color-error: #c5221f;
+  --color-dark: #202124;
   --color-white: #ffffff;
-  --color-gray-50: #f8f9fa;
+
+  /* Legacy gray-scale aliases, realigned to the v4 tokens above */
+  --color-gray-50: var(--color-bg-soft);
   --color-gray-100: #f1f3f5;
-  --color-gray-200: #e5e7eb;
-  --color-gray-600: #4b5563;
+  --color-gray-200: var(--color-border);
+  --color-gray-600: var(--color-text-secondary);
   --color-gray-700: #374151;
-  --color-gray-900: #111827;
+  --color-gray-900: var(--color-text);
 
   --radius-sm: 4px;
   --radius-md: 8px;
