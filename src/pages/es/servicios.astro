@@ -46,14 +46,14 @@ const techs = [
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
       >
-        No vendemos horas. Entregamos plataformas.
+        Infraestructura de grado producción. Entregada como código.
       </h1>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; max-width: 560px; margin-bottom: 1.5rem;"
       >
-        Nuestros servicios son la extensión natural de lo que ya hemos
-        construido — patrones probados en producción desde proyectos open
-        source reales, aplicados a tu infraestructura.
+        Cada proyecto está respaldado por proyectos open source que puedes
+        inspeccionar — no por herramientas propietarias que no puedes
+        controlar.
       </p>
 
       <div style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
@@ -157,7 +157,8 @@ const techs = [
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;" class="services-list-grid" data-animate="stagger">
         {[
           {
-            title: 'Infraestructura AWS con Terraform',
+            title: 'Infraestructura AWS como Código',
+            desc: 'Entornos AWS reproducibles usando 7 módulos Terraform — VPC, EKS, RDS, ECR, IAM, CloudWatch, S3. Multi-AZ, IAM de mínimo privilegio, backups automatizados.',
             price: '€800 – €2.000',
             time: '1-2 semanas',
             color: '#1A73E8',
@@ -171,7 +172,8 @@ const techs = [
             ]
           },
           {
-            title: 'Setup de Kubernetes',
+            title: 'Platform Engineering con Kubernetes',
+            desc: 'EKS en AWS o bare-metal con kubeadm. Calico CNI, NGINX Ingress, ArgoCD GitOps, stack de observabilidad Prometheus — listo para producción desde el primer día.',
             price: '€1.000 – €2.500',
             time: '2-3 semanas',
             color: '#137333',
@@ -185,7 +187,8 @@ const techs = [
             ]
           },
           {
-            title: 'Pipeline CI/CD',
+            title: 'Pipeline de Entrega GitOps',
+            desc: 'GitHub Actions para CI, ArgoCD para entrega GitOps. Quality gates con SonarCloud, escaneo de seguridad con Trivy en cada pull request. Sin despliegues manuales.',
             price: '€400 – €800',
             time: '3-5 días',
             color: '#F29900',
@@ -199,7 +202,8 @@ const techs = [
             ]
           },
           {
-            title: 'Auditoría de Seguridad',
+            title: 'Auditoría de Seguridad de Infraestructura',
+            desc: 'lra scan — Trivy para vulnerabilidades de contenedores e IaC, Checkov para misconfiguraciones de Terraform, Kubernetes y Dockerfile. Informe PASS/FAIL con guía de remediación.',
             price: '€199 – €299',
             time: '2-3 días',
             color: '#C5221F',
@@ -221,6 +225,7 @@ const techs = [
                 <div style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #9AA0A6;">{service.time}</div>
               </div>
             </div>
+            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.6; margin-bottom: 1rem;">{service.desc}</p>
             <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
               {service.features.map(f => (
                 <li style="display: flex; align-items: start; gap: 0.625rem;">
@@ -249,9 +254,9 @@ const techs = [
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Desde tu primer mensaje hasta el informe entregado — sin sorpresas.</p>
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="process-grid">
         {[
-          { step: '01', title: 'Nos contactas', desc: 'Envía la URL de tu repo GitHub por el formulario. Respondemos en menos de 24 horas para confirmar.', time: 'Día 1' },
-          { step: '02', title: 'Ejecutamos la auditoría', desc: 'Ejecutamos lra scan — Trivy para vulnerabilidades, Checkov para misconfiguraciones IaC. Análisis completo de tu código.', time: 'Día 2' },
-          { step: '03', title: 'Recibes el informe', desc: 'Informe PASS/FAIL completo por email. Incluye todos los hallazgos, niveles de severidad y recomendaciones concretas.', time: 'Día 3' },
+          { step: '01', title: 'Nos contactas', desc: 'Envías un repositorio de GitHub por el formulario de contacto. Confirmamos la recepción en 24 horas.', time: 'Día 1' },
+          { step: '02', title: 'Ejecutamos la auditoría', desc: 'lra scan ejecuta Trivy y Checkov sobre todo tu código — infraestructura, contenedores, pipelines.', time: 'Día 2' },
+          { step: '03', title: 'Recibes el informe', desc: 'Informe PASS/FAIL completo entregado por email. Cada hallazgo incluye clasificación de severidad y pasos concretos de remediación.', time: 'Día 3' },
         ].map(({ step, title, desc, time }) => (
           <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.5rem; position: relative;" class="card-premium">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
