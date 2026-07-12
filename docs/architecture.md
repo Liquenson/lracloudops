@@ -29,7 +29,7 @@ Cloudflare Pages (lracloudops.com)
 
 | Workflow | Trigger | Purpose |
 |----------|---------|---------|
-| build.yml | push to main, PRs | astro build + page count |
+| build.yml | push to main, PRs | astro check + astro build + page count |
 | smart-scan.yml | webhook / manual | Security audit + AI report |
 | sync-github.yml | daily 06:00 UTC | Force rebuild — refresh GitHub API data |
 
@@ -75,3 +75,11 @@ Runtime:
 - rel="noopener noreferrer" on all external links
 - No secrets in codebase (.env.local in .gitignore)
 - Secrets in Cloudflare Pages + Workers environment variables
+
+## Known issues resolved (July 2026)
+
+- CSS variables in :root updated to Design System v4 (#1A73E8)
+- Red Hat fonts: single source via @fontsource (Google Fonts link removed)
+- GA4 ID: now read from PUBLIC_GA_ID environment variable
+- CI pipeline: astro check added as explicit step before build
+- Home and pricing meta descriptions updated to Platform Engineering narrative
