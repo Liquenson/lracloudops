@@ -23,6 +23,43 @@ import Footer from '../components/layout/Footer.astro'
   <!-- 3 plans -->
   <section style="background: #FFFFFF; padding: 3rem 1.5rem;">
     <div style="max-width: 1100px; margin: 0 auto;">
+
+      <!-- Engagement calculator -->
+      <div style="background:#F8F9FA;border:1px solid #DADCE0;border-radius:12px;padding:2rem;margin-bottom:3rem;" data-animate="fade-up">
+        <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin-bottom:1.5rem;">Find the right engagement</h3>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;" class="grid-2">
+          <div>
+            <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.5rem;">Primary need</label>
+            <select id="calc-need" style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#FFFFFF;border:1px solid #DADCE0;border-radius:6px;outline:none;">
+              <option value="audit">Security audit</option>
+              <option value="cicd">CI/CD pipeline</option>
+              <option value="aws">AWS infrastructure</option>
+              <option value="k8s">Kubernetes platform</option>
+              <option value="ongoing">Ongoing platform ops</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.5rem;">Number of repositories</label>
+            <select id="calc-repos" style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#FFFFFF;border:1px solid #DADCE0;border-radius:6px;outline:none;">
+              <option value="1">1 repository</option>
+              <option value="2-5">2-5 repositories</option>
+              <option value="6+">6+ repositories</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="calc-result" style="background:#FFFFFF;border:1px solid #1A73E8;border-radius:8px;padding:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;margin:0 0 0.25rem;">Recommended engagement</p>
+            <p id="calc-plan" style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin:0;">Infrastructure Audit — Free</p>
+          </div>
+          <a href="/audit" id="calc-cta" style="display:inline-flex;align-items:center;gap:0.375rem;background:#1A73E8;color:#FFFFFF;padding:0.625rem 1.25rem;border-radius:4px;font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;">
+            Get started →
+          </a>
+        </div>
+      </div>
+
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="pricing-grid">
 
         <!-- Free Audit -->
@@ -90,7 +127,7 @@ import Footer from '../components/layout/Footer.astro'
         </div>
 
         <!-- Monthly Consulting -->
-        <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div id="retainer" style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; scroll-margin-top: 88px;">
           <div>
             <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Platform Retainer</p>
             <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Ongoing platform operations — monthly security scans, infrastructure reviews, CI/CD audits and direct engineering access. Month-to-month, no lock-in.</p>
@@ -189,3 +226,39 @@ import Footer from '../components/layout/Footer.astro'
     }
   }
 </style>
+
+<script>
+  const needEl = document.getElementById('calc-need') as HTMLSelectElement
+  const reposEl = document.getElementById('calc-repos') as HTMLSelectElement
+  const planEl = document.getElementById('calc-plan')
+  const ctaEl = document.getElementById('calc-cta') as HTMLAnchorElement
+
+  const recommendations: Record<string, { plan: string; cta: string; href: string }> = {
+    'audit-1': { plan: 'Infrastructure Audit — Free', cta: 'Start free audit →', href: '/audit' },
+    'audit-2-5': { plan: 'Infrastructure Audit — Free (all repos)', cta: 'Start free audit →', href: '/audit' },
+    'audit-6+': { plan: 'Platform Retainer — €499/month (unlimited scans)', cta: 'View retainer →', href: '/pricing#retainer' },
+    'cicd-1': { plan: 'Engineering Project — from €400', cta: 'View project pricing →', href: '/pricing' },
+    'cicd-2-5': { plan: 'Engineering Project — from €600', cta: 'View project pricing →', href: '/pricing' },
+    'cicd-6+': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'aws-1': { plan: 'Engineering Project — €800-2.000', cta: 'View project pricing →', href: '/pricing' },
+    'aws-2-5': { plan: 'Engineering Project — €800-2.000', cta: 'View project pricing →', href: '/pricing' },
+    'aws-6+': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'k8s-1': { plan: 'Engineering Project — €1.000-2.500', cta: 'View project pricing →', href: '/pricing' },
+    'k8s-2-5': { plan: 'Engineering Project — €1.000-2.500', cta: 'View project pricing →', href: '/pricing' },
+    'k8s-6+': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'ongoing-1': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'ongoing-2-5': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'ongoing-6+': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
+  }
+
+  function update() {
+    const key = `${needEl.value}-${reposEl.value}`
+    const rec = recommendations[key] || recommendations['audit-1']
+    if (planEl) planEl.textContent = rec.plan
+    if (ctaEl) { ctaEl.textContent = rec.cta; ctaEl.href = rec.href }
+  }
+
+  needEl?.addEventListener('change', update)
+  reposEl?.addEventListener('change', update)
+  update()
+</script>

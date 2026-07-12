@@ -23,6 +23,43 @@ import Footer from '../../components/layout/Footer.astro'
   <!-- 3 planes -->
   <section style="background: #FFFFFF; padding: 3rem 1.5rem;">
     <div style="max-width: 1100px; margin: 0 auto;">
+
+      <!-- Calculadora de colaboración -->
+      <div style="background:#F8F9FA;border:1px solid #DADCE0;border-radius:12px;padding:2rem;margin-bottom:3rem;" data-animate="fade-up">
+        <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin-bottom:1.5rem;">Encuentra el tipo de colaboración adecuado</h3>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;" class="grid-2">
+          <div>
+            <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.5rem;">Necesidad principal</label>
+            <select id="calc-need" style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#FFFFFF;border:1px solid #DADCE0;border-radius:6px;outline:none;">
+              <option value="audit">Auditoría de seguridad</option>
+              <option value="cicd">Pipeline CI/CD</option>
+              <option value="aws">Infraestructura AWS</option>
+              <option value="k8s">Plataforma Kubernetes</option>
+              <option value="ongoing">Operaciones continuas</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.5rem;">Número de repositorios</label>
+            <select id="calc-repos" style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#FFFFFF;border:1px solid #DADCE0;border-radius:6px;outline:none;">
+              <option value="1">1 repositorio</option>
+              <option value="2-5">2-5 repositorios</option>
+              <option value="6+">6+ repositorios</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="calc-result" style="background:#FFFFFF;border:1px solid #1A73E8;border-radius:8px;padding:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;margin:0 0 0.25rem;">Colaboración recomendada</p>
+            <p id="calc-plan" style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin:0;">Auditoría de Infraestructura — Gratis</p>
+          </div>
+          <a href="/es/auditoria" id="calc-cta" style="display:inline-flex;align-items:center;gap:0.375rem;background:#1A73E8;color:#FFFFFF;padding:0.625rem 1.25rem;border-radius:4px;font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;">
+            Empezar →
+          </a>
+        </div>
+      </div>
+
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="pricing-grid">
 
         <!-- Auditoría gratuita -->
@@ -90,7 +127,7 @@ import Footer from '../../components/layout/Footer.astro'
         </div>
 
         <!-- Consultoría mensual -->
-        <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div id="retainer" style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; scroll-margin-top: 88px;">
           <div>
             <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Retención de Plataforma</p>
             <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Operaciones de plataforma continuas — escaneos de seguridad mensuales, revisiones de infraestructura, auditorías CI/CD y acceso directo de ingeniería. Mes a mes, sin permanencia.</p>
@@ -189,3 +226,39 @@ import Footer from '../../components/layout/Footer.astro'
     }
   }
 </style>
+
+<script>
+  const needEl = document.getElementById('calc-need') as HTMLSelectElement
+  const reposEl = document.getElementById('calc-repos') as HTMLSelectElement
+  const planEl = document.getElementById('calc-plan')
+  const ctaEl = document.getElementById('calc-cta') as HTMLAnchorElement
+
+  const recommendations: Record<string, { plan: string; cta: string; href: string }> = {
+    'audit-1': { plan: 'Auditoría de Infraestructura — Gratis', cta: 'Empezar auditoría gratuita →', href: '/es/auditoria' },
+    'audit-2-5': { plan: 'Auditoría de Infraestructura — Gratis (todos los repos)', cta: 'Empezar auditoría gratuita →', href: '/es/auditoria' },
+    'audit-6+': { plan: 'Retención de Plataforma — €499/mes (escaneos ilimitados)', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'cicd-1': { plan: 'Proyecto de Ingeniería — desde €400', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'cicd-2-5': { plan: 'Proyecto de Ingeniería — desde €600', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'cicd-6+': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'aws-1': { plan: 'Proyecto de Ingeniería — €800-2.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'aws-2-5': { plan: 'Proyecto de Ingeniería — €800-2.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'aws-6+': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'k8s-1': { plan: 'Proyecto de Ingeniería — €1.000-2.500', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'k8s-2-5': { plan: 'Proyecto de Ingeniería — €1.000-2.500', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'k8s-6+': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'ongoing-1': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'ongoing-2-5': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'ongoing-6+': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+  }
+
+  function update() {
+    const key = `${needEl.value}-${reposEl.value}`
+    const rec = recommendations[key] || recommendations['audit-1']
+    if (planEl) planEl.textContent = rec.plan
+    if (ctaEl) { ctaEl.textContent = rec.cta; ctaEl.href = rec.href }
+  }
+
+  needEl?.addEventListener('change', update)
+  reposEl?.addEventListener('change', update)
+  update()
+</script>
