@@ -1,0 +1,181 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/layout/Header.astro'
+import Footer from '../../components/layout/Footer.astro'
+---
+<Layout
+  title="Plataforma Open Source — LRA CloudOps"
+  description="Siete repositorios open source que cubren el stack completo de Platform Engineering. Inspecciona el código, ejecuta las herramientas, construye sobre la base."
+  lang="es"
+>
+  <Header lang="es" currentPath={Astro.url.pathname} />
+
+  <section style="background:#F8F9FA;padding:3rem 1.5rem;border-bottom:1px solid #DADCE0;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:0.75rem;font-weight:600;color:#1A73E8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Open Source</p>
+      <h1 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#202124;margin-bottom:0.75rem;">El stack completo de la plataforma.</h1>
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:1.125rem;color:#5F6368;max-width:640px;line-height:1.7;margin-bottom:1.5rem;">Siete repositorios. Cada capa de un stack moderno de Platform Engineering — inspecciona el código, ejecuta las herramientas, construye sobre la base.</p>
+      <a href="https://github.com/lra-cloud-ops" target="_blank" rel="noopener noreferrer"
+        style="display:inline-flex;align-items:center;gap:0.5rem;font-family:'Red Hat Mono',monospace;font-size:0.875rem;font-weight:600;color:#1A73E8;text-decoration:none;"
+      >
+        github.com/lra-cloud-ops →
+      </a>
+    </div>
+  </section>
+
+  <section style="background:#FFFFFF;padding:3rem 1.5rem;">
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <!-- Plataforma Core -->
+      <div style="margin-bottom:3rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
+          <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:700;color:#137333;background:#E6F4EA;border:1px solid #137333;padding:0.25rem 0.625rem;border-radius:3px;">Plataforma Core</span>
+          <span style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;">Grado producción. Probado. Documentado.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="grid-2">
+          {[
+            {
+              name: 'lra-ai-platform',
+              layer: 'Orquestación IA',
+              desc: '8 agentes especializados con gobernanza RBAC de 5 niveles — escaneo de seguridad, revisión de infraestructura, documentación, CI/CD y orquestación de despliegues.',
+              tags: ['Python', 'FastAPI', 'Trivy', 'Checkov', 'Anthropic SDK'],
+              href: '/es/proyectos/lra-ai-platform',
+              github: 'https://github.com/lra-cloud-ops/lra-ai-platform',
+              stats: '8 agentes · 14 integraciones · 33 tests',
+            },
+            {
+              name: 'aws-terraform-devops',
+              layer: 'Infraestructura Cloud',
+              desc: '7 módulos Terraform que aprovisionan un entorno AWS completo — VPC multi-AZ, EKS 1.31, RDS PostgreSQL 15, ECR, IAM, CloudWatch, S3.',
+              tags: ['Terraform', 'AWS', 'EKS', 'RDS', 'ArgoCD'],
+              href: '/es/proyectos/aws-terraform-devops',
+              github: 'https://github.com/lra-cloud-ops/aws-terraform-devops',
+              stats: '7 módulos Terraform · 18 tests',
+            },
+          ].map(({ name, layer, desc, tags, href, github, stats }) => (
+            <div style="background:#F8F9FA;border:1px solid #DADCE0;border-top:3px solid #137333;border-radius:8px;padding:1.5rem;" class="card-premium">
+              <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem;">
+                <div>
+                  <p style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#9AA0A6;margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
+                  <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin:0;">{name}</h3>
+                </div>
+              </div>
+              <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;line-height:1.6;margin:0.75rem 0;">{desc}</p>
+              <p style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;color:#137333;margin:0 0 0.875rem;">{stats}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:1.25rem;">
+                {tags.map(tag => (
+                  <span style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#137333;background:#E6F4EA;border:1px solid #A8D5B5;padding:0.125rem 0.5rem;border-radius:3px;">{tag}</span>
+                ))}
+              </div>
+              <div style="display:flex;gap:1rem;">
+                <a href={href} style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#1A73E8;text-decoration:none;">Ver detalles →</a>
+                <a href={github} target="_blank" rel="noopener noreferrer" style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;text-decoration:none;">GitHub ↗</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Soporte -->
+      <div style="margin-bottom:3rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
+          <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:700;color:#1A73E8;background:#E8F0FE;border:1px solid #1A73E8;padding:0.25rem 0.625rem;border-radius:3px;">Soporte</span>
+          <span style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;">Estable. Complementa los proyectos Core.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="grid-2">
+          {[
+            {
+              name: 'k8s-on-premise',
+              layer: 'Runtime de Contenedores',
+              desc: 'Kubernetes desde cero con kubeadm — 1 master, 2 workers sobre Vagrant/VirtualBox. Calico CNI, NGINX Ingress, add-ons de Helm, GitOps con ArgoCD.',
+              tags: ['Kubernetes', 'kubeadm', 'Calico', 'ArgoCD', 'Helm'],
+              href: '/es/proyectos/k8s-on-premise',
+              github: 'https://github.com/lra-cloud-ops/k8s-on-premise',
+              stats: '3 nodos · 25 commits',
+            },
+            {
+              name: 'aws-devops-agent',
+              layer: 'Automatización Cloud',
+              desc: 'Agente CLI con un bucle real de tool-use — 31 funciones boto3 que cubren 24 servicios AWS en lenguaje natural. Prueba de concepto de operaciones cloud nativas en IA.',
+              tags: ['Python', 'Anthropic SDK', 'boto3', 'AWS'],
+              href: '/es/proyectos/aws-devops-agent',
+              github: 'https://github.com/lra-cloud-ops/aws-devops-agent',
+              stats: '31 herramientas · 24 servicios AWS',
+            },
+          ].map(({ name, layer, desc, tags, href, github, stats }) => (
+            <div style="background:#F8F9FA;border:1px solid #DADCE0;border-top:3px solid #1A73E8;border-radius:8px;padding:1.5rem;" class="card-premium">
+              <div style="margin-bottom:0.5rem;">
+                <p style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#9AA0A6;margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
+                <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin:0;">{name}</h3>
+              </div>
+              <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;line-height:1.6;margin:0.75rem 0;">{desc}</p>
+              <p style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;color:#1A73E8;margin:0 0 0.875rem;">{stats}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:1.25rem;">
+                {tags.map(tag => (
+                  <span style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#1A73E8;background:#E8F0FE;border:1px solid #C5D8F8;padding:0.125rem 0.5rem;border-radius:3px;">{tag}</span>
+                ))}
+              </div>
+              <div style="display:flex;gap:1rem;">
+                <a href={href} style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#1A73E8;text-decoration:none;">Ver detalles →</a>
+                <a href={github} target="_blank" rel="noopener noreferrer" style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;text-decoration:none;">GitHub ↗</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Lab -->
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:700;color:#F29900;background:#FFF8E1;border:1px solid #F29900;padding:0.25rem 0.625rem;border-radius:3px;">Lab</span>
+          <span style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;">Exploración activa. No apto para producción todavía.</span>
+        </div>
+        <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;margin-bottom:1.5rem;max-width:640px;line-height:1.6;">Los repositorios Lab representan exploración técnica activa. Demuestran patrones y enfoques en desarrollo — no productos terminados.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;" class="grid-3">
+          {[
+            {
+              name: 'gitops-stack',
+              layer: 'CI/CD',
+              desc: 'Pipeline Jenkins con asunción de roles IAM y acceso vía SSM — sin credenciales estáticas, sin bastión SSH.',
+              github: 'https://github.com/Liquenson/gitops-stack',
+            },
+            {
+              name: 'linux-fleet-manager',
+              layer: 'Automatización de Flota',
+              desc: 'Framework de automatización Bash 4.0+ para gestión de flotas Linux. Limpio con ShellCheck, CI en Ubuntu, macOS y Windows Git Bash.',
+              github: 'https://github.com/Liquenson/linux-fleet-manager',
+            },
+            {
+              name: 'k8s-devops-platform',
+              layer: 'Plataforma GitOps',
+              desc: 'Plataforma Kubernetes solo-GitOps — ArgoCD vigila el repositorio, kubectl apply nunca se usa directamente. Patrón Kustomize base/overlays.',
+              github: 'https://github.com/Liquenson/k8s-devops-platform',
+            },
+          ].map(({ name, layer, desc, github }) => (
+            <div style="background:#F8F9FA;border:1px solid #DADCE0;border-top:3px solid #F29900;border-radius:8px;padding:1.25rem;" class="card-premium">
+              <p style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#9AA0A6;margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
+              <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1rem;font-weight:700;color:#202124;margin:0 0 0.5rem;">{name}</h3>
+              <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;line-height:1.6;margin:0 0 1rem;">{desc}</p>
+              <a href={github} target="_blank" rel="noopener noreferrer"
+                style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;text-decoration:none;"
+              >GitHub ↗</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="es" />
+</Layout>
+
+<style>
+  @media (max-width: 767px) {
+    .grid-2 {
+      grid-template-columns: 1fr !important;
+    }
+    .grid-3 {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
