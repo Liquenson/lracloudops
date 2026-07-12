@@ -76,22 +76,22 @@ const deliverySteps = [
   {
     step: '01',
     title: 'Assess',
-    desc: 'Free infrastructure security audit via lra scan — Trivy for vulnerabilities, Checkov for IaC misconfigurations. Delivered within 24 hours.',
+    desc: 'lra scan — Trivy and Checkov analysis across your codebase. Report within 24 hours.',
   },
   {
     step: '02',
     title: 'Architect',
-    desc: 'Infrastructure design based on your workload requirements — VPC topology, compute tier, data layer, security boundaries.',
+    desc: 'VPC topology, compute tier, data layer and security boundaries — designed around your workload.',
   },
   {
     step: '03',
     title: 'Engineer',
-    desc: 'IaC with Terraform, container orchestration with Kubernetes, GitOps delivery with ArgoCD — no manual deployments.',
+    desc: 'Terraform, Kubernetes, ArgoCD — defined in code, deployed declaratively.',
   },
   {
     step: '04',
     title: 'Operate',
-    desc: 'Continuous security scanning, infrastructure drift detection and monthly platform reviews.',
+    desc: 'Monthly security scans, drift detection and platform reviews.',
   },
 ]
 
@@ -181,7 +181,7 @@ const tabs = [
 
 <Layout
   title="Platform Engineering for production workloads — LRA CloudOps"
-  description="DevOps automation with specialized agents. 4 open source projects covering AI agents, AWS infrastructure, Kubernetes and cloud automation."
+  description="Platform Engineering for production workloads — Infrastructure as Code, Kubernetes, GitOps and AI orchestration built on open source projects you can inspect."
   lang="en"
 >
   <Header lang="en" currentPath={Astro.url.pathname} />
@@ -191,7 +191,7 @@ const tabs = [
      ============================================================ -->
   <section
     data-hero
-    style="background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 50%, #FFFFFF 100%); padding: 5rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden;"
+    style="background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 50%, #FFFFFF 100%); padding: 4.25rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden;"
   >
     <div
       style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,115,232,0.06) 0%, transparent 70%); pointer-events: none;"
@@ -222,7 +222,7 @@ const tabs = [
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.125rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-inline: auto; margin-bottom: 2.5rem;"
       >
         Infrastructure as Code, Kubernetes, GitOps and AI orchestration —
-        built on open source foundations you can audit, fork and extend.
+        open source foundations, production-grade delivery.
       </p>
 
       <div
@@ -494,7 +494,7 @@ const tabs = [
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 3rem; text-align: center;"
       >
-        Four open source repositories. Four production-grade capabilities. One engineering practice.
+        Four repositories. Four production-grade capabilities. One platform.
       </p>
 
       <div
@@ -906,7 +906,7 @@ const tabs = [
     <div style="max-width: 1280px; margin: 0 auto;">
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Engineering Capabilities</p>
       <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;">Platform Engineering capabilities</h2>
-      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Defined by outcomes, not tooling.</p>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Defined by what they enable in production.</p>
 
       <div data-animate="stagger" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="services-list-grid">
         {capabilities.map(({ capability, desc, project, color }) => (
@@ -927,6 +927,10 @@ const tabs = [
     <div style="max-width: 1280px; margin: 0 auto;">
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #5F6368; text-align: center; margin-bottom: 1.5rem; letter-spacing: 0.08em; text-transform: uppercase;">
         Cloud platforms
+      </p>
+
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;text-align:center;margin-bottom:1.5rem;max-width:560px;margin-inline:auto;">
+        The platform runs on any major cloud provider. Infrastructure modules are cloud-portable — consistent architecture regardless of deployment target.
       </p>
 
       <!-- Logos row -->
@@ -989,7 +993,7 @@ const tabs = [
      ============================================================ -->
   <section
     data-animate="fade-up"
-    style="background: #FFFFFF; padding: 5rem 1.5rem; text-align: center;"
+    style="background: #FFFFFF; padding: 4.25rem 1.5rem; text-align: center;"
   >
     <div style="max-width: 640px; margin: 0 auto;">
       <h2

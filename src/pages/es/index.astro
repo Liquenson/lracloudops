@@ -76,22 +76,22 @@ const deliverySteps = [
   {
     step: '01',
     title: 'Evaluar',
-    desc: 'Auditoría de seguridad de infraestructura gratuita vía lra scan — Trivy para vulnerabilidades, Checkov para misconfiguraciones de IaC. Entregada en 24 horas.',
+    desc: 'lra scan — análisis con Trivy y Checkov sobre todo tu código. Informe en 24 horas.',
   },
   {
     step: '02',
     title: 'Arquitectar',
-    desc: 'Diseño de infraestructura basado en los requisitos de tu carga de trabajo — topología VPC, capa de cómputo, capa de datos, límites de seguridad.',
+    desc: 'Topología VPC, capa de cómputo, capa de datos y límites de seguridad — diseñados en torno a tu carga de trabajo.',
   },
   {
     step: '03',
     title: 'Construir',
-    desc: 'IaC con Terraform, orquestación de contenedores con Kubernetes, entrega GitOps con ArgoCD — sin despliegues manuales.',
+    desc: 'Terraform, Kubernetes, ArgoCD — definidos en código, desplegados de forma declarativa.',
   },
   {
     step: '04',
     title: 'Operar',
-    desc: 'Escaneo de seguridad continuo, detección de deriva de infraestructura y revisiones mensuales de la plataforma.',
+    desc: 'Escaneos de seguridad mensuales, detección de deriva y revisiones de plataforma.',
   },
 ]
 
@@ -181,7 +181,7 @@ const tabs = [
 
 <Layout
   title="Platform Engineering para cargas de trabajo en producción — LRA CloudOps"
-  description="Automatización DevOps con agentes especializados. 4 proyectos open source que cubren agentes IA, infraestructura AWS, Kubernetes y automatización cloud."
+  description="Platform Engineering para cargas de trabajo en producción — Infrastructure as Code, Kubernetes, GitOps y orquestación IA construidos sobre proyectos open source que puedes inspeccionar."
   lang="es"
 >
   <Header lang="es" currentPath={Astro.url.pathname} />
@@ -191,7 +191,7 @@ const tabs = [
      ============================================================ -->
   <section
     data-hero
-    style="background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 50%, #FFFFFF 100%); padding: 5rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden;"
+    style="background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 50%, #FFFFFF 100%); padding: 4.25rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden;"
   >
     <div
       style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,115,232,0.06) 0%, transparent 70%); pointer-events: none;"
@@ -222,8 +222,7 @@ const tabs = [
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.125rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-inline: auto; margin-bottom: 2.5rem;"
       >
         Infrastructure as Code, Kubernetes, GitOps y orquestación IA —
-        construido sobre fundamentos open source que puedes auditar, bifurcar
-        y extender.
+        fundamentos open source, entrega de grado producción.
       </p>
 
       <div
@@ -495,7 +494,7 @@ const tabs = [
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 3rem; text-align: center;"
       >
-        Cuatro repositorios open source. Cuatro capacidades de grado producción. Una práctica de ingeniería.
+        Cuatro repositorios. Cuatro capacidades de grado producción. Una plataforma.
       </p>
 
       <div
@@ -907,7 +906,7 @@ const tabs = [
     <div style="max-width: 1280px; margin: 0 auto;">
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Capacidades de Ingeniería</p>
       <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;">Capacidades de Platform Engineering</h2>
-      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Definidas por resultados, no por herramientas.</p>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Definidas por lo que permiten conseguir en producción.</p>
 
       <div data-animate="stagger" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="services-list-grid">
         {capabilities.map(({ capability, desc, project, color }) => (
@@ -928,6 +927,10 @@ const tabs = [
     <div style="max-width: 1280px; margin: 0 auto;">
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #5F6368; text-align: center; margin-bottom: 1.5rem; letter-spacing: 0.08em; text-transform: uppercase;">
         Plataformas cloud
+      </p>
+
+      <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;text-align:center;margin-bottom:1.5rem;max-width:560px;margin-inline:auto;">
+        La plataforma funciona sobre cualquier proveedor cloud principal. Los módulos de infraestructura son portables — arquitectura consistente independientemente del destino de despliegue.
       </p>
 
       <!-- Logos row -->
@@ -990,7 +993,7 @@ const tabs = [
      ============================================================ -->
   <section
     data-animate="fade-up"
-    style="background: #FFFFFF; padding: 5rem 1.5rem; text-align: center;"
+    style="background: #FFFFFF; padding: 4.25rem 1.5rem; text-align: center;"
   >
     <div style="max-width: 640px; margin: 0 auto;">
       <h2
