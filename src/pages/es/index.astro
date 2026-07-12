@@ -180,7 +180,7 @@ const tabs = [
 ---
 
 <Layout
-  title="LRA CloudOps — Plataforma de Ingeniería DevOps"
+  title="Platform Engineering para cargas de trabajo en producción — LRA CloudOps"
   description="Automatización DevOps con agentes especializados. 4 proyectos open source que cubren agentes IA, infraestructura AWS, Kubernetes y automatización cloud."
   lang="es"
 >
@@ -909,9 +909,9 @@ const tabs = [
       <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;">Capacidades de Platform Engineering</h2>
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Definidas por resultados, no por herramientas.</p>
 
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="services-list-grid">
+      <div data-animate="stagger" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="services-list-grid">
         {capabilities.map(({ capability, desc, project, color }) => (
-          <div style={`background: #FFFFFF; border: 1px solid #DADCE0; border-top: 3px solid ${color}; border-radius: 8px; padding: 1.5rem;`} class="card-premium">
+          <div data-animate-child style={`background: #FFFFFF; border: 1px solid #DADCE0; border-top: 3px solid ${color}; border-radius: 8px; padding: 1.5rem;`} class="card-premium">
             <h3 style="font-family: 'Red Hat Display', sans-serif; font-size: 0.9375rem; font-weight: 700; color: #202124; margin-bottom: 0.5rem;">{capability}</h3>
             <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.6; margin-bottom: 1rem;">{desc}</p>
             <span style={`font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: ${color}; background: ${color}15; border: 1px solid ${color}30; padding: 0.125rem 0.5rem; border-radius: 3px;`}>↗ {project}</span>
