@@ -47,25 +47,25 @@ const maturityStyles: Record<string, { bg: string; text: string }> = {
 
 const ecosystemLayers = [
   {
-    label: 'Interfaz',
+    label: 'Interfaz de Cliente',
     color: '#1A73E8',
     name: 'lracloudops.com',
     desc: 'Punto de entrada de cara al cliente. El Smart Scan gratuito dispara una auditoría real con Trivy + Checkov.',
   },
   {
-    label: 'Orquestación',
+    label: 'Orquestación IA',
     color: '#137333',
     name: 'lra-ai-platform',
     desc: '8 agentes especializados con un motor de gobernanza de 5 niveles coordinan las capas de abajo.',
   },
   {
-    label: 'Infraestructura',
+    label: 'Infraestructura Cloud',
     color: '#F29900',
     name: 'aws-terraform-devops · aws-devops-agent',
     desc: 'AWS gestionado con Terraform (VPC, EKS, RDS, ECR) más operaciones AWS en lenguaje natural.',
   },
   {
-    label: 'Runtime',
+    label: 'Runtime de Contenedores',
     color: '#C5221F',
     name: 'k8s-on-premise',
     desc: 'Clúster Kubernetes bare-metal con kubeadm, redes Calico y sync ArgoCD.',
@@ -75,23 +75,23 @@ const ecosystemLayers = [
 const deliverySteps = [
   {
     step: '01',
-    title: 'Descubrir',
-    desc: 'Auditoría de infraestructura y seguridad gratuita vía Smart Scan — Trivy + Checkov, informe generado con IA.',
+    title: 'Evaluar',
+    desc: 'Auditoría de seguridad de infraestructura gratuita vía lra scan — Trivy para vulnerabilidades, Checkov para misconfiguraciones de IaC. Entregada en 24 horas.',
   },
   {
     step: '02',
-    title: 'Diseñar',
-    desc: 'Arquitectura de módulos Terraform para VPC, EKS, RDS y ECR, dimensionada a tu carga de trabajo real.',
+    title: 'Arquitectar',
+    desc: 'Diseño de infraestructura basado en los requisitos de tu carga de trabajo — topología VPC, capa de cómputo, capa de datos, límites de seguridad.',
   },
   {
     step: '03',
-    title: 'Automatizar',
-    desc: 'CI/CD con GitHub Actions y sincronización GitOps vía ArgoCD — sin despliegues manuales.',
+    title: 'Construir',
+    desc: 'IaC con Terraform, orquestación de contenedores con Kubernetes, entrega GitOps con ArgoCD — sin despliegues manuales.',
   },
   {
     step: '04',
     title: 'Operar',
-    desc: 'Observabilidad con Prometheus + Grafana e iteración continua tras el lanzamiento.',
+    desc: 'Escaneo de seguridad continuo, detección de drift de infraestructura y revisiones mensuales de la plataforma.',
   },
 ]
 
@@ -214,17 +214,16 @@ const tabs = [
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.875rem, 5vw, 3.5rem); font-weight: 900; color: #202124; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem;"
       >
-        Construimos plataformas.<br />
-        <span style="color: #1A73E8;">No solo infraestructura.</span>
+        Platform Engineering<br />
+        <span style="color: #1A73E8;">para cargas de trabajo en producción.</span>
       </h1>
 
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.125rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-inline: auto; margin-bottom: 2.5rem;"
       >
-        4 proyectos open source — orquestación IA, infraestructura AWS y
-        Kubernetes — construidos como capas de una única práctica de
-        ingeniería de plataformas, no herramientas sueltas. Todas las
-        métricas extraídas directamente del código.
+        Infrastructure as Code, Kubernetes, GitOps y orquestación IA —
+        construido sobre fundamentos open source que puedes auditar, bifurcar
+        y extender.
       </p>
 
       <div
@@ -250,7 +249,7 @@ const tabs = [
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-bottom: 3rem;"
       >
-        ✓ 4+ años en producción &nbsp;·&nbsp; ✓ AWS · Azure · GCP &nbsp;·&nbsp;
+        ✓ Grado producción &nbsp;·&nbsp; ✓ AWS · Azure · GCP &nbsp;·&nbsp;
         ✓ Open Source &nbsp;·&nbsp; ✓ Infraestructura healthcare
       </p>
 
@@ -491,12 +490,12 @@ const tabs = [
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem; text-align: center;"
       >
-        El ecosistema de ingeniería de plataformas
+        Un stack de plataforma, no un portfolio
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 3rem; text-align: center;"
       >
-        4 capas, cada una respaldada por un proyecto open source real.
+        Cuatro repositorios open source. Cuatro capacidades de grado producción. Una práctica de ingeniería.
       </p>
 
       <div
@@ -549,11 +548,18 @@ const tabs = [
       <div
         style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;"
       >
-        <p
-          style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 600; color: #202124;"
-        >
-          Capacidades principales
-        </p>
+        <div>
+          <p
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 600; color: #202124;"
+          >
+            Plataforma Open Source
+          </p>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-top: 0.25rem;"
+          >
+            Cuatro capacidades. Inspecciona el código.
+          </p>
+        </div>
         <a
           href="https://github.com/lra-cloud-ops"
           target="_blank" rel="noopener noreferrer"
@@ -614,12 +620,12 @@ const tabs = [
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem;"
       >
-        Cómo lo entregamos
+        Modelo de colaboración
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2.5rem;"
       >
-        El mismo proceso detrás de cada proyecto de este ecosistema.
+        Del assessment a las operaciones — un proceso de ingeniería repetible.
       </p>
 
       <div
@@ -900,7 +906,8 @@ const tabs = [
   <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0;" data-animate="fade-up">
     <div style="max-width: 1280px; margin: 0 auto;">
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Capacidades de Ingeniería</p>
-      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 2rem;">Lo que entregamos, no lo que usamos</h2>
+      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;">Capacidades de Platform Engineering</h2>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Definidas por resultados, no por herramientas.</p>
 
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="services-list-grid">
         {capabilities.map(({ capability, desc, project, color }) => (
@@ -989,14 +996,13 @@ const tabs = [
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 600; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
       >
-        Auditoría de infraestructura gratuita. Sin compromiso.
+        Comienza con una auditoría de infraestructura gratuita.
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; margin-bottom: 2.5rem; line-height: 1.7;"
       >
-        Ejecutamos lra scan en tu repositorio GitHub y te entregamos un
-        informe completo de seguridad e IaC. Si te resulta útil, hablamos de
-        soporte continuo.
+        Envía un repositorio de GitHub. Recibe un análisis completo de
+        seguridad e IaC en menos de 24 horas. Sin compromiso.
       </p>
       <div
         class="cta-group"

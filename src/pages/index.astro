@@ -47,25 +47,25 @@ const maturityStyles: Record<string, { bg: string; text: string }> = {
 
 const ecosystemLayers = [
   {
-    label: 'Interface',
+    label: 'Client Interface',
     color: '#1A73E8',
     name: 'lracloudops.com',
     desc: 'Client-facing entry point. The free Smart Scan triggers a real Trivy + Checkov audit.',
   },
   {
-    label: 'Orchestration',
+    label: 'AI Orchestration',
     color: '#137333',
     name: 'lra-ai-platform',
     desc: '8 specialized agents behind a 5-level governance engine coordinate the layers below.',
   },
   {
-    label: 'Infrastructure',
+    label: 'Cloud Infrastructure',
     color: '#F29900',
     name: 'aws-terraform-devops · aws-devops-agent',
     desc: 'Terraform-managed AWS (VPC, EKS, RDS, ECR) plus natural-language AWS operations.',
   },
   {
-    label: 'Runtime',
+    label: 'Container Runtime',
     color: '#C5221F',
     name: 'k8s-on-premise',
     desc: 'Bare-metal Kubernetes cluster with kubeadm, Calico networking and ArgoCD sync.',
@@ -75,23 +75,23 @@ const ecosystemLayers = [
 const deliverySteps = [
   {
     step: '01',
-    title: 'Discover',
-    desc: 'Free infrastructure and security audit via Smart Scan — Trivy + Checkov, report generated with AI.',
+    title: 'Assess',
+    desc: 'Free infrastructure security audit via lra scan — Trivy for vulnerabilities, Checkov for IaC misconfigurations. Delivered within 24 hours.',
   },
   {
     step: '02',
-    title: 'Design',
-    desc: 'Terraform module architecture for VPC, EKS, RDS and ECR, sized to your actual workload.',
+    title: 'Architect',
+    desc: 'Infrastructure design based on your workload requirements — VPC topology, compute tier, data layer, security boundaries.',
   },
   {
     step: '03',
-    title: 'Automate',
-    desc: 'CI/CD with GitHub Actions and GitOps sync via ArgoCD — no manual deploys.',
+    title: 'Engineer',
+    desc: 'IaC with Terraform, container orchestration with Kubernetes, GitOps delivery with ArgoCD — no manual deployments.',
   },
   {
     step: '04',
     title: 'Operate',
-    desc: 'Prometheus + Grafana observability and continuous iteration after launch.',
+    desc: 'Continuous security scanning, infrastructure drift detection and monthly platform reviews.',
   },
 ]
 
@@ -214,16 +214,15 @@ const tabs = [
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.875rem, 5vw, 3.5rem); font-weight: 900; color: #202124; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem;"
       >
-        We build platforms.<br />
-        <span style="color: #1A73E8;">Not just infrastructure.</span>
+        Platform Engineering<br />
+        <span style="color: #1A73E8;">for production workloads.</span>
       </h1>
 
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.125rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-inline: auto; margin-bottom: 2.5rem;"
       >
-        4 open source projects — AI orchestration, AWS infrastructure and
-        Kubernetes — built as layers of one platform engineering practice,
-        not disconnected tools. All metrics sourced directly from the codebase.
+        Infrastructure as Code, Kubernetes, GitOps and AI orchestration —
+        built on open source foundations you can audit, fork and extend.
       </p>
 
       <div
@@ -249,7 +248,7 @@ const tabs = [
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-bottom: 3rem;"
       >
-        ✓ 4+ years in production &nbsp;·&nbsp; ✓ AWS · Azure · GCP &nbsp;·&nbsp;
+        ✓ Production-grade &nbsp;·&nbsp; ✓ AWS · Azure · GCP &nbsp;·&nbsp;
         ✓ Open Source &nbsp;·&nbsp; ✓ Healthcare infrastructure
       </p>
 
@@ -490,12 +489,12 @@ const tabs = [
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem; text-align: center;"
       >
-        The Platform Engineering Ecosystem
+        A platform stack, not a portfolio
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 3rem; text-align: center;"
       >
-        4 layers, each backed by a real open source project.
+        Four open source repositories. Four production-grade capabilities. One engineering practice.
       </p>
 
       <div
@@ -548,11 +547,18 @@ const tabs = [
       <div
         style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;"
       >
-        <p
-          style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 600; color: #202124;"
-        >
-          Core Capabilities
-        </p>
+        <div>
+          <p
+            style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 600; color: #202124;"
+          >
+            Open Source Platform
+          </p>
+          <p
+            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-top: 0.25rem;"
+          >
+            Four capabilities. Inspect the code.
+          </p>
+        </div>
         <a
           href="https://github.com/lra-cloud-ops"
           target="_blank" rel="noopener noreferrer"
@@ -613,12 +619,12 @@ const tabs = [
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: #202124; margin-bottom: 0.5rem;"
       >
-        How we deliver
+        Engagement model
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2.5rem;"
       >
-        The same process behind every project in this ecosystem.
+        From assessment to operations — a repeatable engineering process.
       </p>
 
       <div
@@ -899,7 +905,8 @@ const tabs = [
   <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0; border-bottom: 1px solid #DADCE0;" data-animate="fade-up">
     <div style="max-width: 1280px; margin: 0 auto;">
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Engineering Capabilities</p>
-      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 2rem;">What we deliver, not what we use</h2>
+      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.375rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;">Platform Engineering capabilities</h2>
+      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;">Defined by outcomes, not tooling.</p>
 
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="services-list-grid">
         {capabilities.map(({ capability, desc, project, color }) => (
@@ -988,14 +995,13 @@ const tabs = [
       <h2
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 600; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
       >
-        Free infrastructure audit. No commitment.
+        Start with a free infrastructure audit.
       </h2>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; margin-bottom: 2.5rem; line-height: 1.7;"
       >
-        Run lra scan on your GitHub repository and get a complete security
-        and IaC report. If you find it useful, we can talk about ongoing
-        support.
+        Submit a GitHub repository. Receive a complete security and IaC
+        analysis within 24 hours. No commitment required.
       </p>
       <div
         class="cta-group"
