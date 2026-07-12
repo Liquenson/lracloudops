@@ -113,6 +113,22 @@ const projects: [string, string][] = [
             </a>
           ))
         }
+        <a
+          href={isES ? '/es/open-source' : '/open-source'}
+          style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
+          onmouseover="this.style.color='#FFFFFF'"
+          onmouseout="this.style.color='#9AA0A6'"
+        >
+          {isES ? 'Plataforma Open Source' : 'Open Source Platform'}
+        </a>
+        <a
+          href={isES ? '/es/casos-de-uso' : '/case-studies'}
+          style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
+          onmouseover="this.style.color='#FFFFFF'"
+          onmouseout="this.style.color='#9AA0A6'"
+        >
+          {isES ? 'Casos de Uso' : 'Case Studies'}
+        </a>
       </div>
 
       <!-- Language selector — Red Hat style with dropdown -->
