@@ -7,7 +7,7 @@ const successRedirectUrl = new URL('/es/contacto?success=true', Astro.site).toSt
 ---
 
 <Layout
-  title="Contacto — LRA CloudOps"
+  title="Auditoría de Infraestructura Gratuita — LRA CloudOps"
   description="Contacta con LRA CloudOps. Preguntas sobre la plataforma, precios o consultoría DevOps."
   lang="es"
 >
@@ -20,22 +20,23 @@ const successRedirectUrl = new URL('/es/contacto?success=true', Astro.site).toSt
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
       >
-        Contacto
+        Auditoría de Infraestructura Gratuita
       </p>
       <h1
         style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
       >
-        Contacta con nosotros
+        Comienza con una auditoría de infraestructura gratuita.
       </h1>
       <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: #E6F4EA; color: #137333; padding: 0.375rem 0.875rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 500; margin-top: 1rem;">
         <span style="width: 6px; height: 6px; border-radius: 50%; background: #137333;"></span>
-        Respondemos en menos de 24 horas
+        Análisis automatizado entregado en menos de 24 horas
       </div>
       <p
         style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; max-width: 480px;"
       >
-        ¿Preguntas sobre la plataforma, precios o consultoría? Envía un mensaje
-        y responderemos en 24 horas.
+        Envía un repositorio de GitHub. Recibe un análisis completo de
+        seguridad e IaC — Trivy, Checkov, remediación generada con IA — en
+        menos de 24 horas. Sin compromiso.
       </p>
     </div>
   </section>
@@ -136,6 +137,9 @@ const successRedirectUrl = new URL('/es/contacto?success=true', Astro.site).toSt
                 onfocus="this.style.borderColor='#1A73E8'; this.style.boxShadow='0 0 0 3px rgba(26,115,232,0.12)'"
                 onblur="this.style.borderColor='#DADCE0'; this.style.boxShadow='none'"
               />
+              <p style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#5F6368;margin-top:0.375rem;line-height:1.5;">
+                Formato: <code style="font-family:'Red Hat Mono',monospace;background:#F8F9FA;padding:0.125rem 0.375rem;border-radius:3px;font-size:0.75rem;">org/repositorio</code> — admite repositorios públicos y privados. Los repos privados requieren acceso de lectura temporal mediante un token de GitHub que tú controlas.
+              </p>
               <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #137333; margin-top: 0.375rem;">
                 ✓ Si incluyes un repo de GitHub, recibirás automáticamente una auditoría de seguridad gratuita en minutos.
               </p>
@@ -173,12 +177,12 @@ const successRedirectUrl = new URL('/es/contacto?success=true', Astro.site).toSt
           >
             <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
             <h3 style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #137333; margin-bottom: 0.5rem;">
-              Mensaje enviado correctamente
+              Solicitud de auditoría recibida.
             </h3>
             <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; line-height: 1.6;">
-              Responderemos en menos de 24 horas.<br />
-              <strong>Si incluiste un repo de GitHub, tu auditoría de seguridad ya está en marcha.</strong><br />
-              Revisa tu email en los próximos minutos.
+              Si incluiste un repositorio de GitHub, lra scan ya está en
+              marcha — análisis Trivy y Checkov sobre todo tu código.
+              Recibirás el informe en menos de 24 horas.
             </p>
           </div>
         </div>
