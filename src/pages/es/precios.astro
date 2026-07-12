@@ -72,7 +72,7 @@ import Footer from '../../components/layout/Footer.astro'
             {[
               'Pipeline CI/CD (GitHub Actions + ArgoCD)',
               'Infraestructura AWS con Terraform',
-              'Setup de Kubernetes',
+              'Setup de clúster Kubernetes',
               'Escaneo de seguridad incluido (Trivy + Checkov)',
               'Documentación completa',
               'Entrega: 1-2 semanas',
@@ -92,7 +92,7 @@ import Footer from '../../components/layout/Footer.astro'
         <!-- Consultoría mensual -->
         <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
           <div>
-            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Platform Retainer</p>
+            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Retención de Plataforma</p>
             <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Operaciones de plataforma continuas — escaneos de seguridad mensuales, revisiones de infraestructura, auditorías CI/CD y acceso directo de ingeniería. Mes a mes, sin permanencia.</p>
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
@@ -102,12 +102,12 @@ import Footer from '../../components/layout/Footer.astro'
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
             {[
-              'Todo lo de Proyecto DevOps',
-              'lra scan mensual en todos los repos',
-              'infrastructure_review — análisis AWS/K8s',
-              'Auditoría de pipelines CI/CD',
-              'Acceso directo por email + LinkedIn',
-              'Soporte en la implementación',
+              'Todo lo incluido en Proyecto de Ingeniería',
+              'lra scan mensual en todos los repositorios',
+              'Revisión mensual de infraestructura',
+              'Auditoría de pipeline CI/CD',
+              'Acceso directo por email y LinkedIn',
+              'Soporte de implementación',
               'Sin contrato a largo plazo',
             ].map(f => (
               <li style="display: flex; align-items: start; gap: 0.625rem;">
@@ -124,7 +124,7 @@ import Footer from '../../components/layout/Footer.astro'
 
       <!-- Nota -->
       <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-align: center; margin-top: 2rem;">
-        El precio del proyecto varía según el alcance. Infraestructura AWS: €800-2.000. Setup Kubernetes: €1.000-2.500. Solo CI/CD: €400-800. Contáctanos para un presupuesto.
+        El precio del proyecto varía según el alcance. Infraestructura AWS: €800-2.000. Setup Kubernetes: €1.000-2.500. Solo CI/CD: €400-800. Contáctanos para un presupuesto personalizado.
       </p>
     </div>
   </section>
@@ -152,12 +152,12 @@ import Footer from '../../components/layout/Footer.astro'
             a: 'Terraform, manifiestos Kubernetes, Dockerfiles, GitHub Actions, AWS CloudFormation y Ansible. Trivy también escanea imágenes de contenedor cuando están presentes en el repositorio.'
           },
           {
-            q: '¿El Platform Retainer requiere contrato?',
-            a: 'Sin contrato a largo plazo. La facturación es mes a mes, cancelable con 7 días de aviso.'
+            q: '¿Hay permanencia en la retención de plataforma?',
+            a: 'Sin permanencia. La retención de plataforma se factura mes a mes y puede cancelarse con 7 días de preaviso.'
           },
           {
-            q: '¿Qué ocurre después de la auditoría gratuita?',
-            a: 'El informe se entrega por email. Si se necesita soporte continuo, se puede hablar de un Platform Retainer. Sin presión.'
+            q: '¿Qué ocurre tras la auditoría gratuita?',
+            a: 'Recibes el informe por email. Si el análisis resulta útil y necesitas soporte continuo, podemos hablar de una retención de plataforma. Sin presión.'
           },
         ].map(({ q, a }) => (
           <details style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; overflow: hidden;">
