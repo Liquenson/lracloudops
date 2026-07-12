@@ -405,6 +405,13 @@ header {
   }
 }
 
+/* === Mobile (< 768px) === */
+@media (max-width: 767px) {
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* === Extra small screens (< 360px) === */
 @media (max-width: 360px) {
   section {
