@@ -166,6 +166,47 @@ import Footer from '../components/layout/Footer.astro'
     </div>
   </section>
 
+  <!-- What's included -->
+  <section style="background:var(--color-bg-soft);padding:var(--section-py) var(--container-px);border-top:1px solid var(--color-border);" data-animate="fade-up">
+    <div style="max-width:860px;margin-inline:auto;">
+      <h2 style="font-family:var(--font-display);font-size:clamp(var(--text-2xl),2.5vw,var(--text-4xl));font-weight:700;color:var(--color-text);margin-bottom:var(--space-8);text-align:center;">What's included</h2>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-family:var(--font-body);font-size:var(--text-md);">
+          <thead>
+            <tr style="border-bottom:2px solid var(--color-border);">
+              <th style="text-align:left;padding:var(--space-4);color:var(--color-text-secondary);font-weight:600;"></th>
+              <th style="text-align:center;padding:var(--space-4);color:var(--color-text);font-weight:700;">Free Audit</th>
+              <th style="text-align:center;padding:var(--space-4);color:var(--color-primary);font-weight:700;background:var(--color-primary-light);border-radius:var(--radius-md) var(--radius-md) 0 0;">Engineering Project</th>
+              <th style="text-align:center;padding:var(--space-4);color:var(--color-text);font-weight:700;">Platform Retainer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { feature: 'lra scan security audit', free: true, project: true, retainer: true },
+              { feature: 'AI-generated remediation report', free: true, project: true, retainer: true },
+              { feature: 'Trivy + Checkov analysis', free: true, project: true, retainer: true },
+              { feature: 'Implementation support', free: false, project: true, retainer: true },
+              { feature: 'Infrastructure as Code (Terraform)', free: false, project: true, retainer: true },
+              { feature: 'Kubernetes platform setup', free: false, project: true, retainer: true },
+              { feature: 'GitOps pipeline (ArgoCD)', free: false, project: true, retainer: true },
+              { feature: 'Monthly security scans', free: false, project: false, retainer: true },
+              { feature: 'Infrastructure drift detection', free: false, project: false, retainer: true },
+              { feature: 'Direct engineering access', free: false, project: false, retainer: true },
+              { feature: 'Monthly platform review', free: false, project: false, retainer: true },
+            ].map(({ feature, free, project, retainer }, i) => (
+              <tr style={`border-bottom:1px solid var(--color-border);${i % 2 === 0 ? '' : 'background:var(--color-bg-soft);'}`}>
+                <td style="padding:var(--space-3) var(--space-4);color:var(--color-text);">{feature}</td>
+                <td style="text-align:center;padding:var(--space-3);">{free ? '✓' : '—'}</td>
+                <td style="text-align:center;padding:var(--space-3);background:rgba(26,115,232,0.04);">{project ? '✓' : '—'}</td>
+                <td style="text-align:center;padding:var(--space-3);">{retainer ? '✓' : '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0;" data-animate="fade-up">
     <div style="max-width: 860px; margin: 0 auto;">
