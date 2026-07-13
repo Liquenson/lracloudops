@@ -289,6 +289,42 @@ const techs = [
     </div>
   </section>
 
+  <!-- Por qué confiar en LRA CloudOps -->
+  <section style="background:var(--color-bg-soft);padding:var(--section-py) var(--container-px);border-top:1px solid var(--color-border);">
+    <div style="max-width:var(--container-max);margin-inline:auto;">
+      <p style="font-family:var(--font-body);font-size:var(--text-sm);font-weight:600;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:var(--space-2);">Transparencia</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(var(--text-2xl),2.5vw,var(--text-4xl));font-weight:700;color:var(--color-text);margin-bottom:var(--space-6);">¿Por qué confiar en LRA CloudOps?</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);" class="grid-3">
+        {[
+          {
+            title: 'Open source por defecto',
+            desc: 'El código que aplicamos a la infraestructura de clientes está en repositorios públicos — puedes inspeccionarlo antes de contratar.',
+            link: '/es/open-source',
+            linkText: 'Ver el código →',
+          },
+          {
+            title: 'Output real del scan',
+            desc: 'La auditoría gratuita usa la misma herramienta lra scan que ejecutamos en nuestros propios repos — sin caja negra, sin herramientas propietarias que no puedas verificar.',
+            link: '/es/casos-de-uso',
+            linkText: 'Ver output real →',
+          },
+          {
+            title: 'Práctica individual, alcance claro',
+            desc: 'Un ingeniero. Proyectos de alcance fijo. Sin gestores de cuenta, sin traspasos. Trabajas directamente con la persona que escribe el código.',
+            link: '/es/sobre-nosotros',
+            linkText: 'Perfil de ingeniería →',
+          },
+        ].map(({ title, desc, link, linkText }) => (
+          <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);">
+            <h3 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3);">{title}</h3>
+            <p style="font-family:var(--font-body);font-size:var(--text-md);color:var(--color-text-secondary);line-height:1.7;margin-bottom:var(--space-4);">{desc}</p>
+            <a href={link} style="font-family:var(--font-body);font-size:var(--text-base);font-weight:600;color:var(--color-primary);text-decoration:none;">{linkText}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <Footer lang="es" />
 </Layout>
 
@@ -307,11 +343,15 @@ const techs = [
     .services-list-grid {
       grid-template-columns: 1fr !important;
     }
+    .grid-3 {
+      grid-template-columns: 1fr !important;
+    }
   }
 
   @media (min-width: 768px) and (max-width: 1023px) {
     .service-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
     .services-list-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .consulting-cards { grid-template-columns: repeat(2, 1fr) !important; }
+    .grid-3 { grid-template-columns: 1fr !important; }
   }
 </style>
