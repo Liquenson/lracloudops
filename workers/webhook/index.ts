@@ -119,6 +119,11 @@ export default {
       return new Response('Method not allowed', { status: 405, headers: corsHeaders() })
     }
 
+    const contentType = request.headers.get('Content-Type') || ''
+    if (!contentType.includes('application/json')) {
+      return new Response('Unsupported Media Type', { status: 415, headers: corsHeaders() })
+    }
+
     const headers = corsHeaders()
 
     let payload: WebhookPayload
