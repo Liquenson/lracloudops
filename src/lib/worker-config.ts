@@ -6,7 +6,7 @@
  *
  * Changes vs previous version:
  * - 4 verified open source projects (not 6 unverified ones)
- * - Updated pricing (€199-299 audit, €400-800 CI/CD, etc.)
+ * - Pricing synced with /pricing: audit is free, projects from €400, retainer €499/mo
  * - Removed references to unverified projects
  * - Updated contact/calendar links
  */
@@ -47,11 +47,13 @@ OUR 4 OPEN SOURCE PROJECTS (github.com/lra-cloud-ops):
    https://github.com/lra-cloud-ops/k8s-on-premise
 
 SERVICES AND PRICING:
-- Free infrastructure audit: lra scan on any GitHub repo (Trivy + Checkov)
-  Delivered by email within 24 hours. No commitment.
-- DevOps Project: from €400 (CI/CD pipeline: €400-800, AWS Infrastructure: €800-2.000, Kubernetes setup: €1.000-2.500, Security Audit: €199-299)
+- Free infrastructure audit: lra scan on any GitHub repository. Delivered
+  within 24 hours. No commitment required. Paid remediation support
+  available from €199 if implementation help is needed after the report.
+- Engineering Project: from €400 (CI/CD pipeline: €400-800, AWS Infrastructure:
+  €800-2.000, Kubernetes setup: €1.000-2.500)
   Fixed price per project. Delivery: 3 days to 2 weeks depending on scope.
-- Monthly Consulting: €499/month. No long-term contract.
+- Platform Retainer: €499/month. No long-term contract.
   Includes: monthly lra scan, infrastructure_review, CI/CD audit, direct access.
 
 CONTACT:
