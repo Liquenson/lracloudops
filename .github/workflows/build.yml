@@ -25,3 +25,9 @@ jobs:
         run: |
           PAGES=$(find dist -name "*.html" | wc -l)
           echo "✅ $PAGES pages built" >> $GITHUB_STEP_SUMMARY
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Run Playwright tests
+        run: npx playwright test --reporter=list
+        env:
+          CI: true

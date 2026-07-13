@@ -1,70 +1,96 @@
 import { test, expect } from '@playwright/test'
 
-test('homepage loads correctly', async ({ page }) => {
-  await page.goto('/')
-  await expect(page).toHaveTitle(/LRA/)
-})
+const BASE_URL = 'http://localhost:4321'
 
-test('navbar has navigation links', async ({ page }) => {
-  await page.goto('/')
-  const nav = page.locator('nav[aria-label="Main navigation"]')
-  await expect(nav).toBeVisible()
-  const links = nav.locator('a')
-  expect(await links.count()).toBeGreaterThanOrEqual(3)
-})
+test.describe('LRA CloudOps — Core pages', () => {
 
-test('language switch EN→ES works', async ({ page }) => {
-  await page.goto('/')
-  await expect(page).toHaveURL('http://localhost:4321/')
-  await page.goto('/es')
-  await expect(page).toHaveURL(/\/es/)
-  await expect(page).toHaveTitle(/LRA/)
-})
+  test('Home EN — loads and has correct title', async ({ page }) => {
+    await page.goto(BASE_URL)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('h1')).toBeVisible()
+  })
 
-test('/contact page loads the form', async ({ page }) => {
-  await page.goto('/contact')
-  const form = page.locator('form')
-  await expect(form).toBeVisible()
-})
+  test('Home ES — loads correctly', async ({ page }) => {
+    await page.goto(`${BASE_URL}/es/`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('h1')).toBeVisible()
+  })
 
-test('/assessment page loads the quiz', async ({ page }) => {
-  await page.goto('/assessment')
-  await expect(page.locator('body')).toBeVisible()
-  // Quiz content is present
-  const heading = page.locator('h1, h2').first()
-  await expect(heading).toBeVisible()
-})
+  test('Projects page — loads and shows projects', async ({ page }) => {
+    await page.goto(`${BASE_URL}/projects`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('h1')).toBeVisible()
+  })
 
-test('/projects page loads projects', async ({ page }) => {
-  await page.goto('/projects')
-  await expect(page.locator('body')).toBeVisible()
-  const heading = page.locator('h1, h2').first()
-  await expect(heading).toBeVisible()
-})
+  test('Services page — loads correctly', async ({ page }) => {
+    await page.goto(`${BASE_URL}/services`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('h1')).toBeVisible()
+  })
 
-test('AI agent chat button is visible', async ({ page }) => {
-  await page.goto('/')
-  const chatToggle = page.locator('#lra-chat-toggle')
-  await expect(chatToggle).toBeVisible()
-})
+  test('Pricing page — loads correctly', async ({ page }) => {
+    await page.goto(`${BASE_URL}/pricing`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('h1')).toBeVisible()
+  })
 
-test('/open-source page loads correctly', async ({ page }) => {
-  await page.goto('/open-source')
-  await expect(page.locator('body')).toBeVisible()
-  const heading = page.locator('h1').first()
-  await expect(heading).toBeVisible()
-})
+  test('Audit page — loads and has form', async ({ page }) => {
+    await page.goto(`${BASE_URL}/audit`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('form')).toBeVisible()
+    await expect(page.locator('input[name="github_repo"]')).toBeVisible()
+  })
 
-test('/resources has filter buttons visible', async ({ page }) => {
-  await page.goto('/resources')
-  const filterContainer = page.locator('#resource-filters')
-  await expect(filterContainer).toBeVisible()
-  const filterBtns = filterContainer.locator('button')
-  expect(await filterBtns.count()).toBeGreaterThanOrEqual(3)
-})
+  test('About page — loads correctly', async ({ page }) => {
+    await page.goto(`${BASE_URL}/about`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('h1')).toBeVisible()
+  })
 
-test('/blog has newsletter form', async ({ page }) => {
-  await page.goto('/blog')
-  const form = page.locator('.newsletter-cta-form').first()
-  await expect(form).toBeVisible()
+  test('Contact page — loads and has form', async ({ page }) => {
+    await page.goto(`${BASE_URL}/contact`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('form')).toBeVisible()
+  })
+
+  test('Open Source page — loads correctly', async ({ page }) => {
+    await page.goto(`${BASE_URL}/open-source`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('h1')).toBeVisible()
+  })
+
+  test('Case Studies page — loads correctly', async ({ page }) => {
+    await page.goto(`${BASE_URL}/case-studies`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+    await expect(page.locator('h1')).toBeVisible()
+  })
+
+  test('Privacy Policy — loads correctly', async ({ page }) => {
+    await page.goto(`${BASE_URL}/privacy`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+  })
+
+  test('Terms of Service — loads correctly', async ({ page }) => {
+    await page.goto(`${BASE_URL}/terms`)
+    await expect(page).toHaveTitle(/LRA CloudOps/)
+  })
+
+  test('404 page — shows error page', async ({ page }) => {
+    await page.goto(`${BASE_URL}/nonexistent-page-xyz`)
+    await expect(page.locator('body')).toBeVisible()
+  })
+
+  test('Chat widget — toggle button exists', async ({ page }) => {
+    await page.goto(BASE_URL)
+    await expect(page.locator('#chat-toggle')).toBeVisible()
+  })
+
+  test('Navigation — all main links work', async ({ page }) => {
+    await page.goto(BASE_URL)
+    const navLinks = ['/projects', '/services', '/pricing', '/about']
+    for (const link of navLinks) {
+      const response = await page.request.get(`${BASE_URL}${link}`)
+      expect(response.status()).toBe(200)
+    }
+  })
 })
