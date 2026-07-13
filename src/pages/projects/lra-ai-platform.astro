@@ -14,20 +14,20 @@ import { getTagClass } from '../../lib/tagColors'
 
   <!-- HERO -->
   <section
-    style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+    style="background: var(--color-bg-soft); padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
       <!-- Breadcrumb -->
       <div
-        style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem;"
+        style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-family: var(--font-body); font-size: 0.875rem;"
       >
-        <a href="/" style="color: #5F6368; text-decoration: none;">Home</a>
+        <a href="/" style="color: var(--color-text-secondary); text-decoration: none;">Home</a>
         <span style="color: #DADCE0;">/</span>
-        <a href="/projects" style="color: #5F6368; text-decoration: none;"
+        <a href="/projects" style="color: var(--color-text-secondary); text-decoration: none;"
           >Projects</a
         >
         <span style="color: #DADCE0;">/</span>
-        <span style="color: #202124; font-weight: 500;">lra-ai-platform</span>
+        <span style="color: var(--color-text); font-weight: 500;">lra-ai-platform</span>
       </div>
 
       <div
@@ -37,7 +37,7 @@ import { getTagClass } from '../../lib/tagColors'
         <div>
           <!-- Badge -->
           <div
-            style="display: inline-flex; align-items: center; gap: 0.5rem; background: #E6F4EA; color: #137333; padding: 0.25rem 0.75rem; border-radius: 4px; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem;"
+            style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-success-light); color: var(--color-success); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem;"
           >
             <span
               style="width: 6px; height: 6px; background: #137333; border-radius: 50%;"
@@ -46,12 +46,12 @@ import { getTagClass } from '../../lib/tagColors'
           </div>
 
           <h1
-            style="font-family: 'Red Hat Mono', monospace; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem; letter-spacing: -0.02em;"
+            style="font-family: var(--font-mono); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem; letter-spacing: -0.02em;"
           >
-            lra-ai-platform<span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:600;color:#137333;background:#E6F4EA;border:1px solid #137333;padding:0.25rem 0.75rem;border-radius:4px;margin-left:1rem;">Core Platform</span>
+            lra-ai-platform<span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:var(--color-success);background:var(--color-success-light);border:1px solid #137333;padding:0.25rem 0.75rem;border-radius:var(--radius-sm);margin-left:1rem;">Core Platform</span>
           </h1>
           <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;"
+            style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;"
           >
             Multi-agent platform for DevOps and Platform Engineering. 8
             specialized agents execute real infrastructure operations across
@@ -74,7 +74,7 @@ import { getTagClass } from '../../lib/tagColors'
                 'Trivy',
                 'Checkov',
               ].map((tag) => (
-                <span class={getTagClass(tag)} style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368; background: #FFFFFF; border: 1px solid #DADCE0; padding: 0.2rem 0.625rem; border-radius: 4px;">
+                <span class={getTagClass(tag)} style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-secondary); background: var(--color-bg); border: 1px solid var(--color-border); padding: 0.2rem 0.625rem; border-radius: var(--radius-sm);">
                   {tag}
                 </span>
               ))
@@ -87,7 +87,7 @@ import { getTagClass } from '../../lib/tagColors'
               href="https://github.com/lra-cloud-ops/lra-ai-platform"
               target="_blank"
               rel="noopener noreferrer"
-              style="display: inline-flex; align-items: center; gap: 0.5rem; background: #202124; color: #FFFFFF; padding: 0.625rem 1.25rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; background: #202124; color: #FFFFFF; padding: 0.625rem 1.25rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
               class="btn-premium"
             >
               <svg
@@ -103,7 +103,7 @@ import { getTagClass } from '../../lib/tagColors'
             </a>
             <a
               href="/contact"
-              style="display: inline-flex; align-items: center; background: transparent; color: #1A73E8; padding: 0.625rem 1.25rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+              style="display: inline-flex; align-items: center; background: transparent; color: var(--color-primary); padding: 0.625rem 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
               class="btn-premium-outline"
             >
               Request demo
@@ -122,11 +122,11 @@ import { getTagClass } from '../../lib/tagColors'
               { value: '9', label: 'Workflows' },
               { value: '33', label: 'Tests · 0.14s' },
             ].map(({ value, label }) => (
-              <div style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1rem; text-align: center;">
-                <div style="font-family: 'Red Hat Display', sans-serif; font-size: 2rem; font-weight: 900; color: #1A73E8; line-height: 1;">
+              <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1rem; text-align: center;">
+                <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--color-primary); line-height: 1;">
                   {value}
                 </div>
-                <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; margin-top: 0.25rem;">
+                <div style="font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 0.25rem;">
                   {label}
                 </div>
               </div>
@@ -139,7 +139,7 @@ import { getTagClass } from '../../lib/tagColors'
 
   <!-- WHAT IT DOES -->
   <section
-    style="background: #FFFFFF; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+    style="background: var(--color-bg); padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
     data-animate="fade-up"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
@@ -149,17 +149,17 @@ import { getTagClass } from '../../lib/tagColors'
       >
         <div>
           <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;"
+            style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;"
           >
             What it does
           </p>
           <h2
-            style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 1rem; line-height: 1.2;"
+            style="font-family: var(--font-display); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: var(--color-text); margin-bottom: 1rem; line-height: 1.2;"
           >
             8 agents. 14 integrations. One governance engine.
           </h2>
           <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
+            style="font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 1.5rem;"
           >
             lra-ai-platform routes intents to specialized agents via keyword
             matching. Each agent executes real tasks through live integrations —
@@ -184,7 +184,7 @@ import { getTagClass } from '../../lib/tagColors'
                     height="16"
                     viewBox="0 0 24 24"
                     fill="none"
-                    style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"
+                    style="color: var(--color-primary); flex-shrink: 0; margin-top: 2px;"
                   >
                     <path
                       d="M20 6L9 17l-5-5"
@@ -194,7 +194,7 @@ import { getTagClass } from '../../lib/tagColors'
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">
+                  <span style="font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary);">
                     {item}
                   </span>
                 </div>
@@ -205,54 +205,54 @@ import { getTagClass } from '../../lib/tagColors'
 
         <!-- Terminal -->
         <div
-          style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.5rem; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; line-height: 1.9; color: #5F6368;"
+          style="background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.9; color: var(--color-text-secondary);"
         >
           <div
-            style="color: #9AA0A6; font-style: italic; margin-bottom: 0.75rem;"
+            style="color: var(--color-text-muted); font-style: italic; margin-bottom: 0.75rem;"
           >
             # lra-ai-platform CLI
           </div>
           <div style="margin-bottom: 0.5rem;">
-            <span style="color: #1A73E8; font-weight: 600;">$</span>
-            <span style="color: #202124; font-weight: 500;">
+            <span style="color: var(--color-primary); font-weight: 600;">$</span>
+            <span style="color: var(--color-text); font-weight: 500;">
               lra scan --github lra-cloud-ops/aws-terraform-devops</span
             >
           </div>
-          <div style="margin-left: 1rem; color: #5F6368;">
+          <div style="margin-left: 1rem; color: var(--color-text-secondary);">
             → Scanning repository...
           </div>
           <div
-            style="margin-left: 1rem; color: #5F6368; margin-bottom: 0.5rem;"
+            style="margin-left: 1rem; color: var(--color-text-secondary); margin-bottom: 0.5rem;"
           >
             → Running Trivy + Checkov...
           </div>
-          <div style="margin-left: 1rem; color: #137333;">✓ Critical: 0</div>
-          <div style="margin-left: 1rem; color: #137333;">
+          <div style="margin-left: 1rem; color: var(--color-success);">✓ Critical: 0</div>
+          <div style="margin-left: 1rem; color: var(--color-success);">
             ✓ Checkov: 47/50 passed
           </div>
           <div
-            style="margin-left: 1rem; color: #F29900; margin-bottom: 0.75rem;"
+            style="margin-left: 1rem; color: var(--color-warning); margin-bottom: 0.75rem;"
           >
             ⚠ Medium: 2 → documented
           </div>
           <div style="margin-bottom: 0.5rem;">
-            <span style="color: #1A73E8; font-weight: 600;">$</span>
-            <span style="color: #202124; font-weight: 500;">
+            <span style="color: var(--color-primary); font-weight: 600;">$</span>
+            <span style="color: var(--color-text); font-weight: 500;">
               lra review aws</span
             >
           </div>
-          <div style="margin-left: 1rem; color: #137333;">
+          <div style="margin-left: 1rem; color: var(--color-success);">
             ✓ EKS: healthy · 3 nodes
           </div>
-          <div style="margin-left: 1rem; color: #137333;">
+          <div style="margin-left: 1rem; color: var(--color-success);">
             ✓ RDS: running · 99.9%
           </div>
           <div
-            style="margin-left: 1rem; color: #137333; margin-bottom: 0.75rem;"
+            style="margin-left: 1rem; color: var(--color-success); margin-bottom: 0.75rem;"
           >
             ✓ ArgoCD: synced · 0 drift
           </div>
-          <div style="margin-left: 1rem; color: #137333;">
+          <div style="margin-left: 1rem; color: var(--color-success);">
             ✓ Completed in 4.2s
           </div>
         </div>
@@ -262,17 +262,17 @@ import { getTagClass } from '../../lib/tagColors'
 
   <!-- 8 AGENTS GRID -->
   <section
-    style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+    style="background: var(--color-bg-soft); padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
     data-animate="fade-up"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
       <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
+        style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
       >
         Agents
       </p>
       <h2
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: #202124; margin-bottom: 2rem;"
+        style="font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: var(--color-text); margin-bottom: 2rem;"
       >
         8 specialized agents
       </h2>
@@ -334,22 +334,22 @@ import { getTagClass } from '../../lib/tagColors'
             },
           ].map((agent) => (
             <div
-              style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.25rem;"
+              style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.25rem;"
               class="card-premium"
               data-animate-child
             >
               <div
                 style={`width: 8px; height: 8px; border-radius: 50%; background: ${agent.color}; margin-bottom: 0.875rem;`}
               />
-              <h3 style="font-family: 'Red Hat Display', sans-serif; font-size: 0.9375rem; font-weight: 700; color: #202124; margin-bottom: 0.5rem;">
+              <h3 style="font-family: var(--font-display); font-size: 0.9375rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;">
                 {agent.name}
               </h3>
-              <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; line-height: 1.5; margin-bottom: 0.875rem;">
+              <p style="font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 0.875rem;">
                 {agent.role}
               </p>
               <div style="display: flex; flex-wrap: wrap; gap: 0.25rem;">
                 {agent.tools.map((tool) => (
-                  <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.6875rem; color: #5F6368; background: #F8F9FA; border: 1px solid #DADCE0; padding: 0.125rem 0.375rem; border-radius: 3px;">
+                  <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--color-text-secondary); background: var(--color-bg-soft); border: 1px solid var(--color-border); padding: 0.125rem 0.375rem; border-radius: 3px;">
                     {tool}
                   </span>
                 ))}
@@ -363,22 +363,22 @@ import { getTagClass } from '../../lib/tagColors'
 
   <!-- GOVERNANCE ENGINE -->
   <section
-    style="background: #FFFFFF; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+    style="background: var(--color-bg); padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
     data-animate="fade-up"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
       <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
+        style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
       >
         Governance
       </p>
       <h2
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: #202124; margin-bottom: 0.5rem;"
+        style="font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: var(--color-text); margin-bottom: 0.5rem;"
       >
         5-level RBAC. Fail-safe by default.
       </h2>
       <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem;"
+        style="font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary); margin-bottom: 2rem;"
       >
         Every task passes through the Governance Engine before execution. Deny
         by default.
@@ -422,17 +422,17 @@ import { getTagClass } from '../../lib/tagColors'
             },
           ].map((level) => (
             <div
-              style={`background: #F8F9FA; border: 1px solid #DADCE0; border-top: 3px solid ${level.color}; border-radius: 6px; padding: 1rem;`}
+              style={`background: var(--color-bg-soft); border: 1px solid var(--color-border); border-top: 3px solid ${level.color}; border-radius: var(--radius-md); padding: 1rem;`}
             >
               <div
-                style={`font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; font-weight: 700; color: ${level.color}; margin-bottom: 0.375rem;`}
+                style={`font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: ${level.color}; margin-bottom: 0.375rem;`}
               >
                 Level {level.level}
               </div>
-              <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">
+              <div style="font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.25rem;">
                 {level.name}
               </div>
-              <div style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; color: #5F6368; line-height: 1.4;">
+              <div style="font-family: var(--font-body); font-size: 0.75rem; color: var(--color-text-secondary); line-height: 1.4;">
                 {level.desc}
               </div>
             </div>
@@ -444,17 +444,17 @@ import { getTagClass } from '../../lib/tagColors'
 
   <!-- CTA -->
   <section
-    style="background: #F8F9FA; padding: 3rem 1.5rem; text-align: center;"
+    style="background: var(--color-bg-soft); padding: 3rem 1.5rem; text-align: center;"
     data-animate="fade-up"
   >
     <div style="max-width: 560px; margin: 0 auto;">
       <h2
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #202124; margin-bottom: 1rem;"
+        style="font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--color-text); margin-bottom: 1rem;"
       >
         Explore the source code
       </h2>
       <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; margin-bottom: 2rem; line-height: 1.7;"
+        style="font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary); margin-bottom: 2rem; line-height: 1.7;"
       >
         All code is public. Clone it, run it, evaluate it.
       </p>
@@ -465,7 +465,7 @@ import { getTagClass } from '../../lib/tagColors'
           href="https://github.com/lra-cloud-ops/lra-ai-platform"
           target="_blank"
           rel="noopener noreferrer"
-          style="display: inline-flex; align-items: center; gap: 0.5rem; background: #1A73E8; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: #1A73E8; color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
           class="btn-premium"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
@@ -477,7 +477,7 @@ import { getTagClass } from '../../lib/tagColors'
         </a>
         <a
           href="/contact"
-          style="display: inline-flex; align-items: center; background: transparent; color: #1A73E8; padding: 0.75rem 1.5rem; border-radius: 4px; border: 1px solid #DADCE0; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
+          style="display: inline-flex; align-items: center; background: transparent; color: var(--color-primary); padding: 0.75rem 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none;"
           class="btn-premium-outline"
         >
           Get in touch
@@ -487,11 +487,11 @@ import { getTagClass } from '../../lib/tagColors'
   </section>
 
   <!-- ECOSYSTEM -->
-  <section style="background:#F8F9FA;padding:3rem 1.5rem;border-top:1px solid #DADCE0;">
+  <section style="background:var(--color-bg-soft);padding:3rem 1.5rem;border-top:1px solid #DADCE0;">
     <div style="max-width:1280px;margin:0 auto;">
-      <p style="font-family:'Red Hat Text',sans-serif;font-size:0.75rem;font-weight:600;color:#1A73E8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Ecosystem</p>
-      <h2 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:#202124;margin-bottom:0.5rem;">Role in the platform</h2>
-      <p style="font-family:'Red Hat Text',sans-serif;font-size:1rem;color:#5F6368;margin-bottom:2rem;max-width:640px;">lra-ai-platform is the AI orchestration layer — it coordinates the other projects through specialized agents and governance.</p>
+      <p style="font-family:var(--font-body);font-size:0.75rem;font-weight:600;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Ecosystem</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:var(--color-text);margin-bottom:0.5rem;">Role in the platform</h2>
+      <p style="font-family:var(--font-body);font-size:1rem;color:var(--color-text-secondary);margin-bottom:2rem;max-width:640px;">lra-ai-platform is the AI orchestration layer — it coordinates the other projects through specialized agents and governance.</p>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;" class="grid-2">
         {[
           { action:'Scans security of', target:'aws-terraform-devops', desc:'SecurityAgent runs Trivy + Checkov on Terraform modules and K8s manifests.', href:'/projects/aws-terraform-devops' },
@@ -499,12 +499,12 @@ import { getTagClass } from '../../lib/tagColors'
           { action:'Provisions infrastructure on', target:'aws-terraform-devops', desc:'CloudArchitectAgent can trigger Terraform plan/apply workflows.', href:'/projects/aws-terraform-devops' },
           { action:'Monitors platform on', target:'k8s-on-premise', desc:'SREAgent checks cluster health, resource usage and GitOps sync status.', href:'/projects/k8s-on-premise' },
         ].map(({ action, target, desc, href }) => (
-          <div style="background:#FFFFFF;border:1px solid #DADCE0;border-radius:8px;padding:1.25rem;">
+          <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.25rem;">
             <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.5rem;">
-              <span style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#9AA0A6;">{action}</span>
-              <a href={href} style="font-family:'Red Hat Mono',monospace;font-size:0.8125rem;font-weight:600;color:#1A73E8;text-decoration:none;">{target} →</a>
+              <span style="font-family:var(--font-body);font-size:0.8125rem;color:var(--color-text-muted);">{action}</span>
+              <a href={href} style="font-family:var(--font-mono);font-size:0.8125rem;font-weight:600;color:var(--color-primary);text-decoration:none;">{target} →</a>
             </div>
-            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;margin:0;line-height:1.6;">{desc}</p>
+            <p style="font-family:var(--font-body);font-size:0.875rem;color:var(--color-text-secondary);margin:0;line-height:1.6;">{desc}</p>
           </div>
         ))}
       </div>

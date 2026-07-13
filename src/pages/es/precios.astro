@@ -12,26 +12,26 @@ import Footer from '../../components/layout/Footer.astro'
   <Header lang="es" currentPath={Astro.url.pathname} />
 
   <!-- Hero -->
-  <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0; text-align: center;">
+  <section style="background: var(--color-bg-soft); padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0; text-align: center;">
     <div style="max-width: 1280px; margin: 0 auto;">
-      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Precios Transparentes</p>
-      <h1 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;">Alcance fijo. Precio fijo.</h1>
-      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368;">Sin facturación por horas. Sin scope creep. Entregables definidos en cada proyecto.</p>
+      <p style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Precios Transparentes</p>
+      <h1 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">Alcance fijo. Precio fijo.</h1>
+      <p style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary);">Sin facturación por horas. Sin scope creep. Entregables definidos en cada proyecto.</p>
     </div>
   </section>
 
   <!-- 3 planes -->
-  <section style="background: #FFFFFF; padding: 3rem 1.5rem;">
+  <section style="background: var(--color-bg); padding: 3rem 1.5rem;">
     <div style="max-width: 1100px; margin: 0 auto;">
 
       <!-- Calculadora de colaboración -->
-      <div style="background:#F8F9FA;border:1px solid #DADCE0;border-radius:12px;padding:2rem;margin-bottom:3rem;" data-animate="fade-up">
-        <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin-bottom:1.5rem;">Encuentra el tipo de colaboración adecuado</h3>
+      <div style="background:var(--color-bg-soft);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:2rem;margin-bottom:3rem;" data-animate="fade-up">
+        <h3 style="font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--color-text);margin-bottom:1.5rem;">Encuentra el tipo de colaboración adecuado</h3>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;" class="grid-2">
           <div>
-            <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.5rem;">Necesidad principal</label>
-            <select id="calc-need" style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#FFFFFF;border:1px solid #DADCE0;border-radius:6px;outline:none;">
+            <label style="font-family:var(--font-body);font-size:0.875rem;font-weight:600;color:var(--color-text);display:block;margin-bottom:0.5rem;">Necesidad principal</label>
+            <select id="calc-need" style="width:100%;padding:0.625rem 0.875rem;font-family:var(--font-body);font-size:0.9375rem;color:var(--color-text);background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);outline:none;">
               <option value="audit">Auditoría de seguridad</option>
               <option value="cicd">Pipeline CI/CD</option>
               <option value="aws">Infraestructura AWS</option>
@@ -40,8 +40,8 @@ import Footer from '../../components/layout/Footer.astro'
             </select>
           </div>
           <div>
-            <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.5rem;">Número de repositorios</label>
-            <select id="calc-repos" style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#FFFFFF;border:1px solid #DADCE0;border-radius:6px;outline:none;">
+            <label style="font-family:var(--font-body);font-size:0.875rem;font-weight:600;color:var(--color-text);display:block;margin-bottom:0.5rem;">Número de repositorios</label>
+            <select id="calc-repos" style="width:100%;padding:0.625rem 0.875rem;font-family:var(--font-body);font-size:0.9375rem;color:var(--color-text);background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);outline:none;">
               <option value="1">1 repositorio</option>
               <option value="2-5">2-5 repositorios</option>
               <option value="6+">6+ repositorios</option>
@@ -49,12 +49,12 @@ import Footer from '../../components/layout/Footer.astro'
           </div>
         </div>
 
-        <div id="calc-result" style="background:#FFFFFF;border:1px solid #1A73E8;border-radius:8px;padding:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div id="calc-result" style="background:var(--color-bg);border:1px solid #1A73E8;border-radius:var(--radius-lg);padding:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
           <div>
-            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;margin:0 0 0.25rem;">Colaboración recomendada</p>
-            <p id="calc-plan" style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin:0;">Auditoría de Infraestructura — Gratis</p>
+            <p style="font-family:var(--font-body);font-size:0.875rem;color:var(--color-text-secondary);margin:0 0 0.25rem;">Colaboración recomendada</p>
+            <p id="calc-plan" style="font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--color-text);margin:0;">Auditoría de Infraestructura — Gratis</p>
           </div>
-          <a href="/es/auditoria" id="calc-cta" style="display:inline-flex;align-items:center;gap:0.375rem;background:#1A73E8;color:#FFFFFF;padding:0.625rem 1.25rem;border-radius:4px;font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;">
+          <a href="/es/auditoria" id="calc-cta" style="display:inline-flex;align-items:center;gap:0.375rem;background:#1A73E8;color:#FFFFFF;padding:0.625rem 1.25rem;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.875rem;font-weight:600;text-decoration:none;white-space:nowrap;">
             Empezar →
           </a>
         </div>
@@ -63,13 +63,13 @@ import Footer from '../../components/layout/Footer.astro'
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="pricing-grid">
 
         <!-- Auditoría gratuita -->
-        <div style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
           <div>
-            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Auditoría de Infraestructura</p>
-            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Análisis automatizado de seguridad e IaC de cualquier repositorio de GitHub. Entregado en 24 horas.</p>
+            <p style="font-family: var(--font-display); font-size: 1.0625rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.25rem;">Auditoría de Infraestructura</p>
+            <p style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary);">Análisis automatizado de seguridad e IaC de cualquier repositorio de GitHub. Entregado en 24 horas.</p>
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
-            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">Gratis</span>
+            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">Gratis</span>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
             {[
@@ -81,29 +81,29 @@ import Footer from '../../components/layout/Footer.astro'
               'Entregado en 24 horas',
             ].map(f => (
               <li style="display: flex; align-items: start; gap: 0.625rem;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">{f}</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: var(--color-primary); flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary);">{f}</span>
               </li>
             ))}
           </ul>
-          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: #1A73E8; border: 1px solid #DADCE0;" class="btn-premium-outline">
+          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: var(--color-primary); border: 1px solid var(--color-border);" class="btn-premium-outline">
             Solicitar auditoría gratuita
           </a>
         </div>
 
         <!-- Proyecto DevOps -->
-        <div style="border: 2px solid #1A73E8; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; position: relative; box-shadow: 0 4px 20px rgba(26,115,232,0.12);">
-          <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #1A73E8; color: #FFFFFF; font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 1rem; border-radius: 9999px; white-space: nowrap;">
+        <div style="border: 2px solid #1A73E8; border-radius: var(--radius-lg); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; position: relative; box-shadow: 0 4px 20px rgba(26,115,232,0.12);">
+          <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #1A73E8; color: #FFFFFF; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; padding: 0.25rem 1rem; border-radius: var(--radius-full); white-space: nowrap;">
             Más popular
           </div>
           <div>
-            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Proyecto de Ingeniería</p>
-            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Entrega de alcance fijo — pipeline CI/CD, infraestructura AWS, plataforma Kubernetes o remediación de seguridad. Timeline y entregables definidos por adelantado.</p>
+            <p style="font-family: var(--font-display); font-size: 1.0625rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.25rem;">Proyecto de Ingeniería</p>
+            <p style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary);">Entrega de alcance fijo — pipeline CI/CD, infraestructura AWS, plataforma Kubernetes o remediación de seguridad. Timeline y entregables definidos por adelantado.</p>
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
-            <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368; font-weight: 500;">Desde</span>
-            <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #5F6368; font-weight: 500;">€</span>
-            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">400</span>
+            <span style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); font-weight: 500;">Desde</span>
+            <span style="font-family: var(--font-body); font-size: 1.25rem; color: var(--color-text-secondary); font-weight: 500;">€</span>
+            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">400</span>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
             {[
@@ -116,26 +116,26 @@ import Footer from '../../components/layout/Footer.astro'
               'Precio fijo por proyecto',
             ].map(f => (
               <li style="display: flex; align-items: start; gap: 0.625rem;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">{f}</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: var(--color-primary); flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary);">{f}</span>
               </li>
             ))}
           </ul>
-          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: #1A73E8; color: #FFFFFF;" class="btn-premium">
+          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: #1A73E8; color: #FFFFFF;" class="btn-premium">
             Solicitar presupuesto
           </a>
         </div>
 
         <!-- Consultoría mensual -->
-        <div id="retainer" style="border: 1px solid #DADCE0; border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; scroll-margin-top: 88px;">
+        <div id="retainer" style="border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; scroll-margin-top: 88px;">
           <div>
-            <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;">Retención de Plataforma</p>
-            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">Operaciones de plataforma continuas — escaneos de seguridad mensuales, revisiones de infraestructura, auditorías CI/CD y acceso directo de ingeniería. Mes a mes, sin permanencia.</p>
+            <p style="font-family: var(--font-display); font-size: 1.0625rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.25rem;">Retención de Plataforma</p>
+            <p style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary);">Operaciones de plataforma continuas — escaneos de seguridad mensuales, revisiones de infraestructura, auditorías CI/CD y acceso directo de ingeniería. Mes a mes, sin permanencia.</p>
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
-            <span style="font-family: 'Red Hat Text', sans-serif; font-size: 1.25rem; color: #5F6368; font-weight: 500;">€</span>
-            <span style="font-family: 'Red Hat Display', sans-serif; font-size: 3rem; font-weight: 900; color: #202124; line-height: 1; letter-spacing: -0.04em;">499</span>
-            <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">/mes</span>
+            <span style="font-family: var(--font-body); font-size: 1.25rem; color: var(--color-text-secondary); font-weight: 500;">€</span>
+            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">499</span>
+            <span style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary);">/mes</span>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
             {[
@@ -148,19 +148,19 @@ import Footer from '../../components/layout/Footer.astro'
               'Sin contrato a largo plazo',
             ].map(f => (
               <li style="display: flex; align-items: start; gap: 0.625rem;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: #1A73E8; flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368;">{f}</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: var(--color-primary); flex-shrink: 0; margin-top: 2px;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary);">{f}</span>
               </li>
             ))}
           </ul>
-          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: 4px; font-family: 'Red Hat Text', sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: #1A73E8; border: 1px solid #DADCE0;" class="btn-premium-outline">
+          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: var(--color-primary); border: 1px solid var(--color-border);" class="btn-premium-outline">
             Empezar
           </a>
         </div>
       </div>
 
       <!-- Nota -->
-      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-align: center; margin-top: 2rem;">
+      <p style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-muted); text-align: center; margin-top: 2rem;">
         El precio del proyecto varía según el alcance. Infraestructura AWS: €800-2.000. Setup Kubernetes: €1.000-2.500. Solo CI/CD: €400-800. Contáctanos para un presupuesto personalizado.
       </p>
     </div>
@@ -208,9 +208,9 @@ import Footer from '../../components/layout/Footer.astro'
   </section>
 
   <!-- FAQ -->
-  <section style="background: #F8F9FA; padding: 3rem 1.5rem; border-top: 1px solid #DADCE0;" data-animate="fade-up">
+  <section style="background: var(--color-bg-soft); padding: 3rem 1.5rem; border-top: 1px solid #DADCE0;" data-animate="fade-up">
     <div style="max-width: 860px; margin: 0 auto;">
-      <h2 style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: #202124; margin-bottom: 2rem; text-align: center;">Preguntas frecuentes</h2>
+      <h2 style="font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; color: var(--color-text); margin-bottom: 2rem; text-align: center;">Preguntas frecuentes</h2>
       <div style="display: flex; flex-direction: column; gap: 1rem;">
         {[
           {
@@ -238,12 +238,12 @@ import Footer from '../../components/layout/Footer.astro'
             a: 'Recibes el informe por email. Si el análisis resulta útil y necesitas soporte continuo, podemos hablar de una retención de plataforma. Sin presión.'
           },
         ].map(({ q, a }) => (
-          <details style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; overflow: hidden;">
-            <summary style="padding: 1.125rem 1.5rem; font-family: 'Red Hat Display', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #202124; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+          <details style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden;">
+            <summary style="padding: 1.125rem 1.5rem; font-family: var(--font-display); font-size: 0.9375rem; font-weight: 600; color: var(--color-text); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;">
               {q}
-              <span style="font-size: 1.25rem; color: #1A73E8; flex-shrink: 0; margin-left: 1rem;">+</span>
+              <span style="font-size: 1.25rem; color: var(--color-primary); flex-shrink: 0; margin-left: 1rem;">+</span>
             </summary>
-            <div style="padding: 0 1.5rem 1.125rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; line-height: 1.7; border-top: 1px solid #DADCE0; padding-top: 1rem;">
+            <div style="padding: 0 1.5rem 1.125rem; font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.7; border-top: 1px solid #DADCE0; padding-top: 1rem;">
               {a}
             </div>
           </details>

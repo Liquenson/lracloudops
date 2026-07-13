@@ -98,35 +98,35 @@ const certifications = [
   <Header lang="en" currentPath={Astro.url.pathname} />
 
   <section
-    style="background: #F8F9FA; padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
+    style="background: var(--color-bg-soft); padding: 3rem 1.5rem; border-bottom: 1px solid #DADCE0;"
   >
     <div style="max-width: 1280px; margin: 0 auto;">
       <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
+        style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;"
       >
         Engineering Profile
       </p>
       <h1
-        style="font-family: 'Red Hat Display', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #202124; margin-bottom: 0.75rem;"
+        style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;"
       >
         Ruben Liquenson
       </h1>
       <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 1.0625rem; color: #5F6368;"
+        style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary);"
       >
         Independent Platform Engineer with 4+ years delivering
         production infrastructure on AWS — EKS, RDS, Terraform, ArgoCD, Prometheus.
         Open source practitioner building LRA CloudOps as a solo engineering practice.
       </p>
       <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; margin-top: 0.5rem;"
+        style="font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary); margin-top: 0.5rem;"
       >
         📍 Las Palmas de Gran Canaria, Canarias, España
       </p>
     </div>
   </section>
 
-  <section style="background: #FFFFFF; padding: 3rem 1.5rem;">
+  <section style="background: var(--color-bg); padding: 3rem 1.5rem;">
     <div style="max-width: 1280px; margin: 0 auto;">
       <div
         style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;"
@@ -135,7 +135,7 @@ const certifications = [
         <!-- Left: profile -->
         <div>
           <div
-            style="width: 120px; height: 120px; border-radius: 50%; background: #E8F0FE; border: 3px solid #DADCE0; margin-bottom: 1.5rem; overflow: hidden;"
+            style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-primary-light); border: 3px solid #DADCE0; margin-bottom: 1.5rem; overflow: hidden;"
           >
             <img
               src="/devruben.png"
@@ -145,12 +145,12 @@ const certifications = [
             />
           </div>
           <h2
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; color: #202124; margin-bottom: 0.25rem;"
+            style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.25rem;"
           >
             Ruben Liquenson
           </h2>
           <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; margin-bottom: 1.25rem;"
+            style="font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary); margin-bottom: 1.25rem;"
           >
             DevOps Engineer · AWS Specialist
           </p>
@@ -159,7 +159,7 @@ const certifications = [
               href="https://www.linkedin.com/in/ruben-liquenson-490961269/"
               target="_blank"
               rel="noopener noreferrer"
-              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none;"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-body); font-size: 0.875rem; color: var(--color-primary); text-decoration: none;"
             >
               LinkedIn →
             </a>
@@ -167,18 +167,18 @@ const certifications = [
               href="https://github.com/lra-cloud-ops"
               target="_blank"
               rel="noopener noreferrer"
-              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none;"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-body); font-size: 0.875rem; color: var(--color-primary); text-decoration: none;"
             >
               GitHub →
             </a>
             <a
               href="mailto:liquenson.cloud@gmail.com"
-              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #1A73E8; text-decoration: none;"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-body); font-size: 0.875rem; color: var(--color-primary); text-decoration: none;"
             >
               liquenson.cloud@gmail.com
             </a>
             <p
-              style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; margin-top: 0.5rem;"
+              style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary); margin-top: 0.5rem;"
             >
               📍 Las Palmas de Gran Canaria<br />Canarias, España
             </p>
@@ -188,19 +188,19 @@ const certifications = [
         <!-- Right: bio + experience + skills + education + languages -->
         <div>
           <h3
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.875rem;"
+            style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.875rem;"
           >
             Background
           </h3>
           <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1rem;"
+            style="font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 1rem;"
           >
             DevOps Engineer with 4+ years designing production-grade AWS
             infrastructure. Specialized in Kubernetes (EKS), Terraform, CI/CD
             and GitOps with ArgoCD.
           </p>
           <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1rem;"
+            style="font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 1rem;"
           >
             Most recent experience at Nibble Tech LLC building continuous
             delivery platforms on AWS EKS — fully infrastructure as code,
@@ -208,7 +208,7 @@ const certifications = [
             deployment with ArgoCD and Helm.
           </p>
           <p
-            style="font-family: 'Red Hat Text', sans-serif; font-size: 1rem; color: #5F6368; line-height: 1.7; margin-bottom: 1.5rem;"
+            style="font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 1.5rem;"
           >
             Prior to that, 4 years at iCareMedical designing highly available
             AWS infrastructure for the healthcare sector — a regulated
@@ -217,7 +217,7 @@ const certifications = [
           </p>
 
           <h3
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 1.25rem;"
+            style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-text); margin-bottom: 1.25rem;"
           >
             Experience
           </h3>
@@ -227,27 +227,27 @@ const certifications = [
           >
             {
               experience.map((exp) => (
-                <div data-animate-child class="card-premium" style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.25rem;">
+                <div data-animate-child class="card-premium" style="background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.25rem;">
                   <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
                     <div>
-                      <p style="font-family: 'Red Hat Display', sans-serif; font-size: 1rem; font-weight: 700; color: #202124;">
+                      <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--color-text);">
                         {exp.company}
                       </p>
-                      <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #1A73E8; font-weight: 500;">
+                      <p style="font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-primary); font-weight: 500;">
                         {exp.role}
                       </p>
                     </div>
-                    <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368; background: #FFFFFF; border: 1px solid #DADCE0; padding: 0.2rem 0.625rem; border-radius: 4px; white-space: nowrap;">
+                    <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--color-text-secondary); background: var(--color-bg); border: 1px solid var(--color-border); padding: 0.2rem 0.625rem; border-radius: var(--radius-sm); white-space: nowrap;">
                       {exp.period}
                     </span>
                   </div>
                   <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.375rem;">
                     {exp.highlights.map((h) => (
                       <li style="display: flex; align-items: start; gap: 0.625rem;">
-                        <span style="color: #1A73E8; flex-shrink: 0; margin-top: 1px;">
+                        <span style="color: var(--color-primary); flex-shrink: 0; margin-top: 1px;">
                           →
                         </span>
-                        <span style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368; line-height: 1.5;">
+                        <span style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5;">
                           {h}
                         </span>
                       </li>
@@ -259,7 +259,7 @@ const certifications = [
           </div>
 
           <h3
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.875rem;"
+            style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.875rem;"
           >
             Core skills
           </h3>
@@ -270,11 +270,11 @@ const certifications = [
           >
             {
               skills.map(({ category, skills }) => (
-                <div data-animate-child class="card-premium" style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; padding: 0.875rem;">
-                  <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem;">
+                <div data-animate-child class="card-premium" style="background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.875rem;">
+                  <p style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem;">
                     {category}
                   </p>
-                  <p style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368;">
+                  <p style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--color-text-secondary);">
                     {skills}
                   </p>
                 </div>
@@ -282,9 +282,9 @@ const certifications = [
             }
           </div>
 
-          <div style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
-            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.75rem; font-weight: 600; color: #1A73E8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">Open Source Work</p>
-            <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; color: #5F6368; line-height: 1.7; margin-bottom: 1rem;">
+          <div style="background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+            <p style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">Open Source Work</p>
+            <p style="font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 1rem;">
               The experience above is reflected in the LRA CloudOps open
               source ecosystem — four repositories covering the complete
               Platform Engineering stack.
@@ -297,7 +297,7 @@ const certifications = [
                 { name: 'aws-devops-agent', label: 'Lab' },
               ].map(({ name, label }) => (
                 <a href={`/projects/${name}`} title={label}
-                  style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #1A73E8; text-decoration: none; background: #E8F0FE; border: 1px solid #C5D8F8; padding: 0.25rem 0.625rem; border-radius: 4px;"
+                  style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-decoration: none; background: var(--color-primary-light); border: 1px solid #C5D8F8; padding: 0.25rem 0.625rem; border-radius: var(--radius-sm);"
                   onmouseover="this.style.background='#C5D8F8'"
                   onmouseout="this.style.background='#E8F0FE'"
                 >{name}</a>
@@ -306,7 +306,7 @@ const certifications = [
           </div>
 
           <h3
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 1rem;"
+            style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-text); margin-bottom: 1rem;"
           >
             Education
           </h3>
@@ -315,16 +315,16 @@ const certifications = [
           >
             {
               education.map((edu) => (
-                <div style="display: flex; align-items: start; justify-content: space-between; padding: 0.875rem 1rem; background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; flex-wrap: wrap; gap: 0.5rem;">
+                <div style="display: flex; align-items: start; justify-content: space-between; padding: 0.875rem 1rem; background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: var(--radius-md); flex-wrap: wrap; gap: 0.5rem;">
                   <div>
-                    <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #202124;">
+                    <p style="font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; color: var(--color-text);">
                       {edu.institution}
                     </p>
-                    <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #5F6368;">
+                    <p style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary);">
                       {edu.degree}
                     </p>
                   </div>
-                  <span style="font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #5F6368; white-space: nowrap;">
+                  <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--color-text-secondary); white-space: nowrap;">
                     {edu.period}
                   </span>
                 </div>
@@ -333,25 +333,25 @@ const certifications = [
           </div>
 
           <h3
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 1rem;"
+            style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-text); margin-bottom: 1rem;"
           >
             Certifications
           </h3>
           <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;">
             {certifications.map(cert => (
-              <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px;">
-                <div style={`width: 36px; height: 36px; border-radius: 6px; background: ${cert.color}15; display: flex; align-items: center; justify-content: center; font-size: 1.125rem; flex-shrink: 0;`}>{cert.icon}</div>
+              <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+                <div style={`width: 36px; height: 36px; border-radius: var(--radius-md); background: ${cert.color}15; display: flex; align-items: center; justify-content: center; font-size: 1.125rem; flex-shrink: 0;`}>{cert.icon}</div>
                 <div>
-                  <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: 600; color: #202124;">{cert.name}</p>
-                  <p style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368;">{cert.detail}</p>
+                  <p style="font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; color: var(--color-text);">{cert.name}</p>
+                  <p style="font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-secondary);">{cert.detail}</p>
                 </div>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: #137333; margin-left: auto; flex-shrink: 0;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color: var(--color-success); margin-left: auto; flex-shrink: 0;"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             ))}
           </div>
 
           <h3
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 1rem;"
+            style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-text); margin-bottom: 1rem;"
           >
             Languages
           </h3>
@@ -359,29 +359,29 @@ const certifications = [
             style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;"
           >
             <div
-              style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; padding: 0.75rem 1.25rem;"
+              style="background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.75rem 1.25rem;"
             >
               <p
-                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124;"
+                style="font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--color-text);"
               >
                 Español
               </p>
               <p
-                style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368;"
+                style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-secondary);"
               >
                 Nativo
               </p>
             </div>
             <div
-              style="background: #F8F9FA; border: 1px solid #DADCE0; border-radius: 6px; padding: 0.75rem 1.25rem;"
+              style="background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.75rem 1.25rem;"
             >
               <p
-                style="font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; font-weight: 600; color: #202124;"
+                style="font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--color-text);"
               >
                 English
               </p>
               <p
-                style="font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368;"
+                style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-secondary);"
               >
                 B1 — In progress
               </p>
@@ -389,7 +389,7 @@ const certifications = [
           </div>
 
           <h3
-            style="font-family: 'Red Hat Display', sans-serif; font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.875rem;"
+            style="font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.875rem;"
           >
             Affiliations
           </h3>
@@ -407,7 +407,7 @@ const certifications = [
               <img
                 src="/nibble-logo.jpg"
                 alt="Nibble Tech LLC"
-                style="height: 36px; width: auto; border-radius: 4px;"
+                style="height: 36px; width: auto; border-radius: var(--radius-sm);"
               />
             </a>
             <a
@@ -421,7 +421,7 @@ const certifications = [
               <img
                 src="/itla-logo.jpg"
                 alt="ITLA"
-                style="height: 36px; width: auto; border-radius: 4px;"
+                style="height: 36px; width: auto; border-radius: var(--radius-sm);"
               />
             </a>
           </div>

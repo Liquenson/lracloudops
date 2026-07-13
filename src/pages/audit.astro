@@ -19,10 +19,10 @@ import FormField from '../components/ui/FormField.astro'
       <div style="margin-bottom:1.5rem;">
         <Badge variant="success" dot={true}>Automated · Delivered within 24 hours</Badge>
       </div>
-      <h1 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:900;color:#202124;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;">
+      <h1 style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.25rem);font-weight:900;color:var(--color-text);line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;">
         Free infrastructure<br/>security audit.
       </h1>
-      <p style="font-family:'Red Hat Text',sans-serif;font-size:1.125rem;color:#5F6368;line-height:1.7;margin-bottom:2rem;max-width:560px;margin-inline:auto;">
+      <p style="font-family:var(--font-body);font-size:1.125rem;color:var(--color-text-secondary);line-height:1.7;margin-bottom:2rem;max-width:560px;margin-inline:auto;">
         Submit a GitHub repository. lra scan runs Trivy and Checkov across your entire codebase — infrastructure, containers and pipelines. Complete PASS/FAIL report with remediation guidance, delivered by email.
       </p>
 
@@ -33,22 +33,22 @@ import FormField from '../components/ui/FormField.astro'
           { icon: '⚙️', title: 'IaC analysis', desc: 'Checkov audits Terraform, Kubernetes and Dockerfile configurations.' },
           { icon: '📋', title: 'Remediation report', desc: 'AI-generated findings with severity classification and fix guidance.' },
         ].map(({ icon, title, desc }) => (
-          <div style="background:#FFFFFF;border:1px solid #DADCE0;border-radius:8px;padding:1.25rem;">
+          <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.25rem;">
             <div style="font-size:1.25rem;margin-bottom:0.5rem;">{icon}</div>
-            <h3 style="font-family:'Red Hat Display',sans-serif;font-size:0.9375rem;font-weight:700;color:#202124;margin-bottom:0.25rem;">{title}</h3>
-            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#5F6368;margin:0;line-height:1.5;">{desc}</p>
+            <h3 style="font-family:var(--font-display);font-size:0.9375rem;font-weight:700;color:var(--color-text);margin-bottom:0.25rem;">{title}</h3>
+            <p style="font-family:var(--font-body);font-size:0.8125rem;color:var(--color-text-secondary);margin:0;line-height:1.5;">{desc}</p>
           </div>
         ))}
       </div>
 
       <!-- Form -->
-      <div style="background:#FFFFFF;border:1px solid #DADCE0;border-radius:12px;padding:2rem;text-align:left;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
-        <h2 style="font-family:'Red Hat Display',sans-serif;font-size:1.25rem;font-weight:700;color:#202124;margin-bottom:1.5rem;">Request your free audit</h2>
+      <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:2rem;text-align:left;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+        <h2 style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--color-text);margin-bottom:1.5rem;">Request your free audit</h2>
 
-        <div id="audit-success" style="display:none;background:#E6F4EA;border:1px solid #137333;border-radius:8px;padding:1.5rem;text-align:center;margin-bottom:1rem;">
+        <div id="audit-success" style="display:none;background:var(--color-success-light);border:1px solid #137333;border-radius:var(--radius-lg);padding:1.5rem;text-align:center;margin-bottom:1rem;">
           <div style="font-size:2rem;margin-bottom:0.5rem;">✅</div>
-          <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#137333;margin-bottom:0.5rem;">Audit request received.</h3>
-          <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;margin:0;line-height:1.6;">lra scan is already running — Trivy and Checkov analysis across your codebase. Expect your report within 24 hours.</p>
+          <h3 style="font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--color-success);margin-bottom:0.5rem;">Audit request received.</h3>
+          <p style="font-family:var(--font-body);font-size:0.9375rem;color:var(--color-text-secondary);margin:0;line-height:1.6;">lra scan is already running — Trivy and Checkov analysis across your codebase. Expect your report within 24 hours.</p>
         </div>
 
         <form id="audit-form" action="https://api.web3forms.com/submit" method="POST">
@@ -73,7 +73,7 @@ import FormField from '../components/ui/FormField.astro'
 
           <Button type="submit" size="lg" fullWidth>Request free audit →</Button>
 
-          <p style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#9AA0A6;text-align:center;margin-top:1rem;margin-bottom:0;">
+          <p style="font-family:var(--font-body);font-size:0.8125rem;color:var(--color-text-muted);text-align:center;margin-top:1rem;margin-bottom:0;">
             No commitment required. Report delivered within 24 hours.
           </p>
         </form>
@@ -82,14 +82,14 @@ import FormField from '../components/ui/FormField.astro'
   </section>
 
   <!-- Sample scan output -->
-  <section style="background:#F8F9FA;padding:3rem 1.5rem;border-bottom:1px solid #DADCE0;">
+  <section style="background:var(--color-bg-soft);padding:3rem 1.5rem;border-bottom:1px solid #DADCE0;">
     <div style="max-width:720px;margin:0 auto;">
-      <p style="font-family:'Red Hat Text',sans-serif;font-size:0.75rem;font-weight:600;color:#1A73E8;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Sample output</p>
-      <h2 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:#202124;margin-bottom:0.5rem;">What your report looks like</h2>
-      <p style="font-family:'Red Hat Text',sans-serif;font-size:1rem;color:#5F6368;margin-bottom:2rem;">Illustrative scan output on a repository similar to <code style="font-family:'Red Hat Mono',monospace;font-size:0.875rem;background:#FFFFFF;border:1px solid #DADCE0;padding:0.125rem 0.5rem;border-radius:3px;">lra-cloud-ops/aws-terraform-devops</code></p>
+      <p style="font-family:var(--font-body);font-size:0.75rem;font-weight:600;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Sample output</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:var(--color-text);margin-bottom:0.5rem;">What your report looks like</h2>
+      <p style="font-family:var(--font-body);font-size:1rem;color:var(--color-text-secondary);margin-bottom:2rem;">Illustrative scan output on a repository similar to <code style="font-family:var(--font-mono);font-size:0.875rem;background:var(--color-bg);border:1px solid var(--color-border);padding:0.125rem 0.5rem;border-radius:3px;">lra-cloud-ops/aws-terraform-devops</code></p>
 
-      <div style="background:#202124;border-radius:8px;padding:1.5rem;font-family:'Red Hat Mono',monospace;font-size:0.8125rem;color:#E8EAED;line-height:1.8;overflow-x:auto;">
-        <div style="color:#9AA0A6;margin-bottom:0.5rem;">$ lra scan --github org/repository</div>
+      <div style="background:#202124;border-radius:var(--radius-lg);padding:1.5rem;font-family:var(--font-mono);font-size:0.8125rem;color:#E8EAED;line-height:1.8;overflow-x:auto;">
+        <div style="color:var(--color-text-muted);margin-bottom:0.5rem;">$ lra scan --github org/repository</div>
         <div>→ Cloning repository...</div>
         <div>→ Detecting stack: terraform, kubernetes, docker</div>
         <div style="margin-top:0.5rem;color:#8AB4F8;">TRIVY — Container & IaC vulnerabilities</div>
@@ -106,9 +106,9 @@ import FormField from '../components/ui/FormField.astro'
   </section>
 
   <!-- FAQ -->
-  <section style="background:#FFFFFF;padding:3rem 1.5rem;">
+  <section style="background:var(--color-bg);padding:3rem 1.5rem;">
     <div style="max-width:720px;margin:0 auto;">
-      <h2 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:#202124;margin-bottom:2rem;">Common questions</h2>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:var(--color-text);margin-bottom:2rem;">Common questions</h2>
       <div style="display:flex;flex-direction:column;gap:1rem;">
         {[
           { q: 'Is the audit really free?', a: 'Yes. No credit card, no commitment. You receive the full report and decide what to do with it.' },
@@ -117,12 +117,12 @@ import FormField from '../components/ui/FormField.astro'
           { q: 'What technologies does lra scan support?', a: 'Terraform, Kubernetes manifests, Dockerfiles, GitHub Actions workflows, AWS CloudFormation and Ansible. Container image scanning included.' },
           { q: 'What happens after I receive the report?', a: 'Nothing, unless you want it to. If the findings are useful and you need help implementing the fixes, we can discuss an engineering engagement.' },
         ].map(({ q, a }) => (
-          <details style="background:#F8F9FA;border:1px solid #DADCE0;border-radius:8px;overflow:hidden;">
-            <summary style="padding:1rem 1.25rem;font-family:'Red Hat Display',sans-serif;font-size:0.9375rem;font-weight:600;color:#202124;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;">
+          <details style="background:var(--color-bg-soft);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;">
+            <summary style="padding:1rem 1.25rem;font-family:var(--font-display);font-size:0.9375rem;font-weight:600;color:var(--color-text);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;">
               {q}
-              <span style="font-size:1.25rem;color:#1A73E8;flex-shrink:0;margin-left:1rem;">+</span>
+              <span style="font-size:1.25rem;color:var(--color-primary);flex-shrink:0;margin-left:1rem;">+</span>
             </summary>
-            <div style="padding:0 1.25rem 1rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;line-height:1.7;border-top:1px solid #DADCE0;padding-top:1rem;">
+            <div style="padding:0 1.25rem 1rem;font-family:var(--font-body);font-size:0.9375rem;color:var(--color-text-secondary);line-height:1.7;border-top:1px solid #DADCE0;padding-top:1rem;">
               {a}
             </div>
           </details>

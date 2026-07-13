@@ -53,23 +53,23 @@ import Footer from '../../components/layout/Footer.astro'
               stats: '7 módulos Terraform · 18 tests',
             },
           ].map(({ name, layer, desc, tags, href, github, stats }) => (
-            <div style="background:#F8F9FA;border:1px solid #DADCE0;border-top:3px solid #137333;border-radius:8px;padding:1.5rem;" class="card-premium">
+            <div style="background:var(--color-bg-soft);border:1px solid var(--color-border);border-top:3px solid #137333;border-radius:var(--radius-lg);padding:1.5rem;" class="card-premium">
               <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem;">
                 <div>
-                  <p style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#9AA0A6;margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
-                  <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin:0;">{name}</h3>
+                  <p style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--color-text-muted);margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
+                  <h3 style="font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--color-text);margin:0;">{name}</h3>
                 </div>
               </div>
-              <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;line-height:1.6;margin:0.75rem 0;">{desc}</p>
-              <p style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;color:#137333;margin:0 0 0.875rem;">{stats}</p>
+              <p style="font-family:var(--font-body);font-size:0.9375rem;color:var(--color-text-secondary);line-height:1.6;margin:0.75rem 0;">{desc}</p>
+              <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--color-success);margin:0 0 0.875rem;">{stats}</p>
               <div style="display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:1.25rem;">
                 {tags.map(tag => (
-                  <span style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#137333;background:#E6F4EA;border:1px solid #A8D5B5;padding:0.125rem 0.5rem;border-radius:3px;">{tag}</span>
+                  <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--color-success);background:var(--color-success-light);border:1px solid #A8D5B5;padding:0.125rem 0.5rem;border-radius:3px;">{tag}</span>
                 ))}
               </div>
               <div style="display:flex;gap:1rem;">
-                <a href={href} style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#1A73E8;text-decoration:none;">Ver detalles →</a>
-                <a href={github} target="_blank" rel="noopener noreferrer" style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;text-decoration:none;">GitHub ↗</a>
+                <a href={href} style="font-family:var(--font-body);font-size:0.875rem;font-weight:600;color:var(--color-primary);text-decoration:none;">Ver detalles →</a>
+                <a href={github} target="_blank" rel="noopener noreferrer" style="font-family:var(--font-body);font-size:0.875rem;color:var(--color-text-secondary);text-decoration:none;">GitHub ↗</a>
               </div>
             </div>
           ))}
@@ -79,8 +79,8 @@ import Footer from '../../components/layout/Footer.astro'
       <!-- Soporte -->
       <div style="margin-bottom:3rem;">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
-          <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:700;color:#1A73E8;background:#E8F0FE;border:1px solid #1A73E8;padding:0.25rem 0.625rem;border-radius:3px;">Soporte</span>
-          <span style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;">Estable. Complementa los proyectos Core.</span>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:700;color:var(--color-primary);background:var(--color-primary-light);border:1px solid #1A73E8;padding:0.25rem 0.625rem;border-radius:3px;">Soporte</span>
+          <span style="font-family:var(--font-body);font-size:0.875rem;color:var(--color-text-secondary);">Estable. Complementa los proyectos Core.</span>
         </div>
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="grid-2">
           {[
@@ -103,21 +103,21 @@ import Footer from '../../components/layout/Footer.astro'
               stats: '31 herramientas · 24 servicios AWS',
             },
           ].map(({ name, layer, desc, tags, href, github, stats }) => (
-            <div style="background:#F8F9FA;border:1px solid #DADCE0;border-top:3px solid #1A73E8;border-radius:8px;padding:1.5rem;" class="card-premium">
+            <div style="background:var(--color-bg-soft);border:1px solid var(--color-border);border-top:3px solid #1A73E8;border-radius:var(--radius-lg);padding:1.5rem;" class="card-premium">
               <div style="margin-bottom:0.5rem;">
-                <p style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#9AA0A6;margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
-                <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1.125rem;font-weight:700;color:#202124;margin:0;">{name}</h3>
+                <p style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--color-text-muted);margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
+                <h3 style="font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--color-text);margin:0;">{name}</h3>
               </div>
-              <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;line-height:1.6;margin:0.75rem 0;">{desc}</p>
-              <p style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;color:#1A73E8;margin:0 0 0.875rem;">{stats}</p>
+              <p style="font-family:var(--font-body);font-size:0.9375rem;color:var(--color-text-secondary);line-height:1.6;margin:0.75rem 0;">{desc}</p>
+              <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--color-primary);margin:0 0 0.875rem;">{stats}</p>
               <div style="display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:1.25rem;">
                 {tags.map(tag => (
-                  <span style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#1A73E8;background:#E8F0FE;border:1px solid #C5D8F8;padding:0.125rem 0.5rem;border-radius:3px;">{tag}</span>
+                  <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--color-primary);background:var(--color-primary-light);border:1px solid #C5D8F8;padding:0.125rem 0.5rem;border-radius:3px;">{tag}</span>
                 ))}
               </div>
               <div style="display:flex;gap:1rem;">
-                <a href={href} style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#1A73E8;text-decoration:none;">Ver detalles →</a>
-                <a href={github} target="_blank" rel="noopener noreferrer" style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;text-decoration:none;">GitHub ↗</a>
+                <a href={href} style="font-family:var(--font-body);font-size:0.875rem;font-weight:600;color:var(--color-primary);text-decoration:none;">Ver detalles →</a>
+                <a href={github} target="_blank" rel="noopener noreferrer" style="font-family:var(--font-body);font-size:0.875rem;color:var(--color-text-secondary);text-decoration:none;">GitHub ↗</a>
               </div>
             </div>
           ))}
@@ -127,10 +127,10 @@ import Footer from '../../components/layout/Footer.astro'
       <!-- Lab -->
       <div>
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
-          <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:700;color:#F29900;background:#FFF8E1;border:1px solid #F29900;padding:0.25rem 0.625rem;border-radius:3px;">Lab</span>
-          <span style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;">Exploración activa. No apto para producción todavía.</span>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:700;color:var(--color-warning);background:var(--color-warning-light);border:1px solid #F29900;padding:0.25rem 0.625rem;border-radius:3px;">Lab</span>
+          <span style="font-family:var(--font-body);font-size:0.875rem;color:var(--color-text-secondary);">Exploración activa. No apto para producción todavía.</span>
         </div>
-        <p style="font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#5F6368;margin-bottom:1.5rem;max-width:640px;line-height:1.6;">Los repositorios Lab representan exploración técnica activa. Demuestran patrones y enfoques en desarrollo — no productos terminados.</p>
+        <p style="font-family:var(--font-body);font-size:0.9375rem;color:var(--color-text-secondary);margin-bottom:1.5rem;max-width:640px;line-height:1.6;">Los repositorios Lab representan exploración técnica activa. Demuestran patrones y enfoques en desarrollo — no productos terminados.</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;" class="grid-3">
           {[
             {
@@ -152,12 +152,12 @@ import Footer from '../../components/layout/Footer.astro'
               github: 'https://github.com/Liquenson/k8s-devops-platform',
             },
           ].map(({ name, layer, desc, github }) => (
-            <div style="background:#F8F9FA;border:1px solid #DADCE0;border-top:3px solid #F29900;border-radius:8px;padding:1.25rem;" class="card-premium">
-              <p style="font-family:'Red Hat Mono',monospace;font-size:0.6875rem;color:#9AA0A6;margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
-              <h3 style="font-family:'Red Hat Display',sans-serif;font-size:1rem;font-weight:700;color:#202124;margin:0 0 0.5rem;">{name}</h3>
-              <p style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;line-height:1.6;margin:0 0 1rem;">{desc}</p>
+            <div style="background:var(--color-bg-soft);border:1px solid var(--color-border);border-top:3px solid #F29900;border-radius:var(--radius-lg);padding:1.25rem;" class="card-premium">
+              <p style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--color-text-muted);margin:0 0 0.25rem;text-transform:uppercase;letter-spacing:0.04em;">{layer}</p>
+              <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--color-text);margin:0 0 0.5rem;">{name}</h3>
+              <p style="font-family:var(--font-body);font-size:0.875rem;color:var(--color-text-secondary);line-height:1.6;margin:0 0 1rem;">{desc}</p>
               <a href={github} target="_blank" rel="noopener noreferrer"
-                style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;color:#5F6368;text-decoration:none;"
+                style="font-family:var(--font-body);font-size:0.875rem;color:var(--color-text-secondary);text-decoration:none;"
               >GitHub ↗</a>
             </div>
           ))}
