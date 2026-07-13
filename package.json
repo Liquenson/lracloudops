@@ -12,7 +12,8 @@
     "astro": "astro",
     "generate-types": "wrangler types",
     "test": "playwright test",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "lint": "eslint src --ext .astro,.ts,.js --max-warnings 50"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -32,6 +33,9 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@playwright/test": "^1.60.0",
+    "@typescript-eslint/parser": "^8.64.0",
+    "eslint": "^10.7.0",
+    "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
     "simple-icons": "^16.23.0",

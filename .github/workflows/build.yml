@@ -17,6 +17,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - run: npm ci
+      - name: Lint (warn-only)
+        run: npm run lint || true
       - name: Type check
         run: npx astro check
       - name: Build
