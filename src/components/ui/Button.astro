@@ -1,0 +1,95 @@
+---
+interface Props {
+  href?: string
+  variant?: 'primary' | 'secondary' | 'ghost'
+  size?: 'sm' | 'md' | 'lg'
+  fullWidth?: boolean
+  external?: boolean
+  type?: 'button' | 'submit'
+  class?: string
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  fullWidth = false,
+  external = false,
+  type = 'button',
+  class: className = '',
+} = Astro.props
+
+const baseStyle = `
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+  ${fullWidth ? 'width: 100%;' : ''}
+`
+
+const sizeStyles = {
+  sm: 'padding: var(--space-2) var(--space-4); font-size: var(--text-base); border-radius: var(--radius-sm);',
+  md: 'padding: 0.625rem var(--space-6); font-size: var(--text-md); border-radius: var(--radius-md);',
+  lg: 'padding: var(--space-4) var(--space-8); font-size: var(--text-lg); border-radius: var(--radius-md);',
+}
+
+const variantStyles = {
+  primary: 'background: var(--color-primary); color: #FFFFFF; border-color: var(--color-primary);',
+  secondary: 'background: transparent; color: var(--color-primary); border-color: var(--color-border);',
+  ghost: 'background: transparent; color: var(--color-text-secondary); border-color: transparent;',
+}
+
+const style = `${baseStyle} ${sizeStyles[size]} ${variantStyles[variant]}`
+const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+---
+
+{href ? (
+  <a
+    href={href}
+    style={style}
+    class={`lra-btn lra-btn--${variant} lra-btn--${size} ${className}`}
+    {...externalProps}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    type={type}
+    style={style}
+    class={`lra-btn lra-btn--${variant} lra-btn--${size} ${className}`}
+  >
+    <slot />
+  </button>
+)}
+
+<style>
+  .lra-btn--primary:hover {
+    background: var(--color-primary-hover) !important;
+    border-color: var(--color-primary-hover) !important;
+    box-shadow: var(--shadow-blue);
+  }
+  .lra-btn--secondary:hover {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    background: var(--color-primary-light) !important;
+  }
+  .lra-btn--ghost:hover {
+    color: var(--color-text) !important;
+  }
+  .lra-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  @media (max-width: 767px) {
+    .lra-btn--full-mobile {
+      width: 100% !important;
+    }
+  }
+</style>

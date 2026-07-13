@@ -1,0 +1,95 @@
+---
+interface Props {
+  label: string
+  name: string
+  type?: 'text' | 'email' | 'tel' | 'textarea' | 'select'
+  placeholder?: string
+  required?: boolean
+  hint?: string
+  options?: { value: string; label: string }[]
+}
+
+const {
+  label,
+  name,
+  type = 'text',
+  placeholder = '',
+  required = false,
+  hint,
+  options = [],
+} = Astro.props
+
+const inputStyle = `
+  width: 100%;
+  padding: 0.625rem var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: var(--color-text);
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+`
+---
+
+<div style="display: flex; flex-direction: column; gap: var(--space-2);">
+  <label
+    for={name}
+    style="font-family: var(--font-body); font-size: var(--text-base); font-weight: 600; color: var(--color-text);"
+  >
+    {label}{required && <span style="color: var(--color-success); margin-left: 2px;">*</span>}
+  </label>
+
+  {type === 'textarea' ? (
+    <textarea
+      id={name}
+      name={name}
+      placeholder={placeholder}
+      required={required}
+      rows={4}
+      style={`${inputStyle} resize: vertical; font-family: var(--font-body);`}
+      class="lra-input"
+    />
+  ) : type === 'select' ? (
+    <select
+      id={name}
+      name={name}
+      required={required}
+      style={`${inputStyle} cursor: pointer;`}
+      class="lra-input"
+    >
+      {options.map(opt => (
+        <option value={opt.value}>{opt.label}</option>
+      ))}
+    </select>
+  ) : (
+    <input
+      id={name}
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      required={required}
+      style={inputStyle}
+      class={`lra-input ${name === 'github_repo' ? 'lra-input--mono' : ''}`}
+    />
+  )}
+
+  {hint && (
+    <p style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.5; margin: 0;">
+      {hint}
+    </p>
+  )}
+</div>
+
+<style>
+  .lra-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+    background: var(--color-bg);
+  }
+  .lra-input--mono {
+    font-family: var(--font-mono) !important;
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+interface Props {
+  bg?: 'white' | 'soft' | 'dark'
+  border?: 'top' | 'bottom' | 'both' | 'none'
+  class?: string
+  id?: string
+  animate?: boolean
+}
+
+const {
+  bg = 'white',
+  border = 'none',
+  class: className = '',
+  id,
+  animate = false,
+} = Astro.props
+
+const bgs = {
+  white: 'var(--color-bg)',
+  soft: 'var(--color-bg-soft)',
+  dark: 'var(--color-dark)',
+}
+
+const borders = {
+  top: 'border-top: 1px solid var(--color-border);',
+  bottom: 'border-bottom: 1px solid var(--color-border);',
+  both: 'border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);',
+  none: '',
+}
+
+const style = `
+  background: ${bgs[bg]};
+  padding: var(--section-py) var(--container-px);
+  ${borders[border]}
+`
+---
+
+<section
+  style={style}
+  class={className}
+  id={id}
+  {...animate ? { 'data-animate': 'fade-up' } : {}}
+>
+  <div style="max-width: var(--container-max); margin-inline: auto;">
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  tag?: string
+  title: string
+  subtitle?: string
+  align?: 'left' | 'center'
+  dark?: boolean
+}
+
+const {
+  tag,
+  title,
+  subtitle,
+  align = 'left',
+  dark = false,
+} = Astro.props
+
+const textColor = dark ? '#FFFFFF' : 'var(--color-text)'
+const subColor = dark ? 'rgba(255,255,255,0.7)' : 'var(--color-text-secondary)'
+---
+
+<div style={`text-align: ${align}; margin-bottom: var(--space-8);`}>
+  {tag && (
+    <p style={`font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2);`}>
+      {tag}
+    </p>
+  )}
+  <h2 style={`font-family: var(--font-display); font-size: clamp(var(--text-3xl), 3vw, var(--text-5xl)); font-weight: 700; color: ${textColor}; margin-bottom: ${subtitle ? 'var(--space-3)' : '0'}; line-height: 1.15; letter-spacing: -0.02em;`}>
+    {title}
+  </h2>
+  {subtitle && (
+    <p style={`font-family: var(--font-body); font-size: var(--text-xl); color: ${subColor}; line-height: 1.7; max-width: 640px; ${align === 'center' ? 'margin-inline: auto;' : ''}`}>
+      {subtitle}
+    </p>
+  )}
+</div>

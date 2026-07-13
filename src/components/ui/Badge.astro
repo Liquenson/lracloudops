@@ -1,0 +1,56 @@
+---
+interface Props {
+  variant?: 'primary' | 'success' | 'warning' | 'error' | 'neutral' | 'mono'
+  size?: 'sm' | 'md'
+  dot?: boolean
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  dot = false,
+} = Astro.props
+
+const colors = {
+  primary: 'color: var(--color-primary); background: var(--color-primary-light); border-color: var(--color-primary-border);',
+  success: 'color: var(--color-success); background: var(--color-success-light); border-color: var(--color-success-border);',
+  warning: 'color: var(--color-warning); background: var(--color-warning-light); border-color: var(--color-warning-border);',
+  error: 'color: var(--color-error);   background: var(--color-error-light);   border-color: var(--color-error-border);',
+  neutral: 'color: var(--color-text-secondary); background: var(--color-bg-soft); border-color: var(--color-border);',
+  mono: 'color: var(--color-text-secondary); background: var(--color-bg-soft); border-color: var(--color-border);',
+}
+
+const sizes = {
+  sm: 'font-size: var(--text-xs); padding: 0.125rem var(--space-2);',
+  md: 'font-size: var(--text-xs); padding: 0.25rem var(--space-3);',
+}
+
+const dotColor = {
+  primary: 'var(--color-primary)',
+  success: 'var(--color-success)',
+  warning: 'var(--color-warning)',
+  error: 'var(--color-error)',
+  neutral: 'var(--color-text-muted)',
+  mono: 'var(--color-text-muted)',
+}
+
+const style = `
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  ${colors[variant]}
+  ${sizes[size]}
+`
+---
+
+<span style={style}>
+  {dot && (
+    <span style={`width: 6px; height: 6px; border-radius: var(--radius-full); background: ${dotColor[variant]}; flex-shrink: 0;`}></span>
+  )}
+  <slot />
+</span>
