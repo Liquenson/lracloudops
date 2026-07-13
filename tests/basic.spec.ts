@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import AxeBuilder from '@axe-core/playwright'
 
 const BASE_URL = 'http://localhost:4321'
 
@@ -93,4 +94,35 @@ test.describe('LRA CloudOps — Core pages', () => {
       expect(response.status()).toBe(200)
     }
   })
+})
+
+test.describe('Accessibility — WCAG AA', () => {
+
+  test('Home — no critical accessibility violations', async ({ page }) => {
+    await page.goto(BASE_URL)
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa'])
+      .analyze()
+    const critical = results.violations.filter(v => v.impact === 'critical')
+    expect(critical).toHaveLength(0)
+  })
+
+  test('Audit page — no critical accessibility violations', async ({ page }) => {
+    await page.goto(`${BASE_URL}/audit`)
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa'])
+      .analyze()
+    const critical = results.violations.filter(v => v.impact === 'critical')
+    expect(critical).toHaveLength(0)
+  })
+
+  test('Services page — no critical accessibility violations', async ({ page }) => {
+    await page.goto(`${BASE_URL}/services`)
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa'])
+      .analyze()
+    const critical = results.violations.filter(v => v.impact === 'critical')
+    expect(critical).toHaveLength(0)
+  })
+
 })

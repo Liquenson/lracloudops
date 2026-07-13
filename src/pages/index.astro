@@ -859,8 +859,9 @@ const tabs = [
       // Progress indicator dots
       const dotsContainer = document.querySelector('#industries [data-tab-dots]')
       if (dotsContainer) {
-        tabBtns.forEach((_, i) => {
+        tabBtns.forEach((btn, i) => {
           const dot = document.createElement('button')
+          dot.setAttribute('aria-label', `Show ${btn.textContent?.trim()} slide`)
           dot.style.cssText = `
             width: 6px; height: 6px; border-radius: 50%;
             background: ${i === 0 ? '#1A73E8' : '#DADCE0'};
