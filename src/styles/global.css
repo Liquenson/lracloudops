@@ -497,3 +497,47 @@ header {
     height: 44px !important;
   }
 }
+
+
+/* === Accessibility === */
+
+/* Focus visible para todos los elementos interactivos */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to main content */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--color-primary);
+  color: #FFFFFF;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top var(--transition-fast);
+}
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Color contrast fix — --color-text-muted (#9AA0A6)
+   fails WCAG AA on white (4.2:1 vs required 4.5:1)
+   Use --color-text-secondary (#5F6368) for body text instead */
+.text-muted-accessible {
+  color: var(--color-text-secondary);
+}

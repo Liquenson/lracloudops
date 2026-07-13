@@ -54,7 +54,7 @@ const esUrl = isES
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>{title}</title>
 
     <!-- Primary Meta Tags -->
@@ -100,6 +100,9 @@ const esUrl = isES
     <link rel="alternate" hreflang="es" href={new URL(esUrl, Astro.site)} />
     <link rel="alternate" hreflang="x-default" href={new URL(enUrl, Astro.site)} />
     <link rel="dns-prefetch" href="https://github.com" />
+    <link rel="preconnect" href="https://api.web3forms.com" />
+    <link rel="dns-prefetch" href="https://lracloudops-webhook.liquenson-cloud.workers.dev" />
+    <link rel="dns-prefetch" href="https://lracloudops-agent.liquenson-cloud.workers.dev" />
 
     <!-- Mobile optimization -->
     <meta name="theme-color" content="#1A73E8" />
@@ -165,7 +168,11 @@ const esUrl = isES
     })} />
   </head>
   <body>
-    <slot />
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main id="main-content">
+      <slot />
+    </main>
 
     <ChatWidget />
 
