@@ -2,6 +2,9 @@
 import Layout from '../../layouts/Layout.astro'
 import Header from '../../components/layout/Header.astro'
 import Footer from '../../components/layout/Footer.astro'
+import Button from '../../components/ui/Button.astro'
+import Badge from '../../components/ui/Badge.astro'
+import FormField from '../../components/ui/FormField.astro'
 ---
 <Layout
   title="Auditoría de Infraestructura Gratuita — LRA CloudOps"
@@ -13,9 +16,8 @@ import Footer from '../../components/layout/Footer.astro'
   <!-- Hero -->
   <section style="background:linear-gradient(135deg,#FFFFFF 0%,#F0F4FF 50%,#FFFFFF 100%);padding:5rem 1.5rem 3rem;border-bottom:1px solid #DADCE0;">
     <div style="max-width:720px;margin:0 auto;text-align:center;">
-      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:#E8F0FE;border:1px solid #C5D8F8;border-radius:4px;padding:0.25rem 0.875rem;margin-bottom:1.5rem;">
-        <span style="width:6px;height:6px;border-radius:50%;background:#137333;animation:pulse-dot 2s infinite;"></span>
-        <span style="font-family:'Red Hat Mono',monospace;font-size:0.75rem;font-weight:600;color:#1A73E8;">Automatizado · Entregado en menos de 24 horas</span>
+      <div style="margin-bottom:1.5rem;">
+        <Badge variant="success" dot={true}>Automatizado · Entregado en menos de 24 horas</Badge>
       </div>
       <h1 style="font-family:'Red Hat Display',sans-serif;font-size:clamp(2rem,5vw,3.25rem);font-weight:900;color:#202124;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;">
         Auditoría de seguridad<br/>de infraestructura gratuita.
@@ -54,35 +56,22 @@ import Footer from '../../components/layout/Footer.astro'
           <input type="hidden" name="subject" value="Solicitud de Auditoría de Infraestructura Gratuita — lracloudops.com/es/auditoria" />
           <input type="hidden" name="redirect" value="https://lracloudops.com/es/auditoria?success=true" />
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;" class="grid-2">
-            <div>
-              <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.375rem;">Nombre</label>
-              <input type="text" name="name" required placeholder="Tu nombre"
-                style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#F8F9FA;border:1px solid #DADCE0;border-radius:6px;outline:none;box-sizing:border-box;" />
-            </div>
-            <div>
-              <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.375rem;">Email de trabajo</label>
-              <input type="email" name="email" required placeholder="tu@empresa.com"
-                style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Text',sans-serif;font-size:0.9375rem;color:#202124;background:#F8F9FA;border:1px solid #DADCE0;border-radius:6px;outline:none;box-sizing:border-box;" />
-            </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);" class="grid-2">
+            <FormField label="Nombre" name="name" type="text" placeholder="Tu nombre" required />
+            <FormField label="Email de trabajo" name="email" type="email" placeholder="tu@empresa.com" required />
+          </div>
+          <div style="margin-top:1rem;margin-bottom:1rem;">
+            <FormField
+              label="Repositorio de GitHub"
+              name="github_repo"
+              type="text"
+              placeholder="org/repositorio"
+              required
+              hint="Formato: org/repositorio — admite repositorios públicos y privados."
+            />
           </div>
 
-          <div style="margin-bottom:1rem;">
-            <label style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:600;color:#202124;display:block;margin-bottom:0.375rem;">Repositorio de GitHub <span style="color:#137333;">*</span></label>
-            <input type="text" name="github_repo" required placeholder="org/repositorio"
-              style="width:100%;padding:0.625rem 0.875rem;font-family:'Red Hat Mono',monospace;font-size:0.9375rem;color:#202124;background:#F8F9FA;border:1px solid #DADCE0;border-radius:6px;outline:none;box-sizing:border-box;" />
-            <p style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#5F6368;margin-top:0.375rem;line-height:1.5;">
-              Formato: <code style="font-family:'Red Hat Mono',monospace;background:#F8F9FA;padding:0.125rem 0.375rem;border-radius:3px;font-size:0.75rem;">org/repositorio</code> — admite repositorios públicos y privados.
-            </p>
-          </div>
-
-          <button type="submit"
-            style="width:100%;background:#1A73E8;color:#FFFFFF;padding:0.875rem 2rem;border:none;border-radius:6px;font-family:'Red Hat Text',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:background 150ms ease;"
-            onmouseover="this.style.background='#1557B0'"
-            onmouseout="this.style.background='#1A73E8'"
-          >
-            Solicitar auditoría gratuita →
-          </button>
+          <Button type="submit" size="lg" fullWidth>Solicitar auditoría gratuita →</Button>
 
           <p style="font-family:'Red Hat Text',sans-serif;font-size:0.8125rem;color:#9AA0A6;text-align:center;margin-top:1rem;margin-bottom:0;">
             Sin compromiso. Informe entregado en menos de 24 horas.
