@@ -97,7 +97,13 @@ const esUrl = isES
     <!-- Canonical -->
     <link rel="canonical" href={Astro.url} />
     <link rel="icon" type="image/svg+xml" href="/favicon-new.svg" />
-    <link rel="apple-touch-icon" href="/favicon-new.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+    <meta name="msapplication-TileImage" content="/favicon-192x192.png" />
+    <meta name="msapplication-TileColor" content="#1A73E8" />
     <link rel="alternate" hreflang="en" href={new URL(enUrl, Astro.site)} />
     <link rel="alternate" hreflang="es" href={new URL(esUrl, Astro.site)} />
     <link rel="alternate" hreflang="x-default" href={new URL(enUrl, Astro.site)} />
