@@ -1,5 +1,5 @@
 export default {
-  async fetch(request, env) {
+  async fetch(request: Request, env: Record<string, string>) {
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
