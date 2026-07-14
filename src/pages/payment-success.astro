@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/layout/Header.astro'
+import Footer from '../components/layout/Footer.astro'
+---
+<Layout
+  title="Payment confirmed — LRA CloudOps"
+  description="Your payment has been confirmed. We'll be in touch within 24 hours."
+  lang="en"
+>
+  <Header lang="en" />
+
+  <section style="background:linear-gradient(135deg,#FFFFFF 0%,#F0F4FF 50%,#FFFFFF 100%);padding:6rem var(--container-px);min-height:60vh;display:flex;align-items:center;">
+    <div style="max-width:640px;margin-inline:auto;text-align:center;">
+
+      <div style="width:80px;height:80px;background:var(--color-success-light);border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-6);">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+
+      <h1 style="font-family:var(--font-display);font-size:clamp(var(--text-3xl),4vw,var(--text-5xl));font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);">
+        Payment confirmed.
+      </h1>
+
+      <p style="font-family:var(--font-body);font-size:var(--text-xl);color:var(--color-text-secondary);line-height:1.7;margin-bottom:var(--space-8);">
+        Thank you. You'll receive a confirmation email shortly.
+        For audit requests, lra scan will start automatically —
+        expect your report within 24 hours.
+      </p>
+
+      <div style="background:#FFFFFF;border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin-bottom:var(--space-8);text-align:left;">
+        <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);">What happens next</h2>
+        <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+          {[
+            { step: '01', text: 'You receive a payment confirmation from Stripe.' },
+            { step: '02', text: 'Ruben reviews your request and confirms scope within 24 hours.' },
+            { step: '03', text: 'For audit requests, lra scan runs automatically and delivers your report by email.' },
+            { step: '04', text: 'For project engagements, you receive a kickoff message with timeline and deliverables.' },
+          ].map(({ step, text }) => (
+            <div style="display:flex;align-items:start;gap:var(--space-4);">
+              <span style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;color:var(--color-primary);background:var(--color-primary-light);padding:0.25rem var(--space-3);border-radius:var(--radius-sm);flex-shrink:0;">{step}</span>
+              <p style="font-family:var(--font-body);font-size:var(--text-md);color:var(--color-text-secondary);margin:0;line-height:1.6;">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+        <a href="/"
+          style="display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-primary);color:#FFFFFF;padding:0.75rem var(--space-6);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-md);font-weight:600;text-decoration:none;"
+        >Back to home</a>
+        <a href="mailto:info@lracloudops.com"
+          style="display:inline-flex;align-items:center;gap:var(--space-2);background:transparent;color:var(--color-primary);padding:0.75rem var(--space-6);border-radius:var(--radius-md);border:1px solid var(--color-primary-border);font-family:var(--font-body);font-size:var(--text-md);font-weight:600;text-decoration:none;"
+        >Contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="en" />
+</Layout>
