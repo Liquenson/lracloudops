@@ -5,6 +5,7 @@ interface Props {
   subtitle?: string
   align?: 'left' | 'center'
   dark?: boolean
+  as?: 'h1' | 'h2'
 }
 
 const {
@@ -13,7 +14,10 @@ const {
   subtitle,
   align = 'left',
   dark = false,
+  as = 'h2',
 } = Astro.props
+
+const Heading = as
 
 const textColor = dark ? '#FFFFFF' : 'var(--color-text)'
 const subColor = dark ? 'rgba(255,255,255,0.7)' : 'var(--color-text-secondary)'
@@ -25,9 +29,9 @@ const subColor = dark ? 'rgba(255,255,255,0.7)' : 'var(--color-text-secondary)'
       {tag}
     </p>
   )}
-  <h2 style={`font-family: var(--font-display); font-size: clamp(var(--text-3xl), 3vw, var(--text-5xl)); font-weight: 700; color: ${textColor}; margin-bottom: ${subtitle ? 'var(--space-3)' : '0'}; line-height: 1.15; letter-spacing: -0.02em;`}>
+  <Heading style={`font-family: var(--font-display); font-size: clamp(var(--text-3xl), 3vw, var(--text-5xl)); font-weight: 700; color: ${textColor}; margin-bottom: ${subtitle ? 'var(--space-3)' : '0'}; line-height: 1.15; letter-spacing: -0.02em;`}>
     {title}
-  </h2>
+  </Heading>
   {subtitle && (
     <p style={`font-family: var(--font-body); font-size: var(--text-xl); color: ${subColor}; line-height: 1.7; max-width: 640px; ${align === 'center' ? 'margin-inline: auto;' : ''}`}>
       {subtitle}
