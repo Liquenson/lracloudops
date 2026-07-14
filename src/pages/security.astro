@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/layout/Header.astro'
+import Footer from '../components/layout/Footer.astro'
+---
+
+<Layout
+  title="Security Policy — LRA CloudOps"
+  description="LRA CloudOps security policy, vulnerability disclosure process and data handling practices."
+  lang="en"
+>
+  <Header lang="en" currentPath={Astro.url.pathname} />
+
+  <section style="background:var(--color-bg-soft);padding:3rem var(--container-px);border-bottom:1px solid var(--color-border);">
+    <div style="max-width:860px;margin-inline:auto;">
+      <p style="font-family:var(--font-body);font-size:var(--text-sm);font-weight:600;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:var(--space-2);">Security</p>
+      <h1 style="font-family:var(--font-display);font-size:clamp(var(--text-3xl),4vw,var(--text-5xl));font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);">Security Policy</h1>
+      <p style="font-family:var(--font-body);font-size:var(--text-xl);color:var(--color-text-secondary);line-height:1.7;">Last updated: July 2026</p>
+    </div>
+  </section>
+
+  <section style="padding:3rem var(--container-px);">
+    <div style="max-width:860px;margin-inline:auto;">
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-10);">
+
+        {[
+          {
+            title: 'Reporting a vulnerability',
+            content: `If you discover a security vulnerability in lracloudops.com or any of our open source repositories, please report it responsibly.
+
+Email: info@lracloudops.com
+Subject: [SECURITY] Brief description of the issue
+
+Please include:
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact
+- Your suggested fix (optional)
+
+We will acknowledge your report within 48 hours and provide a timeline for resolution.`,
+          },
+          {
+            title: 'Scope',
+            content: `In scope:
+- lracloudops.com and all subdomains
+- github.com/lra-cloud-ops repositories
+- Cloudflare Workers (lracloudops-agent, lracloudops-webhook)
+
+Out of scope:
+- Third-party services (Stripe, Web3Forms, Cloudflare)
+- Social engineering attacks
+- Physical security`,
+          },
+          {
+            title: 'Data we collect',
+            content: `When you submit the free infrastructure audit form:
+- Your name and email address
+- The GitHub repository URL you provide
+
+This data is used exclusively to:
+- Run the lra scan security analysis on your repository
+- Deliver the audit report to your email
+- Send you an internal notification (for operational purposes)
+
+We do not sell, share or retain this data beyond the audit delivery.`,
+          },
+          {
+            title: 'How we secure your data',
+            content: `- All traffic is encrypted via TLS 1.3 (enforced by Cloudflare)
+- GitHub tokens are stored as encrypted Cloudflare Worker secrets — never in code
+- Stripe payment data is never stored on our servers — processed directly by Stripe PCI DSS Level 1
+- No passwords or sensitive credentials are stored in any repository
+- All open source repositories are scanned continuously with Trivy and Checkov`,
+          },
+          {
+            title: 'Our security stack',
+            content: `We use our own tools to secure our infrastructure:
+- lra scan — continuous Trivy + Checkov analysis on all repositories
+- Cloudflare — DDoS protection, WAF, bot management
+- Strict Content Security Policy (CSP) — see response headers
+- HSTS with preload — enforced HTTPS for 2 years
+- No third-party JavaScript beyond Google Analytics and Cloudflare Insights`,
+          },
+          {
+            title: 'Responsible disclosure',
+            content: `We follow responsible disclosure principles:
+- We will not take legal action against researchers who report vulnerabilities in good faith
+- We will acknowledge and credit researchers who report valid vulnerabilities
+- We ask for a reasonable time to fix issues before public disclosure (typically 90 days)`,
+          },
+        ].map(({ title, content }) => (
+          <div>
+            <h2 style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-border);">{title}</h2>
+            <div style="font-family:var(--font-body);font-size:var(--text-md);color:var(--color-text-secondary);line-height:1.8;white-space:pre-line;">{content}</div>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  <Footer lang="en" />
+</Layout>
