@@ -1,0 +1,5 @@
+Contact: mailto:info@lracloudops.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en, es
+Canonical: https://lracloudops.com/.well-known/security.txt
+Policy: https://lracloudops.com/security
