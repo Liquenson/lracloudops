@@ -7,11 +7,13 @@
   btn?.addEventListener('click', () => {
     if (overlay) overlay.style.display = 'block'
     document.body.style.overflow = 'hidden'
+    btn.setAttribute('aria-expanded', 'true')
   })
 
   const closeFn = () => {
     if (overlay) overlay.style.display = 'none'
     document.body.style.overflow = ''
+    btn?.setAttribute('aria-expanded', 'false')
   }
 
   close?.addEventListener('click', closeFn)
