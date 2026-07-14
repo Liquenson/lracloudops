@@ -541,3 +541,35 @@ header {
 .text-muted-accessible {
   color: var(--color-text-secondary);
 }
+
+/* ============================================================
+   Mobile UX audit v2 — Red Hat touch/typography standards
+   Grid collapse (.grid-2/3, .pricing-grid, .footer-grid, .cta-group,
+   .card-premium hover) is already mobile-first and handled per-page
+   or above — this section only fixes the real gaps found:
+   ============================================================ */
+
+/* Inputs below 16px trigger iOS Safari's auto-zoom on focus.
+   Overrides inline font-size on FormField.astro and hand-rolled
+   form inputs (contact.astro, pricing calculator selects) alike. */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Button touch targets — sm/md sizes were 37-42px tall */
+.lra-btn {
+  min-height: 44px;
+}
+
+/* Pricing comparison table — scroll instead of squish on mobile */
+.pricing-comparison-table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.pricing-comparison-table table {
+  min-width: 600px;
+}
