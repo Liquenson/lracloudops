@@ -1,19 +1,27 @@
+# LRA CloudOps — Security Headers v2.0
+
 /*
-  # Prevent clickjacking
-  X-Frame-Options: SAMEORIGIN
-  # Prevent MIME sniffing
+  X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  # Referrer policy — send origin only for cross-origin requests
   Referrer-Policy: strict-origin-when-cross-origin
-  # Restrict browser APIs that are not needed
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()
-  # Content Security Policy — tuned for Astro SSG + Google Fonts + Web3Forms + Cloudflare Turnstile
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com https://lracloudops-agent.liquenson-cloud.workers.dev https://lracloudops-webhook.liquenson-cloud.workers.dev https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net; frame-src https://challenges.cloudflare.com; base-uri 'self'; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests
-  # HSTS — force HTTPS (Cloudflare enforces this but belt + suspenders)
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  # Cross-origin isolation
-  Cross-Origin-Opener-Policy: same-origin-allow-popups
-  Cross-Origin-Resource-Policy: same-site
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://lracloudops-webhook.liquenson-cloud.workers.dev https://lracloudops-agent.liquenson-cloud.workers.dev https://www.google-analytics.com https://cloudflareinsights.com https://static.cloudflareinsights.com; frame-src https://challenges.cloudflare.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
 
 /images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=86400
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
   Cache-Control: public, max-age=31536000, immutable
