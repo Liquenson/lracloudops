@@ -86,7 +86,7 @@ import Footer from '../../components/layout/Footer.astro'
               </li>
             ))}
           </ul>
-          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: var(--color-primary); border: 1px solid var(--color-border);" class="btn-premium-outline">
+          <a href="/es/auditoria" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: var(--color-primary); border: 1px solid var(--color-border);" class="btn-premium-outline">
             Solicitar auditoría gratuita
           </a>
         </div>
@@ -121,9 +121,18 @@ import Footer from '../../components/layout/Footer.astro'
               </li>
             ))}
           </ul>
-          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: #1A73E8; color: #FFFFFF;" class="btn-premium">
-            Solicitar presupuesto
-          </a>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:auto;">
+            <a href="/es/contacto?service=project"
+              style="display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);background:var(--color-primary);color:#FFFFFF;padding:0.75rem var(--space-6);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-md);font-weight:600;text-decoration:none;transition:background var(--transition-fast);"
+              onmouseover="this.style.background='var(--color-primary-hover)'"
+              onmouseout="this.style.background='var(--color-primary)'"
+            >
+              Solicitar presupuesto →
+            </a>
+            <p style="font-family:var(--font-body);font-size:var(--text-sm);color:var(--color-text-muted);text-align:center;margin:0;">
+              Alcance y precio definidos por adelantado
+            </p>
+          </div>
         </div>
 
         <!-- Consultoría mensual -->
@@ -153,9 +162,20 @@ import Footer from '../../components/layout/Footer.astro'
               </li>
             ))}
           </ul>
-          <a href="/es/contacto" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: var(--color-primary); border: 1px solid var(--color-border);" class="btn-premium-outline">
-            Empezar
-          </a>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:auto;">
+            <a href="https://buy.stripe.com/RETAINER_LINK"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);background:var(--color-primary);color:#FFFFFF;padding:0.75rem var(--space-6);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-md);font-weight:600;text-decoration:none;transition:background var(--transition-fast);"
+              onmouseover="this.style.background='var(--color-primary-hover)'"
+              onmouseout="this.style.background='var(--color-primary)'"
+            >
+              Suscribirse ahora →
+            </a>
+            <p style="font-family:var(--font-body);font-size:var(--text-sm);color:var(--color-text-muted);text-align:center;margin:0;">
+              Pago seguro con Stripe · Cancela cuando quieras
+            </p>
+          </div>
         </div>
       </div>
 
@@ -163,6 +183,18 @@ import Footer from '../../components/layout/Footer.astro'
       <p style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-muted); text-align: center; margin-top: 2rem;">
         El precio del proyecto varía según el alcance. Infraestructura AWS: €800-2.000. Setup Kubernetes: €1.000-2.500. Solo CI/CD: €400-800. Contáctanos para un presupuesto personalizado.
       </p>
+
+      <!-- Badge de seguridad de pago -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-3);margin:var(--space-8) 0;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:var(--space-2);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span style="font-family:var(--font-body);font-size:var(--text-sm);color:var(--color-text-secondary);">Pago seguro con Stripe</span>
+        </div>
+        <span style="color:var(--color-border);">·</span>
+        <span style="font-family:var(--font-body);font-size:var(--text-sm);color:var(--color-text-secondary);">SEPA · Visa · Mastercard · PayPal</span>
+        <span style="color:var(--color-border);">·</span>
+        <span style="font-family:var(--font-body);font-size:var(--text-sm);color:var(--color-text-secondary);">Cumplimiento PSD2/SCA</span>
+      </div>
     </div>
   </section>
 
