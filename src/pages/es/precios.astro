@@ -6,7 +6,7 @@ import Footer from '../../components/layout/Footer.astro'
 
 <Layout
   title="Precios Transparentes — LRA CloudOps"
-  description="Precios transparentes para servicios de Platform Engineering — auditoría de infraestructura gratuita, proyectos de ingeniería de alcance fijo desde €400, retención de plataforma a €499/mes."
+  description="Precios transparentes para servicios de Platform Engineering — auditoría de infraestructura gratuita, proyectos de ingeniería de alcance fijo desde €800, retención de plataforma a €699/mes."
   lang="es"
 >
   <Header lang="es" currentPath={Astro.url.pathname} />
@@ -89,6 +89,9 @@ import Footer from '../../components/layout/Footer.astro'
           <a href="/es/auditoria" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: var(--color-primary); border: 1px solid var(--color-border);" class="btn-premium-outline">
             Solicitar auditoría gratuita
           </a>
+          <p style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-muted); text-align: center; margin: 0;">
+            Soporte de remediación de pago desde €249
+          </p>
         </div>
 
         <!-- Proyecto DevOps -->
@@ -103,7 +106,7 @@ import Footer from '../../components/layout/Footer.astro'
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
             <span style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); font-weight: 500;">Desde</span>
             <span style="font-family: var(--font-body); font-size: 1.25rem; color: var(--color-text-secondary); font-weight: 500;">€</span>
-            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">400</span>
+            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">800</span>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
             {[
@@ -143,7 +146,7 @@ import Footer from '../../components/layout/Footer.astro'
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
             <span style="font-family: var(--font-body); font-size: 1.25rem; color: var(--color-text-secondary); font-weight: 500;">€</span>
-            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">499</span>
+            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">699</span>
             <span style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary);">/mes</span>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
@@ -181,7 +184,7 @@ import Footer from '../../components/layout/Footer.astro'
 
       <!-- Nota -->
       <p style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-muted); text-align: center; margin-top: 2rem;">
-        El precio del proyecto varía según el alcance. Infraestructura AWS: €800-2.000. Setup Kubernetes: €1.000-2.500. Solo CI/CD: €400-800. Contáctanos para un presupuesto personalizado.
+        Pipeline CI/CD: €800-1.200 · Infraestructura AWS: €1.500-3.000 · Plataforma Kubernetes: €2.000-4.000 · Remediación de seguridad: €249-499
       </p>
 
       <!-- Badge de seguridad de pago -->
@@ -309,19 +312,19 @@ import Footer from '../../components/layout/Footer.astro'
   const recommendations: Record<string, { plan: string; cta: string; href: string }> = {
     'audit-1': { plan: 'Auditoría de Infraestructura — Gratis', cta: 'Empezar auditoría gratuita →', href: '/es/auditoria' },
     'audit-2-5': { plan: 'Auditoría de Infraestructura — Gratis (todos los repos)', cta: 'Empezar auditoría gratuita →', href: '/es/auditoria' },
-    'audit-6+': { plan: 'Retención de Plataforma — €499/mes (escaneos ilimitados)', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'cicd-1': { plan: 'Proyecto de Ingeniería — desde €400', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'cicd-2-5': { plan: 'Proyecto de Ingeniería — desde €600', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'cicd-6+': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'aws-1': { plan: 'Proyecto de Ingeniería — €800-2.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'aws-2-5': { plan: 'Proyecto de Ingeniería — €800-2.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'aws-6+': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'k8s-1': { plan: 'Proyecto de Ingeniería — €1.000-2.500', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'k8s-2-5': { plan: 'Proyecto de Ingeniería — €1.000-2.500', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'k8s-6+': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'ongoing-1': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'ongoing-2-5': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'ongoing-6+': { plan: 'Retención de Plataforma — €499/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'audit-6+': { plan: 'Retención de Plataforma — €699/mes (escaneos ilimitados)', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'cicd-1': { plan: 'Proyecto de Ingeniería — desde €800', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'cicd-2-5': { plan: 'Proyecto de Ingeniería — desde €1.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'cicd-6+': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'aws-1': { plan: 'Proyecto de Ingeniería — €1.500-3.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'aws-2-5': { plan: 'Proyecto de Ingeniería — €1.500-3.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'aws-6+': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'k8s-1': { plan: 'Proyecto de Ingeniería — €2.000-4.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'k8s-2-5': { plan: 'Proyecto de Ingeniería — €2.000-4.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
+    'k8s-6+': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'ongoing-1': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'ongoing-2-5': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
+    'ongoing-6+': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
   }
 
   function update() {

@@ -6,7 +6,7 @@
  *
  * Changes vs previous version:
  * - 4 verified open source projects (not 6 unverified ones)
- * - Pricing synced with /pricing: audit is free, projects from €400, retainer €499/mo
+ * - Pricing synced with /pricing (2026 market rates): audit is free, projects from €800, retainer €699/mo
  * - Removed references to unverified projects
  * - Updated contact/calendar links
  */
@@ -48,12 +48,12 @@ OUR 4 OPEN SOURCE PROJECTS (github.com/lra-cloud-ops):
 
 SERVICES AND PRICING:
 - Free infrastructure audit: lra scan on any GitHub repository. Delivered
-  within 24 hours. No commitment required. Paid remediation support
-  available from €199 if implementation help is needed after the report.
-- Engineering Project: from €400 (CI/CD pipeline: €400-800, AWS Infrastructure:
-  €800-2.000, Kubernetes setup: €1.000-2.500)
-  Fixed price per project. Delivery: 3 days to 2 weeks depending on scope.
-- Platform Retainer: €499/month. No long-term contract.
+  within 24 hours. No commitment required.
+- Security remediation support: €249-499 (2-3 days)
+- GitOps Delivery Pipeline: €800-1.200 (3-7 days)
+- AWS Infrastructure as Code: €1.500-3.000 (1-2 weeks)
+- Kubernetes Platform Engineering: €2.000-4.000 (2-3 weeks)
+- Platform Retainer: €699/month (no long-term contract)
   Includes: monthly lra scan, infrastructure_review, CI/CD audit, direct access.
 
 CONTACT:

@@ -6,7 +6,7 @@ import Footer from '../components/layout/Footer.astro'
 
 <Layout
   title="Transparent Pricing — LRA CloudOps"
-  description="Transparent pricing for Platform Engineering services — free infrastructure audit, fixed-scope engineering projects from €400, platform retainer at €499/month."
+  description="Transparent pricing for Platform Engineering services — free infrastructure audit, fixed-scope engineering projects from €800, platform retainer at €699/month."
   lang="en"
 >
   <Header lang="en" currentPath={Astro.url.pathname} />
@@ -89,6 +89,9 @@ import Footer from '../components/layout/Footer.astro'
           <a href="/audit" style="display: block; text-align: center; padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; text-decoration: none; background: transparent; color: var(--color-primary); border: 1px solid var(--color-border);" class="btn-premium-outline">
             Request free audit
           </a>
+          <p style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-muted); text-align: center; margin: 0;">
+            Paid remediation support from €249
+          </p>
         </div>
 
         <!-- DevOps Project -->
@@ -103,7 +106,7 @@ import Footer from '../components/layout/Footer.astro'
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
             <span style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); font-weight: 500;">From</span>
             <span style="font-family: var(--font-body); font-size: 1.25rem; color: var(--color-text-secondary); font-weight: 500;">€</span>
-            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">400</span>
+            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">800</span>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
             {[
@@ -143,7 +146,7 @@ import Footer from '../components/layout/Footer.astro'
           </div>
           <div style="display: flex; align-items: baseline; gap: 0.25rem;">
             <span style="font-family: var(--font-body); font-size: 1.25rem; color: var(--color-text-secondary); font-weight: 500;">€</span>
-            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">499</span>
+            <span style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--color-text); line-height: 1; letter-spacing: -0.04em;">699</span>
             <span style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary);">/month</span>
           </div>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; flex: 1;">
@@ -181,7 +184,7 @@ import Footer from '../components/layout/Footer.astro'
 
       <!-- Note -->
       <p style="font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-muted); text-align: center; margin-top: 2rem;">
-        Project pricing varies by scope. AWS Infrastructure: €800-2.000. Kubernetes setup: €1.000-2.500. CI/CD only: €400-800. Contact us for a custom quote.
+        CI/CD pipeline: €800-1.200 · AWS infrastructure: €1.500-3.000 · Kubernetes platform: €2.000-4.000 · Security remediation: €249-499
       </p>
 
       <!-- Payment security badge -->
@@ -309,19 +312,19 @@ import Footer from '../components/layout/Footer.astro'
   const recommendations: Record<string, { plan: string; cta: string; href: string }> = {
     'audit-1': { plan: 'Infrastructure Audit — Free', cta: 'Start free audit →', href: '/audit' },
     'audit-2-5': { plan: 'Infrastructure Audit — Free (all repos)', cta: 'Start free audit →', href: '/audit' },
-    'audit-6+': { plan: 'Platform Retainer — €499/month (unlimited scans)', cta: 'View retainer →', href: '/pricing#retainer' },
-    'cicd-1': { plan: 'Engineering Project — from €400', cta: 'View project pricing →', href: '/pricing' },
-    'cicd-2-5': { plan: 'Engineering Project — from €600', cta: 'View project pricing →', href: '/pricing' },
-    'cicd-6+': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'aws-1': { plan: 'Engineering Project — €800-2.000', cta: 'View project pricing →', href: '/pricing' },
-    'aws-2-5': { plan: 'Engineering Project — €800-2.000', cta: 'View project pricing →', href: '/pricing' },
-    'aws-6+': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'k8s-1': { plan: 'Engineering Project — €1.000-2.500', cta: 'View project pricing →', href: '/pricing' },
-    'k8s-2-5': { plan: 'Engineering Project — €1.000-2.500', cta: 'View project pricing →', href: '/pricing' },
-    'k8s-6+': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'ongoing-1': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'ongoing-2-5': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'ongoing-6+': { plan: 'Platform Retainer — €499/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'audit-6+': { plan: 'Platform Retainer — €699/month (unlimited scans)', cta: 'View retainer →', href: '/pricing#retainer' },
+    'cicd-1': { plan: 'Engineering Project — from €800', cta: 'View project pricing →', href: '/pricing' },
+    'cicd-2-5': { plan: 'Engineering Project — from €1.000', cta: 'View project pricing →', href: '/pricing' },
+    'cicd-6+': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'aws-1': { plan: 'Engineering Project — €1.500-3.000', cta: 'View project pricing →', href: '/pricing' },
+    'aws-2-5': { plan: 'Engineering Project — €1.500-3.000', cta: 'View project pricing →', href: '/pricing' },
+    'aws-6+': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'k8s-1': { plan: 'Engineering Project — €2.000-4.000', cta: 'View project pricing →', href: '/pricing' },
+    'k8s-2-5': { plan: 'Engineering Project — €2.000-4.000', cta: 'View project pricing →', href: '/pricing' },
+    'k8s-6+': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'ongoing-1': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'ongoing-2-5': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
+    'ongoing-6+': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
   }
 
   function update() {
