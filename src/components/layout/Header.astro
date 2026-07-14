@@ -59,8 +59,7 @@ const isActive = (href: string) =>
           <a
             href={item.href}
             style={`padding: 0 0.875rem; font-family: 'Red Hat Text', sans-serif; font-size: 0.9375rem; font-weight: ${isActive(item.href) ? '600' : '500'}; color: ${isActive(item.href) ? '#1A73E8' : '#5F6368'}; text-decoration: none; height: 64px; display: flex; align-items: center; border-bottom: 3px solid ${isActive(item.href) ? '#1A73E8' : 'transparent'}; transition: all 150ms ease; white-space: nowrap;`}
-            onmouseover="this.style.borderBottomColor='#1A73E8'; this.style.color='#1A73E8'"
-            onmouseout={`this.style.borderBottomColor='${isActive(item.href) ? '#1A73E8' : 'transparent'}'; this.style.color='${isActive(item.href) ? '#1A73E8' : '#5F6368'}'`}
+            class="gc-nav-link"
           >
             {item.label}
           </a>
@@ -91,8 +90,6 @@ const isActive = (href: string) =>
       href={isES ? '/es/auditoria' : '/audit'}
       style="font-family:'Red Hat Text',sans-serif;font-size:0.875rem;font-weight:500;color:#1A73E8;text-decoration:none;white-space:nowrap;display:none;"
       class="header-audit-link"
-      onmouseover="this.style.textDecoration='underline'"
-      onmouseout="this.style.textDecoration='none'"
     >
       {isES ? 'Auditoría gratuita' : 'Free audit'}
     </a>
@@ -163,26 +160,7 @@ const isActive = (href: string) =>
   </div>
 </div>
 
-<script>
-  const btn = document.getElementById('mobile-menu-btn')
-  const overlay = document.getElementById('mobile-overlay')
-  const close = document.getElementById('mobile-close')
-
-  btn?.addEventListener('click', () => {
-    if (overlay) overlay.style.display = 'block'
-    document.body.style.overflow = 'hidden'
-  })
-
-  const closeFn = () => {
-    if (overlay) overlay.style.display = 'none'
-    document.body.style.overflow = ''
-  }
-
-  close?.addEventListener('click', closeFn)
-  overlay?.addEventListener('click', (event) => {
-    if (event.target === overlay) closeFn()
-  })
-</script>
+<script is:inline src="/js/mobile-menu.js"></script>
 
 <style>
   /* Full inline nav only fits on true desktop (>= 1024px) — collapsing it
@@ -205,5 +183,14 @@ const isActive = (href: string) =>
     .header-audit-link {
       display: block !important;
     }
+  }
+
+  .gc-nav-link:hover {
+    border-bottom-color: #1a73e8 !important;
+    color: #1a73e8 !important;
+  }
+
+  .header-audit-link:hover {
+    text-decoration: underline !important;
   }
 </style>

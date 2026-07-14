@@ -145,31 +145,4 @@ import FormField from '../../components/ui/FormField.astro'
   }
 </style>
 
-<script>
-  const params = new URLSearchParams(window.location.search)
-  if (params.get('success') === 'true') {
-    document.getElementById('audit-success')?.style.setProperty('display', 'block')
-    document.getElementById('audit-form')?.style.setProperty('display', 'none')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const form = document.getElementById('audit-form') as HTMLFormElement
-  form?.addEventListener('submit', () => {
-    const formData = new FormData(form)
-    const githubRepo = (formData.get('github_repo') as string || '').trim()
-    if (githubRepo && githubRepo.includes('/')) {
-      try {
-        fetch('https://lracloudops-webhook.liquenson-cloud.workers.dev', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          keepalive: true,
-          body: JSON.stringify({
-            name: formData.get('name') as string || '',
-            email: formData.get('email') as string || '',
-            github_repo: githubRepo,
-          }),
-        })
-      } catch { /* fail silently */ }
-    }
-  })
-</script>
+<script is:inline src="/js/audit-form.js"></script>

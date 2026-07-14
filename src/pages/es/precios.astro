@@ -127,8 +127,7 @@ import Footer from '../../components/layout/Footer.astro'
           <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:auto;">
             <a href="/es/contacto?service=project"
               style="display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);background:var(--color-primary);color:#FFFFFF;padding:0.75rem var(--space-6);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-md);font-weight:600;text-decoration:none;transition:background var(--transition-fast);"
-              onmouseover="this.style.background='var(--color-primary-hover)'"
-              onmouseout="this.style.background='var(--color-primary)'"
+              class="btn-hover-primary"
             >
               Solicitar presupuesto →
             </a>
@@ -170,8 +169,7 @@ import Footer from '../../components/layout/Footer.astro'
               target="_blank"
               rel="noopener noreferrer"
               style="display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);background:var(--color-primary);color:#FFFFFF;padding:0.75rem var(--space-6);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-md);font-weight:600;text-decoration:none;transition:background var(--transition-fast);"
-              onmouseover="this.style.background='var(--color-primary-hover)'"
-              onmouseout="this.style.background='var(--color-primary)'"
+              class="btn-hover-primary"
             >
               Suscribirse ahora →
             </a>
@@ -301,40 +299,10 @@ import Footer from '../../components/layout/Footer.astro'
       grid-template-columns: 1fr !important;
     }
   }
+
+  .btn-hover-primary:hover {
+    background: var(--color-primary-hover) !important;
+  }
 </style>
 
-<script>
-  const needEl = document.getElementById('calc-need') as HTMLSelectElement
-  const reposEl = document.getElementById('calc-repos') as HTMLSelectElement
-  const planEl = document.getElementById('calc-plan')
-  const ctaEl = document.getElementById('calc-cta') as HTMLAnchorElement
-
-  const recommendations: Record<string, { plan: string; cta: string; href: string }> = {
-    'audit-1': { plan: 'Auditoría de Infraestructura — Gratis', cta: 'Empezar auditoría gratuita →', href: '/es/auditoria' },
-    'audit-2-5': { plan: 'Auditoría de Infraestructura — Gratis (todos los repos)', cta: 'Empezar auditoría gratuita →', href: '/es/auditoria' },
-    'audit-6+': { plan: 'Retención de Plataforma — €699/mes (escaneos ilimitados)', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'cicd-1': { plan: 'Proyecto de Ingeniería — desde €800', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'cicd-2-5': { plan: 'Proyecto de Ingeniería — desde €1.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'cicd-6+': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'aws-1': { plan: 'Proyecto de Ingeniería — €1.500-3.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'aws-2-5': { plan: 'Proyecto de Ingeniería — €1.500-3.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'aws-6+': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'k8s-1': { plan: 'Proyecto de Ingeniería — €2.000-4.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'k8s-2-5': { plan: 'Proyecto de Ingeniería — €2.000-4.000', cta: 'Ver precios de proyecto →', href: '/es/precios' },
-    'k8s-6+': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'ongoing-1': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'ongoing-2-5': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-    'ongoing-6+': { plan: 'Retención de Plataforma — €699/mes', cta: 'Ver retención →', href: '/es/precios#retainer' },
-  }
-
-  function update() {
-    const key = `${needEl.value}-${reposEl.value}`
-    const rec = recommendations[key] || recommendations['audit-1']
-    if (planEl) planEl.textContent = rec.plan
-    if (ctaEl) { ctaEl.textContent = rec.cta; ctaEl.href = rec.href }
-  }
-
-  needEl?.addEventListener('change', update)
-  reposEl?.addEventListener('change', update)
-  update()
-</script>
+<script is:inline src="/js/pricing-calc-es.js"></script>

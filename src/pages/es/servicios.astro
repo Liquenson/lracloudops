@@ -64,8 +64,7 @@ const techs = [
           {['aws-terraform-devops', 'lra-ai-platform', 'k8s-on-premise', 'aws-devops-agent'].map(repo => (
             <a href={`https://github.com/lra-cloud-ops/${repo}`} target="_blank" rel="noopener noreferrer"
               style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-primary); text-decoration: none; background: var(--color-primary-light); border: 1px solid #C5D8F8; padding: 0.125rem 0.5rem; border-radius: 3px;"
-              onmouseover="this.style.background='#C5D8F8'"
-              onmouseout="this.style.background='#E8F0FE'"
+              class="tag-hover-blue"
             >{repo} ↗</a>
           ))}
         </div>
@@ -369,5 +368,9 @@ const techs = [
     .services-list-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .consulting-cards { grid-template-columns: repeat(2, 1fr) !important; }
     .grid-3 { grid-template-columns: 1fr !important; }
+  }
+
+  .tag-hover-blue:hover {
+    background: #c5d8f8 !important;
   }
 </style>

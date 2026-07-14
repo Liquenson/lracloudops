@@ -37,7 +37,7 @@ const projects: [string, string][] = [
       <!-- Brand -->
       <div>
         <button
-          onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+          id="footer-scroll-top"
           style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; background: transparent; border: none; cursor: pointer; padding: 0;"
           aria-label="Back to top"
         >
@@ -64,8 +64,7 @@ const projects: [string, string][] = [
             target="_blank"
             rel="noopener noreferrer"
             style="width: 36px; height: 36px; border-radius: 50%; background: #3C4043; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 150ms;"
-            onmouseover="this.style.background='#5F6368'"
-            onmouseout="this.style.background='#3C4043'"
+            class="footer-icon-social"
             title="GitHub Organization"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#9AA0A6">
@@ -79,8 +78,7 @@ const projects: [string, string][] = [
             target="_blank"
             rel="noopener noreferrer"
             style="width: 36px; height: 36px; border-radius: 50%; background: #3C4043; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 150ms;"
-            onmouseover="this.style.background='#5F6368'"
-            onmouseout="this.style.background='#3C4043'"
+            class="footer-icon-social"
             title="LinkedIn"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#9AA0A6">
@@ -106,8 +104,7 @@ const projects: [string, string][] = [
               target="_blank"
               rel="noopener noreferrer"
               style="display: block; font-family: 'Red Hat Mono', monospace; font-size: 0.8125rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
-              onmouseover="this.style.color='#FFFFFF'"
-              onmouseout="this.style.color='#9AA0A6'"
+              class="footer-link-muted"
             >
               {name}
             </a>
@@ -116,16 +113,14 @@ const projects: [string, string][] = [
         <a
           href={isES ? '/es/open-source' : '/open-source'}
           style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
-          onmouseover="this.style.color='#FFFFFF'"
-          onmouseout="this.style.color='#9AA0A6'"
+          class="footer-link-muted"
         >
           {isES ? 'Plataforma Open Source' : 'Open Source Platform'}
         </a>
         <a
           href={isES ? '/es/casos-de-uso' : '/case-studies'}
           style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
-          onmouseover="this.style.color='#FFFFFF'"
-          onmouseout="this.style.color='#9AA0A6'"
+          class="footer-link-muted"
         >
           {isES ? 'Casos de Uso' : 'Case Studies'}
         </a>
@@ -156,8 +151,6 @@ const projects: [string, string][] = [
             cursor: pointer;
             transition: all 150ms ease;
           "
-          onmouseover="this.style.borderColor='#FFFFFF'; this.style.color='#FFFFFF'"
-          onmouseout="if(!this.getAttribute('data-open')){this.style.borderColor='#3C4043'; this.style.color='#9AA0A6'}"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
@@ -209,8 +202,6 @@ const projects: [string, string][] = [
                   background: ${active ? '#3C4043' : 'transparent'};
                   transition: background 150ms ease, color 150ms ease;
                 `}
-                onmouseover="this.style.background='#3C4043'; this.style.color='#FFFFFF'"
-                onmouseout={`this.style.background='${active ? '#3C4043' : 'transparent'}'; this.style.color='${active ? '#FFFFFF' : '#9AA0A6'}'`}
               >
                 {active ? (
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -224,36 +215,7 @@ const projects: [string, string][] = [
         </div>
       </div>
 
-      <script>
-        const btn = document.getElementById('footer-lang-btn')
-        const dropdown = document.getElementById('footer-lang-dropdown')
-        const chevron = document.getElementById('footer-lang-chevron')
-
-        btn?.addEventListener('click', () => {
-          const isOpen = dropdown?.style.display === 'block'
-          if (dropdown) dropdown.style.display = isOpen ? 'none' : 'block'
-          if (chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)'
-          if (btn) {
-            btn.setAttribute('aria-expanded', String(!isOpen))
-            btn.setAttribute('data-open', isOpen ? '' : 'true')
-            btn.style.borderColor = isOpen ? '#3C4043' : '#FFFFFF'
-            btn.style.color = isOpen ? '#9AA0A6' : '#FFFFFF'
-          }
-        })
-
-        document.addEventListener('click', (e) => {
-          if (!btn?.contains(e.target as Node) && !dropdown?.contains(e.target as Node)) {
-            if (dropdown) dropdown.style.display = 'none'
-            if (chevron) chevron.style.transform = 'rotate(0deg)'
-            if (btn) {
-              btn.setAttribute('aria-expanded', 'false')
-              btn.removeAttribute('data-open')
-              btn.style.borderColor = '#3C4043'
-              btn.style.color = '#9AA0A6'
-            }
-          }
-        })
-      </script>
+      <script is:inline src="/js/footer-lang.js"></script>
 
       <!-- Contact -->
       <div>
@@ -265,8 +227,7 @@ const projects: [string, string][] = [
         <a
           href="mailto:info@lracloudops.com"
           style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
-          onmouseover="this.style.color='#FFFFFF'"
-          onmouseout="this.style.color='#9AA0A6'"
+          class="footer-link-muted"
         >
           info@lracloudops.com
         </a>
@@ -275,8 +236,7 @@ const projects: [string, string][] = [
           target="_blank"
           rel="noopener noreferrer"
           style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
-          onmouseover="this.style.color='#FFFFFF'"
-          onmouseout="this.style.color='#9AA0A6'"
+          class="footer-link-muted"
         >
           LinkedIn
         </a>
@@ -285,8 +245,7 @@ const projects: [string, string][] = [
           target="_blank"
           rel="noopener noreferrer"
           style="display: block; font-family: 'Red Hat Text', sans-serif; font-size: 0.875rem; color: #9AA0A6; text-decoration: none; margin-bottom: 0.625rem; transition: color 150ms ease;"
-          onmouseover="this.style.color='#FFFFFF'"
-          onmouseout="this.style.color='#9AA0A6'"
+          class="footer-link-muted"
         >
           GitHub Organization
         </a>
@@ -299,16 +258,14 @@ const projects: [string, string][] = [
           <a
             href={isES ? '/es/privacidad' : '/privacy'}
             style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; text-decoration: none; transition: color 150ms ease;"
-            onmouseover="this.style.color='#9AA0A6'"
-            onmouseout="this.style.color='#5F6368'"
+            class="footer-link-dim"
           >
             {isES ? 'Política de Privacidad' : 'Privacy Policy'}
           </a>
           <a
             href={isES ? '/es/terminos' : '/terms'}
             style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; text-decoration: none; transition: color 150ms ease;"
-            onmouseover="this.style.color='#9AA0A6'"
-            onmouseout="this.style.color='#5F6368'"
+            class="footer-link-dim"
           >
             {isES ? 'Términos' : 'Terms'}
           </a>
@@ -339,8 +296,7 @@ const projects: [string, string][] = [
             src="/nibble-logo.jpg"
             alt="Nibble Tech LLC"
             style="height: 20px; width: auto; border-radius: 3px; opacity: 0.5; transition: opacity 150ms;"
-            onmouseover="this.style.opacity='1'"
-            onmouseout="this.style.opacity='0.5'"
+            class="footer-logo-badge"
           />
         </a>
         <a
@@ -352,8 +308,7 @@ const projects: [string, string][] = [
             src="/itla-logo.jpg"
             alt="ITLA"
             style="height: 20px; width: auto; border-radius: 3px; opacity: 0.5; transition: opacity 150ms;"
-            onmouseover="this.style.opacity='1'"
-            onmouseout="this.style.opacity='0.5'"
+            class="footer-logo-badge"
           />
         </a>
       </div>
@@ -383,5 +338,32 @@ const projects: [string, string][] = [
       align-items: flex-start !important;
       gap: 1.25rem !important;
     }
+  }
+
+  .footer-icon-social:hover {
+    background: #5f6368 !important;
+  }
+
+  .footer-link-muted:hover {
+    color: #ffffff !important;
+  }
+
+  .footer-link-dim:hover {
+    color: #9aa0a6 !important;
+  }
+
+  .footer-logo-badge:hover {
+    opacity: 1 !important;
+  }
+
+  #footer-lang-btn:hover,
+  #footer-lang-btn[data-open] {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  #footer-lang-dropdown a:hover {
+    background: #3c4043 !important;
+    color: #ffffff !important;
   }
 </style>

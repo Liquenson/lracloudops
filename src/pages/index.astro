@@ -379,8 +379,7 @@ const tabs = [
           <div class="hero-github-stats" style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; padding: 0.5rem 1rem;">
             <a href="https://github.com/lra-cloud-ops" target="_blank" rel="noopener noreferrer"
               style="display: flex; align-items: center; gap: 0.375rem; font-family: 'Red Hat Mono', monospace; font-size: 0.75rem; color: #5F6368; text-decoration: none; transition: color 150ms ease;"
-              onmouseover="this.style.color='#1A73E8'"
-              onmouseout="this.style.color='#5F6368'"
+              class="github-stats-link"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
               github.com/lra-cloud-ops
@@ -583,8 +582,6 @@ const tabs = [
               data-animate-child
               class="card-premium"
               style="background: #FFFFFF; border: 1px solid #DADCE0; border-radius: 8px; padding: 1.25rem; text-decoration: none; display: block; transition: box-shadow 150ms ease;"
-              onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.12)'"
-              onmouseout="this.style.boxShadow='none'"
             >
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.875rem;">
                 <div
@@ -739,165 +736,7 @@ const tabs = [
     </div>
   </section>
 
-  <script>
-    (function () {
-      const tabBtns = Array.from(
-        document.querySelectorAll('#industries [data-tab]')
-      ) as HTMLButtonElement[]
-      const tabPanels = Array.from(
-        document.querySelectorAll('#industries [data-panel]')
-      ) as HTMLElement[]
-
-      if (!tabBtns.length || !tabPanels.length) return
-
-      let current = 0
-      let autoplay: ReturnType<typeof setInterval> | null = null
-      let isPaused = false
-
-      // Setup panel container for slide effect
-      const panelContainer = tabPanels[0]?.parentElement
-      if (panelContainer) {
-        panelContainer.style.position = 'relative'
-        panelContainer.style.overflow = 'hidden'
-      }
-
-      // Initialize panels
-      tabPanels.forEach((panel, i) => {
-        panel.style.position = i === 0 ? 'relative' : 'absolute'
-        panel.style.top = '0'
-        panel.style.left = '0'
-        panel.style.width = '100%'
-        panel.style.opacity = i === 0 ? '1' : '0'
-        panel.style.transform = i === 0 ? 'translateX(0)' : 'translateX(100%)'
-        panel.style.transition =
-          'opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0, 0.2, 1)'
-        panel.style.pointerEvents = i === 0 ? 'auto' : 'none'
-      })
-
-      function goTo(next: number, direction: 'left' | 'right' = 'left') {
-        if (next === current) return
-
-        const prev = current
-        const prevPanel = tabPanels[prev]
-        const nextPanel = tabPanels[next]
-
-        // Position next panel off screen
-        nextPanel.style.transition = 'none'
-        nextPanel.style.transform =
-          direction === 'left' ? 'translateX(100%)' : 'translateX(-100%)'
-        nextPanel.style.opacity = '0'
-        nextPanel.style.position = 'absolute'
-        nextPanel.style.pointerEvents = 'none'
-
-        // Force reflow
-        nextPanel.getBoundingClientRect()
-
-        // Animate
-        requestAnimationFrame(() => {
-          nextPanel.style.transition =
-            'opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0, 0.2, 1)'
-          nextPanel.style.transform = 'translateX(0)'
-          nextPanel.style.opacity = '1'
-          nextPanel.style.pointerEvents = 'auto'
-
-          prevPanel.style.transition =
-            'opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0, 0.2, 1)'
-          prevPanel.style.transform =
-            direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)'
-          prevPanel.style.opacity = '0'
-          prevPanel.style.pointerEvents = 'none'
-
-          setTimeout(() => {
-            prevPanel.style.position = 'absolute'
-            nextPanel.style.position = 'relative'
-          }, 620)
-        })
-
-        // Update buttons
-        tabBtns.forEach((btn, i) => {
-          const isActive = i === next
-          btn.style.borderBottomColor = isActive ? '#1A73E8' : 'transparent'
-          btn.style.color = isActive ? '#1A73E8' : '#5F6368'
-          btn.style.fontWeight = isActive ? '600' : '500'
-        })
-
-        current = next
-      }
-
-      function next() {
-        goTo((current + 1) % tabBtns.length, 'left')
-      }
-
-      function startAutoplay() {
-        if (autoplay) clearInterval(autoplay)
-        autoplay = setInterval(() => {
-          if (!isPaused) next()
-        }, 2000)
-      }
-
-      // Manual tab click
-      tabBtns.forEach((btn, i) => {
-        btn.addEventListener('click', () => {
-          const dir = i > current ? 'left' : 'right'
-          goTo(i, dir)
-          // Reset autoplay timer on manual click
-          startAutoplay()
-        })
-      })
-
-      // Pause on hover
-      const section = tabBtns[0]?.closest('section')
-      if (section) {
-        section.addEventListener('mouseenter', () => {
-          isPaused = true
-        })
-        section.addEventListener('mouseleave', () => {
-          isPaused = false
-        })
-      }
-
-      // Progress indicator dots
-      const dotsContainer = document.querySelector('#industries [data-tab-dots]')
-      if (dotsContainer) {
-        tabBtns.forEach((btn, i) => {
-          const dot = document.createElement('button')
-          dot.setAttribute('aria-label', `Show ${btn.textContent?.trim()} slide`)
-          dot.style.cssText = `
-            width: 6px; height: 6px; border-radius: 50%;
-            background: ${i === 0 ? '#1A73E8' : '#DADCE0'};
-            border: none; cursor: pointer; padding: 0;
-            transition: background 300ms ease, transform 300ms ease;
-          `
-          dot.addEventListener('click', () => {
-            const dir = i > current ? 'left' : 'right'
-            goTo(i, dir)
-            startAutoplay()
-          })
-          dotsContainer.appendChild(dot)
-        })
-
-        // Update dots
-        function updateDots() {
-          const dots = Array.from(dotsContainer!.querySelectorAll('button'))
-          dots.forEach((dot, i) => {
-            ;(dot as HTMLElement).style.background =
-              i === current ? '#1A73E8' : '#DADCE0'
-            ;(dot as HTMLElement).style.transform =
-              i === current ? 'scale(1.4)' : 'scale(1)'
-          })
-        }
-
-        tabBtns.forEach((btn) => {
-          btn.addEventListener('click', updateDots)
-        })
-
-        setInterval(updateDots, 100)
-      }
-
-      // Start autoplay
-      startAutoplay()
-    })()
-  </script>
+  <script is:inline src="/js/industries-tabs.js"></script>
 
   <!-- ============================================================
      ENGINEERING CAPABILITIES — what we deliver, not what we use
@@ -939,8 +778,7 @@ const tabs = [
         <!-- AWS -->
         <a href="https://aws.amazon.com/es/" target="_blank" rel="noopener noreferrer"
           style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease; min-width: 120px;"
-          onmouseover="this.style.opacity='1'"
-          onmouseout="this.style.opacity='0.65'"
+          class="cloud-logo-link"
         >
           <div style="height: 36px; display: flex; align-items: center; justify-content: center;">
             <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.625rem; font-weight: 700; color: #FF9900; letter-spacing: -0.03em; line-height: 1;">AWS</span>
@@ -951,8 +789,7 @@ const tabs = [
         <!-- Azure — text only, no broken SVG -->
         <a href="https://azure.microsoft.com/es-es" target="_blank" rel="noopener noreferrer"
           style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease; min-width: 120px;"
-          onmouseover="this.style.opacity='1'"
-          onmouseout="this.style.opacity='0.65'"
+          class="cloud-logo-link"
         >
           <div style="height: 36px; display: flex; align-items: center; justify-content: center;">
             <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.625rem; font-weight: 700; color: #0078D4; letter-spacing: -0.03em; line-height: 1;">Azure</span>
@@ -963,8 +800,7 @@ const tabs = [
         <!-- Google Cloud -->
         <a href="https://cloud.google.com/?hl=es" target="_blank" rel="noopener noreferrer"
           style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; opacity: 0.65; transition: opacity 150ms ease; min-width: 120px;"
-          onmouseover="this.style.opacity='1'"
-          onmouseout="this.style.opacity='0.65'"
+          class="cloud-logo-link"
         >
           <div style="height: 36px; display: flex; align-items: center; justify-content: center;">
             <span style="font-family: 'Red Hat Display', sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1;">
@@ -1164,5 +1000,13 @@ const tabs = [
       line-height: 1.15 !important;
       letter-spacing: -0.02em !important;
     }
+  }
+
+  .github-stats-link:hover {
+    color: #1a73e8 !important;
+  }
+
+  .cloud-logo-link:hover {
+    opacity: 1 !important;
   }
 </style>

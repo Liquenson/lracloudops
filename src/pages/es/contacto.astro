@@ -307,43 +307,4 @@ const successRedirectUrl = new URL('/es/contacto?success=true', Astro.site).toSt
   }
 </style>
 
-<script>
-  const WEBHOOK_URL = 'https://lracloudops-webhook.liquenson-cloud.workers.dev'
-
-  const form = document.querySelector('form[action*="web3forms"]') as HTMLFormElement | null
-  const successMessage = document.getElementById('success-message')
-
-  // Show success message after Web3Forms redirects back with ?success=true
-  if (new URLSearchParams(window.location.search).get('success') === 'true') {
-    successMessage?.style.setProperty('display', 'block')
-    form?.style.setProperty('display', 'none')
-  }
-
-  // Fire the smart-scan webhook alongside the normal Web3Forms submission.
-  // Does NOT preventDefault — the browser still navigates to Web3Forms as usual.
-  // keepalive lets the request survive that navigation.
-  form?.addEventListener('submit', () => {
-    const formData = new FormData(form)
-    const githubRepo = (formData.get('github_repo') as string || '').trim()
-
-    if (!githubRepo.includes('/')) return
-
-    const payload = {
-      name: (formData.get('name') as string) || '',
-      email: (formData.get('email') as string) || '',
-      github_repo: githubRepo,
-      topic: (formData.get('topic') as string) || '',
-    }
-
-    try {
-      fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true,
-      })
-    } catch {
-      // Fail silently — Web3Forms already handles the actual message
-    }
-  })
-</script>
+<script is:inline src="/js/contact-form.js"></script>

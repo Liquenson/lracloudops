@@ -127,8 +127,7 @@ import Footer from '../components/layout/Footer.astro'
           <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:auto;">
             <a href="/contact?service=project"
               style="display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);background:var(--color-primary);color:#FFFFFF;padding:0.75rem var(--space-6);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-md);font-weight:600;text-decoration:none;transition:background var(--transition-fast);"
-              onmouseover="this.style.background='var(--color-primary-hover)'"
-              onmouseout="this.style.background='var(--color-primary)'"
+              class="btn-hover-primary"
             >
               Get a custom quote →
             </a>
@@ -170,8 +169,7 @@ import Footer from '../components/layout/Footer.astro'
               target="_blank"
               rel="noopener noreferrer"
               style="display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);background:var(--color-primary);color:#FFFFFF;padding:0.75rem var(--space-6);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-md);font-weight:600;text-decoration:none;transition:background var(--transition-fast);"
-              onmouseover="this.style.background='var(--color-primary-hover)'"
-              onmouseout="this.style.background='var(--color-primary)'"
+              class="btn-hover-primary"
             >
               Subscribe now →
             </a>
@@ -301,40 +299,10 @@ import Footer from '../components/layout/Footer.astro'
       grid-template-columns: 1fr !important;
     }
   }
+
+  .btn-hover-primary:hover {
+    background: var(--color-primary-hover) !important;
+  }
 </style>
 
-<script>
-  const needEl = document.getElementById('calc-need') as HTMLSelectElement
-  const reposEl = document.getElementById('calc-repos') as HTMLSelectElement
-  const planEl = document.getElementById('calc-plan')
-  const ctaEl = document.getElementById('calc-cta') as HTMLAnchorElement
-
-  const recommendations: Record<string, { plan: string; cta: string; href: string }> = {
-    'audit-1': { plan: 'Infrastructure Audit — Free', cta: 'Start free audit →', href: '/audit' },
-    'audit-2-5': { plan: 'Infrastructure Audit — Free (all repos)', cta: 'Start free audit →', href: '/audit' },
-    'audit-6+': { plan: 'Platform Retainer — €699/month (unlimited scans)', cta: 'View retainer →', href: '/pricing#retainer' },
-    'cicd-1': { plan: 'Engineering Project — from €800', cta: 'View project pricing →', href: '/pricing' },
-    'cicd-2-5': { plan: 'Engineering Project — from €1.000', cta: 'View project pricing →', href: '/pricing' },
-    'cicd-6+': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'aws-1': { plan: 'Engineering Project — €1.500-3.000', cta: 'View project pricing →', href: '/pricing' },
-    'aws-2-5': { plan: 'Engineering Project — €1.500-3.000', cta: 'View project pricing →', href: '/pricing' },
-    'aws-6+': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'k8s-1': { plan: 'Engineering Project — €2.000-4.000', cta: 'View project pricing →', href: '/pricing' },
-    'k8s-2-5': { plan: 'Engineering Project — €2.000-4.000', cta: 'View project pricing →', href: '/pricing' },
-    'k8s-6+': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'ongoing-1': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'ongoing-2-5': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
-    'ongoing-6+': { plan: 'Platform Retainer — €699/month', cta: 'View retainer →', href: '/pricing#retainer' },
-  }
-
-  function update() {
-    const key = `${needEl.value}-${reposEl.value}`
-    const rec = recommendations[key] || recommendations['audit-1']
-    if (planEl) planEl.textContent = rec.plan
-    if (ctaEl) { ctaEl.textContent = rec.cta; ctaEl.href = rec.href }
-  }
-
-  needEl?.addEventListener('change', update)
-  reposEl?.addEventListener('change', update)
-  update()
-</script>
+<script is:inline src="/js/pricing-calc-en.js"></script>
