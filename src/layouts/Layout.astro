@@ -112,32 +112,11 @@ const esUrl = isES
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-    <script is:inline>
-      ;(function () {
-        const path = window.location.pathname
-        if (path !== '/') return
-        if (sessionStorage.getItem('lang-chosen')) return
-        const lang = navigator.language || navigator.userLanguage || 'en'
-        const isSpanish = lang.toLowerCase().startsWith('es')
-        if (isSpanish) {
-          sessionStorage.setItem('lang-chosen', 'es')
-          window.location.replace('/es/')
-        } else {
-          sessionStorage.setItem('lang-chosen', 'en')
-        }
-      })()
-    </script>
+    <script is:inline src="/js/lang-redirect.js"></script>
 
     <!-- Google Analytics GA4 -->
     <script async is:inline src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-    <script is:inline define:vars={{ gaId }}>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag('js', new Date())
-      gtag('config', gaId)
-    </script>
+    <script is:inline defer src="/js/analytics.js" data-ga-id={gaId}></script>
 
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
