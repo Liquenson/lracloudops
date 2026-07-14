@@ -47,14 +47,13 @@ OUR 4 OPEN SOURCE PROJECTS (github.com/lra-cloud-ops):
    https://github.com/lra-cloud-ops/k8s-on-premise
 
 SERVICES AND PRICING:
-- Free infrastructure audit: lra scan on any GitHub repository. Delivered
-  within 24 hours. No commitment required.
+- Free infrastructure audit: lra scan on any GitHub repo (Trivy + Checkov)
+  Delivered within 24 hours. No commitment required.
 - Security remediation support: €249-499 (2-3 days)
 - GitOps Delivery Pipeline: €800-1.200 (3-7 days)
 - AWS Infrastructure as Code: €1.500-3.000 (1-2 weeks)
 - Kubernetes Platform Engineering: €2.000-4.000 (2-3 weeks)
 - Platform Retainer: €699/month (no long-term contract)
-  Includes: monthly lra scan, infrastructure_review, CI/CD audit, direct access.
 
 CONTACT:
 - Website: https://lracloudops.com
