@@ -1,17 +1,32 @@
-/**
- * System prompt reference for the lracloudops-agent Cloudflare Worker.
- * This file is documentation only — it is not imported or deployed.
- * Deploy the actual prompt update manually via `wrangler deploy` or the
- * Cloudflare dashboard for the lracloudops-agent Worker.
- *
- * Changes vs previous version:
- * - 4 verified open source projects (not 6 unverified ones)
- * - Pricing synced with /pricing (2026 market rates): audit is free, projects from €800, retainer €699/mo
- * - Removed references to unverified projects
- * - Updated contact/calendar links
- */
+export default {
+  async fetch(request, env) {
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      })
+    }
 
-export const SYSTEM_PROMPT = `You are the DevOps advisor for LRA CloudOps,
+    if (request.method !== 'POST') {
+      return new Response('Method not allowed', { status: 405 })
+    }
+
+    const { messages } = await request.json()
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1000,
+        system: `You are the DevOps advisor for LRA CloudOps,
 a DevOps consultancy and open source engineering organization
 based in Las Palmas de Gran Canaria, Spain,
 led by Ruben Liquenson — DevOps Engineer with 4+ years in production AWS infrastructure.
@@ -60,12 +75,27 @@ CONTACT:
 - Email: info@lracloudops.com
 - LinkedIn: https://www.linkedin.com/in/ruben-liquenson-490961269/
 - GitHub: https://github.com/lra-cloud-ops
-- Free audit request: https://lracloudops.com/contact
+- Free audit request: https://lracloudops.com/audit
 - Services: https://lracloudops.com/services
 - Pricing: https://lracloudops.com/pricing
 
 Always be helpful, technical and professional.
-For free audit requests, direct them to: https://lracloudops.com/contact
+For free audit requests, direct them to: https://lracloudops.com/audit
 Respond in the same language the user writes in.
 Keep responses concise — 2-4 paragraphs maximum.
-Do not invent technologies or metrics not listed above.`
+Do not invent technologies or metrics not listed above.`,
+        messages: messages,
+      }),
+    })
+
+    const data = await response.json()
+    const text = data.content[0].text
+
+    return new Response(JSON.stringify({ text }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+  },
+}
