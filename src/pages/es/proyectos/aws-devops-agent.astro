@@ -48,10 +48,16 @@ import { getTagClass } from '../../../lib/tagColors'
           <p
             style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;"
           >
-            Agente CLI que usa un modelo de IA en un bucle real de tool-use.
-            Pregunta sobre tu infraestructura AWS en lenguaje natural. El
-            agente IA selecciona entre 31 funciones boto3 y las ejecuta contra
-            tu cuenta real.
+            aws-devops-agent es una herramienta CLI que implementa un bucle
+            de tool-use de IA usando la Anthropic Messages API. El agente
+            mantiene un contexto de conversación y selecciona entre 31
+            funciones boto3 — que cubren EC2, EKS, RDS, IAM, S3, CloudWatch,
+            Lambda y otros 17 servicios AWS — para responder a consultas en
+            lenguaje natural con datos de API en tiempo real. La arquitectura
+            es un patrón de tool-use de un solo turno: el modelo recibe la
+            consulta y las definiciones de herramientas, devuelve bloques
+            tool_use, el executor invoca la función boto3 correspondiente, y
+            el resultado se retroalimenta al modelo para la respuesta final.
           </p>
 
           <div

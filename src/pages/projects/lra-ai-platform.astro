@@ -53,10 +53,16 @@ import { getTagClass } from '../../lib/tagColors'
           <p
             style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;"
           >
-            Multi-agent platform for DevOps and Platform Engineering. 8
-            specialized agents execute real infrastructure operations across
-            AWS, Kubernetes and Terraform — with a 5-level Governance Engine on
-            every action.
+            lra-ai-platform is a multi-agent orchestration platform for DevOps
+            automation. It implements a deterministic task-planning
+            architecture in which a Supervisor decomposes natural language
+            intents into executable plans, routes them through a Governance
+            Engine enforcing five RBAC permission levels, and delegates
+            execution to eight specialized agents — Cloud Architect, DevOps
+            Engineer, Security Engineer, SRE, Documentation, Reviewer,
+            OpenShift and Founder. Each agent invokes real integrations:
+            Terraform, Kubernetes, Ansible, AWS, Azure, GCP, GitHub, Trivy and
+            Checkov, among others.
           </p>
 
           <!-- Tags -->
@@ -491,7 +497,7 @@ import { getTagClass } from '../../lib/tagColors'
     <div style="max-width:1280px;margin:0 auto;">
       <p style="font-family:var(--font-body);font-size:0.75rem;font-weight:600;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Ecosystem</p>
       <h2 style="font-family:var(--font-display);font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;color:var(--color-text);margin-bottom:0.5rem;">Role in the platform</h2>
-      <p style="font-family:var(--font-body);font-size:1rem;color:var(--color-text-secondary);margin-bottom:2rem;max-width:640px;">lra-ai-platform is the AI orchestration layer — it coordinates the other projects through specialized agents and governance.</p>
+      <p style="font-family:var(--font-body);font-size:1rem;color:var(--color-text-secondary);margin-bottom:2rem;max-width:640px;">lra-ai-platform functions as the AI orchestration layer of the LRA CloudOps platform. Agents execute security scans against aws-terraform-devops via SecurityAgent, generate and maintain documentation across all repositories via DocumentationAgent, and monitor cluster health on k8s-on-premise via SREAgent.</p>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;" class="grid-2">
         {[
           { action:'Scans security of', target:'aws-terraform-devops', desc:'SecurityAgent runs Trivy + Checkov on Terraform modules and K8s manifests.', href:'/projects/aws-terraform-devops' },

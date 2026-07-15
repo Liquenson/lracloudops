@@ -32,7 +32,7 @@ import { getTagClass } from '../../lib/tagColors'
 
           <h1 style="font-family: var(--font-mono); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">aws-terraform-devops<span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:var(--color-success);background:var(--color-success-light);border:1px solid #137333;padding:0.25rem 0.75rem;border-radius:var(--radius-sm);margin-left:1rem;">Core Platform</span></h1>
           <p style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;">
-            Production-ready AWS infrastructure with 7 Terraform modules. Multi-AZ VPC, EKS 1.31, RDS PostgreSQL 15, ECR registry. Flask app deployed via Helm, managed by ArgoCD, quality-gated by SonarCloud.
+            aws-terraform-devops provisions a complete AWS environment using seven modular Terraform configurations: VPC with multi-AZ subnets and NAT gateways, EKS 1.31 with managed node groups, RDS PostgreSQL 15 with automated backups and encryption at rest, ECR with scan-on-push policies, IAM roles following least-privilege principles, CloudWatch log groups and alarms, and S3 with versioning and server-side encryption. A Flask application is deployed via Helm and managed by ArgoCD with auto-sync and self-healing enabled.
           </p>
 
           <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">

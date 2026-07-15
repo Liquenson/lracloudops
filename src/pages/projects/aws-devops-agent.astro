@@ -48,9 +48,16 @@ import { getTagClass } from '../../lib/tagColors'
           <p
             style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;"
           >
-            CLI agent using an AI model in a real tool-use loop. Ask about
-            your AWS infrastructure in plain language. The AI agent selects
-            from 31 boto3 functions and executes against your live account.
+            aws-devops-agent is a CLI tool that implements an AI tool-use loop
+            using the Anthropic Messages API. The agent maintains a
+            conversation context and selects from 31 boto3 functions —
+            covering EC2, EKS, RDS, IAM, S3, CloudWatch, Lambda, and 17
+            additional AWS services — to respond to natural language queries
+            with real-time API data. The architecture is a single-turn
+            tool-use pattern: the model receives the query and tool
+            definitions, returns tool_use blocks, the executor calls the
+            corresponding boto3 function, and the result is fed back to the
+            model for a final response.
           </p>
 
           <div

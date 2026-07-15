@@ -32,7 +32,7 @@ import { getTagClass } from '../../lib/tagColors'
 
           <h1 style="font-family: var(--font-mono); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">k8s-on-premise<span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:var(--color-primary);background:var(--color-primary-light);border:1px solid #1A73E8;padding:0.25rem 0.75rem;border-radius:var(--radius-sm);margin-left:1rem;">Supporting</span></h1>
           <p style="font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); line-height: 1.7; max-width: 620px; margin-bottom: 1.5rem;">
-            Multi-node Kubernetes cluster built from scratch with kubeadm. Not k3s. Not minikube. A real control-plane with 2 workers on Vagrant/VirtualBox — Calico CNI, NGINX Ingress, Helm add-ons and a working ArgoCD GitOps demo.
+            k8s-on-premise bootstraps a multi-node Kubernetes cluster from scratch using kubeadm on Vagrant-provisioned VirtualBox VMs: one control-plane node and two workers, each running containerd as the container runtime. Calico CNI provides pod networking and network policy enforcement. NGINX Ingress Controller handles HTTP/HTTPS routing. Helm manages add-on lifecycle. ArgoCD implements GitOps continuous delivery with declarative sync policies.
           </p>
 
           <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
