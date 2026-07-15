@@ -52,25 +52,25 @@ const ecosystemLayers = [
     label: 'Interfaz de Cliente',
     color: '#1A73E8',
     name: 'lracloudops.com',
-    desc: 'Punto de entrada de cara al cliente. El Smart Scan gratuito dispara una auditoría real con Trivy + Checkov.',
+    desc: 'Punto de entrada para solicitudes de auditoría de infraestructura. El formulario de contacto dispara lra scan vía webhook a GitHub Actions.',
   },
   {
     label: 'Orquestación IA',
     color: '#137333',
     name: 'lra-ai-platform',
-    desc: '8 agentes especializados con un motor de gobernanza de 5 niveles coordinan las capas de abajo.',
+    desc: 'Plataforma multi-agente que implementa un modelo de ejecución Supervisor → TaskPlanner → GovernanceEngine → AgentManager con 5 niveles RBAC.',
   },
   {
     label: 'Infraestructura Cloud',
     color: '#F29900',
     name: 'aws-terraform-devops · aws-devops-agent',
-    desc: 'AWS gestionado con Terraform (VPC, EKS, RDS, ECR) más operaciones AWS en lenguaje natural.',
+    desc: 'Siete configuraciones Terraform modulares que provisionan VPC, EKS, RDS, ECR, IAM, CloudWatch y S3 en AWS eu-west-1. Operaciones AWS en lenguaje natural vía agente tool-use de 31 funciones.',
   },
   {
     label: 'Runtime de Contenedores',
     color: '#C5221F',
     name: 'k8s-on-premise',
-    desc: 'Clúster Kubernetes bare-metal con kubeadm, redes Calico y sync ArgoCD.',
+    desc: 'Clúster Kubernetes multi-nodo arrancado con kubeadm. Calico CNI, NGINX Ingress, add-ons de Helm, sync GitOps con ArgoCD.',
   },
 ]
 
@@ -100,37 +100,37 @@ const deliverySteps = [
 const capabilities = [
   {
     capability: 'Infrastructure as Code',
-    desc: 'Entornos AWS reproducibles con 7 módulos Terraform — VPC, EKS, RDS, ECR, IAM, CloudWatch, S3.',
+    desc: 'Siete configuraciones Terraform modulares despliegan un entorno AWS completo: VPC, EKS 1.31, RDS PostgreSQL 15, ECR, IAM, CloudWatch, S3. Multi-AZ, IAM de mínimo privilegio, backups automatizados.',
     project: 'aws-terraform-devops',
     color: '#1A73E8',
   },
   {
     capability: 'Orquestación de Contenedores',
-    desc: 'Kubernetes desde EKS gestionado hasta kubeadm bare-metal — la misma plataforma, distintas capas.',
+    desc: 'Kubernetes en AWS EKS y bare-metal con kubeadm. Calico CNI, NGINX Ingress, ArgoCD GitOps con auto-sync y self-healing. Los mismos patrones declarativos en distintas capas de infraestructura.',
     project: 'k8s-on-premise',
     color: '#137333',
   },
   {
     capability: 'Entrega GitOps',
-    desc: 'ArgoCD con self-heal, auto-sync y prune — infraestructura y apps entregadas de forma declarativa.',
+    desc: 'GitHub Actions para CI. ArgoCD para entrega continua. Cada cambio de manifiesto dispara lint, test, escaneo de seguridad y sincronización declarativa del clúster. Sin despliegues manuales.',
     project: 'aws-terraform-devops',
     color: '#1A73E8',
   },
   {
     capability: 'Automatización de Seguridad',
-    desc: 'Escaneo continuo con Trivy + Checkov en cada repo — informes PASS/FAIL con recomendaciones generadas por IA.',
+    desc: 'lra scan ejecuta Trivy (detección de CVEs) y Checkov (análisis de misconfiguraciones IaC) en cada repositorio. Hallazgos clasificados por severidad con remediación generada por IA.',
     project: 'lra-ai-platform',
     color: '#C5221F',
   },
   {
     capability: 'Orquestación de Agentes IA',
-    desc: '8 agentes especializados con gobernanza RBAC de 5 niveles — desde revisión de infraestructura hasta documentación.',
+    desc: 'Ocho agentes especializados con planificación determinista de tareas y gobernanza RBAC de 5 niveles. Las integraciones incluyen Terraform, Kubernetes, Ansible, AWS, Trivy y Checkov vía APIs tool-use.',
     project: 'lra-ai-platform',
     color: '#C5221F',
   },
   {
     capability: 'Operaciones Cloud',
-    desc: '24 servicios AWS accesibles en lenguaje natural — EC2, EKS, RDS, IAM, CloudWatch vía IA con tool-use.',
+    desc: 'Agente tool-use con 31 funciones boto3 que cubren EC2, EKS, RDS, IAM, S3, CloudWatch y otros 18 servicios AWS. Las consultas en lenguaje natural devuelven respuestas de API en tiempo real.',
     project: 'aws-devops-agent',
     color: '#F29900',
   },

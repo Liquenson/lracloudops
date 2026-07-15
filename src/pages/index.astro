@@ -52,25 +52,25 @@ const ecosystemLayers = [
     label: 'Client Interface',
     color: '#1A73E8',
     name: 'lracloudops.com',
-    desc: 'Client-facing entry point. The free Smart Scan triggers a real Trivy + Checkov audit.',
+    desc: 'Entry point for infrastructure audit requests. The contact form triggers lra scan via webhook dispatch to GitHub Actions.',
   },
   {
     label: 'AI Orchestration',
     color: '#137333',
     name: 'lra-ai-platform',
-    desc: '8 specialized agents behind a 5-level governance engine coordinate the layers below.',
+    desc: 'Multi-agent platform implementing a Supervisor → TaskPlanner → GovernanceEngine → AgentManager execution model with 5 RBAC levels.',
   },
   {
     label: 'Cloud Infrastructure',
     color: '#F29900',
     name: 'aws-terraform-devops · aws-devops-agent',
-    desc: 'Terraform-managed AWS (VPC, EKS, RDS, ECR) plus natural-language AWS operations.',
+    desc: 'Seven modular Terraform configurations provisioning VPC, EKS, RDS, ECR, IAM, CloudWatch and S3 on AWS eu-west-1. Natural language AWS operations via 31-function tool-use agent.',
   },
   {
     label: 'Container Runtime',
     color: '#C5221F',
     name: 'k8s-on-premise',
-    desc: 'Bare-metal Kubernetes cluster with kubeadm, Calico networking and ArgoCD sync.',
+    desc: 'Multi-node Kubernetes cluster bootstrapped with kubeadm. Calico CNI, NGINX Ingress, Helm add-ons, ArgoCD GitOps sync.',
   },
 ]
 
@@ -100,37 +100,37 @@ const deliverySteps = [
 const capabilities = [
   {
     capability: 'Infrastructure as Code',
-    desc: 'Reproducible AWS environments with 7 Terraform modules — VPC, EKS, RDS, ECR, IAM, CloudWatch, S3.',
+    desc: 'Seven modular Terraform configurations deploy a complete AWS environment: VPC, EKS 1.31, RDS PostgreSQL 15, ECR, IAM, CloudWatch, S3. Multi-AZ, least-privilege IAM, automated backups.',
     project: 'aws-terraform-devops',
     color: '#1A73E8',
   },
   {
     capability: 'Container Orchestration',
-    desc: 'Kubernetes from managed EKS to bare-metal kubeadm — the same platform, different layers.',
+    desc: 'Kubernetes on AWS EKS and bare-metal kubeadm. Calico CNI, NGINX Ingress, ArgoCD GitOps with auto-sync and self-healing. Same declarative patterns at different infrastructure layers.',
     project: 'k8s-on-premise',
     color: '#137333',
   },
   {
     capability: 'GitOps Delivery',
-    desc: 'ArgoCD with self-heal, auto-sync and prune — infrastructure and apps delivered declaratively.',
+    desc: 'GitHub Actions for CI. ArgoCD for continuous delivery. Every manifest change triggers lint, test, security scan and declarative cluster sync. No manual deployments.',
     project: 'aws-terraform-devops',
     color: '#1A73E8',
   },
   {
     capability: 'Security Automation',
-    desc: 'Continuous Trivy + Checkov scanning on every repo — PASS/FAIL reports with AI-generated recommendations.',
+    desc: 'lra scan executes Trivy (CVE detection) and Checkov (IaC misconfiguration analysis) on every repository. Findings classified by severity with AI-generated remediation.',
     project: 'lra-ai-platform',
     color: '#C5221F',
   },
   {
     capability: 'AI Agent Orchestration',
-    desc: '8 specialized agents with 5-level RBAC governance — from infrastructure review to documentation.',
+    desc: 'Eight specialized agents with deterministic task planning and 5-level RBAC governance. Integrations include Terraform, Kubernetes, Ansible, AWS, Trivy and Checkov via tool-use APIs.',
     project: 'lra-ai-platform',
     color: '#C5221F',
   },
   {
     capability: 'Cloud Operations',
-    desc: '24 AWS services accessible in natural language — EC2, EKS, RDS, IAM, CloudWatch via tool-use AI.',
+    desc: 'Tool-use agent with 31 boto3 functions covering EC2, EKS, RDS, IAM, S3, CloudWatch and 18 additional AWS services. Natural language queries return real-time API responses.',
     project: 'aws-devops-agent',
     color: '#F29900',
   },
