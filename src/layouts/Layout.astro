@@ -79,6 +79,11 @@ const esUrl = isES
         ? 'LRA CloudOps — Automatización DevOps con agentes especializados'
         : 'LRA CloudOps — DevOps automation with specialized agents'}
     />
+    <!-- Logo fallback for organization recognition -->
+    <meta property="og:image" content="https://lracloudops.com/images/logo-512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="LRA CloudOps logo" />
     <meta property="og:locale" content={isES ? 'es_ES' : 'en_US'} />
 
     <!-- Twitter / X Card -->
@@ -86,7 +91,7 @@ const esUrl = isES
     <meta name="twitter:url" content={Astro.url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://lracloudops.com/og-image.png" />
+    <meta name="twitter:image" content="https://lracloudops.com/images/logo-512.png" />
     <meta
       name="twitter:image:alt"
       content={isES
@@ -127,31 +132,63 @@ const esUrl = isES
 
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "LRA CloudOps",
-      "url": "https://lracloudops.com",
-      "logo": "https://lracloudops.com/lracloudops-icon.svg",
-      "description": "Platform Engineering consultancy specializing in Infrastructure as Code, Kubernetes, GitOps and AI agents.",
-      "founder": {
-        "@type": "Person",
-        "name": "Ruben Liquenson",
-        "jobTitle": "Platform Engineer",
-        "url": "https://www.linkedin.com/in/ruben-liquenson-490961269/"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Las Palmas de Gran Canaria",
-        "addressRegion": "Canarias",
-        "addressCountry": "ES"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "info@lracloudops.com",
-        "contactType": "customer service"
-      },
-      "sameAs": [
-        "https://github.com/lra-cloud-ops",
-        "https://www.linkedin.com/in/ruben-liquenson-490961269/"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://lracloudops.com/#organization",
+          "name": "LRA CloudOps",
+          "url": "https://lracloudops.com",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://lracloudops.com/#logo",
+            "url": "https://lracloudops.com/images/logo-512.png",
+            "width": 512,
+            "height": 512,
+            "caption": "LRA CloudOps"
+          },
+          "image": {
+            "@id": "https://lracloudops.com/#logo"
+          },
+          "description": "Platform Engineering consultancy specializing in Infrastructure as Code, Kubernetes, GitOps and AI orchestration. Open source practitioner based in Las Palmas de Gran Canaria, Spain.",
+          "founder": {
+            "@type": "Person",
+            "@id": "https://lracloudops.com/#founder",
+            "name": "Ruben Liquenson",
+            "jobTitle": "Platform Engineer",
+            "url": "https://lracloudops.com/about",
+            "sameAs": [
+              "https://www.linkedin.com/in/ruben-liquenson-490961269/",
+              "https://github.com/Liquenson"
+            ]
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Las Palmas de Gran Canaria",
+            "addressRegion": "Canarias",
+            "addressCountry": "ES"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "info@lracloudops.com",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "Spanish"]
+          },
+          "sameAs": [
+            "https://github.com/lra-cloud-ops",
+            "https://www.linkedin.com/in/ruben-liquenson-490961269/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://lracloudops.com/#website",
+          "url": "https://lracloudops.com",
+          "name": "LRA CloudOps",
+          "description": "Platform Engineering for production workloads",
+          "publisher": {
+            "@id": "https://lracloudops.com/#organization"
+          },
+          "inLanguage": ["en", "es"]
+        }
       ]
     })} />
   </head>
