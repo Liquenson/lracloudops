@@ -157,7 +157,7 @@ const techs = [
         {[
           {
             title: 'AWS Infrastructure as Code',
-            desc: 'Reproducible AWS environments using 7 Terraform modules — VPC, EKS, RDS, ECR, IAM, CloudWatch, S3. Multi-AZ, least-privilege IAM, automated backups.',
+            desc: 'Provision reproducible AWS environments using modular Terraform configurations. Deliverables include VPC with multi-AZ subnets, EKS cluster with managed node groups, RDS with automated backups, ECR with lifecycle policies, IAM roles following least-privilege principles, and CloudWatch monitoring. All infrastructure is version-controlled and deployable via GitHub Actions CI/CD.',
             price: '€1.500 – €3.000',
             time: '1-2 weeks',
             color: '#1A73E8',
@@ -173,7 +173,7 @@ const techs = [
           },
           {
             title: 'Kubernetes Platform Engineering',
-            desc: 'EKS on AWS or bare-metal with kubeadm. Calico CNI, NGINX Ingress, ArgoCD GitOps, Prometheus observability stack — production-ready from day one.',
+            desc: 'Deploy production-grade Kubernetes platforms on AWS EKS or bare-metal using kubeadm. Includes Calico CNI, NGINX Ingress Controller, Helm chart management, ArgoCD GitOps delivery with auto-sync and self-healing policies, and Prometheus + Grafana observability stack. Cluster configuration is declarative and stored in Git.',
             price: '€2.000 – €4.000',
             time: '2-3 weeks',
             color: '#137333',
@@ -189,7 +189,7 @@ const techs = [
           },
           {
             title: 'GitOps Delivery Pipeline',
-            desc: 'GitHub Actions for CI, ArgoCD for GitOps delivery. SonarCloud quality gates, Trivy security scanning on every pull request. No manual deployments.',
+            desc: 'Implement GitOps delivery using GitHub Actions for CI and ArgoCD for continuous deployment. Every change to application or infrastructure manifests triggers an automated pipeline: lint, test, build, security scan with Trivy, and ArgoCD sync to the target environment. No manual deployments.',
             price: '€800 – €1.200',
             time: '3-5 days',
             color: '#F29900',
@@ -205,7 +205,7 @@ const techs = [
           },
           {
             title: 'Infrastructure Security Audit',
-            desc: 'lra scan — Trivy for container and IaC vulnerabilities, Checkov for Terraform, Kubernetes and Dockerfile misconfigurations. PASS/FAIL report with remediation guidance.',
+            desc: 'lra scan executes Trivy against container images and IaC files to identify CVEs and misconfigurations, and Checkov against Terraform, Kubernetes manifests, Dockerfiles and GitHub Actions workflows. Output is a structured PASS/FAIL report with findings classified by severity (CRITICAL, HIGH, MEDIUM, LOW) and remediation guidance generated using Claude.',
             price: '€249 – €499',
             time: '2-3 days',
             color: '#C5221F',
