@@ -13,3 +13,20 @@ jobs:
         run: |
           curl -s -d "" "${{ secrets.CLOUDFLARE_DEPLOY_HOOK_URL }}"
           echo "Deploy triggered"
+
+  health-check:
+    runs-on: ubuntu-latest
+    needs: trigger-deploy
+    steps:
+      - name: Wait for Cloudflare Pages deploy
+        run: sleep 60
+
+      - name: Verify site is up
+        run: |
+          status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "https://lracloudops.com")
+          echo "lracloudops.com status: $status" >> $GITHUB_STEP_SUMMARY
+          if [ "$status" != "200" ]; then
+            echo "::error::lracloudops.com returned $status after rebuild"
+            exit 1
+          fi
+          echo "✅ Site is up and responding" >> $GITHUB_STEP_SUMMARY
