@@ -1,0 +1,44 @@
+name: Lead Nurturing — Post Smart Scan Follow-up
+
+on:
+  workflow_dispatch:
+    inputs:
+      client_email:
+        description: 'Client email'
+        required: true
+      client_name:
+        description: 'Client name'
+        required: true
+      repo_scanned:
+        description: 'Repository that was scanned'
+        required: true
+      days_since_scan:
+        description: 'Days since scan (3 or 7)'
+        required: true
+        default: '3'
+
+jobs:
+  send-followup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send follow-up email via Resend
+        run: |
+          if [ "${{ github.event.inputs.days_since_scan }}" = "3" ]; then
+            SUBJECT="Following up on your lra scan report"
+            BODY="Hi ${{ github.event.inputs.client_name }},\n\nThree days ago we delivered the security audit for ${{ github.event.inputs.repo_scanned }}.\n\nWere you able to review the findings? If you need help implementing the remediation steps, we can help — fixed scope, fixed price from €249.\n\nReply to this email or visit https://lracloudops.com/contact\n\nRuben Liquenson\nLRA CloudOps"
+          else
+            SUBJECT="Infrastructure remediation support — LRA CloudOps"
+            BODY="Hi ${{ github.event.inputs.client_name }},\n\nOne week ago we scanned ${{ github.event.inputs.repo_scanned }}.\n\nIf the findings are relevant and you'd like ongoing security monitoring, our Platform Retainer includes monthly lra scan across all your repositories for €699/month — no long-term contract.\n\nhttps://lracloudops.com/pricing\n\nRuben Liquenson\nLRA CloudOps"
+          fi
+
+          curl -s -X POST "https://api.resend.com/emails" \
+            -H "Authorization: Bearer ${{ secrets.RESEND_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"from\": \"Ruben Liquenson <info@lracloudops.com>\",
+              \"to\": [\"${{ github.event.inputs.client_email }}\"],
+              \"subject\": \"$SUBJECT\",
+              \"text\": \"$(echo -e "$BODY")\"
+            }"
+
+          echo "Follow-up email sent to ${{ github.event.inputs.client_email }}" >> $GITHUB_STEP_SUMMARY
