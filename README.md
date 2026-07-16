@@ -1,96 +1,58 @@
-# LRA CloudOps — lracloudops.com
+Actualiza README.md con el estado real actual del proyecto.
 
-Corporate website for LRA CloudOps, a Platform Engineering consultancy
-led by Ruben Liquenson, based in Las Palmas de Gran Canaria, Spain.
+Lee el estado actual:
+find src/pages -name "*.astro" | wc -l
+find dist -name "*.html" | wc -l
+ls src/components/ui/
+ls src/components/layout/
+ls public/js/ | wc -l
 
-## Stack
+Actualiza README.md corrigiendo:
 
-- **Framework:** Astro 6 + TypeScript
-- **Styles:** Tailwind CSS 4 (inline styles) + Red Hat Display/Text/Mono
-- **Animations:** GSAP 3 + ScrollTrigger + Lenis
-- **Deploy:** Cloudflare Pages (auto-deploy on push to main)
-- **Workers:** 2 Cloudflare Workers (chat agent + webhook)
-- **CI:** GitHub Actions (build + smart-scan + daily sync)
+1. "29 pages" → número real de páginas
+2. Sección Structure — actualiza con componentes reales:
+   src/
+   ├── pages/          # 40 pages — EN (root) + ES (/es/)
+   ├── components/
+   │   ├── layout/     # Header, Footer, ChatWidget
+   │   └── ui/         # Button, Badge, Card, FormField, Section, SectionHeader, DiagramIcon
+   ├── layouts/        # Layout.astro (single base layout)
+   ├── lib/            # github.ts, tagColors.ts, worker-config.ts
+   ├── data/           # industry-diagrams.ts
+   ├── scripts/        # animations.ts (Lenis + GSAP)
+   └── styles/         # global.css (Design System v4.1)
 
-## Structure
+   public/
+   ├── js/             # 10 externalized scripts (CSP compliance)
+   ├── .well-known/    # security.txt (RFC 9116)
+   └── site.webmanifest
 
-```
-src/
-├── pages/          # 29 pages — EN (root) + ES (/es/)
-├── components/     # Header, Footer, ChatWidget, Logo
-├── layouts/        # Layout.astro (single base layout)
-├── lib/            # github.ts (build-time API), tagColors.ts
-├── data/           # industry-diagrams.ts (SVG diagrams)
-├── scripts/        # animations.ts (Lenis + GSAP)
-└── styles/         # global.css (Design System v4)
+   workers/
+   └── webhook/        # Cloudflare Worker — Smart Scan trigger
 
-workers/
-└── webhook/        # Cloudflare Worker — triggers Smart Scan
-```
+3. Añade sección Security:
+   ## Security
+   - CSP without unsafe-inline (scripts externalized to public/js/)
+   - HSTS: 2 years with preload
+   - X-Frame-Options: DENY
+   - security.txt: /.well-known/security.txt
+   - Vulnerability disclosure: /security
+   - Full policy: SECURITY.md
 
-## Projects featured
+4. Corrige About en español → inglés:
+   "Platform Engineering consultancy website for LRA CloudOps.
+   Production-grade open source projects: IaC, Kubernetes, GitOps and AI orchestration."
 
-| Project | Layer | Maturity |
-|---------|-------|---------|
-| [lra-ai-platform](https://github.com/lra-cloud-ops/lra-ai-platform) | AI Orchestration | Core Platform |
-| [aws-terraform-devops](https://github.com/lra-cloud-ops/aws-terraform-devops) | Infrastructure | Core Platform |
-| [k8s-on-premise](https://github.com/lra-cloud-ops/k8s-on-premise) | Runtime | Supporting |
-| [aws-devops-agent](https://github.com/lra-cloud-ops/aws-devops-agent) | Automation | Lab |
+5. Actualiza la tabla de variables de entorno añadiendo:
+   | Variable | Purpose |
+   | GITHUB_TOKEN | GitHub API rate limit (5000/hr vs 60/hr) |
+   | ANTHROPIC_API_KEY | Smart Scan AI report generation |
+   | RESEND_API_KEY | Smart Scan email delivery |
+   | PUBLIC_GA_ID | Google Analytics GA4 |
+   | PUBLIC_CF_BEACON | Cloudflare Web Analytics |
 
-## Smart Scan
+git add README.md
+git commit -m "docs: update README — 40 pages, real structure, security section"
+git push origin main
 
-The free infrastructure audit is powered by `lra-ai-platform/scripts/smart_scan.py`.
-
-Flow:
-```
-/contact form → Cloudflare Worker (webhook) →
-GitHub Actions (smart-scan.yml) →
-Trivy + Checkov + Claude Haiku →
-Email report via Resend
-```
-
-## Development
-
-```bash
-npm install
-npm run dev        # http://localhost:4321
-npm run build      # Production build
-npm run preview    # Preview production build
-```
-
-## Deploy
-
-Push to `main` → Cloudflare Pages auto-deploys.
-Daily rebuild at 06:00 UTC refreshes GitHub API data (stars, commits).
-
-## Environment variables (Cloudflare Pages)
-
-| Variable | Purpose |
-|----------|---------|
-| GITHUB_TOKEN | GitHub API rate limit (5000/hr vs 60/hr) |
-| ANTHROPIC_API_KEY | Smart Scan AI report generation |
-| RESEND_API_KEY | Smart Scan email delivery |
-| PUBLIC_GA_ID | Google Analytics GA4 |
-| PUBLIC_CF_BEACON | Cloudflare Web Analytics |
-
-## Legal
-
-- Privacy Policy: /privacy · /es/privacidad
-- Terms of Service: /terms · /es/terminos
-- GDPR compliant — data processed in EU
-
-## Copy and narrative
-
-The site uses enterprise technical language aligned with
-Red Hat, AWS and Google Cloud communication standards:
-- Outcome-oriented, not tool-oriented
-- Fixed deliverables, not hourly billing
-- Open source transparency as a trust signal
-
-## Project maturity classification
-
-| Level | Color | Criteria |
-|-------|-------|---------|
-| Core Platform | Green #137333 | Production-grade, tested, documented |
-| Supporting | Blue #1A73E8 | Stable, complements Core projects |
-| Lab | Amber #F29900 | Proof of concept, actively explored |
+Reporta qué cambió.
