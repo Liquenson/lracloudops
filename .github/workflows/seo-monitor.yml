@@ -1,0 +1,94 @@
+name: Weekly SEO Health Check
+
+on:
+  schedule:
+    - cron: '0 7 * * 2'  # Every Tuesday at 07:00 UTC
+  workflow_dispatch:
+
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check critical SEO pages
+        run: |
+          echo "## SEO Health Check — $(date -u +%Y-%m-%d)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          pages=(
+            "https://lracloudops.com"
+            "https://lracloudops.com/es/"
+            "https://lracloudops.com/services"
+            "https://lracloudops.com/pricing"
+            "https://lracloudops.com/audit"
+            "https://lracloudops.com/projects"
+            "https://lracloudops.com/about"
+            "https://lracloudops.com/security"
+            "https://lracloudops.com/sitemap-index.xml"
+            "https://lracloudops.com/robots.txt"
+            "https://lracloudops.com/.well-known/security.txt"
+          )
+
+          all_ok=true
+          for page in "${pages[@]}"; do
+            status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "$page" || echo "000")
+            name=$(echo "$page" | sed 's|https://lracloudops.com||')
+            if [ "$status" = "200" ]; then
+              echo "✅ ${name:-/} — $status" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ ${name:-/} — $status" >> $GITHUB_STEP_SUMMARY
+              all_ok=false
+            fi
+          done
+
+          if [ "$all_ok" = false ]; then
+            echo "::warning::Some pages returned non-200 status. Review SEO health."
+          fi
+
+      - name: Check hreflang pairs
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### hreflang check" >> $GITHUB_STEP_SUMMARY
+
+          html=$(curl -s --max-time 15 "https://lracloudops.com" || echo "")
+
+          if echo "$html" | grep -q 'hreflang="en"'; then
+            echo "✅ hreflang en present" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ hreflang en missing" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if echo "$html" | grep -q 'hreflang="es"'; then
+            echo "✅ hreflang es present" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ hreflang es missing" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if echo "$html" | grep -q 'hreflang="x-default"'; then
+            echo "✅ hreflang x-default present" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ hreflang x-default missing" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Check security headers
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Security headers" >> $GITHUB_STEP_SUMMARY
+
+          headers=$(curl -s -I --max-time 15 "https://lracloudops.com" || echo "")
+
+          check_header() {
+            local header=$1
+            if echo "$headers" | grep -qi "$header"; then
+              echo "✅ $header" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ $header missing" >> $GITHUB_STEP_SUMMARY
+            fi
+          }
+
+          check_header "strict-transport-security"
+          check_header "x-frame-options"
+          check_header "x-content-type-options"
+          check_header "content-security-policy"
