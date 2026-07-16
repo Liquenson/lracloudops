@@ -1,0 +1,39 @@
+name: Stripe Payment Links Monitor
+
+on:
+  schedule:
+    - cron: '0 10 * * *'  # Every day at 10:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check-payment-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Stripe Payment Links are reachable
+        run: |
+          echo "## Stripe Payment Links Status" >> $GITHUB_STEP_SUMMARY
+
+          # Check that payment pages load (not checking actual Stripe API)
+          check_url() {
+            local url=$1
+            local name=$2
+            status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url" || echo "000")
+            if [ "$status" = "200" ]; then
+              echo "✅ $name — HTTP $status" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ $name — HTTP $status" >> $GITHUB_STEP_SUMMARY
+              echo "::warning::$name returned HTTP $status"
+            fi
+          }
+
+          check_url "https://lracloudops.com" "Homepage"
+          check_url "https://lracloudops.com/audit" "Audit page"
+          check_url "https://lracloudops.com/pricing" "Pricing page"
+          check_url "https://lracloudops.com/payment-success" "Payment success page"
+
+          echo "Date: $(date -u)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Alert on failure
+        if: failure()
+        run: |
+          echo "::error::One or more critical pages are unreachable. Check lracloudops.com immediately."
