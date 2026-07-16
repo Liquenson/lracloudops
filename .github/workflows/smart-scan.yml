@@ -4,9 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       repo_url:
-        description: 'GitHub repo to scan (org/repo)'
-        required: true
+        description: 'GitHub repository URL to scan'
+        required: false
         type: string
+        default: 'lra-cloud-ops/aws-terraform-devops'
       org:
         description: 'Default GitHub org if repo_url has no "/"'
         required: false
@@ -14,12 +15,16 @@ on:
         default: 'lra-cloud-ops'
       client_email:
         description: 'Client email to send the report to'
-        required: true
+        required: false
         type: string
+        default: 'info@lracloudops.com'
       client_name:
         description: 'Client name'
-        required: true
+        required: false
         type: string
+        default: 'LRA CloudOps Team'
+  schedule:
+    - cron: '0 8 * * 1'  # Every Monday at 08:00 UTC
 
 jobs:
   smart-scan:
@@ -47,6 +52,7 @@ jobs:
           wget -qO- https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
 
       - name: Run Smart Scan
+        if: github.event_name == 'workflow_dispatch'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
@@ -57,3 +63,20 @@ jobs:
             --org "${{ github.event.inputs.org }}" \
             --email "${{ github.event.inputs.client_email }}" \
             --name "${{ github.event.inputs.client_name }}"
+
+      - name: Weekly scan — all lra-cloud-ops repos
+        if: github.event_name == 'schedule'
+        run: |
+          repos=("lra-cloud-ops/lra-ai-platform" "lra-cloud-ops/aws-terraform-devops" "lra-cloud-ops/k8s-on-premise" "lra-cloud-ops/aws-devops-agent")
+          for repo in "${repos[@]}"; do
+            echo "Scanning $repo..."
+            python lra-ai-platform/scripts/smart_scan.py \
+              --repo "$repo" \
+              --org "lra-cloud-ops" \
+              --email "info@lracloudops.com" \
+              --name "Weekly Auto-scan" || echo "Scan failed for $repo, continuing..."
+          done
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.AGENT_GITHUB_TOKEN }}
