@@ -26,3 +26,15 @@ pnpm-debug.log*
 # Claude Code internal dirs — never track worktrees (gitlinks break Cloudflare)
 .claude/worktrees/
 .claude/worktrees/**
+
+# Test results — generated, not source
+test-results/
+
+# Internal audit documents
+LRA_CloudOps_Engineering_Quality_Gates_Metrics.md
+
+# Duplicate Lighthouse config
+.lighthouserc.json
+
+# Claude Code internal
+.claude/
