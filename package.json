@@ -17,7 +17,7 @@
     "lhci": "lhci autorun"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource/red-hat-display": "^5.3.0",
     "@fontsource/red-hat-mono": "^5.3.0",
     "@fontsource/red-hat-text": "^5.3.0",
