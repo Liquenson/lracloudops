@@ -41,7 +41,7 @@
     "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^0.14.1",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "simple-icons": "^16.32.0",
     "svgo": "^4.1.0",
     "typescript": "^6.0.3"
