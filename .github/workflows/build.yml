@@ -5,11 +5,14 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Astro Build
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,16 +20,20 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - run: npm ci
-      - name: Lint (warn-only)
-        run: npm run lint || true
+      - name: Lint
+        run: npm run lint
       - name: Type check
         run: npx astro check
+      - name: Dependency audit
+        run: npm audit --audit-level=high
       - name: Build
         run: npm run build
       - name: Check pages
         run: |
+          set -euo pipefail
           PAGES=$(find dist -name "*.html" | wc -l)
-          echo "✅ $PAGES pages built" >> $GITHUB_STEP_SUMMARY
+          test "$PAGES" -gt 0
+          echo "$PAGES HTML pages built successfully" >> "$GITHUB_STEP_SUMMARY"
       - name: Install Playwright
         run: npx playwright install --with-deps chromium
       - name: Run Playwright tests
