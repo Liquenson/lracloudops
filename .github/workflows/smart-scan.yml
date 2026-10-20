@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       repo_url:
-        description: 'GitHub repository URL to scan'
+        description: 'GitHub repository URL or owner/repo to scan'
         required: false
         type: string
         default: 'lra-cloud-ops/aws-terraform-devops'
@@ -24,13 +24,15 @@ on:
         type: string
         default: 'LRA CloudOps Team'
   schedule:
-    - cron: '0 8 * * 1'  # Every Monday at 08:00 UTC
+    - cron: '0 8 * * 1'
+
+permissions:
+  contents: read
 
 jobs:
   smart-scan:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
     steps:
       - name: Checkout lra-ai-platform
         uses: actions/checkout@v4
@@ -48,8 +50,9 @@ jobs:
         run: pip install -r lra-ai-platform/requirements.txt
 
       - name: Install Trivy
-        run: |
-          wget -qO- https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+        uses: aquasecurity/setup-trivy@v0.2.4
+        with:
+          version: v0.69.3
 
       - name: Run Smart Scan
         if: github.event_name == 'workflow_dispatch'
@@ -57,26 +60,36 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.AGENT_GITHUB_TOKEN }}
+          INPUT_REPO_URL: ${{ inputs.repo_url }}
+          INPUT_ORG: ${{ inputs.org }}
+          INPUT_CLIENT_EMAIL: ${{ inputs.client_email }}
+          INPUT_CLIENT_NAME: ${{ inputs.client_name }}
         run: |
           python lra-ai-platform/scripts/smart_scan.py \
-            --repo "${{ github.event.inputs.repo_url }}" \
-            --org "${{ github.event.inputs.org }}" \
-            --email "${{ github.event.inputs.client_email }}" \
-            --name "${{ github.event.inputs.client_name }}"
+            --repo "$INPUT_REPO_URL" \
+            --org "$INPUT_ORG" \
+            --email "$INPUT_CLIENT_EMAIL" \
+            --name "$INPUT_CLIENT_NAME"
 
       - name: Weekly scan — all lra-cloud-ops repos
         if: github.event_name == 'schedule'
-        run: |
-          repos=("lra-cloud-ops/lra-ai-platform" "lra-cloud-ops/aws-terraform-devops" "lra-cloud-ops/k8s-on-premise" "lra-cloud-ops/aws-devops-agent")
-          for repo in "${repos[@]}"; do
-            echo "Scanning $repo..."
-            python lra-ai-platform/scripts/smart_scan.py \
-              --repo "$repo" \
-              --org "lra-cloud-ops" \
-              --email "info@lracloudops.com" \
-              --name "Weekly Auto-scan" || echo "Scan failed for $repo, continuing..."
-          done
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.AGENT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          repos=("lra-cloud-ops/lra-ai-platform" "lra-cloud-ops/aws-terraform-devops" "lra-cloud-ops/k8s-on-premise" "lra-cloud-ops/aws-devops-agent")
+          failed=0
+          for repo in "${repos[@]}"; do
+            echo "Scanning $repo..."
+            if ! python lra-ai-platform/scripts/smart_scan.py \
+              --repo "$repo" \
+              --org "lra-cloud-ops" \
+              --email "info@lracloudops.com" \
+              --name "Weekly Auto-scan"; then
+              echo "::error::Scan failed for $repo"
+              failed=1
+            fi
+          done
+          exit "$failed"
