@@ -1,31 +1,23 @@
 /**
  * LRA CloudOps — Contact Form Webhook Worker
  *
- * Called directly from the browser (see src/pages/contact.astro and
- * src/pages/es/contacto.astro) alongside the native Web3Forms submission.
- * When the client includes a GitHub repo, this dispatches the
- * "Smart Scan" GitHub Actions workflow, which runs a real scan and emails
- * an AI-generated executive report.
- *
- * This endpoint is public and unauthenticated by design (it's called from
- * client-side JS, so no secret embedded here could stay secret). The checks
- * below are basic hygiene, not an auth boundary — see docs/webhook-setup.md
- * for the residual risk and a recommended Turnstile follow-up.
+ * Public browser endpoint. CORS is not authentication; configure Cloudflare
+ * rate limiting / Turnstile before treating this endpoint as abuse-resistant.
  */
-
 export interface Env {
   GITHUB_TOKEN: string
   RESEND_API_KEY?: string
 }
 
 interface WebhookPayload {
-  name?: string
-  email?: string
-  github_repo?: string
-  topic?: string
+  name?: unknown
+  email?: unknown
+  github_repo?: unknown
+  topic?: unknown
 }
 
 const ALLOWED_ORIGIN = 'https://lracloudops.com'
+const MAX_BODY_BYTES = 8 * 1024
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const REPO_RE = /^[\w.-]+\/[\w.-]+$/
 
@@ -34,78 +26,77 @@ function corsHeaders(): HeadersInit {
     'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json',
+    'Vary': 'Origin',
+    'Content-Type': 'application/json; charset=utf-8',
+    'X-Content-Type-Options': 'nosniff',
   }
 }
 
-async function triggerSmartScan(
-  repo: string,
-  email: string,
-  name: string,
-  env: Env
-): Promise<boolean> {
+function jsonResponse(body: Record<string, unknown>, status = 200): Response {
+  return new Response(JSON.stringify(body), { status, headers: corsHeaders() })
+}
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  })[character] || character)
+}
+
+async function triggerSmartScan(repo: string, email: string, name: string, env: Env): Promise<boolean> {
   const response = await fetch(
     'https://api.github.com/repos/Liquenson/lracloudops/actions/workflows/smart-scan.yml/dispatches',
     {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${env.GITHUB_TOKEN}`,
-        'Accept': 'application/vnd.github.v3+json',
+        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+        Accept: 'application/vnd.github+json',
         'Content-Type': 'application/json',
+        'X-GitHub-Api-Version': '2022-11-28',
         'User-Agent': 'LRA-CloudOps-Webhook/1.0',
       },
       body: JSON.stringify({
         ref: 'main',
-        inputs: {
-          repo_url: repo,
-          client_email: email,
-          client_name: name,
-        },
+        inputs: { repo_url: repo, client_email: email, client_name: name },
       }),
     }
   )
-
   return response.status === 204
 }
 
-// Best-effort internal alert so we notice a new scan request without checking
-// the GitHub Actions tab. Optional: no-ops when RESEND_API_KEY isn't set.
-async function notifyInternal(
-  name: string,
-  email: string,
-  repo: string,
-  env: Env
-): Promise<void> {
+async function notifyInternal(name: string, email: string, repo: string, env: Env): Promise<void> {
   if (!env.RESEND_API_KEY) return
 
   try {
+    const safeName = escapeHtml(name)
+    const safeEmail = escapeHtml(email)
+    const safeRepo = escapeHtml(repo)
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         from: 'LRA CloudOps Alerts <info@lracloudops.com>',
         to: ['info@lracloudops.com'],
-        subject: `🔔 New audit request — ${name} · ${repo}`,
+        subject: `New audit request — ${name.slice(0, 100)}`,
         html: `
-          <h2 style="color:#1A73E8;">New Smart Scan Request</h2>
-          <p><strong>Client:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Repo:</strong> <code>${repo}</code></p>
+          <h2>New Smart Scan Request</h2>
+          <p><strong>Client:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Repo:</strong> <code>${safeRepo}</code></p>
           <p><strong>Time:</strong> ${new Date().toISOString()}</p>
-          <hr/>
           <p>Smart Scan triggered automatically.</p>
-          <a href="https://github.com/Liquenson/lracloudops/actions"
-             style="background:#1A73E8;color:#FFFFFF;padding:10px 20px;border-radius:4px;text-decoration:none;">
-            View Actions →
-          </a>
+          <a href="https://github.com/Liquenson/lracloudops/actions">View Actions</a>
         `,
       }),
     })
-  } catch {
-    // Non-critical — fail silently
+  } catch (error) {
+    console.error('Internal alert delivery failed', error instanceof Error ? error.name : 'unknown')
   }
 }
 
@@ -114,57 +105,79 @@ export default {
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: corsHeaders() })
     }
-
     if (request.method !== 'POST') {
-      return new Response('Method not allowed', { status: 405, headers: corsHeaders() })
+      return jsonResponse({ ok: false, error: 'method_not_allowed' }, 405)
+    }
+
+    const origin = request.headers.get('Origin')
+    if (origin && origin !== ALLOWED_ORIGIN && origin !== 'https://www.lracloudops.com') {
+      return jsonResponse({ ok: false, error: 'origin_not_allowed' }, 403)
     }
 
     const contentType = request.headers.get('Content-Type') || ''
-    if (!contentType.includes('application/json')) {
-      return new Response('Unsupported Media Type', { status: 415, headers: corsHeaders() })
+    if (!contentType.toLowerCase().startsWith('application/json')) {
+      return jsonResponse({ ok: false, error: 'unsupported_media_type' }, 415)
     }
 
-    const headers = corsHeaders()
+    const contentLength = Number(request.headers.get('Content-Length') || 0)
+    if (contentLength > MAX_BODY_BYTES) {
+      return jsonResponse({ ok: false, error: 'payload_too_large' }, 413)
+    }
+
+    let rawBody: string
+    try {
+      rawBody = await request.text()
+    } catch {
+      return jsonResponse({ ok: false, error: 'invalid_request_body' }, 400)
+    }
+    if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
+      return jsonResponse({ ok: false, error: 'payload_too_large' }, 413)
+    }
 
     let payload: WebhookPayload
     try {
-      payload = await request.json()
+      const parsed: unknown = JSON.parse(rawBody)
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+        return jsonResponse({ ok: false, error: 'invalid_payload' }, 400)
+      }
+      payload = parsed as WebhookPayload
     } catch {
-      return new Response(JSON.stringify({ ok: false, error: 'invalid_json' }), { status: 400, headers })
+      return jsonResponse({ ok: false, error: 'invalid_json' }, 400)
     }
 
-    const name = (payload.name || 'Client').slice(0, 200)
-    const email = (payload.email || '').trim()
+    if (payload.name !== undefined && typeof payload.name !== 'string') {
+      return jsonResponse({ ok: false, error: 'invalid_name' }, 400)
+    }
+    if (typeof payload.email !== 'string') {
+      return jsonResponse({ ok: false, error: 'invalid_email' }, 400)
+    }
+    if (payload.github_repo !== undefined && typeof payload.github_repo !== 'string') {
+      return jsonResponse({ ok: false, error: 'invalid_repo_format' }, 400)
+    }
+
+    const name = (payload.name || 'Client').trim().slice(0, 200) || 'Client'
+    const email = payload.email.trim()
     const repo = (payload.github_repo || '').trim()
 
-    if (!email || !EMAIL_RE.test(email)) {
-      return new Response(JSON.stringify({ ok: false, error: 'invalid_email' }), { status: 400, headers })
+    if (email.length > 254 || !EMAIL_RE.test(email)) {
+      return jsonResponse({ ok: false, error: 'invalid_email' }, 400)
     }
-
-    // No repo → nothing to scan, just acknowledge (Web3Forms already handles the message itself)
-    if (!repo) {
-      return new Response(JSON.stringify({ ok: true, action: 'contact_only' }), { status: 200, headers })
-    }
-
-    if (!REPO_RE.test(repo)) {
-      return new Response(JSON.stringify({ ok: false, error: 'invalid_repo_format' }), { status: 400, headers })
+    if (!repo) return jsonResponse({ ok: true, action: 'contact_only' })
+    if (repo.length > 200 || !REPO_RE.test(repo)) {
+      return jsonResponse({ ok: false, error: 'invalid_repo_format' }, 400)
     }
 
     try {
       const triggered = await triggerSmartScan(repo, email, name, env)
-      if (triggered) {
-        await notifyInternal(name, email, repo, env)
+      if (!triggered) {
+        console.error('Smart Scan dispatch failed', { repo })
+        return jsonResponse({ ok: false, error: 'scan_dispatch_failed' }, 502)
       }
-      return new Response(
-        JSON.stringify({
-          ok: true,
-          action: triggered ? 'smart_scan_triggered' : 'smart_scan_failed',
-          repo,
-        }),
-        { status: 200, headers }
-      )
-    } catch (err) {
-      return new Response(JSON.stringify({ ok: false, error: String(err) }), { status: 500, headers })
+      await notifyInternal(name, email, repo, env)
+      return jsonResponse({ ok: true, action: 'smart_scan_triggered', repo })
+    } catch (error) {
+      console.error('Smart Scan dispatch error', error instanceof Error ? error.name : 'unknown')
+      return jsonResponse({ ok: false, error: 'internal_error' }, 500)
     }
   },
 }
