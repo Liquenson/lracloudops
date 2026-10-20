@@ -6,39 +6,102 @@ on:
       client_email:
         description: 'Client email'
         required: true
+        type: string
       client_name:
         description: 'Client name'
         required: true
+        type: string
       repo_scanned:
         description: 'Repository that was scanned'
         required: true
+        type: string
       days_since_scan:
         description: 'Days since scan (3 or 7)'
         required: true
         default: '3'
+        type: choice
+        options:
+          - '3'
+          - '7'
+
+permissions:
+  contents: read
 
 jobs:
   send-followup:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Send follow-up email via Resend
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          CLIENT_EMAIL: ${{ inputs.client_email }}
+          CLIENT_NAME: ${{ inputs.client_name }}
+          REPO_SCANNED: ${{ inputs.repo_scanned }}
+          DAYS_SINCE_SCAN: ${{ inputs.days_since_scan }}
         run: |
-          if [ "${{ github.event.inputs.days_since_scan }}" = "3" ]; then
-            SUBJECT="Following up on your lra scan report"
-            BODY="Hi ${{ github.event.inputs.client_name }},\n\nThree days ago we delivered the security audit for ${{ github.event.inputs.repo_scanned }}.\n\nWere you able to review the findings? If you need help implementing the remediation steps, we can help — fixed scope, fixed price from €249.\n\nReply to this email or visit https://lracloudops.com/contact\n\nRuben Liquenson\nLRA CloudOps"
-          else
-            SUBJECT="Infrastructure remediation support — LRA CloudOps"
-            BODY="Hi ${{ github.event.inputs.client_name }},\n\nOne week ago we scanned ${{ github.event.inputs.repo_scanned }}.\n\nIf the findings are relevant and you'd like ongoing security monitoring, our Platform Retainer includes monthly lra scan across all your repositories for €699/month — no long-term contract.\n\nhttps://lracloudops.com/pricing\n\nRuben Liquenson\nLRA CloudOps"
-          fi
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import re
+          import urllib.error
+          import urllib.request
 
-          curl -s -X POST "https://api.resend.com/emails" \
-            -H "Authorization: Bearer ${{ secrets.RESEND_API_KEY }}" \
-            -H "Content-Type: application/json" \
-            -d "{
-              \"from\": \"Ruben Liquenson <info@lracloudops.com>\",
-              \"to\": [\"${{ github.event.inputs.client_email }}\"],
-              \"subject\": \"$SUBJECT\",
-              \"text\": \"$(echo -e "$BODY")\"
-            }"
+          email = os.environ["CLIENT_EMAIL"].strip()
+          name = os.environ["CLIENT_NAME"].strip()
+          repo = os.environ["REPO_SCANNED"].strip()
+          days = os.environ["DAYS_SINCE_SCAN"]
 
-          echo "Follow-up email sent to ${{ github.event.inputs.client_email }}" >> $GITHUB_STEP_SUMMARY
+          if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email):
+              raise SystemExit("Invalid client email")
+          if not name or len(name) > 200:
+              raise SystemExit("Invalid client name")
+          if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repo):
+              raise SystemExit("Invalid repository identifier")
+          if days not in {"3", "7"}:
+              raise SystemExit("days_since_scan must be 3 or 7")
+
+          if days == "3":
+              subject = "Following up on your LRA scan report"
+              body = (
+                  f"Hi {name},\n\nThree days ago we delivered the security audit for {repo}.\n\n"
+                  "Were you able to review the findings? If you need help implementing the remediation steps, "
+                  "we can help — fixed scope, fixed price from €249.\n\n"
+                  "Reply to this email or visit https://lracloudops.com/contact\n\n"
+                  "Ruben Liquenson\nLRA CloudOps"
+              )
+          else:
+              subject = "Infrastructure remediation support — LRA CloudOps"
+              body = (
+                  f"Hi {name},\n\nOne week ago we scanned {repo}.\n\n"
+                  "If the findings are relevant and you'd like ongoing security monitoring, our Platform Retainer "
+                  "includes monthly LRA scans across your repositories for €699/month — no long-term contract.\n\n"
+                  "https://lracloudops.com/pricing\n\nRuben Liquenson\nLRA CloudOps"
+              )
+
+          payload = {
+              "from": "Ruben Liquenson <info@lracloudops.com>",
+              "to": [email],
+              "subject": subject,
+              "text": body,
+          }
+          request = urllib.request.Request(
+              "https://api.resend.com/emails",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={
+                  "Authorization": f"Bearer {os.environ['RESEND_API_KEY']}",
+                  "Content-Type": "application/json",
+              },
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  if not 200 <= response.status < 300:
+                      raise SystemExit(f"Resend returned HTTP {response.status}")
+          except urllib.error.HTTPError as exc:
+              raise SystemExit(f"Resend returned HTTP {exc.code}") from None
+
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+              summary.write("Follow-up email sent successfully.\n")
+          PY
