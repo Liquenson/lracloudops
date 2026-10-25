@@ -281,12 +281,23 @@ const projects: [string, string][] = [
       class="footer-bottom"
       style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;"
     >
-      <p
-        style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368;"
-      >
-        © {currentYear} LRA CloudOps · Ruben Liquenson · Las Palmas de Gran
-        Canaria, España
-      </p>
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #5F6368; margin: 0;"
+        >
+          © {currentYear} LRA CloudOps · Ruben Liquenson · Las Palmas de Gran
+          Canaria, España
+        </p>
+        <p
+          style="font-family: 'Red Hat Text', sans-serif; font-size: 0.8125rem; color: #9AA0A6; margin: 0;"
+        >
+          {isES ? 'Parte del ecosistema tecnológico de' : 'Part of the technology ecosystem of'}
+          <span style="color: #FFFFFF; font-weight: 600; letter-spacing: 0.04em;">
+            NEXIBBLE GROUP
+          </span>
+          <span style="color: #22D3EE;"> · Building What's Next.</span>
+        </p>
+      </div>
       <div
         style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;"
       >
